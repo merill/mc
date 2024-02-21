@@ -16,8 +16,9 @@ export default defineConfig({
           label: "MC Archive",
           items: [
             // Each item here is one entry in the navigation menu.
-            { label: "Home", link: "/" },
-            { label: "About", link: "/about/" },
+            { label: "🏠 Home", link: "/" },
+            { label: "merill.net ", link: "https://merill.net" },
+            { label: "Entra.News ", link: "https://entra.news" },
           ],
         },
         {
