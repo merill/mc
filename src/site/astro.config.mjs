@@ -3,6 +3,7 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://mc.merill.net',
   integrations: [
     starlight({
       title: "Microsoft 365 Message Center Archive",
