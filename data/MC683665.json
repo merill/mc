@@ -1,0 +1,33 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>This message is intended to notify all customers utilizing social ratings APIs that Microsoft will start retiring a number of these APIs starting January 2024. If your organization is not using the social ratings APIs, you can safely disregard this message.</p><p>For a comprehensive list of the APIs scheduled for retirement, please refer to the information provided below.</p><p>Microsoft has decided to retire the following APIs:<br></p><ul><li><i>CountRatingsOnUrl (string URL)&nbsp;</i></li><li><i>GetRatingsOfUser (string userAccountName)&nbsp;</i></li><li><i>GetRatingsOnUrl (string URL)&nbsp;</i></li><li><i>GetRatingOnUrl (string URL)&nbsp;</i></li><li><i>GetRatingOfUserOnUrl (string userAccountName, string URL)&nbsp;</i></li><li><i>DeleteRating (string URL)&nbsp;</i></li></ul><p>All of these APIs pertain to the social rating functionality (<a href=\"https://learn.microsoft.com/openspecs/sharepoint_protocols/ms-upsdws/37691757-a60d-40d3-8cc7-16c7dd970b7a\" target=\"_blank\">[MS-UPSDWS]: Glossary | Microsoft Learn</a>).\n</p><p>The rationale behind this choice is that these APIs are superfluous and consistently yield empty results when called, leading to an inefficient utilization of customers' computing resources if they continue to make requests to them. Please be aware that in the event these APIs are invoked after they are retired, an exception with the message <i>'This API is deprecated; you should stop invoking the API and remove references.'</i> will be returned.\n</p><p>[When this will happen:]</p><p>January 1, 2024.</p><p>[How this will affect your organization:]</p><p>Our telemetry data indicates that these APIs have almost no usage and should not have any impact on our customers. Nevertheless, we kindly request our customers to exercise due diligence and verify that they eliminate any reliance on the aforementioned APIs. As previously mentioned, these APIs do not provide any data and are therefore entirely superfluous.</p><p>[What you can do to prepare:]</p><p>If your organization has taken any dependency on the above-mentioned APIs, we ask you to please remove this dependency. Below, we have provided alternative existing social ratings APIs that can serve as replacements if required:</p><ul><li><i>SetRating (string URL, int rating, string title, FeedbackData analysisDataEntry)\n</i></li><li><i>PropagateRating (string URL)\n</i></li><li><i>GetRatingAverageOnUrl (string URL)</i></li></ul>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [],
+  "EndDateTime": "2024-03-31T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC683665",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2023-10-23T22:18:16.677Z",
+  "Services": [
+    "SharePoint Online"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2023-10-23T22:17:59Z",
+  "Tags": [
+    "User impact",
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Social ratings APIs are being retired.",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
