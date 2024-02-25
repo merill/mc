@@ -14,7 +14,11 @@ I created this as a companion site to [Entra.News](https://entra.news), my weekl
 
 In my newsletter I include links to Message Center posts, but not everyone has access to the Microsoft 365 admin center. So I created this site to be accessible by anyone!
 
-Please note, while I am a Microsoft employee, this is a personal project and is not affiliated in any way with Microsoft. Always refer to the official Message Center in the admin portal for information specific to your tenant.
+Notes:
+
+* While I am a Microsoft employee, this is a personal project and is not affiliated in any way with Microsoft.
+* This site does not include all the messages you see in your tenant and it could list messages that are not visible in your tenant.
+* Always refer to the Message Center in your admin portal for the most accurate information specific to your tenant.
 
 Cheers,
 

@@ -28,14 +28,46 @@ function Update-MessageMarkdown($msg, $template) {
     $template = $template -replace '=id=', $msg.id
     $template = $template -replace '=title=', $frontMatterTitle
     $template = $template -replace '=front-matter-title=', $frontMatterTitle
-    $template = $template -replace '=date-updated=', $msg.publishedDateTime
-    $template = $template -replace '=content=', $msg.body.content
+
+
+    $datePublished = Get-DateString $msg.publishedDateTime
+    $template = $template -replace '=date-published=', $datePublished
+
+    $dateModified = Get-DateString $msg.LastModifiedDateTime
+    $template = $template -replace '=LastModifiedDateTime=', $dateModified
+
+    $dateEnd = Get-DateString $msg.EndDateTime
+    $template = $template -replace '=EndDateTime=', $dateEnd
+
+    $dateActBy = Get-DateString $msg.ActionRequiredByDateTime
+    $template = $template -replace '=ActionRequiredByDateTime=', $dateActBy
+
+    $dateStart = Get-DateString $msg.StartDateTime
+    $template = $template -replace '=StartDateTime=', $dateStart
+
+    $template = $template -replace '=Severity=', $msg.Severity
+    $template = $template -replace '=Category=', $msg.Category
+    $template = $template -replace '=IsMajorChange=', $msg.IsMajorChange
+    $template = $template -replace '=Tags=', $msg.Tags
+
+    $template = $template -replace '=Services=', $msg.Services
+
+    $template = $template -replace '=Details=', $msg.Details
+
+    $content = $msg.body.content -replace '\[(.*?)\]', '<b>$1</b>'
+    $template = $template -replace '=content=', $content
+
+    # $formattedDetails = $msg.Details -replace "<p>[", "<p><b>"
+    # $formattedDetails = $formattedDetails -replace "]`n</p>", "</b>`n</p>"
+
     $template | Set-Content -Path ./src/site/src/content/docs/reference/$($msg.id).md
 }
 
 function Get-DateString($date){
-    return $date.ToString("yyyy-MMM-dd")
+    if([string]::IsNullOrEmpty($date)){ return "" }
+    return $date.ToString("MMM dd, yyyy")
 }
+
 Connect-McGraph
 $msgItems = Get-M365MessageCenterItems
 

@@ -7,7 +7,22 @@ sidebar:
 ---
 
 
-Last updated: =date-updated=
+| Published | Act by | Last updated |
+| =StartDateTime= | =ActionRequiredByDateTime= | =LastModifiedDateTime= |
+
+EndDateTime: =EndDateTime=
+
+Severity: =Severity=
+
+Category: =Category=
+
+IsMajorChange: =IsMajorChange=
+
+Tags: =Tags=
+
+Service: =Services=
+
+Details: =Details=
 
 =content=
 
