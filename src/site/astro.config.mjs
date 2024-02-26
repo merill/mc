@@ -11,6 +11,7 @@ export default defineConfig({
         light: './src/assets/logo.svg',
         dark: './src/assets/logo-dark.svg',
       },
+      customCss: ['/src/styles/tailwind.docs.css'],
       sidebar: [
         {
           label: "MC Archive",
