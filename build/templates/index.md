@@ -24,6 +24,4 @@ Cheers,
 
 [Merill](https://linkedin.com/in/merill) 👨‍💻🦘🇦🇺
 
-## Message Center Updates
-
-=content=
+<MessagesTable />

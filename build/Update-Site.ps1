@@ -73,15 +73,15 @@ $msgItems = Get-M365MessageCenterItems
 
 $template = Get-Content ./build/templates/message.md
 
-$rootMarkdown = ""
-
 foreach($msg in $msgItems){
     Update-MessageJson $msg
     Update-MessageMarkdown $msg $template
-    $date = Get-DateString $msg.LastModifiedDateTime
-    $rootMarkdown += "* [$($msg.id) - $($msg.title)]($($msg.id)) - $date" + [Environment]::NewLine
+    #$date = Get-DateString $msg.LastModifiedDateTime
+    #$rootMarkdown += "* [$($msg.id) - $($msg.title)]($($msg.id)) - $date" + [Environment]::NewLine
 }
 
-$indexContent = Get-Content ./build/templates/index.md
-$indexContent = $indexContent -replace '=content=', $rootMarkdown
-$indexContent | Set-Content -Path ./src/site/src/content/docs/index.mdx
+$msgitems | ConvertTo-Json -Depth 10 | Set-Content -Path ./src/site/src/components/messages.json
+
+#$indexContent = Get-Content ./build/templates/index.md
+#$indexContent = $indexContent -replace '=content=', $rootMarkdown
+#$indexContent | Set-Content -Path ./src/site/src/content/docs/index.mdx
