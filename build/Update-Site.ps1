@@ -78,9 +78,11 @@ foreach($msg in $msgItems){
     Update-MessageMarkdown $msg $template
     #$date = Get-DateString $msg.LastModifiedDateTime
     #$rootMarkdown += "* [$($msg.id) - $($msg.title)]($($msg.id)) - $date" + [Environment]::NewLine
+    $msg.Title = $msg.Title.Replace('(Updated) ', '')
 }
-
-$msgitems | ConvertTo-Json -Depth 10 | Set-Content -Path ./src/site/src/components/messages.json
+$dataPath = "./src/site/src/components/MessagesTable/data/"
+$msgitems | ConvertTo-Json -Depth 10 | Set-Content -Path ($dataPath + "messages.json")
+$msgitems.Services | Sort-Object | Get-Unique | ConvertTo-Json | Set-Content -Path ($dataPath + "services.json")
 
 #$indexContent = Get-Content ./build/templates/index.md
 #$indexContent = $indexContent -replace '=content=', $rootMarkdown

@@ -7,7 +7,7 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: 'https://mc.merill.net',
   integrations: [starlight({
-    title: "Microsoft 365 Message Center Archive",
+    title: "M365 MC Archive",
     logo: {
       light: './src/assets/logo.svg',
       dark: './src/assets/logo-dark.svg'
