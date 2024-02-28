@@ -1,0 +1,41 @@
+---
+title: MC670895 - (Updated) Exchange Transport Rules (ETRs) stopping support for DLP scenarios
+description: (Updated) Exchange Transport Rules (ETRs) stopping support for DLP scenarios
+slug: MC670895
+sidebar:
+    label: MC670895
+---
+
+
+| Published | Act by | Last updated |
+| Aug 25, 2023 | Nov 13, 2023 | Oct 26, 2023 |
+
+EndDateTime: Apr 30, 2024
+
+Severity: normal
+
+Category: planForChange
+
+IsMajorChange: True
+
+Tags: Updated message User impact Admin impact Retirement
+
+Service: Exchange Online
+
+Details: Microsoft.Graph.PowerShell.Models.MicrosoftGraphKeyValuePair
+
+```
+<p>Updated October 20, 2023: We have updated this message as a reminder of this upcoming change. Review and take action as appropriate for your organization.</p><p>Last year, the Exchange Online data loss prevention (DLP) experience was retired from the classic Exchange admin center (EAC) (MC278896, August '21 &amp; MC400953, July '22). We recommend customers use Microsoft Purview Unified DLP, which extends DLP protection to SharePoint Online, OneDrive for Business, Teams chats, devices, and more. The Microsoft Purview compliance portal provides access to advanced classification capabilities like EDM, ML, etc., along with rich alerts, incident management features, and more. 
+</p><p>We are notifying you now that we are removing support for Exchange Online DLP in mail flow rules.
+</p><p><b>When this will happen:</b></p><p>mid-November 2023</p><p><b>How this will affect your organization:</b>
+</p><p>Beginning mid-November, the ability to use the following Exchange DLP-related actions and conditions/exceptions (predicates) will be removed from mail flow rules:
+</p><ul><li>Actions: NotifySender
+</li><li>Conditions/Predicates: MessageContainsDataClassifications (message contains sensitive information), ExceptIfMessageContainsDataClassifications, HasSenderOverride (sender has overridden the Policy Tip), ExceptIfHasSenderOverride
+</li></ul><p>You will no longer be able to create new mail flow rules with these actions/predicates and any existing rules that use them will no longer be evaluated or run. If you’ve already migrated to Unified DLP, we recommend that you delete any affected mail flow rules. Otherwise, migrate and then delete any existing, affected mail flow rules before mid-November .
+</p><p>When the rollout reaches your tenant, you’ll see additional mail flow rule properties in the EAC and in Exchange Online PowerShell to show you which rules are no longer supported (Configuration Support and Unsupported Reason).
+</p><p><b>What you need to do to prepare:</b>
+</p><p>Use the Get-TransportRule cmdlet to see if your organization has any existing mail flow rules that use these DLP actions or predicates. If you’ve already migrated to Unified DLP, verify that any mail flow rules that use the Exchange DLP conditions/predicates have been removed from the EAC or Exchange Online PowerShell. If you haven’t migrated to Unified DLP, migrate before mid-November, and then delete the Exchange DLP mail flow rules.
+</p><p>To learn more about creating rules in DLP,  see <a href="https://learn.microsoft.com/purview/dlp-create-deploy-policy" target="_blank">Create and deploy a data loss prevention policy.</a></p>
+```
+
+## Further reading

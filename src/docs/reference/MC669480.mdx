@@ -1,0 +1,44 @@
+---
+title: MC669480 - (Updated) Web links from Microsoft Teams chats to open in Microsoft Edge; Teams chat will open side-by-side with link
+description: (Updated) Web links from Microsoft Teams chats to open in Microsoft Edge; Teams chat will open side-by-side with link
+slug: MC669480
+sidebar:
+    label: MC669480
+---
+
+
+| Published | Act by | Last updated |
+| Aug 21, 2023 |  | Dec 14, 2023 |
+
+EndDateTime: Mar 04, 2024
+
+Severity: normal
+
+Category: planForChange
+
+IsMajorChange: True
+
+Tags: Updated message New feature User impact Admin impact
+
+Service: Microsoft Teams
+
+Details: Microsoft.Graph.PowerShell.Models.MicrosoftGraphKeyValuePair Microsoft.Graph.PowerShell.Models.MicrosoftGraphKeyValuePair Microsoft.Graph.PowerShell.Models.MicrosoftGraphKeyValuePair
+
+```
+<p>Update for December 14, 2023: The Microsoft Teams change will now be completed by the end of January instead of early December as previously communicated. Additionally, an issue was discovered with managing this change using GPO and Intune, with a fix planned to deploy with the change by the end of January. To manage this change prior to the fix deploying, please use the <a href="https://learn.microsoft.com/deployoffice/admincenter/overview-cloud-policy" target="_blank" style="background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;">Cloud Policy service for Microsoft 365</a> (formerly the Office Cloud Policy Service).</p><p>The Microsoft Teams desktop app for Windows will open web links from Teams chats in Microsoft Edge to enable a new web and chat side-by-side experience.
+</p><p>By opening web links in Edge, users will be able to see those links side-by-side with their Teams chats—web links will open as new browser tabs and the Teams chats will open next to them in the Edge sidebar. This new, single-view Teams experience in Edge is designed to minimize switching between windows and to help users stay in the flow of work while referencing web links.&nbsp;</p><p>This message is associated with Microsoft 365 Roadmap ID <a href="https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=126334" target="_blank">126334</a>.&nbsp;</p><p>This change to use Edge to open web links from Teams chats follows a similar, previously announced change in the Outlook for Windows app. Customers impacted by this change in Outlook were notified via MC541626, MC545904, or MC548092. 
+</p><p>Admin controls are available as detailed below. 
+</p><p>Read more about how we’re optimizing the experience between Microsoft 365 and Microsoft Edge:
+</p><ul><li><a href="https://www.microsoft.com/en-us/microsoft-365/blog/2023/02/16/discover-new-ways-to-multitask-with-microsoft-365-and-edge/" target="_blank">https://www.microsoft.com/en-us/microsoft-365/blog/2023/02/16/discover-new-ways-to-multitask-with-microsoft-365-and-edge/</a>&nbsp;&nbsp;</li><li><a href="https://techcommunity.microsoft.com/t5/microsoft-teams-blog/what-s-new-in-microsoft-teams-microsoft-inspire-2023/ba-p/3855657" target="_blank">What's New in Teams | Microsoft Inspire 2023</a></li></ul><p>Notes: 
+</p><ul><li>This change does not affect a device’s default browser setting in Windows.</li><li>This only affects commercial users signed into Teams with Azure Active Directory (Azure AD) accounts.</li><li>The policy described in the following section configures which browser is used to open web links for both Teams (chat) and the Outlook for Windows app (email), or, if you did not receive an Outlook for Windows app Message center notification, this policy will only apply to Teams (chat).</li></ul><p><b>When will this affect your organization:</b><br></p><p>Timing: 
+</p><ul><li>Microsoft Teams desktop app for Windows: Rolling out now to Targeted Release and will begin to rollout in early November and complete in late January 2024 (previously late December) for Standard Release.<ul><li>Outlook for Windows: Roll out in progress.  If this change affects your users, you will have received either MC541626, MC545904, or MC548092, and can refer to them for specific timing.<ul><li>Note: Depending on your Outlook for Windows update channel, you may experience the change in Teams first.</li></ul></li></ul></li></ul><p>Action:
+</p><ul><li>Use the "<i>Choose which browser opens web links"</i> policy to configure which browser will be used to open web links and to set whether users will be able to make changes to which browser opens web links in both the Teams desktop app for Windows (chat) and the Outlook for Windows app (email).<ul><li>If you did not receive a message center notification for the Outlook for Windows app (email), then the setting only applies to Teams (chat).</li><li>If you did receive a message center notification for the Outlook for Windows app (email), then the setting applies to both Teams (chat) and Outlook for Windows app (email). You will not be able to manage each app individually using this policy. If you’ve previously configured this policy for the Outlook for Windows app and wish to maintain that configuration, no action is required.</li></ul></li></ul><p><b>Note: </b>There are no Microsoft 365 subscription restrictions in using this policy to configure which browser opens web links in Teams.
+</p><ul><li>Use of the policy to manage the change in the Outlook for Windows app depends on your Microsoft 365 subscription. If you received the Outlook for Windows app Message center notification, please refer to MC541626, MC545904, or MC548092 for details on whether configuring this policy will apply.</li><li>If you have not configured the policy, or wish to change it, find the details below.</li></ul><p><b>How this will affect your organization:</b><br></p><p>Links from Teams chats will open based on the browser configuration in the<i>&nbsp;"Choose which browser opens web links"</i> policy.  If no configuration is selected using the "<i>Choose which browser opens web links"</i> policy, web links from Teams chats will open in Microsoft Edge.
+</p><ul><li>Only links set to open via a web browser are affected. Links that are set to open in a client app or within Teams itself will continue to do so.</li><li>User experiences will vary by policy configuration; please see the next section.</li><li>You can manage this experience at any time.</li></ul><p><b>What you need to do to prepare:</b><br></p><p><b>If you’ve previously configured this policy for the Outlook for Windows app and wish to maintain that configuration, no action is required.
+</b></p><p>Use the "<i>Choose which browser opens web links"</i> policy to configure which default browser will be used to open web links and to set whether users will be able to manage which browser opens web links in both Teams (chat) and the Outlook for Windows app (email). You will not be able to manage each app individually using this policy.
+</p><p>The "<i>Choose which browser opens web links"</i> policy is available using the <a href="https://learn.microsoft.com/en-us/deployoffice/admincenter/overview-cloud-policy" target="_blank">Cloud Policy service for Microsoft 365 </a>(formerly the Office Cloud Policy Service) or as part of the <a href="https://www.microsoft.com/download/details.aspx?id=49030" target="_blank">Administrative Templates for Microsoft 365 Apps</a>.</p><ul><li>Enabled: Configures which browser opens web links from the Teams desktop app for Windows (chat) and the Outlook for Windows app (email):<ul><li>Microsoft Edge<ul><li>Web links will open side-by-side with users’ chat or email in Edge.</li></ul></li><li>Default browser<ul><li>Users will not be able to change this from the respective apps’ settings menus.</li></ul></li></ul></li><li>Disabled/Unconfigured: Web links from the Teams desktop app for Windows (chat) and the Outlook for Windows app (email) will open in Microsoft Edge.<ul><li>Web links will open side-by-side with users’ chat or email in Edge.</li><li>Users can manage the browser change:<ul><li>Via the in-product notifications explaining the side-by-side experience.</li><li>At any time via the Teams settings menu: Settings &gt; Files and links &gt; Link open preferences</li></ul></li></ul></li></ul><p><b>Note:</b> If you want to manage this change for your entire organization so that Teams only opens web links using the device’s system default browser, you will need to configure the policy to Enabled and select Default browser.</p><p>Additional Information
+</p><ul><li>Read more about how we’re optimizing the experience between Microsoft 365 and Microsoft Edge with this feature in our blog: https://www.microsoft.com/en-us/microsoft-365/blog/2023/02/16/discover-new-ways-to-multitask-with-microsoft-365-and-edge/&nbsp;&nbsp;</li></ul><p>We always value feedback and questions from our customers. Please feel free to submit either feedback or questions via Message Center.
+</p><p><br></p>
+```
+
+## Further reading

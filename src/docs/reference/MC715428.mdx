@@ -1,0 +1,32 @@
+---
+title: MC715428 - Retirement of entities in Outlook for contextual add-ins
+description: Retirement of entities in Outlook for contextual add-ins
+slug: MC715428
+sidebar:
+    label: MC715428
+---
+
+
+| Published | Act by | Last updated |
+| Feb 13, 2024 |  | Feb 13, 2024 |
+
+EndDateTime: Jul 29, 2024
+
+Severity: normal
+
+Category: planForChange
+
+IsMajorChange: True
+
+Tags: User impact Admin impact Retirement
+
+Service: Exchange Online Microsoft 365 for the web Microsoft 365 apps
+
+Details: Microsoft.Graph.PowerShell.Models.MicrosoftGraphKeyValuePair Microsoft.Graph.PowerShell.Models.MicrosoftGraphKeyValuePair Microsoft.Graph.PowerShell.Models.MicrosoftGraphKeyValuePair
+
+```
+<p>We’re making some changes to the way Outlook supports contextual add-ins. Contextual add-ins activate based on the content of an email message or a meeting request. Currently, Outlook supports two methods for activating contextual add-ins: entity stamping and regular expression (regex) matching. </p><p>Entity stamping is a process where Outlook identifies and highlights certain types of data in a message, such as addresses, phone numbers, meeting suggestions, and task suggestions. When a user clicks on a highlighted entity, Outlook shows a list of add-ins that are relevant to that entity. </p><p>Regex matching is a process where Outlook matches the content of a message against a set of regular expressions provided by the add-in developer. When a match is found, Outlook provides a control that can launch the add-in.</p><p><b>When this will happen:</b></p><p>We will begin rolling this out in mid-May 2024 and expect to complete by mid-June 2024.</p><p> </p><p><b>How this will affect your organization:</b><br></p><p>We’re retiring entity stamping and will stop highlighting entities in Outlook. This means that add-ins that rely on entity stamping will no longer activate when highlighted entities are selected. Add-ins that rely on entity stamping, such as Bing Maps, Action Items, and Suggested Meetings, will also be retired. However, we will continue to support regex matching in add-ins and the Join Meeting button in online meeting add-ins.</p><p>If you have any add-ins that use entity stamping, you’ll need to update them to use regex matching or the Join Meeting button prior to this change happening. Otherwise, your add-ins won’t activate in Outlook and may lose functionality.</p><p>As part of this retirement, the following APIs will stop working for add-ins:</p><ul><li>getEntities()</li><li>getEntitiesByType(entityType)&nbsp;</li><li>getFilteredEntitiesByName(name)&nbsp;</li><li>getSelectedEntities()&nbsp;</li></ul><p><b>What you need to do to prepare:</b></p><p>To learn how to update your add-ins, see <a href="https://learn.microsoft.com/office/dev/add-ins/outlook/use-regular-expressions-to-show-an-outlook-add-in" target="_blank">Use regular expression activation rules to show an Outlook add-in</a> and <a href="https://learn.microsoft.com/office/dev/add-ins/outlook/online-meeting?tabs=non-mobile" target="_blank">Create an Outlook add-in for an online-meeting provider.</a> For more details on the announcement, see <a href="https://devblogs.microsoft.com/microsoft365dev/retirement-of-entity-based-contextual-outlook-add-ins/" target="_blank">Retirement of entity-based contextual Outlook add-ins</a>.</p><p>
+</p>
+```
+
+## Further reading

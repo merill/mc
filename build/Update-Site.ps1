@@ -60,7 +60,7 @@ function Update-MessageMarkdown($msg, $template) {
     # $formattedDetails = $msg.Details -replace "<p>[", "<p><b>"
     # $formattedDetails = $formattedDetails -replace "]`n</p>", "</b>`n</p>"
 
-    $template | Set-Content -Path ./src/site/src/content/docs/reference/$($msg.id).md
+    $template | Set-Content -Path ./src/docs/reference/$($msg.id).mdx
 }
 
 function Get-DateString($date){
@@ -80,7 +80,7 @@ foreach($msg in $msgItems){
     #$rootMarkdown += "* [$($msg.id) - $($msg.title)]($($msg.id)) - $date" + [Environment]::NewLine
     $msg.Title = $msg.Title.Replace('(Updated) ', '')
 }
-$dataPath = "./src/site/src/components/MessagesTable/data/"
+$dataPath = "./src/src/components/MessagesTable/data/"
 $msgitems | ConvertTo-Json -Depth 10 | Set-Content -Path ($dataPath + "messages.json")
 $msgitems.Services | Sort-Object | Get-Unique | ConvertTo-Json | Set-Content -Path ($dataPath + "services.json")
 
