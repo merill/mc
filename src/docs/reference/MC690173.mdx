@@ -1,9 +1,10 @@
 ---
-title: MC690173 - (Updated) Microsoft to stop honoring mail flow rules tracking user reporting
-description: (Updated) Microsoft to stop honoring mail flow rules tracking user reporting
-slug: MC690173
-sidebar:
-    label: MC690173
+title: Microsoft to stop honoring mail flow rules tracking user reporting
+description: Microsoft to stop honoring mail flow rules tracking user reporting
+slug: /MC690173
+sidebar_label: MC690173
+pagination_next: null
+pagination_prev: null
 ---
 
 
@@ -24,12 +25,12 @@ Service: Exchange Online Microsoft Defender XDR
 
 Details: 
 
-```
+<div dangerouslySetInnerHTML={{__html:`
 <p>Updated January 30, 2024: We have updated the content below for clarity. Thank you for your feedback.</p><p>Microsoft will stop honoring the mail flow rule which helps you track end user reporting. To improve the availability and reduce the latency of the submission service so that you can respond to threats (false negatives) more quickly and efficiently, we moved the submission service ahead of the exchange transport rule agent. Now the mail flow rules (or exchange transport rules) which you have for the following addresses – phish@office365.microsoft.com, junk@office365.microsoft.com, not_junk@office365.microsoft.com, phish@senpluspluseop.onmicrosoft.com, unjunk@senpluspluseop.onmicrosoft.com and  junk@senpluspluseop.onmicrosoft.com won’t be honored as the agent won't be receiving signals for these addresses. 
 </p><p>Moreover, the message tracking logs will show that reports going to phish@office365.microsoft.com, junk@office365.microsoft.com and not_junk@office365.microsoft.com as deleted or failed. </p><p>For example: <b>{LED=550 4.3.2 QUEUE.TransportAgent; message deleted by transport agent};{MSG=};{FQDN=};{IP=};{LRT=}</b>. Please ignore it as it is by design while we look for a better way to address it.</p><p><b>When this will happen:</b></p><p>We'll be gradually rolling this out to customers starting late December 2023 and the roll out will be completed by mid-February 2024 (previously late January).</p><p><b>How this will affect your organization:</b></p><p>You will no longer be able to track end user report using mail flow rules for the following addresses – phish@office365.microsoft.com, junk@office365.microsoft.com, not_junk@office365.microsoft.com once the change is implemented.</p><p><b>What you need to do to prepare:</b><br></p><p>If you are routing report messages to a mailbox, we recommend going to <a href="https://security.microsoft.com/securitysettings/userSubmission" target="_blank">user reported settings</a> and under "reported message destinations", setting the "send reported messages" to "My reporting mailbox only" and then providing the mailbox address you are routing to. Distribution groups and routing to an external or on-premises mailbox aren't allowed.</p><p>If you are routing report messages to a mailbox for a particular report type, take the above step and <a href="https://support.microsoft.com/office/manage-email-messages-by-using-rules-c24f5dea-9465-4df4-ad17-a50704d66c59" target="_blank">create rules in the mailbox using the outlook client</a>. You can specify which report "phish" or "junk" or "not junk", you want to be ignored and filtered from your view. The report type is specified in the subject of the notification email sent to the mailbox (1| for Junk,  2| for Not junk, 3| for Phishing).
 </p><p>If you are concerned that your phish simulations will get analyzed by Microsoft, please add the third party phish simulation tool as <a href="https://learn.microsoft.com/microsoft-365/security/office-365-security/advanced-delivery-policy-configure?view=o365-worldwide" target="_blank">phish simulation under advanced delivery</a>. With this change, the phish simulation will get delivered unfiltered and on user report, it won’t be analyzed by Microsoft. It will even show up as a phish simulation in the <a href="https://sip.security.microsoft.com/reportsubmission?viewid=user" target="_blank">user report tab</a> of submissions.
 </p><p>If you are using exchange transport rule to forward phish simulation from user report to third party tool, we recommend going to <a href="https://sip.security.microsoft.com/securitysettings/userSubmission" target="_blank">user reported settings</a> and under "reported message destinations", setting the "send reported messages" to "Microsoft and My reporting mailbox only" or “My reporting mailbox only”. Then provide a mailbox address you want the user report to route to (not the third party mailbox). Distribution groups and routing to an external or on-premises mailbox aren't allowed for this address. Now you configure an exchange transport rule which forward phish simulation coming to this mailbox address to the third-party tool.
 </p><p>If you are routing report messages to Microsoft via a custom add-in or another mechanism, we recommend either using the report button in Outlook for web or the report message add-in or the report phish add-in as described <a href="https://learn.microsoft.com/microsoft-365/security/office-365-security/submissions-users-report-message-add-in-configure?" target="_blank" style="background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;">here</a>.&nbsp;<br></p>
-```
+`}} />
 
 ## Further reading

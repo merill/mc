@@ -55,6 +55,7 @@ function Update-MessageMarkdown($msg, $template) {
     $template = $template -replace '=Details=', $msg.Details
 
     $content = $msg.body.content -replace '\[(.*?)\]', '<b>$1</b>'
+    $content = $content -replace '`', '''' # Remove backticks so it can be included in html
     $template = $template -replace '=content=', $content
 
     # $formattedDetails = $msg.Details -replace "<p>[", "<p><b>"
@@ -74,11 +75,12 @@ $msgItems = Get-M365MessageCenterItems
 $template = Get-Content ./build/templates/message.md
 
 foreach($msg in $msgItems){
+    $msg.Title = $msg.Title.Replace('(Updated) ', '')
     Update-MessageJson $msg
     Update-MessageMarkdown $msg $template
     #$date = Get-DateString $msg.LastModifiedDateTime
     #$rootMarkdown += "* [$($msg.id) - $($msg.title)]($($msg.id)) - $date" + [Environment]::NewLine
-    $msg.Title = $msg.Title.Replace('(Updated) ', '')
+
 }
 $dataPath = "./src/src/components/MessagesTable/data/"
 $msgitems | ConvertTo-Json -Depth 10 | Set-Content -Path ($dataPath + "messages.json")

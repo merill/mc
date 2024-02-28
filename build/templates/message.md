@@ -1,9 +1,10 @@
 ---
-title: =id= - =title=
+title: =title=
 description: =front-matter-title=
-slug: =id=
-sidebar:
-    label: =id=
+slug: /=id=
+sidebar_label: =id=
+pagination_next: null
+pagination_prev: null
 ---
 
 
@@ -24,8 +25,8 @@ Service: =Services=
 
 Details: =Details=
 
-```
+<div dangerouslySetInnerHTML={{__html:`
 =content=
-```
+`}} />
 
 ## Further reading
