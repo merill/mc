@@ -52,7 +52,12 @@ function Update-MessageMarkdown($msg, $template) {
 
     $template = $template -replace '=Services=', $msg.Services
 
-    $template = $template -replace '=Details=', $msg.Details
+    $detailText = ""
+    foreach($detail in $msg.Details){
+        if($detail.Name -eq "FeatureStatusJson"){ continue }
+        $detailText += "$($detail.Name)`n$($detail.Value)`n"
+    }
+    $template = $template -replace '=Details=', $detailText
 
     $content = $msg.body.content -replace '\[(.*?)\]', '<b>$1</b>'
     $content = $content -replace '`', '''' # Remove backticks so it can be included in html
@@ -86,6 +91,7 @@ $dataPath = "./src/src/components/MessagesTable/data/"
 $msgitems | ConvertTo-Json -Depth 10 | Set-Content -Path ($dataPath + "messages.json")
 $msgitems.Services | Sort-Object | Get-Unique | ConvertTo-Json | Set-Content -Path ($dataPath + "services.json")
 
+Write-Host "Completed updating"
 #$indexContent = Get-Content ./build/templates/index.md
 #$indexContent = $indexContent -replace '=content=', $rootMarkdown
 #$indexContent | Set-Content -Path ./src/site/src/content/docs/index.mdx
