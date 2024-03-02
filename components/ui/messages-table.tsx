@@ -20,6 +20,7 @@ import {
 import dataMessages from '@/data/messages.json';
 import dataServices from '@/data/services.json';
 import { Badge } from "@/components/ui/badge"
+import Link from 'next/link'
 
 export function MessagesTable() {
 
@@ -37,10 +38,10 @@ export function MessagesTable() {
       <Table >
         <TableHeader>
           <TableRow>
-            <TableHead className="">ID</TableHead>
-            <TableHead className="">Title</TableHead>
-            <TableHead className="">Service</TableHead>
-            <TableHead className="">Last updated</TableHead>
+            <TableHead>ID</TableHead>
+            <TableHead>Title</TableHead>
+            <TableHead>Service</TableHead>
+            <TableHead>Last updated</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -48,18 +49,22 @@ export function MessagesTable() {
             .map((item) => (
 
               <TableRow key={item.Id}>
-                <TableCell><a href={item.Id}>{item.Id}</a></TableCell>
+                <TableCell key={item.Id}>
+                  <Link href={`/message/${item.Id}`}>{item.Id}</Link>
+                </TableCell>
                 <TableCell className="w-full">
-                  <a href={item.Id}>{item.Title}</a>
+                  <Link href={`/message/${item.Id}`}>{item.Title}</Link>
                 </TableCell>
                 <TableCell>
-                  {item.Services.map((service) => (
-                    <Badge>
-                      <div className="text-nowrap">
-                      {service}
-                      </div>
-                    </Badge>
-                  ))}
+                  <div className="space-y-0.5">
+                    {item.Services.map((service) => (
+                      <Badge key={service} variant="secondary">
+                        <div className="text-nowrap">
+                          {service}
+                        </div>
+                      </Badge>
+                    ))}
+                  </div>
                 </TableCell>
                 <TableCell className="text-nowrap">
                   {getFormattedDate(item.LastModifiedDateTime)}
