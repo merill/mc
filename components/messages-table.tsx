@@ -40,8 +40,8 @@ export function MessagesTable() {
           <TableRow>
             <TableHead>ID</TableHead>
             <TableHead>Title</TableHead>
-            <TableHead>Service</TableHead>
-            <TableHead>Last updated</TableHead>
+            <TableHead className="hidden md:table-cell">Service</TableHead>
+            <TableHead className="hidden md:table-cell">Last updated</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -69,7 +69,7 @@ export function MessagesTable() {
                 <TableCell className="w-full">
                   <Link href={`/message/${item.Id}`}>{item.Title}</Link>
                 </TableCell>
-                <TableCell>
+                <TableCell className="hidden md:table-cell">
                   <div className="space-y-0.5">
                     {item?.Services?.map((service) => (
                       <Badge key={service} variant="secondary">
@@ -80,7 +80,7 @@ export function MessagesTable() {
                     ))}
                   </div>
                 </TableCell>
-                <TableCell className="text-nowrap">
+                <TableCell className="text-nowrap hidden md:table-cell">
                   {getFormattedDate(item.LastModifiedDateTime)}
                 </TableCell>
               </TableRow>
