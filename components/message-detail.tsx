@@ -9,44 +9,39 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import InfoCards from "@/app/message/[id]/components/info-cards";
 
-export default function MessageDetail(props : {id: string}) {
+export default function MessageDetail(props: { id: string }) {
     const msg = getMessageData(props.id);
 
     return (
-        <>
-            msg && <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-xl">
-                <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-                    <div className="flex flex-col items-start gap-2">
-                        <h1 className="text-3xl font-extrabold md:text-4xl">
-                            {msg?.Id} - {msg?.Title}</h1>
-                        <Separator />
-                        <h2 className="text-3xl font-extrabold md:text-4xl pt-4">
-                        </h2>
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Summary</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-lg">
-                                    {getMessageSummary(msg)}
-                                </p>
-                            </CardContent>
-                        </Card>
-                    </div>
+        <div className="flex flex-col items-start gap-5 pt-5">
+            <Card className="overflow-hidden rounded-[0.5rem] border bg-background bg-sky-50 dark:bg-slate-700 shadow-md md:shadow-md" >
+                <CardHeader>
+                    <CardTitle>Summary</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-lg">
+                        {getMessageSummary(msg)}
+                    </p>
+                </CardContent>
+            </Card>
 
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>More information</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-lg">
-                                <div className="space-y-4" dangerouslySetInnerHTML={{ __html: msg?.Body?.Content || '' }} />
-                            </p>
-                        </CardContent>
-                    </Card>
-                </section>
+
+            <div className="space-y-4">
+                <InfoCards id={props.id} />
             </div>
-        </>
+
+            <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
+                <CardHeader>
+                    <CardTitle>More information</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-lg">
+                        <div className="space-y-4" dangerouslySetInnerHTML={{ __html: msg?.Body?.Content || '' }} />
+                    </p>
+                </CardContent>
+            </Card>
+        </div>
     )
 }
