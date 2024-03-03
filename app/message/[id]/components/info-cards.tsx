@@ -1,3 +1,5 @@
+import { getFormattedDate, getMessageData, getMessagePlatforms, getMessageRoadmapID } from "@/lib/messages";
+import { Calendar, CalendarClock, ExternalLink, MessageSquare, MonitorSmartphone, Tag, WindIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
     Card,
@@ -7,18 +9,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip"
-
-import { getFormattedDate, getMessageData, getMessagePlatforms, getMessageRoadmapID } from "@/lib/messages";
-import { Message } from "@/types/message"
-import { Calendar, CalendarClock, ExternalLink, MessageSquare, MonitorSmartphone, Tag, WindIcon } from "lucide-react";
-import { platform } from "os";
 
 export default function InfoCards(props: { id: string }) {
     const msg = getMessageData(props.id);
@@ -34,9 +24,7 @@ export default function InfoCards(props: { id: string }) {
 
     return (
         <div className="space-y-4 w-full">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-
-
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
                 <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                     <a href={`https://admin.microsoft.com/#/MessageCenter/:/messages/${msg?.Id}`} target="_blank" rel="noopener">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -141,23 +129,23 @@ export default function InfoCards(props: { id: string }) {
                     </Card>
                 )}
                 {platforms && (
-                <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Platforms</CardTitle>
-                        <MonitorSmartphone size={20} color="#757575" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="space-y-0.5">
-                            {platforms.split(",").map((platform) => (
-                                <Badge variant="secondary">
-                                    <div className="text-nowrap">
-                                        {platform}
-                                    </div>
-                                </Badge>
-                            ))}
-                        </div>
-                    </CardContent>
-                </Card>
+                    <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
+                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                            <CardTitle className="text-sm font-medium">Platforms</CardTitle>
+                            <MonitorSmartphone size={20} color="#757575" />
+                        </CardHeader>
+                        <CardContent>
+                            <div className="space-y-0.5">
+                                {platforms.split(",").map((platform) => (
+                                    <Badge variant="secondary">
+                                        <div className="text-nowrap">
+                                            {platform}
+                                        </div>
+                                    </Badge>
+                                ))}
+                            </div>
+                        </CardContent>
+                    </Card>
                 )}
             </div>
         </div>

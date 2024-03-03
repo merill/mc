@@ -1,5 +1,4 @@
 import { getMessageData, getMessageSummary } from "@/lib/messages"
-import { Separator } from "@/components/ui/separator"
 import {
     Card,
     CardContent,
@@ -15,6 +14,7 @@ export default function MessageDetail(props: { id: string }) {
     const summary = getMessageSummary(msg);
     return (
         <div className="flex flex-col items-start gap-5 pt-5">
+            <InfoCards id={props.id} />
             {(summary && 
             <Card className="overflow-hidden rounded-[0.5rem] border bg-background bg-slate-100 dark:bg-slate-700 shadow-md md:shadow-md" >
                 <CardHeader>
@@ -26,9 +26,7 @@ export default function MessageDetail(props: { id: string }) {
                     </p>
                 </CardContent>
             </Card>
-            )}
-
-            <InfoCards id={props.id} />
+            )}            
 
             <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                 <CardHeader>

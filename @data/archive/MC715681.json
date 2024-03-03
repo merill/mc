@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b>Note:&nbsp;</b>This message is relevant to organizations that haven't yet fully transitioned to New Teams on Windows PCs. If every Teams user in your organization is already using New Teams, no further action is required.</p><p>New Teams removes support for ADAL (Active Directory Authentication Library), a legacy SDK used in rare cases by Teams Classic. This change is part of our broader effort to improve performance and security.\n</p><p>On Windows PCs, some third-party/custom sign-in solutions leverage undocumented hooks which cause Teams Classic to fall back to the legacy ADAL SDK. This fallback path doesn't exist in New Teams.</p><p><b>When this will happen:</b></p><p>As your organization transitions to New Teams.</p><p><b>How this will affect your organization:</b></p><p>Teams users on impacted PCs may not be able to sign in to New Teams.</p><p><i>How to identify if your organization relies on ADAL for Teams sign-in:\n</i></p><p>You can leverage Entra sign-in logs to make this determination:</p><ol><li>Sign in to <a href=\"https://portal.azure.com\" target=\"_blank\">https://portal.azure.com</a>, navigate to Entra ID and select \"Sign-in Logs\".</li><li>Ensure you're on the \"User sign ins (interactive)\" tab.\n</li><li>Click on \"Date\", and select \"Last 1 month\" or a longer time scale if appropriate.\n</li><li>Click on \"Add filters\" and add these two filters:\n<ol><li>Filter: \"Application\". Value: \"1fec8e78-bce4-4aaf-ab1b-5451cc387264\".\n</li><li>Filter: \"Device browser\". Value: \"IE\".\n</li></ol></li><li>The table should show all sign-ins to Teams via the legacy ADAL SDK. \n</li></ol><p>Learn more about Entra sign-in logs: <a href=\"https://learn.microsoft.com/entra/identity/monitoring-health/concept-sign-ins\" target=\"_blank\">Sign-in logs in Microsoft Entra ID - Microsoft Entra ID | Microsoft Learn</a>.<br></p><p><b>What you need to do to prepare:</b></p><ol><li>If you've identified any PC in your organization that uses ADAL, try to sign in to New Teams. If this works, you're all set.\n</li><li>If you encounter any sign-in issues and are using a third-party solution for sign-in, reach out to the vendor for support.\n</li><li>If you encounter any other sign-in issues and need further assistance, please contact your Customer Success Account Manager (CSAM) with the following information:\n<ol><li>Does your organization rely on custom solutions for Teams sign-in? \n</li><li>If sign-in doesn't work, describe what happens.</li></ol></li></ol>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Teams for Windows is discontinuing support for the legacy ADAL Authentication SDK. Organizations that haven't transitioned to New Teams on Windows PCs may be impacted. New Teams removes support for ADAL, which may cause sign-in issues for impacted PCs. Organizations can identify if they rely on ADAL for Teams sign-in using Entra sign-in logs. If sign-in issues occur, organizations should try signing in to New Teams and contact their CSAM for further assistance."
+    }
+  ],
+  "EndDateTime": "2024-06-30T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC715681",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2024-02-14T01:01:12.373Z",
+  "Services": [
+    "Microsoft Teams"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-02-14T01:00:45Z",
+  "Tags": [
+    "User impact",
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Microsoft Teams for Windows is discontinuing support for the legacy ADAL Authentication SDK.",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}

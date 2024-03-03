@@ -1,0 +1,41 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>﻿We will be retiring&nbsp;LocationPolicy, OptionFlags and VoicePolicy attributes from <code>Get-CsOnlineUser</code> and <code>Get-CsUserPolicyAssignment</code> cmdlets in the Teams PowerShell Module, If you are using these cmdlets to get <code>LocationPolicy</code>, <code>VoicePolicy</code>, or <code>OptionFlags</code> review the information below for additional details.</p><p>\n</p><p><b>When will this happen:</b>\n</p><p>The retirement is planned to happen in March 2024. </p><p><b>How this will affect your organization:</b></p><p>When this change is implemented:\n</p><ul><li>Administrators will no longer see <code>LocationPolicy</code> attribute in the output of the <code>Get-CsOnlineUser</code> cmdlet in Teams PowerShell Module version 6.1.0 (planned to be released on 15th March 2024) and any later versions. Whereas for older Teams PowerShell Module versions (&lt;6.1.0) <code>LocationPolicy</code> will no longer be populated starting from 20th March 2024.\n</li><li>Administrators will no longer see <code>LocationPolicy</code> and <code>VoicePolicy</code> attributes in the output of the <code>Get-CsUserPolicyAssignment</code> cmdlet in Teams PowerShell Module version 6.1.0 (planned to be released on 15th March 2024) and any later versions. Whereas for older Teams PowerShell Module versions (&lt;6.1.0) <code>LocationPolicy</code> and <code>VoicePolicy</code> will no longer be populated starting from 20th March 2024.\n</li><li>Administrators will see <code>OptionFlags</code> attribute as empty in the output of the <code>Get-CsOnlineUser</code> cmdlet in all existing Teams PowerShell Module versions (&lt;=6.1.0) and any new versions (&gt;6.1.0) that releases after March 20th, 2024.</li></ul><p><b>What you need to do to prepare:</b>\n</p><p>When this change is implemented,\n</p><ul><li>Administrators will no longer be able to get the LocationPolicy and <code>OptionFlags</code> from <code>Get-CsOnlineUser</code> cmdlet. Instead, administrators will need to use the Teams PowerShell Module cmdlets: <code>Get-CsPhoneNumberAssignment -IsoCountryCode</code> to get the <code>LocationPolicy</code> information. It's important to note that other details besides <code>EnterpriseVoiceEnabled</code>, previously found in <code>OptionFlags</code>, are no longer relevant for Teams. Administrators can still utilize the <code>EnterpriseVoiceEnabled</code> attribute in the output of the <code>Get-CsOnlineUser</code> cmdlet to get this information.\n</li><li>Administrators will no longer be able to get the <code>LocationPolicy</code> and <code>VoicePolicy</code> from <code>Get-CsUserPolicyAssignment</code> cmdlet. Instead, administrators will need to use the Teams PowerShell Module cmdlets: <code>Get-CsPhoneNumberAssignment -IsoCountryCode</code> to get the <code>LocationPolicy</code> information.\n</li></ul><p>Detailed instructions on how to use these cmdlets are provided in <a href=\"https://learn.microsoft.com/powershell/module/teams/get-csphonenumberassignment\" target=\"_blank\">Get-CsPhoneNumberAssignment</a>,&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/skype/get-csonlineuser\" target=\"_blank\" style=\"\">Get-CsOnlineUser</a>,&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/teams/get-csuserpolicyassignment\" target=\"_blank\" style=\"\">Get-CsUserPolicyAssignment</a></p><p>\n</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "The message announces an update to the Teams PowerShell Module. The LocationPolicy, OptionFlags, and VoicePolicy attributes will be retired from Get-CsOnlineUser and Get-CsUserPolicyAssignment cmdlets. This change will be implemented in March 2024. Administrators will need to use the Teams PowerShell Module cmdlets to get LocationPolicy and VoicePolicy information. Detailed instructions are provided in the message."
+    },
+    {
+      "Name": "ExternalLink",
+      "Value": "https://learn.microsoft.com/powershell/module/teams/get-csphonenumberassignment"
+    }
+  ],
+  "EndDateTime": "2025-05-05T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC720181",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2024-02-28T00:17:48.667Z",
+  "Services": [
+    "Microsoft Teams"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-02-28T00:17:24Z",
+  "Tags": [
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Update to Get-CsOnlineUser and Get-CsUserPolicyAssignment cmdlet in the Teams PowerShell Module",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}

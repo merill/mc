@@ -1,9 +1,13 @@
-import { Metadata } from "next"
+import { Metadata, ResolvingMetadata } from "next"
 import { getAllMessageIds } from "@/lib/messages"
 import MessageDetail from "@/app/message/[id]/components/message-detail";
 import { getMessageData } from "@/lib/messages"
 
-export default function Page({ params }: { params: { id: string } }) {
+type Props = {
+    params: { id: string }
+  }
+
+export default function Page({ params }: Props) {
 
     const msg = getMessageData(params.id);
 
@@ -22,6 +26,17 @@ export default function Page({ params }: { params: { id: string } }) {
     )
 }
 
+export async function generateMetadata(
+    { params }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+    const msg = getMessageData(params.id);
+   
+    return {
+      title: msg?.Id,
+    }
+  }
+  
 export async function generateStaticParams() {
     const paths = getAllMessageIds();
     return paths;

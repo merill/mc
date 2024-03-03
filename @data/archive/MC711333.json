@@ -1,0 +1,45 @@
+{
+  "ActionRequiredByDateTime": "2024-11-04T08:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>In Microsoft Purview, new standard logs will be available for Microsoft Exchange, Microsoft SharePoint, and Microsoft Teams workloads.</span><br></p><p>This message is associated with Microsoft 365 Roadmap IDs <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=182259%2C\" target=\"_blank\">182259</a>&nbsp;(Exchange and SharePoint) and <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=182242\" target=\"_blank\">182242</a>&nbsp;(Teams).</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out early-March 2024 and expect to complete by mid-June 2024.</p><p>Standard Release: We will begin rolling out late June 2024 and expect to complete by mid-September 2024.</p><p><b>How this will affect your organization:</b>\n</p><p>Microsoft Purview is expanding access to wider cloud security activity events for Exchange, Teams, and SharePoint. As part of the changes, standard users of Purview Audit will begin to generate new Exchange, Teams, and SharePoint events that were previously generated only for Audit Premium licensed users.\n</p><p>Here are the new standard logs:\n</p><p>Exchange\n</p><ul><li>Send\n</li><li>mailitemsaccessed\n</li><li>searchqueryinitiatedexchange\n</li></ul><p>SharePoint\n</p><ul><li>searchqueryinitiatedsharepoint\n</li></ul><p>Teams\n</p><ul><li>meetingparticipantdetail\n</li><li>messagesent\n</li><li>messageslisted\n</li><li>meetingdetail\n</li><li>messageupdated\n</li><li>chatretrieved\n</li><li>messageread\n</li><li>messagehostedcontentread\n</li><li>subscribedtomessages\n</li><li>messagehostedcontentslisted\n</li><li>chatcreated\n</li><li>chatupdated\n</li><li>messagecreatednotification\n</li><li>messagedeletednotification\n</li><li>messageupdatednotification\n</li></ul><p><b>What you need to do to prepare:</b>\n</p><p>The Exchange <i>MailItemsAccessed</i> and <i>send</i> logs are enabled by default unless the mailbox’s <i>DefaultAuditSet</i> settings were modified. To ensure these new standard logs are generated, an admin may need to ensure the appropriate mailbox settings are enabled.\n</p><p>Use this command to check if a mailbox is currently using the default audit settings: \n</p><ul><li>Get-Mailbox -Identity &lt;MailboxIdentity&gt;\n</li></ul><p>The <i>DefaultAuditSet </i>property is returned by the Get-Mailbox cmdlet. A mailbox using the defaults will show the following result:\n</p><ul><li>DefaultAuditSet : {Owner,Admin,Delegate}\n</li></ul><p>If any of those values are missing, the mailbox is not using the default audit settings. To ensure the new standard Exchange logs <i>mailitemsaccessed </i>and <i>Send </i>are stored, admins will either need to make sure Audit mailboxes are configured to the default settings or add the new standard logs to each mailbox. These changes can be made in Exchange Online PowerShell:\n</p><p>Option 1: Reset each mailbox to the default settings using this command:\n</p><ul><li>Set-Mailbox -Identity &lt;MailboxIdentity&gt; -DefaultAuditSet Admin,Delegate,Owner\n</li></ul><p>Option 2: Add the new standard logs to each mailbox. This command will add (only) the new Standard logs for each mailbox, retaining any existing customization, but any future changes to the defaults will need to be added when those future logs are released:\n</p><ul><li>Set-Mailbox -Identity &lt;MailboxIdentity&gt; -AuditOwner {@Add=\"MailItemsAccessed\",\"Send\" } -AuditAdmin {@Add=\"MailItemsAccessed\",\"Send\"} -AuditDelegate {@Add=\"MailItemsAccessed\"}\n</li></ul><p>For more information:&nbsp;<a href=\"https://www.microsoft.com/security/blog/2023/07/19/expanding-cloud-logging-to-give-customers-deeper-security-visibility/\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">How Microsoft is expanding cloud logging to give customers deeper security visibility | Microsoft Security Blog</a></p>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [
+    {
+      "Name": "RoadmapIds",
+      "Value": "182242,182259"
+    },
+    {
+      "Name": "Platforms",
+      "Value": "Web"
+    },
+    {
+      "Name": "BlogLink",
+      "Value": "https://www.microsoft.com/security/blog/2023/07/19/expanding-cloud-logging-to-give-customers-deeper-security-visibility/"
+    }
+  ],
+  "EndDateTime": "2024-03-04T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC711333",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2024-01-30T23:49:28.277Z",
+  "Services": [
+    "Microsoft 365 suite"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-01-30T23:48:52Z",
+  "Tags": [
+    "New feature",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Purview | Audit: New logs for Standard users",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
