@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
-import Link from "next/link"
 
 export type MessageView = {
   id: string
@@ -41,7 +40,7 @@ export const columns: ColumnDef<MessageView>[] = [
           )}
         </div>
       )
-    }    
+    }
   },
   {
     accessorKey: "title",
@@ -52,12 +51,16 @@ export const columns: ColumnDef<MessageView>[] = [
       return (
         <span className="text-nowrap">{row.original.title}</span>
       )
-    },    
+    },
   },
   {
     accessorKey: "service",
     header: ({ column }) => {
-      return (<div className="text-center">Service</div>)
+      return (
+        <div className="text-center">
+            Service
+        </div>
+      )
     },
     cell: ({ row }) => {
       return (
