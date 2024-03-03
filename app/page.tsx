@@ -8,7 +8,7 @@ export default function IndexPage() {
         <h1 className="text-3xl font-extrabold md:text-4xl">
           Microsoft 365 Message Center Archive</h1>
         <p className="text-lg text-muted-foreground">
-          Need to do a quick look up of a Message Center post? This site is a daily archive of common Message Center posts.
+          Daily archive of the Microsoft 365 Message Center messages for quick reference.
         </p>
       </div>
 
