@@ -1,13 +1,17 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "M365 MC Archive",
+  name: "Microsoft 365 Message Center Archive",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Archive of messages posted in the Message Center of the Microsoft 365 Admin Portal.",
   mainNav: [
     {
       title: "Home",
       href: "/",
+    },
+    {
+      title: "merill.net",
+      href: "https://merill.net",
     },
   ],
   links: {
