@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import {
     Card,
     CardContent,
@@ -14,7 +15,10 @@ export default function InfoCards(props: { id: string }) {
     const datePublished = getFormattedDate(msg?.StartDateTime)
     const dateActBy = getFormattedDate(msg?.ActionRequiredByDateTime)
     const dateUpdated = getFormattedDate(msg?.LastModifiedDateTime)
-    
+
+    const dateTitle = datePublished === dateUpdated ? "Published" : "Last Updated"
+    const dateSubtitle = datePublished === dateUpdated ? "" : "Published " + datePublished
+
     return (
         <div className="space-y-4 w-full">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -45,7 +49,7 @@ export default function InfoCards(props: { id: string }) {
                 <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium">
-                            Date Published
+                            {dateTitle}
                         </CardTitle>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -63,15 +67,15 @@ export default function InfoCards(props: { id: string }) {
                         </svg>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">{getFormattedDate(msg?.StartDateTime)}</div>
+                        <div className="text-2xl font-bold">{dateUpdated}</div>
                         <p className="text-xs text-muted-foreground">
-                            +180.1% from last month
+                            {dateSubtitle}
                         </p>
                     </CardContent>
                 </Card>
                 <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">Date Updated</CardTitle>
+                        <CardTitle className="text-sm font-medium">Service</CardTitle>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
@@ -87,16 +91,21 @@ export default function InfoCards(props: { id: string }) {
                         </svg>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">+12,234</div>
-                        <p className="text-xs text-muted-foreground">
-                            +19% from last month
-                        </p>
+                        <div className="space-y-0.5">
+                            {msg?.Services?.map((service) => (
+                                <Badge key={service}>
+                                    <div className="text-nowrap">
+                                        {service}
+                                    </div>
+                                </Badge>
+                            ))}
+                        </div>
                     </CardContent>
                 </Card>
                 <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium">
-                            Active Now
+                            Tag
                         </CardTitle>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -112,10 +121,15 @@ export default function InfoCards(props: { id: string }) {
                         </svg>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">+573</div>
-                        <p className="text-xs text-muted-foreground">
-                            +201 since last hour
-                        </p>
+                    <div className="space-y-0.5">
+                            {msg?.Tags?.map((tag) => (
+                                <Badge key={tag} variant="secondary">
+                                    <div className="text-nowrap">
+                                        {tag}
+                                    </div>
+                                </Badge>
+                            ))}
+                        </div>
                     </CardContent>
                 </Card>
             </div>

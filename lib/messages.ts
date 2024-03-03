@@ -20,8 +20,7 @@ export function getMessageData(id: string): Message | undefined{
     return message;
 }
 
-export function getMessageSummary(msg: Message | undefined): string {
-    // return the first item in msg.Details where the Name is "Summary"
+export function getMessageSummary(msg: Message | undefined): string {    
     const summary = msg?.Details?.find((item) => item.Name === "Summary");
     return summary?.Value?.toString() || "";
 }
@@ -30,8 +29,8 @@ export function getFormattedDate(dateInput: string | undefined | null): string {
     if (!dateInput) return "";
     const date = new Date(dateInput);
     const year = date.getFullYear();
-    const month = `0${date.getMonth() + 1}`.slice(-2);
-    const day = `0${date.getDate()}`.slice(-2);
+    const month = date.toLocaleString('default', { month: 'short' });
+    const day = date.getDate();
 
-    return `${year}-${month}-${day}`;
+    return `${month} ${day}, ${year}`;
   }
