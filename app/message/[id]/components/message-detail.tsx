@@ -1,4 +1,3 @@
-'use client'
 import { getMessageData, getMessageSummary } from "@/lib/messages"
 import { Separator } from "@/components/ui/separator"
 import {
@@ -13,10 +12,10 @@ import InfoCards from "@/app/message/[id]/components/info-cards";
 
 export default function MessageDetail(props: { id: string }) {
     const msg = getMessageData(props.id);
-
+    const summary = getMessageSummary(msg);
     return (
         <div className="flex flex-col items-start gap-5 pt-5">
-            <Card className="overflow-hidden rounded-[0.5rem] border bg-background bg-sky-50 dark:bg-slate-700 shadow-md md:shadow-md" >
+            {(summary && <Card className="overflow-hidden rounded-[0.5rem] border bg-background bg-sky-50 dark:bg-slate-700 shadow-md md:shadow-md" >
                 <CardHeader>
                     <CardTitle>Summary</CardTitle>
                 </CardHeader>
@@ -26,11 +25,9 @@ export default function MessageDetail(props: { id: string }) {
                     </p>
                 </CardContent>
             </Card>
+            )}
 
-
-            <div className="space-y-4">
-                <InfoCards id={props.id} />
-            </div>
+            <InfoCards id={props.id} />
 
             <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                 <CardHeader>

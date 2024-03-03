@@ -1,5 +1,5 @@
 import { Message } from '@/types/message';
-import dataMessages from '@/data/messages.json'
+import dataMessages from '@/@data/messages.json'
 
 const messages: Message[] = dataMessages;
 
@@ -9,6 +9,10 @@ export function getAllMessageIds(): { id: string }[] {
             id: item.Id,
         };
     });
+}
+
+export function getAllMessages(): Message[] {
+    return dataMessages;
 }
 
 export function getMessageData(id: string): Message | undefined{
@@ -21,3 +25,13 @@ export function getMessageSummary(msg: Message | undefined): string {
     const summary = msg?.Details?.find((item) => item.Name === "Summary");
     return summary?.Value?.toString() || "";
 }
+
+export function getFormattedDate(dateInput: string | undefined | null): string {
+    if (!dateInput) return "";
+    const date = new Date(dateInput);
+    const year = date.getFullYear();
+    const month = `0${date.getMonth() + 1}`.slice(-2);
+    const day = `0${date.getDate()}`.slice(-2);
+
+    return `${year}-${month}-${day}`;
+  }

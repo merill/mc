@@ -17,21 +17,21 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-import dataMessages from '@/data/messages.json';
-import dataServices from '@/data/services.json';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
+
 import { Badge } from "@/components/ui/badge"
 import Link from 'next/link'
+import { getAllMessages, getFormattedDate } from "@/lib/messages";
 
 export function MessagesTable() {
 
-  function getFormattedDate(dateInput: string) {
-    const date = new Date(dateInput);
-    const year = date.getFullYear();
-    const month = `0${date.getMonth() + 1}`.slice(-2);
-    const day = `0${date.getDate()}`.slice(-2);
-
-    return `${year}-${month}-${day}`;
-  }
+  const dataMessages = getAllMessages();
   return (
 
     <Card>
@@ -49,8 +49,22 @@ export function MessagesTable() {
             .map((item) => (
 
               <TableRow key={item.Id}>
-                <TableCell key={item.Id}>
-                  <Link href={`/message/${item.Id}`}>{item.Id}</Link>
+                <TableCell key={item.Id} >
+                  <div className="flex items-center gap-2">
+                    <Link href={`/message/${item.Id}`}>{item.Id}</Link>
+                    {(item.IsMajorChange &&
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <span className="flex h-2 w-2 rounded-full bg-blue-600" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Major change</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    )}
+                  </div>
                 </TableCell>
                 <TableCell className="w-full">
                   <Link href={`/message/${item.Id}`}>{item.Title}</Link>

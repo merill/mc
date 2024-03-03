@@ -2,7 +2,7 @@
 
 param($GraphSecret)
 function Connect-McGraph(){
-    $m365Config = Get-Content ./build/secrets-m365.json | ConvertFrom-Json
+    $m365Config = Get-Content ./@build/secrets-m365.json | ConvertFrom-Json
 
     if(![string]::IsNullOrEmpty($GraphSecret)){ # If we are running in Github get the secret from the parameter
         $m365Config.clientSecret = $GraphSecret
@@ -77,17 +77,17 @@ function Get-DateString($date){
 Connect-McGraph
 $msgItems = Get-M365MessageCenterItems
 
-$template = Get-Content ./build/templates/message.md
+$template = Get-Content ./@build/templates/message.md
 
 foreach($msg in $msgItems){
     $msg.Title = $msg.Title.Replace('(Updated) ', '')
-    Update-MessageJson $msg
-    Update-MessageMarkdown $msg $template
+    #Update-MessageJson $msg
+    #Update-MessageMarkdown $msg $template
     #$date = Get-DateString $msg.LastModifiedDateTime
     #$rootMarkdown += "* [$($msg.id) - $($msg.title)]($($msg.id)) - $date" + [Environment]::NewLine
 
 }
-$dataPath = "./src/src/components/MessagesTable/data/"
+$dataPath = "./data/"
 $msgitems | ConvertTo-Json -Depth 10 | Set-Content -Path ($dataPath + "messages.json")
 $msgitems.Services | Sort-Object | Get-Unique | ConvertTo-Json | Set-Content -Path ($dataPath + "services.json")
 
