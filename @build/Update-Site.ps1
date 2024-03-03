@@ -3,10 +3,10 @@
 param($GraphSecret)
 function Connect-MicrosoftGraph(){
     $m365Config = Get-Content ./@build/config-m365.json | ConvertFrom-Json
-    $secret = Get-Content ./@build/secrets-m365.json | ConvertFrom-Json
 
-    if(![string]::IsNullOrEmpty($GraphSecret)){ # If we are running in Github get the secret from the parameter
-        $secret = $GraphSecret
+    $secret = $GraphSecret
+    if([string]::IsNullOrEmpty($GraphSecret)){ # If we are running in Github get the secret from the parameter
+        $secret = Get-Content ./@build/secrets-m365.json | ConvertFrom-Json
     }
 
     [securestring]$secSecret = ConvertTo-SecureString $secret -AsPlainText -Force
