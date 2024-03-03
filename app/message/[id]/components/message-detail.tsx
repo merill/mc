@@ -15,7 +15,8 @@ export default function MessageDetail(props: { id: string }) {
     const summary = getMessageSummary(msg);
     return (
         <div className="flex flex-col items-start gap-5 pt-5">
-            {(summary && <Card className="overflow-hidden rounded-[0.5rem] border bg-background bg-sky-50 dark:bg-slate-700 shadow-md md:shadow-md" >
+            {(summary && 
+            <Card className="overflow-hidden rounded-[0.5rem] border bg-background bg-sky-50 dark:bg-slate-700 shadow-md md:shadow-md" >
                 <CardHeader>
                     <CardTitle>Summary</CardTitle>
                 </CardHeader>

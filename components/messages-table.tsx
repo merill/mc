@@ -56,7 +56,7 @@ export function MessagesTable() {
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger>
-                            <span className="flex h-2 w-2 rounded-full bg-blue-600" />
+                            <span className="flex h-2 w-2 rounded-full bg-red-600" />
                           </TooltipTrigger>
                           <TooltipContent>
                             <p>Major change</p>
@@ -71,7 +71,7 @@ export function MessagesTable() {
                 </TableCell>
                 <TableCell>
                   <div className="space-y-0.5">
-                    {item.Services.map((service) => (
+                    {item?.Services?.map((service) => (
                       <Badge key={service} variant="secondary">
                         <div className="text-nowrap">
                           {service}

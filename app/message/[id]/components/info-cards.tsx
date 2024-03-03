@@ -7,7 +7,15 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { getFormattedDate, getMessageData } from "@/lib/messages";
+
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+
+import { getFormattedDate, getMessageData, getMessageRoadmapID } from "@/lib/messages";
 import { Message } from "@/types/message"
 
 export default function InfoCards(props: { id: string }) {
@@ -19,33 +27,40 @@ export default function InfoCards(props: { id: string }) {
     const dateTitle = datePublished === dateUpdated ? "Published" : "Last Updated"
     const dateSubtitle = datePublished === dateUpdated ? "" : "Published " + datePublished
 
+    const roadmapId = getMessageRoadmapID(msg);
+
     return (
         <div className="space-y-4 w-full">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">
-                            Message ID
-                        </CardTitle>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            className="h-4 w-4 text-muted-foreground"
-                        >
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                        </svg>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{msg?.Id}</div>
-                        <p className="text-xs text-muted-foreground">
-                        </p>
-                    </CardContent>
-                </Card>
+
+
+                <a href={`https://admin.microsoft.com/#/MessageCenter/:/messages/${msg?.Id}`} target="_blank" rel="noopener">
+                    <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
+                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                            <CardTitle className="text-sm font-medium">
+                                Message ID
+                            </CardTitle>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                className="h-4 w-4 text-muted-foreground"
+                            >
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="text-2xl font-bold">{msg?.Id}</div>
+                            <p className="text-xs text-muted-foreground">
+                            </p>
+                        </CardContent>
+                    </Card>
+                </a>
+
                 <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium">
@@ -121,7 +136,14 @@ export default function InfoCards(props: { id: string }) {
                         </svg>
                     </CardHeader>
                     <CardContent>
-                    <div className="space-y-0.5">
+                        <div className="space-y-0.5">
+                            {msg?.IsMajorChange && (
+                                <Badge variant="destructive">
+                                    <div className="text-nowrap">
+                                        Major change
+                                    </div>
+                                </Badge>
+                            )}
                             {msg?.Tags?.map((tag) => (
                                 <Badge key={tag} variant="secondary">
                                     <div className="text-nowrap">
@@ -132,6 +154,32 @@ export default function InfoCards(props: { id: string }) {
                         </div>
                     </CardContent>
                 </Card>
+                {roadmapId && (
+                    <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
+                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                            <CardTitle className="text-sm font-medium">
+                                Roadmap ID
+                            </CardTitle>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                className="h-4 w-4 text-muted-foreground"
+                            >
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </CardHeader>
+                        <CardContent>
+                            <a href={`https://www.microsoft.com/en-US/microsoft-365/roadmap?filters=&searchterms=${roadmapId}`} target="_blank" rel="noopener" ><div className="text-2xl font-bold">{roadmapId}</div></a>
+                            <p className="text-xs text-muted-foreground">
+                            </p>
+                        </CardContent>
+                    </Card>
+                )}
             </div>
         </div>
     )

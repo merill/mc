@@ -25,6 +25,12 @@ export function getMessageSummary(msg: Message | undefined): string {
     return summary?.Value?.toString() || "";
 }
 
+export function getMessageRoadmapID(msg: Message | undefined): string {    
+    const roadmapId = msg?.Details?.find((item) => item.Name === "RoadmapIds");
+    return roadmapId?.Value?.toString() || "";
+}
+
+
 export function getFormattedDate(dateInput: string | undefined | null): string {
     if (!dateInput) return "";
     const date = new Date(dateInput);
