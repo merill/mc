@@ -30,6 +30,11 @@ export function getMessageRoadmapID(msg: Message | undefined): string {
     return roadmapId?.Value?.toString() || "";
 }
 
+export function getMessagePlatforms(msg: Message | undefined): string {    
+    const platforms = msg?.Details?.find((item) => item.Name === "Platforms");
+    return platforms?.Value?.toString() || "";
+}
+
 
 export function getFormattedDate(dateInput: string | undefined | null): string {
     if (!dateInput) return "";
