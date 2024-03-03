@@ -16,7 +16,7 @@ export function getMessageData(id: string): Message | undefined{
     return message;
 }
 
-export function getMessageSummary(msg: Message): string {
+export function getMessageSummary(msg: Message | undefined): string {
     // return the first item in msg.Details where the Name is "Summary"
     const summary = msg?.Details?.find((item) => item.Name === "Summary");
     return summary?.Value?.toString() || "";
