@@ -49,7 +49,7 @@ export const columns: ColumnDef<MessageView>[] = [
     },
     cell: ({ row }) => {
       return (
-        <span className="text-nowrap">{row.original.title}</span>
+        <div className="w-full">{row.original.title}</div>
       )
     },
   },
