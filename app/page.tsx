@@ -1,9 +1,5 @@
 'use client'
-import Link from "next/link"
-
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import { MessagesTable } from "@/components/ui/messages-table"
+import { MessagesTable } from "@/components/messages-table"
 
 export default function IndexPage() {
   return (

@@ -1,13 +1,12 @@
-import { getAllMessageIds, getMessageData } from "@/lib/messages"
+import { getAllMessageIds } from "@/lib/messages"
+import MessageDetail from "@/components/message-detail";
 
 export default function Page({ params }: { params: { id: string } }) {
-    const msg = getMessageData(params.id);
 
-    return <div>Message: {params.id} - {msg?.Title}</div>
+    return ( <MessageDetail id={params.id} /> )
 }
 
 export async function generateStaticParams() {
     const paths = getAllMessageIds();
-    console.log(paths);
     return paths;
 }
