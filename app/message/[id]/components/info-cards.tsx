@@ -17,7 +17,7 @@ import {
 
 import { getFormattedDate, getMessageData, getMessagePlatforms, getMessageRoadmapID } from "@/lib/messages";
 import { Message } from "@/types/message"
-import { Calendar, CalendarClock, MessageSquare, MonitorSmartphone, Tag, WindIcon } from "lucide-react";
+import { Calendar, CalendarClock, ExternalLink, MessageSquare, MonitorSmartphone, Tag, WindIcon } from "lucide-react";
 import { platform } from "os";
 
 export default function InfoCards(props: { id: string }) {
@@ -40,33 +40,17 @@ export default function InfoCards(props: { id: string }) {
                 <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                     <a href={`https://admin.microsoft.com/#/MessageCenter/:/messages/${msg?.Id}`} target="_blank" rel="noopener">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                            <CardTitle className="text-sm font-medium">
-                                Message ID
+                            <CardTitle className="text-sm font-medium flex gap-1">
+                                Message ID <ExternalLink size={10} color="gray" />
                             </CardTitle>
                             <MessageSquare size={20} color="gray" />
                         </CardHeader>
                         <CardContent>
-                            <div className="text-2xl font-bold">{msg?.Id}</div>
+                            <div className="text-2xl font-bold flex">{msg?.Id} </div>
                             <p className="text-xs text-muted-foreground">
                             </p>
                         </CardContent>
                     </a>
-                </Card>
-
-
-                <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">
-                            {dateTitle}
-                        </CardTitle>
-                        <Calendar size={20} color="gray" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{dateUpdated}</div>
-                        <p className="text-xs text-muted-foreground">
-                            {dateSubtitle}
-                        </p>
-                    </CardContent>
                 </Card>
                 <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -85,6 +69,21 @@ export default function InfoCards(props: { id: string }) {
                         </div>
                     </CardContent>
                 </Card>
+                <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <CardTitle className="text-sm font-medium">
+                            {dateTitle}
+                        </CardTitle>
+                        <Calendar size={20} color="gray" />
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-2xl font-bold">{dateUpdated}</div>
+                        <p className="text-xs text-muted-foreground">
+                            {dateSubtitle}
+                        </p>
+                    </CardContent>
+                </Card>
+
                 <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium">Tag</CardTitle>
@@ -113,8 +112,8 @@ export default function InfoCards(props: { id: string }) {
                     <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                         <a href={`https://www.microsoft.com/en-US/microsoft-365/roadmap?filters=&searchterms=${roadmapId}`} target="_blank" rel="noopener" >
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle className="text-sm font-medium">
-                                    Roadmap ID
+                                <CardTitle className="text-sm font-medium flex gap-1">
+                                    Roadmap ID <ExternalLink size={10} color="gray" />
                                 </CardTitle>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-route"><circle cx="6" cy="19" r="3" /><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" /><circle cx="18" cy="5" r="3" /></svg>
                             </CardHeader>
