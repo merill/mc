@@ -1,0 +1,49 @@
+# Run daily and when custom data is updated to generate a new csv/json
+
+name: update-message-center
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - 'README.md'
+      - '@data/**'
+  pull_request:
+    branches: [ "main" ]
+  # Run twice a day (5.30am and 5.30pm)
+  schedule:
+    - cron:  '30 5,17 * * *'
+    
+  # Allows to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: write
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:          
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Get messages from Message Center
+        run: |
+          ./@build/Update-Site.ps1 -GraphSecret $env:GRAPH_SECRET
+        shell: pwsh
+        
+      - name: Update repo
+        run: |
+          if [[ `git status --porcelain` ]]; then
+            # Changes
+            echo "Updating repo"
+            git config --global user.name 'Merill Fernando'
+            git config --global user.email 'merill@users.noreply.github.com'
+            git commit -am "Daily automation"
+            git push
+          else
+            # No changes
+            echo "No changes"
+          fi

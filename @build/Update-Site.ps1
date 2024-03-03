@@ -2,13 +2,14 @@
 
 param($GraphSecret)
 function Connect-MicrosoftGraph(){
-    $m365Config = Get-Content ./@build/secrets-m365.json | ConvertFrom-Json
+    $m365Config = Get-Content ./@build/config-m365.json | ConvertFrom-Json
+    $secret = Get-Content ./@build/secrets-m365.json | ConvertFrom-Json
 
     if(![string]::IsNullOrEmpty($GraphSecret)){ # If we are running in Github get the secret from the parameter
-        $m365Config.clientSecret = $GraphSecret
+        $secret = $GraphSecret
     }
 
-    [securestring]$secSecret = ConvertTo-SecureString $m365Config.clientSecret -AsPlainText -Force
+    [securestring]$secSecret = ConvertTo-SecureString $secret -AsPlainText -Force
     [pscredential]$cred = New-Object System.Management.Automation.PSCredential ($m365Config.clientId, $secSecret)
     Connect-MgGraph -TenantId $m365Config.tenantId -Credential $cred -NoWelcome
 }
