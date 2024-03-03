@@ -6,14 +6,17 @@ function Connect-MicrosoftGraph(){
 
     $secret = $GraphSecret
     if([string]::IsNullOrEmpty($GraphSecret)){ # If we are running in Github get the secret from the parameter
+        Write-Host "-GraphSecret not supplied"
         $secret = Get-Content ./@build/secrets-m365.json | ConvertFrom-Json
     }
 
     [securestring]$secSecret = ConvertTo-SecureString $secret -AsPlainText -Force
     [pscredential]$cred = New-Object System.Management.Automation.PSCredential ($m365Config.clientId, $secSecret)
+    Write-Host "Connecting to Microsoft Graph"
     Connect-MgGraph -TenantId $m365Config.tenantId -Credential $cred -NoWelcome
 }
 function Get-M365MessageCenterItems() {
+    Write-Host "Getting Message Center items"
     $mc = Get-MgServiceAnnouncementMessage -Top 999  -Sort "LastModifiedDateTime desc" -All
     return $mc
 }
@@ -23,6 +26,7 @@ $dataPath = "./@data"
 Connect-MicrosoftGraph
 $msgItems = Get-M365MessageCenterItems
 
+Write-Host "Updating site data with $($msgItems.Count) items"
 foreach($msg in $msgItems){
     $msg.Title = $msg.Title.Replace('(Updated) ', '')
     $msg.body.content = $msg.body.content -replace '\[(.*?)\]', '<b>$1</b>'
