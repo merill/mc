@@ -17,6 +17,7 @@ import {
 
 import { getFormattedDate, getMessageData, getMessageRoadmapID } from "@/lib/messages";
 import { Message } from "@/types/message"
+import { Calendar, CalendarClock, MessageSquare, Tag, WindIcon } from "lucide-react";
 
 export default function InfoCards(props: { id: string }) {
     const msg = getMessageData(props.id);
@@ -40,18 +41,7 @@ export default function InfoCards(props: { id: string }) {
                             <CardTitle className="text-sm font-medium">
                                 Message ID
                             </CardTitle>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                className="h-4 w-4 text-muted-foreground"
-                            >
-                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                            </svg>
+                            <MessageSquare size={20} color="gray"/>
                         </CardHeader>
                         <CardContent>
                             <div className="text-2xl font-bold">{msg?.Id}</div>
@@ -67,20 +57,7 @@ export default function InfoCards(props: { id: string }) {
                         <CardTitle className="text-sm font-medium">
                             {dateTitle}
                         </CardTitle>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            className="h-4 w-4 text-muted-foreground"
-                        >
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-                        </svg>
+                        <Calendar size={20} color="gray" />
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">{dateUpdated}</div>
@@ -92,6 +69,7 @@ export default function InfoCards(props: { id: string }) {
                 <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium">Service</CardTitle>
+                        <Tag size={20} color="#757575" />
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
@@ -120,21 +98,8 @@ export default function InfoCards(props: { id: string }) {
                 </Card>
                 <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">
-                            Tag
-                        </CardTitle>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            className="h-4 w-4 text-muted-foreground"
-                        >
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                        </svg>
+                        <CardTitle className="text-sm font-medium">Tag</CardTitle>
+                        <Tag size={20} color="#757575" />
                     </CardHeader>
                     <CardContent>
                         <div className="space-y-0.5">
@@ -162,18 +127,7 @@ export default function InfoCards(props: { id: string }) {
                                 <CardTitle className="text-sm font-medium">
                                     Roadmap ID
                                 </CardTitle>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    className="h-4 w-4 text-muted-foreground"
-                                >
-                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#808080" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-route"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
                             </CardHeader>
                             <CardContent>
                                 <div className="text-2xl font-bold">{roadmapId}</div>
@@ -189,18 +143,7 @@ export default function InfoCards(props: { id: string }) {
                                 <CardTitle className="text-sm font-medium">
                                     Act by
                                 </CardTitle>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    className="h-4 w-4 text-muted-foreground"
-                                >
-                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                                </svg>
+                                <CalendarClock size={20} color="gray" />
                             </CardHeader>
                             <CardContent>
                                 <div className="text-2xl font-bold">{dateActBy}</div>
