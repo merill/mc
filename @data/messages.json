@@ -2491,7 +2491,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"122550\":[{\"RoadmapId\":122550,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-11-16T23:35:59.1950135Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":122550,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-11-16T23:35:59.1950138Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":122550,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-11-16T23:35:59.1950141Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"122550\":[{\"RoadmapId\":122550,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-11-16T23:35:59.1950138Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":122550,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-11-16T23:35:59.1950135Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":122550,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-11-16T23:35:59.1950141Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -6615,7 +6615,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"167326\":[{\"RoadmapId\":167326,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209323Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":167326,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209322Z\",\"LatestRing\":null},{\"RoadmapId\":167326,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209321Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":167326,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.020932Z\",\"LatestRing\":null},{\"RoadmapId\":167326,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209323Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"167326\":[{\"RoadmapId\":167326,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.020932Z\",\"LatestRing\":null},{\"RoadmapId\":167326,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209323Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":167326,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209322Z\",\"LatestRing\":null},{\"RoadmapId\":167326,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209321Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":167326,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209323Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -10162,51 +10162,6 @@
     "AdditionalProperties": {}
   },
   {
-    "ActionRequiredByDateTime": "2024-11-04T08:00:00Z",
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>In Microsoft Purview, new standard logs will be available for Microsoft Exchange, Microsoft SharePoint, and Microsoft Teams workloads.</span><br></p><p>This message is associated with Microsoft 365 Roadmap IDs <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=182259%2C\" target=\"_blank\">182259</a>&nbsp;(Exchange and SharePoint) and <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=182242\" target=\"_blank\">182242</a>&nbsp;(Teams).</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out early-March 2024 and expect to complete by mid-June 2024.</p><p>Standard Release: We will begin rolling out late June 2024 and expect to complete by mid-September 2024.</p><p><b>How this will affect your organization:</b>\n</p><p>Microsoft Purview is expanding access to wider cloud security activity events for Exchange, Teams, and SharePoint. As part of the changes, standard users of Purview Audit will begin to generate new Exchange, Teams, and SharePoint events that were previously generated only for Audit Premium licensed users.\n</p><p>Here are the new standard logs:\n</p><p>Exchange\n</p><ul><li>Send\n</li><li>mailitemsaccessed\n</li><li>searchqueryinitiatedexchange\n</li></ul><p>SharePoint\n</p><ul><li>searchqueryinitiatedsharepoint\n</li></ul><p>Teams\n</p><ul><li>meetingparticipantdetail\n</li><li>messagesent\n</li><li>messageslisted\n</li><li>meetingdetail\n</li><li>messageupdated\n</li><li>chatretrieved\n</li><li>messageread\n</li><li>messagehostedcontentread\n</li><li>subscribedtomessages\n</li><li>messagehostedcontentslisted\n</li><li>chatcreated\n</li><li>chatupdated\n</li><li>messagecreatednotification\n</li><li>messagedeletednotification\n</li><li>messageupdatednotification\n</li></ul><p><b>What you need to do to prepare:</b>\n</p><p>The Exchange <i>MailItemsAccessed</i> and <i>send</i> logs are enabled by default unless the mailbox’s <i>DefaultAuditSet</i> settings were modified. To ensure these new standard logs are generated, an admin may need to ensure the appropriate mailbox settings are enabled.\n</p><p>Use this command to check if a mailbox is currently using the default audit settings: \n</p><ul><li>Get-Mailbox -Identity &lt;MailboxIdentity&gt;\n</li></ul><p>The <i>DefaultAuditSet </i>property is returned by the Get-Mailbox cmdlet. A mailbox using the defaults will show the following result:\n</p><ul><li>DefaultAuditSet : {Owner,Admin,Delegate}\n</li></ul><p>If any of those values are missing, the mailbox is not using the default audit settings. To ensure the new standard Exchange logs <i>mailitemsaccessed </i>and <i>Send </i>are stored, admins will either need to make sure Audit mailboxes are configured to the default settings or add the new standard logs to each mailbox. These changes can be made in Exchange Online PowerShell:\n</p><p>Option 1: Reset each mailbox to the default settings using this command:\n</p><ul><li>Set-Mailbox -Identity &lt;MailboxIdentity&gt; -DefaultAuditSet Admin,Delegate,Owner\n</li></ul><p>Option 2: Add the new standard logs to each mailbox. This command will add (only) the new Standard logs for each mailbox, retaining any existing customization, but any future changes to the defaults will need to be added when those future logs are released:\n</p><ul><li>Set-Mailbox -Identity &lt;MailboxIdentity&gt; -AuditOwner {@Add=\"MailItemsAccessed\",\"Send\" } -AuditAdmin {@Add=\"MailItemsAccessed\",\"Send\"} -AuditDelegate {@Add=\"MailItemsAccessed\"}\n</li></ul><p>For more information:&nbsp;<a href=\"https://www.microsoft.com/security/blog/2023/07/19/expanding-cloud-logging-to-give-customers-deeper-security-visibility/\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">How Microsoft is expanding cloud logging to give customers deeper security visibility | Microsoft Security Blog</a></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "182242,182259"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      },
-      {
-        "Name": "BlogLink",
-        "Value": "https://www.microsoft.com/security/blog/2023/07/19/expanding-cloud-logging-to-give-customers-deeper-security-visibility/"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC711333",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-01-30T23:49:28.277Z",
-    "Services": [
-      "Microsoft 365 suite"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-01-30T23:48:52Z",
-    "Tags": [
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Purview | Audit: New logs for Standard users",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
     "ActionRequiredByDateTime": null,
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -10704,6 +10659,10 @@
       {
         "Name": "RoadmapIds",
         "Value": "138480"
+      },
+      {
+        "Name": "FeatureStatusJson",
+        "Value": "{\"138480\":[{\"RoadmapId\":138480,\"Platform\":\"Web\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-04T17:32:52.0120799Z\",\"LatestRing\":null},{\"RoadmapId\":138480,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-04T17:32:52.0120802Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Platforms",
@@ -11266,43 +11225,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>As part of our ongoing efforts to improve the reliability of cmdlets, we are replacing the existing two cmdlets of advanced delivery policy with two new cmdlets. The new cmdlets are already available to use.</p><p><b>When this will happen:</b></p><p>We will be rolling out this change in late January 2024</p><p><b>How this will affect your organization:</b></p><p>This change will not affect the functionality of the cmdlets. However, if you are using the existing cmdlets to make changes to your advanced delivery policy, they might soon not work. We recommend that you replace those cmdlets with the new ones to ensure uninterrupted service.</p><ul><li>Old cmdlet: <i>*-PhishSimOverrideRule</i>, New cmdlet: <i>*-ExoPhishSimOverrideRule</i></li><li>Old cmdlet: <i>*-SecOpsOverrideRule</i>, New cmdlet: <i>*-ExoSecOpsOverrideRule</i></li></ul><p><b>What you need to do to prepare:</b></p><p>To prepare for this change, we recommend that you start using the new cmdlets as soon as possible. If you have any questions or concerns, please don’t hesitate to contact us.</p><p>Please click <a href=\"https://learn.microsoft.com/microsoft-365/security/office-365-security/advanced-delivery-policy-configure\" target=\"_blank\">Additional Information</a> to learn more.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "ExternalLink",
-        "Value": "https://learn.microsoft.com/microsoft-365/security/office-365-security/advanced-delivery-policy-configure"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC709983",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-01-25T01:01:37.317Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-01-25T01:01:32Z",
-    "Tags": [
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "New Cmdlets for Advanced Delivery Policy",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>This update improves the overall performance of <i>Lists </i>in Microsoft SharePoint and introduces new features, including the ability to add ratings to any list, drag and/or paste images directly into a list, see who is collaborating with you in real-time, switch views by clicking tabs, and more.</p><p>This rollout is a continuation of MC600726 (Updated) Microsoft Lists User Experience Update (June 2023).<br></p>\n<p><b>When this will happen:</b><br></p><p>Targeted Release: We will begin rolling out early February 2024 and expect to complete by late February. \n</p><p>\n</p><p>Standard Release GCC, GCCHigh, DoD, USSec, and USNat: We will begin rolling out late February&nbsp;and expect to complete by late June 2024.<br></p><p><b>How this will affect your organization:</b><br></p><p>Users in affected tenants will see <i>Lists </i>feature updates as described in <a href=\"https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-lists-easier-better-faster-stronger/bc-p/3842882\" target=\"_blank\">Microsoft Lists: Easier, Better, Faster, Stronger - Microsoft Community Hub</a> when browsing to lists in SharePoint sites, the Lists progressive web app (PWA), and Lists in Teams. All <i>Lists </i>in SharePoint sites will maintain the SharePoint site's chrome, theming, and navigation. These improvements will NOT reach <i>Lists </i>that have been configured with these features:</p><ul><li>SharePoint Framework extensions </li><li>PowerApps forms </li><li>Approvals </li><li>The Playlist template</li></ul><p>Future rollouts will bring support for Lists that are using these features.</p><p><b>What you need to do to prepare:</b><br></p>\n<p>Learn more: <a href=\"https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-lists-easier-better-faster-stronger/bc-p/3842882\" target=\"_blank\">Microsoft Lists: Easier, Better, Faster, Stronger - Microsoft Community Hub</a></p><p>No action is needed to prepare for this change. You may want to notify your users about this change and update any relevant documentation as appropriate.<br></p>",
       "ContentType": "html"
     },
@@ -11505,41 +11427,6 @@
       "User impact"
     ],
     "Title": "Collaborative Notes in Channel Meetings",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated January 24, 2024: We have added additional information regarding this change.</p><p>We are completing our retirement of the legacy SharePoint Invitation Manager for guests. This platform is currently used only when Document Libraries are shared externally or when an external user is shared to with a custom role. These flows will now use <a href=\"https://learn.microsoft.com/en-us/entra/external-id/what-is-b2b\" target=\"_blank\">Entra B2B Invitation Manager</a> instead.</p><p><b>When this will happen:</b><br></p><p>Targeted Release: We will begin rolling out early December 2023.<br></p><p>Standard Release: We will begin rolling out early January 2024 and conclude by late February 2024.</p><p><b>How this will affect your organization:</b><br></p><p>We are completing our retirement of the legacy SharePoint Invitation Manager for guests. This platform is current used only when Document Libraries are shared externally or when an external user is shared to with a custom role. These flows will now use Entra B2B Invitation Manager instead. This means that these flows will now also respect any policies or settings in the Entra B2B admin center.&nbsp;</p><p><b>Note:</b></p><ul><li>The primary Entra &amp; ODSP settings that need to be consistent are the Allow/Deny domains policy and the \"Who Can Share\"/\"Guest Inviter\" role policies. If these policies are not inline, it may result in failures during the sharing flow (for example, SPO allows sharing to outlook.com but Entra blocks sharing to outlook.com)\n</li><li>This change is unaffected by the \"EnableAzureADB2BIntegration\" setting in SPO PowerShell. This setting only applies to file/folder sharing. \n</li><li>This change only applies to a very small set of legacy sharing actions, including sharing of document libraries and sharing via custom roles. All other flows (File/folder sharing, site sharing) will continue to use the previous &amp; selected behaviors.</li></ul><p><b>What you need to do to prepare:</b><br></p><p>You may need to update your documentation for end users. You should also check your Entra B2B settings to ensure they are consistent with policies in the SharePoint Admin Center.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC696169",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2024-01-24T20:31:17.393Z",
-    "Services": [
-      "SharePoint Online",
-      "OneDrive for Business"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-12-07T00:54:27Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Legacy SharePoint Invitation Manager is being retired",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -11878,6 +11765,10 @@
       {
         "Name": "RoadmapIds",
         "Value": "329253"
+      },
+      {
+        "Name": "FeatureStatusJson",
+        "Value": "{\"329253\":[{\"RoadmapId\":329253,\"Platform\":\"Web\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-04T17:32:52.0128807Z\",\"LatestRing\":null},{\"RoadmapId\":329253,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-04T17:32:52.0128808Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Platforms",
@@ -13235,40 +13126,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p style=\"\">Updated January 12, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p style=\"\">Introducing community campaigns to boost engagement within your community. Now, community admins can easily create campaigns directly within the community. Simply locate the campaign's right rail, click the plus button, and fill in campaign details like #hashtag, description, and default publisher in the pop-up.&nbsp;<br></p><p>Campaigns start as drafts, allowing admins to upload cover photos, set goals, and pin links before hitting the publish button. Admins and regular users can view all community campaigns by clicking \"View all campaigns\" in the right rail.&nbsp;</p><p>Community members are automatically followers of the campaign, and using the community campaign hashtag in posts will display them in the campaign's feed. Conveniently, when typing \"#\" in the community, a dropdown suggests relevant community campaigns.&nbsp;</p>\n\n<p><b>When this will happen:</b><br></p>\n\n<p>We expect to begin rolling out in mid-January 2024 (previously early January) and expect to complete by early February 2024 (previously late January).&nbsp;&nbsp;</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>Community admins will be able to create campaigns for their communities. Users will be able to be more engaged with their communities by being a participant in the campaigns.&nbsp;&nbsp;<br></p>\n<p><b>What you need to do to prepare:</b><br></p>\n<p>To be aware of this new type of campaign. You may consider updating your training and documentation as appropriate.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC694119",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-01-12T23:05:00.89Z",
-    "Services": [
-      "Microsoft Viva"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-11-29T01:19:31Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Community Campaigns in Viva Engage",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>As communicated in MC686187 (October ’23), <i>after March 31, 2024, any classic Teams users that haven't updated to new Teams, will be <a href=\"https://learn.microsoft.com/microsoftteams/new-teams-automatic-upgrade-announced\" target=\"_blank\">automatically updated to new Teams</a></i>. \n</p><p>With March 31 being less than three months away, we advise you to update users in your organization to new Teams as quickly as you can. \n</p><p>New Teams now has over 90M monthly active users, and the figures are increasing by millions daily. It only takes one click to update to new Teams. You can easily pick up and resume exactly where you left off in classic Teams and your chat messages, Teams and channels, and apps will appear in new Teams. \n</p><p><b>How will this affect your organization?</b></p><ul><li>From February 2024, an informational banner will appear for users on classic Teams to remind them about the timeline for auto-update and encourage them to update to new Teams.  \n</li><li>After March 31, 2024, any existing values for <a href=\"https://learn.microsoft.com/microsoftteams/new-teams-deploy-using-policies?tabs=teams-admin-center\" target=\"_blank\">new Teams client policies</a> will no longer be valid, and users who are still on classic Teams will be updated to new Teams automatically. \n</li><li>Users will not be able to switch back to classic Teams after March 31, 2024, because classic Teams will not be functional. Microsoft will attempt to uninstall classic Teams at this time. Visit <a href=\"https://learn.microsoft.com/MicrosoftTeams/teams-classic-client-end-of-availability\" target=\"_blank\">this page</a> to learn more about the experience and different users impacted.\n</li><li>As mentioned in our previous <a href=\"https://techcommunity.microsoft.com/t5/microsoft-teams-blog/announcing-general-availability-of-the-new-microsoft-teams-app/ba-p/3934603\" target=\"_blank\">new Teams GA announcement</a>, new features and capabilities as well as enhancements to existing features are available exclusively in new Teams. Hence, you should make this update a priority to keep your users up to date with new features and enhancements to existing features.\n</li></ul><p><b>Note:</b> New Teams is a performance-focused update. New Teams is <a href=\"https://research.gigaom.com/report/new-microsoft-teams-performance-benchmark\" target=\"_blank\">up to 2x faster and use 50% less memory</a>. There is no major impact to the user experience for new Teams. This means you don’t need to invest in any additional training.\n</p><p>We encourage you to review the <a href=\"https://learn.microsoft.com/microsoftteams/teams-client-update#servicing-agreement\" target=\"_blank\">service agreement</a> that governs Teams app updates. If you haven’t already updated to new Teams yet, review the <a href=\"https://learn.microsoft.com/microsoftteams/new-teams-deploy-using-policies?tabs=teams-admin-center#prerequisites\" target=\"_blank\">prerequisites</a> and <a href=\"https://review.learn.microsoft.com/microsoftteams/new-teams-deploy-using-policies\" target=\"_blank\">policy updates</a> for the update to new Teams.\n</p><p><b>How can I prepare for a seamless update to new Teams?</b></p><ul><li>Admins can <a href=\"https://aka.ms/newTeamsUpgrade\" target=\"_blank\">enable new Teams in their organizations</a> by leveraging robust IT admin policy via<a href=\"https://learn.microsoft.com/microsoftteams/new-teams-deploy-using-policies?tabs=teams-admin-center\" target=\"_blank\"> Teams Admin Center</a>&nbsp;or taking advantage of deployment options such as <a href=\"https://learn.microsoft.com/microsoftteams/new-teams-bulk-install-client\" target=\"_blank\">bulk deployment</a>, or leaving update to <a href=\"https://learn.microsoft.com/microsoftteams/new-teams-deploy-with-m365apps\" target=\"_blank\">office update channels</a> that allow them to enable users and groups within their organizations as needed. \n</li><li>Admins who currently have the Teams update policy set to 'Not enabled'  or ‘User Choice’ for the 'Use new Teams client' setting, we suggest setting the value as ‘New Teams as default’  or ‘New Teams only’ (will be available by the end of January 2024). If you would like Microsoft to manage the updates for your users, you can set the value to ‘Microsoft Controlled’.\n</li></ul><p>Notes: \n</p><ul><li>After June 30, 2024, classic Teams will no longer be available to use for the virtual desktop infrastructure (VDI) users, and they will need to update to new Teams to continue using Teams and avoid disruption.\n</li><li>The auto-update timeline of March 31, 2024, will not impact Microsoft Teams Rooms (MTR) and Surface Hub devices.\n</li><li>As communicated in our MC698876, Teams Live Event (TLE) producer support will be arriving in new Teams soon, at the beginning of March. We are committed to providing this support to avoid any disruptions to TLE producers because of the auto-update after March 31, 2024.\n</li></ul><p>To learn more about this announcement, view <a href=\"https://learn.microsoft.com/MicrosoftTeams/teams-classic-client-end-of-availability\" target=\"_blank\">this page</a>. If you have any questions, you can contact your customer success manager (CSM) or customer executive (CE) at Microsoft.\n</p><p>We always value feedback and questions from our customers. Feel free to submit feedback via Microsoft 365 Message Center or Service Health Dashboard.\n</p><p>Thank you for being a valued user of Teams.\n</p>",
       "ContentType": "html"
     },
@@ -13688,281 +13545,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated January 5, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>Loop in Channels: Collaborative Loop components that you love from Teams chats are coming to channels! Users can create, share, and edit components to collaborate synchronously and asynchronously on ideas without leaving the context of their conversation. You can now copy and paste Loop components between channels, chats, Outlook emails, and other supported Microsoft 365 apps. No matter where people are collaborating the Loop, the component will always show the latest updates. \n</p><p>You can create a new Loop component in a Post or Reply by composing a message and clicking \"Collaborate with Loop\". Loop components created in Teams channels are stored in the channel's SharePoint site allowing people in the channel to access the component and making the component easy to find later. If a component is created and sent within the channel, you can access it in the Files tab. If a component is pasted and sent within the channel, you can access it from within the Microsoft 365 ecosystem (ex. OneDrive, Office.com, etc).\n</p><p>Scope of Release: \n</p><ul><li>Loop in Channel will be available in all channel types - standard, private, shared. Users external to an organization will not be able to view or edit the Loop component. \n</li><li>We are supporting viewing a Loop in Channels in iOS and iPadOS, but not Android at this time - users will see a link and be able to open in Web. You are able to create Loop components in Channels from Desktop or Web, but not mobile.\n</li></ul><p>\n</p><p>\n</p><p>This message is associated with Microsoft 365 Roadmap ID: <a href=\"https://www.microsoft.com/microsoft-365/roadmap?rtc=1%26filters=&amp;searchterms=123491\" target=\"_blank\">123491</a>\n</p><p>\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling out in November.\n</p><p>Standard Release: We will begin rolling out late November 2023 and expect to complete by late January 2024 (previously late December).\n</p><p>\n</p><p><b>How this will affect your organization:</b>\n</p><p>This will automatically be rolled out to your tenant. Users will have this new way to collaborate more seamlessly within Teams. \n</p><p>\n</p><p><b>Note:</b> If your organization has previously <a href=\"https://learn.microsoft.com/microsoft-365/loop/loop-workspaces-configuration?view=o365-worldwide#settings-management-in-cloud-policy\" target=\"_blank\">disabled Loop components</a>, those settings will be honored.<br></p><p><b>What you need to do to prepare:</b><br></p><p>You may consider updating your training and documentation as appropriate.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "123491"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"123491\":[{\"RoadmapId\":123491,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-10-24T22:48:55.5606041Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":123491,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-10-24T22:48:55.5606041Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":123491,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2023-10-24T22:48:55.5606039Z\",\"LatestRing\":null},{\"RoadmapId\":123491,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-10-24T22:48:55.5606038Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":123491,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2023-10-24T22:48:55.5606043Z\",\"LatestRing\":\"StandardRelease\"}]}"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, iOS, Mac, Web"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC681251",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2024-01-05T05:47:45.513Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-10-13T23:04:56Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Loop components in Channels and Loop Embed Mode in Teams",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated January 5, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>The latest version of Teams Rooms on Windows app 4.19 includes updates to Front Row experience to promote active video speakers to the spotlight area to improve space utilization and provide in-room users with immersive experience across single and dual display configurations.&nbsp; &nbsp;<br><p></p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=161825\" target=\"_blank\">161825</a>.</p>\n<p><b>When this will happen:</b></p><p>Standard Release: We will begin rolling out mid-November and expect to complete it by late January 2024 (previously late-December).&nbsp;</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>The Front Row layout is improved to promote pinned or spotlighted participants to the center stage when there is no shared content in the meeting. This addresses customer feedback on empty space utilization and aligns pinned or spotlighted participants treatment across single and dual front of room displays. Additionally, active speaker video is promoted to the center stage to utilize display to create immersive experience for in room users. For single display configurations, when no one is pinned, spotlighted or sharing content, the most recent active speaker <i>video </i>will be promoted to the center. In dual display mode, when no one is pinned, spotlighted or sharing content, two most recent active speaker <i>videos </i>are promoted to the center on each screen. When someone is sharing content in the meeting, it’s displayed on one display while the other display shows the most recent active <i>video </i>speaker.&nbsp;<br></p>\n<p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1dpys?ver=6c60\" style=\"width: 400px;\" alt=\"raised hands\"><br></p><p><b>What you need to do to prepare:</b></p>\n<p>Please notify your users about this new experience and update your training and documentation as appropriate.&nbsp;</p></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "161825"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "TeamsAndSurfaceDevices"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC681887",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-01-05T05:41:58.153Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-10-16T22:04:00Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams | Front Row Enhancement: Active video speaker promotion for Teams Rooms on Windows",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p style=\"\">Updated January 5, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p style=\"\">Teams users will have an option to chat with Teams users after receiving a missed call from them by simply clicking on an additional ‘chat’ button on the missed call&nbsp;activity.<br></p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=176318\" target=\"_blank\">176318</a></p>\n<p><b>When this will happen:</b></p><p>Targeted Release: We will begin rolling out early November and expect to complete by early November.</p><p>Standard Release: We will begin rolling out late November and expect to complete by late January 2024 (previously early December).</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>There are no tenant level settings. Defaults will not change.</p>\n<p><b>What you need to do to prepare:</b></p>\n<p>There is no action needed to prepare for this change. You may want to notify your users about this change and update any relevant documentation as appropriate.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "176318"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC682086",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-01-05T05:16:26.467Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-10-17T21:50:24Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Addition of Chat button in Missed Call Activity",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated January 5, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>With privacy and security restrictions, we have implemented a user-level IT admin policy for admins to choose whether some or all users in the company can use Collaborative Annotations. Currently, there is a way to turn Annotations ON or OFF through cmdlet <code><code>Set-SPOTenant-IsWBFluidEnabled</code></code>, this will also influence Whiteboard.</p><p>This change is associated with Microsoft 365 Roadmap ID: <a href=\"https://www.microsoft.com/microsoft-365/roadmap?rtc=1%26filters=&amp;searchterms=92502\" target=\"_blank\">92502</a></p><p></p>\n<p><b>When this will happen:</b><br></p>\n\n<p>We will begin rolling out in early August 2023 and expect to complete rollout by late January 2024 (previously early December).</p>\n\n<p><b>How this will affect your organization:</b><br></p>\n\n<p>IT admins will be able to turn ON or OFF Collaborative Annotations from the Teams admin center in <i>Meetings --&gt; Meeting policies</i>.<br></p>\n<p><b>What you need to do to prepare:</b><br></p>\n<p>There is nothing you need to do to prepare.</p><p></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2024-03-04T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC579612",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-01-05T05:14:39.107Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-06-09T23:04:16Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Admin Policy for Collaborative Annotations",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p style=\"\">Updated January 5, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p style=\"\">The Hide Favorites feature in Outlook for the web allows users to personalize their folder pane by hiding the Favorites section.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=167071\" target=\"_blank\">167071</a></p><p><b>When this will happen:</b></p>\n<p>Rollout will begin in late October 2023 and is expected to be complete by late January 2024 (previously mid-December).</p><p><b>How this will affect your organization:</b><br></p>\n\n<p>Users in Outlook for the web will have the ability to update their settings in order to hide Favorites if they do not use or want to see them. By default, Favorites will be visible, but with this feature, users can opt to hide the Favorites experience from their view. Once hidden, users can always go back and unhide their Favorites.</p><p><b>What you need to do to prepare:</b></p><p>There is nothing you need to do at this time. You may want to notify your users of this update.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "167071"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC676546",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-01-05T05:04:39.387Z",
-    "Services": [
-      "Microsoft 365 for the web"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-09-22T22:55:45Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Outlook Web: Ability to Hide Favorites From Folder List",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated January 5, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>We’re updating Microsoft Secure Score improvement actions to ensure a more accurate representation of security posture. </p><p>The improvement actions listed below will be added to Microsoft Secure Score. Your score will be updated accordingly.</p><p>\n</p><p><b>When this will happen:</b>\n</p><p>This will begin rollout in mid-October 2023 and is expected to be complete by late January 2024 (previously late December).</p><p>\n</p><p><b>How this will affect your organization:</b></p><p>The following new Microsoft Entra (AAD) recommendations will be added as Microsoft Secure Score improvement actions:\n</p><p>\n</p><ul><li>Ensure 'Phishing-resistant MFA strength' is required for administrators.</li><li>Ensure custom banned passwords lists are used.</li></ul><p>The following new Microsoft Sway recommendations will be added as Microsoft Secure Score improvement actions:\n</p><p>\n</p><ul><li>Ensure that Sways cannot be shared with people outside of your organization</li></ul><p>The following new Atlassian recommendations will be added as Microsoft Secure Score improvement actions:</p><ul><li>Enable multi-factor authentication (MFA).</li><li>Enable Single Sing On (SSO).</li><li>Enable strong Password Policies.</li><li>Enable session timeout for web users.</li><li>Enable Password expiration policies.</li><li>Atlassian mobile app security - Users that are affected by policies.</li><li>Atlassian mobile app security - App data protection.</li><li>Atlassian mobile app security - App access requirement.</li></ul><p>The following new Zendesk recommendations will be added as Microsoft Secure Score improvement actions:</p><ul><li>Enable and adopt two-factor authentication (2FA).\n</li><li>Send a notification on password change for admins, agents, and end users.</li><li>Enable IP restrictions.</li><li>Block customers to bypass IP restrictions.</li><li>Admins and agents can use the Zendesk Support mobile app.<br></li><li>Enable Zendesk authentication.<br></li><li>Enable session timeout for users.<br></li><li>Block account assumption.\n</li><li>Block admins to set passwords.</li></ul><p>The names, functionality and compliance conditions for Okta&nbsp;and DocuSign&nbsp;security recommendation were updated as Microsoft Secure Score improvement action.<br></p><p>The name of this control \"Ensure Sign-in frequency is enabled and browser sessions are not persistent for Administrative users\" is changed to \"Ensure Sign-in frequency is enabled and browser sessions are not persistent for Administrative users\".</p><p><br></p><p><b>What you need to do to prepare:</b> <br></p><p>There's no action needed to prepare for this change, your score will be updated accordingly.&nbsp;Microsoft recommends reviewing the improvement actions listed in Microsoft Secure Score.&nbsp;We will continue to add suggested security improvement actions on an ongoing basis.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC681893",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-01-05T05:03:20.633Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-10-16T22:07:14Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Secure Score - Changes in SSPM support",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p style=\"\">Updated January 5, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p style=\"\">Microsoft Whiteboard now automatically utilizes Specific People Share Links (PSL) for participants of a Teams meeting when a whiteboard is shared and the tenant has Company-wide Share Links disabled (CSL).&nbsp;&nbsp;</p>\n<p><b>When this will happen:</b></p>\n\n<p>We will begin rolling out in mid-October and complete rolling out in late January 2024 (previously mid-December).</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>Whiteboards are stored in the OneDrive of the user who starts Whiteboard in the Teams meeting. If your tenant does not have CSLs enabled, previously when trying to share a whiteboard in a Teams meeting users would receive an error message and would not be able to access and collaborate on the whiteboard during and after the meeting.&nbsp;&nbsp;</p><p>Now, in the case that CSLs are disabled in your tenant, Whiteboard will fallback to utilizing PSLs and provide access directly to the participants of that Teams meeting. They will be able to access and collaborate on that whiteboard during and after the meeting.&nbsp;&nbsp;</p><p>Scenarios where PSL Fallback Apply:&nbsp;</p><ul><li>Teams meetings Whiteboard flow</li><li>Teams Screen sharing Annotations flow</li><li>Teams Whiteboard Tab App in channels (private, shared, public)</li></ul><p>Note: participants that join a meeting or annotation session after a whiteboard has been shared will need to have the whiteboard manually shared with them. For private and shared Tab channel, the whiteboard will need to be manually shared with participants.&nbsp;&nbsp;</p><p>Note: PSL Fallback will only apply to in-tenant users, not external users.</p>\n<p><b>What you need to do to prepare:</b></p>\n<p>No change will be required, this will happen automatically based on your tenant settings.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC682305",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-01-05T04:53:58.113Z",
-    "Services": [
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-10-18T23:38:39Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Whiteboard: \"Specific people” Share Link Fallback",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p style=\"\">Updated January 5, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p style=\"\">With the new layout, Together mode will be displayed under the shared content. The users will be able to see the participants in Together mode and shared content simultaneously in a completely new way. Full Together mode experience is available including raised hands, reactions and name labels.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=181615\" target=\"_blank\">181615</a></p>\n<p><b>When this will happen:</b></p><p>Targeted Release: We will begin rolling out early February 2024 (previously early January) and expect to complete by mid-February 2024 (previously mid-January)</p><p>Standard Release: We will begin rolling out mid-February 2024 (previously mid-January) and expect to complete by late February 2024 (previously late January).</p><p>GCC-H and DoD: We will begin rolling out early April 2024 (previously late January) and expect to complete by late April 2024 (previously late February).</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>Together mode and shared content now offer a more natural experience.&nbsp;</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1eBjJ?ver=96bf\" style=\"width: 400px;\" alt=\"Together mode\"><br></p>\n<p><b>What you need to do to prepare:</b></p>\n<p>You may consider updating your documentation for users.&nbsp;</p>",
       "ContentType": "html"
     },
@@ -14029,59 +13611,6 @@
       "User impact"
     ],
     "Title": "Microsoft Teams: Integrate Chat notification with Meeting RSVP status",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>We are excited to announce the launch of Viva Engage community creation API beta endpoint on MS Graph: <a href=\"https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-beta\" target=\"_blank\">Use the Microsoft Graph API to work with Viva Engage (preview)</a></p><p>Many of our customers have requested this capability in the past to programmatically create communities instead of creation via Engage UI. We invite you to try this beta endpoint and provide us with feedback.\n</p><p>Some things to note about the API:\n</p><ul><li>It is Microsoft 365 Groups unified.\n</li><li>It supports app-delegated (user auth) and app-only access.\n</li><li>It is limited to networks in Native mode only – legacy and external Yammer networks will not be able to use this API for community creation.\n</li><li>Community creation for an existing Microsoft 365 group is out of scope.</li></ul>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=178311\" target=\"_blank\">178311</a></p>\n<p><b>When this will happen:</b></p>\n\n<p>The Community creation API is now available as <a href=\"https://learn.microsoft.com/en-us/graph/api/overview?view=graph-rest-beta\" target=\"_blank\">MS Graph beta</a> endpoint.</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>This API does not affect the existing features and user flows. It is simply another way in which communities may be provisioned in a Viva Engage network. </p><p>The user interface for community creation, on any device platform, remains unchanged.</p>\n<p><b>What you need to do to prepare:</b></p>\n<p>See this <a href=\"https://techcommunity.microsoft.com/t5/viva-engage-blog/introducing-the-community-creation-api-for-viva-engage-on/ba-p/4011966\" target=\"_blank\">blog post</a> to learn more about how to use this end point and share your feedback. Refer to the&nbsp;<a href=\"https://learn.microsoft.com/graph/api/overview?view=graph-rest-beta\" target=\"_blank\">Microsoft Graph REST API beta endpoint reference</a> to learn more about the MS Graph beta program and best ways to provide feedback.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "178311"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      },
-      {
-        "Name": "BlogLink",
-        "Value": "https://aka.ms/VivaEngage/Blog/CommunityAPI"
-      },
-      {
-        "Name": "ExternalLink",
-        "Value": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-beta"
-      },
-      {
-        "Name": "HelpLink",
-        "Value": "https://learn.microsoft.com/en-us/graph/api/resources/engagement-api-overview?view=graph-rest-beta"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC701523",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-01-04T23:02:52.293Z",
-    "Services": [
-      "Microsoft Viva"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-12-24T21:01:46Z",
-    "Tags": [
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Viva Engage Community creation API is now available on MS Graph Beta",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -14597,45 +14126,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated December 18, 2023: We have updated the content below to show as intended. Thank you for your feedback.</p><p>We will be retiring the Threat Protection report page - https://security.microsoft.com/mde-reports/threatProtection (accessed through Reports &gt; Endpoints &gt; Threat protection). Instead, we recommend the utilization of Advanced hunting queries and Alert queue filter in Defender XDR, which is where we will continue to invest our development resources.&nbsp;</p><p><b>When this will happen:</b></p><p>Late January 2024</p><p><b>How this will affect your organization:</b></p><p>Once this change is implemented the Threat Protection report page will no longer be accessible.</p><p><b>What you need to do to prepare:</b></p><p>Review supporting documentation and make adjustments as appropriate for your organization.</p><ul><li><a href=\"https://learn.microsoft.com/microsoft-365/security/defender-endpoint/threat-protection-reports?view=o365-worldwide\" target=\"_blank\">Threat protection report in Microsoft Defender for Endpoint</a></li><li><a href=\"https://learn.microsoft.com/microsoft-365/security/defender/incident-queue?view=o365-worldwide#available-filters\" target=\"_blank\">Prioritize incidents in Microsoft Defender XDR</a></li><li><a href=\"https://learn.microsoft.com/microsoft-365/security/defender/advanced-hunting-overview?view=o365-worldwide\" target=\"_blank\">Proactively hunt for threats with advanced hunting in Microsoft Defender XDR</a></li></ul>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "ExternalLink",
-        "Value": "https://learn.microsoft.com/microsoft-365/security/defender-endpoint/threat-protection-reports"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC698130",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2023-12-18T20:20:23.07Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-12-14T04:16:39Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Threat Protection report page retirement",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p style=\"\">Updated December 15, 2023: We have updated the rollout timeline below. Thank you for your patience.</p><p style=\"\">The Job Report in eDiscovery Premium is now currently available to eDiscovery Administrators. With this update, the report will be accessible by users with eDiscovery Manager (built-in role group) as well. eDiscovery Managers will be able to view the Jobs limit cards on the report as well as the list of jobs in the cases they are a member of.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=180170\" target=\"_blank\">180170</a></p>\n<p><b>When this will happen:</b></p>\n\n<p>Rollout in Public Preview will begin in early January 2024 and is expected to be complete by late January 2024.</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>Users with eDiscovery Manager (built-in role group) permissions will be able to view the Jobs report in the Reports page in eDiscovery (Premium).</p>\n<p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1e7Uu?ver=eae0\" style=\"width: 400px;\" alt=\"ediscovery manager\"><br></p>\n<p>eDiscovery Managers will be able to \n</p><ul><li>View all jobs that contribute to the job limits in the eDiscovery Standard and Premium cases that they are a member of.   \n</li><li>View all jobs that are in progress or completed (successfully or with error) in a specified time range for cases that they are a member of.\n</li><li>View how far away the tenant is from hitting job-related tenant-wide limit</li></ul>\n<p><b>What you need to do to prepare:</b></p>\n<p>Assess if the changes will change your organization’s eDiscovery workflow. If so, update internal documentation. Provide training to all eDiscovery users in your organization and update relevant documentation if needed.</p><p>Manage jobs in <a href=\"https://learn.microsoft.com/purview/ediscovery-managing-jobs\" target=\"_blank\">eDiscovery (Premium) | Microsoft Learn</a></p>",
       "ContentType": "html"
     },
@@ -14771,53 +14261,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Update for December 14, 2023: The Microsoft Teams change will now be completed by the end of January instead of early December as previously communicated. Additionally, an issue was discovered with managing this change using GPO and Intune, with a fix planned to deploy with the change by the end of January. To manage this change prior to the fix deploying, please use the <a href=\"https://learn.microsoft.com/deployoffice/admincenter/overview-cloud-policy\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Cloud Policy service for Microsoft 365</a> (formerly the Office Cloud Policy Service).</p><p>The Microsoft Teams desktop app for Windows will open web links from Teams chats in Microsoft Edge to enable a new web and chat side-by-side experience.\n</p><p>By opening web links in Edge, users will be able to see those links side-by-side with their Teams chats—web links will open as new browser tabs and the Teams chats will open next to them in the Edge sidebar. This new, single-view Teams experience in Edge is designed to minimize switching between windows and to help users stay in the flow of work while referencing web links.&nbsp;</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=126334\" target=\"_blank\">126334</a>.&nbsp;</p><p>This change to use Edge to open web links from Teams chats follows a similar, previously announced change in the Outlook for Windows app. Customers impacted by this change in Outlook were notified via MC541626, MC545904, or MC548092. \n</p><p>Admin controls are available as detailed below. \n</p><p>Read more about how we’re optimizing the experience between Microsoft 365 and Microsoft Edge:\n</p><ul><li><a href=\"https://www.microsoft.com/en-us/microsoft-365/blog/2023/02/16/discover-new-ways-to-multitask-with-microsoft-365-and-edge/\" target=\"_blank\">https://www.microsoft.com/en-us/microsoft-365/blog/2023/02/16/discover-new-ways-to-multitask-with-microsoft-365-and-edge/</a>&nbsp;&nbsp;</li><li><a href=\"https://techcommunity.microsoft.com/t5/microsoft-teams-blog/what-s-new-in-microsoft-teams-microsoft-inspire-2023/ba-p/3855657\" target=\"_blank\">What's New in Teams | Microsoft Inspire 2023</a></li></ul><p>Notes: \n</p><ul><li>This change does not affect a device’s default browser setting in Windows.</li><li>This only affects commercial users signed into Teams with Azure Active Directory (Azure AD) accounts.</li><li>The policy described in the following section configures which browser is used to open web links for both Teams (chat) and the Outlook for Windows app (email), or, if you did not receive an Outlook for Windows app Message center notification, this policy will only apply to Teams (chat).</li></ul><p><b>When will this affect your organization:</b><br></p><p>Timing: \n</p><ul><li>Microsoft Teams desktop app for Windows: Rolling out now to Targeted Release and will begin to rollout in early November and complete in late January 2024 (previously late December) for Standard Release.<ul><li>Outlook for Windows: Roll out in progress.  If this change affects your users, you will have received either MC541626, MC545904, or MC548092, and can refer to them for specific timing.<ul><li>Note: Depending on your Outlook for Windows update channel, you may experience the change in Teams first.</li></ul></li></ul></li></ul><p>Action:\n</p><ul><li>Use the \"<i>Choose which browser opens web links\"</i> policy to configure which browser will be used to open web links and to set whether users will be able to make changes to which browser opens web links in both the Teams desktop app for Windows (chat) and the Outlook for Windows app (email).<ul><li>If you did not receive a message center notification for the Outlook for Windows app (email), then the setting only applies to Teams (chat).</li><li>If you did receive a message center notification for the Outlook for Windows app (email), then the setting applies to both Teams (chat) and Outlook for Windows app (email). You will not be able to manage each app individually using this policy. If you’ve previously configured this policy for the Outlook for Windows app and wish to maintain that configuration, no action is required.</li></ul></li></ul><p><b>Note: </b>There are no Microsoft 365 subscription restrictions in using this policy to configure which browser opens web links in Teams.\n</p><ul><li>Use of the policy to manage the change in the Outlook for Windows app depends on your Microsoft 365 subscription. If you received the Outlook for Windows app Message center notification, please refer to MC541626, MC545904, or MC548092 for details on whether configuring this policy will apply.</li><li>If you have not configured the policy, or wish to change it, find the details below.</li></ul><p><b>How this will affect your organization:</b><br></p><p>Links from Teams chats will open based on the browser configuration in the<i>&nbsp;\"Choose which browser opens web links\"</i> policy.  If no configuration is selected using the \"<i>Choose which browser opens web links\"</i> policy, web links from Teams chats will open in Microsoft Edge.\n</p><ul><li>Only links set to open via a web browser are affected. Links that are set to open in a client app or within Teams itself will continue to do so.</li><li>User experiences will vary by policy configuration; please see the next section.</li><li>You can manage this experience at any time.</li></ul><p><b>What you need to do to prepare:</b><br></p><p><b>If you’ve previously configured this policy for the Outlook for Windows app and wish to maintain that configuration, no action is required.\n</b></p><p>Use the \"<i>Choose which browser opens web links\"</i> policy to configure which default browser will be used to open web links and to set whether users will be able to manage which browser opens web links in both Teams (chat) and the Outlook for Windows app (email). You will not be able to manage each app individually using this policy.\n</p><p>The \"<i>Choose which browser opens web links\"</i> policy is available using the <a href=\"https://learn.microsoft.com/en-us/deployoffice/admincenter/overview-cloud-policy\" target=\"_blank\">Cloud Policy service for Microsoft 365 </a>(formerly the Office Cloud Policy Service) or as part of the <a href=\"https://www.microsoft.com/download/details.aspx?id=49030\" target=\"_blank\">Administrative Templates for Microsoft 365 Apps</a>.</p><ul><li>Enabled: Configures which browser opens web links from the Teams desktop app for Windows (chat) and the Outlook for Windows app (email):<ul><li>Microsoft Edge<ul><li>Web links will open side-by-side with users’ chat or email in Edge.</li></ul></li><li>Default browser<ul><li>Users will not be able to change this from the respective apps’ settings menus.</li></ul></li></ul></li><li>Disabled/Unconfigured: Web links from the Teams desktop app for Windows (chat) and the Outlook for Windows app (email) will open in Microsoft Edge.<ul><li>Web links will open side-by-side with users’ chat or email in Edge.</li><li>Users can manage the browser change:<ul><li>Via the in-product notifications explaining the side-by-side experience.</li><li>At any time via the Teams settings menu: Settings &gt; Files and links &gt; Link open preferences</li></ul></li></ul></li></ul><p><b>Note:</b> If you want to manage this change for your entire organization so that Teams only opens web links using the device’s system default browser, you will need to configure the policy to Enabled and select Default browser.</p><p>Additional Information\n</p><ul><li>Read more about how we’re optimizing the experience between Microsoft 365 and Microsoft Edge with this feature in our blog: https://www.microsoft.com/en-us/microsoft-365/blog/2023/02/16/discover-new-ways-to-multitask-with-microsoft-365-and-edge/&nbsp;&nbsp;</li></ul><p>We always value feedback and questions from our customers. Please feel free to submit either feedback or questions via Message Center.\n</p><p><br></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "126334"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"126334\":[{\"RoadmapId\":126334,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0201044Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":126334,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0201049Z\",\"LatestRing\":\"StandardRelease\"}]}"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC669480",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2023-12-14T18:32:42.613Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-08-21T23:14:06Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Web links from Microsoft Teams chats to open in Microsoft Edge; Teams chat will open side-by-side with link",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated December 13, 2023: We have updated the rollout timeline below. Thank you for your patience.</p><p>With the new \"Share an Update\" feature, users can share updates about their goals and dashboards with their teams or selected audience directly from Viva Goals. Updates are sent to users via email.</p><p></p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=148471\" target=\"_blank\">148471</a><br></p>\n\n<p><b>When this will happen:</b></p><p>Standard: will begin rolling out in mid-January 2024 (previously mid-December) and expect to complete rollout by mid-February 2024 (previously mid-January).\n</p><p><b>How this will affect your organization:</b><br></p><p>Users will have the ability to share an update to their teams via a new button visible in the UI.</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW192CS?ver=8427\" style=\"width: 400px;\" \"alt=\"share\" an=\"\" update=\"\" feature=\"\" in=\"\" viva=\"\" view\"=\"\"></p><p><b>What you need to do to prepare:</b><br></p>\n<p>No action is needed for tenant admins.</p><p></p>",
       "ContentType": "html"
     },
@@ -14853,49 +14296,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Viva: Share an Update (Broadcast) Feature for Viva Goals",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p style=\"\">Updated December 13, 2023: We have updated the rollout timing below. Thank you for your patience.&nbsp;</p><p style=\"font-size: larger;\"><span style=\"font-size: 14px;\">We are announcing the General Availability of Viva Topics for our Yammer customers.</span><br></p><p>The General Availability of Viva Topics for Yammer experiences enables us to leverage a more robust and secure infrastructure for Topics. It also enables organizations to use these Topics outside of Yammer (for example, Topics can be tagged in Teams chats or in Outlook messages).\n</p><p>If you would like to learn more about the benefits of Viva Topics, <a href=\"https://learn.microsoft.com/en-us/viva/topics/\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">click here</a>.<br></p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=72184\" target=\"_blank\">72184</a></p>\n<p><b>When this will happen:</b></p><p>Standard Release: We began rolling out in late March (previously early May) and expect to complete by late January 2024.<br></p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>Effective January 3rd 2023, any organization setting up a new Yammer network will have their Topics experience in Yammer supported by Viva Topics infrastructure. In the first half of 2023, existing Yammer customers will have their preexisting Topics in Yammer converted into full Viva Topics if they have purchased a Viva license.</p><p>Customers that have purchased a Viva license will get the benefits of having Yammer Topics converted into full Viva Topics, however, unlicensed customers will not see an interruption in the Topics experience in Yammer. The Viva Topics back-end will be used to store Yammer Topics, but the end user experience of using Topics in Yammer for unlicensed customers will remain the same. Given this is just a back-end change for unlicensed customers, these customers do not need to communicate the upcoming change to end users.&nbsp;</p>\n<p><b>What you need to do to prepare:</b></p>\n<p>There is no action is needed from admins.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "72184"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Web"
-      }
-    ],
-    "EndDateTime": "2024-03-04T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC494737",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2023-12-14T05:01:58.487Z",
-    "Services": [
-      "Microsoft Viva"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-01-05T01:11:35Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "General Availability of Viva Topics for Yammer",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -15201,48 +14601,6 @@
     "AdditionalProperties": {}
   },
   {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated December 11, 2023: We have updated the rollout timeline below. Thank you for your patience.</p><p>Play My Emails is a feature in Outlook Mobile that allows users to listen to new messages in their Focused Inbox and changes to their day hands-free through a voice-driven experience.&nbsp;<br></p><p><b>When this will happen:</b></p><p>We will begin rolling out the update in early January 2024 (previously early December) and expect to complete by late January 2024 (previously early January).&nbsp;</p><p><b>How this will affect your organization:</b></p><p>After this update, Play My Emails will no longer attempt to prioritize which messages are read out first. Messages will be read out solely based on chronological order.&nbsp;</p><p><b>What you need to do to prepare:</b></p><p>You may want to notify your users about this change and update any relevant documentation as appropriate.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "BlogLink",
-        "Value": "https://techcommunity.microsoft.com/t5/outlook-blog/play-my-emails-in-outlook-and-get-time-back-in-your-day/ba-p/930243"
-      },
-      {
-        "Name": "HelpLink",
-        "Value": "https://support.microsoft.com/office/play-my-emails-6ed44879-4f4d-4be5-82cf-a98438dc30aa"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC692461",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2023-12-11T21:23:38.827Z",
-    "Services": [
-      "Microsoft 365 suite"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-11-22T06:32:54Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "User impact"
-    ],
-    "Title": "Outlook: Update to Play My Emails",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
     "ActionRequiredByDateTime": "2024-03-10T08:00:00Z",
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -15361,51 +14719,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Viva Goals will be giving users the ability to share links to goals as rich adaptive cards, including progress and status in Microsoft Outlook. Users get the context they need around goals they're working towards and can also update them in Microsoft Outlook without losing focus or clicking away from the message in Microsoft Outlook.</p><p>Users have already had this ability when they paste Viva Goals links in Microsoft Teams if the Viva Goals app for Microsoft Teams has been installed. With this change, the Microsoft Teams app for Viva Goals will be available on Outlook and Office.com, thus bringing this functionality to Outlook as well.</p><p>This message is associated with Microsoft 365 Roadmap ID:&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=165688\" target=\"_blank\">165688</a></p><p><b>When this will happen:</b></p>\n<p>Standard Release: We will begin rolling out in December 2023 and expect to complete in January 2024.</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>Users will be able to install Viva Goals from the Outlook app store in addition to the Microsoft Teams app store. When users have the app installed and paste a link to Viva Goals OKRs, a rich adaptive card will be shown with details about the OKR.</p>\n<p><b>What you need to do to prepare:</b></p>\n<p>Similar to the Microsoft Teams app for Viva Goals, admins can manage the deployment of the app in Outlook and Office.com from the Microsoft 365 Admin Center. For more information, see <a href=\"https://learn.microsoft.com/en-us/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365?view=o365-worldwide#how-to-manage-the-availability-of-an-app-in-your-organization\" target=\"_blank\">How to manage the availability of an app in your organization</a>. Since the app is available both on Outlook and Microsoft Teams, also see <a href=\"https://learn.microsoft.com/en-us/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365?view=o365-worldwide#what-happens-to-your-settings-on-teams-and-outlook\" target=\"_blank\">What happens to your settings on Teams and Outlook</a>.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "165688"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      },
-      {
-        "Name": "HelpLink",
-        "Value": "https://learn.microsoft.com/en-us/viva/goals/ms-teams-integration"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC696572",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2023-12-07T23:31:57.393Z",
-    "Services": [
-      "Microsoft Viva"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-12-07T23:31:36Z",
-    "Tags": [
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Access and interact with goal progress directly within Outlook email",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p style=\"\">Clipchamp Premium features help users take their content to the next level. With Clipchamp Premium, users can easily apply brand fonts, colors and logos with a brand kit, add top-tier assets for commercial use, and export crisp, well-defined visuals as 4K, 30fps, MP4 files.&nbsp;</p><p style=\"\">Clipchamp Premium features will be available as an add-on to the following Microsoft 365 SKUs: Microsoft 365 E3, Microsoft 365 E5, Microsoft 365 Business Standard, and Microsoft 365 Business Premium. With the release of Clipchamp Premium users will have the ability to request a license and admins will be able to manage requests through the standard Microsoft 365 admin center interface.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=187079\" target=\"_blank\">187079</a></p><p><b>When this will happen:</b></p><p>Targeted Release: We will begin rolling out in early December 2023 and expect to complete by late December 2023.</p><p>Standard Release: We will begin rolling out in early January 2024 and expect to complete by early February 2024.</p><p><b>How this will affect your organization:</b></p><p>The new license request functionality will enable users to request a Clipchamp Premium license from inside the Clipchamp app. These license requests will be highlighted in the Microsoft Admin Center, where you will be able to easily approve or deny the requests from a centralized place. Users must have access to Clipchamp in order to request a Clipchamp Premium Add-On license.&nbsp;</p><p>To learn more about managing license requests see: <a href=\"https://learn.microsoft.com/microsoft-365/commerce/licenses/manage-license-requests?view=o365-worldwide\" target=\"_blank\">Manage self-service license requests in the Microsoft 365 admin center.</a>&nbsp;</p><p><b>What you need to do to prepare:</b></p><p>You may consider updating your training and documentation as appropriate.</p>",
       "ContentType": "html"
     },
@@ -15448,48 +14761,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>A default company-wide organization will be available in Viva Goals to help users easily get started with Goals without going through the organization creation step. Viva Goals admins and IT admins will have control to change the default organization or turn it off.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?rtc=1%26filters=&amp;searchterms=165683\" target=\"_blank\">165683</a></p>\n<p><b>When this will happen:</b></p><p>Standard Release: We will begin rolling out early January 2024 and expect to complete by late January 2024.</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>For new Viva Goals customers, A company-wide organization will be available by default when getting started with Viva Goals. All users of the tenant with a valid Viva Goals license will have access to this organization. Users can now get started with goals without having to create a new organization. Viva Goals admins and IT admins will have the ability to change the company-wide organization or turn it off. For existing customers, company-wide organization will be turned on based on the admin's selection.</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1fIw5?ver=b1e5\" style=\"width: 400px;\"><br></p>\n<p><b>What you need to do to prepare:</b></p>\n<p>You may review your settings to ensure the appropriate experience for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "165683"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC695746",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2023-12-06T00:40:28.417Z",
-    "Services": [
-      "Microsoft Viva"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-12-06T00:39:56Z",
-    "Tags": [
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Viva Goals - A Default company-wide organization will be available by January 2024.",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>We are excited to share some upcoming updates to the user app request feature in the Teams Admin Center aimed at enhancing the request administration process. Here are the key changes:<br></p><ol><li>User Requests Tab: A new 'User Requests' tab is now available on the App Details page. It provides detailed information about each request, including the requester’s name, email, job title, and request date, allowing for more informed decisions about app approvals.\n</li><li>Dashboard Widget: A widget on the main Teams Admin Center dashboard now shows the most requested apps, giving a clear view of user preferences and helping you prioritize app management tasks.\n</li><li>Improved App Request Browsing: The 'Browse by app requests' filter has been added to the 'Manage apps' page, making it simpler to view app requests by demand.</li></ol><p><b>When this will happen:</b>\n</p><p>Standard Release: We will begin rolling out early December 2023 and expect to complete by early February 2024.</p><p>\n</p><p><b>How this will affect your organization:</b>\n</p><p>These enhancements are intended to simplify your workflow and are only applicable to the administrative side of the Teams Admin Center. The end-user experience and the feature's On/Off status remain unchanged. If the user app request feature was turned off via PowerShell, it will stay off.</p><p>\n</p><p><b>What you need to do to prepare:</b>\n</p><p>You may consider updating your training and documentation as appropriate.</p>",
       "ContentType": "html"
     },
@@ -15510,47 +14781,6 @@
       "Admin impact"
     ],
     "Title": "Enhanced User Request Management and Navigation in Teams Admin Center",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p style=\"\">Accessibility improvements to SharePoint&nbsp;tables within the text webpart allow users to specify row and column layouts, as well as provide alternative text labels for screen readers.&nbsp;<br></p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?rtc=1&amp;searchterms=167892&amp;filters=&amp;searchterms=184511\" target=\"_blank\">184511</a></p>\n<p><b>When this will happen:</b></p><p>This update will begin rolling out in early January 2024 and should complete for all customers by the end of January 2024.</p><p><b>How this will affect your organization:</b></p><p>Authors of SharePoint pages can now make their tables accessible by providing custom labels and indicating heading rows. \n</p><p>To access the table accessibility menu, right click into any cell. Here, you can input an accessibility title, and specify which rows or columns function as headers. This is useful to screen reader users because it allows them to know how your data is categorized. You can see this menu in Figure 1 below.&nbsp;</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1fcWs?ver=120f\" style=\"width: 400px;\"><br></p><p>When you apply a style to your table, the rows and columns that function as headers in that style are marked accordingly automatically. You can give your table an accessibility label to communicate context of your table. This label will only surface when read aloud by the screen reader. Both features can be seen implemented in figure 2 below.&nbsp;</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1f7TT?ver=4244\" style=\"width: 400px;\"><br></p><p><b>What you need to do to prepare:</b></p><p>You do not need to do anything to prepare for this update, but you may want to let your users know about this improvement.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "184511"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC695492",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2023-12-04T23:43:51.913Z",
-    "Services": [
-      "SharePoint Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-12-04T23:43:33Z",
-    "Tags": [
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "SharePoint Tables: New Accessibility Labels",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -15994,57 +15224,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated November 27, 2023: We have updated the rollout timeline below. Thank you for your patience.</p><p>Set your work location for the day in Microsoft Teams so your team can learn about your availability for in-office and remote collaboration. </p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=125375\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">125375</a><br></p><p><b>When this will happen:</b><br></p><p>Targeted Release and Preview: We have begun rollout and expect to complete rollout by late May.</p><p>Standard Release: We will begin rolling out in early June 2023 and expect to complete rollout by late January 2024 (previously early November).</p><p><b>How this will affect your organization:</b><br></p><p>We are highlighting Microsoft 365 features that will bring transparency and focus on where you and your colleagues are working: work hours and location. These features will appear in Outlook on the web and Teams and bring the flexibility of enabling users to share where they are working. You’re already accustomed to managing and sharing your schedule in Outlook and Teams. With these additional features, Microsoft 365 is now location-aware – giving more information to you and colleagues to work better together.</p><p>Microsoft 365 already helps you manage and share your work schedule and availability. The work hours and location features allow you to specify more details about your work schedule and preferences, like from where you’re working (remotely or in office) and whether you work different hours on different days.&nbsp;</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW14BEf?ver=0356\" style=\"width: 400px;\" \"alt=\"profile\" view=\"\" in=\"\" teams\"=\"\"><br></p><p>Teams gives you the flexibility to easily change the location for that day, without impacting the rest of your week. For example, after a few hours in the office, you decide to finish up your work from home. To change your location from Teams, simply click on your profile on the top right corner of the Teams window, view your account settings menu and change your work location for that day. </p><p>You can also update your location from any device with Teams. If you want to quickly look up where someone is working from, you can view their location in their profile card next to their availability.</p><p><b>What you need to do to prepare:</b></p><p>There is no action required from you at this time. You may want to notify your users of this update.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "125375"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"125375\":[{\"RoadmapId\":125375,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-08-27T09:31:24.0586739Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":125375,\"Platform\":\"iOS\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-08-27T09:31:24.0586737Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":125375,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-08-27T09:31:24.0586734Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":125375,\"Platform\":\"Android\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-08-27T09:31:24.0586731Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":125375,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2023-08-27T09:31:24.0586742Z\",\"LatestRing\":\"StandardRelease\"}]}"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Android, Desktop, iOS, Mac"
-      },
-      {
-        "Name": "BlogLink",
-        "Value": "https://techcommunity.microsoft.com/t5/microsoft-365-blog/coordination-is-the-key-to-spontaneity-with-these-features-in/ba-p/3814143"
-      }
-    ],
-    "EndDateTime": "2024-03-04T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC561188",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2023-11-27T20:57:02.023Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-05-26T00:34:42Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: Set your Work Hours and Location",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated November 27, 2023: We have updated the content below with additional information. Thank you for your patience.</p><p>﻿We are thrilled to announce exciting product enhancements to our import and export Excel experiences in Shifts designed to empower frontline managers to achieve more.&nbsp;</p><p>Here’s what this feature includes: \n</p><p>Import a schedule includes time off and open shifts:\n</p><ul><li>Frontline managers can import assigned shifts, time offs and open shifts through the same Excel file into Shifts. There will be different worksheets for those 3 entities that managers will require to fill in according to what is wished to be imported. \n</li><li>To respect Shifts settings, open shifts won’t be synced to Shifts calendar when imported through Excel whenever the open shift setting is disabled for a team.  \n</li></ul><p>\n</p><p>'Export in a format that can be imported’ includes open shifts and time-offs:&nbsp;<br></p><ul><li>Frontline managers can export, for a specific period, a schedule that might include assigned shifts, time offs and open shifts.\n</li></ul><p>This message is associated with Microsoft 365 Roadmap ID: <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=169705\" target=\"_blank\">169705</a></p><p><b>When this will happen:</b></p><p>We will begin rolling out mid-November 2023 and expect to complete by mid-December 2023.</p><p><b>How this will affect your organization:</b></p><p><i>Import and export time offs and open shifts using&nbsp;Excel.</i></p><p style=\"line-height: 1.5;\">Until now, Frontline managers have only been able to import assigned shifts from Excel into Shifts. Now, we have expanded the supported entities by providing managers with more flexibility when creating schedules. This feature launch is being carried out in multiple phases.&nbsp;</p><p style=\"line-height: 1.5;\">Here’s what this feature includes:&nbsp;</p><p style=\"line-height: 1.5;\">Import a schedule includes time off and open shifts:</p><ul><li style=\"line-height: 1.5;\">Frontline managers can import assigned shifts, time offs and open shifts through the same Excel file into Shifts. There will be different worksheets for those 3 entities that managers will require to fill in according to what is wished to be imported.&nbsp;</li><li style=\"line-height: 1.5;\">To respect Shifts settings, open shifts won’t be synced to Shifts calendar when imported through Excel whenever the open shift setting is disabled for a team.&nbsp;</li></ul><p>Prevent duplication of groups:</p><p>Frontline managers can select groups in the import sample file from a pre-populated list with the existing available schedule groups in the team.&nbsp;</p><p>‘Export in a format that can be imported’ includes open shifts and time-offs:</p><p>&nbsp;Frontline managers can export, for a specific period, a schedule that might include assigned shifts, time offs and open shifts.&nbsp;</p><p><b>What you need to do to prepare:</b></p><p>There is nothing you need to do to prepare for these changes, besides you may want to notify your frontline manager about these updates.</p>",
       "ContentType": "html"
     },
@@ -16167,52 +15346,6 @@
       "Admin impact"
     ],
     "Title": "Data Loss Prevention - Out-of-box Advanced Hunting queries for Data Loss Prevention incidents in Microsoft 365 Defender",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p style=\"\">Updated November 17, 2023: We have updated the content below with additional information.</p><p style=\"\">In the same way that you can open a Word, PowerPoint, or Excel file in their respective desktop apps, you can now open any file in its desktop app, edit it, and the changes will sync to OneDrive. From OneDrive’s My Files or Sharepoint’s Documents, users can now select Open In App to open a file in its native app.</p><p style=\"\"><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1eTpF?ver=a806\" style=\"width: 400px;\"></p><p style=\"\"><b>Note: </b>this feature is powered by OneDrive’s Sync Client – it requires having it installed on the user’s machine. In case it’s not running it will start it.&nbsp;</p><p style=\"\">This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?rtc=1%26filters=&amp;searchterms=124813\" target=\"_blank\">124813</a><br></p>\n\n<p><b>When this will happen:</b></p><p>Targeted Release: We will begin rolling out in mid-November 2023.</p><p>Standard Release: We will begin rolling out in early December 2023 and expect to complete by late January 2024.</p>\n\n<p><b>How this will affect your organization:</b><br></p>\n\n<p>Users can open any file in its desktop app, edit it, and the changes will sync to OneDrive.</p><p><b>Note:</b>&nbsp;You may encounter unexpected behavior when opening a file that depends on other files. We recommend syncing the containing folder using <a href=\"https://prod.support.services.microsoft.com/en-us/office/add-shortcuts-to-shared-folders-in-onedrive-for-work-or-school-d66b1347-99b7-4470-9360-ffc048d35a33?preview=true\" target=\"_blank\">Add shortcut</a> and trying again.</p>\n<p><b>What you need to do to prepare:</b><br></p>\n<p>You may consider updating your training and documentation as appropriate.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "124813"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      },
-      {
-        "Name": "BlogLink",
-        "Value": "https://techcommunity.microsoft.com/t5/microsoft-onedrive-blog/unveiling-the-next-generation-of-onedrive/ba-p/3935612"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC689500",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2023-11-17T23:16:31.037Z",
-    "Services": [
-      "OneDrive for Business"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-11-14T01:32:44Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "OneDrive Open in App availablility",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -16858,57 +15991,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated October 16, 2023: We have updated the rollout timeline below. Thank you for your patience.</p><p>The <a href=\"https://learn.microsoft.com/microsoftteams/use-real-time-telemetry-to-troubleshoot-poor-meeting-quality\" target=\"_blank\">Real-Time Analytics feature</a> in the Teams admin center (TAC)  allows IT admins to view their users' meetings and identify issues related to audio, video, content sharing, and network connectivity. As an admin, you can use this information to investigate and address any problems with the meeting experience while the meeting is ongoing.\n<p></p><p style=\"\">In the current public preview, Real-time telemetry is only stored for users when administrators explicitly subscribe (go to user's meeting history and click on specific meeting) to it during ongoing meetings. This prevents admins from troubleshooting the issue if the meeting is already over and telemetry is not captured explicitly.\n</p><p style=\"\">However, with this new update, Real-time telemetry will be captured and stored by default for all users with Teams premium licenses, even if admins do not explicitly subscribe to it in the Teams admin center.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=141108\" target=\"_blank\">141108</a></p>\n\n<p><b>When this will happen:</b><br></p>\n\n<p>Rollout will begin in mid-January 2024 (previously late October 2023) and is expected to be complete by late January 2024 (previously mid-November 2023).</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>This feature is part of a Teams premium add-on SKU and only users with Teams premium licenses will have their Real-time telemetry stored for up to seven days.</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1bBxE?ver=4d90\" style=\"width: 400px;\"><br></p>\n<p><b>What you need to do to prepare:</b></p><p>No action is required at this time from admins.</p><p><br></p></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "141108"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"141108\":[{\"RoadmapId\":141108,\"Platform\":\"Web\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0211578Z\",\"LatestRing\":null},{\"RoadmapId\":141108,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0211579Z\",\"LatestRing\":null}]}"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      },
-      {
-        "Name": "ExternalLink",
-        "Value": "https://learn.microsoft.com/microsoftteams/use-real-time-telemetry-to-troubleshoot-poor-meeting-quality"
-      }
-    ],
-    "EndDateTime": "2024-03-04T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC675498",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2023-10-16T20:38:38.667Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-09-16T00:24:55Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "Feature update",
-      "User impact"
-    ],
-    "Title": "Microsoft Teams: Extended Real-time Telemetry Retention Up To Seven Days",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Coming soon, Adaptive Protection in Microsoft Purview will be rolling out public preview of HR resignation date as a condition for risk level.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=124972\" target=\"_blank\">124972</a></p>\n<p><b>When this will happen:</b></p>\n\n<p>Rollout will begin at the end of November and is expected to be complete by mid-December.</p>\n\n<p><b>How this will affect your organization:</b></p>\n\n<p>When the HR connector has been configured, admins with appropriate permissions can now select the HR resignation date as a condition to assign a minor, moderate, or elevated risk level. For example, an admin can configure the elevated risk level to be assigned when an HR resignation date is sent via the HR connector.&nbsp;</p>\n<p><b>What you need to do to prepare:</b></p>\n<p>No action is required for this update. To configure user’s risk level for Adaptive Protection, admins can visit Insider Risk Management &gt; Adaptive Protection (preview) &gt; risk levels for Adaptive Protection.</p><p>Microsoft Purview Insider Risk Management correlates various signals to identify potential malicious or inadvertent insider risks, such as IP theft, data leakage, and security violations. Insider Risk Management enables customers to create policies based on their own internal policies, governance, and organizational requirements. Built with privacy by design, users are pseudonymized by default, and role-based access controls and audit logs are in place to help ensure user-level privacy.</p><p>You can access the Insider Risk Management solution in the <a href=\"https://purview.microsoft.com/compliance\" target=\"_blank\">Microsoft Purview compliance portal.</a></p><p>Learn more: Help dynamically mitigate risks with <a href=\"https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection#risk-levels\" target=\"_blank\">Adaptive Protection (preview) | Microsoft Learn</a></p><p><br></p>",
       "ContentType": "html"
     },
@@ -17402,49 +16484,6 @@
       "Admin impact"
     ],
     "Title": "Conditional access policy enforcement for Office Scripts",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated September 12, 2023: To ensure organizations have time to make necessary changes we are updating the timing of this change from September 15, 2023, to January 31, 2024.</p><p>This is an important message for customers who use Stream (Classic) or Yammer to create and host Stream live events. Microsoft will retire the Stream live events service on January 31, 2024. Microsoft Teams live events, with encoder support, will become your new platform to host and run live events.  \n</p><p>\n</p><p>For several years Microsoft has offered two venues for hosting live events -- Stream and Teams. While both services allow you to create live events, each had a slightly different set of capabilities and limitations. Our goal is to provide you with a single, simple, robust solution for hosting live events.<br></p><p><a href=\"https://support.microsoft.com/office/schedule-a-teams-live-event-7a9ce97c-e1cd-470f-acaf-e6dfc179a0e2\" target=\"_blank\">Teams live events</a> with encoder support is the replacement service to Stream live events. Teams live events is now rolling out the general availability of encoder support (see Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?rtc=1%26filters=&amp;searchterms=84960\" target=\"_blank\">84960</a>), which will allow you to create, host and produce live events with the same functionality that you get with Stream. Teams live events will support 10,000 simultaneous event attendees and Real-Time Messaging Protocol input (RTMP-In). RTMP-in lets you create highly polished events that feature combined live streams, screen overlays, on-screen data and more.&nbsp;</p><p>Users will also get two other benefits from using Teams live events: </p><ol><li>The option to allow public anonymous attendees to attend Teams encoder live events.</li><li>Transcription (RTMP transcript only) and recording are available for both public and in-tenant encoder events. With in-tenant encoder events, the organizer will have ability to edit the video recording and upload it to SharePoint so that attendees who missed the event can view it.</li></ol><p>\n</p><p>If you use Yammer to create and host live events you will be able to continue using Stream Live Events in Yammer until September 15, 2023. Additionally, you’ll soon be able to select Teams within Yammer to run your event.&nbsp;</p><p><b>When this will happen:</b> </p><ul><li>Teams live events with encoder support began its general availability roll out on February 1, 2023, and we expect the rollout to complete by February 15, 2023.  <br></li><li>The Stream live events service will be retired on January 31, 2024.<br></li></ul><p><b>How this will affect your organization:</b> &nbsp;<br></p><p>We recommend that you begin using the Teams live events to schedule and host live events.&nbsp;<br></p><p>If your organization has Stream live events scheduled beyond January 31, 2024, please reschedule those events. Any Stream live events scheduled after January 31, 2024 will be automatically removed.&nbsp;<br></p><p>For more information see the links below:<br></p><ul><li><a href=\"https://aka.ms/StreamLiveEventsRetirement\" target=\"_blank\">Stream live events replacement service FAQs</a><br></li><li><a href=\"https://support.microsoft.com/office/schedule-a-teams-live-event-7a9ce97c-e1cd-470f-acaf-e6dfc179a0e2\" target=\"_blank\">How to set up a Teams live event</a><br></li><li><a href=\"https://support.microsoft.com/office/produce-a-teams-live-event-using-teams-encoder-b0026c9d-fd37-4bb3-bffc-6961f221fbe9\" target=\"_blank\">How to produce a Teams live event</a><br></li><li><a href=\"https://learn.microsoft.com/microsoftteams/teams-live-events/plan-for-teams-live-events\" target=\"_blank\">Teams live events capabilities and limitations</a></li></ul>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "84960"
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Web"
-      }
-    ],
-    "EndDateTime": "2024-03-04T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC513601",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2023-09-12T19:31:46.093Z",
-    "Services": [
-      "Microsoft Stream"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2023-02-09T21:20:45Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Stream live events replacement service",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
