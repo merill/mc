@@ -12,6 +12,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Run after site is updated
+  workflow_run:
+      workflows: ["update-mc"]
+      types:
+        - completed
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
