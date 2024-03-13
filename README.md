@@ -1,22 +1,14 @@
-# next-template
+# Microsoft 365 Message Center Archive
 
-A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
+This site is a simple archive of the Microsoft 365 Message Center. It is updated daily and provides a simple way to search and view the Message Center posts.
 
-## Usage
+I created this site so I can link to it from my weekly newsletter [Entra.News](https://entra.news) so folks could ready the message center post without having to log into the admin center.
 
-```bash
-npx create-next-app -e https://github.com/shadcn/next-template
-```
+> [!CAUTION]  
+> This site is for reference only. Always refer to your tenant's Microsoft 365 message center post for the most accurate information that is relevant to your tenant.
+> * Not all posts are visible to all tenants.
+> * This archive uses a tenant that has a Microsoft 365 E5 subscription. Your tenant may have different features and updates. 
 
-## Features
+## Feedback
 
-- Next.js 13 App Directory
-- Radix UI Primitives
-- Tailwind CSS
-- Icons from [Lucide](https://lucide.dev)
-- Dark mode with `next-themes`
-- Tailwind CSS class sorting, merging and linting.
-
-## License
-
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+If you have any feedback or suggestions, please feel free to reach out to me on Twitter [@merill](https://twitter.com/merill) or [LinkedIn](https://linkedin.com/in/merill).
