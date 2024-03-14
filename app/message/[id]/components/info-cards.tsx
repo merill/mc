@@ -35,8 +35,7 @@ export default function InfoCards(props: { id: string }) {
                         </CardHeader>
                         <CardContent>
                             <div className="text-2xl font-bold flex">{msg?.Id} </div>
-                            <p className="text-xs text-muted-foreground">
-                            </p>
+                            <p className="text-xs text-muted-foreground">View in Message Center</p>
                         </CardContent>
                     </a>
                 </Card>
@@ -107,8 +106,7 @@ export default function InfoCards(props: { id: string }) {
                             </CardHeader>
                             <CardContent>
                                 <div className="text-2xl font-bold">{roadmapId}</div>
-                                <p className="text-xs text-muted-foreground">
-                                </p>
+                                <p className="text-xs text-muted-foreground">View in M365 Roadmap</p>
                             </CardContent>
                         </a>
                     </Card>

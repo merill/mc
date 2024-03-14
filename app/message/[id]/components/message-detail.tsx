@@ -2,8 +2,6 @@ import { getMessageData, getMessageSummary } from "@/lib/messages"
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"

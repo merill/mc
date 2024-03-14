@@ -1,4 +1,3 @@
-import {MessagesTable} from "@/components/messages-table";
 import MessagesTable2 from "./messages-table/messages-table";
 
 export default function IndexPage() {
@@ -14,7 +13,6 @@ export default function IndexPage() {
       </div>
 
       <div className="">
-        {/* <MessagesTable /> */}
         <MessagesTable2 />
       </div>
     </section>

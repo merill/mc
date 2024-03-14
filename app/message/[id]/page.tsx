@@ -1,5 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next"
-import { getAllMessageIds } from "@/lib/messages"
+import { getAllMessageIds, getMessageSummary } from "@/lib/messages"
 import MessageDetail from "@/app/message/[id]/components/message-detail";
 import { getMessageData } from "@/lib/messages"
 
@@ -16,7 +16,7 @@ export default function Page({ params }: Props) {
             <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
                 <div className="flex flex-col items-start gap-2">
                     <h1 className="text-3xl font-extrabold md:text-4xl">
-                        {msg?.Title}</h1>
+                    {msg?.Id} - {msg?.Title}</h1>
 
                         <MessageDetail id={params.id} />
 
@@ -31,9 +31,15 @@ export async function generateMetadata(
     parent: ResolvingMetadata
   ): Promise<Metadata> {
     const msg = getMessageData(params.id);
-   
+    //get message summary if summary is empty the return detail
+    var summary = getMessageSummary(msg);
+    if(summary === ""){
+      summary = msg?.Body?.Content || "";
+    }
+
     return {
-      title: msg?.Id,
+      title: msg?.Id + " - " + msg?.Title,
+      description: summary
     }
   }
   
