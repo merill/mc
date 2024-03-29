@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>Coming soon: We are expanding the scope of the <code>Get-CsOnlineUser</code> cmdlet to include all unlicensed users in the Microsoft Teams PowerShell Module. We are also expanding the scope of the Teams admin center (TAC) <i>Manage user</i>s page to include all unlicensed users.\n</p><p><b>When this will happen:</b>\n</p><p>We will update <code>Get-CsOnlineUser</code> starting with the upcoming Teams PowerShell Module versions 6.1.1 preview (scheduled for mid-April 2024).&nbsp;<br></p><p>General Availability (Worldwide): We will begin rolling out the changes to the <code>Get-CsOnlineUser</code> cmdlet in all existing Teams PowerShell Module versions and TAC's Manage Users Page in late April 2024 and expect to complete by mid-May 2024.\n</p><p><b>How this will affect your organization:</b><br></p><ul><li>When using Teams admin center's <i>Manage users</i> page: \n<ul><li>Before the rollout, unlicensed users who did not have a valid Teams license were displayed in the output only for 30 days after license removal. After the rollout, the Teams admin center's Manage users page will show unlicensed users after the initial 30 days and also include unlicensed users who never had a valid Teams license.\n</li></ul></li><li>When using the <code>Get-CsOnlineUser</code> cmdlet in Teams PowerShell Module without the <code>-identity</code> parameter, we are introducing these updates: \n<ul><li>Before the rollout, unlicensed users who did not have a valid Teams license were displayed in the output of the <code>Get-CsOnlineUser</code> cmdlet for 30 days after license removal.  After the rollout, <code>Get-CsOnlineUser</code> will show unlicensed users after the initial 30 days and also include unlicensed users who never had a valid Teams license.\n</li><li>The <code>AccountType</code> value <code>Unknown</code> is being renamed to <code>IneligibleUser</code> and will include users who do not have a valid Teams license (exceptions: <code>Guest</code>, <code>SfbOnPremUser</code>, and <code>ResourceAccount</code>).\n</li><li>You can exclude users with the <code>AccountType</code> as <code>IneligibleUser</code> from the output with the <code>AccountType</code> filter.\n<ul><li>For example: <code>Get-CsOnlineUser -Filter {AccountType -ne 'IneligibleUser'}</code>\n</li></ul></li></ul></li><li>When <code>Get-CsOnlineUser</code> is used with the <code>-identity</code> parameter, we are introducing these updates:\n<ul><li>You can also use <code>UPN</code>, <code>Alias</code>, and <code>SIP Address</code> with the <code>-identity</code> parameter to obtain the information for a specific unlicensed user.\n</li></ul></li></ul><p>For more details, please refer to documentation:&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/teams/get-csonlineuser?view=teams-ps\" target=\"_blank\">Get-CsOnlineUser (MicrosoftTeamsPowerShell) | Microsoft Learn</a>\n</p><p><b>What you need to do to prepare:</b>\n</p><p>We recommend you get familiar with these changes and if required, make corresponding updates to your existing scripts to utilize the benefits of these updates.\n</p><p>This rollout will happen automatically by the specified date with no admin action required. You may want to notify your users about this change and update any relevant documentation as appropriate.</p>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Teams is expanding the scope of the Get-CsOnlineUser cmdlet and Teams Admin Center's Manage Users Page to include all unlicensed users. The changes will roll out in late April 2024 and will affect the Teams admin center's Manage Users Page and the Get-CsOnlineUser cmdlet in Teams PowerShell Module. Users who do not have a valid Teams license will be displayed in the output of the Get-CsOnlineUser cmdlet and the Teams admin center's Manage Users Page after the initial 30 days and will also include unlicensed users who never had a valid Teams license. No admin action is required, but users may want to notify their users about this change and update any relevant documentation as appropriate."
+    }
+  ],
+  "EndDateTime": "2024-06-30T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC761236",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2024-03-29T01:08:45.577Z",
+  "Services": [
+    "Microsoft Teams"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-03-29T01:08:38Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Teams:Updates to Get-CsOnlineUser cmdlet in Teams PowerShell Module and Teams Admin Center’s Manage Users Page",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
