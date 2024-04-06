@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>In Microsoft Teams, we have introduced a new Tenant Federation setting to block all subdomains of domains in the federation Block list. If your organization is using a Block list to protect your users from malicious or other domains, you should enable this new setting to also protect users from all related subdomains without manually adding all subdomains to the Block list. For example, if you have contoso.com on your Block list and enable this setting, the subdomains spam.contoso.com and marketing.contoso.com will also be blocked.\n</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): We began rolling out mid-March 2024 and completed in early April 2024.\n</p><p>How this will affect your organization:\n</p><p>To enable this setting, use this PowerShell cmdlet:\n</p><code>Set-CsTenantFederationConfiguration -BlockAllSubdomains $True</code>\n<p></p><p>The new <code>-BlockAllSubdomains</code> parameter will be disabled by default (no blocking of subdomains), so there will be no impact to your organization if admins take no action. \n</p><p>If the <code>-BlockAllSubdomains</code> parameter is set to <code>$True</code>, all new communication to and from subdomains in the Block list will be blocked. Existing 1:1 chats with users from blocked subdomains will be disabled. In existing group chats with users from blocked subdomains, the users from the blocked subdomains will be removed from the group chat.\n</p><p>This new setting will not impact organizations who are using closed federation and have configured the list of allowed domains.\n</p><p>What you need to do to prepare:\n</p><p>If your organization is using a federation Block list, you should review the Block list domains and determine if a legitimate reason exists for not blocking all subdomains before you enable this new setting. Most organizations should enable this setting to protect users from all related subdomains without manually adding all subdomains to the Block list.\n</p><p><i>Learn more</i></p>\n<ul><li>PowerShell cmdlet configuration: <a href=\"https://learn.microsoft.com/powershell/module/skype/set-cstenantfederationconfiguration?view=skype-ps\" target=\"_blank\">Set-CsTenantFederationConfiguration | Microsoft Learn</a>\n</li><li>Manage external communication: <a href=\"https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat?tabs=organization-settings\" target=\"_blank\">IT Admins - Manage external meetings and chat with people and organizations using Microsoft identities - Microsoft Teams | Microsoft Learn</a>\n</li><li><a href=\"https://www.powershellgallery.com/packages/MicrosoftTeams/6.1.0\" target=\"_blank\">PowerShell Gallery | MicrosoftTeams 6.1.0</a>\n</li></ul><p></p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Teams has a new setting to block all subdomains of domains in the federation Block list. This setting is disabled by default and can be enabled using a PowerShell cmdlet. It affects new communications and existing chats with users from blocked subdomains. Rollout began mid-March 2024."
+    }
+  ],
+  "EndDateTime": "2024-05-17T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC770792",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2024-04-05T22:19:11.537Z",
+  "Services": [
+    "Microsoft Teams"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-04-05T22:18:54Z",
+  "Tags": [
+    "New feature",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Teams: New tenant federation setting to block all subdomains of domains in blocklist",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
