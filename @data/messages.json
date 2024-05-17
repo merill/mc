@@ -7966,7 +7966,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"373555\":[{\"RoadmapId\":373555,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-03-23T05:32:52.3277469Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":373555,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.020764Z\",\"LatestRing\":null},{\"RoadmapId\":373555,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-23T05:32:52.3277474Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"373555\":[{\"RoadmapId\":373555,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.020764Z\",\"LatestRing\":null},{\"RoadmapId\":373555,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-03-23T05:32:52.3277469Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":373555,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-23T05:32:52.3277474Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -10898,43 +10898,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>In Microsoft Teams, we have introduced a new Tenant Federation setting to block all subdomains of domains in the federation Block list. If your organization is using a Block list to protect your users from malicious or other domains, you should enable this new setting to also protect users from all related subdomains without manually adding all subdomains to the Block list. For example, if you have contoso.com on your Block list and enable this setting, the subdomains spam.contoso.com and marketing.contoso.com will also be blocked.\n</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): We began rolling out mid-March 2024 and completed in early April 2024.\n</p><p>How this will affect your organization:\n</p><p>To enable this setting, use this PowerShell cmdlet:\n</p><code>Set-CsTenantFederationConfiguration -BlockAllSubdomains $True</code>\n<p></p><p>The new <code>-BlockAllSubdomains</code> parameter will be disabled by default (no blocking of subdomains), so there will be no impact to your organization if admins take no action. \n</p><p>If the <code>-BlockAllSubdomains</code> parameter is set to <code>$True</code>, all new communication to and from subdomains in the Block list will be blocked. Existing 1:1 chats with users from blocked subdomains will be disabled. In existing group chats with users from blocked subdomains, the users from the blocked subdomains will be removed from the group chat.\n</p><p>This new setting will not impact organizations who are using closed federation and have configured the list of allowed domains.\n</p><p>What you need to do to prepare:\n</p><p>If your organization is using a federation Block list, you should review the Block list domains and determine if a legitimate reason exists for not blocking all subdomains before you enable this new setting. Most organizations should enable this setting to protect users from all related subdomains without manually adding all subdomains to the Block list.\n</p><p><i>Learn more</i></p>\n<ul><li>PowerShell cmdlet configuration: <a href=\"https://learn.microsoft.com/powershell/module/skype/set-cstenantfederationconfiguration?view=skype-ps\" target=\"_blank\">Set-CsTenantFederationConfiguration | Microsoft Learn</a>\n</li><li>Manage external communication: <a href=\"https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat?tabs=organization-settings\" target=\"_blank\">IT Admins - Manage external meetings and chat with people and organizations using Microsoft identities - Microsoft Teams | Microsoft Learn</a>\n</li><li><a href=\"https://www.powershellgallery.com/packages/MicrosoftTeams/6.1.0\" target=\"_blank\">PowerShell Gallery | MicrosoftTeams 6.1.0</a>\n</li></ul><p></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams has a new setting to block all subdomains of domains in the federation Block list. This setting is disabled by default and can be enabled using a PowerShell cmdlet. It affects new communications and existing chats with users from blocked subdomains. Rollout began mid-March 2024."
-      }
-    ],
-    "EndDateTime": "2024-05-17T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC770792",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-04-05T22:19:11.537Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-04-05T22:18:54Z",
-    "Tags": [
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: New tenant federation setting to block all subdomains of domains in blocklist",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p style=\"\">Updated April 4, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p style=\"\">The Microsoft Outlook for iOS Settings page is being updated so that you can find the settings you need more efficiently.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=185388\" target=\"_blank\">185388</a></p><p><b>When this will happen:</b></p><p>Worldwide, GCC, GCC High, DoD: We will begin rolling out in mid-March 2024 and expect to complete by mid-April 2024 (previously late March).</p><p><b>How this will affect your organization:</b></p><p>With this update, only the placement of various settings within the Settings page will change. However, there will be no changes to the functionality of these settings.</p><p>Notable changes include:</p><ul><li>Help &amp; Feedback is moving from the top of the Settings page to the bottom.</li><li>You will now have to select Accounts on the top-level Settings page to see all of your accounts. In that account list, storage accounts have been merged with their associated mail account. So, if you have both your Microsoft 365 email account and your OneDrive account connected to the Outlook app, you will now just see one entry in the account list that includes both the email and storage account settings.</li></ul><p><br></p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1hqKb?ver=1ab2\" style=\"width: 350px;\"><br></p><p><br></p><p><b>What you need to do to prepare:</b><br></p><p>There is no action needed to prepare for this change. You may want to notify your users about this change and update any relevant documentation as appropriate.</p>",
       "ContentType": "html"
     },
@@ -11438,7 +11401,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"163363\":[{\"RoadmapId\":163363,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206516Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206515Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206514Z\",\"LatestRing\":null},{\"RoadmapId\":163363,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206513Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206512Z\",\"LatestRing\":null},{\"RoadmapId\":163363,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206518Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"163363\":[{\"RoadmapId\":163363,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206513Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206512Z\",\"LatestRing\":null},{\"RoadmapId\":163363,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206516Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206515Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206514Z\",\"LatestRing\":null},{\"RoadmapId\":163363,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206518Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -11488,7 +11451,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"163363\":[{\"RoadmapId\":163363,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206516Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206515Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206514Z\",\"LatestRing\":null},{\"RoadmapId\":163363,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206513Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206512Z\",\"LatestRing\":null},{\"RoadmapId\":163363,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206518Z\",\"LatestRing\":\"StandardRelease\"}],\"163364\":[{\"RoadmapId\":163364,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209399Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163364,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209398Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163364,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209397Z\",\"LatestRing\":null},{\"RoadmapId\":163364,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209396Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163364,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209395Z\",\"LatestRing\":null},{\"RoadmapId\":163364,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209401Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"163363\":[{\"RoadmapId\":163363,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206513Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206512Z\",\"LatestRing\":null},{\"RoadmapId\":163363,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206516Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206515Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163363,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206514Z\",\"LatestRing\":null},{\"RoadmapId\":163363,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0206518Z\",\"LatestRing\":\"StandardRelease\"}],\"163364\":[{\"RoadmapId\":163364,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209399Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163364,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209398Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163364,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209397Z\",\"LatestRing\":null},{\"RoadmapId\":163364,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209396Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":163364,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209395Z\",\"LatestRing\":null},{\"RoadmapId\":163364,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209401Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -16728,7 +16691,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"377670\":[{\"RoadmapId\":377670,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.020971Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":377670,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209711Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":377670,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209715Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"377670\":[{\"RoadmapId\":377670,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209711Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":377670,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.020971Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":377670,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0209715Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
