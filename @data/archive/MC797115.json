@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>We will be retiring the feature <i>Honeytoken was queried via SAM-R</i> from Microsoft Defender for Identity on June 30, 2024. Instead, we recommend using <a href=\"https://security.microsoft.com/v2/advanced-hunting\" target=\"_blank\">hunting activities</a> to generate custom detection when required.\n</p><p><b>How this will affect your organization:</b>\n</p><p>You are receiving this message because our reporting indicates one or more users in your organization are using Microsoft Defender for Identity.\n</p><p>After this feature retires, honeytoken users will no longer receive alerts when honeytoken is queried using SAM-R protocol.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>Instead of using <i>Honeytoken was queried via SAM-R alert</i>, we recommend using this advanced hunting query to generate custom detection based on your environment configuration:\n</p><p><code>let users = pack_array(\"User1_SID\", \"User2_SID\");\n</code></p><p><code>IdentityQueryEvents</code></p><p><code>| where ActionType =='SAMR query'</code></p><p><code>| extend TargetSid = AdditionalFields.<b>'TargetAccountSid'</b></code></p><p><code>| extend tostring(TargetSid)</code></p><p><code>| where isnotempty(TargetSid) and isnotempty(AccountUpn)</code></p><p><code>| where TargetSid in (users)</code>\n</p><p>Learn more:\n</p><ul><li><a href=\"https://learn.microsoft.com/defender-for-identity/entity-tags\" target=\"_blank\" style=\"\">Entity tags in Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn</a>\n</li><li><a href=\"https://learn.microsoft.com/defender-xdr/custom-detection-rules\" target=\"_blank\">Create and manage custom detection rules in Microsoft Defender XDR - Microsoft Defender XDR | Microsoft Learn</a>\n</li></ul><p></p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "The \"Honeytoken was queried via SAM-R\" feature in Microsoft Defender for Identity will retire on June 30, 2024. Users should use advanced hunting queries for custom detection. After retirement, alerts for honeytoken queries using SAM-R protocol will stop. Users need to prepare by adapting to the recommended query method."
+    }
+  ],
+  "EndDateTime": "2024-07-31T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC797115",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2024-05-30T23:03:35.813Z",
+  "Services": [
+    "Microsoft Defender XDR"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-05-30T23:02:28Z",
+  "Tags": [
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Microsoft Defender for Identity: \"Honeytoken was queried via SAM-R alert\" retires June 30, 2024",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
