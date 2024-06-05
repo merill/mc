@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b>Note:</b> If your organization does not use custom applications or your custom applications do not take a dependency on the string format of the ‘ipaddr’ claim from the access token or id token, there should not be any impact and no action is required.”</p><p>Action may be required: The format of IP addresses containing IPV4 embedded in IPV6 addresses within token claims is changing.\n</p><p>The Microsoft identity platform implements security tokens as JSON Web Tokens (JWTs) that contain claims. Claims are name or value pairs that relay facts about the token subject. Applications can use claims for the following various tasks: Validate the token, Identify the token subject's tenant, display user information, identify client’s IP Address etc.\n</p><p>One of the claims in the token is ‘ipaddr’ which is a string and refers to the IP address the user authenticates from.</p><p>The format of certain IPV6 addresses containing IPV4 address is altered to display as all IPV6 addresses. The impacted ipv6 addresses are those of a format xxxx:xxxx:xxxx:xxxx:200:5efe:xxxx:xxxx, i.e., where 7, 6, 5, and 4 octets have values '0x02, '0x00', '0x5e', '0xfe' correspondingly.\n</p><p>Currently these IP addresses are serialized with embedded ipv4 address like this: xxxx:xxxx:xxxx:xxxx:200:5efe:YYY.YYY.YYY.YYY, where 'YYY' is number from 0 to 255.\n</p><p>Once the changes go into effect, these IP Addresses will be serialized as xxxx:xxxx:xxxx:xxxx:200:5efe:xxxx:xxxx where x is a hex digit (0-9, a-f)\n</p><p>For example:\n</p><ul><li>Current format: \"2001:558:1416:0:200:5efe:169.152.178.93\"\n</li><li>Format after the change: \"2001:558:1416:0:200:5efe:a998:b25d\"\n</li></ul><p>Please note that despite the string format looking different, both IP addresses remain the same. The change would impact both <a href=\"https://learn.microsoft.com/entra/identity-platform/access-tokens\" target=\"_blank\">access tokens</a> and <a href=\"https://learn.microsoft.com/entra/identity-platform/id-tokens\" target=\"_blank\">id tokens</a>; and the affected claims is ‘ipaddr’ claim.</p><p></p><table>\n  <tbody><tr>\n    <th>Claim</th>\n    <th>Format</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <th>ipaddr</th>\n    <td>String</td>\n    <td>The IP address the user authenticated from.</td>\n  </tr>\n</tbody></table>\n<p></p><p>The ‘ipaddr’ claim is included in the V1.0 token if applicable and included in the V2.0 token if the application requests them using <a href=\"https://learn.microsoft.com/entra/identity-platform/optional-claims\" target=\"_blank\">optional claims</a>. Please look at <a href=\"https://learn.microsoft.com/entra/identity-platform/access-token-claims-reference#header-claims\" target=\"_blank\">Access token claims reference - Header claims</a> for more details.\n</p><p><b>When this will happen:</b></p><p>The change will go into effect on July 8th, 2024.\n</p><p><b>What you need to do to prepare:</b></p><p>Action Required:\n</p><ul><li>If your organization does not use custom applications or your custom applications do not take dependency on the string format of ‘ipaddr’ claim from the access token or id token, there should not be any impact and no action is required.\n</li><li>Check in your custom application code or scripts to see if you are taking dependency on the ‘ipaddr’ claim from the access token or id token using the string format instead of reading into an IPAddress object.\n</li><li>Organization’s custom applications shouldn't take dependency on String version of IP address. They should parse IP address from the string and load into IPAddress object. Please look at <a href=\"https://learn.microsoft.com/dotnet/api/system.net.ipaddress.parse?view=net-8.0\" target=\"_blank\">IPAddress.Parse Method</a> for an example. <ul><li><code>IPAddress address = IPAddress.Parse(ipAddress);</code></li></ul></li></ul>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "The format of IP addresses embedded in IPV6 within token claims is changing, impacting the 'ipaddr' claim in JWTs. Organizations using custom applications that depend on the string format of this claim need to update their code. The change takes effect on July 8th, 2024. No action is required if there's no dependency on the string format."
+    }
+  ],
+  "EndDateTime": "2024-08-19T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC798676",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2024-06-04T23:06:33.95Z",
+  "Services": [
+    "Microsoft 365 suite"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-06-04T23:06:16Z",
+  "Tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Change coming to the format of IP addresses containing IPV4 embedded in IPV6 addresses within token claims",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
