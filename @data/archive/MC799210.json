@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>To prevent the classic Microsoft Teams uninstallation from removing the Teams Meeting add-in (TMA) files deployed on a machine during installation, admins must install the Teams Meeting add-in into a different directory than the directory used for a classic Teams installation. If a user manually installs the Teams Meeting add-in with Microsoft Installer (MSI) and specifies the same installation directory used by classic Teams, the TMA files might be removed when classic Teams is uninstalled. Typically, it is only necessary to specify the installation directory for virtual desktop infrastructure (VDI) installations.\n</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide, GCC, GCC High, DoD): Available now, starting with the release of new Teams on April 9, 2024.\n</p><p><b>How this will affect your organization:</b>\n</p><p>Before this rollout: The Teams Meeting add-in MSI would install by default to the ..\\Microsoft\\TeamsMeetingAddin folder, which is the same location used by classic Teams.\n</p><p><i>After this rollout\n</i></p><p>New Teams should be installed to a different directory from classic Teams to prevent the classic Teams uninstallation from removing TMA files installed as part of a new Teams installation.\n</p><ul><li>In new Teams, the installation directory starting with Teams Meeting add-in versions 1.24054.1 and higher is:\n<ul><li>User-based: %localappdata%\\Microsoft\\TeamsMeetingAdd-in\\&lt;version&gt;\\\n</li><li>Machine-wide: C:\\Program Files (x86)\\Microsoft\\TeamsMeetingAdd-in\\&lt;version&gt;\\\n</li></ul></li><li>The classic Teams installation directories were:\n<ul><li>User-based: <code>%localappdata%\\Microsoft\\TeamsMeetingAddin\\&lt;version&gt;\\</code>\n</li><li>Machine-wide: <code>C:\\Program Files (x86)\\Microsoft\\TeamsMeetingAddin\\&lt;version&gt;\\</code>\n</li></ul></li></ul><p><b>What you need to do to prepare:</b>\n</p><p>No admin action is required unless performing manual installations of the Teams Meeting Add-in. \n</p><p>You may want to notify your admins about this change and update any relevant documentation as appropriate.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "The message details a change in the installation directory for the Teams Meeting add-in to prevent file removal during classic Teams uninstallation. It is available now, with no admin action required unless manually installing the add-in. Admins should update documentation accordingly."
+    }
+  ],
+  "EndDateTime": "2024-08-16T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC799210",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2024-06-06T17:03:58.813Z",
+  "Services": [
+    "Microsoft Teams"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-06-06T17:03:40Z",
+  "Tags": [
+    "Feature update",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Teams: Change Teams Meeting add-in to install in a new directory",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
