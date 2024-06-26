@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>Coming soon to Microsoft Teams: We are introducing a new admin control to enable you to block external access (federation) with Teams trial-only tenants. Some malicious actors have used free Teams trials to launch phishing or abuse attacks against Teams users. With this setting you can add another layer of protection for users against some of these attacks.\n</p><p>By default, this new setting will block external access with trial-only tenants 30 days after the rollout is complete and will require explicit action from you if you wish to continue to federate with trial tenants.\n</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): Available now.\n</p><p>Blocking external access with trial-only tenants based on this setting will occur on July 29, 2024. If you take no action, the default value (Blocked) will be applied.\n</p><p><b>How this will affect your organization:</b>\n</p><p>Teams PowerShell will support a new Tenant Federation setting <code>-ExternalAccessWithTrialTenants</code> with the values <code>Allowed</code> or <code>Blocked</code>. When set to <code>Blocked</code>, all external access with users from Teams subscriptions that contain only trial licenses will be blocked. This means users from these trial-only tenants will not be able to search or reach your users via chats, Teams calls, and meetings (using the users' authenticated identity) and your users will not be able to reach users in these trial-only tenants. If this setting is set to <code>Blocked</code>, users from the trial-only tenant will also be removed from any existing chats. The default setting will be to block external access with trial-only tenants.\n</p><p><i>Important Notes</i></p><ul><li>A \"trial-only\" tenant is defined as a tenant with a Teams service plan that has only Trial subscriptions (0 purchased licenses).\n</li><li>Shared Channels, Guest access and Anonymous Meeting joins will not be affected by this setting.\n</li><li>This new setting only controls external communication with trial-only tenants within the same Microsoft 365 cloud environment. When enforcement starts, users from trial-only tenants will be blocked by default from external communication with users in other Microsoft 365 cloud environments and with Microsoft Skype for Business server users. No admin control will exist to allow cross-cloud external communication with trial tenants.\n</li><li>If your tenant has enabled <i>Allow only specific domains</i> and specified domains in the Allow list, and if <code>-ExternalAccessWithTrialTenants</code> is set to <code>Blocked</code>, trial-only tenants in the Allow list will be blocked. If this setting is set to <code>Allowed</code>, all domains in the Allow list will be allowed.\n</li><li>If your tenant has enabled <i>Block all external domains,</i> the <code>-ExternalAccessWithTrialTenants</code> setting has no impact.\n</li><li>If your tenant has enabled <i>Block specific domains</i> and specified domains in the Block list, and if the <code>-ExternalAccessWithTrialTenants</code> setting is set to <code>Blocked</code>, trial-only tenants not in the Block list will also be blocked. If set to <code>Allowed</code>, this setting has no impact.\n</li></ul><p><b>What you need to do to prepare:</b>\n</p><p>Review your settings for external access to determine if you need to change the default value for this new setting. To change this setting, install the latest PowerShell package (6.4.0) and use the <code>Set-CsTenantFederationConfiguration</code> command to set the desired value when the setting is available:\n</p><ol><li>Download or upgrade to the latest PowerShell package: <a href=\"https://www.powershellgallery.com/packages/MicrosoftTeams/\" target=\"_blank\">https://www.powershellgallery.com/packages/MicrosoftTeams/</a>\n</li><li>To allow external communication with trial-only tenants, use this command: <code>Set-CsTenantFederationConfiguration -ExternalAccessWithTrialTenants \"Allowed\"</code>\n</li><li>To block external communication with trial-only tenants, use this command: <code>Set-CsTenantFederationConfiguration -ExternalAccessWithTrialTenants \"Blocked\"</code>\n</li></ol><p><i>Learn more</i></p><ul><li>PowerShell cmdlet configuration: <a href=\"https://learn.microsoft.com/en-us/powershell/module/teams/set-cstenantfederationconfiguration?view=teams-ps&amp;viewFallbackFrom=skype-ps\" target=\"_blank\">Set-CsTenantFederationConfiguration | Microsoft Learn</a>\n</li><li>Manage external communication: <a href=\"https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat?tabs=organization-settings\" target=\"_blank\">IT Admins - Manage external meetings and chat with people and organizations using Microsoft identities</a></li></ul><p>You may want to notify your admins about this change and update any relevant documentation as appropriate.</p>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Teams is introducing a new admin control to block external access with Teams trial-only tenants to protect against malicious activities. The default setting will block such access 30 days after rollout, requiring admin action to allow federation with trial tenants. General availability is now, with blocking enforced from July 29, 2024. Admins should review settings and use PowerShell to configure the desired access level."
+    }
+  ],
+  "EndDateTime": "2024-08-30T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC805200",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2024-06-25T23:19:06.87Z",
+  "Services": [
+    "Microsoft Teams"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-06-25T23:18:39Z",
+  "Tags": [
+    "New feature",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Teams: Tenant Federation setting to control external access with trial-only tenants",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
