@@ -6954,37 +6954,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "Starting <b>July 1, 2024</b>, the legacy audit functionality for <a href=\"https://aka.ms/ADO7475\" target=\"_blank\">Data Loss Prevention (DLP)</a> and <a href=\"https://aka.ms/ADO7475_1\" target=\"_blank\">Customer Lockbox</a> will reach end of support.<br><br><b>How does this affect me?</b><br>Microsoft will transition to a new and improved standard pipeline for audit logging, offering enhanced audit capabilities and robust security. <br><br><b>What action do I need to take?</b><ul><li>Please review the new feature documentation for the enhanced <a href=\"https://aka.ms/ADO7475_2\" target=\"_blank\">DLP</a> and <a href=\"https://aka.ms/ADO7475_3\" target=\"_blank\">Lockbox</a> functionalities, for details.</li><li>Adjust any integrations or tools that rely on the legacy DLP and Lockbox event formats to the new schema.</li></ul>You may contact Microsoft Support if you need additional assistance.",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2024-07-14T17:46:47Z",
-    "HasAttachments": false,
-    "Id": "MC801934",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-06-14T17:48:27.633Z",
-    "Services": [
-      "Dynamics 365 Apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-06-14T17:46:47Z",
-    "Tags": [
-      "Retirement"
-    ],
-    "Title": "Information regarding the end of support for Data Loss Prevention (DLP) and Lockbox legacy audit functionalities",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated June 14, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:\n</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out early July 2024 (previously mid-May) and expect to complete by mid-August 2024 (previously late May).\n</p><p>General Availability Worldwide: We will begin rolling out mid-September 2024 (previously mid-June) and expect to complete by late September 2024 (previously late June).\n</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1kW9T?ver=4d63\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l03Z?ver=4026\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1kOD4?ver=2307\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l046?ver=0530\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l2vg?ver=900a\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l04d?ver=f53e\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
       "ContentType": "html"
     },
