@@ -1,0 +1,36 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>Starting on July 15 or soon after, we will begin migrating device configuration policies to the new, unified settings platform. Specifically, these are the profiles created by navigating to <b>Devices</b> &gt; <b>Configuration</b> &gt; <i>Create new policy</i> &gt; <b>Windows 10 and later</b> &gt; <b>Templates</b> in the Intune admin center.</p><p>The unified settings platform is the foundation of the <a href=\"https://learn.microsoft.com/mem/intune/configuration/settings-catalog\" target=\"_blank\">settings catalog</a>, which provides quick access to policy and settings. Additionally, it provides consistency across naming, tooltips, available values, and standardizes the “not configured” value for policy settings regardless of where you interact with the policy.&nbsp;</p><p>More details on each template’s migration experience are highlighted in the blog: <a href=\"https://aka.ms/Intune/Windows-template-migration\" target=\"_blank\">Support tip: Windows device configuration policies migrating to unified settings platform in Intune</a>.</p><p><b>How this will affect your organization:</b></p><p>Our telemetry indicates you have device configuration profiles created. This migration will not impact your profiles, the configured settings and values will be brought over as they are currently saved. This will not impact the state of enforcement of policy on users' devices.</p><p>Following the migration, you will observe a revised placement of some templates within the user interface. Certain templates will become exclusively configurable within the Settings catalog moving forward. For other templates, the next time the upgraded policy is edited, you will also notice a new policy editing experience, improved reporting and handling of setting values to \"not configured.”</p><p>If you are interacting with device configuration profiles via the deviceManagement/deviceConfigurations Microsoft Graph API, you will be able to continue creating new policies, but they will later be migrated. Once migrated, the new policies will have new PolicyIDs and are created on the <a href=\"https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-get?view=graph-rest-beta\" target=\"_blank\">deviceManagement/configurationPolicies</a> API. We recommend switching to the new graph endpoints for policy creation as soon as possible.&nbsp;</p><p><b>Note:</b> You may see a slight change in reporting numbers when these policies are migrated. Similar to when a policy is edited, reporting records of devices that have previously applied policy and reported the results but are no longer managed or checking in, will not appear in the new reports until they check in again.</p><p><b>What you need to do to prepare:</b></p><p>If you are using Microsoft Graph API for device configuration policies, we recommend updating to the <a href=\"https://learn.microsoft.com/graph/api/intune-deviceconfigv2-devicemanagementconfigurationpolicy-get?view=graph-rest-beta\" target=\"_blank\">new graph endpoints</a>. Otherwise, no action is required, only awareness. You can learn more about each template’s migration experience in the blog: <a href=\"https://aka.ms/Intune/Windows-template-migration\" target=\"_blank\">Support tip: Windows device configuration policies migrating to unified settings platform in Intune</a>.&nbsp;</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Device configuration templates for Windows created before July 15 will be migrated to a new settings platform. This migration will not affect the profiles' enforcement or configured values. Post-migration, some templates will only be configurable within the Settings catalog, and a new policy editing experience will be introduced. Users utilizing Microsoft Graph API should update to new graph endpoints. No further action is required."
+    }
+  ],
+  "EndDateTime": "2024-10-31T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC814574",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2024-07-16T04:51:39.997Z",
+  "Services": [
+    "Microsoft Intune"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-07-16T04:50:42Z",
+  "Tags": [
+    "Admin impact"
+  ],
+  "Title": "Windows device configuration templates created before July 15 will be migrated",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
