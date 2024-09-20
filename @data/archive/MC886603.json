@@ -3,27 +3,28 @@
   "Attachments": null,
   "AttachmentsArchive": null,
   "Body": {
-    "Content": "<p style=\"margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in\">Starting October 15th, we're going to start gradually dropping messages that have multiple From addresses (also known as P2 From headers) without a Sender header from being sent via Exchange Online.<br></p><p>We are doing this to comply with RFC 5322 (<a href=\"https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2\" target=\"_blank\">https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2</a>) which mandates the Sender header to be present and contain a single address if the From header has more than one address. Noncompliance with this could be exploited by attackers, allowing them to impersonate a sender address by misleading the client into using the From header to determine the sender instead of the Sender header.</p><p>\n</p><p><b>When this will happen:</b></p><p>October 15, 2024</p><p><b>How this affects your organization:</b>\n</p><p>If email clients including devices and applications that you use to send messages, do so using multiple From addresses but without a Sender address header after October 15th, you will get an NDR error code 550 5.1.20 “Multiple From addresses are not allowed without Sender address’”.\n</p><p><b>What you can do to prepare:</b>\n</p><p>When this change is in effect, if you need to send a message that has more than one email address in the From field, make sure that you have a single email address in the Sender header.\n</p><p>If you expect this change to cause any issues for your organization, please share that feedback.\n</p>",
+    "Content": "<p style=\"margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in\">Updated September 20, 2024: We have updated the content. Thank you for your patience.</p><p style=\"margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in\">Starting December 1st, we're going to start gradually dropping messages that have multiple From addresses (also known as P2 From headers) without a Sender header from being sent via Exchange Online.\n</p><p style=\"margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in\">If we see significant traffic exhibiting multiple From addresses (P2 From headers) without a Sender header in your tenant in the month of September, we will send you a Message Center Post by October 15th alerting you and providing some sample message IDs.  \n</p><p style=\"margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in\">We are doing this to comply with <a href=\"https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2\" target=\"_blank\">RFC 5322 (https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2)</a> which mandates the Sender header to be present and contain a single address if the From header has more than one address. Noncompliance with this could be exploited by attackers, allowing them to impersonate a sender address by misleading the client into using the From header to determine the sender instead of the Sender header.</p><p>\n</p><p><b>When this will happen:</b></p><p>December 1st, 2024</p><p><b>How this affects your organization:</b>\n</p><p>If email clients including devices and applications that you use to send messages, do so using multiple From addresses but without a Sender address header after December 1st, you will get an NDR error code 550 5.1.20 “Multiple From addresses are not allowed without Sender address’”.</p><p><b>What you can do to prepare:</b>\n</p><p>When this change is in effect, if you need to send a message that has more than one email address in the From field, make sure that you have a single email address in the Sender header.\n</p><p>If you expect this change to cause any issues for your organization, please share that feedback.\n</p>",
     "ContentType": "html"
   },
   "Category": "planForChange",
   "Details": [
     {
       "Name": "Summary",
-      "Value": "Starting October 15th, Exchange Online will reject emails with multiple From addresses without a Sender header, to comply with RFC 5322. Organizations should ensure a single address in the Sender header to avoid non-delivery reports (NDRs) with error code 550 5.1.20. Feedback on this change is welcomed."
+      "Value": "Starting December 1st, Exchange Online will reject emails with multiple From addresses but no Sender header, to comply with RFC 5322. Impacted tenants will be notified by October 15th. Users must ensure a single address in the Sender header for such emails to avoid non-delivery errors."
     }
   ],
-  "EndDateTime": "2024-12-31T08:00:00Z",
+  "EndDateTime": "2025-02-24T08:00:00Z",
   "HasAttachments": false,
   "Id": "MC886603",
   "IsMajorChange": true,
-  "LastModifiedDateTime": "2024-09-10T00:59:50.247Z",
+  "LastModifiedDateTime": "2024-09-20T17:51:49.18Z",
   "Services": [
     "Exchange Online"
   ],
   "Severity": "normal",
   "StartDateTime": "2024-09-10T00:59:11Z",
   "Tags": [
+    "Updated message",
     "User impact",
     "Admin impact"
   ],
