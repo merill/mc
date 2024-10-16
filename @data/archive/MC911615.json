@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>Note: If your organization does not use macOS, you can safely disregard this message.</p><p>Microsoft Word, Excel, and PowerPoint in Office for macOS Version 16.91 only load dynamic libraries that are codesigned with a valid Apple Developer ID. As a result, Office add-ins or Open Database Connectivity (ODBC) drivers that rely on unsigned or ad-hoc-signed dynamic libraries don't work as intended.</p><p>However, most dynamic libraries used with Office apps are already codesigned, so this change is unlikely to affect most users.</p><p>In this message, when non-Microsoft products is mentioned, it specifically refers to products and applications that enhance or extend Office functionality (like add-ins or integrations). This doesn't include all non-Microsoft software installed on your device.</p><p>\n</p><p><b>When will this happen:</b></p><p>This change is expected to be live in production in mid-November 2024.\n</p><p><b>How this affects your organization:</b></p><p>Reason for the change:</p><p>Microsoft requires executable code from non-Microsoft products be codesigned with a valid&nbsp;<a href=\"https://developer.apple.com/developer-id/\" target=\"_blank\">Apple Developer ID</a>. This requirement ensures that only verified and properly signed code runs within Office applications, promoting code integrity and compliance with macOS development standards.</p><p>Workflow changes for users:</p><p>If your workflow uses unsigned dynamic libraries within Word, Excel, or PowerPoint for macOS, it no longer works as intended. You need to get an updated version of the product from the original software developer.</p><p><b>What you can do to prepare:</b></p><p>Actions required for developers:</p><p>If your product uses dynamic libraries, make sure they're codesigned with an Apple Developer ID. Unsigned or ad-hoc-signed libraries are no longer allowed to load into Office app processes. For more information on the Apple Developer program and tools, see the <a href=\"https://developer.apple.com/\" target=\"_blank\">Apple Developer Program</a>. Office applications support libraries codesigned for distribution through any Apple-supported distribution mechanism, including direct download by your customers.</p><p>Steps for admins:</p><ul><li>Verify Deployed non-Microsoft Products: Check if you have any non-Microsoft products deployed to your users. These products often:<ul><li>Extend Office functionality by adding menu or ribbon controls.\n</li><li>Communicate with other applications to share content with Office.\n</li><li>Support external data connections such as ODBC.\n</li></ul></li><li>Confirm codesigning compliance: Make sure that any non-Microsoft products follow best practices and codesigned any dynamic libraries included in their products. If any libraries aren't codesigned, contact the product developer for updates.</li><li>Monitor system logs: Inspect the system console logs for Library Load Constraint Rejection messages. These messages from macOS identify any dynamic library that the OS rejects from loading into an Office app process.</li><li>Consider proactively blocking all non-Microsoft libraries: To block these libraries, set the Office preference DisableVisualBasicExternalDylibs to true using Mobile Device Management (MDM) software. For more information, see the&nbsp;<a href=\"https://support.apple.com/guide/deployment/welcome/web\" target=\"_blank\">Apple Platform Deployment guide</a>.\n</li></ul><p>Warning: Blocking all non-Microsoft libraries from running within Visual Basic macros is a significant action and should only be considered if absolutely necessary for your organization's requirements on macOS computers.</p><p>\n</p><p>\n</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "The message details a planned update for Office on macOS, requiring Office add-ins and ODBC drivers to be codesigned with a valid Apple Developer ID. This change, expected in mid-November 2024, may affect workflows using unsigned dynamic libraries. Developers must ensure compliance, and admins should verify and prepare for this update."
+    }
+  ],
+  "EndDateTime": "2025-01-10T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC911615",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2024-10-15T23:36:09.047Z",
+  "Services": [
+    "Microsoft 365 apps"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-10-15T23:35:46Z",
+  "Tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Word, Excel, and PowerPoint for macOS – Planned update to compatibility Office add-ins and ODBC drivers",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
