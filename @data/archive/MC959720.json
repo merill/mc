@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>We are excited to announce the Public Preview of the new version of Message trace in the Microsoft Exchange admin center (EAC) in Microsoft Exchange Online. Admins will soon be able to access the new Message trace and its capabilities by default in the Exchange admin center &gt; <i>Mail flow &gt; Message trace.</i> Also, admins will be able to use the new Message trace functionality using Microsoft PowerShell cmdlet <code>Get-MessageTraceV2</code> (similar to <a href=\"https://learn.microsoft.com/powershell/module/exchange/get-messagetrace?view=exchange-ps\" target=\"_blank\">Get-MessageTrace (ExchangePowerShell) | Microsoft Learn</a>).\n</p><p>The new Message trace will be toggled <i>On</i> by default after being deployed to your tenant. If you wish to disable the preview, you can change the toggle to <i>Off</i> in the Message trace flyout. To use the new Message trace functionality through the PowerShell cmdlet Get-MessageTraceV2, please ensure you are using version 3.7.0 or later of the Exchange Online PowerShell V3 module.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out mid-December 2024 and expect to complete by late December 2024.\n</p><p><b>How this will affect your organization:</b>\n</p><p><b>Key functionality changes</b>\n</p><ul><li>Extended query range: You can query up to 90 days of historical data for near real-time queries. However, please note that you can only query 10 days of data at a time. Please note that you will initially only have 30 days of historical data for near real-time query, and this will build over time to 90 days of historical data.\n</li><li>Subject filter: You can select a subject filter for Message trace queries, such as <i>Starts with, Ends with, </i>and <i>Contains</i> functions. This filter also supports special characters.\n</li><li>Delivery status filter: The delivery status filter will now support searches for <i>Quarantined, Filtered as spam, </i>and <i>Getting status</i> statuses.\n</li></ul><p><i>Additional updates</i>\n</p><ul><li>Customizable columns: For your search results, we’ve introduced customizable columns and added additional column options. <a href=\"https://techcommunity.microsoft.com/blog/exchange/announcing-public-preview-of-the-new-message-trace-in-exchange-online/4356561\" target=\"_blank\">Learn more about the new columns</a>.\n</li><li>Persistent column widths: You will be able to customize your column widths, and these changes will persist in each logged-on admin account, so you will not have to reset column widths each time you run a new Message trace query. This update is still in progress and will be made available in early-February.\n</li><li>Wider flyout option: An option for a wider flyout for the Message trace detail will be available.\n</li><li>Time zone consistency: Message trace will default to the time zone set in the Exchange account settings of the logged-on admin.\n</li></ul><p><b>Key cmdlet changes in </b><code>Get-MessageTraceV2</code> (relative to <code>Get-MessageTrace</code>)\n</p><ul><li>Extended query range: You can query up to 90 days of historical data. However, please note that you will only be able to query 10 days of data per query. Please note that you will initially only have 30 days of historical data for near real-time query, and this will build over time to 90 days of historical data.\n</li><li>Subject parameter: You can filter by subject for more specific Message trace queries.\n</li><li>No page number or page size parameter: Pagination will not be supported in <code>Get-MessageTraceV2</code>. This change is to ensure fair use of our resources, as pagination can create performance issues for our system.\n</li><li>Result size parameter: The new Message trace will support a default value of 1000 results and a maximum of 5000 results (set through the <code>-ResultSize</code> parameter), which is a significant increase.\n</li><li><code>StartingRecipientAddress</code> parameter: This parameter’s main use is to assist in pulling subsequent data while minimizing duplication.&nbsp;</li></ul><p>As an alternative to pagination, you can set the EndDate parameter with the Received time of the last record of the previous query results and fill in the <code>StartingRecipientAddresss</code> parameter with the <code>RecipientAddress</code> of the last record of the previous result.\n</p><p><i>Known differences and ongoing updates</i>\n</p><ul><li>Message trace V1 normalizes all recipients to lowercase, while V2 retains any capitalization in Message tracking logs.\n</li><li>When displaying results, V2 will order by <code>Received</code> in descending order first, and then by <code>RecipientAddress</code> in ascending order(case-insensitive).\n</li><li>In some rare cases, <code>FromIp</code> may be missing in V2, but we are working to fix this issue.\n</li><li>For messages with over 1000 recipients, admins must include the <code>MessageTraceId</code> in both the EAC experience and PowerShell cmdlet queries to avoid partial results.\n</li><li>For quarantine scenarios, V2 will display the latest status while V1 displayed the original status. For example, if the email is initially quarantined and then released later by the admin, Message trace v2 will show the latest status that is delivered to mailbox.\n</li></ul><p><b>What you need to do to prepare:</b>\n</p><p>Learn more: <a href=\"https://techcommunity.microsoft.com/blog/exchange/announcing-public-preview-of-the-new-message-trace-in-exchange-online/4356561\" target=\"_blank\">Announcing Public Preview of the New Message Trace in Exchange Online | Microsoft Community Hub</a> (December 16, 2014).\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. If you face any issues, you can toggle the new Message trace <i>Off</i> to use the old Message trace. You may want to notify your admins about this change and update any relevant documentation.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "The Public Preview of the new \"Message trace\" feature in Microsoft Exchange Online will begin rolling out in mid-December 2024, with extended query range, subject and delivery status filters, customizable columns, and cmdlet changes. Admins can toggle the feature off if needed and should update to the latest PowerShell module version."
+    }
+  ],
+  "EndDateTime": "2025-03-28T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC959720",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2024-12-18T01:04:46.277Z",
+  "Services": [
+    "Exchange Online",
+    "Microsoft 365 suite"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2024-12-18T01:02:45Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Exchange Online: New \"Message trace\" functionality (public preview)",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
