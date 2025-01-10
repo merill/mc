@@ -15589,43 +15589,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Note: If your organization does not use macOS, you can safely disregard this message.</p><p>Microsoft Word, Excel, and PowerPoint in Office for macOS Version 16.91 only load dynamic libraries that are codesigned with a valid Apple Developer ID. As a result, Office add-ins or Open Database Connectivity (ODBC) drivers that rely on unsigned or ad-hoc-signed dynamic libraries don't work as intended.</p><p>However, most dynamic libraries used with Office apps are already codesigned, so this change is unlikely to affect most users.</p><p>In this message, when non-Microsoft products is mentioned, it specifically refers to products and applications that enhance or extend Office functionality (like add-ins or integrations). This doesn't include all non-Microsoft software installed on your device.</p><p>\n</p><p><b>When will this happen:</b></p><p>This change is expected to be live in production in mid-November 2024.\n</p><p><b>How this affects your organization:</b></p><p>Reason for the change:</p><p>Microsoft requires executable code from non-Microsoft products be codesigned with a valid&nbsp;<a href=\"https://developer.apple.com/developer-id/\" target=\"_blank\">Apple Developer ID</a>. This requirement ensures that only verified and properly signed code runs within Office applications, promoting code integrity and compliance with macOS development standards.</p><p>Workflow changes for users:</p><p>If your workflow uses unsigned dynamic libraries within Word, Excel, or PowerPoint for macOS, it no longer works as intended. You need to get an updated version of the product from the original software developer.</p><p><b>What you can do to prepare:</b></p><p>Actions required for developers:</p><p>If your product uses dynamic libraries, make sure they're codesigned with an Apple Developer ID. Unsigned or ad-hoc-signed libraries are no longer allowed to load into Office app processes. For more information on the Apple Developer program and tools, see the <a href=\"https://developer.apple.com/\" target=\"_blank\">Apple Developer Program</a>. Office applications support libraries codesigned for distribution through any Apple-supported distribution mechanism, including direct download by your customers.</p><p>Steps for admins:</p><ul><li>Verify Deployed non-Microsoft Products: Check if you have any non-Microsoft products deployed to your users. These products often:<ul><li>Extend Office functionality by adding menu or ribbon controls.\n</li><li>Communicate with other applications to share content with Office.\n</li><li>Support external data connections such as ODBC.\n</li></ul></li><li>Confirm codesigning compliance: Make sure that any non-Microsoft products follow best practices and codesigned any dynamic libraries included in their products. If any libraries aren't codesigned, contact the product developer for updates.</li><li>Monitor system logs: Inspect the system console logs for Library Load Constraint Rejection messages. These messages from macOS identify any dynamic library that the OS rejects from loading into an Office app process.</li><li>Consider proactively blocking all non-Microsoft libraries: To block these libraries, set the Office preference DisableVisualBasicExternalDylibs to true using Mobile Device Management (MDM) software. For more information, see the&nbsp;<a href=\"https://support.apple.com/guide/deployment/welcome/web\" target=\"_blank\">Apple Platform Deployment guide</a>.\n</li></ul><p>Warning: Blocking all non-Microsoft libraries from running within Visual Basic macros is a significant action and should only be considered if absolutely necessary for your organization's requirements on macOS computers.</p><p>\n</p><p>\n</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The message details a planned update for Office on macOS, requiring Office add-ins and ODBC drivers to be codesigned with a valid Apple Developer ID. This change, expected in mid-November 2024, may affect workflows using unsigned dynamic libraries. Developers must ensure compliance, and admins should verify and prepare for this update."
-      }
-    ],
-    "EndDateTime": "2025-01-10T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC911615",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2024-10-15T23:36:09.047Z",
-    "Services": [
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-10-15T23:35:46Z",
-    "Tags": [
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Word, Excel, and PowerPoint for macOS – Planned update to compatibility Office add-ins and ODBC drivers",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Coming soon to the Microsoft Purview AI Hub: We will update the left navigation to include sections for <i>Overview, Recommendations, Reports, Policies, </i>and <i>Activity Explorer.</i>\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=415451\" target=\"_blank\">415451</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out mid-October 2024 and expect to complete by mid-October 2024. \n</p><p>General Availability (Worldwide): We will begin rolling out mid-November 2024 and expect to complete by mid-November 2024. \n</p><p><b>How this will affect your organization:</b>\n</p><p>Before this rollout: Microsoft Purview includes <i>Analytics, Policies, </i>and <i>Activity Explorer </i>pages.\n</p><p>After this rollout, Microsoft Purview AI Hub will include:</p><ul><li>The new <i>Overview </i>page will include getting started steps, recommendation cards to help improve your AI data security, analytics cards, and links to documentation.</li><li>The new <i>Recommendations </i>page will include the list of recommendations provided by Microsoft and their completion status.</li><li>The<i> </i>new <i>Reports </i>page (formerly <i>Analytics</i>) will include analytics charts grouped by activity, user, and data.</li><li>The<i> </i>updated <i>Policies </i>page will include a list of policies created by AI Hub with a link to edit the policies within their respective solutions.\n</li><li>The<i> </i>updated <i>Activity Explorer</i> page will include events generated by the policies created through Microsoft Purview AI Hub.\n</li></ul><p>This change will be on by default.\n</p><p>New <i>Overview </i>page\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1pKD2?ver=2c7b\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p>New <i>Recommendations </i>page:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1pKD3?ver=bc33\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p>New <i>Reports </i>page:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1pA40?ver=9656\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. You may want to notify your admins about this change and update any relevant documentation.\n</p><p>Get ready for this change by reviewing the Microsoft Purview AI Hub documentation:</p><ul><li><a href=\"https://go.microsoft.com/fwlink/?linkid=2249294\" target=\"_blank\">Microsoft Purview AI Hub provides insights, policies, and controls for AI apps</a>\n</li><li><a href=\"https://go.microsoft.com/fwlink/?linkid=2284905\" target=\"_blank\">Considerations for Microsoft Purview AI Hub and data security and compliance protections for Microsoft Copilot</a>\n</li><li><a href=\"https://go.microsoft.com/fwlink/?linkid=2276967\" target=\"_blank\">Permissions for Microsoft Purview AI Hub</a></li></ul><p></p>",
       "ContentType": "html"
     },
@@ -17334,47 +17297,6 @@
       "Admin impact"
     ],
     "Title": "Take action: Enable multifactor authentication for your tenant before October 15, 2024",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated September 12, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>Microsoft Outlook on the web and new Outlook for Windows are enhancing users' experience by automatically hiding contacts that are exact duplicates or proper subsets of other contacts. This means that if you have multiple entries for the same person, Outlook will consolidate them, keeping only the most complete contact visible. This update aims to declutter your contact list, making it easier to navigate and manage.</p><p><b>When this will happen:</b></p><p>Public Preview: We will begin rolling out late August 2024 and expect to complete by late September 2024.</p><p><span>General Availability (Worldwide): We will begin rolling out early September 2024 (late September) and expect to complete by mid-October 2024 (late September).</span></p><p><b>How this will affect your organization:</b></p><p><i>Impact on different Outlook clients:</i> Cleanup will affect the Outlook w<span></span>eb app and new Outlook for Windows, while classic Outlook for Windows, Outlook on Mac, and Outlook mobile will remain unchanged, showing all contacts.</p><p><i>Synchronization Across Platforms: </i>Updates made to any contact will be synchronized across all Outlook clients.</p><p><i>How to access hidden duplicate contacts</i>: Exact or proper subset duplicate contacts are automatically hidden to streamline your view. They remain accessible via classic Outlook for Windows, Outlook on Mac, and Outlook mobile. Users can also export contacts from any Outlook app to view them.&nbsp;</p><p><i>How users can determine which contacts are subsets/hidden versus supersets:</i><b>&nbsp;</b>This is currently a manual process that can only be completed by reviewing contacts from within classic Outlook for Windows, Outlook on Mac, or Outlook mobile.  There is no method for admins to automate this process at this time.</p><p><i>Exporting Contacts:</i><b>&nbsp;</b>If users need to export their contacts for review in another tool, including the hidden ones, you can <a href=\"https://support.microsoft.com/office/import-and-export-outlook-email-contacts-and-calendar-92577192-3881-4502-b79d-c3bbada6c8ef\" target=\"_blank\">export contacts</a> in all Outlook clients.&nbsp;</p><p><b>What you need to do to prepare:</b></p><p>This rollout will happen automatically with no admin action required. You may want to notify your users about this change and update any relevant documentation as appropriate.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Outlook is updating to automatically hide duplicate contacts, with rollouts starting late August 2024 and ending mid-October 2024. This affects Outlook on the web and new Outlook for Windows, while other versions will show all contacts. No admin action is needed, but users should be informed."
-      }
-    ],
-    "EndDateTime": "2025-01-10T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC835643",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-09-12T23:30:33.113Z",
-    "Services": [
-      "Exchange Online",
-      "Microsoft 365 for the web",
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-07-25T22:41:07Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Outlook: Contact deduplication",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
