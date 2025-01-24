@@ -4,6 +4,173 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>We are pleased to inform you that we will roll out two improvements to enhance compliance and security for voicemail messages in Microsoft Exchange.\n</p><p>This change is related to three products: Microsoft Teams calls, Microsoft Outlook/Exchange, and Microsoft Skype for Business calls. Results will be visible in Outlook/Exchange email messages.\n</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide, GCC): We began rolling out early December 2024 and expect to complete by late January 2025.\n</p><p>General Availability (GCC High, DoD): We will begin rolling out early January 2025 and expect to complete by mid-February 2025.\n</p><p><b>How this will affect your organization:</b></p><p>1. The <i>From:</i> field of voicemail email messages will be updated to comply with the latest RFC standard, <a href=\"https://www.rfc-editor.org/rfc/rfc6854\" target=\"_blank\">RFC 6854: Update to Internet Message Format to Allow Group Syntax in the From: and Sender Header Fields</a>. According to this compliance standard, the Internet message format must always include an address in the <i>From</i> header field.\n</p><p>Example:\n</p><ul><li>Before this rollout: +44 28 7584 5695 &lt;442875845695&gt;\n</li><li>After this rollout: +44 28 7584 5695 (Unverified) &lt;noreply@skype.voicemail.microsoft.com&gt;\n</li></ul><p>2. To strengthen trust and security in voicemails received from external PSTN calls and from federated tenants, <i>Unverified</i> and <i>External</i> tags will always be added to the <i>From</i> field of voicemail messages in the mailbox.\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th>Voicemail message type</th>\n<th>Label</th>\n</tr><tr><td>Voicemail messages from external PSTN callers that are found in Entra ID contacts\n</td><td><i>External</i>\n</td></tr><tr><td>Voicemail messages from federated tenant callers that are found in the federated Entra ID contacts\n</td><td><i>External</i>\n</td></tr><tr><td>Voicemail messages from external PSTN callers that are not found in Entra ID contacts\n</td><td><i>Unverified</i>\n</td></tr><tr><td>Voicemail messages from anonymous callers, for example Skype calls without a phone number\n</td><td><i>Unverified</i>\n</td></tr></tbody></table>\n\n<p></p><p><b>Note:</b> This rollout applies to voicemail messages in Microsoft Exchange received from external PSTN calls and calls from federated tenants.\n</p><p>Example of the <i>From</i> field in voicemail message if PSTN caller was not found in Entra ID contacts:</p><ul><li>Before this rollout: +44 28 7584 5695</li><li>After this rollout: +44 28 7584 5695 (Unverified)\n</li></ul><p>Example of the <i>From</i> field in voicemail message if PSTN caller was found in Entra ID contacts:</p><ul><li>Before this rollout: John Smith\n</li><li>After this rollout: John Smith (External)\n</li></ul><p>Example of the <i>From</i> field in voicemail message for calls from federated tenant:\n</p><ul><li>Before this rollout: John Smith\n</li><li>After this rollout: John Smith (External)\n</li></ul><p>Example of the <i>From</i> field in voicemail message for anonymous Skype calls:</p><ul><li>Before this rollout: Anonymous\n</li><li>After this rollout: Anonymous (Unverified)\n</li></ul><p><b>Note:</b> Both improvements will always be on by default.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before or after the rollout. You may want to notify your users about this change and update relevant documentation.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams voicemail messages in Exchange will see compliance and security enhancements, including updated 'From' fields to meet RFC 6854 standards and labels for external or unverified calls. Rollout begins December 2024, with no admin action required. Users should be informed of these changes."
+      }
+    ],
+    "EndDateTime": "2025-05-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC987329",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-01-24T00:36:45.937Z",
+    "Services": [
+      "Exchange Online",
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-01-24T00:35:56Z",
+    "Tags": [
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: Enhanced compliance and security in voicemail messages",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Coming soon from Microsoft Purview Endpoint Data Loss Prevention: Support for restricting users from pasting sensitive content into a web browser on macOS devices using Microsoft Edge, Safari, Chrome or Firefox.\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=476073\" target=\"_blank\">476073</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out late February 2025 and expect to complete by late March 2025.\n</p><p>General Availability (Worldwide): We will begin rolling out early April 2025 and expect to complete by early May 2025.\n</p><p><b>How this will affect your organization:</b>\n</p><p>Before this rollout, if an organization has configured DLP policies to restrict users from pasting sensitive content to browsers, the restriction only applies on Windows devices.</p><p>After this rollout, if an organization has configured DLP policies to restrict users from pasting sensitive content to browsers, the policies will automatically apply to macOS devices also.</p><p>Browser messages for users. Left: Microsoft Edge. Right: All other browsers:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/0ddfa20e-fad7-4463-9690-7cb31869e5a7\" style=\"width: 400px;\" alt=\"user message\">\n</p><p>This change will be available by default.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before or after the rollout. You may want to notify your users about this change and update any relevant documentation.\n</p><p>There is no change required to your existing DLP policies as they will automatically include macOS devices in your organization.\n</p><p>Learn more: <a href=\"https://learn.microsoft.com/purview/endpoint-dlp-learn-about#endpoint-activities-you-can-monitor-and-take-action-on\" target=\"_blank\">Learn about Endpoint data loss prevention | Microsoft Learn</a> for the full list of protections on macOS devices.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "476073"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview is introducing a feature to restrict pasting sensitive content into browsers on macOS devices, complementing existing Windows device policies. The Public Preview begins late February 2025, with General Availability starting early April 2025. No admin action is required for this update. Roadmap ID: 476073."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2025-08-06T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC987324",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-01-24T00:33:12.993Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-01-24T00:32:50Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Endpoint Data Loss Prevention: Paste to browser restriction on macOS device",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Coming soon from Microsoft Purview: If you have enabled full file evidence collection, Data Loss Prevention can copy a file that matches a DLP policy from onboarded macOS devices to a Microsoft Azure storage account.\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=476098\" target=\"_blank\">476098</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out late February 2025 and expect to complete by late March 2025.\n</p><p>General Availability (Worldwide): We will begin rolling out early April 2025 and expect to complete by early May 2025.\n</p><p><b>How this will affect your organization:</b>\n</p><p>Before this rollout, if you enable full file evidence collection in Data Loss Prevention, a file that matches a DLP policy from onboarded macOS devices will not upload to a Microsoft Azure storage account.\n</p><p>In Data Loss Prevention, you can configure <i>Setup evidence collection for file activities on devices</i> to enable full file evidence collection:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/2151b597-4d27-488d-8ca6-b59aeeccc198\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p>This change will be available by default.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before or after the rollout. If you have already enabled Full file evidence collection, macOS devices protected by endpoint DLP will automatically upload files after this rollout. You may want to notify your users about this change and update any relevant documentation.\n</p><p>There is no change required to your existing DLP policies as they will automatically include macOS devices in your organization after this rollout.\n</p><p>Learn more: <a href=\"https://learn.microsoft.com/purview/dlp-copy-matched-items-learn\" target=\"_blank\">Learn about collecting files that match DLP policies from devices | Microsoft Learn</a> for more details on evidence collection.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "476098"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview's Endpoint DLP will soon allow full file evidence collection from macOS devices, automatically copying files that match DLP policies to Azure storage. Public Preview starts late February 2025, with General Availability in early April 2025. No admin action is required for the rollout."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2025-08-08T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC987322",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-01-24T00:32:21.737Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-01-24T00:31:43Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Endpoint Data Loss Prevention: Full file evidence collection on macOS devices",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>The <b>Apps </b>area within the Microsoft Intune admin center will have an updated look, similar to the <b>Devices </b>area, that provides a more consistent user interface (UI) and an improved navigation structure. This update is expected to start in early February 2025 and enabled for all admins by the end of the month.</p><p><b>How this will affect your organization:</b>\n</p><p>This is an admin center UI update only. The updated <b>Apps </b>area includes:\n</p><ul><li>Scenario-focused navigation structure that brings monitoring in line with management workflows.\n</li><li>Updated navigation naming to align with the Devices area, such as <i>App protection polices</i> will become <i>Protection</i>.\n</li><li>A dedicated list of monitoring reports and key metrics and reports on the overview page. \n</li><li>Platform specific navigation pivots that show menu items applicable to that platform.\n</li><li>Consistency across list views to search, sort, and filter data.</li></ul><p><br></p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/80c96f6e-a661-4388-a82b-0439be378b25\" width=\"400\" height=\"\"></p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1c096474-d178-4b94-96c7-278b2e2d4c87\" width=\"400\" height=\"\"></p><p><b>What you need to do to prepare:</b>\n</p><p>No action is required, only awareness.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The Intune admin center's 'Apps' area will soon have a UI update, offering a consistent look and improved navigation, starting early February 2025 and reaching all admins by month's end. This update is for admin center UI only and includes scenario-focused navigation, updated naming, dedicated monitoring reports, platform-specific pivots, and consistent list views. No action is needed, just awareness."
+      }
+    ],
+    "EndDateTime": "2025-03-29T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC987318",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-01-24T00:28:48.27Z",
+    "Services": [
+      "Microsoft Intune"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-01-24T00:28:22Z",
+    "Tags": [
+      "Admin impact"
+    ],
+    "Title": "Coming Soon: Update to Apps user interface experience in Intune",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated January 21, 2025: We have updated the rollout timeline below. Thank you for your patience.</p><p>A new Microsoft Teams feature empowers moderators to respond discreetly to attendee questions during Teams events. This functionality ensures that responses to sensitive questions, personal inquiries, or follow-up discussions are not broadcast to the entire audience, allowing for a more tailored and respectful communication experience.<br></p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=417158\" target=\"_blank\">417158</a>.</p><p><b>When this will happen:</b></p><p>General Availability (Worldwide): We will begin rolling out in late January 2025 (previously early January) and expect to complete in early February 2025 (previously late January).</p><p><b>How this will affect your organization:</b></p><p>Moderators can privately respond to an attendee's question, and the attendee can reply back to the moderator in private. After this exchange, the moderator can choose to either publish or dismiss the question without the private conversation being visible to other attendees.\n</p><p>Moderators also have the option to enable or disable the \"Private moderator replies to individual attendees\" feature in the Q&amp;A settings, which is only available when Moderation is turned on for the event. By default, this feature is enabled.</p><p><b>What you need to do to prepare:</b>\n</p><p>Notify the meeting organizers within your organization that this feature  will be available for use in meetings, webinars, and town halls. The <a href=\"https://support.microsoft.com/office/q-a-in-microsoft-teams-meetings-f3c84c72-57c3-4b6d-aea5-67b11face787\" target=\"_blank\">Q&amp;A public documentation</a> will soon be updated to include further details about this feature.</p>",
       "ContentType": "html"
     },
@@ -2980,10 +3147,6 @@
         "Value": "191528"
       },
       {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"191528\":[{\"RoadmapId\":191528,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0207576Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":191528,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-02-11T01:29:10.0207577Z\",\"LatestRing\":\"StandardRelease\"}]}"
-      },
-      {
         "Name": "Summary",
         "Value": "The new Microsoft Teams on Windows now allows users to mute and unmute with the Windows taskbar. The rollout timeline has been updated, with the feature expected to be fully deployed by late January 2025. Users can control their mic via the taskbar or a keyboard shortcut."
       },
@@ -3028,10 +3191,6 @@
       {
         "Name": "RoadmapIds",
         "Value": "365720"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"365720\":[{\"RoadmapId\":365720,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-08T05:33:01.2810616Z\",\"LatestRing\":null},{\"RoadmapId\":365720,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-03-08T05:33:01.2810614Z\",\"LatestRing\":null},{\"RoadmapId\":365720,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-08T05:33:01.2810613Z\",\"LatestRing\":null},{\"RoadmapId\":365720,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-03-08T05:33:01.2810612Z\",\"LatestRing\":null},{\"RoadmapId\":365720,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-03-08T05:33:01.281061Z\",\"LatestRing\":null},{\"RoadmapId\":365720,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-08T05:33:01.2810619Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -3181,10 +3340,6 @@
         "Value": "323766"
       },
       {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"323766\":[{\"RoadmapId\":323766,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-07-09T05:34:51.7271661Z\",\"LatestRing\":null},{\"RoadmapId\":323766,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-07-09T05:34:51.7271661Z\",\"LatestRing\":null},{\"RoadmapId\":323766,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-07-09T05:34:51.727166Z\",\"LatestRing\":null},{\"RoadmapId\":323766,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-07-09T05:34:51.7271658Z\",\"LatestRing\":null},{\"RoadmapId\":323766,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-07-09T05:34:51.7271655Z\",\"LatestRing\":null},{\"RoadmapId\":323766,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-07-09T05:34:51.7271664Z\",\"LatestRing\":null}]}"
-      },
-      {
         "Name": "Summary",
         "Value": "Microsoft Teams is introducing new skin tone settings and reactions, allowing users to personalize emojis and reactions. The rollout timeline has been updated, with completion expected by late January 2025. Users can adjust skin tones in the Teams app or emoji menu, affecting chats, channels, and meetings across all Teams platforms. No admin action is required for the update. Microsoft 365 Roadmap ID 323766 details this feature."
       },
@@ -3229,10 +3384,6 @@
       {
         "Name": "RoadmapIds",
         "Value": "422261"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"422261\":[{\"RoadmapId\":422261,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-11-18T19:11:45.2061227Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":422261,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-11-18T19:11:45.2061224Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":422261,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-11-18T19:11:45.206123Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -9670,10 +9821,6 @@
         "Value": "398449"
       },
       {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"398449\":[{\"RoadmapId\":398449,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-06-11T05:34:28.7605664Z\",\"LatestRing\":null},{\"RoadmapId\":398449,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-06-11T05:34:28.7605665Z\",\"LatestRing\":null},{\"RoadmapId\":398449,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-06-11T05:34:28.7605665Z\",\"LatestRing\":null}]}"
-      },
-      {
         "Name": "Summary",
         "Value": "Microsoft Teams introduces an expanded gallery view for minimized meeting windows, allowing users to see up to 4 participants. The rollout begins in August 2024, with general availability by December 2024. This feature is enabled by default and requires no preparation. Roadmap ID: 398449."
       },
@@ -9938,10 +10085,6 @@
       {
         "Name": "RoadmapIds",
         "Value": "314355"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"314355\":[{\"RoadmapId\":314355,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-02T09:04:00.6344531Z\",\"LatestRing\":null},{\"RoadmapId\":314355,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-02T09:04:00.6344534Z\",\"LatestRing\":null},{\"RoadmapId\":314355,\"Platform\":\"Web\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-02T09:04:00.6344537Z\",\"LatestRing\":null},{\"RoadmapId\":314355,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-03-02T09:04:00.6344542Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12324,10 +12467,6 @@
       {
         "Name": "RoadmapIds",
         "Value": "421189"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"421189\":[{\"RoadmapId\":421189,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-10-28T19:11:57.835163Z\",\"LatestRing\":null},{\"RoadmapId\":421189,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-10-28T19:11:57.8351629Z\",\"LatestRing\":null},{\"RoadmapId\":421189,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-10-28T19:11:57.8351631Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16176,10 +16315,6 @@
       {
         "Name": "RoadmapIds",
         "Value": "398956"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"398956\":[{\"RoadmapId\":398956,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-07-16T05:33:56.3577445Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":398956,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-07-16T05:33:56.357744Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":398956,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-07-16T05:33:56.3577444Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":398956,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-07-16T05:33:56.3577446Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
