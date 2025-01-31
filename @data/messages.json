@@ -4,6 +4,91 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated January 31, 2025: We have updated the rollout timeline below. Thank you for your patience.\n</p><p>A new <code>csTeamsAIPolicy</code> policy for Microsoft Teams (available now via Microsoft PowerShell and taking effect in mid-March 2025 (previously mid-February) will give IT admins more control over voice and face enrollment settings, allowing organizations to manage these features based on their needs. After rollout, voice and face profile enrollment <b>will be enabled by default</b>, and users can benefit from voice isolation, speaker recognition, and attribution in meeting rooms, resulting in smarter meeting recaps and enhanced functionality for Microsoft 365 Copilot in meetings. To access Copilot features, a Microsoft 365 Copilot license is required. This message applies to Teams for Windows desktop and Mac desktop.</p><p>NOTE: Microsoft doesn't use the voice and face profiles of users to train any models or for any other purposes other than providing the voice and face enrollment feature in Microsoft Teams.\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=413708\" target=\"_blank\">413708</a>.\n</p><p><b>When this will happen:</b></p><p>The new Microsoft PowerShell cmdlets are available now for admins to configure, to ensure a smooth transition.</p><p>\n</p><p>General Availability (Worldwide, GCC): The new Microsoft PowerShell cmdlets are available now for preparation and to ensure a smooth transition. The policy takes effect starting in mid-March 2025 (previously mid-February) and is expected to be fully in effect by late March 2025 (previously late February).</p><p><b>How this will affect your organization:</b>\n</p><p>Before this rollout, the current policy <code>csTeamsMeetingPolicy</code> has a single setting, <code>EnrollUserOverride</code>, that allows the administrator to enable or disable the enrollment of both face and voice profile of users.\n</p><p>After this rollout, the new <code>csTeamsAIPolicy</code> will replace the existing enrollment setting in <code>csTeamsMeetingPolicy</code>. The new <code>csTeamsAIPolicy</code> has two settings, <code>EnrollFace</code> and <code>EnrollVoice</code>, that will be set to <code>Enabled </code>by default.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>\nThis rollout will happen automatically by the specified date. Review your current configuration to determine the impact for your organization. You may want to notify your admins about this change and update any relevant documentation.\n\n</p><p>If your organization prefers to disable voice and face enrollments, review and update your settings before mid-January 2025. To help you get started, review:\n</p><ul><li><a href=\"https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy?view=teams-ps\" target=\"_blank\">Set-CsTeamsAIPolicy (MicrosoftTeamsPowerShell) | Microsoft Learn</a>\n</li><li><a href=\"https://learn.microsoft.com/powershell/module/teams/get-csteamsaipolicy?view=teams-ps\" target=\"_blank\">Get-CsTeamsAIPolicy (MicrosoftTeamsPowerShell) | Microsoft Learn</a>\n</li></ul><p>Learn more: <a href=\"https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition\" target=\"_blank\">Overview of voice and face enrollment - Microsoft Teams | Microsoft Learn</a></p><p>If your organization prefers to disable voice and face enrollments, review and update your settings before mid-February 2025.\n</p><p>Important: The EnrollUserOverride setting can be assigned globally, directly to users, or to groups  in PowerShell. \n</p><p>Admins must ensure that changes are applied consistently across all these locations to avoid unintended configurations.</p><p> \n</p><p>\n</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "413708"
+      },
+      {
+        "Name": "Summary",
+        "Value": "The new Microsoft Teams policy, effective mid-March 2025, will enable voice and face enrollment by default, offering enhanced meeting features. Admins should configure settings now using new PowerShell cmdlets and inform users of changes. Microsoft 365 Copilot license is required for full functionality."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, Mac"
+      }
+    ],
+    "EndDateTime": "2025-03-24T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC912707",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-01-31T16:51:45.053Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2024-10-17T23:34:26Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: New policy for voice and face enrollment will default to \"On\" (configure now)",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated January 31, 2025: We are proactively opting tenants out of the rollout that were detected as sending high volumes of emails exhibiting multiple From addresses without a Sender address header. These exempted senders will only be able to send emails exhibiting multiple From addresses without a Sender address header to recipients belonging to the same tenant as the sender. We will provide a subsequent update by the end of February with an updated timeline for tenants that are opted out.</p><p>Starting February 3 (previously December 1), we're going to start gradually dropping messages that have multiple From addresses (also known as P2 From headers) without a Sender header from being processed via Exchange Online.\n</p><p>If we see significant traffic exhibiting multiple From addresses (P2 From headers) without a Sender header in your tenant in the month of September, we will send you a Message Center Post by October 15th alerting you and providing some sample message IDs.</p><p>We are doing this to comply with <a href=\"https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2\" target=\"_blank\">RFC 5322 (https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2)</a>&nbsp;which mandates the Sender header to be present and contain a single address if the From header has more than one address. Noncompliance with this could be exploited by attackers, allowing them to impersonate a sender address by misleading the client into using the From header to determine the sender instead of the Sender header.\n</p><p><b>When this will happen:</b>\n</p><p>February 3, 2025 (previously December 1st)</p><p>We are delaying the rollout start date from December to February 3rd 2025 in order to provide more time to customers for investigating messages exhibiting multiple P2 From Addresses without a Sender Address.\n</p><p>Most of the traffic exhibiting multiple P2 From Addresses without a Sender Address will be inbound spam destined for your tenant sent by malicious spammers on the internet.\n</p><p>Some customers are sending legitimate emails with this malformed header configuration. On October 15, we sent a targeted MC post to customers showing high volumes of messages exhibiting multiple P2 From Addresses without a Sender Address as they may be impacted by this change.\n</p><p>For investigating if you will be impacted by this change, focus your investigation on messages sent using On Premises Inbound Connectors to Exchange Online. Authenticated mail submission is not impacted because submitting messages like this using those submissions are not allowed (Graph, Outlook clients, SMTP AUTH Client Submission).</p><p><b>How this affects your organization:</b>\n</p><p>If email clients including devices and applications that you use to send messages, do so using multiple From addresses but without a Sender address header after December 1st, you will get an NDR error code 550 5.1.20 “Multiple From addresses are not allowed without Sender address’”.</p><p><b>What you can do to prepare:</b>\n</p><p>When this change is in effect, if you need to send a message that has more than one email address in the From field, make sure that you have a single email address in the Sender header.\n</p><p>If you expect this change to cause any issues for your organization, please share that feedback.\n</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting February 3, 2025, Exchange Online will drop messages with multiple From addresses without a Sender header to comply with RFC 5322. Affected users were notified on October 15. To prevent issues, ensure messages with multiple From addresses include a Sender header."
+      }
+    ],
+    "EndDateTime": "2025-03-03T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC886603",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-01-31T16:35:05.78Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2024-09-10T00:59:11Z",
+    "Tags": [
+      "Updated message",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Reject multiple From addresses (P2 From headers) without a Sender header",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Coming soon to new Microsoft Outlook for Windows desktop and Microsoft Outlook for the web: Users can customize folder icon colors, making it easier to visually differentiate and personalize folders.\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=472921\" target=\"_blank\">472921</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling out early February 2025 and expect to complete by late February 2025.\n</p><p>General Availability (Worldwide): We will begin rolling out late March 2025 and expect to complete by late March 2025.\n</p><p>General Availability (GCC, GCC High, DoD): We will begin rolling out late April 2025 and expect to complete by late April 2025.\n</p><p><b>How this will affect your organization:</b></p><p>After this rollout, this feature will be available for all Outlook accounts except for shared mailboxes and shared folders. Colors work for light and dark mode. <b>Note: </b>Some Outlook themes will have low contrast with some folder colors.\n</p><p>To change the color of a folder, a user can hover over the folder name, select the three-dot menu, select <i>Change color</i> and then choose a color.\n</p><p>To turn off the color, follow the same process, and select <i>Automatic</i>.\n</p><p>The folder color will display in the list of folders and in <i>Favorites </i>if the colored folder is added to <i>Favorites.</i>\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1025fb78-ed5f-41f6-b2b0-1e792441a408\" style=\"width: 400px;\" alt=\"user controls\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before or after the rollout. Review your current configuration to determine the impact for your organization. You may want to notify your users about this change and update any relevant documentation.\n</p><p>#newoutlookforwindows</p>",
       "ContentType": "html"
     },
@@ -8173,37 +8258,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "We are announcing the Use Copilot to ask Power Automate product questions feature for Power Automate. This feature allows users to ask questions about cloud flow and desktop flow activity, work queues, and Power Automate features. This feature will reach general availability on January 31, 2025.<br><br><b>How does this affect me?</b><br>This feature allows Copilot within automation center to analyze automation activity, view work queue performance, and provide answers to common questions about Power Automate capabilities.<br><br><b>What do I need to do to prepare?</b><br>This message is for awareness and no action is required.<br><br>If you would like more information on this feature, please visit <a target=\"_blank\" href=\"https://aka.ms/ADO8971\">Automation center (preview)</a>.",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2025-01-31T16:23:52Z",
-    "HasAttachments": false,
-    "Id": "MC969397",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-12-31T16:24:24.34Z",
-    "Services": [
-      "Microsoft Power Automate"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-12-31T16:23:52Z",
-    "Tags": [
-      "New feature"
-    ],
-    "Title": "Power Automate - Use Copilot to ask Power Automate product questions",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated December 30, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>A new Microsoft Purview compliance portal introduces a pivotal communications enhancement that integrates Insider Risk Management (IRM) alerts within Communication Compliance (CC) triage flows, providing a holistic approach to compliance risk assessment. This integration empowers investigators with enriched insights by correlating communication alerts with a user's risk profile and activity history from IRM directly in a CC triage flow. This synergy between IRM and CC facilitates a more nuanced and informed decision-making process during investigations.&nbsp;<br></p><p>\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=408534\" target=\"_blank\">408534</a>.</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out mid-November 2024 (previously early November) and expect to complete by mid-November 2024 (previously late October)<br></p><p>General Availability (Worldwide): We will begin rolling out mid-December 2024 (previously mid-November and expect to complete by late January 2025 (previously late December).</p><p> <b>How this will affect your organization:</b>\n</p><p>The integration of IRM context into CC is a significant stride towards enhancing the efficacy of compliance investigations. This will allow investigators to view a user's risk profile and history alongside communication alerts, enabling a more informed and efficient triage process.\n</p><p>The insider risk severity (Low, Medium, or High) determined by activity detected in IRM policies helps to prioritize and respond to user activity accordingly. A new user activity timeline will show messages and activities from IRM in one screen, simplifying the review process. \n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/ddfd4015-92af-4464-bed3-8ca48dffbccc\" style=\"width: 500px;\"><br></p><p><br></p><p><b>What you need to do to prepare:</b>\n</p><p>To use this feature, please connect with IRM administrators to enable <i>Data sharing</i> from IRM settings. If you don't turn this setting on, you will see <i>Insider risk activity not available.</i></p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/c227a8e6-dde4-481e-b799-94fe8efb9469\" style=\"width: 500px;\"><br></p>",
       "ContentType": "html"
     },
@@ -8637,53 +8691,6 @@
       "Admin impact"
     ],
     "Title": "Take Action: Update network endpoints for Win32 apps and PowerShell scripts by December 27, 2024",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated December 20, 2024: We have updated the content. Thank you for your patience.</p><p>A new <code>csTeamsAIPolicy</code> policy for Microsoft Teams (available now via Microsoft PowerShell and taking effect in mid-February 2025) will give IT admins more control over voice and face enrollment settings, allowing organizations to manage these features based on their needs. After rollout, voice and face profile enrollment <b>will be enabled by default</b>, and users can benefit from voice isolation, speaker recognition, and attribution in meeting rooms, resulting in smarter meeting recaps and enhanced functionality for Microsoft 365 Copilot in meetings. To access Copilot features, a Microsoft 365 Copilot license is required. This message applies to Teams for Windows desktop and Mac desktop.\n</p><p>NOTE: Microsoft doesn't use the voice and face profiles of users to train any models or for any other purposes other than providing the voice and face enrollment feature in Microsoft Teams.\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=413708\" target=\"_blank\">413708</a>.\n</p><p><b>When this will happen:</b></p><p>The new Microsoft PowerShell cmdlets are available now for admins to configure, to ensure a smooth transition.</p><p>\n</p><p>General Availability (Worldwide, GCC): The new Microsoft PowerShell cmdlets are available now for preparation and to ensure a smooth transition. The policy takes effect starting in mid-February 2025 (previously early February) and is expected to be fully in effect by late February 2025 (previously mid-February).&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>Before this rollout, the current policy <code>csTeamsMeetingPolicy</code> has a single setting, <code>EnrollUserOverride</code>, that allows the administrator to enable or disable the enrollment of both face and voice profile of users.\n</p><p>After this rollout, the new <code>csTeamsAIPolicy</code> will replace the existing enrollment setting in <code>csTeamsMeetingPolicy</code>. The new <code>csTeamsAIPolicy</code> has two settings, <code>EnrollFace</code> and <code>EnrollVoice</code>, that will be set to <code>Enabled </code>by default.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>\nThis rollout will happen automatically by the specified date. Review your current configuration to determine the impact for your organization. You may want to notify your admins about this change and update any relevant documentation.\n\n</p><p>If your organization prefers to disable voice and face enrollments, review and update your settings before mid-January 2025. To help you get started, review:\n</p><ul><li><a href=\"https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy?view=teams-ps\" target=\"_blank\">Set-CsTeamsAIPolicy (MicrosoftTeamsPowerShell) | Microsoft Learn</a>\n</li><li><a href=\"https://learn.microsoft.com/powershell/module/teams/get-csteamsaipolicy?view=teams-ps\" target=\"_blank\">Get-CsTeamsAIPolicy (MicrosoftTeamsPowerShell) | Microsoft Learn</a>\n</li></ul><p>Learn more: <a href=\"https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition\" target=\"_blank\">Overview of voice and face enrollment - Microsoft Teams | Microsoft Learn</a></p><p>If your organization prefers to disable voice and face enrollments, review and update your settings before mid-February 2025.\n</p><p>Important: The EnrollUserOverride setting can be assigned globally, directly to users, or to groups  in PowerShell. \n</p><p>Admins must ensure that changes are applied consistently across all these locations to avoid unintended configurations.</p><p> \n</p><p>\n</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "413708"
-      },
-      {
-        "Name": "Summary",
-        "Value": "The new Microsoft Teams policy, effective mid-February 2025, will enable voice and face enrollment by default, offering enhanced meeting features. Admins should configure settings now using new PowerShell cmdlets and inform users of changes. Microsoft 365 Copilot license is required for full functionality."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac"
-      }
-    ],
-    "EndDateTime": "2025-03-24T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC912707",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2024-12-20T23:19:30.86Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-10-17T23:34:26Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: New policy for voice and face enrollment will default to \"On\" (configure now)",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -14594,44 +14601,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Viva Connections: Refreshed Resources section on mobile to align with desktop",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated November 6, 2024: We have updated the content. Thank you for your patience.</p><p>Starting February 3 (previously December 1), we're going to start gradually dropping messages that have multiple From addresses (also known as P2 From headers) without a Sender header from being sent via Exchange Online.\n</p><p>If we see significant traffic exhibiting multiple From addresses (P2 From headers) without a Sender header in your tenant in the month of September, we will send you a Message Center Post by October 15th alerting you and providing some sample message IDs.</p><p>We are doing this to comply with <a href=\"https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2\" target=\"_blank\">RFC 5322 (https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2)</a>&nbsp;which mandates the Sender header to be present and contain a single address if the From header has more than one address. Noncompliance with this could be exploited by attackers, allowing them to impersonate a sender address by misleading the client into using the From header to determine the sender instead of the Sender header.\n</p><p><b>When this will happen:</b>\n</p><p>February 3, 2025 (previously December 1st)</p><p>We are delaying the rollout start date from December to February 3rd 2025 in order to provide more time to customers for investigating messages exhibiting multiple P2 From Addresses without a Sender Address.\n</p><p>Most of the traffic exhibiting multiple P2 From Addresses without a Sender Address will be inbound spam destined for your tenant sent by malicious spammers on the internet.\n</p><p>Some customers are sending legitimate emails with this malformed header configuration. On October 15, we sent a targeted MC post to customers showing high volumes of messages exhibiting multiple P2 From Addresses without a Sender Address as they may be impacted by this change.\n</p><p>For investigating if you will be impacted by this change, focus your investigation on messages sent using On Premises Inbound Connectors to Exchange Online. Authenticated mail submission is not impacted because submitting messages like this using those submissions are not allowed (Graph, Outlook clients, SMTP AUTH Client Submission).</p><p><b>How this affects your organization:</b>\n</p><p>If email clients including devices and applications that you use to send messages, do so using multiple From addresses but without a Sender address header after December 1st, you will get an NDR error code 550 5.1.20 “Multiple From addresses are not allowed without Sender address’”.</p><p><b>What you can do to prepare:</b>\n</p><p>When this change is in effect, if you need to send a message that has more than one email address in the From field, make sure that you have a single email address in the Sender header.\n</p><p>If you expect this change to cause any issues for your organization, please share that feedback.\n</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting February 3, 2025, Exchange Online will drop messages with multiple From addresses without a Sender header to comply with RFC 5322. Affected users were notified on October 15. To prevent issues, ensure messages with multiple From addresses include a Sender header."
-      }
-    ],
-    "EndDateTime": "2025-03-03T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC886603",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2024-11-08T00:37:37.087Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-09-10T00:59:11Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Reject multiple From addresses (P2 From headers) without a Sender header",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
