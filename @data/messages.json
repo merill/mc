@@ -4,6 +4,146 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>We are excited to announce that users will soon be redirected to new streamlined and efficient home pages for Microsoft Word for the web, Microsoft Excel for the web, and Microsoft PowerPoint for the web (WXP). The new home pages are available now at:\n</p><ul><li><a href=\"https://word.cloud.microsoft\" target=\"_blank\">https://word.cloud.microsoft</a>\n</li><li><a href=\"https://excel.cloud.microsoft\" target=\"_blank\">https://excel.cloud.microsoft</a>\n</li><li><a href=\"https://powerpoint.cloud.microsoft\" target=\"_blank\">https://powerpoint.cloud.microsoft</a>\n</li></ul><p><b>When this will happen:</b>\n</p><p><span style=\"background-color: rgb(231, 214, 222);\">Targeted Release: We will begin rolling out in late February 2025 and expect to complete in mid-March 2025.\n</span></p><p><span style=\"background-color: rgb(231, 214, 222);\">General Availability (Worldwide): We will begin rolling out mid-March 2025 and expect to complete by late April 2025.</span>\n</p><p><b>How this will affect your organization</b>\n</p><p>During the rollout, some users will be taken to the new WXP homepages. The WXP entry points being changed are the Microsoft 365 app launcher, the Microsoft 365 AppBar, and the Microsoft 365 Apps page. The new homepages are offered in 39 languages with additional languages arriving in the coming months. The previous Microsoft 365 launch pages for WXP for the web will continue to be available at the existing URLs until after the rollout is complete.\n</p><p>App launcher showing the apps that will have new home pages:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/2f484c38-beea-4cf0-aaa1-820152cf3f92\" style=\"width: 400px;\" alt=\"user controls\">\n</p><p><b>What you need to do to prepare</b>\n</p><p>There is no preparation needed by IT Admins. We appreciate your cooperation and look forward to providing you with an improved user experience.\n</p><p>This rollout will happen automatically by the specified date with no admin action required before or after the rollout. You may want to notify your users about this change and update any relevant documentation.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [],
+    "EndDateTime": "2025-07-18T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC994290",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-01-31T23:43:01.46Z",
+    "Services": [
+      "Microsoft 365 for the web"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-01-31T23:42:50Z",
+    "Tags": [
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Microsoft Word, Microsoft Excel, and Microsoft PowerPoint on the web: Improved home pages",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Coming soon: We will introduce a new Microsoft Teams PowerShell setting in Tenant Federation Configuration to enable you to customize your federation posture. Tenant administrators will be able to define a list of external trial tenants to be whitelisted for federation, while maintaining the default block on overall federation with trial-only tenants.\n</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): The new setting is available now in Teams PowerShell. If populated, the allowed trial tenant domains list will start to take effect in mid-February 2025.\n</p><p><b>Note:</b> This feature requires no immediate admin action, and there will be no impact if the list is not populated.\n</p><p><b>How this will affect your organization:</b>\n</p><p>Microsoft Teams introduced a new PowerShell setting (<code>-ExternalAccessWithTrialTenants</code>) to the <code>Set-CsTenantFederationConfiguration</code> cmdlet in August 2024 that enabled blocking all external access with trial-only tenants. \n</p><p>Now, we’re introducing a new Tenant federation setting <code>-AllowedTrialTenantDomains</code> to enable more granularity in defining the federation posture for your organization. This setting will allow you to keep federation with trial-only tenants blocked, while explicitly allowing federation with trial tenant domains you trust and collaborate with for valid business needs.\n</p><p><i>Important notes</i></p><ul><li>A \"trial-only\" tenant is defined as a tenant with a Teams service plan that has only Trial subscriptions (0 purchased licenses).\n</li><li>Cross-cloud experience: Currently, all cross-cloud communication involving trial-only tenants in public clouds is blocked by default. The <code>AllowedTrialTenantDomains</code> setting will not be supported for cross-cloud communication.\n</li><li>This setting is only supported in PowerShell.\n</li></ul><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. You may want to notify your users about this change and update any relevant documentation.\n</p><ul><li>Review your settings for external access to determine if you have a valid business need to allow federation with trial-only tenants and then prepare the whitelist.\n</li><li>Download or upgrade to the latest PowerShell package (6.7 or higher): <a href=\"https://www.powershellgallery.com/packages/MicrosoftTeams/\" target=\"_blank\">https://www.powershellgallery.com/packages/MicrosoftTeams/</a>\n</li><li>To block external communication with trial-only tenants, use: <code>Set-CsTenantFederationConfiguration -ExternalAccessWithTrialTenants \"Blocked\"</code>\n</li><li>To allow external communication with specific trial-only tenants, while blocking it by default for most trial-only tenants, use:</li></ul><p><code>$list = New-Object Collections.Generic.List<b>String</b></code>\n</p><p><code>$list.add(\"contoso.com\")</code>\n</p><p><code>$list.add(\"fabrikam.com\")</code>\n</p><p><code>Set-CsTenantFederationConfiguration -AllowedTrialTenantDomains $list</code>\n</p><ul><li>To remove tenants from the <code>AllowedTrialTenantDomains</code> list, use:\n</li></ul><p><code>$list = New-Object Collections.Generic.List<b>String</b>\n</code></p><p><code>$list.add(\"contoso.com\")\n</code></p><p><code>Set-CsTenantFederationConfiguration -AllowedTrialTenantDomains @{Remove=$list}\n</code></p><ul><li>To allow external communication with all trial-only tenants, use:\n</li></ul><p><code>Set-CsTenantFederationConfiguration -ExternalAccessWithTrialTenants \"Allowed\"</code>\n</p><p><i>Learn more</i>\n</p><ul><li>PowerShell cmdlet configuration: <a href=\"https://learn.microsoft.com/powershell/module/teams/set-cstenantfederationconfiguration?view=teams-ps\" target=\"_blank\">Set-CsTenantFederationConfiguration | Microsoft Learn</a>\n</li><li>Manage external communication: <a href=\"https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat?tabs=organization-settings\" target=\"_blank\">IT Admins - Manage external meetings and chat with people and organizations using Microsoft identities - Microsoft Teams | Microsoft Learn</a></li></ul><p></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [],
+    "EndDateTime": "2025-06-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC994289",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-01-31T23:42:34.537Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-01-31T23:42:23Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: Microsoft PowerShell cmdlet to allow federation with specific trial tenant domains",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>TeleMessage data connectors for T-Mobile and Hong Kong CSL (HKCSL) mobile networks will soon be available. These connectors will allow organizations to import and archive SMS and MMS data from the respective mobile networks to the Microsoft 365 environment.&nbsp;&nbsp;</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=477365\" target=\"_blank\">477365</a>.</p><p><b>When this will happen:</b>.</p><p>General Availability (Worldwide, GCC): We will begin rolling out early February 2025 and expect to complete by late February 2025.</p><p><b>How this will affect your organization:</b>\n</p><p>Once SMS and MMS messages for the users are successfully stored in user mailboxes, admins can apply Microsoft 365 Purview features such as Litigation Hold, Content Search, and Microsoft 365 retention policies to T-Mobile and HKCSL network data.</p><p>Third-party applications and services might involve storing, transmitting, and processing your organization's customer data on third-party systems that are outside of the Microsoft 365 infrastructure and, therefore, aren't covered by the Microsoft Purview and data protection commitments. Microsoft makes no representation that use of this product to connect to third-party applications implies that those third-party applications are Federal Risk and Authorization Management Program (FedRAMP) compliant.</p><p>This new feature is available by default. Admins can work with Microsoft Partner TeleMessage to set up these connectors.</p><p><b>What you need to do to prepare:</b>\n</p><p>More information about the connectors can be found here once they are live: <a href=\"https://learn.microsoft.com/purview/archive-third-party-data\" target=\"_blank\">Use data connectors to import and archive third-party data in Microsoft 365 | Microsoft Learn</a>.</p><p>This rollout will happen automatically with no admin action required. You may want to notify your users about this change and update any relevant documentation as appropriate.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "477365"
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2025-05-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC994283",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-01-31T23:39:58.4Z",
+    "Services": [
+      "Microsoft 365 suite",
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-01-31T23:39:12Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Data Connectors - Microsoft partner data connectors for T-Mobile and HKCSL",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": "2025-10-31T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>After October 2025, Microsoft 365 subscriptions associated with a Microsoft 365 account (personal, work, or school) will no longer be able to use legacy Microsoft Outlook for Mac. This transition marks a significant step towards a more robust, feature-rich, and <a href=\"https://techcommunity.microsoft.com/blog/outlook/keeping-our-outlook-personal-email-users-safe-reinforcing-our-commitment-to-secu/4164184\" target=\"_blank\">secure email experience</a> for all users.\n</p><p>The latest version of Outlook for Mac has been part of the Microsoft 365 suite for the last four years. More than 95% of Microsoft 365 users have already moved from legacy Outlook for Mac to the new version. Learn more about the new features and benefits in our <a href=\"https://techcommunity.microsoft.com/category/outlook/blog/outlook\" target=\"_blank\">Outlook Blog</a> and <a href=\"https://learn.microsoft.com/officeupdates/current-channel\" target=\"_blank\">Release Notes</a>. For information on what's next, please follow the <a href=\"https://www.microsoft.com/microsoft-365/roadmap?msockid=165f8b1203726cfe0ed49e3207726225&amp;filters=Outlook%2CMac\" target=\"_blank\">Microsoft 365 Roadmap for Outlook for Mac</a>.\n</p><p><b>How this will affect your organization:</b>\n</p><p>You are receiving this message because our reporting indicates your organization may be using legacy Outlook for Mac. We do not have access to the list of users, but we might be able to provide a list of device IDs if your tenant allows legacy Outlook to upload telemetry.\n</p><p>Users will no longer be able to switch back to legacy Outlook for Mac after this change is implemented.\n</p><p>This change affects ONLY Outlook for Mac\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This change will happen automatically by the specified date. No admin action is required. Please notify your users about this change and update relevant documentation as appropriate.\n</p><p>Learn more: <a href=\"https://support.microsoft.com/office/end-of-support-for-legacy-outlook-for-mac-7b9cf644-7035-4345-a151-8c1c7a65ac25\" target=\"_blank\" style=\"\">End of support for legacy Outlook for Mac - Microsoft Support</a></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [],
+    "EndDateTime": "2026-01-09T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC994282",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-01-31T23:38:47.737Z",
+    "Services": [
+      "Exchange Online",
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-01-31T23:38:12Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Legacy Microsoft Outlook for Mac: Support will end",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated February 1, 2025: This update serves as a reminder that SharePoint Add-Ins will retire and stop working in 14 months from now (April 2, 2026).</p><p>Since the release of SharePoint Add-Ins in 2013, Microsoft has evolved SharePoint extensibility using <a href=\"https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview?WT.mc_id=m365-15744-cxa\" target=\"_blank\">SharePoint Framework</a> (SPFx) enabling you to write applications that can be used in Microsoft SharePoint, Viva Connections and Microsoft Teams. With our continued investment in SharePoint Framework, Microsoft is retiring SharePoint Add-Ins.\n</p><p><b>Key Points:</b></p><ul><li>Major: Retirement \n</li><li>Timeline:\n<ul><li>Starting July 1st, 2024, SharePoint Add-Ins cannot be installed from the public marketplace, also referred to as store by existing tenants. Installation from a private app catalog stays possible.\n</li><li>Starting November 1st, 2024, new tenants will not be able use SharePoint Add-Ins, regardless of their origin (public marketplace, private tenant catalog).\n</li><li>Starting April 2nd, 2026, Microsoft will remove the ability use SharePoint Add-Ins for existing tenants.\n</li></ul></li><li>Action: Review and assess impact\n</li></ul><p><b>How this will affect your organization:</b></p><p>If your organization still uses SharePoint Add-Ins, they will no longer function after April 2nd, 2026. We recommend customers to port their customizations to SharePoint Framework (SPFx) and ask their solution vendors for updated solutions.\n</p><p><b>What you need to do to prepare</b></p><p>You will want to notify your Add-In users and developers. Update your user training and prepare your help desk.\n</p><p>For admins\n</p><ul><li>Use the <a href=\"https://pnp.github.io/pnpassessment/addinsacs/readme.html\" target=\"_blank\">Microsoft 365 Assessment tool</a> to scan your tenants for SharePoint Add-In usage.\n</li><li><a href=\"https://learn.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps\" target=\"_blank\">Disable SharePoint Add-Ins</a> on your tenant using SharePoint Online Management Shell</li><li> Review the guidance for <a href=\"https://learn.microsoft.com/sharepoint/dev/sp-add-ins-modernize/sp-add-in-modernize\" target=\"_blank\">migrating from SharePoint Add-Ins to SharePoint Framework</a>.</li><li>There will not be an option to extend SharePoint Add-Ins beyond April 2nd 2026.\n</li></ul><p><i>New: How to disable SharePoint Add-Ins on your tenant\n</i></p><p>Admins can disable SharePoint Add-Ins with the<a href=\"https://learn.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps\" target=\"_blank\"> Set-SPOTenant SharePoint Management Shell PowerShell command</a>.\n</p><p><code>Connect-SPOService -Url https://&lt;tenant&gt;-admin.sharepoint.com\n</code></p><p><code>Set-SPOTenant -IsSharePointAddInsDisabled $true</code>\n</p><p>After SharePoint Add-Ins are disabled, users will not be able to add SharePoint Add-Ins to their sites, and admins cannot add new SharePoint Add-Ins to the tenant and site collection app catalogs. SharePoint Add-Ins already added to sites will stay available and can still be used by the site's users.\n</p><p><i>New: SharePoint Add-Ins will not be available from the public marketplace\n</i></p><p>After July 1, 2024, users browsing the public marketplace (<a href=\"https://appsource.microsoft.com/\" target=\"_blank\">AppSource</a>) will see SharePoint Add-In, but if they select Get it now, a message will explain that SharePoint Add-Ins are retired and cannot be added. If you still require a specific SharePoint Add-In, contact the Add-In creator to understand the possible options.</p><p>Learn more\n</p><ul><li>Support update for the <a href=\"https://learn.microsoft.com/sharepoint/dev/sp-add-ins/retirement-announcement-for-add-ins\" target=\"_blank\">retirement of SharePoint Add-Ins</a> in Microsoft 365.\n</li></ul><p><br></p><p>\n</p>",
       "ContentType": "html"
     },
