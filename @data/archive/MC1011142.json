@@ -1,0 +1,40 @@
+{
+  "ActionRequiredByDateTime": "2025-03-30T07:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b>Note: </b>If your organization uses Microsoft OneNote, please read.\n</p><p>As part of the <a href=\"https://aka.ms/securefutureinitiative\" target=\"_blank\">Microsoft Secure Future Initiative</a> and to address the growing number of cyber threats, we will change the authentication flow for Microsoft Graph OneNote APIs.\n</p><p><i>What is the update?</i>\n</p><p>Effective March 31, 2025, we will retire support for authentication tokens with application permissions (app-only tokens) for <a href=\"https://learn.microsoft.com/graph/integrate-with-onenote\" target=\"_blank\">MSGraph OneNote APIs</a>. We will continue to support authentication tokens that have delegated permissions. While app-only tokens are easy to use, they may be more easily exploited compared to more sophisticated authorization methods. Requests to the Notes API endpoints using tokens with application permissions will return 401 unauthorized errors starting March 31, 2025.\n</p><p><i>How do I know if this update impacts my service?\n</i></p><ol><li><i>Your service will be impacted</i> if you have a custom third party or internal application that performs operations using app-only authentication tokens. <a href=\"https://learn.microsoft.com/graph/permissions-overview?tabs=http\" target=\"_blank\">Overview of Microsoft Graph permissions - Microsoft Graph | Microsoft Learn</a> documents the difference between delegated access and app-only access.\n</li><li><i>Your service will not be impacted</i> by these changes if you do not use a third-party or a custom internal application (an “app”) to perform operations on OneNote Notebooks.</li><li>Your service will not be impacted by these changes if you use an app, but it performs operations only using “delegated access” (also known as app+user) permissions.   \n</li></ol><p><i>What action is required on my part?</i>\n</p><p>Before March 31, 2025, third-party applications using app-only tokens will need to migrate to using delegated authentication tokens. This update is necessary to enhance the security of your data.\n</p><p>To introduce a more secure form of authorization, please take these steps:\n</p><ol><li><i>Share this message</i> if you rely on a system integrator partner or other third-party solution to perform operations on OneNote notebooks so that they can take further action. \n</li><li><i>Transition to using a delegated authentication model</i> if you have your own custom internal application that performs operations on OneNote notebooks and that requires each user to approve the app or an admin to approve on behalf of the user(s). \n</li><li><i>Transition to using a delegated authentication model with admin consent flow</i> if you are a system integrator partner and your app uses app-only authentication.  To do this you will need to make changes to your app using the links in the <i>Learn more</i> section. After those changes are complete, a Global tenant admin will need to approve the app for all users in their tenant through the Microsoft Entra admin center.\n</li></ol><p></p><p><i>Learn more</i>\n</p><ul><li>Learn how to configure delegated access for the impacted apps: <a href=\"https://learn.microsoft.com/graph/auth-v2-user?tabs=http\" target=\"_blank\">Get access on behalf of a user - Microsoft Graph | Microsoft Learn</a>\n</li><li>If you have questions about user consent vs admin consent flows for delegated access, please review <a href=\"https://learn.microsoft.com/entra/identity-platform/application-consent-experience\" target=\"_blank\">Microsoft Entra app consent experiences - Microsoft identity platform | Microsoft Learn</a>\n</li></ul><p>We appreciate your cooperation in making these necessary changes to ensure the security of your data.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft OneNote will retire app-only authentication for Microsoft Graph APIs on March 31, 2025. Organizations using app-only tokens must switch to delegated authentication tokens to avoid unauthorized errors. This change aims to enhance data security. Transition steps and further details are provided in the message."
+    }
+  ],
+  "EndDateTime": "2025-05-30T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1011142",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2025-02-20T01:11:22.783Z",
+  "Services": [
+    "Microsoft 365 suite",
+    "Microsoft 365 for the web",
+    "Microsoft 365 apps"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-02-20T01:11:03Z",
+  "Tags": [
+    "User impact",
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Microsoft OneNote: App-only authentication for OneNote Microsoft Graph APIs will retire",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
