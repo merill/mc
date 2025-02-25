@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>We are making a change to the behavior of the EWSEnabled tenant-wide switch in Exchange Online.\n</p><p><b>When this will happen:</b>\n</p><p>This change will rollout worldwide, starting April 1, 2025\n</p><p><b>How this affects your organization:</b>\n</p><p>If you want to restrict the usage of EWS in your tenant, this change might affect you. The current behavior of the EWSEnabled flag is that it can be set at both the tenant (organization) level and the user (mailbox) level. Currently, when the flag is set to true at the user level, it takes precedence over the organization-level setting. If a setting is Null, it means the setting is not enforced at that level. If Org and user-level are both Null, the default behavior is to allow. This hierarchical structure means that if the organization-level flag is set to false, but the user-level flag is set to true, EWS requests from that user are still allowed. In summary:</p><table class=\"table table-bordered\"><tbody><tr><td>Organization Level</td><td>User Level&nbsp;</td><td>EWS Requests</td></tr><tr><td>True or &lt;null&gt;</td><td>True or &lt;null&gt;</td><td>Allowed</td></tr><tr><td>True or &lt;null&gt;</td><td>False</td><td>Not Allowed</td></tr><tr><td>False</td><td>True</td><td>Allowed</td></tr><tr><td>False</td><td>False or &lt;null&gt;</td><td>Not Allowed</td></tr></tbody></table><p>This approach has led to situations where it can be challenging for administrators to ensure uniform policy enforcement across their organization, particularly in large and complex environments.</p><p>New Behavior\n</p><p>To address these issues, we are altering the behavior so that EWS will only be allowed if both the organization-level and user-level EWSEnabled flags are true. Here's a simplified view of the new logic:</p><table class=\"table table-bordered\"><tbody><tr><td>Organization Level</td><td>&nbsp;User Level</td><td>EWS Requests</td></tr><tr><td>True or &lt;null&gt;</td><td>True or &lt;null&gt;</td><td>Allowed</td></tr><tr><td>True or &lt;null&gt;</td><td>False</td><td>Not Allowed</td></tr><tr><td>False</td><td>True or &lt;null&gt;</td><td>Not Allowed</td></tr><tr><td>False</td><td>False</td><td>Not Allowed</td></tr></tbody></table><p>In short, EWS will be permitted only if both the organization and user-level allow it. This change ensures that administrators have better control over EWS access and can enforce policies more consistently across their entire organization</p><p><b>Next Steps:</b>\n</p><p>Please check the blog for additional information and ensure your per-user and tenant wide settings are correct before this change is made to your tenant. \n</p><ul><li>&nbsp;<a href=\"https://aka.ms/EWSEnabledChange\" target=\"_blank\">The way to control EWS usage in Exchange Online is changing</a>&nbsp;</li></ul><p><b><br></b></p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "The behavior of the EWSEnabled switch in Exchange Online is changing. Starting April 1, 2025, EWS will only be allowed if both the organization-level and user-level EWSEnabled flags are true. This change aims to improve policy enforcement consistency. Check the blog for more details: [The way to control EWS usage in Exchange Online is changing](https://aka.ms/EWSEnabledChange)."
+    }
+  ],
+  "EndDateTime": "2025-12-31T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1015893",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2025-02-25T00:29:42.28Z",
+  "Services": [
+    "Exchange Online"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-02-25T00:29:19Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "The way to control EWS usage in Exchange Online is changing",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
