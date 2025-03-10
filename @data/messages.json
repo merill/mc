@@ -4,6 +4,42 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated March 10, 2025: We have updated the content. Thank you for your patience.</p><p>To reduce the risk of misuse and abuse of Exchange Online resources and ensure service availability for all users, we’ll soon introduce new tenant-level outbound email limits, known as the Tenant External Recipient Rate Limit or TERRL. The TERRL restricts the number of external recipients a tenant can send email to per day. If the limit is exceeded further messages sent to external recipients from the tenant will be blocked until the volume for the last 24 hours drops below the quota. A tenant’s TERRL quota is calculated based on the number of email licenses a tenant has purchased. Here is the formula used to calculate a tenant’s quota:\n</p><p>500 * (Purchased Email Licenses^0.7) + 9500\n</p><p>To help admins plan and track their outbound email volume, you’ll find a new report in the Exchange admin center: <i>EAC &gt; Reports &gt; Mail flow &gt; Tenant Outbound External Recipients Rate</i>. This report shows the current volume of external recipients, your tenant’s daily quota, how much of the quota is used, and the number of recipients that were blocked if the limit was exceeded. The report will also show if enforcement for the limit is enabled or disabled. For example, for tenants who have more than 500 email licenses it will show “Disabled” until May 1st, the day we’ll start to enable enforcement for tenants who have more than 500 licenses.\n</p><p><b>When this will happen:</b></p><p>This change will roll out in progressive stages over the month of March as per the following rollout schedule:</p><table class=\"table table-bordered\"><tbody><tr><td>Phase</td><td>Enable enforcement for tenant group</td><td>Rollout start date</td></tr><tr><td>1</td><td>Tenants with &lt;= 25 email licenses</td><td>April 3, 2025</td></tr><tr><td>2</td><td>+ additional tenants with &lt;= 200 licenses</td><td>April 10, 2025</td></tr><tr><td>3</td><td>+ additional tenants with &lt;= 500 licenses</td><td>April 17, 2025</td></tr><tr><td>4</td><td>+ all remaining tenants</td><td>May 1, 2025</td></tr></tbody></table><p><b>How this will affect your organization:</b></p><p>If your tenant exceeds its daily outbound sending limit further messages sent to external recipients will be blocked and senders will receive one of the following bounce messages (also known as Non-Delivery Receipts or NDRs):\n</p><ul><li>Trial tenants: 550 5.7.232 - Your message can't be sent because your trial tenant has exceeded its daily limit for sending email to external recipients (tenant external recipient rate limit)\n</li><li>Non-trial tenants: 550 5.7.233 - Your message can't be sent because your tenant exceeded its daily limit for sending email to external recipients (tenant external recipient rate limit)\n</li></ul><p><b>What you need to do to prepare:</b></p><p>Check the report in the EAC to see your tenant’s quota and current daily outbound email volume and whether or not any messages will be blocked once the TERRL is enabled for your tenant. If your current outbound email volume is well below the quota, you don’t have to do anything. If your outbound email volume is near or exceeding your quota, consider using <a href=\"https://learn.microsoft.com/en-us/azure/communication-services/overview\" target=\"_blank\">Azure Communication Services email</a> for high-volume email to external recipients instead. ACS email which offers significant advantages and features for high-volume email, especially for external recipients. Messages sent using ACS email are not counted against your Tenant External Recipient Rate Limit quota.\n</p><p>For more information about the Tenant External Recipient Rate feature and report please see this blog post:\n</p><ul><li><a href=\"https://techcommunity.microsoft.com/blog/exchange/introducing-exchange-online-tenant-outbound-email-limits/4372797\" target=\"_blank\">Introducing Exchange Online Tenant Outbound Email Limits</a></li></ul><p>\n</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "New Exchange Online Tenant Outbound Email Limits (TERRL) will be introduced to reduce misuse and ensure service availability. TERRL restricts the number of external recipients a tenant can email daily, based on purchased email licenses. Enforcement starts in stages from April 3, 2025. Check the EAC report to monitor usage."
+      }
+    ],
+    "EndDateTime": "2025-07-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1023294",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-03-10T17:19:30.627Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-03-04T18:55:51Z",
+    "Tags": [
+      "Admin impact"
+    ],
+    "Title": "New Exchange Online Tenant Outbound Email Limits",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated March 10, 2025: We have updated the content. Thank you for your patience</p><p>Coming soon to Microsoft Teams: The Facilitator agent can take notes during your Teams meetings and chats. The Facilitator synthesizes key information from the conversations, so users can catch up quickly. In meetings, the Facilitator allows everyone to co-author real-time notes and collaborate seamlessly. In chat, the Facilitator creates and maintains an up-to-date summary of important information as the conversation happens, including key decisions, actions items, and open questions to resolve.\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=478611\" target=\"_blank\">478611</a>.\n</p><p>We introduced the Targeted Release preview of this feature in MC937709 <i>(Updated) Facilitator in Teams Meetings and Chats</i> (published and updated November 2024).\n</p><p>This message applies to Teams for Windows desktop, Teams for Mac desktop, Teams for the web, and Teams for iOS/Android.\n</p><p>A Microsoft 365 Copilot license is required to use this feature.\n</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): We will begin rolling out early April 2025 and expect to complete by late April 2025.\n</p><p><b>How this will affect your organization:</b>\n</p><p>After this rollout, the Facilitator app will be on by default unless all apps are blocked by your organization. As an admin, you control whether Facilitator will be available to your entire organization or to a certain group of users. Learn more: <a href=\"https://learn.microsoft.com/MicrosoftTeams/facilitator-teams\" target=\"_blank\">Set up Facilitator in Microsoft Teams for collaborative AI notes - Microsoft Teams | Microsoft Learn</a>\n</p><p>Facilitator and Microsoft 365 are built on Microsoft's comprehensive approach to security, compliance, and privacy. As a part of the security promise, you can discover, protect, and govern AI interactions with Facilitator through Microsoft Purview. Microsoft Purview Data Security Posture Management (DSPM) for AI helps IT and security teams proactively discover and manage data risks. Use DSPM for AI in conjunction with other Microsoft Purview capabilities such as Audit, eDiscovery, and Data Lifecycle Management to ensure data security and compliance for your organization. Learn more about Microsoft Purview here: <a href=\"https://learn.microsoft.com/purview/ai-microsoft-purview\" target=\"_blank\">Microsoft Purview data security and compliance protections for Microsoft 365 Copilot and other generative AI apps | Microsoft Learn</a>.\n</p><p><i>Improvements planned for the future: </i>AI-generated notes in chats will move to an editable canvas. This canvas will be backed by a Microsoft SharePoint Embedded file and document management system. We will provide more details closer to the feature's release. Learn more: <a href=\"https://learn.microsoft.com/sharepoint/dev/embedded/overview\" target=\"_blank\">SharePoint Embedded Overview | Microsoft Learn</a>\n</p><p><b>What you need to do to prepare:</b></p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. Review your current configuration to determine the impact for your organization. You may want to notify your users about this change and update any relevant documentation.</p><p><b>Known Limitations\n</b></p><p>Sensitivity labels applied to the meeting will not automatically be applied to the meeting notes file. For example, if an organizer marks a meeting as highly confidential and turns on AI-generated notes, those notes will not be marked as highly confidential. The suggested workaround is to not use Facilitator in meetings where sensitive information will be discussed. This limitation will be documented in admin and end user documentation at release. Microsoft is actively working on meeting sensitivity label inheritance to notes and will provide more updates as they are available.\n</p><<i>Learn more</i></p><p><i>\n</i></p><ul><li>If you're using Microsoft 365 Copilot in your organization (with your work or school account): <a href=\"https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy\" target=\"_blank\">Data, Privacy, and Security for Microsoft 365 Copilot | Microsoft Learn</a>.\n</li><li>Admin documentation: <a href=\"https://learn.microsoft.com/MicrosoftTeams/facilitator-teams\" target=\"_blank\">Set up Facilitator in Microsoft Teams for collaborative AI notes - Microsoft Teams | Microsoft Learn</a> (will be updated before rollout)</li><li>User documentation (meetings): <a href=\"https://support.microsoft.com/office/automate-notetaking-in-microsoft-teams-meetings-37657f91-39b5-40eb-9421-45141e3ce9f6\" target=\"_blank\">Automate notetaking in Microsoft Teams meetings - Microsoft Support</a> (will be updated before rollout)\n</li><li>User documentation (chats): <a href=\"https://support.microsoft.com/office/keep-track-of-chats-with-ai-notes-in-microsoft-teams-0b7efbd0-fd3e-48e7-9a4b-4ea22cdc12c0\" target=\"_blank\">Keep track of chats with AI notes in Microsoft Teams - Microsoft Support</a> (will be updated before rollout)</li></ul><p></p>",
       "ContentType": "html"
     },
@@ -2035,42 +2071,6 @@
       "User impact"
     ],
     "Title": "Microsoft Teams: Integrate Chat notification with Meeting RSVP status",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>To reduce the risk of misuse and abuse of Exchange Online resources and ensure service availability for all users, we’ll soon introduce new tenant-level outbound email limits, known as the Tenant External Recipient Rate Limit or TERRL. The TERRL restricts the number of external recipients a tenant can send email to per day. If the limit is exceeded further messages sent to external recipients from the tenant will be blocked until the volume for the last 24 hours drops below the quota. A tenant’s TERRL quota is calculated based on the number of email licenses a tenant has purchased. Here is the formula used to calculate a tenant’s quota:\n</p><p>500 * (Purchased Email Licenses^0.7) + 9500\n</p><p>To help admins plan and track their outbound email volume, you’ll find a new report in the Exchange admin center: <i>EAC &gt; Reports &gt; Mail flow &gt; Tenant Outbound External Recipients Rate</i>. This report shows the current volume of external recipients, your tenant’s daily quota, how much of the quota is used, and the number of recipients that were blocked if the limit was exceeded. The report will also show if enforcement for the limit is enabled or disabled. For example, for tenants who have more than 500 email licenses it will show “Disabled” until March 31st, the day we’ll start to enable enforcement for tenants who have more than 500 licenses.\n</p><p><b>When this will happen:</b></p><p>This change will roll out in progressive stages over the month of March as per the following rollout schedule:</p><table class=\"table table-bordered\"><tbody><tr><td>Phase</td><td>Enable enforcement for tenant group</td><td>Rollout start date</td></tr><tr><td>1</td><td>Tenants with &lt;= 25 email licenses</td><td>April 3, 2025</td></tr><tr><td>2</td><td>+ additional tenants with &lt;= 200 licenses</td><td>April 10, 2025</td></tr><tr><td>3</td><td>+ additional tenants with &lt;= 500 licenses</td><td>April 17, 2025</td></tr><tr><td>4</td><td>+ all remaining tenants</td><td>May 1, 2025</td></tr></tbody></table><p><b>How this will affect your organization:</b></p><p>If your tenant exceeds its daily outbound sending limit further messages sent to external recipients will be blocked and senders will receive one of the following bounce messages (also known as Non-Delivery Receipts or NDRs):\n</p><ul><li>Trial tenants: 550 5.7.232 - Your message can't be sent because your trial tenant has exceeded its daily limit for sending email to external recipients (tenant external recipient rate limit)\n</li><li>Non-trial tenants: 550 5.7.233 - Your message can't be sent because your tenant exceeded its daily limit for sending email to external recipients (tenant external recipient rate limit)\n</li></ul><p><b>What you need to do to prepare:</b></p><p>Check the report in the EAC to see your tenant’s quota and current daily outbound email volume and whether or not any messages will be blocked once the TERRL is enabled for your tenant. If your current outbound email volume is well below the quota, you don’t have to do anything. If your outbound email volume is near or exceeding your quota, consider using <a href=\"https://learn.microsoft.com/en-us/azure/communication-services/overview\" target=\"_blank\">Azure Communication Services email</a> for high-volume email to external recipients instead. ACS email which offers significant advantages and features for high-volume email, especially for external recipients. Messages sent using ACS email are not counted against your Tenant External Recipient Rate Limit quota.\n</p><p>For more information about the Tenant External Recipient Rate feature and report please see this blog post:\n</p><ul><li><a href=\"https://techcommunity.microsoft.com/blog/exchange/introducing-exchange-online-tenant-outbound-email-limits/4372797\" target=\"_blank\">Introducing Exchange Online Tenant Outbound Email Limits</a></li></ul>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "New Exchange Online Tenant Outbound Email Limits (TERRL) will be introduced to restrict the number of external recipients a tenant can email daily. The limit is based on purchased email licenses. Enforcement starts in April 2025, with a phased rollout. Admins can track usage via a new report in the Exchange admin center."
-      }
-    ],
-    "EndDateTime": "2025-07-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1023294",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2025-03-04T18:56:40.203Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-03-04T18:55:51Z",
-    "Tags": [
-      "Admin impact"
-    ],
-    "Title": "New Exchange Online Tenant Outbound Email Limits",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
