@@ -4,6 +4,140 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated April 9, 2025: This feature has been fully rolled out.</p><p>Coming soon: We will introduce a new Microsoft Teams PowerShell setting in Tenant Federation Configuration to enable you to customize your federation posture. Tenant administrators will be able to define a list of external trial tenants to be whitelisted for federation, while maintaining the default block on overall federation with trial-only tenants.</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): The new setting is available now in Teams PowerShell. If populated, the allowed trial tenant domains list will start to take effect in early April 2025 (previously late April).</p><p><b>Note:</b> This feature requires no immediate admin action, and there will be no impact if the list is not populated.\n</p><p><b>How this will affect your organization:</b>\n</p><p>Microsoft Teams introduced a new PowerShell setting (<code>-ExternalAccessWithTrialTenants</code>) to the <code>Set-CsTenantFederationConfiguration</code> cmdlet in August 2024 that enabled blocking all external access with trial-only tenants. \n</p><p>Now, we’re introducing a new Tenant federation setting <code>-AllowedTrialTenantDomains</code> to enable more granularity in defining the federation posture for your organization. This setting will allow you to keep federation with trial-only tenants blocked, while explicitly allowing federation with trial tenant domains you trust and collaborate with for valid business needs.\n</p><p><i>Important notes</i></p><ul><li>A \"trial-only\" tenant is defined as a tenant with a Teams service plan that has only Trial subscriptions (0 purchased licenses).\n</li><li>Cross-cloud experience: Currently, all cross-cloud communication involving trial-only tenants in public clouds is blocked by default. The <code>AllowedTrialTenantDomains</code> setting will not be supported for cross-cloud communication.\n</li><li>This setting is only supported in PowerShell.\n</li></ul><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. You may want to notify your users about this change and update any relevant documentation.\n</p><ul><li>Review your settings for external access to determine if you have a valid business need to allow federation with trial-only tenants and then prepare the whitelist.\n</li><li>Download or upgrade to the latest PowerShell package (6.7 or higher): <a href=\"https://www.powershellgallery.com/packages/MicrosoftTeams/\" target=\"_blank\">https://www.powershellgallery.com/packages/MicrosoftTeams/</a>\n</li><li>To block external communication with trial-only tenants, use: <code>Set-CsTenantFederationConfiguration -ExternalAccessWithTrialTenants \"Blocked\"</code>\n</li><li>To allow external communication with specific trial-only tenants, while blocking it by default for most trial-only tenants, use:</li></ul><p><code>$list = New-Object Collections.Generic.List<b>String</b></code>\n</p><p><code>$list.add(\"contoso.com\")</code>\n</p><p><code>$list.add(\"fabrikam.com\")</code>\n</p><p><code>Set-CsTenantFederationConfiguration -AllowedTrialTenantDomains $list</code>\n</p><ul><li>To remove tenants from the <code>AllowedTrialTenantDomains</code> list, use:\n</li></ul><p><code>$list = New-Object Collections.Generic.List<b>String</b>\n</code></p><p><code>$list.add(\"contoso.com\")\n</code></p><p><code>Set-CsTenantFederationConfiguration -AllowedTrialTenantDomains @{Remove=$list}\n</code></p><ul><li>To allow external communication with all trial-only tenants, use:\n</li></ul><p><code>Set-CsTenantFederationConfiguration -ExternalAccessWithTrialTenants \"Allowed\"</code>\n</p><p><i>Learn more</i>\n</p><ul><li>PowerShell cmdlet configuration: <a href=\"https://learn.microsoft.com/powershell/module/teams/set-cstenantfederationconfiguration?view=teams-ps\" target=\"_blank\">Set-CsTenantFederationConfiguration | Microsoft Learn</a>\n</li><li>Manage external communication: <a href=\"https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat?tabs=organization-settings\" target=\"_blank\">IT Admins - Manage external meetings and chat with people and organizations using Microsoft identities - Microsoft Teams | Microsoft Learn</a></li></ul><p></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams is introducing a new PowerShell setting, `-AllowedTrialTenantDomains`, to customize federation with specific trial tenant domains while maintaining a default block on all trial-only tenants. This setting will be available in early April 2025. No immediate admin action is required."
+      }
+    ],
+    "EndDateTime": "2025-06-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC994289",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-04-09T17:12:36.16Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-01-31T23:42:23Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: Microsoft PowerShell cmdlet to allow federation with specific trial tenant domains",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated April 9, 2025: The admin toggle for Name Pronunciation is rolling out to Production starting this week. Admins will be required to configure in the admin center to avoid loss of data. Instructions to configure are in this <a href=\"https://review.learn.microsoft.com/microsoftteams/name-pronunciation?branch=main&amp;branchFallbackFrom=pr-en-us-16335\" target=\"_blank\">support article.</a> Please expect the admin toggle in the admin center starting the week of April 14th through April 18th, 2025.</p><p>&nbsp;We will be shipping to preview without the admin toggle however an admin toggle will be available before general availability. If there are concerns or your organisation wants to opt out, please raise an incident to address this.&nbsp;</p><p>Coming soon to Microsoft Outlook and Microsoft Teams: A name pronunciation feature on the profile card in Microsoft Teams and Microsoft Outlook. This new feature helps promote diversity by giving working colleagues relevant information about each other. Names are a crucial part of a person’s identity. The incorrect pronunciation of a person’s name can lead to anxiety and offense in some cases. Correctly pronouncing a person’s name helps to create an inclusive environment.\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=420329\" target=\"_blank\">420329</a>.\n</p><p>Pronunciation data is stored in each user's mailbox until the user deletes the recording. Learn more: <a href=\"https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-workload-exo?view=o365-worldwide#how-can-i-determine-customer-data-location\" target=\"_blank\">Data Residency for Exchange Online - Microsoft 365 Enterprise | Microsoft Learn</a>\n</p><p>This message applies to Teams for Windows desktop, Teams for Mac desktop, new Outlook for Windows desktop, and new Outlook for web.\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling out mid-November 2024 and expect to complete by late November 2024.\n</p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out late March 2025 (previously mid-January) and expect to complete by late April 2025 (previously mid-February).</p><p><b>How this will affect your organization:</b>\n</p><p>After this rollout, users can record and share the correct pronunciation of their name on their profile card. With a click, users can play and listen to name pronunciations recorded by their colleagues.\n</p><p>To open a profile card in Outlook, double-click a name in the <i>To </i>or <i>From</i> field in any sent or received email.\n</p><p>To open your profile card in Teams, select your profile photo in the upper right corner of the screen, and then select your name.\n</p><p>To listen to a colleague's recorded pronunciation, select the speaker icon on their profile card:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/d45e28e7-82bc-4050-ae6a-24bf036228e0\" style=\"width:400px;\" alt=\"user controls\">\n</p><p>To record the pronunciation of a name, open your profile card in Outlook or Teams, and select the microphone icon:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/f17d5e3c-54ff-4c29-8ee1-9cbe5535ae56\" style=\"width: 400px;\" alt=\"user controls\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/575bd9d8-7b01-446a-bc87-793938aff750\" style=\"width: 400px;\" alt=\"user controls\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This feature is off by default. As an admin, you can enable the feature in Microsoft Graph using these instructions: <a href=\"https://learn.microsoft.com/graph/api/resources/namepronunciationsettings?view=graph-rest-beta\" target=\"_blank\">namePronunciationSettings resource type - Microsoft Graph beta | Microsoft Learn</a>\n</p><p>Before rollout, we will update this post with revised documentation.\n</p><p>You may want to notify your users about this change and update any relevant documentation.\n</p><p>#newoutlookforwindows</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "420329"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams and Outlook will soon feature name pronunciation on profile cards, promoting inclusivity. Rollout starts mid-November 2024 for targeted release and late April 2025 for general availability. Users can record and listen to name pronunciations. Admins can enable this feature via Microsoft Graph."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2025-06-09T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC917748",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-04-09T17:02:50.183Z",
+    "Services": [
+      "Exchange Online",
+      "Microsoft Teams",
+      "Microsoft 365 for the web",
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2024-10-24T22:59:10Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams and Microsoft Outlook: Name pronunciation on the profile card",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated April 9, 2025: We have updated the rollout timeline below. Thank you for your patience.\n</p><p>Coming soon for Microsoft SharePoint: Cards can be animated for some web parts (Editorial cards, Images, and People) in SharePoint Pages, News, and Microsoft Viva Amplify.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=481510\" target=\"_blank\">481510</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling early April 2025 (previously out late-April) and expect to complete by early May 2025.</p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out mid-April 2025 (previously early May) and expect to complete by early May 2025 (previously late May). </p><p><b>How this will affect your organization:</b></p><p>This feature will be enabled by default for new cards created after the feature is released. Users can disable card animation in the web part property pane. To add animation to existing web parts, users can enable the setting in the web part property pane. To preview the card animation, view the published page or use Preview mode.\n</p><p>Pages and web parts created before this rollout are not impacted by this change.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. You may want to notify your users about this change and update any relevant documentation.\n</p><p>Before rollout, we will update this post with new documentation.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "481510"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft SharePoint will introduce a new card animation feature for Pages, News, and Microsoft Viva Amplify starting early April 2025. This feature will be enabled by default for new cards and can be managed in the web part property pane. No admin action is required before the rollout."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2025-06-20T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1024394",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-04-09T16:24:55.833Z",
+    "Services": [
+      "SharePoint Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-03-05T23:50:27Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Microsoft SharePoint: New card animation feature for Pages, News, and Microsoft Viva Amplify",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated April 9, 2025: We have updated the content and rollout timeline below. Thank you for your patience.</p><p>When creating a presentation in Copilot for PowerPoint, users will be able to reference PDF files in addition to Microsoft Word files.</p><p>A Microsoft 365 Copilot license is required to use this feature.</p><p>This message applies to PowerPoint for Windows desktop, PowerPoint for Mac desktop, and PowerPoint on the web.\n</p><p><b>When this will happen:</b></p><p>Public Preview: Available now.</p><p>General Availability (Worldwide, GCC) We will begin rolling out mid-April 2025 and expect to complete by late May 2025.</p><p><b>How this will affect your organization:</b></p><p>After this rollout, users can see PDF files when searching for files that Copilot can use to create a presentation. Select the Copilot icon from the PowerPoint ribbon, choose <i>Create a presentation from <b>file</b></i>, and search for PDFs by file name:</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/19eeec76-3b19-4a21-8500-f7cdafd981c0\" style=\"width: 400px;\" alt=\"user controls\">\n</p><p>This feature will be available by default.</p><p><b>What you need to do to prepare:</b></p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. Review your current configuration to assess the impact on your organization. You may want to notify your users about this change and update any relevant documentation.\n</p><p>Learn more: <a href=\"https://support.microsoft.com/office/create-a-new-presentation-with-copilot-in-powerpoint-3222ee03-f5a4-4d27-8642-9c387ab4854d\" target=\"_blank\">Create a new presentation with Copilot in PowerPoint - Microsoft Support</a> (will be updated before rollout)</p>",
       "ContentType": "html"
     },
@@ -1296,7 +1430,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"470431\":[{\"RoadmapId\":470431,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-06T05:14:59.5703662Z\",\"LatestRing\":null},{\"RoadmapId\":470431,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-06T05:14:59.5703661Z\",\"LatestRing\":null},{\"RoadmapId\":470431,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-06T05:14:59.5703663Z\",\"LatestRing\":null}]}"
+        "Value": "{\"470431\":[{\"RoadmapId\":470431,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-06T05:14:59.5703661Z\",\"LatestRing\":null},{\"RoadmapId\":470431,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-06T05:14:59.5703662Z\",\"LatestRing\":null},{\"RoadmapId\":470431,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-06T05:14:59.5703663Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -1346,7 +1480,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"422261\":[{\"RoadmapId\":422261,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-18T22:13:09.7684588Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":422261,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-18T22:13:09.7684584Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":422261,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-18T22:13:09.7684603Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"422261\":[{\"RoadmapId\":422261,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-18T22:13:09.7684584Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":422261,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-18T22:13:09.7684588Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":422261,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-18T22:13:09.7684603Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -1397,7 +1531,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"332800\":[{\"RoadmapId\":332800,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-06-07T17:33:02.4609199Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":332800,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-06-07T17:33:02.4609202Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":332800,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-06-07T17:33:02.4609205Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"332800\":[{\"RoadmapId\":332800,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-06-07T17:33:02.4609202Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":332800,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-06-07T17:33:02.4609199Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":332800,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-06-07T17:33:02.4609205Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -2068,7 +2202,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"470427\":[{\"RoadmapId\":470427,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-07T17:12:42.707019Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470427,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-07T17:12:42.7070193Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470427,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-07T17:12:42.7070193Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"470427\":[{\"RoadmapId\":470427,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-07T17:12:42.7070193Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470427,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-07T17:12:42.707019Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470427,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-07T17:12:42.7070193Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -3443,7 +3577,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"473886\":[{\"RoadmapId\":473886,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-04-08T13:25:48.2482672Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":473886,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.811028Z\",\"LatestRing\":null},{\"RoadmapId\":473886,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.8110279Z\",\"LatestRing\":null},{\"RoadmapId\":473886,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.8110278Z\",\"LatestRing\":null},{\"RoadmapId\":473886,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-08T13:25:48.2482678Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"473886\":[{\"RoadmapId\":473886,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.8110278Z\",\"LatestRing\":null},{\"RoadmapId\":473886,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.8110279Z\",\"LatestRing\":null},{\"RoadmapId\":473886,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.811028Z\",\"LatestRing\":null},{\"RoadmapId\":473886,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-04-08T13:25:48.2482672Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":473886,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-08T13:25:48.2482678Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -3494,7 +3628,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"473887\":[{\"RoadmapId\":473887,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-04-08T02:57:34.8530296Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":473887,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8211059Z\",\"LatestRing\":null},{\"RoadmapId\":473887,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8211057Z\",\"LatestRing\":null},{\"RoadmapId\":473887,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8211056Z\",\"LatestRing\":null},{\"RoadmapId\":473887,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-08T02:57:34.8530307Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"473887\":[{\"RoadmapId\":473887,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8211056Z\",\"LatestRing\":null},{\"RoadmapId\":473887,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8211057Z\",\"LatestRing\":null},{\"RoadmapId\":473887,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8211059Z\",\"LatestRing\":null},{\"RoadmapId\":473887,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-04-08T02:57:34.8530296Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":473887,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-08T02:57:34.8530307Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -4275,56 +4409,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated March 28, 2025: We have updated the rollout timeline below. Thank you for your patience.\n</p><p>We will be shipping to preview without the admin toggle however an admin toggle will be available before general availability. If there are concerns or your organisation wants to opt out, please raise an incident to address this.&nbsp;</p><p>Coming soon to Microsoft Outlook and Microsoft Teams: A name pronunciation feature on the profile card in Microsoft Teams and Microsoft Outlook. This new feature helps promote diversity by giving working colleagues relevant information about each other. Names are a crucial part of a person’s identity. The incorrect pronunciation of a person’s name can lead to anxiety and offense in some cases. Correctly pronouncing a person’s name helps to create an inclusive environment.\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=420329\" target=\"_blank\">420329</a>.\n</p><p>Pronunciation data is stored in each user's mailbox until the user deletes the recording. Learn more: <a href=\"https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-workload-exo?view=o365-worldwide#how-can-i-determine-customer-data-location\" target=\"_blank\">Data Residency for Exchange Online - Microsoft 365 Enterprise | Microsoft Learn</a>\n</p><p>This message applies to Teams for Windows desktop, Teams for Mac desktop, new Outlook for Windows desktop, and new Outlook for web.\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling out mid-November 2024 and expect to complete by late November 2024.\n</p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out late March 2025 (previously mid-January) and expect to complete by late April 2025 (previously mid-February).</p><p><b>How this will affect your organization:</b>\n</p><p>After this rollout, users can record and share the correct pronunciation of their name on their profile card. With a click, users can play and listen to name pronunciations recorded by their colleagues.\n</p><p>To open a profile card in Outlook, double-click a name in the <i>To </i>or <i>From</i> field in any sent or received email.\n</p><p>To open your profile card in Teams, select your profile photo in the upper right corner of the screen, and then select your name.\n</p><p>To listen to a colleague's recorded pronunciation, select the speaker icon on their profile card:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/d45e28e7-82bc-4050-ae6a-24bf036228e0\" style=\"width:400px;\" alt=\"user controls\">\n</p><p>To record the pronunciation of a name, open your profile card in Outlook or Teams, and select the microphone icon:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/f17d5e3c-54ff-4c29-8ee1-9cbe5535ae56\" style=\"width: 400px;\" alt=\"user controls\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/575bd9d8-7b01-446a-bc87-793938aff750\" style=\"width: 400px;\" alt=\"user controls\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This feature is off by default. As an admin, you can enable the feature in Microsoft Graph using these instructions: <a href=\"https://learn.microsoft.com/graph/api/resources/namepronunciationsettings?view=graph-rest-beta\" target=\"_blank\">namePronunciationSettings resource type - Microsoft Graph beta | Microsoft Learn</a>\n</p><p>Before rollout, we will update this post with revised documentation.\n</p><p>You may want to notify your users about this change and update any relevant documentation.\n</p><p>#newoutlookforwindows</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "420329"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams and Outlook will soon feature name pronunciation on profile cards, promoting inclusivity. Rollout starts mid-November 2024 for targeted release and late March 2025 for general availability. Users can record and listen to name pronunciations. Admins can enable this feature via Microsoft Graph."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac, Web"
-      }
-    ],
-    "EndDateTime": "2025-06-09T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC917748",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-03-28T21:31:05.957Z",
-    "Services": [
-      "Exchange Online",
-      "Microsoft Teams",
-      "Microsoft 365 for the web",
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-10-24T22:59:10Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams and Microsoft Outlook: Name pronunciation on the profile card",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated March 28, 2025: We have updated the rollout timeline below. Thank you for your patience.</p><p>Coming soon for new Microsoft Outlook for Windows and Outlook on the web: Delegates can create new categories on behalf of the account owner who granted them delegate permissions. Delegates can also apply categories to the Calendar of the account owner.\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=473997\" target=\"_blank\">473997</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling out mid-January 2025 and expect to complete by mid-February 2025.\n</p><p>General Availability (Worldwide, GCC): We will begin rolling out mid-February 2025 and expect to complete by mid-April 2025 (previously mid-March).\n</p><p><b>How this will affect your organization:</b>\n</p><p>To access the new capability, the account holder assigning the permissions should open:\n</p><p>1. Open their Calendar &gt; Hover over a calendar name and select the three-dot <i>More options</i> menu. Then, select <i>Sharing and permissions.</i>\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/66af5c9d-9d9d-44a0-a5bb-7e4be5a9b165\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p>2. Enter the email address of the desired delegate:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/ed6e60e5-1f5f-4e2e-97c2-ce769564b4bb\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p>3. Select <i>Delegate </i>from the dropdown menu and check the box for<i> Let delegate manage categories.</i> Select <i>Share:</i>\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/bba1f1ea-0734-470c-90f2-e81a0bd2efda\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p>After the account holder applies the necessary permissions, delegates can view the list of the delegator's categories in their <i>Settings </i>&gt; <i>Accounts &gt; Categories</i> and select the delegator's account from the dropdown menu:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/eb5afa08-9940-4d82-a0de-6a838827d17e\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p>This change will be available by default. The new checkbox for <i>Let delegate manage categories </i>will not be selected by default.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before or after the rollout. Review your current configuration to determine the impact for your organization. You may want to notify your users about this change and update any relevant documentation.\n</p><p>Learn more: <a href=\"https://support.microsoft.com/office/about-delegates-allow-someone-to-manage-your-mail-and-calendar-in-outlook-41c40c04-3bd1-4d22-963a-28eafec25926\" target=\"_blank\">About delegates: Allow someone to manage your mail and calendar in Outlook - Microsoft Support</a> (will be updated before rollout)\n</p><p>#newoutlookforwindows</p>",
       "ContentType": "html"
     },
@@ -4568,7 +4652,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"472913\":[{\"RoadmapId\":472913,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768416Z\",\"LatestRing\":null},{\"RoadmapId\":472913,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768415Z\",\"LatestRing\":null},{\"RoadmapId\":472913,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768417Z\",\"LatestRing\":null}]}"
+        "Value": "{\"472913\":[{\"RoadmapId\":472913,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768415Z\",\"LatestRing\":null},{\"RoadmapId\":472913,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768416Z\",\"LatestRing\":null},{\"RoadmapId\":472913,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768417Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -5421,7 +5505,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"476488\":[{\"RoadmapId\":476488,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748238Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748236Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.374824Z\",\"LatestRing\":null}]}"
+        "Value": "{\"476488\":[{\"RoadmapId\":476488,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748236Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748238Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.374824Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6010,90 +6094,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated March 26, 2025: We have updated the rollout timeline below. Thank you for your patience.</p><p>Coming soon for Microsoft SharePoint: Cards can be animated for some web parts (Editorial cards, Images, and People) in SharePoint Pages, News, and Microsoft Viva Amplify.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=481510\" target=\"_blank\">481510</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling out late-April 2025 and expect to complete by early May 2025.</p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out early May 2025 and expect to complete by late May 2025. </p><p><b>How this will affect your organization:</b></p><p>This feature will be enabled by default for new cards created after the feature is released. Users can disable card animation in the web part property pane. To add animation to existing web parts, users can enable the setting in the web part property pane. To preview the card animation, view the published page or use Preview mode.\n</p><p>Pages and web parts created before this rollout are not impacted by this change.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. You may want to notify your users about this change and update any relevant documentation.\n</p><p>Before rollout, we will update this post with new documentation.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "481510"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft SharePoint will introduce a new card animation feature for Pages, News, and Microsoft Viva Amplify starting late April 2025. This feature will be enabled by default for new cards and can be managed in the web part property pane. No admin action is required before the rollout."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2025-06-20T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1024394",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-03-26T15:10:09.073Z",
-    "Services": [
-      "SharePoint Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-03-05T23:50:27Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Microsoft SharePoint: New card animation feature for Pages, News, and Microsoft Viva Amplify",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated March 26, 2025: We have updated the rollout timeline below. Thank you for your patience.\n</p><p>Coming soon: We will introduce a new Microsoft Teams PowerShell setting in Tenant Federation Configuration to enable you to customize your federation posture. Tenant administrators will be able to define a list of external trial tenants to be whitelisted for federation, while maintaining the default block on overall federation with trial-only tenants.</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): The new setting is available now in Teams PowerShell. If populated, the allowed trial tenant domains list will start to take effect in late April 2025 (previously mid-March).\n</p><p><b>Note:</b> This feature requires no immediate admin action, and there will be no impact if the list is not populated.\n</p><p><b>How this will affect your organization:</b>\n</p><p>Microsoft Teams introduced a new PowerShell setting (<code>-ExternalAccessWithTrialTenants</code>) to the <code>Set-CsTenantFederationConfiguration</code> cmdlet in August 2024 that enabled blocking all external access with trial-only tenants. \n</p><p>Now, we’re introducing a new Tenant federation setting <code>-AllowedTrialTenantDomains</code> to enable more granularity in defining the federation posture for your organization. This setting will allow you to keep federation with trial-only tenants blocked, while explicitly allowing federation with trial tenant domains you trust and collaborate with for valid business needs.\n</p><p><i>Important notes</i></p><ul><li>A \"trial-only\" tenant is defined as a tenant with a Teams service plan that has only Trial subscriptions (0 purchased licenses).\n</li><li>Cross-cloud experience: Currently, all cross-cloud communication involving trial-only tenants in public clouds is blocked by default. The <code>AllowedTrialTenantDomains</code> setting will not be supported for cross-cloud communication.\n</li><li>This setting is only supported in PowerShell.\n</li></ul><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. You may want to notify your users about this change and update any relevant documentation.\n</p><ul><li>Review your settings for external access to determine if you have a valid business need to allow federation with trial-only tenants and then prepare the whitelist.\n</li><li>Download or upgrade to the latest PowerShell package (6.7 or higher): <a href=\"https://www.powershellgallery.com/packages/MicrosoftTeams/\" target=\"_blank\">https://www.powershellgallery.com/packages/MicrosoftTeams/</a>\n</li><li>To block external communication with trial-only tenants, use: <code>Set-CsTenantFederationConfiguration -ExternalAccessWithTrialTenants \"Blocked\"</code>\n</li><li>To allow external communication with specific trial-only tenants, while blocking it by default for most trial-only tenants, use:</li></ul><p><code>$list = New-Object Collections.Generic.List<b>String</b></code>\n</p><p><code>$list.add(\"contoso.com\")</code>\n</p><p><code>$list.add(\"fabrikam.com\")</code>\n</p><p><code>Set-CsTenantFederationConfiguration -AllowedTrialTenantDomains $list</code>\n</p><ul><li>To remove tenants from the <code>AllowedTrialTenantDomains</code> list, use:\n</li></ul><p><code>$list = New-Object Collections.Generic.List<b>String</b>\n</code></p><p><code>$list.add(\"contoso.com\")\n</code></p><p><code>Set-CsTenantFederationConfiguration -AllowedTrialTenantDomains @{Remove=$list}\n</code></p><ul><li>To allow external communication with all trial-only tenants, use:\n</li></ul><p><code>Set-CsTenantFederationConfiguration -ExternalAccessWithTrialTenants \"Allowed\"</code>\n</p><p><i>Learn more</i>\n</p><ul><li>PowerShell cmdlet configuration: <a href=\"https://learn.microsoft.com/powershell/module/teams/set-cstenantfederationconfiguration?view=teams-ps\" target=\"_blank\">Set-CsTenantFederationConfiguration | Microsoft Learn</a>\n</li><li>Manage external communication: <a href=\"https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat?tabs=organization-settings\" target=\"_blank\">IT Admins - Manage external meetings and chat with people and organizations using Microsoft identities - Microsoft Teams | Microsoft Learn</a></li></ul><p></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams is introducing a new PowerShell setting, `-AllowedTrialTenantDomains`, to customize federation with specific trial tenant domains while maintaining a default block on all trial-only tenants. This setting will be available in late April 2025. No immediate admin action is required."
-      }
-    ],
-    "EndDateTime": "2025-06-30T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC994289",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-03-26T14:20:52.123Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-01-31T23:42:23Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: Microsoft PowerShell cmdlet to allow federation with specific trial tenant domains",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>In new Outlook for Windows and Outlook on the web, the hover actions in the message list will be moved to the Sender/From column to be more space-efficient and minimize unnecessary mouse travel for users with their Reading Pane set to Hide or Bottom. The large width occupied by the DateTime Received column will thus be reduced. For all users, a one-time shortcut to change/set your hover actions will be provided.&nbsp;After the changes to the hover actions, the first action will be replaced by a quick button (gear button) to change/set your hover actions. After that button has been triggered once, it will disappear, and your hover action settings will kick in fully.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=429868\" target=\"_blank\">429868</a>.</p><p><b>When this will happen:</b></p><p>Targeted Release: We will begin rolling out early April 2025 and expect to complete by late April 2025.</p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out late April 2025 and expect to complete by late May 2025.</p><p><b>How this will affect your organization:</b>\n</p><p>For new Outlook for Windows and Outlook on the web, hover actions in the message list will be moved to the Sender/From column to reduce the large width occupied by the DateTime Received column.</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/337d34e9-ecc6-49b4-b21c-d37078bb4c28\" style=\"width: 450px;\"><br></p><p><b>What you need to do to prepare:</b></p><p>This rollout will happen automatically with no admin action required. You may want to notify your users about this change and update any relevant documentation as appropriate.</p><p>#newoutlookforwindows</p>",
       "ContentType": "html"
     },
@@ -6636,7 +6636,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"470600\":[{\"RoadmapId\":470600,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.8105702Z\",\"LatestRing\":null},{\"RoadmapId\":470600,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.8105701Z\",\"LatestRing\":null},{\"RoadmapId\":470600,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.8105703Z\",\"LatestRing\":null}]}"
+        "Value": "{\"470600\":[{\"RoadmapId\":470600,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.8105701Z\",\"LatestRing\":null},{\"RoadmapId\":470600,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.8105702Z\",\"LatestRing\":null},{\"RoadmapId\":470600,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-28T09:16:22.8105703Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6990,7 +6990,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"470598\":[{\"RoadmapId\":470598,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-11T14:13:52.1159429Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470598,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-11T14:13:52.1159424Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470598,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-11T14:13:52.1159432Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"470598\":[{\"RoadmapId\":470598,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-11T14:13:52.1159424Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470598,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-11T14:13:52.1159429Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470598,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-11T14:13:52.1159432Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -7040,7 +7040,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"470999\":[{\"RoadmapId\":470999,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-23T00:33:06.28901Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470999,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-01-10T01:08:54.1184831Z\",\"LatestRing\":null},{\"RoadmapId\":470999,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-23T00:33:06.2890092Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470999,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-01-10T01:08:54.1184828Z\",\"LatestRing\":null},{\"RoadmapId\":470999,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-23T00:33:06.2890104Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"470999\":[{\"RoadmapId\":470999,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-01-10T01:08:54.1184828Z\",\"LatestRing\":null},{\"RoadmapId\":470999,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-23T00:33:06.2890092Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470999,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-01-10T01:08:54.1184831Z\",\"LatestRing\":null},{\"RoadmapId\":470999,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-23T00:33:06.28901Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470999,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-23T00:33:06.2890104Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -7090,7 +7090,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"121269\":[{\"RoadmapId\":121269,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-10T05:14:09.1868258Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":121269,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-10T05:14:09.186826Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":121269,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-10T05:14:09.1868262Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":121269,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-10T05:14:09.1868264Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"121269\":[{\"RoadmapId\":121269,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-10T05:14:09.1868262Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":121269,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-10T05:14:09.186826Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":121269,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-10T05:14:09.1868258Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":121269,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-10T05:14:09.1868264Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -7140,7 +7140,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468102Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468099Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468095Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468104Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468095Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468099Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468102Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468104Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -7766,7 +7766,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"369345\":[{\"RoadmapId\":369345,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9489546Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9489545Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9489548Z\",\"LatestRing\":null}]}"
+        "Value": "{\"369345\":[{\"RoadmapId\":369345,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9489545Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9489546Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9489548Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8130,7 +8130,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"482398\":[{\"RoadmapId\":482398,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8210204Z\",\"LatestRing\":null},{\"RoadmapId\":482398,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8210203Z\",\"LatestRing\":null},{\"RoadmapId\":482398,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8210205Z\",\"LatestRing\":null}]}"
+        "Value": "{\"482398\":[{\"RoadmapId\":482398,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8210203Z\",\"LatestRing\":null},{\"RoadmapId\":482398,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8210204Z\",\"LatestRing\":null},{\"RoadmapId\":482398,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-03-19T05:14:31.8210205Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -9747,7 +9747,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"470597\":[{\"RoadmapId\":470597,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-03-07T11:12:20.9364487Z\",\"LatestRing\":null},{\"RoadmapId\":470597,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-03-07T11:12:20.9364486Z\",\"LatestRing\":null},{\"RoadmapId\":470597,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-03-07T11:12:20.9364488Z\",\"LatestRing\":null}]}"
+        "Value": "{\"470597\":[{\"RoadmapId\":470597,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-03-07T11:12:20.9364486Z\",\"LatestRing\":null},{\"RoadmapId\":470597,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-03-07T11:12:20.9364487Z\",\"LatestRing\":null},{\"RoadmapId\":470597,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-03-07T11:12:20.9364488Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -11146,7 +11146,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"415249\":[{\"RoadmapId\":415249,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-10-28T21:13:42.5669795Z\",\"LatestRing\":null},{\"RoadmapId\":415249,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-11-15T13:22:48.1704446Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":415249,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-10-28T21:13:42.5669792Z\",\"LatestRing\":null},{\"RoadmapId\":415249,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-11-15T13:22:48.1704439Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":415249,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-11-15T13:22:48.1704454Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"415249\":[{\"RoadmapId\":415249,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-10-28T21:13:42.5669792Z\",\"LatestRing\":null},{\"RoadmapId\":415249,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-11-15T13:22:48.1704446Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":415249,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-10-28T21:13:42.5669795Z\",\"LatestRing\":null},{\"RoadmapId\":415249,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2024-11-15T13:22:48.1704439Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":415249,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-11-15T13:22:48.1704454Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -11499,7 +11499,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"381643\":[{\"RoadmapId\":381643,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2024-10-30T11:11:50.4572276Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":381643,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9489234Z\",\"LatestRing\":null},{\"RoadmapId\":381643,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-02-11T10:16:03.948924Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"381643\":[{\"RoadmapId\":381643,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9489234Z\",\"LatestRing\":null},{\"RoadmapId\":381643,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2024-10-30T11:11:50.4572276Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":381643,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-02-11T10:16:03.948924Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -12729,7 +12729,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"475852\":[{\"RoadmapId\":475852,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9485808Z\",\"LatestRing\":null},{\"RoadmapId\":475852,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9485807Z\",\"LatestRing\":null},{\"RoadmapId\":475852,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9485809Z\",\"LatestRing\":null}]}"
+        "Value": "{\"475852\":[{\"RoadmapId\":475852,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9485807Z\",\"LatestRing\":null},{\"RoadmapId\":475852,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9485808Z\",\"LatestRing\":null},{\"RoadmapId\":475852,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-02-11T10:16:03.9485809Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -13979,7 +13979,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"470432\":[{\"RoadmapId\":470432,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-01-14T02:38:51.329624Z\",\"LatestRing\":null},{\"RoadmapId\":470432,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-15T16:15:03.0446897Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470432,\"Platform\":\"Android\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-07T11:12:20.936275Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470432,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-15T16:15:03.0446903Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"470432\":[{\"RoadmapId\":470432,\"Platform\":\"Android\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-07T11:12:20.936275Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470432,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-15T16:15:03.0446897Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":470432,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-01-14T02:38:51.329624Z\",\"LatestRing\":null},{\"RoadmapId\":470432,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-15T16:15:03.0446903Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -15125,7 +15125,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"418125\":[{\"RoadmapId\":418125,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-23T14:12:56.2522909Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":418125,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-12-11T09:16:16.5559715Z\",\"LatestRing\":null},{\"RoadmapId\":418125,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-12-11T09:16:16.5559717Z\",\"LatestRing\":null},{\"RoadmapId\":418125,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-12-11T09:16:16.5559718Z\",\"LatestRing\":null},{\"RoadmapId\":418125,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-12-11T09:16:16.5559718Z\",\"LatestRing\":null},{\"RoadmapId\":418125,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-01-23T14:12:56.2522916Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"418125\":[{\"RoadmapId\":418125,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-12-11T09:16:16.5559718Z\",\"LatestRing\":null},{\"RoadmapId\":418125,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-12-11T09:16:16.5559718Z\",\"LatestRing\":null},{\"RoadmapId\":418125,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-12-11T09:16:16.5559717Z\",\"LatestRing\":null},{\"RoadmapId\":418125,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2024-12-11T09:16:16.5559715Z\",\"LatestRing\":null},{\"RoadmapId\":418125,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-23T14:12:56.2522909Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":418125,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-01-23T14:12:56.2522916Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -16415,7 +16415,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"122934\":[{\"RoadmapId\":122934,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-06T15:15:45.8121724Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":122934,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-06T15:15:45.8121719Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":122934,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-06T15:15:45.8121727Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"122934\":[{\"RoadmapId\":122934,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-06T15:15:45.8121719Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":122934,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-06T15:15:45.8121724Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":122934,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-06T15:15:45.8121727Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -16631,7 +16631,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"471426\":[{\"RoadmapId\":471426,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-17T06:19:17.8289127Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":471426,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-17T06:19:17.8289125Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":471426,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-17T06:19:17.8289129Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"471426\":[{\"RoadmapId\":471426,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-17T06:19:17.8289125Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":471426,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-17T06:19:17.8289127Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":471426,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-17T06:19:17.8289129Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -17694,7 +17694,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"468280\":[{\"RoadmapId\":468280,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-19T06:20:16.8762231Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":468280,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-19T06:20:16.8762228Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":468280,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-19T06:20:16.8762233Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"468280\":[{\"RoadmapId\":468280,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-19T06:20:16.8762228Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":468280,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-19T06:20:16.8762231Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":468280,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-02-19T06:20:16.8762233Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -17791,7 +17791,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"419812\":[{\"RoadmapId\":419812,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-20T14:12:47.6565702Z\",\"LatestRing\":null},{\"RoadmapId\":419812,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-20T14:12:47.6565704Z\",\"LatestRing\":null},{\"RoadmapId\":419812,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-20T14:12:47.6565706Z\",\"LatestRing\":null}]}"
+        "Value": "{\"419812\":[{\"RoadmapId\":419812,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-20T14:12:47.6565704Z\",\"LatestRing\":null},{\"RoadmapId\":419812,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-20T14:12:47.6565702Z\",\"LatestRing\":null},{\"RoadmapId\":419812,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2024-12-20T14:12:47.6565706Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17925,7 +17925,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"469508\":[{\"RoadmapId\":469508,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-23T14:12:56.2523613Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":469508,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-23T14:12:56.252361Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":469508,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-23T14:12:56.2523615Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"469508\":[{\"RoadmapId\":469508,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-23T14:12:56.252361Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":469508,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-23T14:12:56.2523613Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":469508,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-23T14:12:56.2523615Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
