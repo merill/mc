@@ -1,0 +1,32 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>Coming soon: We will unify the Microsoft Defender for Identity (MDI) and Microsoft Sentinel <code>IdentityInfo</code> tables in Advanced Hunting into a single table.</p><p>With this unification, we are adding new identity attributes from the Sentinel UEBA service while also adjusting to support third-party Identity Providers (IDPs). Some of these updates include breaking changes, which may require you to update your existing queries.\n</p><p>\n</p><p><b>When this will happen:</b></p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out early May 2025 and expect to complete by late May 2025.</p><p><b>How this will affect your organization:</b></p><p>After this rollout, identity-related insights will be enriched with these new columns: \n\n</p><table>\n<tbody>\n<tr>\n<th>Column name</th>\n<th>Type</th>\n<th>Description</th>\n<th>Comment</th>\n</tr>\n<tr>\n<td><p><code>OnPremObjectId</code></p></td>\n<td>String</td>\n<td>Active Directory object ID of the user</td>\n<td>New column</td>\n</tr>\n<tr>\n<td><p><code>TenantMembershipType</code></p></td>\n<td>String</td>\n<td><p>User type in Microsoft Entra ID. Possible values: <code>Guest</code>, <code>Member</code></p></td>\n<td>New column</td>\n</tr>\n<tr>\n<td><p><code>RiskStatus</code></p></td>\n<td>String</td>\n<td><p>Status of the user's risk. Possible values: <code>None</code>, <code>ConfirmedSafe</code>, <code>Remediated</code>, <code>Dismissed</code>, <code>AtRisk</code>, <code>ConfirmedCompromised</code>, <code>UnknownFutureValue</code></p></td>\n<td>New column</td>\n</tr>\n<tr>\n<td><p><code>UserAccountControlSettings</code></p></td>\n<td>Dynamic</td>\n<td>Security attributes of the user account in Active Directory</td>\n<td>New column</td>\n</tr>\n</tbody>\n</table>\n\n<p></p><p>To help you <b>adjust existing queries,</b> this table shows how Sentinel UEBA fields map to the new unified <code>IdentityInfo</code> table’s schema:</p><table>\n<tbody>\n<tr>\n<th>Sentinel UEBA Column</th>\n<th>Unified <code>IdentityInfo</code> Column</th>\n<th>Comments</th>\n</tr>\n<tr>\n<td><p><code>AccountCloudSID</code></p></td>\n<td><p><code>CloudSid</code></p></td>\n<td></td>\n</tr>\n<tr>\n<td><p><code>AccountSID</code></p></td>\n<td><p><code>OnPremSid</code></p></td>\n<td></td>\n</tr>\n<tr>\n<td><p><code>AccountCreationTime</code></p></td>\n<td><p><code>CreatedDateTime</code></p></td>\n<td></td>\n</tr>\n<tr>\n<td><p><code>AccountDisplayName</code></p></td>\n<td><p><code>AccountDisplayName</code></p></td>\n<td></td>\n</tr>\n<tr>\n<td><p><code>AccountDomain\n</code></p></td><td><p><code>AccountDomain\n</code></p></td><td>Values might be different</td>\n</tr>\n<tr>\n<td><p><code>AccountName\n</code></p></td><td><p><code>AccountName</code></p></td>\n<td>Values might be different</td>\n</tr>\n<tr>\n<td><p><code>AccountTenantId\n</code></p></td><td><p><code>TenantId\n</code></p></td>\n</tr>\n<tr>\n<td><p><code>AccountUPN</code></p></td>\n<td><p><code>AccountUpn</code></p></td>\n<td></td>\n</tr>\n<tr>\n<td><p><code>AdditionalMailAddresses</code></p></td>\n<td><p><code>OtherMailAddresses</code></p></td>\n<td></td>\n</tr>\n<tr>\n<td><p><code>MailAddress</code></p></td>\n<td><p><code>EmailAddress</code></p></td>\n<td></td>\n</tr>\n<tr>\n<td><p><code>OnPremisesDistinguishedName</code></p></td>\n<td><p><code>DistinguishedName</code></p></td>\n<td></td>\n</tr>\n<tr>\n<td><p><code>SAMAccountName</code></p></td>\n<td><p><code>AccountName</code></p></td>\n<td></td>\n</tr>\n<tr>\n<td><p><code>StreetAddress</code></p></td>\n<td><p><code>Address</code></p></td>\n<td></td>\n</tr>\n<tr>\n<td><p><code>UserType</code></p></td>\n<td><p><code>TenantMembershipType</code></p></td>\n<td></td>\n</tr>\n</tbody>\n</table>\n\n<p></p><p><i>Breaking Changes\n</i></p><p>Changes to support third-party identity providers (IDPs):</p><ul><li>To accommodate third-party IDPs, we are modifying these existing columns:</li></ul><table>\n<tbody>\n<tr>\n<th>Column Name</th>\n<th>Type</th>\n<th>Change</th>\n</tr>\n<tr>\n<td><p><code>IdentityEnvironment</code></p></td>\n<td>String</td>\n<td><p>Replaces the <code>SourceProvider</code> column. Specifies now the environment where the identity is used. Possible values: <code>CloudOnly</code>, <code>Hybrid</code>, <code>On-premises</code></p></td>\n</tr>\n<tr>\n<td><p><code>SourceProviders</code></p></td>\n<td>Dynamic</td>\n<td><p>New column listing identity sources. Possible values: <code>ActiveDirectory</code>, <code>EntraID</code>, <code>Okta</code></p></td>\n</tr>\n</tbody>\n</table>\n\n<p></p><p><b>What you need to do to prepare:</b></p><p> \n</p><p>To ensure a smooth transition, we recommend you:</p><ul><li>Review the new columns and their impact on your security workflows.\n</li><li>Prepare to update and adjust any queries, custom alert rules, playbooks, workbooks, watchlists or automations that reference the <code>IdentityInfo</code> table and would be impacted by the changes.\n</li><li>You may also want to update any relevant internal documentation you might have.</li></ul><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout.</p><p>Learn more: <a href=\"https://learn.microsoft.com/defender-xdr/advanced-hunting-identityinfo-table\" target=\"_blank\">IdentityInfo table in the advanced hunting schema - Microsoft Defender XDR | Microsoft Learn</a> (will be updated before rollout)</p><p>Before rollout, we will update this post with new documentation.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [],
+  "EndDateTime": "2025-08-29T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1052160",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2025-04-10T01:43:39.873Z",
+  "Services": [
+    "Microsoft Defender XDR"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-04-10T01:43:17Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Defender XDR services: Changes to the IdentityInfo table in Advanced Hunting",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
