@@ -4,6 +4,43 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>We’re updating Microsoft Secure Score improvement actions of Microsoft Defender for Identity to ensure a more accurate representation of security posture. This rollout includes new posture recommendations that will be added as Microsoft Secure Score improvement actions and recommendations:</p><ul><li>Install Defender for Identity Sensor on ADCS servers.</li><li>Install Defender for Identity Sensor on Entra Connect.&nbsp;</li><li>Install Defender for Identity Sensor on ADFS servers.</li><li>Change password for gMSA account.</li><li>Change password for sMSA account.&nbsp;</li></ul><p><b>When this will happen:</b></p><p>Public Preview: We will begin rolling out mid-March 2025 and expect to complete by mid-April 2025.</p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out late March 2025 and expect to complete by late April 2025.</p><p><b>How this will affect your organization:</b>\n</p><p>These new security posture reports will be available only if your tenant has a Defender for Identify sensor installed your identity infrastructure. </p><p>This update is available by default.</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required. Your score will be updated accordingly.</p><p>Review your current configuration to determine the impact for your organization. You may want to notify your admins about this change and update any relevant documentation.</p><p>Microsoft recommends reviewing the improvement actions listed in Microsoft Secure Score. We will continue to add suggested security improvement actions on an ongoing basis.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft is updating Microsoft Secure Score improvement actions for Defender for Identity, adding new recommendations such as installing sensors on ADCS, Entra Connect, and ADFS servers, and changing gMSA and sMSA account passwords. The rollout starts in March 2025, with no admin action required. Review configurations and notify admins."
+      }
+    ],
+    "EndDateTime": "2025-07-07T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1023484",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-04-21T20:14:02.577Z",
+    "Services": [
+      "Microsoft Defender XDR"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-03-05T01:10:29Z",
+    "Tags": [
+      "Feature update",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Defender for Identity: New recommendations for Microsoft Secure Score",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated April 21, 2025: We have updated the timelines below. Thank you for your patience.</p><p>To reduce the risk of misuse and abuse of Exchange Online resources and ensure service availability for all users, we’ll soon introduce new tenant-level outbound email limits, known as the Tenant External Recipient Rate Limit or TERRL. The TERRL restricts the number of external recipients a tenant can send email to per day. If the limit is exceeded further messages sent to external recipients from the tenant will be blocked until the volume for the last 24 hours drops below the quota. A tenant’s TERRL quota is calculated based on the number of email licenses a tenant has purchased. Here is the formula used to calculate a tenant’s quota:\n</p><p>500 * (Purchased Email Licenses^0.7) + 9500\n</p><p>To help admins plan and track their outbound email volume, you’ll find a new report in the Exchange admin center: <i>EAC &gt; Reports &gt; Mail flow &gt; Tenant Outbound External Recipients Rate</i>. This report shows the current volume of external recipients, your tenant’s daily quota, how much of the quota is used, and the number of recipients that were blocked if the limit was exceeded. The report will also show if enforcement for the limit is enabled or disabled. For example, for tenants who have more than 500 email licenses it will show “Disabled” until May 1st, the day we’ll start to enable enforcement for tenants who have more than 500 licenses.\n</p><p><b>When this will happen:</b></p><p>This change will roll out in progressive stages over the month of March as per the following rollout schedule:</p><table class=\"table table-bordered\"><tbody><tr><td>Phase</td><td>Enable enforcement for tenant group</td><td>Rollout start date</td></tr><tr><td>1</td><td>Tenants with &lt;= 25 email licenses</td><td>April 3, 2025</td></tr><tr><td>2</td><td>+ additional tenants with &lt;= 200 licenses</td><td>April 18, 2025</td></tr><tr><td>3</td><td>+ additional tenants with &lt;= 500 licenses</td><td>April 28, 2025</td></tr><tr><td>4</td><td>+ all remaining tenants</td><td>May 9, 2025</td></tr></tbody></table><p><b>How this will affect your organization:</b></p><p>If your tenant exceeds its daily outbound sending limit further messages sent to external recipients will be blocked and senders will receive one of the following bounce messages (also known as Non-Delivery Receipts or NDRs):\n</p><ul><li>Trial tenants: 550 5.7.232 - Your message can't be sent because your trial tenant has exceeded its daily limit for sending email to external recipients (tenant external recipient rate limit)\n</li><li>Non-trial tenants: 550 5.7.233 - Your message can't be sent because your tenant exceeded its daily limit for sending email to external recipients (tenant external recipient rate limit)\n</li></ul><p><b>What you need to do to prepare:</b></p><p>Check the report in the EAC to see your tenant’s quota and current daily outbound email volume and whether or not any messages will be blocked once the TERRL is enabled for your tenant. If your current outbound email volume is well below the quota, you don’t have to do anything. If your outbound email volume is near or exceeding your quota, consider using <a href=\"https://learn.microsoft.com/en-us/azure/communication-services/overview\" target=\"_blank\">Azure Communication Services email</a> for high-volume email to external recipients instead. ACS email which offers significant advantages and features for high-volume email, especially for external recipients. Messages sent using ACS email are not counted against your Tenant External Recipient Rate Limit quota.\n</p><p>For more information about the Tenant External Recipient Rate feature and report please see this blog post:\n</p><ul><li><a href=\"https://techcommunity.microsoft.com/blog/exchange/introducing-exchange-online-tenant-outbound-email-limits/4372797\" target=\"_blank\">Introducing Exchange Online Tenant Outbound Email Limits</a></li></ul>",
       "ContentType": "html"
     },
@@ -12745,43 +12782,6 @@
       "Retirement"
     ],
     "Title": "Update to Get-CsDialPlan, Get-CsOnlineUser, and Get-CsUserPolicyAssignment cmdlet in the Teams PowerShell Module",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>We’re updating Microsoft Secure Score improvement actions of Microsoft Defender for Identity to ensure a more accurate representation of security posture. This rollout includes new posture recommendations that will be added as Microsoft Secure Score improvement actions and recommendations:</p><ul><li>Install Defender for Identity Sensor on ADCS servers.</li><li>Install Defender for Identity Sensor on Entra Connect.&nbsp;</li><li>Install Defender for Identity Sensor on ADFS servers.</li><li>Change password for gMSA account.</li><li>Change password for sMSA account.&nbsp;</li></ul><p><b>When this will happen:</b></p><p>Public Preview: We will begin rolling out mid-March 2025 and expect to complete by mid-April 2025.</p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out late March 2025 and expect to complete by late April 2025.</p><p><b>How this will affect your organization:</b>\n</p><p>These new security posture reports will be available only if your tenant has a Defender for Identify sensor installed your identity infrastructure. </p><p>This update is available by default.</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required. Your score will be updated accordingly.</p><p>Review your current configuration to determine the impact for your organization. You may want to notify your admins about this change and update any relevant documentation.</p><p>Microsoft recommends reviewing the improvement actions listed in Microsoft Secure Score. We will continue to add suggested security improvement actions on an ongoing basis.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft is updating Microsoft Secure Score improvement actions for Defender for Identity, adding new recommendations such as installing sensors on ADCS, Entra Connect, and ADFS servers, and changing gMSA and sMSA account passwords. The rollout starts in March 2025, with no admin action required. Review configurations and notify admins."
-      }
-    ],
-    "EndDateTime": "2025-05-26T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1023484",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-03-05T01:10:41.003Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-03-05T01:10:29Z",
-    "Tags": [
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Defender for Identity: New recommendations for Microsoft Secure Score",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
