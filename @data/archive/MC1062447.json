@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": "2025-07-31T07:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>Coming soon for Microsoft Fabric: We will split the existing tenant admin setting that currently controls access for service principals to all&nbsp;public APIs, into two tenant admin settings. After the split, the new tenant admin settings will be:</p><ul><li>Service principal access to global APIs: Controls access to \"global\" APIs that are not protected by any Fabric permission model, such as the creation of workspaces. This setting will retain the existing configuration and will be disabled by default. Setting name: <i>Service principals can create workspaces, connections, and deployment pipelines.</i></li><li>Service principal access to permission-based APIs: Controls access to APIs protected by the Fabric permission model, including managing existing workspaces and full CRUD (create, read, update, and delete) operations for workspace sub-folders and items. This setting will adopt the existing configuration of the current setting and will be enabled by default. Setting name: <i>Service principals can call Fabric public APIs.</i></li></ul><p><b>Why are we introducing the change?\n</b></p><p>For years, one tenant admin setting has governed the access of service principals to public APIs in Microsoft Power BI and then in Microsoft Fabric overall (see screenshot of the current setting).\n</p><p>We originally introduced the single setting as a safeguard against potential misuse by multi-tenant app service principals, but as we have expanded into Fabric scenarios, we understand the need for a more flexible approach to unblock Fabric developers. When the current admin setting is set to disabled by default, developers are blocked. To enhance usability for Fabric developers while ensuring security and Fabric tenant admin control, we will split the existing setting into two settings.\n</p><p>The current setting:\n</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/4f1618d4-f69d-4aa2-9d7a-d1ac40ac9956\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>Detailed plan and timelines</b></p><p>Starting mid-May 2025 and ending in early June 2025, we will hide the current Fabric tenant admin setting and expose the two new settings, <i>Service principals can create workspaces, connections, and deployment pipelines</i> and <i>Service principals can call Fabric public APIs:\n</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/967c3bc1-4c83-4cd4-a93f-7daf978f6ba2\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>We will enable the two new settings as follows:\n</p><ul><li>For existing tenants, we will retain the same configuration of the old tenant setting in the two new tenant settings.</li><li>For new tenants, the first setting (creation of workspaces, connections and deployment pipelines) will be disabled by default, and the second setting (service principals with appropriate roles and item permission call Fabric public APIs) will be enabled by default.</li></ul><p>If you are part of a group of existing Fabric admins who have never touched the original setting (that was disabled by default), your screen will include a checked box next to <i>Accept Microsoft’s change to enable service principal access for the entire organization.</i> If you want the new second setting to stay disabled after the split, you can uncheck the box and select <i>Apply</i> to opt out before August 1, 2025. <b>NOTE: </b>This group does not include admins who enabled the setting and then disabled it. Effective August 1, 2025, we will automatically change this setting to <i>Enabled for the entire organization</i> for all tenants that have this box checked:</p><p> \n</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/1a481e09-95b3-4caa-b051-27a9b995e427\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to prepare</b></p><ul><li>When the two new settings are introduced after early June 2025, make sure their configurations (that we will copy from your old settings) still fit the needs and/or requirements of your organization, and make changes as needed.\n</li><li>Tenant admins who are presented with the checked box to <i>Accept Microsoft’s change to enable service principal access for the entire organization:</i>You have until August 1, 2025 to opt out (uncheck and <i>Apply</i>) to leave the second setting disabled, make any other changes in this setting, or let us change it automatically to <i>Enabled for the entire organization. \n</i></li></ul><p>If you have questions or need further assistance, please do not hesitate to contact Microsoft Fabric support team.</p><p>We will update this post with new documentation before we implement the change.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Fabric will split the existing tenant admin setting for service principal access to public APIs into two settings: one for global APIs (disabled by default) and one for permission-based APIs (enabled by default). This change aims to enhance flexibility for developers while maintaining security. The transition will occur from mid-May to early June 2025. Existing configurations will be retained, and admins have until August 1, 2025, to opt out of automatic changes."
+    }
+  ],
+  "EndDateTime": "2025-11-28T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1062447",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2025-04-25T22:53:14.27Z",
+  "Services": [
+    "Power BI"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-04-25T22:52:05Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Fabric: Changes to tenant admin setting that governs the access of service principals to public APIs",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
