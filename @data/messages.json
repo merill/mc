@@ -12251,44 +12251,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated May 14, 2025: After further review, we will not be rolling this out to GCC during the timeline outlined below. We will communicate via Message center when we are ready to proceed. Organizations in GCC can safely disregard this message. Thank you for your patience.</p><p>As part of our ongoing efforts to enhance the Microsoft Defender for Mobile security portal experience, we are updating the ‘Open Wi-Fi’ and ‘Cert Detection for Android’ features within the Network Protection suite. Effective May 19, 2025, when a user connects to an open Wi-Fi network on a mobile device, an alert will no longer be generated on the security portal. Instead, this activity will be recorded as an event and viewable under the device timeline. Similarly, detecting a suspicious certificate during download and installation will also be recorded as an event rather than generating an alert. This change ensures administrators still have visibility without generating alerts there by reducing fatigue. \n</p><p><b>When this will happen:</b></p><p>This change will take effect in a phased rollout starting late May 2025 (previously May 19).\n</p><p><b>How this affects your organization:</b></p><p>This update addresses customer feedback about alert fatigue, especially in environments with high mobile device usage. By logging events like open Wi-Fi connections and suspicious certificate detections in the device timeline rather than triggering alerts, we help reduce noise and streamline operations. This change benefits SOC analysts and administrators by preserving visibility into potential risky events while allowing them to focus on high-priority incidents, improving overall triage efficiency.\n</p><p><b>How the experience looks after the change:</b></p><p>Current security and privacy settings will remain unchanged. The current security settings will apply to the new behavior,<i> <b>so no action is required by the admin</b></i>.\n</p><p>By default, showing open Wi-Fi and suspicious cert detection information on the device timeline is enabled. Admins can disable it or set it to audit mode without any change in current behavior.\n</p><p>There will be no change in user experience; all current behaviors will stay the same with this change.\n</p><p><b>What you can do to prepare</b></p><p>No immediate action is required, but it is recommended that admins review their current Intune policies related to open Wi-Fi networks and cert detection to ensure both are enabled to see events on the device timeline.\n</p><p><br></p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The update to Microsoft Defender for Mobile will log open Wi-Fi and suspicious certificate detections as events instead of alerts starting late May 2025. This change aims to reduce alert fatigue and improve triage efficiency. No action is required from admins, and current security settings remain unchanged. GCC organizations can disregard this message."
-      }
-    ],
-    "EndDateTime": "2025-06-29T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1057719",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-05-14T19:16:00.74Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-04-18T03:32:21Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "MDE Mobile: Open Wi-Fi and Certificate Detections will be logged as Events",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated May 14, 2025: We have postponed this release to ensure the proper customer experience. The rollout timeline has been updated below. Thank you for your patience.</p><p>We are pleased to inform you that we will roll out two improvements to enhance compliance and security for voicemail messages in Microsoft Exchange.\n</p><p>This change is related to three products: Microsoft Teams calls, Microsoft Outlook/Exchange, and Microsoft Skype for Business calls. Results will be visible in Outlook/Exchange email messages.\n</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide, GCC): We will begin rolling out late May 2025 (previously early May) and expect to complete by mid-June 2025.\n</p><p>General Availability (GCCH, DoD): We will begin rolling out early June 2025 (previously mid-May) and expect to complete by late June 2025 (previously mid-June).</p><p><b>How this will affect your organization:</b></p><p>1. The <i>From:</i> field of voicemail email messages will be updated to comply with the latest RFC standard, <a href=\"https://www.rfc-editor.org/rfc/rfc6854\" target=\"_blank\">RFC 6854: Update to Internet Message Format to Allow Group Syntax in the From: and Sender Header Fields</a>. According to this compliance standard, the Internet message format must always include an address in the <i>From</i> header field.\n</p><p>Example:\n</p><ul><li>Before this rollout: +44 28 7584 5695 &lt;442875845695&gt;\n</li><li>After this rollout: +44 28 7584 5695 (Unverified) &lt;noreply@skype.voicemail.microsoft.com&gt;\n</li></ul><p>2. To strengthen trust and security in voicemails received from external PSTN calls and from federated tenants, <i>Unverified</i> and <i>External</i> tags will always be added to the <i>From</i> field of voicemail messages in the mailbox.\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th>Voicemail message type</th>\n<th>Label</th>\n</tr><tr><td>Voicemail messages from external PSTN callers that are found in Entra ID contacts\n</td><td><i>External</i>\n</td></tr><tr><td>Voicemail messages from federated tenant callers that are found in the federated Entra ID contacts\n</td><td><i>External</i>\n</td></tr><tr><td>Voicemail messages from external PSTN callers that are not found in Entra ID contacts\n</td><td><i>Unverified</i>\n</td></tr><tr><td>Voicemail messages from anonymous callers, for example Skype calls without a phone number\n</td><td><i>Unverified</i>\n</td></tr></tbody></table>\n\n<p></p><p><b>Note:</b> This rollout applies to voicemail messages in Microsoft Exchange received from external PSTN calls and calls from federated tenants.\n</p><p>Example of the <i>From</i> field in voicemail message if PSTN caller was not found in Entra ID contacts:</p><ul><li>Before this rollout: +44 28 7584 5695</li><li>After this rollout: +44 28 7584 5695 (Unverified)\n</li></ul><p>Example of the <i>From</i> field in voicemail message if PSTN caller was found in Entra ID contacts:</p><ul><li>Before this rollout: John Smith\n</li><li>After this rollout: John Smith (External)\n</li></ul><p>Example of the <i>From</i> field in voicemail message for calls from federated tenant:\n</p><ul><li>Before this rollout: John Smith\n</li><li>After this rollout: John Smith (External)\n</li></ul><p>Example of the <i>From</i> field in voicemail message for anonymous Skype calls:</p><ul><li>Before this rollout: Anonymous\n</li><li>After this rollout: Anonymous (Unverified)\n</li></ul><p><b>Note:</b> Both improvements will always be on by default.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before or after the rollout. You may want to notify your users about this change and update relevant documentation.</p>",
       "ContentType": "html"
     },
@@ -22562,44 +22524,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated November 14, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>Microsoft Purview | Insider Risk Management indicators that detect activity in cloud storage apps (Box, Dropbox, Google Drive), cloud services (AWS, Azure), and Microsoft Fabric (Power BI) will transition from a free Public Preview <b>as communicated in MC716005 <i>(Updated) Microsoft Purview | Insider Risk Management: Public preview of multicloud support</i> (updated March 2024)</b> to a pay-as-you-go pricing model in Public Preview.\n<b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out in early January 2025 (previously early November) and expect to complete by late January 2025 (previously early November).\n</p><p>We will update this message when we know the plan for General Availability.\n</p><p><b>How this will affect your organization:</b>\n</p><p>To continue using indicators for cloud storage apps (Box, Dropbox, Google Drive), cloud services (AWS, Azure), and Microsoft Fabric (Power BI), please link an Azure subscription to Microsoft Purview to enable billing. Starting January 6, 2025 (previously November 1), you will be billed based on the number of user activities processed by Microsoft Insider Risk Management for these indicators.\n</p><p>Insider Risk Management indicators transitioning to a pay-as-you-go pricing model:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/3267274b-cac4-442d-b59f-24d7fffeda79\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>Microsoft Purview admins with appropriate permissions can enable the pay-as-you-go features from Microsoft Purview by taking a few steps. To learn more: <a href=\"https://go.microsoft.com/fwlink/?linkid=2285100\" target=\"_blank\">Enable Microsoft Purview PAY-AS-YOU-GO features</a>.\n</p><p>Insider risk admins with appropriate permissions can opt in to these indicators in the <a href=\"https://purview.microsoft.com/informationprotection/purviewmipoverview\" target=\"_blank\">new Microsoft Purview portal</a> at Insider Risk Management settings.\n</p><p>Microsoft Purview Insider Risk Management correlates various signals to identify potential malicious or inadvertent insider risks, such as IP theft, data leakage, and security violations. Insider Risk Management enables customers to create policies based on their own internal policies, governance, and organizational requirements. Built with privacy by design, users are pseudonymized by default, and role-based access controls and audit logs are in place to help ensure user-level privacy.\n</p><p>Learn more: <a href=\"https://learn.microsoft.com/purview/purview-billing-models\" target=\"_blank\">Learn about Microsoft Purview billing models | Microsoft Learn</a>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. You may want to notify your admins about this change and update any relevant documentation.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Purview | Insider Risk Management indicators for cloud storage apps, cloud services, and Microsoft Fabric will switch to a pay-as-you-go model in January 2025. Organizations must link an Azure subscription for billing and can opt-in via the new Microsoft Purview portal. Rollout updates and preparation steps are provided."
-      }
-    ],
-    "EndDateTime": "2025-06-29T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC917743",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-11-14T20:28:00.463Z",
-    "Services": [
-      "Microsoft Purview"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-10-24T22:55:54Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Purview | Insider Risk Management: New pay-as-you-go model for cloud storage apps, cloud services, and Microsoft Fabric",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated November 11, 2024: We have updated the content. Thank you for your patience.</p><p>When an external network participant is invited to join a Microsoft Viva Engage external network, they receive an invitation email with an option to accept. Before this configuration change, all invited external users receive community conversations and emails, even if their invitation is in a pending or inactive state, allowing them to receive updates without completing registration. An E3/E5 license is required to use this feature.\n</p><p>After this change, pending or inactive users will no longer receive community conversations or emails unless they accept the invitation and complete the registration process. This change prioritizes active engagement, ensuring only registered users access conversation updates and reducing the volume of emails sent to non-registered users. External users who have activated their accounts will receive conversations and community emails.\n</p><p>We will begin rolling out this change early December 2024 and expected to complete by early January 2025. Extensions will not be provided for this configuration change.\n</p><p><b>How this will affect your organization:</b>\n</p><p>For organizations that frequently post in the Viva Engage external network expecting external recipients to engage via email without registering, this adjustment may impact their communication flow. However, we expect this effect to be minimal for most customers.\n</p><p>Pending users will need to actively accept their invitation by selecting the link in the invitation email or manually entering the URL in their browser to complete registration. After the user registers, they will begin to receive community conversations and emails.\n</p><p>An example of an invitation to join a Viva Engage external network:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/351fbd92-57ea-4ac9-8bd2-0568d2d98891\" style=\"width: 400px;\" alt=\"user email\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This change will happen automatically by the specified date. No admin action is required. Please notify your users about this change and update relevant documentation.</p>",
       "ContentType": "html"
     },
@@ -23222,43 +23146,6 @@
       "Admin impact"
     ],
     "Title": "Product transitions to the cloud.microsoft domain - August 2024",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>The cloud.microsoft domain was <a href=\"https://techcommunity.microsoft.com/t5/microsoft-365-blog/introducing-cloud-microsoft-a-unified-domain-for-microsoft-365/ba-p/3804961\" target=\"_blank\">provisioned in early 2023</a> to provide a unified, trusted, and dedicated DNS domain space to host Microsoft’s first-party authenticated SaaS products and experiences. This post is to inform admins that the following Microsoft products and scenarios are now available at the cloud.microsoft domain, in parallel with the previous domains. \n</p><ul><li>Microsoft Planner (<a href=\"https://planner.cloud.microsoft\" target=\"_blank\">https://planner.cloud.microsoft</a>)\n</li></ul><p>A full list of product experiences already being delivered on this domain can be found here: <a href=\"https://learn.microsoft.com/microsoft-365/enterprise/cloud-microsoft-domain?view=o365-worldwide\" target=\"_blank\">Unified cloud.microsoft domain for Microsoft 365 apps - Microsoft 365 Enterprise | Microsoft Learn.</a>\n</p><p><b>When this will happen:</b>\n</p><p>The services above are already available on cloud.microsoft, in parallel to their previous domains. You can expect the previous domains to be redirected to cloud.microsoft in the coming months. \n</p><p><b>How this will affect your organization:</b></p><ul><li>The cloud.microsoft domain has been a part of standard <a href=\"https://learn.microsoft.com/microsoft-365/enterprise/urls-and-ip-address-ranges\" target=\"_blank\">Microsoft network guidance on domains and service endpoints</a> since April 2023. If you are currently following this guidance, this change should not impact users in your organization using the above applications under the new domain.\n</li><li>Users will be redirected to applications under cloud.microsoft domains gradually and automatically. No specific user action is required. Links to the previous domains are backwards compatible and continue to be supported. Users may notice that the new application domains are lacking the “.com” extension.  This is by design, as “.microsoft” is Microsoft’s own top-level domain – and this exclusivity allows for additional security and protection against spoofing.\n</li></ul><p><b>What you need to do to prepare:</b></p><ul><li>Educate users to recognize and expect cloud.microsoft as a key domain for Microsoft cloud experiences. You can refer them to <a href=\"https://support.microsoft.com/office/what-is-cloud-microsoft-7ba4c8b9-d062-4444-84a5-fca6c3006d2b\" target=\"_blank\">What is cloud.microsoft? - Microsoft Support</a> for more information.\n</li><li>If your organizational websites, tools, or other materials reference the old URL, those links will be automatically redirected. However, it would be good practice to update those assets to avoid user confusion.\n</li><li>Partner with developers of in-house Teams apps - including those that run on Outlook and Microsoft 365 - to take the actions described in <a href=\"https://devblogs.microsoft.com/microsoft365dev/action-required-ensure-your-microsoft-teams-apps-are-ready-for-upcoming-domain-changes/\" target=\"_blank\">Action required: ensure your Microsoft Teams apps are ready for upcoming domain changes</a> so the apps continue to function on the new domain. \n</li><li>Admins should ensure that connections to *.cloud.microsoft are not blocked from their clients and enterprise networks. This should require no action if standard <a href=\"https://learn.microsoft.com/microsoft-365/enterprise/urls-and-ip-address-ranges\" target=\"_blank\">Microsoft network guidance on domains and service endpoints</a> is being followed.</li></ul><p><b>\n</b></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft products are transitioning to the cloud.microsoft domain by June 2024. Microsoft Planner is already available on this domain. Admins should educate users, update organizational materials, ensure in-house apps are compatible, and verify network connections to *.cloud.microsoft are unblocked."
-      }
-    ],
-    "EndDateTime": "2025-06-29T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC807452",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2024-07-01T23:12:14.593Z",
-    "Services": [
-      "Microsoft 365 suite"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-07-01T23:11:57Z",
-    "Tags": [
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Product transitions to the cloud.microsoft domain - June 2024",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
