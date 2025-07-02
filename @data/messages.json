@@ -4,6 +4,44 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated July 2, 2025: We have updated the timeline below. Thank you for your patience.\n</p><p>&nbsp;We are proactively opting tenants out of the rollout that were detected as sending high volumes of emails exhibiting multiple From addresses without a Sender address header. These exempted senders will only be able to send emails exhibiting multiple From addresses without a Sender address header to recipients belonging to the same tenant as the sender. We will provide a subsequent update by the end of May 2025 (previously end of March) with an updated timeline for tenants that are opted out.</p><p>We're going to start gradually dropping messages that have multiple From addresses (also known as P2 From headers) without a Sender header from being processed via Exchange Online, please review the section \"When this will happen\" for rollout timeline information for your tenant.</p><p>If we see significant traffic exhibiting multiple From addresses (P2 From headers) without a Sender header in your tenant in the month of September, we will send you a Message Center Post by October 15th alerting you and providing some sample message IDs.</p><p>We are doing this to comply with <a href=\"https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2\" target=\"_blank\">RFC 5322 (https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2)</a>&nbsp;which mandates the Sender header to be present and contain a single address if the From header has more than one address. Noncompliance with this could be exploited by attackers, allowing them to impersonate a sender address by misleading the client into using the From header to determine the sender instead of the Sender header.\n</p><p><b>When this will happen:</b></p><p>General Availability (Worldwide, GCC): We will begin rolling out April 15, 2025, and expect to complete by May 15, 2025.</p><p>GCC High, DOD: We will begin rolling out October 7, 2025 (previously July 1), and expect to complete by November 1, 2025 (previously August 1).</p><p>We are delaying the rollout start date in order to provide more time to customers for investigating messages exhibiting multiple P2 From Addresses without a Sender Address.&nbsp;</p><p>Most of the traffic exhibiting multiple P2 From Addresses without a Sender Address will be inbound spam destined for your tenant sent by malicious spammers on the internet.\n</p><p>Some customers are sending legitimate emails with this malformed header configuration. On October 15, we sent a targeted MC post to customers showing high volumes of messages exhibiting multiple P2 From Addresses without a Sender Address as they may be impacted by this change.\n</p><p>For investigating if you will be impacted by this change, focus your investigation on messages sent using On Premises Inbound Connectors to Exchange Online. Authenticated mail submission is not impacted because submitting messages like this using those submissions are not allowed (Graph, Outlook clients, SMTP AUTH Client Submission).</p><p><b>How this affects your organization:</b>\n</p><p>If email clients including devices and applications that you use to send messages, do so using multiple From addresses but without a Sender address header after the change starts rolling out to your environment, you will get an NDR error code 550 5.1.20 “Multiple From addresses are not allowed without Sender address.</p><p><b>What you can do to prepare:</b>\n</p><p>When this change is in effect, if you need to send a message that has more than one email address in the From field, make sure that you have a single email address in the Sender header.\n</p><p>If you expect this change to cause any issues for your organization, please share that feedback.\n</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting April 15, 2025, messages with multiple From addresses without a Sender header will be rejected in Exchange Online to comply with RFC 5322. The rollout for GCC High and DOD is delayed to October 7, 2025. Tenants sending high volumes of such emails are opted out temporarily."
+      }
+    ],
+    "EndDateTime": "2025-12-15T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC886603",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-07-02T13:18:03.257Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2024-09-10T00:59:11Z",
+    "Tags": [
+      "Updated message",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Reject multiple From addresses (P2 From headers) without a Sender header",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>As announced in MC1072405 (May '25), we're retiring Organization Data Types in Microsoft Excel for Microsoft 365. This change simplifies the data types experience and encourages use of more robust, supported solutions like Power BI and custom Excel add-ins.</p><p><b>When this will happen:</b></p><p>This change will take effect on July 31, 2025.\n</p><p><b>How this affects your organization:</b></p><p>Starting July 31, 2025:\n</p><ul><li>Organization Data Types will be removed from the Data Types gallery on the Data ribbon tab in Excel.\n</li><li>Users will no longer be able to convert values to new organization data types.\n</li><li>Existing organization data types in workbooks will remain but will no longer refresh.\n</li></ul><p>This change does not affect Bing data types, which will continue to be supported.\n</p><p><b>What you can do to prepare:</b></p><p>If your users rely on Organization Data Types, we recommend:\n</p><ul><li>Connecting Excel to Power BI to access organizational data.\n</li><li>Exploring custom add-in solutions using the Excel Data Types APIs.\n</li></ul><p>For guidance, refer to:\n</p><ul><li><a href=\"https://learn.microsoft.com/office/dev/add-ins/excel/excel-data-types-overview\" target=\"_blank\">Overview of data types in Excel add-ins</a>\n</li><li><a href=\"https://learn.microsoft.com/power-bi/collaborate-share/service-connect-power-bi-datasets-excel\" target=\"_blank\">Connect Excel to Power BI semantic models</a></li></ul>",
       "ContentType": "html"
     },
@@ -91,7 +129,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"496175\":[{\"RoadmapId\":496175,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-07-02T11:14:45.3448005Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":496175,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-02T11:14:45.3448008Z\",\"LatestRing\":null},{\"RoadmapId\":496175,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-02T11:14:45.3448009Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"496175\":[{\"RoadmapId\":496175,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-07-02T13:29:58.6586595Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":496175,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-02T13:29:58.6586598Z\",\"LatestRing\":null},{\"RoadmapId\":496175,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-02T13:29:58.65866Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -8138,7 +8176,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"494843\":[{\"RoadmapId\":494843,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-02T11:14:45.3450644Z\",\"LatestRing\":null},{\"RoadmapId\":494843,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-02T11:14:45.3450645Z\",\"LatestRing\":null},{\"RoadmapId\":494843,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-02T11:14:45.3450646Z\",\"LatestRing\":null}]}"
+        "Value": "{\"494843\":[{\"RoadmapId\":494843,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-02T13:29:58.6595411Z\",\"LatestRing\":null},{\"RoadmapId\":494843,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-02T13:29:58.6595414Z\",\"LatestRing\":null},{\"RoadmapId\":494843,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-02T13:29:58.6595415Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -10948,7 +10986,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"491468\":[{\"RoadmapId\":491468,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465838Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465839Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465835Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465836Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242372Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":491468,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242377Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"491468\":[{\"RoadmapId\":491468,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242372Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":491468,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465838Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465839Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465835Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465836Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242377Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -12374,7 +12412,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"476487\":[{\"RoadmapId\":476487,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-05-24T05:14:55.9241125Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":476487,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.830376Z\",\"LatestRing\":null},{\"RoadmapId\":476487,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8303761Z\",\"LatestRing\":null},{\"RoadmapId\":476487,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-05-24T05:14:55.9241139Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"476487\":[{\"RoadmapId\":476487,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8303761Z\",\"LatestRing\":null},{\"RoadmapId\":476487,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-05-24T05:14:55.9241125Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":476487,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.830376Z\",\"LatestRing\":null},{\"RoadmapId\":476487,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-05-24T05:14:55.9241139Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -19679,44 +19717,6 @@
       "User impact"
     ],
     "Title": "Microsoft Teams: Hiding inactive channels",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated March 21, 2025: We have updated the rollout timeline below. Thank you for your patience.\n</p><p>&nbsp;We are proactively opting tenants out of the rollout that were detected as sending high volumes of emails exhibiting multiple From addresses without a Sender address header. These exempted senders will only be able to send emails exhibiting multiple From addresses without a Sender address header to recipients belonging to the same tenant as the sender. We will provide a subsequent update by the end of May 2025 (previously end of March) with an updated timeline for tenants that are opted out.</p><p>We're going to start gradually dropping messages that have multiple From addresses (also known as P2 From headers) without a Sender header from being processed via Exchange Online, please review the section \"When this will happen\" for rollout timeline information for your tenant.</p><p>If we see significant traffic exhibiting multiple From addresses (P2 From headers) without a Sender header in your tenant in the month of September, we will send you a Message Center Post by October 15th alerting you and providing some sample message IDs.</p><p>We are doing this to comply with <a href=\"https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2\" target=\"_blank\">RFC 5322 (https://www.rfc-editor.org/rfc/rfc5322#section-3.6.2)</a>&nbsp;which mandates the Sender header to be present and contain a single address if the From header has more than one address. Noncompliance with this could be exploited by attackers, allowing them to impersonate a sender address by misleading the client into using the From header to determine the sender instead of the Sender header.\n</p><p><b>When this will happen:</b></p><p>General Availability (Worldwide, GCC): We will begin rolling out April 15, 2025, and expect to complete by May 15, 2025.</p><p>GCC High, DOD: We will begin rolling out July 1, 2025, and expect to complete by August 1, 2025.</p><p>We are delaying the rollout start date in order to provide more time to customers for investigating messages exhibiting multiple P2 From Addresses without a Sender Address.&nbsp;</p><p>Most of the traffic exhibiting multiple P2 From Addresses without a Sender Address will be inbound spam destined for your tenant sent by malicious spammers on the internet.\n</p><p>Some customers are sending legitimate emails with this malformed header configuration. On October 15, we sent a targeted MC post to customers showing high volumes of messages exhibiting multiple P2 From Addresses without a Sender Address as they may be impacted by this change.\n</p><p>For investigating if you will be impacted by this change, focus your investigation on messages sent using On Premises Inbound Connectors to Exchange Online. Authenticated mail submission is not impacted because submitting messages like this using those submissions are not allowed (Graph, Outlook clients, SMTP AUTH Client Submission).</p><p><b>How this affects your organization:</b>\n</p><p>If email clients including devices and applications that you use to send messages, do so using multiple From addresses but without a Sender address header after the change starts rolling out to your environment, you will get an NDR error code 550 5.1.20 “Multiple From addresses are not allowed without Sender address.</p><p><b>What you can do to prepare:</b>\n</p><p>When this change is in effect, if you need to send a message that has more than one email address in the From field, make sure that you have a single email address in the Sender header.\n</p><p>If you expect this change to cause any issues for your organization, please share that feedback.\n</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting April 15, 2025, Exchange Online will reject emails with multiple From addresses without a Sender header to comply with RFC 5322. Tenants sending high volumes of such emails are opted out temporarily. Rollout for GCC High and DOD starts July 1, 2025. Ensure emails have a single Sender address if multiple From addresses are used."
-      }
-    ],
-    "EndDateTime": "2025-10-01T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC886603",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2025-03-21T18:39:58.66Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-09-10T00:59:11Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Reject multiple From addresses (P2 From headers) without a Sender header",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
