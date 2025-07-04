@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>We're enhancing Adaptive Scopes in Microsoft Purview to improve how queries using the “not equals” (-ne) operator behave when applied to multivalued attributes.\n</p><p>With this update, Adaptive Scopes will now fully evaluate “not equals” conditions across all values in multivalued attributes. For example, if a query is designed to exclude users with \"x@contoso.com\" in any of their email addresses, it will now correctly evaluate all addresses associated with a user account.\n</p><p><b>When this will happen:</b></p><p>General Availability (Worldwide, GCC, GCC-High, DoD): Rollout will begin in mid-July 2025 and is expected to complete by early August 2025.\n</p><p><b>How this affects your organization:</b></p><p>If your organization uses Adaptive Scopes with “not equals” logic on multivalued attributes (such as email addresses), the behavior of those scopes may change.\n</p><p>Users or groups previously excluded from a scope may now be included if one of their attribute values matches the exclusion condition.\n</p><p>This change improves accuracy and consistency in scope evaluation but may result in changes to policy application or group membership.\n</p><p><b>What you can do to prepare:</b></p><ul><li>Review existing Adaptive Scopes: Identify any scopes using “not equals” logic on multivalued attributes.\n</li><li>Monitor impact: After rollout, review policy application and scope membership reports to ensure they align with expectations.\n</li><li>Communicate with stakeholders: Inform relevant teams of the potential for changes in scope behavior.\n</li></ul><p>For more information on Adaptive Scopes, visit <a href=\"https://learn.microsoft.com/purview/purview-adaptive-scopes\" target=\"_blank\">Adaptive scopes</a>.</p><p><b>Compliance considerations:</b></p><ul><li>Alters how existing customer data is processed, stored, or accessed\tYes - The update changes how multivalued attributes (e.g., email addresses) are processed in Adaptive Scope queries using the -ne operator. This may affect which users are included or excluded in policies.</li><li>Modifies or disables Purview capabilities (e.g., DLP, labels, eDiscovery)\tMaybe -&nbsp; While no core Purview features are directly modified, the change may impact how policies (e.g., DLP, retention) are applied if they rely on Adaptive Scopes with -ne logic on multivalued attributes.</li><li>Alters admin monitoring or compliance reporting\tYes -&nbsp; Admins may see changes in scope membership and policy application reports, which could affect compliance visibility and auditing.</li></ul><p><br></p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Adaptive Scopes in Microsoft Purview will now fully evaluate “not equals” conditions across all values in multivalued attributes. This update, rolling out from mid-July to early August 2025, may change scope behavior and policy application. Review existing scopes, monitor impacts, and communicate with stakeholders. More details at the provided link."
+    }
+  ],
+  "EndDateTime": "2025-10-06T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1108845",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2025-07-03T23:38:36.61Z",
+  "Services": [
+    "Microsoft Purview"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-07-03T23:38:30Z",
+  "Tags": [
+    "New feature",
+    "Admin impact"
+  ],
+  "Title": "Adaptive Scopes in Microsoft Purview – Support for Multivalued Attributes in “Not Equals” Queries",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
