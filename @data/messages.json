@@ -4,6 +4,127 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p><b>Introduction\n</b></p><p>To enhance workbook security, a new group policy is being introduced to expand File Block Settings to external workbook links. This policy allows administrators to control whether links to blocked file types can be refreshed.\n</p><p>If not configured, no changes will take effect immediately. However, starting October 2025, the default behavior will block external links to file types currently blocked by the Trust Center. When this policy is enabled, new references to blocked file types will return a <code>#BLOCKED</code> error. Existing links will display the last successfully refreshed values but will no longer refresh.\n</p><p><b>When this will happen\n</b></p><p><b>General Availability:</b> We will begin rolling out the default change in early October 2025 and end in late July 2026.\n</p><p><b>How this affects your organization\n</b></p><ul><li><b>Policy not configured:</b> No immediate change will occur.\n</li><li><b>Build 2509 warning bar: </b>Users will see a business bar when opening workbooks containing external links to blocked file types, alerting them to the upcoming change.\n</li><li><b>Build 2510 enforcement: </b>If the policy remains unconfigured, users will no longer be able to refresh or create new references to blocked file types.\n</li><li><b>Existing links behavior:</b> External links will retain the last successfully loaded value but will not refresh.\n</li><li><b>New links behavior: </b>Creating a new external link to a blocked file type will return a <code>#BLOCKED</code> error.\n</li><li><b>Workbook Links pane: </b>Will indicate which workbooks failed to refresh due to being blocked.</li></ul><p><b>What you can do to prepare\n</b></p><p>Administrators who need to allow workbook links to blocked file types can revert to the previous behavior using the following methods:\n</p><ul><li>Registry setting: Set <code>HKCU\\Software\\Microsoft\\Office\\16.0\\Excel\\Security\\FileBlock\\FileBlockExternalLinks</code> to 0.\n</li><li>Group Policy setting: <code>Set File Block Includes External Link</code> Files to <code>Disabled</code>:\n</li><li><code>Excel Group Policy Template &gt; Excel Options &gt; Security &gt; Trust Center &gt; File Block Settings &gt; File Block includes external link files</code>\n</li></ul><p>We recommend reviewing existing workbooks and communicating this change to users who rely on external links to ensure continuity of workflows.\n</p><p><b>Learn more:</b>&nbsp;<a href=\"https://learn.microsoft.com/en-us/deployoffice/security/internet-macros-blocked\" target=\"_blank\">Macros from the internet are blocked by default in Office</a><a href=\"https://learn.microsoft.com/en-us/deployoffice/security/internet-macros-blocked\" target=\"_blank\"></a></p><p><b>Learn more:</b> <a href=\"https://support.microsoft.com/en-us/topic/external-workbook-links-to-blocked-file-types-will-be-disabled-by-default-6dd12903-0592-463d-9e68-0741cf62ee58\" target=\"_blank\">External Workbook Links to Blocked File Types Will Be Disabled by Default</a></p><p><b>Compliance considerations\n</b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting October 2025, external workbook links to blocked file types will be disabled by default, showing a #BLOCKED error for new links and preventing refresh of existing ones. Administrators can revert this via registry or group policy settings. A rollout and user warnings will occur from October 2025 to July 2026."
+      }
+    ],
+    "EndDateTime": "2026-08-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1125497",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-07-30T23:51:29.75Z",
+    "Services": [
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-07-30T23:50:24Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "External workbook links to blocked file types will be disabled by default",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b>Introduction\n</b></p><p>We’re enhancing offline functionality in the new Microsoft Outlook for Windows. This update (Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/en-us/microsoft-365/roadmap?filters=&amp;searchterms=496371\" target=\"_blank\">496371</a>) enables users to add file attachments while composing emails offline, improving productivity for those working without an internet connection.\n</p><p><b>When this will happen\n</b></p><ul><li><b>Targeted Release (Worldwide): </b>Rollout begins in mid August 2025 and is expected to complete by mid September 2025.\n</li><li><b>General Availability (Worldwide):</b> Rollout begins in mid October 2025 and is expected to complete by late October 2025.\n</li><li><b>General Availability (GCC):</b> Rollout begins in early November 2025 and is expected to complete by mid November 2025.\n</li></ul><p><b>How this affects your organization\n</b></p><p>Users with offline mode enabled in the new Outlook for Windows will be able to attach files to draft emails while offline. These emails, including attachments, will be sent automatically once the device reconnects to the internet.\n</p><p>This feature will be on or off by default based on your current configuration of the <code>OWAMailboxPolicy-OfflineEnabledWin</code> policy. No changes will be made to existing configurations.\n</p><p><b>What you can do to prepare\n</b></p><p>To enable this functionality, ensure the following settings are configured in the new Outlook under <i>Settings </i>&gt; <i>General </i>&gt; <i>Offline</i>:\n</p><ul><li>Enable offline email, calendar, and people\n</li><li>Include file attachments</li></ul><p>Admins can manage this feature using the <code>OWAMailboxPolicy-OfflineEnabledWin</code> mailbox policy. Learn more at&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/exchange/set-owamailboxpolicy\" target=\"_blank\">Set-OwaMailboxPolicy</a>.</p><p><i>Caption i. Offline editing can be enabled or disabled in Settings &gt; General &gt; Offline</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/5512c4e3-99b6-44f5-b266-6f994f939ded/5c49e703b9acbba35362a284dab2a3567e666d9a.png\" style=\"width: 400px;\" alt=\"Screenshot highlighting toggle to Enable offline email, calendar, and people.\"></p><p><b>Compliance considerations\n</b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "496371"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Outlook for Windows will allow users to add file attachments to emails while offline, sending them automatically when reconnected. Rollout starts mid-August 2025 for Targeted Release and mid-October 2025 for General Availability. Admins can manage this via the OWAMailboxPolicy-OfflineEnabledWin policy."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop"
+      }
+    ],
+    "EndDateTime": "2025-12-08T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1125491",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-07-30T23:48:17.27Z",
+    "Services": [
+      "Exchange Online",
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-07-30T23:48:11Z",
+    "Tags": [
+      "New feature"
+    ],
+    "Title": "Microsoft Outlook for Windows: Add attachments while offline",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p></p><p>You can now save a meeting as a draft on your calendar when you're not ready to send invites. This update gives users more flexibility when planning events, especially when details are still being finalized.</p>\n\n<b>When this will happen</b><p></p><p>\n</p><ul>\n<li><b>General Availability (Worldwide, GCC, GCC High, DoD):</b> Rollout will begin in July 2025 and is expected to complete by late August 2025.</li>\n</ul>\n\n<b>How this affects your organization</b><p></p><p>\n</p><p>Users will be able to save events as drafts when creating a meeting with at least one attendee. To do this, select the <b>Discard</b> button while composing the event, then choose <b>Save as a draft</b>. Draft events will appear on the calendar with a “<b>Draft</b>” prefix in the title.<br>This feature is available on mobile and will be <b>on by default</b>.</p>\n\n<p></p><p><b>What you can do to prepare</b></p><p>\n</p><ul>\n<li>No admin action is required. You may want to:</li>\n<li>Inform your users about this new capability.</li>\n<li>Update internal training materials or documentation as needed.</li>\n</ul><b>Compliance considerations</b><p></p><a href=\"https://support.microsoft.com/outlook\">\n</a><p></p><p></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Outlook will allow saving meetings as drafts starting July 2025, showing “[Draft]” in titles. Users can discard and save events as drafts with attendees, available by default on mobile. No admin action is needed; inform users and update training as needed. No compliance issues identified."
+      }
+    ],
+    "EndDateTime": "2025-09-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1125489",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-07-30T23:47:43.65Z",
+    "Services": [
+      "Exchange Online",
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-07-30T23:47:37Z",
+    "Tags": [
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Outlook | Save an Event as a Draft",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>We&#39;ve released updates to the following update channel for Microsoft 365 Apps:</p>\r\n<ul><li>Current Channel</li></ul>\r\n<p><b>When this will happen:</b></p>\r\n<p>We&#39;ll be gradually rolling out this update of Microsoft 365 Apps to users on that update channel starting July 30th, 2025 (PST).</p>\r\n<p><b>How this will affect your organization:</b></p>\r\n<p>If your Microsoft 365 Apps clients are configured to automatically update from the Office Content Delivery Network (CDN), then no action is required.</p>\r\n<p>If you manage updates directly you can now download this latest update and begin deployment.</p>\r\n<p><b>What you need to do to prepare:</b></p>\r\n<p>To get more details about this update view the following release notes:</p>\r\n<ul><li><a href=\"https://docs.microsoft.com/officeupdates/current-channel#version-2507-july-30\" target=\"_blank\" rel=\"noopener noreferrer\">Current Channel</a></li></ul>",
       "ContentType": "html"
     },
