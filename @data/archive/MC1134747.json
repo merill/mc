@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": "2025-09-14T07:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b>Introduction</b></p><p>We are reaching out to inform you of an <b>important security and authentication update</b> that may impact your integration with the Microsoft Teams PowerShell Module. As part of our ongoing commitment to strengthening security across Microsoft 365 services, we are updating the authentication requirements for <b>application-based authentication</b> in the Teams PowerShell Module.</p><p>These changes are designed to ensure that Entra applications used for backend access to Teams PowerShell are properly scoped and secured. If your organization uses Entra applications to automate or manage Teams via PowerShell, action is required to avoid service disruption.&nbsp;</p><p><b>When will this happen</b></p><p>This change will take effect on Monday, September 15, 2025.</p><p><b>How this affects your organization</b></p><p>If your organization uses Entra applications to authenticate against the Microsoft Teams PowerShell Module, you must update the <b><i>Application</i></b> permissions to avoid disruption. </p><p>Specifically:</p><ul><li><b>RoleManagement.Read.Directory</b>: Required for all Entra applications to verify association with an Administrative Unit.</li><li><b>GroupMember.Read.All</b>: Required if your application uses the following cmdlets:<ul><li><code>*-CsGroupPolicyAssignment</code></li><li><code>*-CsGroupPolicyPackageAssignment</code></li></ul></li></ul><p>No changes are required for delegated permissions.</p><p><b>What you can do to prepare</b></p><p>To ensure uninterrupted access:</p><p>1. Review your Entra applications:</p><p></p><ul><li>Go to <i>Microsoft Entra ID</i> &gt; <i>Roles and administrators</i>.</li><li>Check the <i>Global Administrator</i>, <i>Teams Administrator</i>, and <i>Skype for Business Administrator</i> roles for any Entra applications or service principals used with Teams PowerShell.</li></ul><p>2. Update API permissions:</p><ul><li>Navigate to <i>Microsoft Entra ID</i> &gt; <i>App registrations</i>.</li><li>Locate the relevant application and add the following permissions:<ul><li><code>GroupMember.Read.All</code></li><li><code>RoleManagement.Read.Directory</code></li></ul></li></ul><p></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/b34dd591-e907-4af1-b6c4-45d5bff1e6f4\" style=\"width: 400px;\" alt=\"user settings\"></p><p></p><p>3. Test your integrations to confirm continued functionality.</p><p>Learn more: <a href=\"https://learn.microsoft.com/microsoftteams/teams-powershell-application-authentication\" target=\"_blank\">Application-based authentication in Teams PowerShell Module</a>.</p><p><b>Compliance considerations</b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Teams PowerShell Module requires updated application permissions—RoleManagement.Read.Directory and GroupMember.Read.All—for Entra app authentication starting September 15, 2025. Organizations must review and update these permissions in Entra ID to avoid service disruption. No changes needed for delegated permissions."
+    }
+  ],
+  "EndDateTime": "2025-10-15T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1134747",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2025-08-13T23:31:34.07Z",
+  "Services": [
+    "Microsoft Teams"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-08-13T23:31:21Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Security Update: New Authentication Requirements for integration with Microsoft Teams PowerShell Module",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
