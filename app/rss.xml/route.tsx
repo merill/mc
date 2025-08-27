@@ -9,7 +9,7 @@ export async function GET() {
         title: "Microsoft 365 Message Center Archive",
         description: "This site is an archive of Microsoft 365 Message Center messages for quick reference.",
         site_url: `https://mc.merill.net`,
-        feed_url: `https://mc.merill.net/rss`,
+        feed_url: `https://mc.merill.net/rss.xml`,
         pubDate: new Date(),
     };
 
