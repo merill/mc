@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b>Introduction</b></p><p>To improve email deliverability and reduce abuse, Microsoft is introducing outbound email throttling for default MOERA domains (e.g., contoso.onmicrosoft.com). These domains are intended for initial tenant setup and testing—not for regular email traffic. This change encourages organizations to adopt custom domains with independent reputations.</p><p><b>When this will happen</b></p><p>General Availability (Worldwide): Rollout begins mid-October 2025 and will complete by early June 2026. Rollout timing will vary based on organization seat counts. For detailed rollout information, refer to <a href=\"https://techcommunity.microsoft.com/blog/exchange/limiting-onmicrosoft-domain-usage-for-sending-emails/4446167\" target=\"_blank\">Limiting Onmicrosoft Domain Usage for Sending Emails</a>.</p><p><b>How this affects your organization</b></p><p>Organizations sending outbound email from onmicrosoft.com domains will be subject to throttling limits:</p><ul><li>Outbound email to external recipients will be capped at <b>100 messages per organization per 24-hour rolling window</b>.</li><li>Once the limit is reached, senders will receive <i style=\"\">non-delivery reports (NDRs)</i><i> </i>with error code <i>550 5.7.236</i>.</li><li>Internal and inbound email traffic will not be affected.</li></ul><p>This change is <b>on by default</b> and does not require admin enablement.</p><p><b>What you can do to prepare</b></p><p>Take the following actions:</p><ul><li>Use <i>Message Trace</i> in the <i>Exchange Admin Center</i> to identify mailboxes using MOERA domains.</li><li>Purchase and configure a custom domain for your organization.</li><li>Set the custom domain as the <i>default domain</i> in the <i>Microsoft 365 Admin Center</i>.</li><li>Update user mailboxes to use the custom domain as their <i>primary SMTP address</i>.</li><li>Review and update authentication credentials for devices and apps using MOERA-based usernames.</li><li>Ensure apps like <i>Bookings </i>and <i>Microsoft notifications</i> are configured to use your custom domain.</li></ul><p>Learn more: <a href=\"https://techcommunity.microsoft.com/blog/exchange/limiting-onmicrosoft-domain-usage-for-sending-emails/4446167\" target=\"_blank\">Limiting Onmicrosoft Domain Usage for Sending Emails</a></p><p><b>Compliance considerations</b></p><p></p><p></p><table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tbody><tr><th>Compliance Area</th><th>Explanation</th></tr>\n<tr>\n<td>Does the change modify, interrupt, or disable any of the following capabilities (Purview)?</td>\n<td>Applications relying on MOERA-based usernames (e.g., Bookings, Microsoft notifications) may require reconfiguration to maintain functionality.</td>\n</tr>\n<tr>\n<td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td>\n<td>Admins must use <i>Message Trace</i> in the <i>Exchange Admin Center</i> to identify MOERA usage and monitor throttling impact.</td>\n</tr>\n<tr>\n<td>Does the change include an admin control and, can it be controlled through Entra ID group membership?</td>\n<td>Admins can configure custom domains and update SMTP addresses; however, Entra ID group control is not explicitly mentioned.</td>\n</tr>\n</tbody></table>",
+    "ContentType": "html"
+  },
+  "Category": "preventOrFixIssue",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft will throttle outbound emails sent from default onmicrosoft.com domains starting mid-October 2025, limiting to 100 messages per organization per 24 hours. This encourages use of custom domains. Internal emails remain unaffected. Admins should switch to custom domains and update related configurations accordingly."
+    }
+  ],
+  "EndDateTime": "2026-07-31T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1143991",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2025-08-29T00:28:07.82Z",
+  "Services": [
+    "Exchange Online"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-08-29T00:27:42Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Limiting onmicrosoft domain usage for sending emails",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}

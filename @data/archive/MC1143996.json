@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b>Introduction</b></p><p>To improve consistency between portal and PowerShell configurations, Microsoft Purview will update how alert generation is handled for Data Loss Prevention (DLP) rules. This change ensures that alert settings in the portal accurately reflect rule configurations made via PowerShell.</p><p><b>When this will happen</b></p><p>This change will begin rolling out on September 26, 2025.</p><p><b>How this affects your organization</b></p><p>We’ve identified that a few tenants have one or more DLP rules with alert generation enabled in the Microsoft Purview portal, but the corresponding alert action was disabled or removed using PowerShell cmdlets.</p><p>To align portal behavior with PowerShell configurations, Microsoft will automatically disable the alert generation toggle in the Purview portal for these rules. The rules will remain active and continue to enforce DLP actions, but <b>alerts will no longer be generated unless reconfigured</b>.</p><p>This change does <b>not </b>impact the enforcement of DLP policies—only the alert generation behavior.</p><p><b>What you can do to prepare</b></p><p>No admin action is required unless you want to continue receiving alerts for affected rules. To re-enable alert generation:</p><ul><li>Open the rule in the Purview portal, make any update, and save the configuration.</li><li>Use PowerShell to re-enable alert generation for the rule. You can refer to the following cmdlet documentation for guidance:<ul><li><a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/set-protectionalert?view=exchange-ps\" target=\"_blank\">Set-ProtectionAlert</a>\n</li><li><a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule?view=exchange-ps\" target=\"_blank\">Set-DlpComplianceRule</a></li></ul></li></ul><p></p><ul></ul><p></p><p><b>Compliance considerations</b></p><table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n<tbody><tr>\n<th>Compliance Area</th>\n<th>Impact</th>\n</tr>\n<tr>\n<td>Alters how existing customer data is processed, stored, or accessed</td>\n<td>Alert for affected DLP rule actions will no longer be generated unless explicitly re-enabled.</td>\n</tr>\n<tr>\n<td>Modifies Purview capabilities</td>\n<td>Alert generation for DLP rules will be disabled in the portal if previously removed via PowerShell.</td>\n</tr>\n<tr>\n<td>Alters how admins can monitor, report on, or demonstrate compliance activities</td>\n<td>Admins may see fewer alerts in Purview reporting unless rules are reconfigured.</td>\n</tr>\n<tr>\n<td>Includes an admin control</td>\n<td>Admins can re-enable alert generation via portal or PowerShell.</td>\n</tr>\n<tr>\n<td>Allows user to enable/disable the feature</td>\n<td>Admins can toggle alert generation per rule.</td>\n</tr>\n</tbody></table>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Starting September 26, 2025, Microsoft Purview will align DLP alert settings between the portal and PowerShell by disabling alert generation in the portal for rules where PowerShell disabled it. DLP enforcement continues unaffected. Admins must re-enable alerts via portal or PowerShell to keep receiving them."
+    }
+  ],
+  "EndDateTime": "2025-11-14T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1143996",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2025-08-29T00:31:08.69Z",
+  "Services": [
+    "Microsoft Purview"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-08-29T00:30:04Z",
+  "Tags": [
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Microsoft Purview compliance portal: Data Loss Prevention - Upcoming Change to DLP Alert Settings",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
