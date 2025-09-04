@@ -4,7 +4,130 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated September 4, 2025: We have updated the timeline. Thank you for your patience.\n</p><p>We’re expanding offline capabilities in the new Outlook for Windows. Users will soon be able to create, edit, and delete single calendar events even when not connected to the internet. This enhancement improves productivity and flexibility when working offline.</p><p>This change is associated with Microsoft 365 Roadmap ID: <a href=\"https://www.microsoft.com/en-us/microsoft-365/roadmap?rtc=1%26filters%3D&amp;searchterms=490059\" target=\"_blank\">490059</a></p><p><b>When this will happen:</b></p><p>Targeted Release: Rollout will begin in early September 2025 and is expected to complete by mid-September 2025.</p><p>General Availability (Worldwide): Rollout will begin in mid-September 2025 (previously mid-August) and is expected to complete by mid-October 2025 (previously mid-September).</p><p><b>How this will affect your organization:</b></p><p>Users with offline mode enabled in the new Outlook for Windows will be able to:\n</p><ul><li>Create new single calendar events while offline.\n</li><li>Edit or delete existing calendar events that have been previously synchronized within the offline timeframe set in Outlook settings.\n</li></ul><p>Note: Support for recurring (series) events while offline is not currently available.\n</p><p>This functionality is controlled by the existing mailbox policy setting:\n</p><p><code>OWAMailboxPolicy -OfflineEnabledWin</code>.\n</p><p>If this policy is set to True, offline calendar functionality will be available. If set to False, it will be disabled. This update does not change the default value of the policy.\n</p><p><b>What you need to do to prepare:</b></p><p>Ensure that offline mode is enabled for users who need this functionality. At the user level, this can be verified in the new Outlook under:\n</p><p><i>Settings &gt; General &gt; Offline\n</i></p><ul><li>Enable offline email, calendar, and people\n</li></ul><p>Admins can manage this setting using the Set-OwaMailboxPolicy cmdlet. Learn more here:&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/exchange/set-owamailboxpolicy\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Set-OwaMailboxPolicy</a>&nbsp;</p><p>For end-user guidance, see: <a href=\"https://support.microsoft.com/en-us/office/work-offline-in-outlook-2460e4a8-16c7-47fc-b204-b1549275aac9#picktab=new_outlook\" target=\"_blank\">Work offline in Outlook</a></p><p><b>Compliance considerations:</b></p><ul><li>Does the change alter how existing customer data is processed, stored, or accessed?\tYes – calendar data is now accessible and editable offline</li></ul>",
+      "Content": "<p>Updated September 4, 2025: We have updated the timeline. Thank you for your patience.</p><p><b>Introduction</b>\n<p>We’re introducing enhancements to the focus area experience in Viva Glint to improve how organizations track and act on employee feedback. With this update, focus areas will now be tied to survey cycles, and goal periods will be retired. This change simplifies reporting and aligns focus areas more closely with survey insights. </p><p>This update is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=498922\" target=\"_blank\">498922</a>.</p>\n<b>When this will happen</b>\n<p>General availability: We will begin rolling out mid-November 2025 (previously mid-October) and expect to complete by late November 2025 (previously mid-October).</p>\n<b>How this affects your organization</b>\n<p>After the update, focus areas will be organized by survey cycle instead of goal periods. Glint users will be able to create and report on focus areas based on survey cycles. Goal periods will be retired. Focus areas not linked to a survey cycle (for example, if the cycle has been deleted) will be labeled <i>No survey cycle</i>&nbsp;and remain accessible in the platform. No focus areas will be deleted as part of this change. This update will be enabled by default.&nbsp;</p>\n<b>What you can do to prepare</b>\n<ul><li>No admin action is required for the transition, but we recommend communicating this change to Glint users in your organization. </li><li>Review and update any internal documentation or training materials that reference goal periods.&nbsp;</li></ul>\n<b>Compliance considerations</b>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>\n</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "498922"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Viva Glint will enhance focus areas by linking them to survey cycles and retiring goal periods, simplifying reporting. The update rolls out mid to late November 2025, with no data deletion. No admin action is needed, but user communication and documentation updates are recommended."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2025-11-24T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1138786",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-09-04T19:51:47.957Z",
+    "Services": [
+      "Microsoft Viva"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-08-20T23:33:45Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Viva Glint: Focus area enhancements and retirement of goal periods",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": "2025-09-04T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated September 4, 2025: We have updated the timeline. Thank you for your patience.</p><p><b>Introduction</b></p><p>Microsoft Entra is updating how Conditional Access (CA) policies apply to Azure DevOps sign-ins. Azure DevOps will no longer rely on the Azure Resource Manager (ARM) resource during sign-in or token refresh flows. This change ensures that access controls are applied directly to Azure DevOps. Organizations must update their Conditional Access policies to explicitly include Azure DevOps to maintain secure access.</p><p><b>When this will happen\n</b></p><p>This change will take effect starting <b>September 2, 2025</b>, and will be <b>fully enforced by September 18, 2025 </b>(previously September 4), across all environments.</p><p><b>How does this affect your organization?</b></p><p>If your organization has Conditional Access policies targeting the Windows Azure Service Management API (App ID: 797f4846-ba00-4fd7-ba43-dac1f8f63013), those policies will no longer apply to Azure DevOps sign-ins. This may result in <b>unprotected access</b> unless these policies are updated to include Azure DevOps (App ID: 499b84ac-1321-427f-aa17-267ca6975798).\n</p><ul><li>Access controls such as MFA or compliant device requirements may not be enforced unless policies are updated.\n</li><li>If you already have a policy that targets all users and all cloud apps and does not explicitly exclude Azure DevOps, no action is required—Azure DevOps sign-ins will continue to be protected.\n</li><li>This change does not introduce any new user-facing experience or UI changes.\n</li><li>Sign-in activity can be monitored using Microsoft Entra ID sign-in logs.</li><li>Licensing requirement: Microsoft Entra ID P1 or P2 is required. There are no functional differences by license type. This is a feature change, not a new feature, so trial or preview options are not applicable.</li><li>Unlicensed users may also be impacted.\n</li><li>Existing Conditional Access policies will be affected, specifically those targeting the Windows Azure Service Management API.\n</li><li>A small subset of tenants may see the app name as \"Microsoft Visual Studio Team Services\" instead of \"Azure DevOps\"—the App ID remains the same.</li></ul><p>&nbsp;<b>What do you need to do to prepare?</b></p><p>To ensure continued protection of Azure DevOps sign-ins, administrators should:\n</p><ul><li><b>Review existing Conditional Access policies</b> - Identify any policies that target the Windows Azure Service Management API.\n</li><li><b>Update policies to include Azure DevOps:</b><ul><li>Go to the Entra admin center.\n</li><li>Navigate to <b>Entra ID &gt; Conditional Access &gt; Policies</b>.\n</li><li>Select the relevant policy.\n</li><li>Under <b>Target resources</b>, choose<b> Select resources</b> and add Azure DevOps (App ID: 499b84ac-1321-427f-aa17-267ca6975798).\n</li><li>Save the policy.</li></ul></li><li><b>Use Entra ID group membership</b> to scope policies to specific users or groups.</li><li><b>Monitor sign-in activity</b> using Entra ID sign-in logs.</li><li><b>Review licensing requirements</b> - Conditional Access requires Microsoft Entra ID P1 or higher. Organizations without the required license may explore trial options.</li></ul><p>Learn more: </p><ul><li><a href=\"https://devblogs.microsoft.com/devops/removing-azure-resource-manager-reliance-on-azure-devops-sign-ins/\" target=\"_blank\">Removing Azure Resource Manager reliance on Azure DevOps sign-ins | Azure DevOps Blog</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/conditional-access/overview\" target=\"_blank\">What is Conditional Access? | Conditional Access | Microsoft Entra ID | Microsoft Learn</a></li></ul><p><b>Compliance considerations\n</b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Entra will stop applying Conditional Access policies via Azure Resource Manager for Azure DevOps sign-ins starting September 2, 2025, fully enforced by September 18. Organizations must update policies to explicitly include Azure DevOps (App ID: 499b84ac-1321-427f-aa17-267ca6975798) to maintain secure access."
+      }
+    ],
+    "EndDateTime": "2025-10-27T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1123830",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-09-04T19:48:11.603Z",
+    "Services": [
+      "Microsoft Entra"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-07-28T23:49:43Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Entra: Action Required – Update Conditional Access Policies for Azure DevOps Sign-ins",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated September 4, 2025: We have updated the timeline. Thank you for your patience.\n</p><p><b>Introduction</b></p>\n<p>Connectivity changes between cmdlets and other M365 services like SharePoint and Exchange will need a new flag to be specified. Starting August 31, 2025, customers will need to use at least <a href=\"https://www.powershellgallery.com/packages/ExchangeOnlineManagement/3.8.0\" target=\"_blank\">Exchange Online PowerShell v3.9.0 and later</a>, with - <code>EnableSearchOnlySession</code> parameter when running <font color=\"#085294\"><font color=\"#085294\"><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/connect-ippssession?view=exchange-ps\" target=\"_blank\">Connect-IPPSSession</a></font>  </font>to run the following eDiscovery cmdlets.&nbsp;&nbsp;</p>\n\n<p><b>When this will happen</b></p>\n<p>This change will take effect on<b> September 12, 2025 </b>(previously&nbsp;August 31).</p>\n\n<p><b>How this affects your organization</b></p>\n<p>To maintain functionality and align with modern authentication standards, customers must use <b><a href=\"https://www.powershellgallery.com/packages/ExchangeOnlineManagement/3.8.0\" target=\"_blank\">Exchange Online PowerShell v3.9.0 and later</a></b> and include the EnableSearchOnlySession parameter when running <code><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/connect-ippssession?view=exchange-ps\" target=\"_blank\">Connect-IPPSSession</a></code> to execute the following cmdlets:</p>\n<ul>\n<li><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/new-compliancesearchaction?view=exchange-ps\" target=\"_blank\">New-ComplianceSearchAction</a></li>\n<li><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/new-caseholdpolicy?view=exchange-ps\" target=\"_blank\">New-CaseHoldPolicy</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/set-caseholdpolicy?view=exchange-ps\" target=\"_blank\">Set-CaseHoldPolicy</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/remove-caseholdpolicy?view=exchange-ps\" target=\"_blank\">Remove-CaseHoldPolicy</a></li>\n<li><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/new-caseholdrule?view=exchange-ps\" target=\"_blank\">New-CaseHoldRule</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/set-caseholdrule?view=exchange-ps\" target=\"_blank\">Set-CaseHoldRule</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/remove-caseholdrule?view=exchange-ps\" target=\"_blank\">Remove-CaseHoldRule</a></li>\n<li><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/new-compliancesecurityfilter?view=exchange-ps\" target=\"_blank\">New-ComplianceSecurityFilter</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/set-compliancesecurityfilter?view=exchange-ps\" target=\"_blank\">Set-ComplianceSecurityFilter</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/get-compliancesecurityfilter?view=exchange-ps\" target=\"_blank\">Get-ComplianceSecurityFilter</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/remove-compliancesecurityfilter?view=exchange-ps\" target=\"_blank\">Remove-ComplianceSecurityFilter</a></li>\n</ul>\n<p>This change does <b>not</b> impact users accessing eDiscovery through the Purview portal. These cmdlets also remain <b>incompatible with Certificate-Based Authentication (CBA)</b>.</p>\n<p>You are receiving this message because one or more users in your organization are actively using these eDiscovery features.</p>\n\n<p><b>What you can do to prepare</b></p>\n<ul><p>\n</p><li>Update scripts and workflows to include the <code>-EnableSearchOnlySession</code> parameter when connecting to Security &amp; Compliance PowerShell.</li>\n<li>Ensure your organization is using Exchange Online PowerShell version 3.9.0 or later.</li>\n<li>For more information, visit: <a href=\"https://learn.microsoft.com/en-us/purview/edisc\">Learn about eDiscovery solutions in Microsoft Purview</a></li></ul>\n<p></p><p><b>Compliance considerations</b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting September 12, 2025, running certain Microsoft Purview eDiscovery cmdlets requires Exchange Online PowerShell v3.9.0+ with the -EnableSearchOnlySession parameter in Connect-IPPSSession. This change does not affect the Purview portal and remains incompatible with Certificate-Based Authentication. Update scripts accordingly."
+      }
+    ],
+    "EndDateTime": "2025-12-15T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1131771",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-09-04T19:28:15.38Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-08-08T23:38:00Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | eDiscovery cmdlet connectivity change",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated September 4, 2025: We have updated the timeline. Thank you for your patience.\n</p><p>We’re expanding offline capabilities in the new Outlook for Windows. Users will soon be able to create, edit, and delete single calendar events even when not connected to the internet. This enhancement improves productivity and flexibility when working offline.</p><p>This change is associated with Microsoft 365 Roadmap ID: <a href=\"https://www.microsoft.com/en-us/microsoft-365/roadmap?rtc=1%26filters%3D&amp;searchterms=490059\" target=\"_blank\">490059</a></p><p><b>When this will happen:</b></p><p>Targeted Release: Rollout will begin in late September 2025 and is expected to complete by late October 2025.</p><p>General Availability (Worldwide): Rollout will begin in late October 2025 (previously mid-September) and is expected to complete by mid-December 2025 (previously mid-October).</p><p><b>How this will affect your organization:</b></p><p>Users with offline mode enabled in the new Outlook for Windows will be able to:\n</p><ul><li>Create new single calendar events while offline.\n</li><li>Edit or delete existing calendar events that have been previously synchronized within the offline timeframe set in Outlook settings.\n</li></ul><p>Note: Support for recurring (series) events while offline is not currently available.\n</p><p>This functionality is controlled by the existing mailbox policy setting:\n</p><p><code>OWAMailboxPolicy -OfflineEnabledWin</code>.\n</p><p>If this policy is set to True, offline calendar functionality will be available. If set to False, it will be disabled. This update does not change the default value of the policy.\n</p><p><b>What you need to do to prepare:</b></p><p>Ensure that offline mode is enabled for users who need this functionality. At the user level, this can be verified in the new Outlook under:\n</p><p><i>Settings &gt; General &gt; Offline\n</i></p><ul><li>Enable offline email, calendar, and people\n</li></ul><p>Admins can manage this setting using the Set-OwaMailboxPolicy cmdlet. Learn more here:&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/exchange/set-owamailboxpolicy\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Set-OwaMailboxPolicy</a>&nbsp;</p><p>For end-user guidance, see: <a href=\"https://support.microsoft.com/en-us/office/work-offline-in-outlook-2460e4a8-16c7-47fc-b204-b1549275aac9#picktab=new_outlook\" target=\"_blank\">Work offline in Outlook</a></p><p><b>Compliance considerations:</b></p><ul><li>Does the change alter how existing customer data is processed, stored, or accessed?\tYes – calendar data is now accessible and editable offline</li></ul>",
       "ContentType": "html"
     },
     "Category": "planForChange",
@@ -15,18 +138,18 @@
       },
       {
         "Name": "Summary",
-        "Value": "The new Outlook for Windows will support creating, editing, and deleting single calendar events offline starting September 2025. This feature requires the mailbox policy Owamailboxpolicy -OfflineEnabledWin set to True. Recurring events offline are not supported. Users and admins must enable offline mode to use this functionality."
+        "Value": "Offline support in the new Outlook for Windows will allow users to create, edit, and delete single calendar events without internet. Rollout begins late September 2025, completing by mid-December. Recurring events offline are not supported. Controlled by the OWA mailbox policy setting OfflineEnabledWin."
       },
       {
         "Name": "Platforms",
         "Value": "Desktop"
       }
     ],
-    "EndDateTime": "2025-11-24T07:00:00Z",
+    "EndDateTime": "2026-01-26T07:00:00Z",
     "HasAttachments": false,
     "Id": "MC1101906",
     "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-04T18:05:12.027Z",
+    "LastModifiedDateTime": "2025-09-04T19:18:30.057Z",
     "Services": [
       "Exchange Online"
     ],
@@ -6332,51 +6455,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<b>Introduction</b>\n<p>We’re introducing enhancements to the focus area experience in Viva Glint to improve how organizations track and act on employee feedback. With this update, focus areas will now be tied to survey cycles, and goal periods will be retired. This change simplifies reporting and aligns focus areas more closely with survey insights. </p><p>This update is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=498922\" target=\"_blank\">498922</a>.</p>\n<b>When this will happen</b>\n<p>General availability: We will begin rolling out mid-October 2025 and expect to complete by mid-October 2025.</p>\n<b>How this affects your organization</b>\n<p>After the update, focus areas will be organized by survey cycle instead of goal periods. Glint users will be able to create and report on focus areas based on survey cycles. Goal periods will be retired. Focus areas not linked to a survey cycle (for example, if the cycle has been deleted) will be labeled <i>No survey cycle</i>&nbsp;and remain accessible in the platform. No focus areas will be deleted as part of this change. This update will be enabled by default.&nbsp;</p>\n<b>What you can do to prepare</b>\n<ul><li>No admin action is required for the transition, but we recommend communicating this change to Glint users in your organization. </li><li>Review and update any internal documentation or training materials that reference goal periods.&nbsp;</li></ul>\n<b>Compliance considerations</b>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "498922"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Viva Glint will enhance focus areas by linking them to survey cycles and retiring goal periods, simplifying reporting and aligning with survey insights. The update rolls out mid-October 2025, requires no admin action, and retains all focus areas, including those without survey cycles."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2025-11-17T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1138786",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2025-08-20T23:34:30.29Z",
-    "Services": [
-      "Microsoft Viva"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-08-20T23:33:45Z",
-    "Tags": [
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Viva Glint: Focus area enhancements and retirement of goal periods",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated August 20, 2025: After further review, this has been delayed. A new Message Center post will be published closer to the updated release date. It will still correspond to the existing Roadmap ID 421611.&nbsp; We apologize for any inconvenience.</p><p>View and monitor Loop usage in the tenant through existing Microsoft 365 admin usage dashboards.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=421611\" target=\"_blank\">421611</a>.</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): We will communicate via Message center when the rollout date is getting closer.</p><p><b>How this will affect your organization:</b></p><p>Once available, administrators can view and monitor Loop usage in the tenant through the <a href=\"https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide\" target=\"_blank\">existing Microsoft 365 admin usage dashboards</a>.</p><p><b>What you need to do to prepare:</b></p><p>There is nothing you need to do to prepare. These changes will roll to your tenant automatically.</p>",
       "ContentType": "html"
     },
@@ -7589,44 +7667,6 @@
       "User impact"
     ],
     "Title": "Microsoft Teams | New in Admin Center: Self-Serve Fixes for Porting Rejections",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated August 15, 2025: We have updated content. Thank you for your patience.</p><p><b>Introduction</b></p>\n<p>Connectivity changes between cmdlets and other M365 services like SharePoint and Exchange will need a new flag to be specified. Starting August 31, 2025, customers will need to use at least <a href=\"https://www.powershellgallery.com/packages/ExchangeOnlineManagement/3.8.0\" target=\"_blank\">Exchange Online PowerShell v3.9.0 and later</a>, with - <code>EnableSearchOnlySession</code> parameter when running <font color=\"#085294\"><font color=\"#085294\"><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/connect-ippssession?view=exchange-ps\" target=\"_blank\">Connect-IPPSSession</a></font>  </font>to run the following eDiscovery cmdlets.&nbsp;&nbsp;</p>\n\n<p><b>When this will happen</b></p>\n<p>This change will take effect on <b>August 31, 2025</b>.</p>\n\n<p><b>How this affects your organization</b></p>\n<p>To maintain functionality and align with modern authentication standards, customers must use <b><a href=\"https://www.powershellgallery.com/packages/ExchangeOnlineManagement/3.8.0\" target=\"_blank\">Exchange Online PowerShell v3.9.0 and later</a></b> and include the EnableSearchOnlySession parameter when running <code><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/connect-ippssession?view=exchange-ps\" target=\"_blank\">Connect-IPPSSession</a></code> to execute the following cmdlets:</p>\n<ul>\n<li><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/new-compliancesearchaction?view=exchange-ps\" target=\"_blank\">New-ComplianceSearchAction</a></li>\n<li><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/new-caseholdpolicy?view=exchange-ps\" target=\"_blank\">New-CaseHoldPolicy</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/set-caseholdpolicy?view=exchange-ps\" target=\"_blank\">Set-CaseHoldPolicy</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/remove-caseholdpolicy?view=exchange-ps\" target=\"_blank\">Remove-CaseHoldPolicy</a></li>\n<li><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/new-caseholdrule?view=exchange-ps\" target=\"_blank\">New-CaseHoldRule</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/set-caseholdrule?view=exchange-ps\" target=\"_blank\">Set-CaseHoldRule</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/remove-caseholdrule?view=exchange-ps\" target=\"_blank\">Remove-CaseHoldRule</a></li>\n<li><a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/new-compliancesecurityfilter?view=exchange-ps\" target=\"_blank\">New-ComplianceSecurityFilter</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/set-compliancesecurityfilter?view=exchange-ps\" target=\"_blank\">Set-ComplianceSecurityFilter</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/get-compliancesecurityfilter?view=exchange-ps\" target=\"_blank\">Get-ComplianceSecurityFilter</a>, <a href=\"https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/remove-compliancesecurityfilter?view=exchange-ps\" target=\"_blank\">Remove-ComplianceSecurityFilter</a></li>\n</ul>\n<p>This change does <b>not</b> impact users accessing eDiscovery through the Purview portal. These cmdlets also remain <b>incompatible with Certificate-Based Authentication (CBA)</b>.</p>\n<p>You are receiving this message because one or more users in your organization are actively using these eDiscovery features.</p>\n\n<p><b>What you can do to prepare</b></p>\n<ul><p>\n</p><li>Update scripts and workflows to include the <code>-EnableSearchOnlySession</code> parameter when connecting to Security &amp; Compliance PowerShell.</li>\n<li>Ensure your organization is using Exchange Online PowerShell version 3.9.0 or later.</li>\n<li>For more information, visit: <a href=\"https://learn.microsoft.com/en-us/purview/edisc\">Learn about eDiscovery solutions in Microsoft Purview</a></li></ul>\n<p></p><p><b>Compliance considerations</b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting August 31, 2025, running certain Microsoft Purview eDiscovery cmdlets requires Exchange Online PowerShell v3.9.0+ and the -EnableSearchOnlySession flag with Connect-IPPSSession. This change does not affect portal users and remains incompatible with Certificate-Based Authentication. Update scripts accordingly."
-      }
-    ],
-    "EndDateTime": "2025-12-15T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1131771",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-08-15T13:44:49.01Z",
-    "Services": [
-      "Microsoft Purview"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-08-08T23:38:00Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Purview | eDiscovery cmdlet connectivity change",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -11972,44 +12012,6 @@
       "User impact"
     ],
     "Title": "Introducing the New Workflows Experience in Microsoft Teams",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": "2025-09-04T07:00:00Z",
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b>Introduction</b></p><p>Microsoft Entra is updating how Conditional Access (CA) policies apply to Azure DevOps sign-ins. Azure DevOps will no longer rely on the Azure Resource Manager (ARM) resource during sign-in or token refresh flows. This change ensures that access controls are applied directly to Azure DevOps. Organizations must update their Conditional Access policies to explicitly include Azure DevOps to maintain secure access.</p><p><b>When this will happen\n</b></p><p>This change will take effect starting <b>September 2, 2025</b>, and will be <b>fully enforced by September 4, 2025</b>, across all environments.</p><p><b>How does this affect your organization?</b></p><p>If your organization has Conditional Access policies targeting the Windows Azure Service Management API (App ID: 797f4846-ba00-4fd7-ba43-dac1f8f63013), those policies will no longer apply to Azure DevOps sign-ins. This may result in <b>unprotected access</b> unless these policies are updated to include Azure DevOps (App ID: 499b84ac-1321-427f-aa17-267ca6975798).\n</p><ul><li>Access controls such as MFA or compliant device requirements may not be enforced unless policies are updated.\n</li><li>If you already have a policy that targets all users and all cloud apps and does not explicitly exclude Azure DevOps, no action is required—Azure DevOps sign-ins will continue to be protected.\n</li><li>This change does not introduce any new user-facing experience or UI changes.\n</li><li>Sign-in activity can be monitored using Microsoft Entra ID sign-in logs.</li><li>Licensing requirement: Microsoft Entra ID P1 or P2 is required. There are no functional differences by license type. This is a feature change, not a new feature, so trial or preview options are not applicable.</li><li>Unlicensed users may also be impacted.\n</li><li>Existing Conditional Access policies will be affected, specifically those targeting the Windows Azure Service Management API.\n</li><li>A small subset of tenants may see the app name as \"Microsoft Visual Studio Team Services\" instead of \"Azure DevOps\"—the App ID remains the same.</li></ul><p>&nbsp;<b>What do you need to do to prepare?</b></p><p>To ensure continued protection of Azure DevOps sign-ins, administrators should:\n</p><ul><li><b>Review existing Conditional Access policies</b> - Identify any policies that target the Windows Azure Service Management API.\n</li><li><b>Update policies to include Azure DevOps:</b><ul><li>Go to the Entra admin center.\n</li><li>Navigate to <b>Entra ID &gt; Conditional Access &gt; Policies</b>.\n</li><li>Select the relevant policy.\n</li><li>Under <b>Target resources</b>, choose<b> Select resources</b> and add Azure DevOps (App ID: 499b84ac-1321-427f-aa17-267ca6975798).\n</li><li>Save the policy.</li></ul></li><li><b>Use Entra ID group membership</b> to scope policies to specific users or groups.</li><li><b>Monitor sign-in activity</b> using Entra ID sign-in logs.</li><li><b>Review licensing requirements</b> - Conditional Access requires Microsoft Entra ID P1 or higher. Organizations without the required license may explore trial options.</li></ul><p>Learn more: </p><ul><li><a href=\"https://devblogs.microsoft.com/devops/removing-azure-resource-manager-reliance-on-azure-devops-sign-ins/\" target=\"_blank\">Removing Azure Resource Manager reliance on Azure DevOps sign-ins | Azure DevOps Blog</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/conditional-access/overview\" target=\"_blank\">What is Conditional Access? | Conditional Access | Microsoft Entra ID | Microsoft Learn</a></li></ul><p><b>Compliance considerations\n</b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Entra requires updating Conditional Access policies by September 4, 2025, to explicitly include Azure DevOps (App ID: 499b84ac-1321-427f-aa17-267ca6975798) for secure sign-ins. Policies targeting the Windows Azure Service Management API will no longer protect Azure DevOps access. Microsoft Entra ID P1 or higher license is needed."
-      }
-    ],
-    "EndDateTime": "2025-10-04T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1123830",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2025-07-28T23:50:06.253Z",
-    "Services": [
-      "Microsoft Entra"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-07-28T23:49:43Z",
-    "Tags": [
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Entra: Action Required – Update Conditional Access Policies for Azure DevOps Sign-ins",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
