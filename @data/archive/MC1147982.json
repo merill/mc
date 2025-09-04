@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": "2025-12-01T08:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>As part of Microsoft’s ongoing <a href=\"https://www.microsoft.com/trust-center/security/secure-future-initiative\" target=\"_blank\">Secure Future Initiative (SFI)</a>, starting on or shortly after <b>December&nbsp;2, 2025</b>,&nbsp;the network service endpoints for Microsoft Intune  will also use the Azure Front Door IP addresses. This improvement supports better alignment with modern security practices and over time will make it easier for organizations using multiple Microsoft products to manage and maintain their firewall configurations. As a result, customers may be required to add these network (firewall) configurations in third-party applications to enable proper function of Intune device and app management. This change will affect customers using a firewall allowlist that allows outbound traffic based on IP addresses or Azure service tags.</p><p>Do not remove any existing network endpoints required for Microsoft Intune. Additional network endpoints are documented as part of the Azure Front Door and service tags information referenced in the files linked below:</p><ul><li>Public clouds: <a href=\"https://www.microsoft.com/download/details.aspx?id=56519\" target=\"_blank\">Download Azure IP Ranges and Service Tags – Public Cloud from Official Microsoft Download Center</a>&nbsp;</li><li>Government clouds: <a href=\"https://www.microsoft.com/download/details.aspx?id=57063\" target=\"_blank\">Download Azure IP Ranges and Service Tags – US Government Cloud from Official Microsoft Download Center</a>&nbsp;</li></ul><p>The additional ranges are those listed in the JSON files linked above and can be found by searching for “AzureFrontDoor.MicrosoftSecurity”.</p><p><b>How this will affect your organization:</b>\n</p><p>If you have configured an outbound traffic policy for Intune IP address ranges or Azure service tags for your firewalls, routers, proxy servers, client-based firewalls, VPN or network security groups, you will need to update them to include the new Azure Front Door ranges with the “AzureFrontDoor.MicrosoftSecurity” tag.&nbsp;</p><p>Intune requires internet access for devices under Intune management, whether for mobile device management or mobile application management. If your outbound traffic policy doesn’t include the new Azure Front Door IP address ranges, users may face login issues, devices might lose connectivity with Intune, and access to apps like the Intune Company Portal or those protected by app protection policies could be disrupted.</p><p><b>What you need to do to prepare:</b>\n</p><p>Ensure that your firewall rules are updated and added to your firewall’s allowlist with the additional IP addresses documented under Azure Front Door by <b>December 2, 2025</b>.&nbsp;</p><p>Alternatively, you may add the service tag “AzureFrontDoor.MicrosoftSecurity” to your firewall rules to allow outbound traffic on port 443 for the addresses in the tag.&nbsp;</p><p>If you are not the IT admin who can make this change, notify your networking team. If you are responsible for configuring internet traffic, refer to the following documentation for more details:</p><ul><li><a href=\"https://learn.microsoft.com/azure/frontdoor/origin-security?tabs=app-service-functions&amp;pivots=front-door-classic\" target=\"_blank\">Azure Front Door</a></li><li><a href=\"https://learn.microsoft.com/azure/virtual-network/service-tags-overview\" target=\"_blank\">Azure service tags</a></li><li><a href=\"https://learn.microsoft.com/intune/intune-service/fundamentals/intune-endpoints#intune-core-service\" target=\"_blank\">Intune network endpoints</a></li><li><a href=\"https://learn.microsoft.com/intune/intune-service/fundamentals/intune-us-government-endpoints\" target=\"_blank\">US government network endpoints for Intune</a></li></ul><p>If you have a helpdesk, inform them about this upcoming change. If you need additional assistance, contact <a href=\"https://learn.microsoft.com/intune/get-support\" target=\"_blank\">Microsoft Support</a> and refer to this message center post.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "By December 2, 2025, update firewall rules to include new Azure Front Door IP ranges (tagged “AzureFrontDoor.MicrosoftSecurity”) for Microsoft Intune. This ensures uninterrupted device and app management connectivity. Keep existing Intune endpoints and notify your IT/network team to implement these changes."
+    }
+  ],
+  "EndDateTime": "2026-01-30T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1147982",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2025-09-04T23:12:23.657Z",
+  "Services": [
+    "Microsoft Intune"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-09-04T23:06:40Z",
+  "Tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Action Required: Update firewall configurations to include new Intune network endpoints",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
