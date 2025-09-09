@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<b><b>Introduction</b></b>\n<p>To improve visibility and alignment across Microsoft Defender for Office 365 and Microsoft Sentinel, we’re updating how email verdict and location changes are handled in the <i>EmailEvents</i> table. This change ensures that Sentinel reflects both current and historical verdicts, enabling more accurate threat analysis and investigation.</p>\n\n<b><b>When this will happen:</b></b>\n<p><b>General Availability:</b> Rollout begins in <b>early October 2025</b> and is expected to complete by <b>early November 2025</b>.</p>\n\n<b><b>How this affects your organization:</b></b>\n<ul>\n<li><b>Who is affected:</b> Admins using <i>Microsoft Defender for Office 365</i>, <i>Streaming API</i>, and the <i>EmailEvents</i> table in Microsoft Sentinel.</li>\n<li><b>What will happen:</b>\n  <ul>\n    <li>The <i>Streaming API</i> will begin streaming updated records when an email’s verdict or location changes.</li>\n    <li>Microsoft Sentinel will store both the updated and previous records, rather than replacing them.</li>\n    <li>You may see multiple rows for the same email if its verdict or location is updated.</li>\n    <li>This update aligns the <i>EmailEvents</i> table in Microsoft Sentinel with the behavior of the <i>Advanced Hunting</i> <i>EmailEvents</i> table.</li>\n  </ul>\n</li>\n</ul>\n\n<b><b>What you can do to prepare:</b></b>\n<ul>\n<li>Review and update existing queries and dashboards that rely on the <i>EmailEvents</i> table.</li>\n<li>Use the following KQL pattern to retrieve the latest record per email:</li>\n</ul>\n<pre>summarize arg_max(Timestamp, *) by NetworkMessageId, RecipientEmailAddress\n</pre>\n<p>Example query for emails with a \"Phish\" verdict:</p>\n<pre>EmailEvents\n| where ThreatTypes has \"Phish\"\n| summarize arg_max(Timestamp, *) by NetworkMessageId, RecipientEmailAddress\n</pre>\n<p>Learn more about the <code>arg_max</code> function: <a href=\"https://learn.microsoft.com/kusto/query/arg-max-aggregation-function?view=microsoft-fabric\">KQL arg_max documentation</a></p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.\n</p><p><b><br></b></p><p><a href=\"http://\"></a></p><a href=\"https://learn.microsoft.com/en-us/kusto/query/arg-max-aggregation-function?view=microsoft-fabric\">\n</a>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Starting early October 2025, Microsoft Defender for Office 365's Streaming API and Sentinel EmailEvents table will store both current and historical email verdicts and locations, showing multiple records per email. Admins should update queries and dashboards accordingly, using KQL's arg_max to retrieve the latest records."
+    }
+  ],
+  "EndDateTime": "2026-01-31T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1150118",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2025-09-08T23:28:17.123Z",
+  "Services": [
+    "Microsoft Defender XDR"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-09-08T23:28:04Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Defender for Office 365: New records in Streaming API and Sentinel EmailEvents table",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}

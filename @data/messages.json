@@ -4,6 +4,164 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>To improve discoverability and empower users to configure data-driven alerts, we’re introducing a new tenant setting in Microsoft Fabric. This setting enables visibility of the “Set alert” button for all Power BI web users, allowing them to create Fabric Activator alerts when permissions are in place.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul><li>Rollout begins: <b>September 14, 2025</b></li>\n<li>Rollout completes: <b>September 19, 2025</b></li>\n<li>Default enablement begins: <b>Week of October 13, 2025</b></li></ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul><li>All Power BI web users in Microsoft Fabric environments.</li>\n<li>Admins managing Fabric tenant settings.</li></ul>\n\n<p><b>What will happen:</b>\n</p><ul>\n<li>A new tenant setting will be introduced: <b>All Power BI users can see \"Set alert\" button to create Fabric Activator alerts</b></li>\n<li>When enabled:\n  <ul>\n    <li>All Power BI web users will see the “Set alert” button in reports.</li>\n    <li>Users can configure <a href=\"https://go.microsoft.com/fwlink/?linkid=2331953\" target=\"_blank\">Fabric Activator alerts</a> if they have permission to create Fabric items.</li>\n  </ul>\n</li>\n<li>When disabled:\n  <ul>\n    <li>The button remains visible only to users with tenant-level Fabric access.</li>\n  </ul>\n</li>\n<li>Default behavior:\n  <ul>\n    <li>The setting will be <b>disabled by default</b> during rollout.</li>\n    <li>Beginning the week of <b>13 October 2025</b>, the setting will be <b>enabled by default</b> for all tenants.</li>\n  </ul>\n</li>\n</ul>\n<p></p>\n\n<p><b><b>What you can do to prepare:</b></b>\n</p><ul>\n<li>Review the new tenant setting before <b>13 October 2025</b>.</li>\n<li>If you wish to prevent automatic enablement:\n  <ul>\n    <li>Manually toggle the setting <b>on</b>, then <b>off</b> before the default change takes effect.</li>\n  </ul>\n</li>\n<li>Communicate this change to helpdesk and support teams.</li>\n<li>Update internal documentation if you reference alert configuration in Power BI or Fabric.</li>\n<li>Learn more about <a href=\"https://go.microsoft.com/fwlink/?linkid=2331953\" target=\"_blank\">Fabric Activator alerts</a>.</li></ul>\n\n<p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "A new Microsoft Fabric tenant setting will make the “Set alert” button visible to all Power BI web users, enabling them to create Fabric Activator alerts if permitted. Rollout starts September 14, 2025, with default enablement by October 13, 2025. Admins can manage this setting beforehand."
+      }
+    ],
+    "EndDateTime": "2025-12-01T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1150124",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-09-08T23:32:01.433Z",
+    "Services": [
+      "Power BI"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-09-08T23:31:54Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "New Fabric Tenant Setting: “Set alert” Button Visibility for Power BI Users",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b>Introduction</b></p><p>We are introducing a new capability in Microsoft Teams external collaboration that allows Teams administrators to specify which users or groups within the organization can interact with specific external domains. This enhancement provides more granular control over external collaboration, enabling scenarios such as piloting with select departments, restricting high-risk roles, or enabling broader federation where appropriate.</p><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=501275\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">501275</a>.</p><p><b>When this will happen</b></p><p>Targeted Release: Begins early September 2025 and completes by mid-September 2025.</p><p>General Availability (Worldwide): Begins late October 2025 and completes by mid-December 2025.</p><p><b>How this affects your organization</b></p><p>Previously, external access settings could only be configured at the tenant level, with policy-level settings limited to either inheriting tenant settings or blocking all external domains. With this update, you can assign custom external access policies to users or groups with five configuration options:</p><ul><li><i>Use organization settings</i>: Inherits the tenant’s default external access configuration</li><li><i>Allow all external domains</i>: All external organizations are trusted</li><li><i>Allow only specific external domains</i>: Only domains in the allow list are trusted</li><li><i>Block only specific external domains</i>: Domains in the block list are restricted; all others are trusted</li><li><i>Block all</i>: All external domains are blocked for users assigned to this policy</li></ul><p>Users assigned a custom policy may interact with different external domains than those defined in the organization-wide settings.</p><p><b>What you can do to prepare</b></p><p>Administrators should begin identifying users and groups that require differentiated external access and plan pilot scenarios accordingly.</p><p>During the public preview, configuration must be done via PowerShell using the following cmdlets:</p><ul><li><code>Set-CsExternalAccessPolicy</code></li><li><code>Set-CsTenantFederationConfiguration</code></li></ul><p><i>Note: </i>Changes made through these cmdlets will not be reflected in the Teams admin center UI during the Targeted Release.</p><p>Once the feature reaches general availability, the Teams admin center UI will support these configurations, allowing policy management via both PowerShell and the UI.</p><p>Learn more:&nbsp;<a href=\"https://learn.microsoft.com/microsoftteams/manage-external-access\" target=\"_blank\">Manage external meetings and chat with people and organizations using Microsoft identities</a>.</p><p><b>Compliance considerations</b></p><table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tbody><tr><th>Compliance Area</th><th>Explanation</th></tr>\n\n<tr>\n  <td>Admin control via Entra ID group membership</td>\n  <td>Policies can be assigned to Entra ID groups for targeted external access control.</td>\n</tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "501275"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams will enable admins to assign custom external access policies by user or group, allowing specific control over which external domains they can interact with. This feature, available from September 2025, supports five policy options and will be manageable via PowerShell initially, then through the Teams admin center UI."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Android, Desktop, iOS, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2026-01-20T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1150123",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-09-08T23:31:37.08Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-09-08T23:31:18Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Teams Admin Center: Control External Access by Domain for Specific Users and Groups",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<b><b>Introduction</b></b>\n<p>To improve visibility and alignment across Microsoft Defender for Office 365 and Microsoft Sentinel, we’re updating how email verdict and location changes are handled in the <i>EmailEvents</i> table. This change ensures that Sentinel reflects both current and historical verdicts, enabling more accurate threat analysis and investigation.</p>\n\n<b><b>When this will happen:</b></b>\n<p><b>General Availability:</b> Rollout begins in <b>early October 2025</b> and is expected to complete by <b>early November 2025</b>.</p>\n\n<b><b>How this affects your organization:</b></b>\n<ul>\n<li><b>Who is affected:</b> Admins using <i>Microsoft Defender for Office 365</i>, <i>Streaming API</i>, and the <i>EmailEvents</i> table in Microsoft Sentinel.</li>\n<li><b>What will happen:</b>\n  <ul>\n    <li>The <i>Streaming API</i> will begin streaming updated records when an email’s verdict or location changes.</li>\n    <li>Microsoft Sentinel will store both the updated and previous records, rather than replacing them.</li>\n    <li>You may see multiple rows for the same email if its verdict or location is updated.</li>\n    <li>This update aligns the <i>EmailEvents</i> table in Microsoft Sentinel with the behavior of the <i>Advanced Hunting</i> <i>EmailEvents</i> table.</li>\n  </ul>\n</li>\n</ul>\n\n<b><b>What you can do to prepare:</b></b>\n<ul>\n<li>Review and update existing queries and dashboards that rely on the <i>EmailEvents</i> table.</li>\n<li>Use the following KQL pattern to retrieve the latest record per email:</li>\n</ul>\n<pre>summarize arg_max(Timestamp, *) by NetworkMessageId, RecipientEmailAddress\n</pre>\n<p>Example query for emails with a \"Phish\" verdict:</p>\n<pre>EmailEvents\n| where ThreatTypes has \"Phish\"\n| summarize arg_max(Timestamp, *) by NetworkMessageId, RecipientEmailAddress\n</pre>\n<p>Learn more about the <code>arg_max</code> function: <a href=\"https://learn.microsoft.com/kusto/query/arg-max-aggregation-function?view=microsoft-fabric\">KQL arg_max documentation</a></p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.\n</p><p><b><br></b></p><p><a href=\"http://\"></a></p><a href=\"https://learn.microsoft.com/en-us/kusto/query/arg-max-aggregation-function?view=microsoft-fabric\">\n</a>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting early October 2025, Microsoft Defender for Office 365's Streaming API and Sentinel EmailEvents table will store both current and historical email verdicts and locations, showing multiple records per email. Admins should update queries and dashboards accordingly, using KQL's arg_max to retrieve the latest records."
+      }
+    ],
+    "EndDateTime": "2026-01-31T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1150118",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-09-08T23:28:17.123Z",
+    "Services": [
+      "Microsoft Defender XDR"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-09-08T23:28:04Z",
+    "Tags": [
+      "Feature update",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Defender for Office 365: New records in Streaming API and Sentinel EmailEvents table",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<b><b>Introduction</b></b>\n<p>To streamline learning experiences and focus development efforts, we’re retiring the <i>Manage interest</i> feature in Viva Learning and replacing it with <i style=\"\">Manage People Skills</i>. This change reflects our commitment to enhancing skill-based learning and simplifying admin management.</p>\n\n<b><b>When this will happen:</b></b>\n<p>This change will take effect on <b>December 31, 2025</b>.</p>\n\n<b><b>How this affects your organization:</b></b>\n<ul>\n<li><b>Who is affected:</b> Organizations currently using the <i style=\"\">Manage interest</i> feature in Viva Learning.</li>\n<li><b>What will happen:</b>\n  <ul>\n    <li>The <i>Manage interest</i> feature will be retired and removed from Viva Learning.</li>\n    <li>Admins will no longer be able to import or manage interests.</li>\n    <li>Users will no longer be able to select or view interests.</li>\n    <li>All existing interest data—including user-selected interests, interest inventory, and manual interest tags—will be permanently deleted.</li>\n    <li>The <i style=\"\">Manage People Skills</i> feature will be available as the recommended replacement.</li>\n  </ul>\n</li>\n</ul>\n\n<b><b>What you can do to prepare:</b></b>\n<ul>\n<li>Before December 31, 2025:\n  <ul>\n    <li>Explore and test the <i style=\"\">Manage People Skills</i> feature in Viva Learning.</li>\n    <li>Enable <i style=\"\">Manage People Skills</i> for your organization to ensure a smooth transition.</li>\n    <li>Communicate this change to helpdesk and training teams.</li>\n    <li>Update internal documentation to reflect the new feature.</li>\n  </ul>\n</li>\n<li>After December 31, 2025:\n  <ul>\n    <li>No action is needed to remove <i style=\"\">Manage interest</i>; it will be automatically replaced.</li>\n  </ul>\n</li>\n<li>Learn more: <a href=\"https://learn.microsoft.com/viva/learning/manage-people-skills#migrating-from-interests-to-people-skills-in-viva-learning\">Migrating from interests to people skills in Viva Learning</a>\n</li></ul><p>\n<b><b>Compliance considerations:</b></b>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>\n</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The Manage interest feature in Viva Learning will be retired and replaced by Manage People Skills by December 31, 2025. Existing interest data will be deleted, and admins should enable and prepare for Manage People Skills before the transition. No compliance issues are identified."
+      }
+    ],
+    "EndDateTime": "2026-01-31T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1150117",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-09-08T23:27:36.63Z",
+    "Services": [
+      "Microsoft Viva"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-09-08T23:25:49Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Manage interest is being replaced by Manage People Skills by December 31, 2025",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated September 5, 2025: We have updated the timeline. Thank you for your patience.</p><p>Microsoft Purview eDiscovery (Premium) is introducing support for pre-authorized and non pre-authorized export download links, to enhance the reliability and performance of export download. \n</p><p><b>Introduction\n</b></p><p>A new capability in Microsoft Purview eDiscovery (Premium) enables organizations to configure export download links as either pre-authorized or non pre-authorized.\n</p><ul><li>Pre-authorized links offer faster downloads and maintain session continuity for a specified duration configurable by eDiscovery administrators.\n</li><li>Non pre-authorized links require re-authentication after each connection loss and are needed for restricted environments that allow access only to limited Microsoft 365 IP ranges.</li></ul><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=498160\" target=\"_blank\">498160</a>.</p><p></p><p><b><b>When this will happen:</b>\n</b></p><p>General Availability (Worldwide): Rollout begins mid-September 2025 and completes by end of September 2025.\n</p><p>General Availability (GCC, GCC High, DoD): Rollout begins early October 2025 and completes by end of October 2025</p><p></p><p><b>How this will affect your organization\n</b></p><p>This update allows organizations to maintain strict control over data access while optimizing download performance based on environment needs.\n</p><p><b>What you need to do to prepare\n</b></p><p>Admins should:\n</p><ul><li>Review organizational policies and familiarize themselves with new export configuration options, including link type selection and duration settings.\n</li><li>Update internal documentation and training materials to reflect this capability.</li></ul>",
       "ContentType": "html"
     },
@@ -466,7 +624,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"499892\":[{\"RoadmapId\":499892,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-09-08T23:14:16.499153Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":499892,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4991532Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4991533Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4991535Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4991536Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"499892\":[{\"RoadmapId\":499892,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4029253Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":499892,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4029257Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4029259Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.402926Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4029261Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -516,7 +674,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"499893\":[{\"RoadmapId\":499893,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4988283Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":499893,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4988285Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4988286Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4988288Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4988289Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"499893\":[{\"RoadmapId\":499893,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4031035Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4031036Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4031037Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4031039Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":499893,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.403104Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -1426,7 +1584,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"501202\":[{\"RoadmapId\":501202,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4991225Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":501202,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4991227Z\",\"LatestRing\":null},{\"RoadmapId\":501202,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4991228Z\",\"LatestRing\":null},{\"RoadmapId\":501202,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4991229Z\",\"LatestRing\":null},{\"RoadmapId\":501202,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.499123Z\",\"LatestRing\":null},{\"RoadmapId\":501202,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4991233Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"501202\":[{\"RoadmapId\":501202,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4029631Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":501202,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4029632Z\",\"LatestRing\":null},{\"RoadmapId\":501202,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4029634Z\",\"LatestRing\":null},{\"RoadmapId\":501202,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4029636Z\",\"LatestRing\":null},{\"RoadmapId\":501202,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4029637Z\",\"LatestRing\":null},{\"RoadmapId\":501202,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4029638Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -2088,7 +2246,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"500379\":[{\"RoadmapId\":500379,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.498992Z\",\"LatestRing\":null},{\"RoadmapId\":500379,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4989922Z\",\"LatestRing\":null},{\"RoadmapId\":500379,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4989923Z\",\"LatestRing\":null}]}"
+        "Value": "{\"500379\":[{\"RoadmapId\":500379,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4033008Z\",\"LatestRing\":null},{\"RoadmapId\":500379,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4033009Z\",\"LatestRing\":null},{\"RoadmapId\":500379,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4033009Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2629,7 +2787,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"500634\":[{\"RoadmapId\":500634,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4985912Z\",\"LatestRing\":null},{\"RoadmapId\":500634,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-08T23:14:16.4985914Z\",\"LatestRing\":null}]}"
+        "Value": "{\"500634\":[{\"RoadmapId\":500634,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-09T01:12:30.4031558Z\",\"LatestRing\":null},{\"RoadmapId\":500634,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-09T01:12:30.403156Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
