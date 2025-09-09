@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b>Introduction</b></p><p>Upcoming privacy-related changes in Chromium-based browsers (Google Chrome and Microsoft Edge) will increase restrictions on local network access. When enforcement begins, users accessing OneDrive for Web (and some integrated Microsoft 365 experiences such as Microsoft Lists and SharePoint Document Libraries) will encounter a browser permission prompt for local network access unless the required policy is in place. If the permission is not allowed, performance optimizations and <a href=\"https://support.microsoft.com/office/work-with-onedrive-web-app-when-offline-05d1865d-8694-4c0a-8e46-28ccb8c58b37\" target=\"_blank\">offline capabilities</a> powered by OneDrive and Share Point will not be available. This communication provides required administrator actions to prevent loss of functionality.</p><p><b>When this will happen:</b></p><p>Chrome and Edge will roll out this privacy related change as part of Chromium 141 at the end of September.</p><p><b>How this will affect your organization:</b></p><p>\n</p><ul>\n<li><b>Who is affected:</b><ul><li>All users accessing OneDrive for Web, Microsoft Lists, and SharePoint Document Libraries via Chrome or Edge browsers.</li><li>Admins managing browser policies for Windows, macOS, and VDI environments.</li></ul></li>\n<li><b>What will happen:</b>\n\n<p></p><p>If no action is taken:\n</p><ul><li>Users will see a new browser prompt requesting permission for local network access when opening OneDrive for Web and Lists.</li><li>If users do not click <i>Allow</i>, the following results occur on that device:<ul><li>Performance acceleration will not be available (loss of faster data access behavior).</li><li>Offline functionality in OneDrive Web will not be available.</li></ul></li><li>The experience will be slower and less resilient, and helpdesk contacts will increase due to unexpected prompts and missing offline capability.</li></ul><p>When the recommended browser policy is deployed in advance, the prompt is suppressed for the specified trusted Microsoft 365 endpoints and existing performance, and offline behavior are preserved. The policy prevents loss of existing capability and avoids user confusion.</p><p><b>What you need to do to prepare:</b>\n</p><ol><li>Identify Required Domains<ol><li>Include your organization’s SharePoint Online and OneDrive endpoints, for example: https://YOURTENANT-my.sharepoint.com or https://YOURTENANT.sharepoint.com</li><li>Add additional sanctioned SharePoint Online host variations if applicable (e.g., specialized cloud environments). Avoid overly broad wildcards—conform to internal security governance.</li></ol></li><li>Configure Browser Policy<ol><li>Set the Chromium policy <code>LocalNetworkAccessAllowedForUrls</code>&nbsp;(<a href=\"https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls\" target=\"_blank\">Chrome Enterprise</a>&nbsp;/ <a href=\"https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/localnetworkaccessallowedforurls\" target=\"_blank\">Edge policy</a>) to pre-authorize the listed domains.</li><li>Apply via: ADMX / JSON for Windows; plist or configuration profile for macOS (Chrome and Edge).</li><li>Roll out to all managed device groups (Windows, macOS, VDI as applicable).</li><li>Even if the following policies are currently enabled by policy, deploy the allow-list to prevent future prompts and avoid user confusion.<ol><li><code>DisableNucleusSync</code></li><li><code>DisableOfflineMode</code></li></ol></li></ol></li><li>Remediation for Users Who Already Clicked <i>Block</i><ol><li>Deploying the managed <code>LocalNetworkAccessAllowedForUrls</code>&nbsp;policy will override any prior per-user deny state and enforce the allow setting once the policy is applied to the device/profile; no end-user action is required after policy propagation.</li><li>If you need immediate remediation before policy reaches the device, have the user open the affected OneDrive site, use the site (lock) icon, reset or change the local/network device access permission to <i>Allow</i>, then refresh.</li></ol></li></ol></li></ul>\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\">\n<tbody><tr><th>Compliance Area</th><th>Explanation</th></tr>\n<tr><td>Alters how existing customer data is accessed</td><td>Local network access impacts how OneDrive and SharePoint optimize performance and offline access to cached data.</td></tr>\n<tr><td>Includes admin control</td><td><p>Admins can configure the <code>LocalNetworkAccessAllowedForUrls</code> policy and deploy it via group policy or configuration profiles.</p></td></tr>\n<tr><td>Can be controlled through Entra ID group membership</td><td>Policy deployment can be scoped to device groups managed via Entra ID.</td></tr>\n<tr><td>Allows user to enable/disable feature</td><td>Users can manually allow or block local network access via browser prompts if policy is not enforced.</td></tr>\n\n</tbody></table>",
+    "ContentType": "html"
+  },
+  "Category": "preventOrFixIssue",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Chromium browsers will restrict local network access, prompting users for permission when accessing OneDrive, SharePoint, and Microsoft Lists. Without configuring the LocalNetworkAccessAllowedForUrls policy to pre-authorize trusted domains, users will face slower performance and loss of offline capabilities. Admins must deploy this policy before the change rolls out in Chromium 141 at September's end."
+    }
+  ],
+  "EndDateTime": "2025-12-01T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1150662",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2025-09-09T23:08:35.023Z",
+  "Services": [
+    "SharePoint Online",
+    "Microsoft OneDrive"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-09-09T23:08:28Z",
+  "Tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Action Required – Configure Browser Policy to Preserve OneDrive and SharePoint Web Performance and Offline Capability",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
