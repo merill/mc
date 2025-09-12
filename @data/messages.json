@@ -1,5 +1,98 @@
 [
   {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated September 12, 2025: We have updated the timeline. Thank you for your patience.</p><p><b>Introduction</b></p><p>We’re expanding access to Microsoft Purview Diagnostics beyond Global Administrator to include Compliance Administrator, Security Administrator, and Organization Management roles. This enhancement enables more administrators to run diagnostics, improving visibility and troubleshooting capabilities across your compliance and security operations.\n</p><p>This update is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=500894\" target=\"_blank\">500894</a>.</p><p><b>When this will happen</b></p><p><b>Public Preview: </b>We will begin rolling out early October 2025 and expect to complete by late December 2025.</p><p><b>General Availability (Worldwide): </b>We will begin rolling out early February 2026 and expect to complete by mid-March 2026.</p><p><b>How this affects your organization</b></p><p>Administrators assigned the Compliance Administrator, Security Administrator, or Organization Management roles will now be able to execute Microsoft Purview Diagnostics. This change enhances operational flexibility and reduces reliance on Global Admins for diagnostic tasks.\n</p><p>This feature is <b>on by default</b> and does not require manual enablement.</p><p><b>What you can do to prepare</b></p><p>No action is required to prepare for this update. However, we recommend reviewing role assignments to ensure appropriate access is granted.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "500894"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Diagnostics access is expanding from Global Administrators to include Compliance, Security, and Organization Management roles. Rollout starts October 2025 (preview) and February 2026 (general availability). This enhances diagnostic capabilities without needing Global Admin rights and is enabled by default. No preparation needed."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-04-27T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1143283",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-09-12T14:42:06.54Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-08-27T21:45:40Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | DLP - Enable Diagnostics for Compliance Admin, Security Admin, and Org Management roles",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated September 12, 2025: We have updated the timeline. Thank you for your patience.\n</p><p>Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out late June 2025 (previously late January) and expect to complete by late July 2025 (previously late February).\n</p><p>General Availability Worldwide: We will begin rolling out late December 2025 (previously late August) and expect to complete by late January 2025 (previously late September).&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/8369cc7e-5277-4a7b-ac84-ffab2178eb39\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/aee78a82-6204-421d-bde3-2058e2ebbdc7\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1fe17aad-895c-4f73-b315-46150f0cf699\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/7bb0a7f9-1a4c-47cd-8606-af06c14e7942\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/08a72195-d40b-4104-b810-2f9bc4ef35c5\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/e9d7bfed-7a14-49c1-b060-b082c85f7697\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "394279"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Data Loss Prevention will decouple policy tips and user email notifications, allowing admins to configure them independently. Rollout begins late June 2025 (preview) and late December 2025 (general availability). Configuration will be via PowerShell or Purview DLP with a new -NotifyUserType parameter. No pre-rollout action needed."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-03-02T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC791114",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-09-12T14:18:23.367Z",
+    "Services": [
+      "Microsoft 365 suite",
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2024-05-08T00:13:57Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
     "ActionRequiredByDateTime": "2026-01-31T08:00:00Z",
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -383,7 +476,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"500696\":[{\"RoadmapId\":500696,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8612988Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8612989Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-09-12T13:22:41.861299Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":500696,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8612991Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"500696\":[{\"RoadmapId\":500696,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8244881Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":500696,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8244883Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8244883Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8244884Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -480,7 +573,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"381953\":[{\"RoadmapId\":381953,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301966Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-05-24T13:23:44.2548593Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301961Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-05-24T13:23:44.2548581Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-04-30T23:14:44.9196135Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-30T23:14:44.9196139Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"381953\":[{\"RoadmapId\":381953,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-04-30T23:14:44.9196135Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-05-24T13:23:44.2548581Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301961Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-05-24T13:23:44.2548593Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301966Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-30T23:14:44.9196139Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -747,7 +840,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"491468\":[{\"RoadmapId\":491468,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465836Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465835Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465839Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465838Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242372Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":491468,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242377Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"491468\":[{\"RoadmapId\":491468,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242372Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":491468,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465838Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465839Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465835Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465836Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242377Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -1798,7 +1891,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"499892\":[{\"RoadmapId\":499892,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8612381Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8612389Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.861239Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8612391Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":499892,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8612391Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"499892\":[{\"RoadmapId\":499892,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8245078Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":499892,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.824508Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.824508Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8245081Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8245083Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -1849,7 +1942,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"499893\":[{\"RoadmapId\":499893,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8619576Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8619577Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8619578Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8619581Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":499893,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8619582Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"499893\":[{\"RoadmapId\":499893,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8237538Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":499893,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8237543Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8237544Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8237546Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8237547Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -1900,7 +1993,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"168524\":[{\"RoadmapId\":168524,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926907Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926909Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926911Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926914Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"168524\":[{\"RoadmapId\":168524,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926911Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926909Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926907Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926914Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -4330,7 +4423,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468095Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468099Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468102Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468104Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468102Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468099Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468095Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468104Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -4380,7 +4473,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468095Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468099Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468102Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468104Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468102Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468099Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468095Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468104Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -4477,7 +4570,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"500634\":[{\"RoadmapId\":500634,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8618712Z\",\"LatestRing\":null},{\"RoadmapId\":500634,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-12T13:22:41.8618714Z\",\"LatestRing\":null}]}"
+        "Value": "{\"500634\":[{\"RoadmapId\":500634,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8243281Z\",\"LatestRing\":null},{\"RoadmapId\":500634,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-12T15:15:20.8243285Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -4573,7 +4666,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"498895\":[{\"RoadmapId\":498895,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.747588Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475878Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475881Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":498895,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"498895\":[{\"RoadmapId\":498895,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475881Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":498895,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475878Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.747588Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -4719,7 +4812,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"480716\":[{\"RoadmapId\":480716,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-05-16T23:14:43.6233516Z\",\"LatestRing\":null},{\"RoadmapId\":480716,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-05-16T23:14:43.6233518Z\",\"LatestRing\":null},{\"RoadmapId\":480716,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-27T13:28:05.7703476Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":480716,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T13:28:05.7703488Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"480716\":[{\"RoadmapId\":480716,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-27T13:28:05.7703476Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":480716,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-05-16T23:14:43.6233518Z\",\"LatestRing\":null},{\"RoadmapId\":480716,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-05-16T23:14:43.6233516Z\",\"LatestRing\":null},{\"RoadmapId\":480716,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T13:28:05.7703488Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -7151,51 +7244,6 @@
       "Admin impact"
     ],
     "Title": "SharePoint AI-powered site content and policy comparison report",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b>Introduction</b></p><p>We’re expanding access to Microsoft Purview Diagnostics beyond Global Administrator to include Compliance Administrator, Security Administrator, and Organization Management roles. This enhancement enables more administrators to run diagnostics, improving visibility and troubleshooting capabilities across your compliance and security operations.\n</p><p>This update is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=500894\" target=\"_blank\">500894</a>.</p><p><b>When this will happen</b></p><p><b>Public Preview: </b>We will begin rolling out in late September 2025 and expect to complete by early November 2025.\n</p><p><b>General Availability (Worldwide): </b>We will begin rolling out in&nbsp;mid-December 2025 and expect to complete by early January 2026.</p><p><b>How this affects your organization</b></p><p>Administrators assigned the Compliance Administrator, Security Administrator, or Organization Management roles will now be able to execute Microsoft Purview Diagnostics. This change enhances operational flexibility and reduces reliance on Global Admins for diagnostic tasks.\n</p><p>This feature is <b>on by default</b> and does not require manual enablement.</p><p><b>What you can do to prepare</b></p><p>No action is required to prepare for this update. However, we recommend reviewing role assignments to ensure appropriate access is granted.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "500894"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Purview Diagnostics access is expanding from Global Administrators to include Compliance Admin, Security Admin, and Org Management roles. Rolling out from late September 2025 (preview) to January 2026 (general availability), this enables more admins to run diagnostics without manual setup. Review role assignments as needed."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-04-09T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1143283",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-08-27T21:46:06.943Z",
-    "Services": [
-      "Microsoft Purview"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-08-27T21:45:40Z",
-    "Tags": [
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Purview | DLP - Enable Diagnostics for Compliance Admin, Security Admin, and Org Management roles",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -9641,7 +9689,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"369345\":[{\"RoadmapId\":369345,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.946174Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461736Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461744Z\",\"LatestRing\":null}]}"
+        "Value": "{\"369345\":[{\"RoadmapId\":369345,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461736Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.946174Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461744Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12187,7 +12235,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"487432\":[{\"RoadmapId\":487432,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301262Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.830126Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301264Z\",\"LatestRing\":null}]}"
+        "Value": "{\"487432\":[{\"RoadmapId\":487432,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.830126Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301262Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301264Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12365,7 +12413,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"498490\":[{\"RoadmapId\":498490,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478853Z\",\"LatestRing\":null},{\"RoadmapId\":498490,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478852Z\",\"LatestRing\":null},{\"RoadmapId\":498490,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478854Z\",\"LatestRing\":null}]}"
+        "Value": "{\"498490\":[{\"RoadmapId\":498490,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478852Z\",\"LatestRing\":null},{\"RoadmapId\":498490,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478853Z\",\"LatestRing\":null},{\"RoadmapId\":498490,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478854Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -15107,7 +15155,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"328282\":[{\"RoadmapId\":328282,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478054Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":328282,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478052Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":328282,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478055Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"328282\":[{\"RoadmapId\":328282,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478052Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":328282,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478054Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":328282,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478055Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -15827,7 +15875,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"496369\":[{\"RoadmapId\":496369,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270774Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270773Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270771Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.427077Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270768Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270792Z\",\"LatestRing\":null}]}"
+        "Value": "{\"496369\":[{\"RoadmapId\":496369,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270768Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.427077Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270771Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270773Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270774Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270792Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16045,7 +16093,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"472913\":[{\"RoadmapId\":472913,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768415Z\",\"LatestRing\":null},{\"RoadmapId\":472913,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768416Z\",\"LatestRing\":null},{\"RoadmapId\":472913,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768417Z\",\"LatestRing\":null}]}"
+        "Value": "{\"472913\":[{\"RoadmapId\":472913,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768416Z\",\"LatestRing\":null},{\"RoadmapId\":472913,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768415Z\",\"LatestRing\":null},{\"RoadmapId\":472913,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-01-31T10:14:24.5768417Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16682,7 +16730,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"496175\":[{\"RoadmapId\":496175,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T13:31:56.6687816Z\",\"LatestRing\":null},{\"RoadmapId\":496175,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-07-10T13:31:56.6687814Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":496175,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T13:31:56.6687818Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"496175\":[{\"RoadmapId\":496175,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-07-10T13:31:56.6687814Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":496175,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T13:31:56.6687816Z\",\"LatestRing\":null},{\"RoadmapId\":496175,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T13:31:56.6687818Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -17607,7 +17655,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"492625\":[{\"RoadmapId\":492625,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9268288Z\",\"LatestRing\":null},{\"RoadmapId\":492625,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9268287Z\",\"LatestRing\":null},{\"RoadmapId\":492625,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-07-17T11:15:09.4174561Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":492625,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-07-17T11:15:09.4174571Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"492625\":[{\"RoadmapId\":492625,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-07-17T11:15:09.4174561Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":492625,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9268287Z\",\"LatestRing\":null},{\"RoadmapId\":492625,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9268288Z\",\"LatestRing\":null},{\"RoadmapId\":492625,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-07-17T11:15:09.4174571Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -18003,7 +18051,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"483506\":[{\"RoadmapId\":483506,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266613Z\",\"LatestRing\":null},{\"RoadmapId\":483506,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266611Z\",\"LatestRing\":null},{\"RoadmapId\":483506,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266614Z\",\"LatestRing\":null}]}"
+        "Value": "{\"483506\":[{\"RoadmapId\":483506,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266611Z\",\"LatestRing\":null},{\"RoadmapId\":483506,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266613Z\",\"LatestRing\":null},{\"RoadmapId\":483506,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266614Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -20164,7 +20212,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"476488\":[{\"RoadmapId\":476488,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748236Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748238Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.374824Z\",\"LatestRing\":null}]}"
+        "Value": "{\"476488\":[{\"RoadmapId\":476488,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748238Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748236Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.374824Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -21335,7 +21383,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"486694\":[{\"RoadmapId\":486694,\"Platform\":\"Android\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.747864Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":486694,\"Platform\":\"iOS\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478637Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":486694,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478642Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"486694\":[{\"RoadmapId\":486694,\"Platform\":\"iOS\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478637Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":486694,\"Platform\":\"Android\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.747864Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":486694,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478642Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -22718,53 +22766,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Purview | Insider Risk Management: Increasing policy template limits",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated February 12, 2025: We have updated the rollout timeline below. Thank you for your patience.</p><p>Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:\n</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out late June 2025 (previously late January) and expect to complete by late July 2025 (previously late February).\n</p><p>General Availability Worldwide: We will begin rolling out late August 2025 (previously late March) and expect to complete by late September 2025 (previously late April).&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/8369cc7e-5277-4a7b-ac84-ffab2178eb39\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/aee78a82-6204-421d-bde3-2058e2ebbdc7\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1fe17aad-895c-4f73-b315-46150f0cf699\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/7bb0a7f9-1a4c-47cd-8606-af06c14e7942\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/08a72195-d40b-4104-b810-2f9bc4ef35c5\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/e9d7bfed-7a14-49c1-b060-b082c85f7697\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "394279"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft is updating Data Loss Prevention for SharePoint and OneDrive by separating policy tips and email notifications. Admins will be able to configure them independently. Rollout begins late June 2025, with General Availability by late September 2025. Admins can use PowerShell or Purview to configure settings after the update."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2025-11-24T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC791114",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-02-12T16:54:00.903Z",
-    "Services": [
-      "Microsoft 365 suite",
-      "Microsoft Purview"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-05-08T00:13:57Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
