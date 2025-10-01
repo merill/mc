@@ -4,6 +4,94 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated October 1, 2025: As previously announced in the October 31st, 2024, post, we will be retiring the Utility.SendEmail API on October 31st, 2025.&nbsp;</p><p>As a reminder, you are able to identify usage of the API via the Purview audit logs in the admin center</p><ol><li>&nbsp;As a tenant admin, navigate to the Microsoft Purview Portal available within the Microsoft 365 Admin Center.\n</li><li>Open Audit to search for activities.\n</li><li>&nbsp;Select a date range to run the audit search for (recommend running it for at least 90 days)\n</li><li>Put the following text, “SendEmailApiInvoked” into the “Activities – operation names” textbox and click search.\n</li><li>The request will be queued, and results will be available once processed.\n</li><li>Click on the results and review each of the items.\n</li></ol><p>Use the UserAgent and ApplicationDisplayName to help identify the caller.\n</p><p><b>NOTE:</b> If the ApplicationDisplayName = “Workflow” then the items will be unaffected by this API retirement but will follow the SharePoint 2013 Workflow retirement. We will be retiring the Utility.SendEmail API from SharePoint. The SP.Utilities.Utility.SendEmail could be used to send emails from custom applications or processes within SharePoint Online, including Power Automate, and custom workflows.</p><p>From custom code the API can be referenced via REST as (“/_api/SP.Utilities.Utility.SendEmail”) while for CSOM, it would be “Utility.SendEmail” with more information on the original implementation at <a href=\"https://learn.microsoft.com/previous-versions/office/sharepoint-csom/jj167799(v=office.15)\" target=\"_blank\">Utility.SendEmail method</a>&nbsp;for CSOM.</p><p><b>When this will happen:</b></p><p>October 31, 2025</p><p> \n</p><p><b>How this will affect your organization:</b>\n</p><p>Any components, custom code, or Power Automate connections that utilize the SP.Utilities.Utility.SendEmail API, should be updated before the end of life date. The API will stop providing services on the retirement date and will no longer send any email requests from that date.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>Migrate any custom code, power automate, processes or policies running within SharePoint Online that have been configured to send email using the SP.Utilities.Utility.SendEmail API. \n</p><p>The following are recommended or alternative approaches:\n</p><ol><li>Use Microsoft Graph to send email using the user: SendMail API (Part of the Outlook mail workload) <a href=\"https://learn.microsoft.com/graph/outlook-create-send-messages\" target=\"_blank\">Automate creating, sending, and processing messages</a></li><li>Customizations through Power Automate may also utilize the Outlook connector and utilize “Send an email” within the Actions. <a href=\"https://learn.microsoft.com/power-automate/email-overview\" target=\"_blank\">Overview of using Outlook and Power Automate</a>&nbsp;</li></ol><div><br></div><p>Learn more:\n</p><ol><li><a href=\"https://go.microsoft.com/fwlink/?linkid=2289866\" target=\"_blank\">Retirement of the SharePoint SendEmail API</a></li><li><a href=\"https://learn.microsoft.com/graph/outlook-create-send-messages\" target=\"_blank\">Automate creating, sending, and processing messages</a></li><li><a href=\"https://learn.microsoft.com/power-automate/email-overview\" target=\"_blank\">Overview of using Outlook and Power Automate</a></li><li><a href=\"https://learn.microsoft.com/purview/purview-portal\" target=\"_blank\">Learn about the Microsoft Purview portal | Microsoft Learn</a></li></ol><p>\n</p><p>\n</p><p>\n</p><p>\n</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The SharePoint Utility.SendEmail API will retire on October 31, 2025. Tenants should identify usage via Purview audit logs and update any custom code or Power Automate flows using this API. Alternatives include Microsoft Graph SendMail API and Outlook connector in Power Automate."
+      }
+    ],
+    "EndDateTime": "2025-12-01T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC921752",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-10-01T14:03:49.587Z",
+    "Services": [
+      "SharePoint Online",
+      "Power Apps in Microsoft 365",
+      "Microsoft Power Automate in Microsoft 365"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2024-10-30T17:56:12Z",
+    "Tags": [
+      "Updated message",
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Retirement of the SharePoint SendEmail API",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated October 1, 2025: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b>Introduction</b></p><p>We’re introducing a new feature: <b>M365 Copilot Chat adoption metrics </b>in the <i>Microsoft Copilot dashboard</i>. This feature provides organizations with enhanced visibility into how users who are not licensed for Microsoft 365 Copilot are engaging with Copilot Chat. These insights include usage trends, retention and intensity metrics, app-level breakdowns, and filtering by organizational attributes—helping organizations better understand adoption patterns and tailor support strategies.</p><p>This feature will be available to tenants with at least 50 assigned Viva Insights licenses or 50 assigned Microsoft 365 Copilot licenses (includes Viva Insights service plan).</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=499899\" target=\"_blank\">499899</a>.</p><p><b>When this will happen</b></p><p><b>Public Preview: </b>We will begin rolling out at the end of October 2025 and expect to complete by end of November 2025.</p><p><b>General availability (Worldwide): </b>We will begin rolling out at the end of November 2025 and expect to complete by end of December 2025.</p><p><b>How this affects your organization</b></p><p>Users with access to the Microsoft Copilot dashboard will see new analytics cards and visualizations focused on Microsoft 365 Copilot Chat adoption for unlicensed users. These insights will appear in the dashboard’s <i>adoption </i>tab and include:</p><ul><li><b>Usage trends over time:</b> Track active users and adoption growth.</li><li><b>Adoption by group: </b>Compare usage across departments or roles.</li><li><b>Usage intensity and retention: </b>Understand recurring usage and engagement levels.</li><li><b>App-level breakdowns:</b> Identify which apps and entry points drive adoption.</li><li><b>Filtering and drilldown: </b>Segment data by organizational attributes to tailor change management strategies.</li></ul><p>This feature will be <b>on by default</b> for existing dashboard users. No additional administrator action is required to enable it.</p><p><b>What you can do to prepare</b></p><p>Review the impact of this feature on your organization’s reporting and privacy practices. You may also want to update internal training and documentation to reflect the new insights available.</p><p>Starting in September 2025:</p><ul><li>A new administrator control will be available for <b>Global administrators</b>, <b>Viva Insights administrators</b>, and <b>AI administrators</b> to turn off this feature at the tenant level. To disable this feature, use<b> Viva Feature Access Management (VFAM)</b> in <i>Microsoft admin center </i>or <i>PowerShell</i>.</li><li>These same roles will also be able to <b>exclude specific users or groups</b> from being included in aggregated insights using the updated exclusion list feature.</li></ul><p>Administrators should read the communication regarding the detailed scope and availability of this exclusion feature here (Roadmap ID: 500161).</p><p>Administrators should review any existing exclusions, assess their impact, and take appropriate action to exclude or include additional users or groups as needed.</p><p>Learn more:</p><ul><li><a href=\"https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard\" target=\"_blank\">Connect to the Microsoft Copilot Dashboard for Microsoft 365 customers | Viva Insights | Microsoft Viva | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/viva/feature-access-management\" target=\"_blank\">Control access to features in Microsoft 365 | Microsoft Viva | Microsoft Learn</a></li><li><a href=\"https://www.microsoft.com/microsoft-365/blog/2025/01/15/copilot-for-all-introducing-microsoft-365-copilot-chat/\" target=\"_blank\">Copilot for all: Introducing Microsoft 365 Copilot Chat | Microsoft Blog</a></li><li><a href=\"https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard#create-an-exclusion-list-for-the-dashboard-hide-users-from-aggregates\" target=\"_blank\">Manage settings for the Microsoft Copilot Dashboard and Viva Insights web app | Viva Insights | Microsoft Viva | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-overview\" target=\"_blank\">Microsoft 365 Copilot overview | Microsoft 365 Copilot | Microsoft 365 | Microsoft Learn</a></li></ul><p><b>Compliance considerations</b></p><table class=\"table table-bordered\"><tbody><tr><td>Does this change store new customer data, and if so, where?</td><td>Yes. Aggregated usage data for unlicensed users is stored and visualized in the Microsoft Copilot dashboard.</td></tr><tr><td>Does this change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. It introduces new metrics and visualizations based on user interactions with Copilot Chat.</td></tr><tr><td>Does this change introduce or significantly modify AI/ML capabilities that interact with customer data?</td><td>Yes. Metrics reflect interactions with generative AI features in Copilot Chat.</td></tr><tr><td>Does this change modify how admins can monitor, report on, or demonstrate compliance activities?</td><td>Yes. Admins gain new reporting capabilities through the dashboard’s adoption metrics.</td></tr><tr><td>Does this change modify how users can access, export, delete, or correct their personal data within Microsoft 365 services?</td><td>Yes. Admins can exclude users from aggregated insights using the exclusion list feature.</td></tr><tr><td>Does this change include an admin control, and can it be managed through Entra ID group membership?</td><td>Yes. Admins can disable the feature or exclude users/groups via VFAM or PowerShell.</td></tr></tbody></table><p></p><p></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "499899"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft is adding M365 Copilot Chat adoption metrics to the Microsoft Copilot dashboard in Viva Insights, showing usage trends and engagement for unlicensed users. Rolling out from October to December 2025, the feature is on by default, with admin controls to disable or exclude users."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-02-02T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1143280",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-01T13:27:12.23Z",
+    "Services": [
+      "Microsoft Viva"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-08-27T21:44:16Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Copilot dashboard (in Viva Insights): Adoption metrics for Microsoft 365 Copilot Chat",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "We are announcing the ability to export audience segments and insights to popular ad platforms and other destinations in Dynamics 365 Customer Insights - Data. This feature will reach general availability on October 31, 2025.<br><br>\n<b>How does this affect me? </b><br>\nWith this functionality, you can easily send your customer data to external platforms like Google Ads, Facebook Ads, Snapchat, LinkedIn Ads, or use SFTP (Secure File Transfer Protocol) to share data with downstream activation platforms. When you use the rich customer insights created in Customer Insights - Data, you can drive targeted marketing and advertising campaigns, perform analytics on almost any platform, optimize ad spending, and improve customer engagement.<br><br>\nThe following export connectors will be available with this release: <ul>\n<li>Facebook Ads</li>\n<li>Google Ads</li>\n<li>LinkedIn</li>\n<li>Secure FTP (SFTP) </li>\n<li>Snapchat</li>\n</ul>\nWhat action do I need to take?<br>\nThis message is for awareness, and no action is required.<br><br> \nIf you would like more information on this feature, please visit <a href=\"https://aka.ms/12085/export-azure-data-lake-storage-gen2\" target=\"_blank\">Export data to Azure Data Lake Storage Gen2</a>.",
       "ContentType": "html"
     },
@@ -890,47 +978,6 @@
       "Admin impact"
     ],
     "Title": "NEW Microsoft 365 companion apps: a suite designed to enhance productivity",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated September 30, 2025: As a reminder from the post announced on October 31st, 2024, we will be retiring the Utility.SendEmail API on October 31st, 2025.&nbsp;</p><p>In addition, you are now able to identify usage of the API via the Purview audit logs in the admin center</p><ol><li>&nbsp;As a tenant admin, navigate to the Microsoft Purview Portal available within the Microsoft 365 Admin Center.\n</li><li>Open Audit to search for activities.\n</li><li>&nbsp;Select a date range to run the audit search for (recommend running it for at least 90 days)\n</li><li>Put the following text, “SendEmailApiInvoked” into the “Activities – operation names” textbox and click search.\n</li><li>The request will be queued, and results will be available once processed.\n</li><li>Click on the results and review each of the items.\n</li></ol><p>Use the UserAgent and ApplicationDisplayName to help identify the caller.\n</p><p><b>NOTE:</b> If the ApplicationDisplayName = “Workflow” then the items will be unaffected by this API retirement but will follow the SharePoint 2013 Workflow retirement. We will be retiring the Utility.SendEmail API from SharePoint. The SP.Utilities.Utility.SendEmail could be used to send emails from custom applications or processes within SharePoint Online, including Power Automate, and custom workflows.</p><p>From custom code the API can be referenced via REST as (“/_api/SP.Utilities.Utility.SendEmail”) while for CSOM, it would be “Utility.SendEmail” with more information on the original implementation at <a href=\"https://learn.microsoft.com/previous-versions/office/sharepoint-csom/jj167799(v=office.15)\" target=\"_blank\">Utility.SendEmail method</a>&nbsp;for CSOM.</p><p><b>When this will happen:</b></p><p>October 31, 2025</p><p> \n</p><p><b>How this will affect your organization:</b>\n</p><p>Any components, custom code, or Power Automate connections that utilize the SP.Utilities.Utility.SendEmail API, should be updated before the end of life date. The API will stop providing services on the retirement date and will no longer send any email requests from that date.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>Migrate any custom code, power automate, processes or policies running within SharePoint Online that have been configured to send email using the SP.Utilities.Utility.SendEmail API. \n</p><p>The following are recommended or alternative approaches:\n</p><ol><li>Use Microsoft Graph to send email using the user: SendMail API (Part of the Outlook mail workload) <a href=\"https://learn.microsoft.com/graph/outlook-create-send-messages\" target=\"_blank\">Automate creating, sending, and processing messages</a></li><li>Customizations through Power Automate may also utilize the Outlook connector and utilize “Send an email” within the Actions. <a href=\"https://learn.microsoft.com/power-automate/email-overview\" target=\"_blank\">Overview of using Outlook and Power Automate</a>&nbsp;</li></ol><div><br></div><p>Learn more:\n</p><ol><li><a href=\"https://go.microsoft.com/fwlink/?linkid=2289866\" target=\"_blank\">Retirement of the SharePoint SendEmail API</a></li><li><a href=\"https://learn.microsoft.com/graph/outlook-create-send-messages\" target=\"_blank\">Automate creating, sending, and processing messages</a></li><li><a href=\"https://learn.microsoft.com/power-automate/email-overview\" target=\"_blank\">Overview of using Outlook and Power Automate</a></li><li><a href=\"https://learn.microsoft.com/purview/purview-portal\" target=\"_blank\">Learn about the Microsoft Purview portal | Microsoft Learn</a></li></ol><p>\n</p><p>\n</p><p>\n</p><p>\n</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The SharePoint Utility.SendEmail API will retire on October 31, 2025. Admins can track its usage via Purview audit logs. Organizations must update custom code or Power Automate flows using this API, migrating to Microsoft Graph SendMail or Outlook connectors before the retirement date."
-      }
-    ],
-    "EndDateTime": "2025-11-24T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC921752",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2025-09-30T21:32:52.6Z",
-    "Services": [
-      "SharePoint Online",
-      "Power Apps in Microsoft 365",
-      "Microsoft Power Automate in Microsoft 365"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-10-30T17:56:12Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Retirement of the SharePoint SendEmail API",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -2532,53 +2579,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Viva Pulse: Updates to data retention policy",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated September 25, 2025: After further review, we will announce a revised GA date after we have had an opportunity to collect feedback from the public preview. Thank you for your patience.</p><p><b>Introduction</b></p><p>We’re introducing a new feature: <b>M365 Copilot Chat adoption metrics </b>in the <i>Microsoft Copilot dashboard</i>. This feature provides organizations with enhanced visibility into how users who are not licensed for Microsoft 365 Copilot are engaging with Copilot Chat. These insights include usage trends, retention and intensity metrics, app-level breakdowns, and filtering by organizational attributes—helping organizations better understand adoption patterns and tailor support strategies.</p><p>This feature will be available to tenants with at least 50 assigned Viva Insights licenses or 50 assigned Microsoft 365 Copilot licenses (includes Viva Insights service plan).</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=499899\" target=\"_blank\">499899</a>.</p><p><b>When this will happen</b></p><p><b>Public Preview: </b>We will begin rolling out at the end of October 2025 and expect to complete by end of November 2025.</p><p><b>General availability (Worldwide): </b>We will announce a revised GA date after we have had an opportunity to collect feedback from the public preview. Thank you for your patience.</p><p><b>How this affects your organization</b></p><p>Users with access to the Microsoft Copilot dashboard will see new analytics cards and visualizations focused on Microsoft 365 Copilot Chat adoption for unlicensed users. These insights will appear in the dashboard’s <i>adoption </i>tab and include:</p><ul><li><b>Usage trends over time:</b> Track active users and adoption growth.</li><li><b>Adoption by group: </b>Compare usage across departments or roles.</li><li><b>Usage intensity and retention: </b>Understand recurring usage and engagement levels.</li><li><b>App-level breakdowns:</b> Identify which apps and entry points drive adoption.</li><li><b>Filtering and drilldown: </b>Segment data by organizational attributes to tailor change management strategies.</li></ul><p>This feature will be <b>on by default</b> for existing dashboard users. No additional administrator action is required to enable it.</p><p><b>What you can do to prepare</b></p><p>Review the impact of this feature on your organization’s reporting and privacy practices. You may also want to update internal training and documentation to reflect the new insights available.</p><p>Starting in September 2025:</p><ul><li>A new administrator control will be available for <b>Global administrators</b>, <b>Viva Insights administrators</b>, and <b>AI administrators</b> to turn off this feature at the tenant level. To disable this feature, use<b> Viva Feature Access Management (VFAM)</b> in <i>Microsoft admin center </i>or <i>PowerShell</i>.</li><li>These same roles will also be able to <b>exclude specific users or groups</b> from being included in aggregated insights using the updated exclusion list feature.</li></ul><p>Administrators should read the communication regarding the detailed scope and availability of this exclusion feature here (Roadmap ID: 500161).</p><p>Administrators should review any existing exclusions, assess their impact, and take appropriate action to exclude or include additional users or groups as needed.</p><p>Learn more:</p><ul><li><a href=\"https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard\" target=\"_blank\">Connect to the Microsoft Copilot Dashboard for Microsoft 365 customers | Viva Insights | Microsoft Viva | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/viva/feature-access-management\" target=\"_blank\">Control access to features in Microsoft 365 | Microsoft Viva | Microsoft Learn</a></li><li><a href=\"https://www.microsoft.com/microsoft-365/blog/2025/01/15/copilot-for-all-introducing-microsoft-365-copilot-chat/\" target=\"_blank\">Copilot for all: Introducing Microsoft 365 Copilot Chat | Microsoft Blog</a></li><li><a href=\"https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard#create-an-exclusion-list-for-the-dashboard-hide-users-from-aggregates\" target=\"_blank\">Manage settings for the Microsoft Copilot Dashboard and Viva Insights web app | Viva Insights | Microsoft Viva | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-overview\" target=\"_blank\">Microsoft 365 Copilot overview | Microsoft 365 Copilot | Microsoft 365 | Microsoft Learn</a></li></ul><p><b>Compliance considerations</b></p><table class=\"table table-bordered\"><tbody><tr><td>Does this change store new customer data, and if so, where?</td><td>Yes. Aggregated usage data for unlicensed users is stored and visualized in the Microsoft Copilot dashboard.</td></tr><tr><td>Does this change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. It introduces new metrics and visualizations based on user interactions with Copilot Chat.</td></tr><tr><td>Does this change introduce or significantly modify AI/ML capabilities that interact with customer data?</td><td>Yes. Metrics reflect interactions with generative AI features in Copilot Chat.</td></tr><tr><td>Does this change modify how admins can monitor, report on, or demonstrate compliance activities?</td><td>Yes. Admins gain new reporting capabilities through the dashboard’s adoption metrics.</td></tr><tr><td>Does this change modify how users can access, export, delete, or correct their personal data within Microsoft 365 services?</td><td>Yes. Admins can exclude users from aggregated insights using the exclusion list feature.</td></tr><tr><td>Does this change include an admin control, and can it be managed through Entra ID group membership?</td><td>Yes. Admins can disable the feature or exclude users/groups via VFAM or PowerShell.</td></tr></tbody></table><p></p><p></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "499899"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft is introducing M365 Copilot Chat adoption metrics in the Viva Insights Copilot dashboard, providing detailed usage insights for unlicensed users. Public preview starts late October 2025; GA date is pending feedback. Admins can control or exclude users via VFAM or PowerShell. No action needed to enable."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-03-24T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1143280",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-25T14:34:13.877Z",
-    "Services": [
-      "Microsoft Viva"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-08-27T21:44:16Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Copilot dashboard (in Viva Insights): Adoption metrics for Microsoft 365 Copilot Chat",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
