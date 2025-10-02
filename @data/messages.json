@@ -1,5 +1,120 @@
 [
   {
+    "ActionRequiredByDateTime": "2026-02-01T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated October 2, 2025: We have updated the timeline. Thank you for your patience.&nbsp;</p><p>&nbsp;We’re making some changes to DNS provisioning of A records for all new Accepted Domains provisioned after February 1st, 2025 (previously October 1st). Between early and late February 2026 (previously early October and late October), we will gradually switch provisioning of all A records for new Accepted Domains into the new subdomains under mx.microsoft.</p><p>We are doing this to reduce the friction of adopting DNSSEC in the long run. DNSSEC is a set of extensions to DNS that provides cryptographic verification of DNS records, preventing DNS spoofing and adversary-in-the-middle attacks to DNS.\n</p><p><b>How this will affect your organization:</b>\n</p><p>After February 1st, 2025 (previously October 1st), all A records for new Accepted Domains will be provisioned into the new subdomains under mx.microsoft.February 1st, 2025 (previously October 1st) is not secured with DNSSEC at the domain level (ex. contoso.com), then DNS resolution will work as usual. If an Accepted Domain you add to the EAC after February 1st, 2025 (previously October 1st) is secured with DNSSEC, then DNSSEC will extend to the mx.microsoft DNS record automatically and you will get the benefits of DNSSEC without having to take any further action. Any issues with DNSSEC can be addressed by disabling DNSSEC for the Accepted Domain (ex. contoso.com) via your DNS provider.</p><p><b>What you need to do to prepare:</b>\n</p><p>If you have any automation in place, for example in workflows for Domain Setup, for MX record creation that expects A records for newly provisioned Accepted Domains to be provisioned in mail.protection.outlook.com, this automation needs to be updated by February 1st, 2025 (previously October 1st) to use List serviceConfigurationRecords Graph API (<a href=\"https://learn.microsoft.com/graph/api/domain-list-serviceconfigurationrecords?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">List serviceConfigurationRecords</a>). Use List serviceConfigurationRecords to retrieve the mailExchange value for your MX record. After February 1st, 2025 (previously October 1st), List serviceConfigurationRecords Graph API will be the only source of truth for your Accepted Domains’ MX record value. You will not be able to rely on the Accepted Domain’s A record being provisioned in mail.protection.outlook.com after February 1st, 2025 (previously October 1st).</p><p>If you are using automation that expects the record to end with mail.protection.outlook.com, when you add a new Accepted Domain to the Exchange Admin Center after February 1st, 2025 (previously October 1st), mail flow may not work upon initial configuration and you will have to update your MX record to match what the Exchange Admin Center says for the domain or use the mailExchange value returned by List serviceConfigurationRecords Graph API.\n</p><p>If you expect this change to cause any issues for your organization, please share that feedback. \n</p><p><br></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting February 1, 2025, A records for new Accepted Domains will be provisioned under mx.microsoft instead of mail.protection.outlook.com to support DNSSEC adoption. Update any automation to use the List serviceConfigurationRecords Graph API for MX records by this date to avoid mail flow issues."
+      }
+    ],
+    "EndDateTime": "2025-12-31T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1048624",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-10-02T16:59:10.66Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-04-04T23:12:38Z",
+    "Tags": [
+      "Updated message",
+      "Admin impact"
+    ],
+    "Title": "DNS Provisioning Change",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": "2025-11-01T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated October 2, 2025: We have updated the title. Thank you for your patience.</p><p><b><b>Introduction</b></b></p><p>We will soon introduce a new limit on dynamic distribution groups (DDGs) in <i>Microsoft Exchange Online</i>. Each organization will be limited to a maximum of 3,000 DDGs. After this limit is reached, admins will need to remove existing DDGs before creating new ones.&nbsp;</p><p><b><b>When this will happen:</b></b></p><p>General Availability: We will begin rolling out in early November 2025 and expect to complete by mid-November 2025.</p><p><b><b>How this will affect your organization:</b>\n</b></p><p>If your organization has fewer than 3,000 DDGs, this change will not impact you. However, after your organization reaches this limit, you will not be able to create new DDGs until some existing DDGs are removed.\n</p><p>This change will be<b> on by default</b> and cannot be turned off by admins.</p><p><b><b>What you need to do to prepare:</b>\n</b></p><ul><li>The enforcement of the DDG limit will happen automatically by the specified date with no admin action required before the rollout. </li><li>You may want to notify your admins about this change and update any relevant documentation.\n</li><li>We recommend reviewing the usage of Dynamic Distribution Groups (DDGs) in your organization and removing any DDGs that are no longer needed. </li><li>You can use the Dynamic distribution groups report in the<i> Exchange admin center (EAC) </i>to see the number of DDGs in your organization and insights into their usage. </li><li>To access this report, go to the <b>EAC &gt; Reports &gt; Mail flow &gt; Dynamic distribution group report</b>. </li></ul><p>Learn more:&nbsp;</p><ul><li><a href=\"https://learn.microsoft.com/exchange/monitoring/mail-flow-reports/mfr-dynamic-distribution-groups-report\" target=\"_blank\">Dynamic Distribution Groups report in the new EAC in Exchange Online | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#dynamic-distribution-group-limits\" target=\"_blank\">Exchange Online limits - Service Descriptions | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Exchange Online will limit each organization to 3,000 dynamic distribution groups (DDGs) starting November 2025. Once the limit is reached, new DDGs cannot be created until existing ones are removed. The change is automatic and cannot be disabled. Admins should review and manage DDG usage accordingly."
+      }
+    ],
+    "EndDateTime": "2025-12-15T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1163757",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-02T16:45:19.393Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-01T22:34:18Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Exchange Online: New limit for dynamic distribution groups (DDGs)",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated October 2, 2025: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b>Introduction</b></p><p>We’re introducing <b>cross-cloud synchronization</b> in Microsoft Entra to help organizations streamline user lifecycle management across Microsoft’s commercial, US Government, and China cloud environments. This feature automates creating, updating, and deleting users across supported cloud pairs and is currently in public preview. It is <b>off by default</b> and must be explicitly enabled by administrators.</p><p><b>When this will happen</b></p><p><b>General availability (Worldwide, GCC, GCCH, DoD):</b> The capability is currently in public preview and will be rolled out to general availability <b>between late September 2025 </b>(previously early September)<b> and early October 2025 </b>(previously mid-October).</p><p><b>How this will affect your organization</b></p><p>There is <b>no impact to your tenant unless you choose to enable this feature</b>. Cross-cloud synchronization is opt-in and can be configured based on your organization’s needs. It provides a more efficient way to manage users across multiple Microsoft cloud environments.\n</p><p>Supported cloud pairs:\n</p><ul><li>Commercial (Commercial, GCC) → US Government (GCCH, DoD)</li><li>US Government (GCCH, DoD) → Commercial (Commercial, GCC)</li><li>Commercial → China\n</li></ul><p>This feature is <b>not visible to users</b>. Administrators attempting to configure it in the Entra portal will receive a <b>licensing warning</b> if prerequisites are not met.</p><p><b>What you need to do to prepare</b></p><p>Organizations planning to use cross-cloud synchronization should be aware of the following:</p><ul><li>A <b>Microsoft Entra ID Governance / Microsoft Entra Suite license</b> is required for each user in the source tenant that is being synchronized across clouds. This license is an add-on to Entra ID P1 or P2.</li><li>The feature must be enabled by an administrator in the <b>Microsoft Entra admin center</b>.\n</li><li>Access to the feature can be managed through <b>Entra ID group membership</b>.\n</li><li><b>New blades</b> are introduced in the Entra portal to support configuration and management.\n</li><li>The feature is accessible via <b>PowerShell</b> and the <b>Microsoft Graph API</b>.\n</li><li><b>Provisioning logs </b>and <b>Audit logs</b> in Microsoft Entra provide visibility into provisioning activity.\n</li><li>The feature supports <b>synchronization between two Microsoft Entra tenants</b>.</li><li>Setup guidance and prerequisites are available at:&nbsp;<a href=\"https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure?pivots=cross-cloud-synchronization\" target=\"_blank\">Configure cross-tenant synchronization - Microsoft Entra ID | Microsoft Learn</a></li><li>Ensure your environment meets the requirements for the cloud pairs you plan to synchronize.</li><li>Known limitations and troubleshooting guidance:&nbsp;<a href=\"https://learn.microsoft.com/entra/identity/app-provisioning/known-issues?pivots=cross-tenant-synchronization\" target=\"_blank\">Known issues for provisioning in Microsoft Entra ID | Microsoft Learn</a></li></ul><p><b>Compliance considerations</b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Entra's cross-cloud synchronization, in public preview and opt-in, automates user lifecycle management across Microsoft commercial, US Government, and China clouds. General availability is late September to early October 2025. It requires specific licenses, admin enablement, and supports configuration via portal, PowerShell, and API."
+      }
+    ],
+    "EndDateTime": "2025-11-24T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1124558",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-02T16:33:30.753Z",
+    "Services": [
+      "Microsoft Entra"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-07-29T23:58:36Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Entra: Cross-cloud synchronization now available",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
     "ActionRequiredByDateTime": null,
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -533,44 +648,6 @@
       "Admin impact"
     ],
     "Title": "New support for HR and employee profile data in Microsoft 365 Copilot connectors",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": "2025-11-01T07:00:00Z",
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p><p>We will soon introduce a new limit on dynamic distribution groups (DDGs) in <i>Microsoft Exchange Online</i>. Each organization will be limited to a maximum of 3,000 DDGs. After this limit is reached, admins will need to remove existing DDGs before creating new ones.&nbsp;</p><p><b><b>When this will happen:</b></b></p><p>General Availability: We will begin rolling out in early November 2025 and expect to complete by mid-November 2025.</p><p><b><b>How this will affect your organization:</b>\n</b></p><p>If your organization has fewer than 3,000 DDGs, this change will not impact you. However, after your organization reaches this limit, you will not be able to create new DDGs until some existing DDGs are removed.\n</p><p>This change will be<b> on by default</b> and cannot be turned off by admins.</p><p><b><b>What you need to do to prepare:</b>\n</b></p><ul><li>The enforcement of the DDG limit will happen automatically by the specified date with no admin action required before the rollout. </li><li>You may want to notify your admins about this change and update any relevant documentation.\n</li><li>We recommend reviewing the usage of Dynamic Distribution Groups (DDGs) in your organization and removing any DDGs that are no longer needed. </li><li>You can use the Dynamic distribution groups report in the<i> Exchange admin center (EAC) </i>to see the number of DDGs in your organization and insights into their usage. </li><li>To access this report, go to the <b>EAC &gt; Reports &gt; Mail flow &gt; Dynamic distribution group report</b>. </li></ul><p>Learn more:&nbsp;</p><ul><li><a href=\"https://learn.microsoft.com/exchange/monitoring/mail-flow-reports/mfr-dynamic-distribution-groups-report\" target=\"_blank\">Dynamic Distribution Groups report in the new EAC in Exchange Online | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#dynamic-distribution-group-limits\" target=\"_blank\">Exchange Online limits - Service Descriptions | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Exchange Online will limit each organization to 3,000 dynamic distribution groups (DDGs) starting November 2025. Once the limit is reached, new DDGs cannot be created until others are removed. This change is automatic, cannot be disabled, and admins should review and manage existing DDGs accordingly."
-      }
-    ],
-    "EndDateTime": "2025-12-15T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1163757",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-10-01T22:34:25.767Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-10-01T22:34:18Z",
-    "Tags": [
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Exchange Online: New limit for dynamic distribution groups (DDGs) for Microsoft 365 operated by 21Vianet",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -3487,7 +3564,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"503109\":[{\"RoadmapId\":503109,\"Platform\":\"iOS\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-10-02T15:15:47.8294127Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":503109,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-10-02T15:15:47.8294129Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"503109\":[{\"RoadmapId\":503109,\"Platform\":\"iOS\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-10-02T17:11:29.3194015Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":503109,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-10-02T17:11:29.3194018Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -3537,7 +3614,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"500702\":[{\"RoadmapId\":500702,\"Platform\":\"Android\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-10-02T15:15:47.8294805Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":500702,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-10-02T15:15:47.8294807Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"500702\":[{\"RoadmapId\":500702,\"Platform\":\"Android\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-10-02T17:11:29.3194438Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":500702,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-10-02T17:11:29.3194439Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -7509,45 +7586,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated September 12, 2025: We have updated the timeline. Thank you for your patience.</p><p><b>Introduction</b></p><p>We’re introducing <b>cross-cloud synchronization</b> in Microsoft Entra to help organizations streamline user lifecycle management across Microsoft’s commercial, US Government, and China cloud environments. This feature automates creating, updating, and deleting users across supported cloud pairs and is currently in public preview. It is <b>off by default</b> and must be explicitly enabled by administrators.</p><p><b>When this will happen</b></p><p><b>General availability (Worldwide, GCC, GCCH, DoD):</b> The capability is currently in public preview and will be rolled out to general availability <b>between late September 2025 </b>(previously early September)<b> and mid-October 2025 </b>(previously mid-September).</p><p><b>How this will affect your organization</b></p><p>There is <b>no impact to your tenant unless you choose to enable this feature</b>. Cross-cloud synchronization is opt-in and can be configured based on your organization’s needs. It provides a more efficient way to manage users across multiple Microsoft cloud environments.\n</p><p>Supported cloud pairs:\n</p><ul><li>Commercial (Commercial, GCC) → US Government (GCCH, DoD)</li><li>US Government (GCCH, DoD) → Commercial (Commercial, GCC)</li><li>Commercial → China\n</li></ul><p>This feature is <b>not visible to users</b>. Administrators attempting to configure it in the Entra portal will receive a <b>licensing warning</b> if prerequisites are not met.</p><p><b>What you need to do to prepare</b></p><p>Organizations planning to use cross-cloud synchronization should be aware of the following:</p><ul><li>A <b>Microsoft Entra ID Governance / Microsoft Entra Suite license</b> is required for each user in the source tenant that is being synchronized across clouds. This license is an add-on to Entra ID P1 or P2.</li><li>The feature must be enabled by an administrator in the <b>Microsoft Entra admin center</b>.\n</li><li>Access to the feature can be managed through <b>Entra ID group membership</b>.\n</li><li><b>New blades</b> are introduced in the Entra portal to support configuration and management.\n</li><li>The feature is accessible via <b>PowerShell</b> and the <b>Microsoft Graph API</b>.\n</li><li><b>Provisioning logs </b>and <b>Audit logs</b> in Microsoft Entra provide visibility into provisioning activity.\n</li><li>The feature supports <b>synchronization between two Microsoft Entra tenants</b>.</li><li>Setup guidance and prerequisites are available at:&nbsp;<a href=\"https://learn.microsoft.com/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-configure?pivots=cross-cloud-synchronization\" target=\"_blank\">Configure cross-tenant synchronization - Microsoft Entra ID | Microsoft Learn</a></li><li>Ensure your environment meets the requirements for the cloud pairs you plan to synchronize.</li><li>Known limitations and troubleshooting guidance:&nbsp;<a href=\"https://learn.microsoft.com/entra/identity/app-provisioning/known-issues?pivots=cross-tenant-synchronization\" target=\"_blank\">Known issues for provisioning in Microsoft Entra ID | Microsoft Learn</a></li></ul><p><b>Compliance considerations</b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Entra introduces cross-cloud synchronization in public preview, enabling automated user lifecycle management across Microsoft commercial, US Government, and China clouds. It is opt-in, requires specific licenses, admin enablement, and supports configuration via the Entra portal, PowerShell, and Microsoft Graph API. General availability is late September to mid-October 2025."
-      }
-    ],
-    "EndDateTime": "2025-11-24T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1124558",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-12T17:03:16.93Z",
-    "Services": [
-      "Microsoft Entra"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-07-29T23:58:36Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Entra: Cross-cloud synchronization now available",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated September 12, 2025: We have updated the timeline. Thank you for your patience.</p><p><b>Introduction</b></p><p>Outlook Mobile is introducing a new Copilot Chat overlay experience for iOS and Android devices. This enhancement allows users to interact with Copilot while continuing to use their email, calendar, and contacts. The overlay is context-aware, enabling users to ask Copilot questions about the content currently on their screen. Users with Microsoft 365 Copilot licenses will benefit from richer, personalized responses powered by Microsoft 365 Graph.</p><p><b>When this will happen</b></p><p><b>General Availability (Worldwide, GCC, GCCH, and DoD): </b>We will begin rolling out in late September 2025 (previously early September) and expect to complete by early March 2026.</p><p><b>How this affects your organization</b></p><p>Once rolled out, all users will receive the new Copilot Chat overlay experience in Outlook Mobile by default. This update does not change Copilot Chat availability at the organization or user level. Existing licensing and admin controls remain unchanged.</p><p><i>Copilot Chat overlay in Outlook Mobile (iOS) - Interact with Copilot while viewing email content for contextual assistance:</i></p><p><i>&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/331d128c-4726-470e-aa94-c9c40fed9ff2/4f8623185f70a7f8404bffb93ef50486b881e0d3.jpg\" style=\"width: 400px;\" alt=\"user settings\"></p><p><i>Copilot Chat overlay in Outlook Mobile (Android) - Seamless access to Copilot via the bottom navigation bar to ask questions about on-screen content:</i></p><p><i>&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/4df285fe-a731-4eba-9d45-301c206c8db3/8ebe735df585c026fff7113424a41d11ba023e41.jpg\" style=\"width: 400px;\" alt=\"user settings\"><b></b></p><p><b>What you can do to prepare</b></p><p>No action is required.</p><p><b>Compliance considerations</b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Compliance area</b></td><td><b>Impact</b></td></tr><tr><td>Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data?</td><td>The Copilot Chat overlay introduces context-aware AI capabilities that analyze on-screen content to provide personalized responses.</td></tr><tr><td>Does the change provide end users any new way of interacting with generative AI?</td><td>Users can now interact with Copilot directly within Outlook Mobile via an overlay, enhancing usability and contextual relevance.</td></tr><tr></tr></tbody></table><p></p>",
       "ContentType": "html"
     },
@@ -11249,7 +11287,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"498895\":[{\"RoadmapId\":498895,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.747588Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475881Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":498895,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475878Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"498895\":[{\"RoadmapId\":498895,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475881Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":498895,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475878Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.747588Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -11748,99 +11786,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Teams admin center: App centric management for app installation and changes to app setup policies",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "We are announcing the ability of makers being able to customize their experience of the Copilot side pane by using the customization capabilities of Copilot Studio in Dynamics 365 Field Service. This feature will reach general availability on October 1, 2025.<br><br><b>How does this affect me?</b><br><ul><li>Makers can customize Copilot chat with existing <a target=\"_blank\" href=\"https://aka.ms/11725Link1\">Copilot Studio component collections (Preview)</a> or create their own components to enable custom workflows.</li><li>Field Service work order and scheduling topics are now available as Copilot Studio component collections, allowing makers to enable them for Field Service or custom model-driven applications.</li></ul><b>What action do I need to take?</b><br>This message is for awareness and no action is required.<br><br>For more information, please review the following documentation: <a target=\"_blank\" href=\"https://aka.ms/11725Link2\">Use Copilot in the Dynamics 365 Field Service web application</a>.",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2025-10-02T16:45:11Z",
-    "HasAttachments": false,
-    "Id": "MC1146586",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-02T16:48:28.533Z",
-    "Services": [
-      "Dynamics 365 Apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-02T16:45:11Z",
-    "Tags": [
-      "New feature"
-    ],
-    "Title": "Dynamics 365 Field Service - Tailor Copilot chat experience with Copilot Studio",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "We are announcing the ability to connect Dynamics 365 Sales to your agents and assistants with the new Model Context Protocol server. This feature will reach general availability on October 1, 2025.<br><br><b>How does this affect me?</b><br>With this feature, AI agents can retrieve, update, and act on CRM data, automate tasks like qualifying leads or sending emails, and handle business processes without custom code.<br><br>The Model Context Protocol server enables the following tools, with more to come:<ul><li>List leads</li>\n<li>Retrieve lead summary (using Copilot in Dynamics 365 Sales)</li><li>Qualify lead to opportunity</li><li>Get outreach email (using Copilot in Dynamics 365 Sales)</li><li>Send outreach email</li></ul><b>What action do I need to take?</b><br>This message is for awareness and no action is required.<br><br>If you would like more information on this feature, please visit the <a target=\"_blank\" href=\"https://aka.ms/11724\">Connect AI agents to sales workflows using Model Context Protocol server</a> learn article.",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2025-10-02T16:43:42Z",
-    "HasAttachments": false,
-    "Id": "MC1146584",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-02T16:45:06.277Z",
-    "Services": [
-      "Dynamics 365 Apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-02T16:43:42Z",
-    "Tags": [
-      "New feature"
-    ],
-    "Title": "Dynamics 365 Sales – Connect AI agents to sales workflows using Model Context Protocol server",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "We are announcing the ability to connect to AI agents through the Model Context Protocol server in Dynamics 365 Customer Service. This feature will reach general availability on October 1, 2025.<br><br><b>How does this affect me?</b><br>With this feature you can now connect Dynamics 365 Customer Service to your agents with the Model Context Protocol server.<br><br>This integration provides the following capabilities:<ul><li>Create or update an account</li><li>List all accounts</li><li>Create or update a case</li><li>Create a case note</li><li>List cases</li><li>Draft an email response</li><li>Send an email response</li></ul><b>What action do I need to take?</b><br>This message is for awareness and no action is required.<br><br>If you would like more information on this feature, please visit the <a target=\"_blank\" href=\"https://aka.ms/11723\">Connect AI agents using Model Context Protocol server</a> learn article.",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2025-10-02T16:38:44Z",
-    "HasAttachments": false,
-    "Id": "MC1146582",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-02T16:41:44.34Z",
-    "Services": [
-      "Dynamics 365 Apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-02T16:38:44Z",
-    "Tags": [
-      "New feature"
-    ],
-    "Title": "Dynamics 365 Customer Service – Connect AI agents using Model Context Protocol server",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -13530,43 +13475,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Teams Integration with Microsoft Defender for Office Tenant Allow/Block List for blocking domains",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": "2025-07-01T07:00:00Z",
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated August 22, 2025: We have updated the content. Thank you for your patience.&nbsp;</p><p>&nbsp;We’re making some changes to DNS provisioning of A records for all new Accepted Domains provisioned after October 1st, 2025 (previously August 1st). Between early and late October 2025 (previously early August and late August), we will gradually switch provisioning of all A records for new Accepted Domains into the new subdomains under mx.microsoft.</p><p>We are doing this to reduce the friction of adopting DNSSEC in the long run. DNSSEC is a set of extensions to DNS that provides cryptographic verification of DNS records, preventing DNS spoofing and adversary-in-the-middle attacks to DNS.\n</p><p><b>How this will affect your organization:</b>\n</p><p>After October 1st, 2025 (previously August 1st), all A records for new Accepted Domains will be provisioned into the new subdomains under mx.microsoft.\n</p><p>DNS resolution will safely fallback to “plain” DNS if a domain is not DNSSEC enabled. If an Accepted Domain you add to the Exchange Admin Center after October 1st (previously August 1st) is not secured with DNSSEC at the domain level (ex. contoso.com), then DNS resolution will work as usual. If an Accepted Domain you add to the EAC after October 1st (previously August 1st) is secured with DNSSEC, then DNSSEC will extend to the mx.microsoft DNS record automatically and you will get the benefits of DNSSEC without having to take any further action. Any issues with DNSSEC can be addressed by disabling DNSSEC for the Accepted Domain (ex. contoso.com) via your DNS provider.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>If you have any automation in place, for example in workflows for Domain Setup, for MX record creation that expects A records for newly provisioned Accepted Domains to be provisioned in mail.protection.outlook.com, this automation needs to be updated by October 1st (previously August 1st) to use List serviceConfigurationRecords Graph API (<a href=\"https://learn.microsoft.com/graph/api/domain-list-serviceconfigurationrecords?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">List serviceConfigurationRecords</a>). Use List serviceConfigurationRecords to retrieve the mailExchange value for your MX record. After October 1st (previously August 1st), List serviceConfigurationRecords Graph API will be the only source of truth for your Accepted Domains’ MX record value. You will not be able to rely on the Accepted Domain’s A record being provisioned in mail.protection.outlook.com after October 1st (previously August 1st.</p><p>If you are using automation that expects the record to end with mail.protection.outlook.com, when you add a new Accepted Domain to the Exchange Admin Center after October 1st (previously August 1st), mail flow may not work upon initial configuration and you will have to update your MX record to match what the Exchange Admin Center says for the domain or use the mailExchange value returned by List serviceConfigurationRecords Graph API.\n</p><p>If you expect this change to cause any issues for your organization, please share that feedback. \n</p><p><br></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting October 1, 2025, A records for new Accepted Domains will be provisioned under mx.microsoft to support DNSSEC adoption. Automation relying on mail.protection.outlook.com must update to use the List serviceConfigurationRecords Graph API for MX records. DNS resolution will fallback if DNSSEC is not enabled."
-      }
-    ],
-    "EndDateTime": "2025-12-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1048624",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2025-08-22T17:29:54.94Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-04-04T23:12:38Z",
-    "Tags": [
-      "Updated message",
-      "Admin impact"
-    ],
-    "Title": "DNS Provisioning Change",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
