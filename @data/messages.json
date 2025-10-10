@@ -4,6 +4,335 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p><b><b>Introduction:</b></b></p><p>To improve threat detection accuracy and responsiveness, Microsoft Defender for Cloud Apps is expanding its dynamic model for threat protection. This update enhances the signal-to-noise ratio (SNR) of detections and enables faster adaptation to emerging threats, helping security teams stay ahead of evolving risks.</p><p>This rollout continues the migration of legacy threat detection policies, following the first batch announced in Message center post MC1061724. The second batch introduces new detections that replace several legacy policies, further aligning with our goal of delivering more precise, research-driven protection.</p><p><b><b>When this will happen:</b></b></p><p><b>General Availability (Worldwide, GCC, GCC High, DoD): </b>Rollout begins early November 2025 and is expected to complete by the end of November 2025.</p><p><b><b>How this affects your organization:</b></b></p><p><b>Who is affected:</b></p><p>Organizations using Microsoft Defender for Cloud Apps, including tenants in Worldwide, GCC, GCC High, and DoD environments.</p><p><b>What will happen:</b></p><ul><li>The dynamic model will be expanded to include additional research-driven detections.</li><li>These detections are continuously updated by Microsoft security researchers to reflect the evolving threat landscape.<ul><li>Detections may be added, removed, or modified dynamically to ensure optimal protection.</li><li>These are research-driven and enabled by default, requiring no manual configuration.</li></ul></li><li>The second batch of legacy policies being migrated includes:<ul><li>“<i>Unusual ISP for an OAuth App</i>”</li><li>“<i>Suspicious file access activity (by user)</i>”</li></ul></li><li>These will be replaced with the following detections:<ul><li>Replacing “Unusual ISP for an OAuth App”:<ul><li>“<i>OAuth application activity from an unknown ISP (Preview)</i>”</li></ul></li><li>Replacing “Suspicious file access activity (by user)”:<ul><li>“<i>Suspicious file access from untrusted ISP and user agent with malicious IP indicator (Preview)</i>”</li><li>“<i>Suspicious file access indicative of lateral movement (Preview)</i>”</li></ul></li><li>Adding new detection \"<i>Activity from a password-spray associated IP address (Preview)</i>”</li></ul></li></ul><p></p><ul><li>These new detections are already available to you in Preview; the \"(Preview)\" suffix will be removed once legacy policies are disabled.</li><li>Governance actions configured on legacy policies will be disabled. Admins can re-enable them manually after 24 hours.</li><li>Migrated policies will be listed in <a href=\"https://learn.microsoft.com/defender-cloud-apps/anomaly-detection-policy\" target=\"_blank\">Create Defender for Cloud Apps anomaly detection policies | Microsoft Learn</a>.</li><li>Eventually, all other out-of-the-box (OOTB) activity-based policies will be migrated to the new dynamic model. Future Message center posts will provide details as additional policies are transitioned.</li></ul><p>By applying the new dynamic model, we aim to deliver more accurate and timely threat detections, enhancing your organization’s overall security posture. </p><p>In some cases, legacy policies may be split into multiple detections and alerts to provide deeper visibility and context for SOC teams.</p><p>During the gradual migration of OOTB policies, disabled policies will remain temporarily visible in <i>Defender for Cloud Apps</i>. Once migration is complete, these legacy policies will be removed from the legacy policies page. A separate Message center post will be published to confirm their removal.</p><p><b><b>What you can do to prepare:</b></b></p><p>No admin action is required before rollout.</p><p>To prepare:</p><ul><li>Review your current policy configurations to assess impact.</li><li>Notify SOC and helpdesk teams about the updated detections.</li><li>Update internal documentation if referencing legacy policies.</li><li>If you wish to retain governance actions:<ul><li>Wait 24 hours after disablement.</li><li>Re-enable policies from the legacy policies page at: <b>Defender portal &gt; Cloud apps &gt; Policy management</b>.</li></ul></li></ul><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/acb9be4f-4740-4042-9793-863ead9ee7c1/98a19f36d640efc1eefcbd8a96699266cbd4b371.png\" style=\"width: 400px;\" alt=\"user settings\"><b></b></p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p><b>\n</b>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Defender for Cloud Apps will expand its dynamic threat detection model in November 2025, replacing legacy policies with more accurate, research-driven detections. This update improves threat detection accuracy and responsiveness, requires no admin action before rollout, and includes new detections enabled by default."
+      }
+    ],
+    "EndDateTime": "2025-12-27T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1169078",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-09T23:33:51.267Z",
+    "Services": [
+      "Microsoft Defender XDR"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-09T23:33:25Z",
+    "Tags": [
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Defender for Cloud Apps: Improvements to threat protection capabilities",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\n<p><b>Admin activity related to agent management</b> will now be logged in <i>Microsoft Purview Unified Audit Logs</i>. This enhancement improves visibility and traceability for security teams managing Copilot agents across Microsoft 365 services.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=498227\" target=\"_blank\">498227</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p><b>General Availability (Worldwide): </b>Rollout will begin in late October 2025 and is expected to complete by mid-November 2025.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><i>Who is affected:</i>Admins managing Microsoft Copilot agents in <i>Microsoft 365 environments</i>.</p>\n<p><i>What will happen:</i></p>\n<ul>\n<li>Admin actions such as publishing, deploying, removing, and updating agents will be logged.</li>\n<li>Changes to agent settings at both tenant and agent levels will be captured.</li>\n<li>Audit schema includes key data points such as agent name, agent type, and admin ID.</li>\n<li>Logs will be accessible via the Purview Portal.</li>\n<li>Feature is <b>enabled by default</b>; no configuration required.</li></ul><p><i>Screenshot 1 - Search view in the new Microsoft Purview Unified Audit Log:</i></p><p><i>&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/339f3b96-a93d-4bec-88ad-b551834f6b91/4f2d1bf856fafef123f8b5fd48e5535a9db05a0d.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><i>Screenshot 2 - Details view in the new Microsoft Purview Unified Audit Log:</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/0330134e-f422-466a-b911-eb882b1fcaa4/5372473b75c052c6044ee46ddeca77037063d2d8.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Security teams can begin searching and reviewing agent-related admin actions in the<i> Purview Portal</i>.</li>\n<li>Familiarize yourself with audit log search capabilities in <i>Purview</i>.</li>\n<li>No additional configuration is required to enable logging.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\">\n<tbody><tr><th>Question</th><th>Answer</th></tr>\n<tr><td>Does the change alter how existing customer data is processed, stored, or accessed (e.g. documents, emails, chats, etc.), if so how and to what extent?</td><td>Yes – Admin actions related to agent management are now logged, increasing visibility into operational activities.</td></tr>\n<tr><td>Does the change modify, interrupt, or disable any of the following capabilities (Purview): Audit logging capabilities?</td><td>Yes – Adds new audit events specific to agent management in Purview Unified Audit Logs.</td></tr>\n<tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities e.g. Purview or admin reporting, if so summarize the changes?</td><td>Yes – Admins gain new visibility into agent-related actions, improving compliance reporting and audit traceability.</td></tr>\n<tr><td>Does the change include an admin control and, can it be controlled through Entra ID group membership?</td><td>Yes – Logging is automatic, but access to audit data is controlled via Purview permissions, which can be scoped using Entra ID groups.</td></tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "498227"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Admin activities for managing Microsoft Copilot agents will be logged by default in Microsoft Purview Unified Audit Logs starting late October 2025. This enhances security visibility and compliance reporting, capturing detailed agent-related actions accessible via the Purview Portal without requiring configuration."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2025-12-14T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1169075",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-09T23:30:58.14Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-09T23:30:30Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft 365 Admin Center: Admin Audit logs in Purview",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b>\n</p><p>To help organizations gain deeper insights into Copilot adoption—especially among users with Copilot licenses—we’re introducing <b>new usage intensity metrics</b> in the <i>Microsoft 365 admin center</i>. These metrics include aggregated prompt activity at both the organization and user levels. User-level metrics capture total prompts submitted across Copilot Chat (work) and Copilot Chat (web), as well as active days. This enhanced visibility enables admins to track usage patterns and adoption trends more effectively.</p>\n\n<p>The update to the report is rolling out and will be available under <b>Reporting &gt; Usage &gt; Microsoft 365 Copilot &gt; Copilot</b>.</p>\n\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?id=503860\" target=\"_blank\">503860</a>.</p>\n\n<p><b><b>When this will happen:</b></b>\nGeneral Availability (Worldwide): Rollout begins mid-October 2025 and is expected to complete by late October 2025.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b> Admins managing Microsoft 365 Copilot usage reporting.</li>\n<li><b>What will happen: </b>Following new metrics will be available:&nbsp;<ul>\n    <li>Total and average prompt counts at both organization and user levels</li>\n    <li>Daily prompt submission trends in <i>Copilot Chat</i></li>\n    <li>Prompts submitted (any app)</li>\n    <li>Copilot Chat (work) prompts submitted</li>\n    <li>Copilot Chat (web) prompts submitted</li>\n    <li>Active days</li>\n  </ul>\n</li>\n</ul>\n\n<p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/c9e7bbaf-98a4-439a-b2ea-612487a8d265/955f75485d9421d734670b23cb98dd6862eb2790.png\" style=\"width: 400px;\" alt=\"user settings\"><b></b></p><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No admin action is required prior to rollout.</li>\n<li>Inform relevant stakeholders to begin utilizing the updated report once available.</li>\n<li>Review updated reporting paths and metrics in the <i>Microsoft 365 admin center</i>.</li>\n</ul><p>Learn more:&nbsp;<a href=\"https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage?view=o365-worldwide\" target=\"_blank\">Microsoft 365 reports in the admin center – Microsoft 365 Copilot usage | Microsoft 365 | Microsoft Learn</a></p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p><p> </p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "503860"
+      },
+      {
+        "Name": "Summary",
+        "Value": "New Microsoft 365 Copilot usage intensity metrics will be available in the admin center report by late October 2025, showing prompt counts, daily trends, and active days at organization and user levels. No admin action is needed before rollout; admins should inform stakeholders and review updated reports."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop"
+      }
+    ],
+    "EndDateTime": "2025-11-25T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1169073",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-09T23:30:04.19Z",
+    "Services": [
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-09T23:29:46Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft 365 Copilot: New usage intensity metrics available in admin center report",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p></p><p>Microsoft Graph now includes APIs that support Teams administration scenarios through beta:</p><ul><li>Teams User Configuration API</li><li>Number Management APIs</li><li>Policy Assignment APIs</li></ul><p> These APIs enable programmatic access to user configurations, telephone number management, and policy assignments—helping organizations automate and scale Teams management. They are designed to support extensibility, automation, and integrations with your existing tools and workflows.</p>\n\n<b><b>When this will happen:</b></b>\n<p>Please note that these APIs are currently available via the Microsoft Graph through beta. They are supported in commercial environments and accessible through both delegated and application permissions.</p>\n\n<b><b>How this affects your organization:</b></b>\n<ul>\n<li><b>Who is affected:</b> Admins managing Teams users, policies, or voice configurations.</li>\n<li><b>What will happen:</b>\n  <ul>\n    <li><b>Teams User Configuration API</b>: Retrieve detailed Teams settings for users, including effective policy assignments and voice attributes. Details:&nbsp;<a href=\"https://learn.microsoft.com/graph/api/teamsadministration-teamsadminroot-list-userconfigurations?view=graph-rest-beta&amp;tabs=http\" target=\"_blank\">List userConfigurations</a></li>\n    <li><b>Number Management APIs</b>: Retrieve telephone number details, assign, and unassign telephone numbers. Details:&nbsp;<a href=\"https://learn.microsoft.com/graph/api/teamsadministration-telephonenumbermanagementroot-list-numberassignments?view=graph-rest-beta\" target=\"_blank\">List numberAssignments</a></li>\n    <li><b>Policy Assignment APIs</b>: Assign or unassign Teams policies for users. Details:&nbsp;<a href=\"https://learn.microsoft.com/graph/api/teamsadministration-teamspolicyuserassignment-assign?view=graph-rest-beta\" target=\"_blank\">teamsPolicyUserAssignment: assign</a></li>\n  </ul>\n</li>\n</ul>\n\n<b><b>What you can do to prepare:</b></b>\n<ul>\n<li>Begin exploring the APIs using the Microsoft Graph beta endpoints.</li>\n<li>Ensure your applications and scripts use the appropriate permission scopes.</li>\n<li>For feedback or questions, contact: TeamsAdminGraphApi@microsoft.com</li>\n</ul>\n\n<p></p><p>Learn more:</p><ul><li>User Configuration Graph API -&nbsp;<a href=\"https://learn.microsoft.com/graph/api/teamsadministration-teamsadminroot-list-userconfigurations?view=graph-rest-beta&amp;tabs=http\" target=\"_blank\">List userConfigurations | Microsoft Graph | Microsoft Learn</a><b></b></li><li>Number Management Graph API(s) -&nbsp;<a href=\"https://learn.microsoft.com/graph/api/teamsadministration-telephonenumbermanagementroot-list-numberassignments?view=graph-rest-beta\" target=\"_blank\">List numberAssignments | Microsoft Graph | Microsoft Learn</a><b></b></li><li>Policy Assignment/Un-Assignment Graph API(s) -&nbsp;<a href=\"https://learn.microsoft.com/graph/api/teamsadministration-teamspolicyuserassignment-assign?view=graph-rest-beta\" target=\"_blank\">teamsPolicyUserAssignment: assign | Microsoft Graph | Microsoft Learn</a><b></b></li></ul><p><b><b>Compliance considerations:</b></b>\n</p><p>No compliance considerations identified, review as appropriate for your organization.</p>\n<p></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Graph beta now offers Teams administration APIs for user configuration, number management, and policy assignment. These enable automation and integration for Teams management, accessible with delegated or application permissions in commercial environments. Admins can begin exploring these APIs and ensure proper permission scopes."
+      }
+    ],
+    "EndDateTime": "2025-12-01T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1169072",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-09T23:27:31.713Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-09T23:27:26Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: Microsoft Graph APIs for Teams administration now available in beta",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p></p><p>We’re introducing <b>support for Model Context Protocol (MCP)-based agents</b> in <i>Microsoft 365 Copilot</i> and the <i>Microsoft 365 admin center</i>. This update enables developers to build Copilot agents using MCP servers and allows users and admins to interact with these agents using familiar experiences. This change supports extensibility and improves agent management capabilities for organizations.</p>\n\n<b><b>When this will happen:</b></b>\n<p>Rollout will begin in late October 2025 and is expected to complete by mid-November 2025.</p>\n\n<b><b>How this affects your organization:</b></b>\n<p><i>Who is affected:</i></p>\n<ul>\n<li>Admins managing Microsoft 365 Copilot</li>\n<li>Users accessing Copilot agents</li>\n</ul>\n<p><i>What will happen:</i></p>\n<ul>\n<li>MCP-based agents will appear in the <i>Copilot Agent Store</i></li>\n<li>Users can install MCP-based agents directly from the store</li>\n<li>Admins can deploy MCP-based agents to users via the store or custom packages</li>\n<li>Admins will see MCP agent details, including server information, in the <i>Microsoft 365 admin center </i>under <i style=\"\"><b>Copilot &gt; Agents</b></i></li>\n<li>Existing extensibility controls and lifecycle management policies for Copilot agents will apply to MCP-based agents</li>\n<li>The feature will be <b>ON by default for all tenants</b></li>\n</ul>\n\n<p></p><p><i>Screenshot 1 - Admin view:</i></p><p><i>&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/d83c84af-05e2-4b6b-8d69-e6747d80143d/de8c2e5b448a6862683c40b3b758de8a41970540.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><i>Screenshot 2 - User view:</i></p><p><i>&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/e4741fa5-e31f-4256-96fe-96b1c82a14c0/4d1b44d68417473e40b26ee3444af03e6abd8f24.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><b><b>What you can do to prepare:</b></b>\n</p><ul>\n<li>No action is required at this time</li>\n<li>Review the MCP-based agent catalog to ensure agents align with your organization’s policies</li>\n<li>Update internal documentation if you track agent types or deployment methods</li>\n<li>Communicate this change to helpdesk or support teams as needed</li>\n</ul>\n\n<b><b>Compliance considerations:</b></b>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>\n<p></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft 365 Copilot now supports MCP-based agents, allowing developers to build and admins to manage these agents via the Copilot Agent Store and admin center. The rollout starts late October 2025, is on by default, and requires no immediate action but recommends reviewing agent catalogs and updating documentation."
+      }
+    ],
+    "EndDateTime": "2026-01-15T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1169071",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-09T23:27:06.057Z",
+    "Services": [
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-09T23:26:58Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft 365 Copilot: MCP-based agents now available in Copilot and Microsoft 365 admin center",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\n<p>To improve visibility and control over Copilot agents, Microsoft is introducing a new capability in the Microsoft 365 admin center that allows administrators to manage SharePoint agents directly from the <i>Agents</i> <i>section </i>of the <i>Copilot Control System</i> (<i>formerly Integrated Apps</i>). This update provides a centralized view of all shared agents and enables admins to block or unblock specific agents used in Copilot Chat.</p><p>This message is associated with Roadmap ID&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=487857\" target=\"_blank\">487857</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide): Rollout begins in late September 2025 and is expected to complete by late October 2025.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><i>Who is affected:</i> Microsoft 365 administrators managing Copilot agents; organizations using SharePoint agents in Copilot Chat.</li>\n<li><i>What will happen:</i>\n  <ul>\n    <li>A new <i>Agents section</i> will appear in the Microsoft 365 admin center under <i>Copilot Control System</i>.</li><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/4e95e661-58e0-463d-8a61-0129647d72a9/12c79fe4f08ffc2dc5de1d3564025a42129a1721.png\" style=\"width: 400px;\" alt=\"user settings\">\n    </p><li>Admins will be able to view all SharePoint agents used in Copilot Chat.</li>\n    <li>Admins can block or unblock specific agents from being used in Copilot Chat.</li>\n    <li>Blocking currently only affects Copilot Chat, not OneDrive, SharePoint, or Teams.</li>\n    <li>The feature is <b>available by default</b>; no opt-in is required.</li>\n  </ul>\n</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No immediate action is required unless you wish to block specific agents.</li>\n<li>Agents used in Copilot Chat will automatically appear in the admin center.</li>\n<li>To manage agents:\n  <ul>\n    <li>Go to <i>Microsoft 365 admin center</i> &gt; <i>Copilot Control System</i> &gt; <i>Agents</i>.</li>\n    <li>Review agent activity and block any agents as needed.</li>\n  </ul>\n</li>\n<li>Update internal documentation and helpdesk guidance as needed.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "487857"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft 365 admins can now manage SharePoint agents in Copilot Chat via a new Agents section in the Copilot Control System. They can view, block, or unblock agents starting late September 2025. This feature is enabled by default and only affects Copilot Chat."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2025-12-01T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1169070",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-09T23:26:34.42Z",
+    "Services": [
+      "Microsoft 365 suite",
+      "SharePoint Online",
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-09T23:26:23Z",
+    "Tags": [
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Manage SharePoint agents in Copilot Control System: View, block, or unblock agents used in Copilot Chat",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p></p><p><b><b>Introduction</b></b></p><p>To simplify and streamline notification experiences across Microsoft 365, Microsoft is retiring the desktop notification capability in Viva Engage. This change helps reduce redundancy and ensures consistency across supported channels such as Teams, Outlook, and Viva Engage in-app notifications. It also affects how users receive <b>@mention and community announcement notifications</b> on desktop.</p><p><b><b>When this will happen:</b></b></p><p></p><p>This change will roll out automatically by <b>mid-November 2025</b>.&nbsp;</p><p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b>\n  <ul>\n    <li>Users who previously enabled desktop notifications in Viva Engage.</li>\n    <li>Tenant admins who configured desktop notification settings in Admin Center.</li>\n  </ul>\n</li>\n<li><b>What will happen:</b>\n  <ul>\n    <li>The following settings will be removed:<ul><li>The <i>Allow users to enable desktop notifications</i>&nbsp;setting will be removed from Admin Center.</li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/59bcf7cc-7a1c-4b08-b9d4-11f7a8545534\" style=\"width: 400px;\" alt=\"user settings\" &gt;<=\"\" p=\"\"></p><li>The <i>Desktop push notifications</i>&nbsp;option will be removed from user Notification settings.</li><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/c58db04c-7919-4bbb-9c38-7758cdd52aa4/8ee2cdbd1355c02e99a4ed7a31a75d680298a94c.png\" style=\"width: 400px;\" alt=\"user settings\"></p></ul></li>\n    <li>Users will no longer receive <b>@mention and community announcement notifications</b> via desktop push.</li><li>Users will continue to receive notifications via:\n      <ul>\n        <li>Viva Engage in-app</li>\n        <li>Microsoft Teams</li>\n        <li>Outlook (web, mobile, and desktop)</li>\n      </ul>\n    </li>\n  </ul>\n</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Inform users that desktop notifications—including @mention and community announcement alerts—will no longer be available in Viva Engage.</li><li>Encourage users to rely on Teams, Outlook, and Viva Engage in-app notifications.</li>\n<li>Update internal documentation if it references desktop notification settings.</li>\n<li>No admin action is required for this change.</li>\n</ul>\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p><p></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft is retiring Viva Engage desktop notifications by mid-November 2025 to streamline notifications across Microsoft 365. Desktop push notifications and related settings will be removed. Users will still receive notifications via Viva Engage in-app, Teams, and Outlook. No admin action is needed; inform users accordingly."
+      }
+    ],
+    "EndDateTime": "2025-12-15T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1169069",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-09T23:26:04.727Z",
+    "Services": [
+      "Microsoft Viva"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-09T23:25:56Z",
+    "Tags": [
+      "User impact",
+      "Retirement"
+    ],
+    "Title": "Viva Engage: Retirement of Viva Engage Desktop Notifications",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b><br>\nWe’re upgrading the Copilot experience in <i>Microsoft Loop</i> to align with Microsoft 365 Copilot Pages. In the interim, some of the Copilot integrations will be temporarily removed. Once fully completed, this update replaces older Copilot integrations with a consistent, high-quality model—reducing user confusion and improving reliability across chat and page contexts.</p>\n\n<p><b><b>When this will happen:</b></b><br>\n</p><ul>\n<li>Temporary removal of older Copilot integrations: Rolled out on September 9, 2025.</li>\n<li>Upgraded experience: Currently in development. More details will be shared in a future post.</li>\n</ul><p></p>\n\n<p><b><b>How this affects your organization:</b></b><br>\n<b>Who is affected:</b> All Microsoft 365 tenants using Microsoft Loop.<br>\n<b>What will happen:</b>\n</p><ul>\n<li>Older Copilot integrations will be removed from Loop.</li>\n<li>Users will see a consistent set of Copilot entry points that match the Microsoft 365 Copilot Pages experience.</li>\n<li>Prompts will return results consistent with Microsoft 365 Copilot Pages.</li>\n<li>During the transition, users can still access Copilot via the chat button or create a Recap on a page, using older integrations.</li>\n<li>Once the upgrade is complete, Copilot Shortcuts, Ask Copilot in the context menu, improved chat performance, and updated model capabilities will be restored.</li>\n</ul><p></p>\n\n<p><b><b>What you can do to prepare:</b></b>\n</p><ul>\n<li>Remove references in training materials to:<ul><li>Slash menu commands like <b>Draft page content</b> or <b>Summarize page</b></li><li>Ask Copilot context menu</li><li>Copilot integration during page creation</li></ul></li><li>Update documentation to reflect that:<ul><ul></ul><li>Page creation and summarization will be fully integrated into the Copilot chat experience.</li><li>Users will be able to interact with Copilot on selected content using Ask Copilot context menu when functionality is restored.</li></ul></li></ul><p></p>\n\n<p><b><b>Compliance considerations:</b></b><br>No compliance considerations identified, all <a href=\"https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide\" target=\"_blank\">compliance capabilities</a> will be the same as the <a href=\"https://support.microsoft.com/topic/get-started-with-microsoft-365-copilot-pages-6674bd51-9ff5-42c4-9256-44d9428a726f\" target=\"_blank\">Microsoft 365 Copilot Pages experience</a>.&nbsp;</p><p>&nbsp;</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Loop is upgrading its Copilot experience to align with Microsoft 365 Copilot Pages, temporarily removing older integrations starting September 9, 2025. The update will provide consistent, improved Copilot features across chat and pages. Users should update training materials accordingly; no compliance changes are expected."
+      }
+    ],
+    "EndDateTime": "2026-03-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1169068",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-09T23:25:39.69Z",
+    "Services": [
+      "Microsoft 365 apps",
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-09T23:25:04Z",
+    "Tags": [
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Loop: Copilot experience upgrade",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "We are announcing the ability to split recordings by speaker in the closed conversation view in Dynamics 365 Contact Center. This feature will reach general availability on November 10, 2025.<br><br><b>How does this affect me?</b><br>This feature enables you to split recordings by speaker in the closed conversation view. This transforms the review process from a linear playback into a targeted, navigable experience. Supervisors can directly go to specific speakers sections, such as the customer or service representatives, without going through the entire audio.<br><br><b>What action do I need to take?</b><br>This message is for awareness and no action is required.<br><br>If you would like more information on this feature, please visit <a target=\"_blank\" href=\"https://aka.ms/ADO12296\">Split recordings speaker-wise in closed conversation view</a>.",
       "ContentType": "html"
     },
@@ -834,7 +1163,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"503300\":[{\"RoadmapId\":503300,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-09T23:14:00.6284969Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-09T23:14:00.6284973Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-09T23:14:00.6284974Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-09T23:14:00.6284977Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-09T23:14:00.6284979Z\",\"LatestRing\":null}]}"
+        "Value": "{\"503300\":[{\"RoadmapId\":503300,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T01:11:51.9107129Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T01:11:51.910713Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T01:11:51.9107132Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T01:11:51.9107133Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T01:11:51.9107133Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -4869,7 +5198,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"496369\":[{\"RoadmapId\":496369,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270774Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270773Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270771Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.427077Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270768Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270792Z\",\"LatestRing\":null}]}"
+        "Value": "{\"496369\":[{\"RoadmapId\":496369,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270768Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.427077Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270771Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270773Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270774Z\",\"LatestRing\":null},{\"RoadmapId\":496369,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T03:16:43.4270792Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6599,7 +6928,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"500696\":[{\"RoadmapId\":500696,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.801399Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8013989Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8013988Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":500696,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8013991Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"500696\":[{\"RoadmapId\":500696,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8013988Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":500696,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8013989Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.801399Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8013991Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -6726,7 +7055,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"503099\":[{\"RoadmapId\":503099,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8011312Z\",\"LatestRing\":null},{\"RoadmapId\":503099,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8011311Z\",\"LatestRing\":null},{\"RoadmapId\":503099,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8011314Z\",\"LatestRing\":null}]}"
+        "Value": "{\"503099\":[{\"RoadmapId\":503099,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8011311Z\",\"LatestRing\":null},{\"RoadmapId\":503099,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8011312Z\",\"LatestRing\":null},{\"RoadmapId\":503099,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8011314Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -7849,7 +8178,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"476488\":[{\"RoadmapId\":476488,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748236Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748238Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.374824Z\",\"LatestRing\":null}]}"
+        "Value": "{\"476488\":[{\"RoadmapId\":476488,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748238Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748236Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.374824Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -9488,7 +9817,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"491468\":[{\"RoadmapId\":491468,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465836Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465835Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465839Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465838Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242372Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":491468,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242377Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"491468\":[{\"RoadmapId\":491468,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242372Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":491468,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465838Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465839Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465835Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465836Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242377Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -10199,7 +10528,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"499892\":[{\"RoadmapId\":499892,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8014229Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8014225Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8014224Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8014222Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":499892,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.801423Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"499892\":[{\"RoadmapId\":499892,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8014222Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":499892,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8014224Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8014225Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8014229Z\",\"LatestRing\":null},{\"RoadmapId\":499892,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.801423Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -10250,7 +10579,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"499893\":[{\"RoadmapId\":499893,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8012114Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8012113Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8012112Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8012109Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":499893,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8012115Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"499893\":[{\"RoadmapId\":499893,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8012109Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":499893,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8012112Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8012113Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8012114Z\",\"LatestRing\":null},{\"RoadmapId\":499893,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8012115Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -10301,7 +10630,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"168524\":[{\"RoadmapId\":168524,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926907Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926909Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926911Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926914Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"168524\":[{\"RoadmapId\":168524,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926911Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926909Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926907Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-01-08T18:19:32.8926914Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -12050,7 +12379,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468095Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468099Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468102Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468104Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468102Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468099Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468095Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468104Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -12100,7 +12429,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468095Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468099Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468102Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468104Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468102Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468099Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468095Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-03-11T17:13:48.1468104Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -12293,7 +12622,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"498895\":[{\"RoadmapId\":498895,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.747588Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475878Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475881Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":498895,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"498895\":[{\"RoadmapId\":498895,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475881Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":498895,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475878Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.747588Z\",\"LatestRing\":null},{\"RoadmapId\":498895,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7475882Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -12439,7 +12768,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"480716\":[{\"RoadmapId\":480716,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-05-16T23:14:43.6233516Z\",\"LatestRing\":null},{\"RoadmapId\":480716,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-05-16T23:14:43.6233518Z\",\"LatestRing\":null},{\"RoadmapId\":480716,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-27T13:28:05.7703476Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":480716,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T13:28:05.7703488Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"480716\":[{\"RoadmapId\":480716,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-27T13:28:05.7703476Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":480716,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-05-16T23:14:43.6233518Z\",\"LatestRing\":null},{\"RoadmapId\":480716,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-05-16T23:14:43.6233516Z\",\"LatestRing\":null},{\"RoadmapId\":480716,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-27T13:28:05.7703488Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -15060,7 +15389,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"369345\":[{\"RoadmapId\":369345,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.946174Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461736Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461744Z\",\"LatestRing\":null}]}"
+        "Value": "{\"369345\":[{\"RoadmapId\":369345,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461736Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.946174Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461744Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16606,7 +16935,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"487432\":[{\"RoadmapId\":487432,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301262Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.830126Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301264Z\",\"LatestRing\":null}]}"
+        "Value": "{\"487432\":[{\"RoadmapId\":487432,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.830126Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301262Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301264Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16692,7 +17021,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"498490\":[{\"RoadmapId\":498490,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478853Z\",\"LatestRing\":null},{\"RoadmapId\":498490,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478852Z\",\"LatestRing\":null},{\"RoadmapId\":498490,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478854Z\",\"LatestRing\":null}]}"
+        "Value": "{\"498490\":[{\"RoadmapId\":498490,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478852Z\",\"LatestRing\":null},{\"RoadmapId\":498490,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478853Z\",\"LatestRing\":null},{\"RoadmapId\":498490,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-08-25T17:12:30.7478854Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -19435,7 +19764,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"483506\":[{\"RoadmapId\":483506,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266613Z\",\"LatestRing\":null},{\"RoadmapId\":483506,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266611Z\",\"LatestRing\":null},{\"RoadmapId\":483506,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266614Z\",\"LatestRing\":null}]}"
+        "Value": "{\"483506\":[{\"RoadmapId\":483506,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266611Z\",\"LatestRing\":null},{\"RoadmapId\":483506,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266613Z\",\"LatestRing\":null},{\"RoadmapId\":483506,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9266614Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
