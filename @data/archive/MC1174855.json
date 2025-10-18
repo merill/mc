@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": "2025-11-15T08:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>Introduction</b></b></p>\n<p>Starting November 15, 2025, Outlook on the web and the new Outlook for Windows will begin rolling out an update to how inline images are represented in the HTML body of emails. This change is part of Microsoft’s ongoing security improvements and will affect how Outlook add-ins identify and process inline images using the attachment ID. Specifically, the update transitions from using tokenized image URLs to a more secure method using content IDs and request headers.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>This change will begin rolling out on November 15, 2025, to Production users. Rollouts to other environments will begin after Production rollouts are 100% complete.</p>\n\n<p><b><b>How this affects your organization:</b></b></p><p><b>What's changing:</b></p><p>Previously, inline images in the HTML mail body were represented with a URL containing the attachment ID as a query parameter. Developers could parse the HTML and do one of the following.</p><ul><li>Extract the ID from the URL and match it with the attachment ID they already had.\n</li><li>Use the entire URL in the src attribute to get the Base64 value of the inline image.</li></ul><p>Going forward, the URL for inline images will no longer contain the attachment ID. As a result, your current parsing logic won’t be able to correlate the inline image in the mail body with the attachment ID or Base64 value of the image.</p>\n\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Images will be represented by a content ID (cid) in the src attribute.&nbsp;</li>\n<li>Add-ins that extract the attachment ID from the image URL will no longer be able to correlate images reliably.</li>\n<li>With this change, add-ins must:\n  <ul>\n\n<li>Parse the HTML message body and retrieve the <code>cid</code> value from the <code>src</code> attribute of the <code>&lt;img&gt;</code> element.</li>\n    <li>Use <code>Office.context.mailbox.item.getAttachmentsAsync</code> to retrieve an <code>AttachmentDetailsCompose</code> object.</li><li>To restore correlation, match the <code>contentId</code> property from the object to the <code>cid</code> value in the HTML.</li><li>To retrieve base64 value of the image attachment, use <code>office.context.mailbox.item.getAttachmentContentAsync</code>.&nbsp;</li>\n  </ul>\n</li>\n</ul>\n<p><b>Example AttachmentDetailsCompose object:</b></p>\n<pre><code>[\n{\n  \"id\": \"AAkALgAAAAAAHYQDEapmEc2byACqAC/EWg0AW4xUByFbp0CroCNphMYEEAADMWhyywAAARIAEADghOrwhp8zR7umVQRBkN51\",\n  \"name\": \"image.png\",\n  \"contentType\": \"image/png\",\n  \"size\": 2371,\n  \"attachmentType\": \"file\",\n  \"isInline\": true,\n  \"contentId\": \"7957e11a-ce80-438b-87cd-611b3d6a3ec4\"\n}\n]\n</code></pre>\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Update your add-in’s parsing logic to retrieve the <code>cid</code> value from the <code>src</code> attribute of inline images.</li>\n<li>Use <code>getAttachmentsAsync</code> to match the content ID with the image.</li>\n<li>Ensure your add-in supports both the previous and updated implementations during the rollout.</li>\n<li>Test your add-in to confirm it correctly identifies and processes inline images using the new method.</li><li>Update internal developer documentation if it references the previous method of parsing inline image URLs.</li><li>Communicate this change to helpdesk or support teams if they assist with Outlook add-in troubleshooting.</li>\n<li>Review the sample code provided in the <a href=\"https://devblogs.microsoft.com/microsoft365dev/changes-to-inline-images-in-outlook/\" target=\"_blank\">Microsoft 365 Developer Blog: Changes to inline images in Outlook</a>.</li><li>Leave a comment on this post or in <a href=\"https://devblogs.microsoft.com/microsoft365dev/changes-to-inline-images-in-outlook/\" target=\"_blank\">Microsoft 365 Developer Blog: Changes to inline images in Outlook</a>&nbsp;if you have any questions.</li>\n<li>Watch the <a href=\"https://youtu.be/z-vYEb4N2go\" target=\"_blank\">October 2025 Office Add-ins Community Call </a>(YouTube link)</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p><p>Placing the content ID in the src attribute matches how classic Outlook on Windows represents inline images.</p>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tbody><tr><th>Compliance Area</th><th>Explanation</th></tr>\n<tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Inline image retrieval now uses secure headers instead of tokenized URLs, changing how image data is accessed.</td></tr>\n<tr><td>Does the change modify how users can access, export, delete, or correct their personal data within Microsoft 365 services?</td><td>The method for accessing inline image data in emails is updated, which may affect how add-ins handle personal data.</td></tr>\n</tbody></table><p></p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Starting November 15, 2025, Outlook on the web and new Outlook for Windows will update inline image handling by replacing tokenized URLs with content IDs (cid) in the HTML. Add-ins must update parsing logic to use content IDs and new APIs to correlate and retrieve inline images securely."
+    }
+  ],
+  "EndDateTime": "2026-01-15T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1174855",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2025-10-18T06:41:00.183Z",
+  "Services": [
+    "Microsoft 365 for the web",
+    "Microsoft 365 apps"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-10-18T06:40:35Z",
+  "Tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Update to inline image representation in Outlook on the web and new Outlook for Windows",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
