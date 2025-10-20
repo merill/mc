@@ -4,6 +4,151 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated October 20, 2025: We have updated the content to correctly reference Chromium 142. Thank you for your patience.&nbsp;</p><p><b>Introduction</b></p><p>Upcoming privacy-related changes in Chromium-based browsers (Google Chrome and Microsoft Edge) will increase restrictions on local network access. When enforcement begins, users accessing OneDrive for Web (and some integrated Microsoft 365 experiences such as Microsoft Lists and SharePoint Document Libraries) will encounter a browser permission prompt for local network access unless the required policy is in place. If the permission is not allowed, performance optimizations and <a href=\"https://support.microsoft.com/office/work-with-onedrive-web-app-when-offline-05d1865d-8694-4c0a-8e46-28ccb8c58b37\" target=\"_blank\">offline capabilities</a> powered by OneDrive and Share Point will not be available. This communication provides required administrator actions to prevent loss of functionality.</p><p><b>When this will happen:</b></p><p>Chrome and Edge will roll out this privacy related change as part of Chromium 142 at the end of October 2025 (previously end of September).</p><p><b>How this will affect your organization:</b></p><p>If no action is taken:</p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/21ee30ec-4b41-4b77-b7ec-1357c0d6655b/f68733390ed59585964ce46d5e73e73e375a4d0d.png\" style=\"width: 25%;\"><br></p><p>\n</p><ol>\n<li><b>Who is affected:</b><ul><li>All users accessing OneDrive for Web, Microsoft Lists, and SharePoint Document Libraries via Chrome or Edge browsers.</li><li>Admins managing browser policies for Windows, macOS, and VDI environments.</li></ul></li>\n<li><b>What will happen:</b>\n\n<p></p><p>If no action is taken:\n</p><ul><li>Users will see a new browser prompt requesting permission for local network access when opening OneDrive for Web and Lists.</li><li>If users do not click <i>Allow</i>, the following results occur on that device:<ul><li>Performance acceleration will not be available (loss of faster data access behavior).</li><li>Offline functionality in OneDrive Web will not be available.</li></ul></li><li>The experience will be slower and less resilient, and helpdesk contacts will increase due to unexpected prompts and missing offline capability.</li></ul><p>When the recommended browser policy is deployed in advance, the prompt is suppressed for the specified trusted Microsoft 365 endpoints and existing performance, and offline behavior are preserved. The policy prevents loss of existing capability and avoids user confusion.</p><p><b>What you need to do to prepare:</b>\n</p><ol><li>Identify Required Domains<ol><li>Include your organization’s SharePoint Online and OneDrive endpoints, for example: https://YOURTENANT-my.sharepoint.com or https://YOURTENANT.sharepoint.com</li><li>Add additional sanctioned SharePoint Online host variations if applicable (e.g., specialized cloud environments). Avoid overly broad wildcards—conform to internal security governance.</li></ol></li><li>Configure Browser Policy<ol><li>Set the Chromium policy <code>LocalNetworkAccessAllowedForUrls</code>&nbsp;(<a href=\"https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls\" target=\"_blank\">Chrome Enterprise</a>&nbsp;/ <a href=\"https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/localnetworkaccessallowedforurls\" target=\"_blank\">Edge policy</a>) to pre-authorize the listed domains.</li><li>Apply via: ADMX / JSON for Windows; plist or configuration profile for macOS (Chrome and Edge).</li><li>Roll out to all managed device groups (Windows, macOS, VDI as applicable).</li><li>Even if the following policies are currently enabled by policy, deploy the allow-list to prevent future prompts and avoid user confusion.<ol><li><code>DisableNucleusSync</code></li><li><code>DisableOfflineMode</code></li></ol></li></ol></li><li>Remediation for Users Who Already Clicked <i>Block</i><ol><li>Deploying the managed <code>LocalNetworkAccessAllowedForUrls</code>&nbsp;policy will override any prior per-user deny state and enforce the allow setting once the policy is applied to the device/profile; no end-user action is required after policy propagation.</li><li>If you need immediate remediation before policy reaches the device, have the user open the affected OneDrive site, use the site (lock) icon, reset or change the local/network device access permission to <i>Allow</i>, then refresh.</li></ol></li><li>Ensure your Sync Client is updated to v.25.164</li></ol></li></ol><p style=\"margin-left: 125px;\">1. <b>Per machine SKU</b>: The Sync client will automatically apply the required permissions and policies for existing users in Chrome and Edge—no user action is needed.</p><ol></ol><p></p><p style=\"margin-left: 125px;\">2. <b>Per user SKU</b>: The Sync client will prompt users via a Windows Toast notification to enable these permissions. Users should follow the notification instructions to complete setup.</p>\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\">\n<tbody><tr><th>Compliance Area</th><th>Explanation</th></tr>\n<tr><td>Alters how existing customer data is accessed</td><td>Local network access impacts how OneDrive and SharePoint optimize performance and offline access to cached data.</td></tr>\n<tr><td>Includes admin control</td><td><p>Admins can configure the <code>LocalNetworkAccessAllowedForUrls</code> policy and deploy it via group policy or configuration profiles.</p></td></tr>\n<tr><td>Can be controlled through Entra ID group membership</td><td>Policy deployment can be scoped to device groups managed via Entra ID.</td></tr>\n<tr><td>Allows user to enable/disable feature</td><td>Users can manually allow or block local network access via browser prompts if policy is not enforced.</td></tr>\n\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "preventOrFixIssue",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Chromium browsers will restrict local network access, causing OneDrive and SharePoint web apps to prompt users for permission, impacting performance and offline use. Admins must configure the LocalNetworkAccessAllowedForUrls policy to pre-authorize trusted domains, preventing prompts and preserving functionality before Chromium 142 rollout in October 2025."
+      }
+    ],
+    "EndDateTime": "2025-12-01T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1150662",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-20T19:07:20.943Z",
+    "Services": [
+      "SharePoint Online",
+      "Microsoft OneDrive"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-09-09T23:08:28Z",
+    "Tags": [
+      "Updated message",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Action Required – Configure Browser Policy to Preserve OneDrive and SharePoint Web Performance and Offline Capability",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>We’re updating how we bill for mid-term subscription changes to improve clarity and efficiency.</p><p><b>When this will happen:</b></p><p>Starting November 13, 2025 changes to existing subscriptions—such as adding or removing licenses, cancellations, and upgrades—will be billed the next day instead of at the beginning of the following month. This change ensures more timely and transparent billing, helping you better track and manage your subscription costs.\n</p><p>When you see this change will depend on the country/region your account is in.\n</p><ul><li>Singapore and Italy: November 13, 2025</li><li>Asia-Pacific: November 18, 2025</li><li>Worldwide: January 6, 2026</li></ul><p><b>How this will affect your organization:</b>\n</p><p>If you have an account where your invoices start with a “G”, your organization will be impacted by this change on the date the change is launched in your region.</p><p><b>Example:</b></p><ul><li>If your account is in Singapore or Italy and you add a license to your subscription on November 13, you will receive an invoice for that additional license on November 14th.  \n</li></ul><p><b>Note: </b>With this change is it possible to be billed later for changes made earlier in the month as changes made prior to this update will still be billed around the beginning of the following month.</p><p><b>What you need to do to prepare:</b></p><p>No action is required. This update will be applied automatically to all eligible subscriptions.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [],
+    "EndDateTime": "2026-02-28T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1176303",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-10-20T18:38:53.81Z",
+    "Services": [
+      "Microsoft 365 suite"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-20T18:38:34Z",
+    "Tags": [
+      "Admin impact"
+    ],
+    "Title": "We’re updating how we bill for mid-term subscription changes",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<div style=\"\"><p style=\"margin-top: 0in; margin-bottom: 8pt;\"><a href=\"https://techcommunity.microsoft.com/blog/officeeos/get-ready-now-one-month-until-office-20162019-end-of-support/4453395\" target=\"_blank\">As previously communicated</a>, support for <b>Office 2016</b> and <b>Office 2019</b>&nbsp;has ended on October 14, 2025. No further updates, security fixes, or technical support will be available for these versions of Office. While the applications may continue to function, using unsupported software could lead to potential security risks, compliance risks, system incompatibilities, and other issues.</p></div><p>Support for <b>Visio 2016</b> and <b>2019</b>, <b>Microsoft Project 2016</b> and <b>2019</b>, and <a href=\"https://techcommunity.microsoft.com/blog/microsoft_365blog/prepare-now-for-key-end-of-support-moments-in-2025/4267800\" target=\"_blank\">several other products</a>&nbsp;also ended, October 14, 2025. Looking ahead, support for <b style=\"\">Office LTSC 2021</b> will end in one year—on October 13, 2026. Organizations using these products should upgrade as soon as possible to maintain security, compliance, and performance.</p><p><b><b>How this affects your organization:</b></b></p><p>After end of support, Office 2016 and Office 2019 suites, standalones, and servers will no longer receive security updates or other fixes, and no technical assistance will be available for devices still running them. Continuing to run unsupported software may expose your organization to security vulnerabilities and compliance risks and may affect the reliability and performance of services. \n</p><p><b><b>What you can do to prepare:</b></b></p><p>To mitigate these risks while maintaining access to desktop Office apps, we recommend upgrading devices to a Microsoft 365 or Office 365 suite that includes Microsoft 365 Apps (for enterprise or for business). Microsoft 365 Apps provides always-up-to-date versions of familiar apps like Word, Excel, and PowerPoint for desktop, mobile, and web with continuous support under the <a href=\"https://learn.microsoft.com/en-us/lifecycle/faq/modern-policy\" target=\"_blank\">Modern Lifecycle Policy</a>, and is eligible for use with the Microsoft 365 Copilot add-on. \n</p><p>For scenarios that require a fully disconnected solution, we recommend upgrading to <a href=\"https://aka.ms/OfficeLTSC2024-EOSLearn\" target=\"_blank\">Office LTSC 2024</a>. Office LTSC 2024 includes a subset of the value in Microsoft 365 Apps and will be supported until October 2029 under the <a href=\"https://learn.microsoft.com/en-us/lifecycle/faq/fixed-policy\" target=\"_blank\">Fixed Lifecycle Policy</a>. \n</p><p>Take steps to prepare for this transition with the following resources: \n</p><ul><li>Read the <a href=\"https://docs.microsoft.com/DeployOffice/endofsupport/plan-upgrade-older-versions-office\" target=\"_blank\">upgrade guidance</a> for an overview of how to move from Office 2016 or Office 2019 to Microsoft 365 Apps. \n</li><li>Consider engaging <a href=\"https://www.microsoft.com/fasttrack/microsoft-365\" target=\"_blank\">Microsoft FastTrack</a>, a Microsoft support service, for moving to Microsoft 365. \n</li></ul><p>Plan ahead to avoid potential disruptions and keep your organization’s software environment secure and up to date.&nbsp;</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Support for Office 2016 and 2019 ended on October 14, 2025, with no further updates or support. Users should upgrade to Microsoft 365 Apps or Office LTSC 2024 to maintain security, compliance, and performance, as Office LTSC 2021 support ends October 13, 2026."
+      }
+    ],
+    "EndDateTime": "2025-11-30T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1176302",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-20T18:38:15.61Z",
+    "Services": [
+      "Microsoft 365 suite"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-20T18:38:02Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Support for Office 2016 and Office 2019 has ended - Office LTSC 2021 is next",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": "2025-11-17T08:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><p></p><p><b><b>Introduction</b></b></p><p></p><p>\n</p><p>To improve the security and reliability of event email notifications in Microsoft Teams, we're updating how custom HTML templates are supported. Starting November 17, 2025, organizations using premium custom HTML templates for Teams Events must ensure their sending domain is properly set up and authenticated. This change helps reduce the risk of event emails being flagged as spam or phishing by ensuring they originate from trusted, customer-owned domains.</p>\n\n<b><b>When this will happen:</b></b><p></p><p>\n</p><p>This change will take effect on <b>November 17, 2025</b>.</p>\n\n<b><b>How this affects your organization:</b></b><p></p><p></p><ul><li><b>Who is affected:</b> <ul><li>Organizations using <b>premium custom HTML templates</b> for <b>Teams Events email notifications</b>.</li></ul></li>\n<li><b>What will happen:</b>\n  <ul>\n    <li>Users will no longer be able to edit or use custom HTML templates for Teams Events unless the sending domain is properly set up and verified.</li>\n    <li>Event emails must be sent from a domain authenticated within your tenant.</li>\n    <li>Microsoft will no longer send these notifications from its default external email address for these templates.</li>\n  </ul>\n</li>\n</ul>\n\n<b><b>What you can do to prepare:</b></b>\n<ul>\n<li>Set up and verify your organization's domain in Microsoft 365 tenant settings.</li>\n<li>Configure the domain to allow Microsoft products to send notifications from your organization’s email address.</li>\n<li>This is a <b>one-time setup</b> and must be completed before November 17, 2025.</li>\n<li>Refer to the official guidance for step-by-step instructions: <a href=\"https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products?view=o365-worldwide\">Select domain to use for email from Microsoft 365 products</a></li></ul><b>Compliance considerations:</b></p><p>No compliance considerations identified, review as appropriate for your organization.</p><p>\n<p></p></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting November 17, 2025, organizations using premium custom HTML templates for Teams Events email notifications must set up and verify their sending domain in Microsoft 365. Without this, custom templates cannot be used, and event emails must originate from an authenticated, customer-owned domain."
+      }
+    ],
+    "EndDateTime": "2025-12-29T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1176301",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-10-20T18:37:45.583Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-20T18:37:33Z",
+    "Tags": [
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Action Required – Domain Setup for Custom HTML Templates in Teams Events Email Notifications",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated October 20, 2025: Removal of these pages have started in late October 2025 and will be fully completed by end of November 2025.</p><p>ASP.NET DISCO and WSDL pages were the web service APIs for customers who wanted to create a proxy for their web services. The retirement of ASP.NET web services was announced in 2013 and should not be used. <b>We encourage customers to move away from consuming these pages</b> and use <a href=\"https://learn.microsoft.com/graph/use-the-api\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Microsoft Graph</a> for remote operations where possible.</p><p>Please refer to the following information regarding the DISCO and WSDL endpoints\n</p><ul><li>These  endpoints were originally designed for use with development tools from the early 2000s and were never a preferred or widely adopted method for generating proxy classes in SharePoint development.\n</li><li>&nbsp;These endpoints are not tenant-specific and are not associated with any individual tenant’s configuration or ownership.\n</li><li>Usage across the SharePoint Online service is extremely rare. In fact, most of these endpoints show zero usage.\n</li><li>These endpoints were primarily used in legacy development scenarios and are not required for modern SharePoint development practices.</li><li> If your organization has an internal development team, we recommend consulting with them to confirm whether these endpoints are in use. However, it is extremely unlikely that they are being used in any current development workflows.</li></ul><p>Learn more: <a href=\"https://devblogs.microsoft.com/microsoft365dev/removal-of-deprecated-disco-wsdl-aspx-pages-from-sharepoint-online/\" target=\"_blank\">Removal of deprecated DISCO &amp; WSDL aspx pages from SharePoint Online - Microsoft 365 Developer Blog</a></p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>",
       "ContentType": "html"
     },
@@ -3883,45 +4028,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Outlook: Declarative Agents in Copilot Chat coming to classic Outlook for Windows",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated October 3, 2025: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b>Introduction</b></p><p>Upcoming privacy-related changes in Chromium-based browsers (Google Chrome and Microsoft Edge) will increase restrictions on local network access. When enforcement begins, users accessing OneDrive for Web (and some integrated Microsoft 365 experiences such as Microsoft Lists and SharePoint Document Libraries) will encounter a browser permission prompt for local network access unless the required policy is in place. If the permission is not allowed, performance optimizations and <a href=\"https://support.microsoft.com/office/work-with-onedrive-web-app-when-offline-05d1865d-8694-4c0a-8e46-28ccb8c58b37\" target=\"_blank\">offline capabilities</a> powered by OneDrive and Share Point will not be available. This communication provides required administrator actions to prevent loss of functionality.</p><p><b>When this will happen:</b></p><p>Chrome and Edge will roll out this privacy related change as part of Chromium 141 at the end of October 2025 (previously end of September).</p><p><b>How this will affect your organization:</b></p><p>If no action is taken:</p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/21ee30ec-4b41-4b77-b7ec-1357c0d6655b/f68733390ed59585964ce46d5e73e73e375a4d0d.png\" style=\"width: 25%;\"><br></p><p>\n</p><ol>\n<li><b>Who is affected:</b><ul><li>All users accessing OneDrive for Web, Microsoft Lists, and SharePoint Document Libraries via Chrome or Edge browsers.</li><li>Admins managing browser policies for Windows, macOS, and VDI environments.</li></ul></li>\n<li><b>What will happen:</b>\n\n<p></p><p>If no action is taken:\n</p><ul><li>Users will see a new browser prompt requesting permission for local network access when opening OneDrive for Web and Lists.</li><li>If users do not click <i>Allow</i>, the following results occur on that device:<ul><li>Performance acceleration will not be available (loss of faster data access behavior).</li><li>Offline functionality in OneDrive Web will not be available.</li></ul></li><li>The experience will be slower and less resilient, and helpdesk contacts will increase due to unexpected prompts and missing offline capability.</li></ul><p>When the recommended browser policy is deployed in advance, the prompt is suppressed for the specified trusted Microsoft 365 endpoints and existing performance, and offline behavior are preserved. The policy prevents loss of existing capability and avoids user confusion.</p><p><b>What you need to do to prepare:</b>\n</p><ol><li>Identify Required Domains<ol><li>Include your organization’s SharePoint Online and OneDrive endpoints, for example: https://YOURTENANT-my.sharepoint.com or https://YOURTENANT.sharepoint.com</li><li>Add additional sanctioned SharePoint Online host variations if applicable (e.g., specialized cloud environments). Avoid overly broad wildcards—conform to internal security governance.</li></ol></li><li>Configure Browser Policy<ol><li>Set the Chromium policy <code>LocalNetworkAccessAllowedForUrls</code>&nbsp;(<a href=\"https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls\" target=\"_blank\">Chrome Enterprise</a>&nbsp;/ <a href=\"https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/localnetworkaccessallowedforurls\" target=\"_blank\">Edge policy</a>) to pre-authorize the listed domains.</li><li>Apply via: ADMX / JSON for Windows; plist or configuration profile for macOS (Chrome and Edge).</li><li>Roll out to all managed device groups (Windows, macOS, VDI as applicable).</li><li>Even if the following policies are currently enabled by policy, deploy the allow-list to prevent future prompts and avoid user confusion.<ol><li><code>DisableNucleusSync</code></li><li><code>DisableOfflineMode</code></li></ol></li></ol></li><li>Remediation for Users Who Already Clicked <i>Block</i><ol><li>Deploying the managed <code>LocalNetworkAccessAllowedForUrls</code>&nbsp;policy will override any prior per-user deny state and enforce the allow setting once the policy is applied to the device/profile; no end-user action is required after policy propagation.</li><li>If you need immediate remediation before policy reaches the device, have the user open the affected OneDrive site, use the site (lock) icon, reset or change the local/network device access permission to <i>Allow</i>, then refresh.</li></ol></li><li>Ensure your Sync Client is updated to v.25.164</li></ol></li></ol><p style=\"margin-left: 125px;\">1. <b>Per machine SKU</b>: The Sync client will automatically apply the required permissions and policies for existing users in Chrome and Edge—no user action is needed.</p><ol></ol><p></p><p style=\"margin-left: 125px;\">2. <b>Per user SKU</b>: The Sync client will prompt users via a Windows Toast notification to enable these permissions. Users should follow the notification instructions to complete setup.</p>\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\">\n<tbody><tr><th>Compliance Area</th><th>Explanation</th></tr>\n<tr><td>Alters how existing customer data is accessed</td><td>Local network access impacts how OneDrive and SharePoint optimize performance and offline access to cached data.</td></tr>\n<tr><td>Includes admin control</td><td><p>Admins can configure the <code>LocalNetworkAccessAllowedForUrls</code> policy and deploy it via group policy or configuration profiles.</p></td></tr>\n<tr><td>Can be controlled through Entra ID group membership</td><td>Policy deployment can be scoped to device groups managed via Entra ID.</td></tr>\n<tr><td>Allows user to enable/disable feature</td><td>Users can manually allow or block local network access via browser prompts if policy is not enforced.</td></tr>\n\n</tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "preventOrFixIssue",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Chromium browsers will restrict local network access, causing OneDrive and SharePoint web apps to prompt users for permission, impacting performance and offline use. Admins must configure the LocalNetworkAccessAllowedForUrls policy to pre-authorize trusted domains, preventing prompts and preserving functionality before Chromium 141 rollout in October 2025."
-      }
-    ],
-    "EndDateTime": "2025-12-01T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1150662",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-10-03T15:17:59.43Z",
-    "Services": [
-      "SharePoint Online",
-      "Microsoft OneDrive"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-09T23:08:28Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Action Required – Configure Browser Policy to Preserve OneDrive and SharePoint Web Performance and Offline Capability",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -11427,7 +11533,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"491468\":[{\"RoadmapId\":491468,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465835Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465836Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242372Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":491468,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465838Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465839Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242377Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"491468\":[{\"RoadmapId\":491468,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242372Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":491468,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465838Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465839Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465835Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465836Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242377Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
