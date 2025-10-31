@@ -4,6 +4,260 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>We’re improving external collaboration in Microsoft Teams by enabling file attachments and Loop sharing in 1:1, group and meeting chats with external users. This update improves the collaboration experience for Files and Loop and add a new control for IT admins. Specifically, Files and Loop components will be shared automatically with external participants in the chat and won’t require any action by the sender by default. Additionally, Entra B2B Guests in your organization will be able to attach and share files from their home tenant’s OneDrive or SharePoint.&nbsp;</p><p>This change applies to Teams for Windows desktop, Mac desktop, and web and is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=492625\" target=\"_blank\">492625</a>.</p><p>Screenshot 1: <i>Files are automatically provisioned.</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/a099fd76-7665-4ce8-b043-0f3331b55971\" style=\"width: 400px;\" alt=\"user settings\"></p><p>Screenshot 2: <i>Files shared have an external label and always open on Web.</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/27858dcc-8fd4-4e98-b1af-27dd3678887d\" style=\"width: 400px;\" alt=\"user settings\"></p><p><b><b>When this will happen:</b></b></p><ul><p></p>\n<li><b>Targeted Release:</b>&nbsp;Rollout begins late October 2025; expected to complete by mid-November 2025</li>\n<li><b>General Availability (Worldwide):</b>&nbsp;Rollout begins mid-January 2026</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p><p><b>Who is affected:</b></p><p>All Microsoft Teams users in your organization who participate in 1:1, group, or meeting chats with external users, including guest and Teams for Free users.</p><p><b>What will happen:</b></p><p>With this update: \n</p><ul><li>Unless the user chooses to share File and Loop by pasting links, external users in chat will be automatically provisioned to allow frictionless collaboration. \n</li><li>You can disable automatic provisioning and have the user change permissions manually by using policy controls.\n</li><li>If disabled, users will have to manually provision the file to users in the chat. \n</li><li>Guest users will be able to upload files from their home tenant’s OneDrive and SharePoint.\n</li><li>Files shared by external users will continue to display an <b>External&nbsp;</b>tag for clarity.\n</li><li>Loop components will now be rendered inside external chats in Teams.\n</li><li>Recipients will access File and Loop components as B2B guests within the resource tenant. If they are not already added as guests, they will need to give consent and might need to complete MFA, depending on your company’s B2B policy, before viewing the chat content.</li>\n</ul>\n\n<b>What you can do to prepare:</b>\n\n\n<ul><li>No action is required to enable the feature—it will be automatically available as the rollout progresses.</li><li>To disable the automatic provisioning behavior for files and loops set the <code>AutoShareFilesInExternalChats</code> attribute of <code>TeamsMessagingPolicy</code> to <code>Disabled</code>. Learn more: <a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy?view=teams-ps#-autosharefilesinexternalchats\" target=\"_blank\">Set-CsTeamsMessagingPolicy documentation</a>.\n</li><li>To provide seamless Loop access experience for external users, we recommend turning on Entra B2B Guest Access. Refer to: <a href=\"https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration\" target=\"_blank\">Microsoft Entra B2B integration for SharePoint &amp; OneDrive - SharePoint in Microsoft 365 | Microsoft Learn</a>.</li><li>For configuration guidance, refer to: <a href=\"https://learn.microsoft.com/powershell/module/teams/set-csteamsfilespolicy?view=teams-ps#-filesharinginchatswithexternalusers\" target=\"_blank\">Set-CsTeamsFilesPolicy documentation</a> (documentation will be updated before rollout).</li></ul><p><b>Compliance considerations</b></p><p><b></b></p><p></p><table border=\"1\">\n<tbody><tr>\n<th>Compliance Area</th>\n<th>Impact</th>\n</tr>\n<tr>\n<td>New communication method between tenants</td>\n<td>Enables file sharing in external chats, expanding cross-tenant collaboration</td>\n</tr>\n<tr>\n<td>Admin control available</td>\n<td>Admins can disable the feature via PowerShell</td>\n</tr>\n<tr>\n<td>Can be controlled through Entra ID group membership</td>\n<td>Policy can be scoped using Entra ID groups</td>\n</tr>\n<tr>\n<td>Data processing changes</td>\n<td>Files shared in external chats are tagged and stored per existing Teams file sharing protocols</td>\n</tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "492625"
+      },
+      {
+        "Name": "FeatureStatusJson",
+        "Value": "{\"492625\":[{\"RoadmapId\":492625,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-07-17T11:15:09.4174561Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":492625,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9268287Z\",\"LatestRing\":null},{\"RoadmapId\":492625,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9268288Z\",\"LatestRing\":null},{\"RoadmapId\":492625,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-07-17T11:15:09.4174571Z\",\"LatestRing\":\"StandardRelease\"}]}"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams now enables automatic file and Loop component sharing by default in external 1:1, group, and meeting chats, improving collaboration. Admins can disable this via policy. Guest users can share files from their home tenant. Rollout starts October 2025, completing worldwide by January 2026."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2026-03-02T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1181772",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-31T00:17:07.783Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-31T00:11:41Z",
+    "Tags": [
+      "Feature update",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: File attachment control now enabled by default in external 1:1 and group chats",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>We’re launching a Pre-Purchase Plan (P3) for Microsoft Copilot Studio: a prepaid capacity option on Azure rails. This plan is Microsoft Azure Consumption Commitment (MACC)-eligible, offers annual commitment discounts, auto-monetizes overages at Pay-As-You-Go (PayGo) rates, and uses a single external meter that spans Copilot Studio, Dynamics 365 out-of-box (OOB) agents, and Moveworks OOB agents. Usage is externally reported under M365—Productivity &amp; Business Process KPI.</p>\n\n<p><strong><b>When this will happen:</b></strong></p><p>Customer availability begins <strong>November 1, 2025</strong>.\n</p>\n\n<p><strong><b>How this will affect your organization:</b></strong></p>\n\n<p><strong>Who’s affected:</strong></p>\n<ul>\n  <li>IT administrators</li>\n  <li>Procurement and finance teams (MACC)</li>\n  <li>Platform owners for Copilot Studio, D365 OOB, and MW OOB</li>\n</ul>\n\n<p><strong>What’s changing:</strong></p>\n<ul>\n  <li>Purchase annual, prepaid Commit Units (CU) with tiered discounts; overages billed at PayGo rates</li>\n  <li>A single meter aggregates usage across Copilot Studio, D365 OOB, and MW OOB</li>\n  <li>MACC is decremented at purchase; revenue is recognized upon consumption; unconsumed credits are recognized in the final month</li>\n</ul>\n\n<p><strong>Copilot credit options (CU ↔ credits):</strong><strong><br></strong></p><p><strong>&nbsp; &nbsp;Standard P3 (fastest):</strong></p>\n<ul>\n  <li>1 CU = $1</li>\n  <li>Example: 3,000 CU list price = $3,000; sold at $2,850 (5% discount)</li>\n  <li>Converts to 300,000 credits at $0.01/credit</li>\n</ul>\n\n<p><strong>&nbsp; &nbsp;Custom P3 (developer-friendly):</strong></p>\n<ul>\n  <li>1 CU = $0.01 (CU ≡ Copilot Credit)</li>\n  <li>Example: 300,000 CU (credits) list price = $3,000; sold at $2,850 (5% discount)</li>\n  <li>Longer lead time (non-standard)</li></ul>\n\n<p><strong>&nbsp; &nbsp;P3 Mechanics:</strong></p>\n<ul>\n  <li>1-year prepaid, use-it-or-lose-it, auto-renewing model</li>\n  <li>Overage billed at PayGo</li>\n  <li>Revenue recognized as consumed; remaining credits recognized in the final month</li>\n</ul>\n\n<p><strong><b>What you can do to prepare:</b></strong></p>\n<ul>\n  <li>Choose between Standard and Custom CU mapping</li>\n  <li>Align MACC and budget with forecasted consumption</li>\n  <li>Review procurement processes for annual prepay and auto-renew</li>\n  <li>Coordinate with platform owners to leverage the single meter</li>\n</ul>\n\n<p><strong>Additional Information:</strong></p>\n<ul>\n  <li>Usage across Copilot Studio, D365 OOB, and MW OOB is metered together and reported under M365</li>\n  <li>Custom P3 offers intuitive credit mapping but requires longer implementation lead time</li>\n</ul>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Copilot Studio launches a Pre-Purchase Plan (P3) on November 1, 2025, offering annual prepaid Commit Units with discounts, a single usage meter across Copilot Studio, Dynamics 365, and Moveworks, MACC eligibility, and Pay-As-You-Go overage billing. Preparation includes choosing credit options and aligning budgets."
+      }
+    ],
+    "EndDateTime": "2025-12-01T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1181771",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-31T00:11:23.677Z",
+    "Services": [
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-31T00:11:15Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Copilot Studio: Introducing the pre-purchase plan (P3)",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\n<p>To help organizations better protect sensitive files in transit, we're introducing a public preview for extending <b>Microsoft Purview Data Loss Prevention (DLP) policies to the network through integration with Entra Global Secure Access Internet Access</b>. Through this integration, organizations can intercept and inspect file traffic at the network layer and enforce actions based on DLP policy conditions. It helps prevent sensitive files from being shared with untrusted cloud applications through browsers, apps, APIs, add-ins, and more—including generative AI platforms, cloud storage, and content-sharing services—while managing alerts and incidents through Purview and Microsoft Defender.</p><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?searchterms=522096\" target=\"_blank\">522096</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li><b>Public preview: </b>Rollout begins mid-November 2025 and completes by mid-December 2025.</li>\n<li><b>General availability: </b>Rollout begins mid-June 2026 and completes by mid-July 2026.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><b style=\"\">Who is affected: </b>Microsoft 365 tenants with E3 or E5 licenses; Admins managing Microsoft Purview DLP and Entra Global Secure Access.</li>\n<li><b style=\"\">What will happen:\n  </b><ul>\n    <li>A new “Inline Web Traffic” scenario will be available in Purview DLP policy creation.</li>\n    <li>Admins can configure granular policies and rules to detect and protect sensitive files transmitted to over 35,000 unmanaged cloud applications.</li>\n    <li>Policy matches, alerts, and incidents will be managed centrally in Microsoft Purview and Microsoft Defender.</li>\n    <li>The feature will be available by default but requires configuration to activate.</li>\n  </ul>\n</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Ensure your GSA administrator configures the following in Entra Global Secure Access:\n  <ul>\n    <li>Enabled the internet access traffic profile and ensure the correct user assignments apply.</li>\n    <li>Configure TLS inspection and configure a TLS inspection policy.</li><li>Create a file policy and add a rule that specifies the action \"Scan with Purview\".</li><li>Configure a security profile with the above policies and link it to a conditional access policy.</li>\n  </ul>\n</li>\n<li>Your global admin must activate Purview pay-as-you-go to enable this capability. No charges will apply during public preview.</li>\n<li>Review your current DLP and network configurations to assess impact.</li>\n<li>Communicate this change to helpdesk and security teams.</li>\n<li>Update internal documentation to reflect new policy options.</li>\n<li>For more details, refer to: <a href=\"https://learn.microsoft.com/microsoft-365/compliance/data-loss-prevention-policies\" target=\"_blank\">Learn about data loss prevention</a></li>\n</ul><p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n  <tbody><tr>\n    <th>Compliance Area</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Alters how existing customer data is processed</td>\n    <td>Sensitive file traffic is inspected at the network layer before reaching unmanaged cloud apps.</td>\n  </tr>\n  <tr>\n    <td>Introduces AI/ML capabilities</td><td>DLP policies may interact with generative AI platforms to prevent data leakage.</td>\n  </tr>\n  <tr>\n    <td>Modifies DLP enforcement</td><td>Adds network-layer enforcement to existing Purview DLP capabilities.</td>\n  </tr>\n  <tr>\n    <td>Adds integration to extend Purview DLP controls</td>\n    <td>Integrates with Entra Global Secure Access Internet Access.</td>\n  </tr>\n  <tr>\n    <td>Includes admin control</td><td>Controlled via Purview and Entra admin portals.</td>\n  </tr>\n  <tr>\n    <td>Can be controlled through Entra ID group membership</td>\n    <td>Policy scoping can leverage Entra ID groups.</td>\n  </tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "522096"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview DLP policies will integrate with Entra Global Secure Access Internet Access to inspect and control sensitive file traffic at the network layer. Public preview starts mid-November 2025, enabling granular policy enforcement across unmanaged cloud apps, with centralized alert management in Purview and Defender."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-08-17T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1181769",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-31T00:10:10.607Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-31T00:09:48Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview: Integration with Entra GSA Internet Access to enable sensitive file filtering at the network layer",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>To strengthen Microsoft’s security posture, we’re introducing <b>updates</b> <b>to Microsoft Purview</b> that <b>enhance audit logging</b> and enforce Entra conditional access policies <b>for eDiscovery admins</b>. These changes help ensure that sensitive content is accessed only by users who meet your organization’s security requirements.</p>\n\n<p><b><b>When this will happen:</b></b>\n</p><p><b>General Availability (Worldwide, GCC, GCCH, and DoD): </b>Rollout will begin and is expected to conclude in late November 2025.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n</ul><p><b>Who is affected:</b> Admins using Microsoft Purview for eDiscovery and subject to Entra conditional access policies.</p><ul>\n</ul><p><b>What will happen:</b>\n  </p><ul>\n    \n    \n    \n    \n  </ul>\n<p></p><ul><li>When eDiscovery admins preview a file in the <i>Purview portal</i>, the action will be logged under the <b><i>FilePreviewed&nbsp;</i></b>activity in <i>Audit logs</i>.</li><li>eDiscovery and Compliance admins who do not meet Entra conditional access policies (such as MFA or Trusted Network Policy) will be blocked from accessing SharePoint Online content via the Purview portal.<ul><li>Access behavior is being altered. Previously, eDiscovery Admins could access SharePoint Online content in Purview regardless of their compliance with Entra Conditional Access policies. With this update, access will be restricted for non-compliant admins, representing a change in enforcement behavior.\n</li><li>Microsoft recommends compliance with Entra policies to maintain uninterrupted access.\n</li><li>As a temporary workaround, Global admins may use the <b><i>exclude Users and groups</i></b> option to exempt specific eDiscovery admins from conditional access enforcement.</li></ul></li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Ensure all eDiscovery admins comply with your organization’s Entra conditional access policies.</li>\n<li>Review and update your conditional access configurations if exemptions are needed.</li></ul><p>Learn more:</p><ul><li><a href=\"https://learn.microsoft.com/purview/audit-log-activities\" target=\"_blank\">Audit log activities | Microsoft Purview | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-mfa-policy\" target=\"_blank\">How To: Configure the multifactor authentication registration policy | Microsoft Entra ID Protection | Microsoft Entra | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations:</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change modify, interrupt, or disable Conditional Access policies?</td><td>Yes. Admins who do not meet Entra conditional access requirements will be blocked from accessing SharePoint content via the Purview portal.</td></tr><tr><td>Does the change modify, interrupt, or disable Audit logging capabilities?</td><td>Yes. A new audit log activity, ‘FilePreviewed’, will be recorded when eDiscovery Admins preview files in the Purview portal.</td></tr><tr><td>Does the change modify, interrupt, or disable eDiscovery or Content Search?</td><td>Yes. Access to SharePoint content via eDiscovery will be restricted for non-compliant admins.</td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td>Yes. The addition of the ‘FilePreviewed’ audit log activity enhances visibility into admin actions and supports compliance reporting.</td></tr></tbody></table><p></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview will enforce Entra conditional access policies for eDiscovery admins by blocking non-compliant users from accessing SharePoint content and adding a new ‘FilePreviewed’ audit log activity. Rollout begins now and completes by November 2025, enhancing security and compliance monitoring."
+      }
+    ],
+    "EndDateTime": "2025-12-31T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1181768",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-10-31T00:09:30.723Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-31T00:09:14Z",
+    "Tags": [
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview: eDiscovery admin content access restrictions when not in compliance with Entra policies",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction:</b></b>\n</p><p>We’re updating the <b>AI Disclaimer experience</b> in <i>Microsoft Copilot Chat</i> based on customer feedback. Some users found the disclaimer too distracting, while others felt it was too subtle. To address this, we’re introducing admin controls that allow organizations to customize how the disclaimer appears, improving user awareness and flexibility.</p>\n\n<p><b><b>When this will happen:</b></b>&nbsp;</p><p>Rollout will begin in late November 2025 and complete by:</p>\n<ul>\n<li><b>Worldwide &amp; GCC:</b> Early December 2025</li>\n<li><b>GCC High &amp; DoD:</b> Mid-December 2025</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n</ul><p><b>Who is affected:</b> All users of Microsoft Copilot Chat across all endpoints.</p><ul>\n</ul><p><b>What will happen:</b>\n  </p><ul>\n    \n    \n    \n  </ul>\n<p></p><ul><li>The AI Disclaimer below the Input Box will be <b>OFF by default</b>.</li><li>Admins will have a new toggle to <b>enable the disclaimer</b>.<ul><li>If enabled:\n      <ul>\n        \n        \n      <li>The disclaimer will display <b>bolded text</b> for increased visibility.</li><li>Admins can configure a <b>custom URL</b> or use the default link to Microsoft documentation.</li><li>Both Starter and Premium users can see the Input Box and the AI Disclaimer (if enabled), so a Copilot license is not explicitly required for visibility.</li></ul>\n    </li></ul></li>\n</ul>\n\n<p><i>Screenshot 1 and 2: The top image shows the default experience with no AI Disclaimer visible. The bottom image shows the AI Disclaimer with Heightened Awareness enabled by the admin.&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/52cebfd5-9633-4896-b3da-d49a7d986050/ffa54f67f779cf2027c7238e553cc95c86d30eb3.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Review the new <i><b>AI Disclaimer toggle</b></i> in the <i>Admin Portal </i>once available.</li>\n<li>Decide whether to enable the disclaimer for your organization.</li>\n<li>If enabling, prepare a custom URL to include in the UX.&nbsp;</li>\n<li>Communicate this change to helpdesk staff and Copilot users.</li>\n<li>Update internal documentation if you reference the disclaimer experience.</li>\n</ul>\n\n<p>Learn more:&nbsp;<a href=\"https://support.microsoft.com/topic/transparency-note-for-microsoft-copilot-c1541cad-8bb4-410a-954c-07225892dbc2\" target=\"_blank\">Transparency Note for Microsoft Copilot | Microsoft Support</a></p><p><b><b>Compliance considerations:</b></b>\n</p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Copilot Chat will update its AI Disclaimer experience starting late November 2025, making the disclaimer off by default with an admin toggle to enable it. Enabled disclaimers show bolded text and allow custom URLs. All users see the input box and disclaimer without needing a Copilot license."
+      }
+    ],
+    "EndDateTime": "2026-03-02T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1181766",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-31T00:08:03.757Z",
+    "Services": [
+      "Microsoft 365 suite"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-31T00:07:43Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Copilot Chat: AI disclaimer updates",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>Content Explorer contains significant volumes of data, and can sometimes feel overwhelming, leading to concerns about too many false positives in Microsoft Purview. To address this, we are introducing <b>Classifier Scoping in Content Explorer.</b>&nbsp;<b>Classifier Scoping</b> empowers customers to define exactly what data they want to see, significantly reducing noise and helping them focus on what matters most.</p><p>This message is associated with Microsoft 365 Roadmap ID <font color=\"#000000\" style=\"\"><a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=518224\" target=\"_blank\">518224</a></font>.</p><p><b><b>When this will happen:</b>\n</b></p><ul><li><b>Public Preview: </b>We will begin rolling out mid-November 2025 and expect to complete by early December 2025\n</li><li><b>Worldwide:</b> We will begin rolling out late December 2025 and expect to complete by mid-January 2026.</li></ul><p><b><b>How will affects your organization:</b></b></p><p><b>\n</b></p><ul><li><b>Who is affected:&nbsp;</b>Microsoft Purview administrators using Content Explorer.</li><li><b>What will happen:</b><ul><li>Admins can define and scope views in Content Explorer using selected classifiers, sensitivity labels, and retention labels.</li><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/6eff7582-5cfa-4707-a832-9d8d412af778/c2f1c17996ebd927734753a66bcc412a186f68ae.png\" style=\"width: 400px;\" alt=\"user settings\"></p><li>These scoped views can be saved and reused with a few clicks.</li><li>No changes to user workflows.</li><li>The feature will be <b>available by default</b> once rolled out; no opt-in required.</li></ul></li></ul><p><b><b>What you can do to prepare:</b></b></p><ul><li>No action is required to enable this feature.</li><li>After rollout, admins can:<ul><li>Define scoped views in Content Explorer using classifiers and labels.</li><li>Save and apply these views to streamline data analysis.</li></ul></li></ul><p> \n</p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "518224"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Content Explorer will introduce Classifier Scoping, allowing admins to filter data by classifiers, sensitivity, and retention labels to reduce noise. Rolling out from November 2025 to January 2026, scoped views can be saved and reused, with no workflow changes or opt-in required."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-02-17T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1181764",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-10-31T00:06:34.153Z",
+    "Services": [
+      "Microsoft 365 suite",
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-31T00:05:57Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Content Explorer – enhanced tag (SIT, labels) filter at UI layer",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p><b>Introduction:</b></p>\n<p>We’re introducing <b>Researcher with Computer Use</b> in Microsoft 365 Copilot—a powerful extension that enables users to interact with public, gated, and interactive web content using a secure virtual computer. This enhancement helps users uncover deeper insights, take action, and generate richer reports grounded in both their work data and the web.</p>\n\n<p><b>When this will happen:</b></p>\n<p>Rollout begins October 30, 2025, for all tenants with Frontier access.</p>\n\n<p><b>How this affects your organization:</b></p>\n<ul>\n<li><b>Who is affected:</b> <ul><li>All tenants with Frontier access using Microsoft 365 Copilot. </li><li>A Microsoft 365 Copilot license is required to use Researcher with Computer Use. </li><li>Admins can manage licensing and agent access in the <a href=\"https://admin.cloud.microsoft/?#/copilot/agents\" target=\"_blank\"><i>Copilot admin portal</i></a>.</li></ul></li>\n<li><b>What will happen:</b>\n<ul>\n<li>Users will be able to access premium and authenticated web content that requires credentials and consent.</li>\n<li>Users can take action directly from the Copilot interface—clicking, typing, navigating, and completing tasks.</li>\n<li>Rich artifacts such as presentations, spreadsheets, and applications can be generated using advanced code generation.</li>\n<li>Reports can be tailored using business data including meetings, files, chats, and more.</li>\n<li><b>By default, Computer Use is enabled </b>unless configured otherwise by an admin<b>, and work is turned off for the user. </b>The user can still enable work in sources, unless disabled by an admin.</li><li>The original Researcher agent experience (without Computer Use) remains available if your organization is not enrolled in Frontier or if Computer Use is not enabled.</li>\n</ul>\n</li>\n</ul>\n\n<p><b>What you can do to prepare:</b></p>\n<ul>\n<li>Ensure eligible users have Microsoft 365 Copilot licenses assigned.</li><li>Review and configure feature access in the <i><a href=\"https://admin.microsoft.com\" target=\"_blank\">Microsoft 365 admin center</a></i>.</li>\n<li>Specify allowed websites and manage work access settings.</li>\n<li>Communicate this change to helpdesk staff.</li>\n<li>Update internal documentation if you detail Copilot capabilities.</li>\n<li>Learn more:\n<ul>\n<li><a href=\"https://techcommunity.microsoft.com/blog/microsoft365copilotblog/introducing-researcher-with-computer-use-in-microsoft-365-copilot/4464766\" target=\"_blank\">Introducing Researcher with Computer Use in Microsoft 365 Copilot | Microsoft 365 Copilot Blog</a></li><li><a href=\"https://learn.microsoft.com/copilot/microsoft-365/researcher-agent\" target=\"_blank\">Get started with Researcher agent in Microsoft 365 Copilot | Microsoft 365 Copilot</a></li><li><a href=\"https://learn.microsoft.com/copilot/microsoft-365/researcher-agent-computer-use\" target=\"_blank\">Researcher with Computer Use admin configuration | Microsoft Learn</a>\n</li><li><a href=\"https://learn.microsoft.com/copilot/microsoft-365/researcher-agent-computer-use-faq\" target=\"_blank\">Researcher with Computer Use frequently asked questions | Microsoft Learn</a></li>\n</ul>\n</li>\n</ul>\n\n<p><b>Compliance considerations:</b></p>\n<table border=\"1\">\n<tbody><tr><th>Question</th><th>Answer</th></tr>\n<tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. Researcher with Computer Use allows Copilot to combine business data (such as meetings, files, and chats) with web content to generate outputs.</td></tr>\n<tr><td>Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data?</td><td>Yes. This update expands Copilot’s AI capabilities to interact with gated and interactive web content using a virtual computer.</td></tr>\n<tr><td>Does the change provide end users any new way of interacting with generative AI?</td><td>Yes. Users can now generate rich artifacts such as presentations, spreadsheets, and applications using advanced code generation.</td></tr>\n<tr><td>Does the change include an admin control and can it be controlled through Entra ID group membership?</td><td>Yes. Admins can configure access, specify allowed websites, and manage work access using Entra ID groups.</td></tr>\n<tr><td>Does the change allow a user to enable and disable the feature themselves?</td><td>No. The feature is enabled by default and can only be configured by an admin.</td></tr>\n</tbody></table>",
       "ContentType": "html"
     },
@@ -6339,7 +6593,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"503300\":[{\"RoadmapId\":503300,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T19:12:16.4986287Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T19:12:16.4986285Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T19:12:16.4986283Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T19:12:16.4986288Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T19:12:16.4986289Z\",\"LatestRing\":null}]}"
+        "Value": "{\"503300\":[{\"RoadmapId\":503300,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T19:12:16.4986288Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T19:12:16.4986287Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T19:12:16.4986285Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T19:12:16.4986283Z\",\"LatestRing\":null},{\"RoadmapId\":503300,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-10-10T19:12:16.4986289Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -13362,7 +13616,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"491468\":[{\"RoadmapId\":491468,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242372Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":491468,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465838Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465839Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465835Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465836Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242377Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"491468\":[{\"RoadmapId\":491468,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465836Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242372Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":491468,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465838Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465839Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-03T05:16:42.4465835Z\",\"LatestRing\":null},{\"RoadmapId\":491468,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-06-10T13:30:45.8242377Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -14192,37 +14446,6 @@
       "New feature"
     ],
     "Title": "Power Apps - Create offline profiles in the maker studio for Canvas apps",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "We are announcing the ability to manage your source code for canvas apps in Power Apps. This feature will reach general availability on September 30, 2025.<br><br><b>How does this affect me?</b><br>This feature update allows you to view the underlying code to understand app functionality and manage source control. With this feature, you no longer need to use Power Platform CLI to convert a '.msapp' file into source code files.<br><br>You can view the source code for the canvas app in an updated, human-readable YAML format directly in Power Apps Studio or use external code editors.<br><br>This new capability helps you:<ul><li>Store the files in a code repository.</li><li>Automate generation of a canvas app.</li><li>Improve the generative canvas app models.</li><li>Refactor canvas apps without using the designer.</li><li>Integrate natively with Git for Power Platform.</li></ul><b>What action do I need to take?</b><br>This message is for awareness and no action is required.",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2025-10-31T01:10:00Z",
-    "HasAttachments": false,
-    "Id": "MC1148593",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-06T01:10:58.69Z",
-    "Services": [
-      "Power Apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-06T01:10:23Z",
-    "Tags": [
-      "New feature"
-    ],
-    "Title": "Power Apps - Manage your source code for canvas apps",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
