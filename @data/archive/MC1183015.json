@@ -1,0 +1,36 @@
+{
+  "ActionRequiredByDateTime": "2025-12-13T08:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>On December 13, 2025, you may encounter issues if you haven't updated your analytic rules, automation rules/playbooks, workbooks, hunting queries, or custom integrations to be precedence-aware for account entity naming. We've standardized the account entity naming logic in Microsoft Sentinel incidents and alerts, where the account entity naming priority is: UPN prefix → name → display name. Please update your queries and automations to use the new precedence pattern.</p><p>You are receiving this message because our reporting indicates your organization may be using Microsoft Sentinel incidents, alerts (AlertV3), or related automation.</p><p><b><b>When this will happen:</b></b></p><p>December 13, 2025</p><p><b><b>How this will affect your organization:</b>\n</b></p><p><b>If you don't fix this problem, these queries, automations, dashboards, and reports that reference account names may be affected:\n</b></p><ul><li>Analytics (KQL) that filter by, join on, or normalize account names\n</li><li>Automation rules &amp; playbooks (e.g., Logic Apps) that map Account.Name or compare it to other identity fields\n</li><li>Workbooks &amp; dashboards that show account name or aggregate by that value\n</li><li>Hunting queries that coalesce or parse account identity fields\n</li><li>Any users or systems relying on display name as the account identifier</li></ul><p><b><b>What you need to do to prepare:</b>\n</b></p><p>To fix this problem you need to update your KQL queries and automation logic to use the new precedence-aware pattern for account entity naming. Specifically, use a coalesce pattern (e.g., coalesce(Name, DisplayName)) wherever you reference the account name, and validate your workbooks, dashboards, and playbooks against the new logic. Test changes in a nonproduction workspace before rollout.</p>",
+    "ContentType": "html"
+  },
+  "Category": "preventOrFixIssue",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "By December 13, 2025, update Microsoft Sentinel analytic rules, automation, workbooks, and queries to use the new account entity naming precedence: UPN prefix → name → display name. Use coalesce patterns to avoid issues in incidents, alerts, dashboards, and playbooks relying on account names. Test changes before rollout."
+    }
+  ],
+  "EndDateTime": "2026-01-30T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1183015",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2025-11-05T00:24:26.907Z",
+  "Services": [
+    "Microsoft Defender XDR"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-11-05T00:24:20Z",
+  "Tags": [
+    "Admin impact"
+  ],
+  "Title": "Fix/Update Microsoft Sentinel Account Entity Naming to avoid inconsistent account identification in incidents and alerts",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
