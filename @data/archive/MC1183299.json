@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>To help organizations recover from accidental or malicious deletions, <b>Microsoft Entra</b> is introducing <b>soft deletion and restoration for cloud security groups</b>. This feature allows deleted groups to be restored within 30 days, preserving their settings, ownership, and membership—reducing the need to rebuild access models from scratch.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li><b>Public preview: </b>Rollout began in late in October 2025 and is expected to complete by early November 2025.</li>\n<li><b>General availability (Worldwide): </b>Rollout begins in late February 2026 and is expected to complete by early March 2026.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><i>Who is affected:</i></p>\n<ul>\n<li>Admins managing Microsoft Entra cloud security groups.</li>\n<li>Users whose access is governed by security groups.</li>\n</ul>\n\n<p><i>What will happen:</i></p>\n<ul>\n<li>Deleted cloud security groups will enter a soft deleted state and appear in the <i>Deleted groups blade</i>.</li>\n<li>During soft deletion:\n  <ul>\n    <li>Access granted via the group is removed.</li>\n    <li>The group is restorable for up to 30 days.</li>\n  </ul>\n</li>\n<li>After 30 days, the group is permanently deleted.</li>\n<li>Restoration recovers:\n  <ul>\n    <li>Group properties (name, description, type)</li>\n    <li>Settings (roles, policies)</li>\n    <li>Ownership and membership (assigned and dynamic)</li>\n  </ul>\n</li>\n<li>Admin tools supported:\n  <ul>\n    <li>Microsoft Entra admin center</li>\n    <li>Microsoft Graph</li>\n    <li>PowerShell</li>\n  </ul>\n</li>\n<li>Audit logs will capture deletion, restoration, and hard delete actions.</li>\n<li>Users lose access via the group during soft deletion; restoring the group reapplies access based on the group’s previous configuration.\n</li><li>If a resource (for example, a SharePoint site, app, or policy scope) is protected by a soft deleted group, affected users immediately lose access via that group. If users had direct or alternate access paths, those remain unchanged.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Identify critical groups:<ul><li>Inventory and tag critical security groups that gate access to sensitive resources.</li></ul></li>\n<li>Update admin runbooks:<ul><li>Add steps to restore a deleted group before attempting to rebuild it.</li></ul></li>\n<li>Test in a pilot (after preview reaches your tenant):<ul>\n    <li>Create a test security group, grant it access to a nonproduction resource, soft delete, validate access removal, then restore and confirm access returns as expected</li>\n    <li>If you automate group management, validate your automation handles soft deleted objects and does not immediately hard delete them.</li>\n  </ul>\n</li>\n<li>Communicate to helpdesk and resource owners:\n  <ul>\n    <li>Create guidelines on how to check deleted groups, how to restore, and when to escalate before recreating a group.</li></ul></li></ul><p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/entra/architecture/recover-from-deletions\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Recover from deletions in Microsoft Entra ID - Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/architecture/recoverability-overview\" target=\"_blank\">Recoverability best practices in Microsoft Entra ID | Azure Docs | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/users/groups-restore-deleted\" target=\"_blank\">Restore a deleted Microsoft 365 group - Microsoft Entra ID | Microsoft Learn</a></li></ul><p><b>MS Graph documentation:</b></p><ul><li><a href=\"https://learn.microsoft.com/graph/api/group-delete?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">Delete group - Microsoft Graph API - Microsoft Graph v1.0 | Microsoft Learn</a>\n</li><li><a href=\"https://learn.microsoft.com/graph/api/directory-deleteditems-list?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">List deleted items (directory objects) - Microsoft Graph v1.0 | Microsoft Learn</a>\n</li><li><a href=\"https://learn.microsoft.com/graph/api/directory-deleteditems-restore?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">Restore deleted directory object item - Microsoft Graph v1.0 | Microsoft Learn</a>\n</li><li><a href=\"https://learn.microsoft.com/graph/api/directory-deleteditems-delete?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">Permanently delete an item (directory object) - Microsoft Graph v1.0 | Microsoft Learn</a></li></ul><p></p><ul>\n  </ul>\n<p></p><ul>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Entra introduces soft deletion and restoration for cloud security groups, allowing recovery within 30 days while preserving settings, ownership, and membership. Rollout begins in late October 2025 (preview) and February 2026 (general availability). Deleted groups remove access until restored; audit logs track actions."
+    }
+  ],
+  "EndDateTime": "2026-04-03T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1183299",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2025-11-06T00:20:24.447Z",
+  "Services": [
+    "Microsoft Entra"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-11-06T00:20:03Z",
+  "Tags": [
+    "New feature",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Entra: Soft deletion and restoration for cloud security groups",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
