@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>Introduction</b></b></p>\n<p>We are improving <b>People Search in the Global Address List</b> to correctly handle the <b>HideFromAddressListEnabled</b> attribute. Previously, when users were synced across tenants via Entra Cross Tenant Sync, this attribute did not propagate, causing hidden users in the source tenant to appear in the target tenant’s <b>Global Address List (GAL)</b>.&nbsp;</p><p>With this update, the attribute will sync across Exchange and Entra directories, and a backfill process will ensure previously synced users reflect the correct visibility. Dual write ensures all future sync operations propagate <b>HideFromAddressListEnabled</b> correctly</p><p>\n<b><b>When this will happen:</b></b></p>\n<ul><li><b>General Availability (Worldwide, GCC, GCCH, and DoD):</b> We will begin rolling out late November 2025 and expect to complete by mid-December 2025.</li><li>The update will run automatically in the background and may take several weeks to complete, depending on tenant size.</li></ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b> Admins managing Entra Cross-Tenant Sync and Exchange Online environments; organizations with users hidden from GAL in the source tenant.</li>\n<li><b>What will happen:</b><ul><li><b>Tenant Admins:</b><ul><li>No manual action is required for the update.\n</li><li>After completion, synced external users will have consistent visibility settings across tenants.</li></ul></li><li><b>Users:</b><ul><li>Users hidden in the source tenant will now be hidden in the target GAL.\n</li><li>No impact on sign-in or collaboration features.&nbsp;</li></ul></li></ul></li></ul><p></p><ul></ul><p></p><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Review any <b>custom scripts or workflows</b> that rely on GAL visibility and update if needed.</li>\n<li>Communicate to <b>helpdesk teams</b> that visibility changes may occur for previously synced users.</li>\n<li>Optional: Use PowerShell to verify visibility after the update:\n<pre>Get-MailUser -Identity &lt;UserPrincipalName&gt; | Select HideFromAddressListEnabled</pre></li>\n<li>No changes are required to Cross-Tenant Sync configuration.</li>\n</ul>\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>\n\n<p><b><b>FAQ</b></b></p>\n<ul>\n<li><b>Q1: Will this impact mail flow or message delivery?</b><br><b>No.</b> This change only affects GAL visibility and does not impact mail routing or delivery.</li>\n<li><b>Q2: Do I need to reconfigure Cross-Tenant Sync settings?</b><br><b>No.</b> The update is automatic and requires no configuration changes.</li>\n<li><b>Q3: How long will the update take?</b><br>Duration depends on tenant size. It runs in the background and does not disrupt service.</li>\n<li><b>Q4: Can I monitor progress?</b><br>Currently, there is no admin-facing progress tracker. You can verify individual users with PowerShell after completion.</li>\n<li><b>Q5: Will new users synced after this update require special handling?</b><br><b>No.</b> Dual-write ensures all future sync operations propagate <b>HiddenFromAddressListEnabled</b> correctly.</li>\n</ul>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "The HideFromAddressListEnabled attribute will now sync across tenants via Entra Cross Tenant Sync, ensuring consistent Global Address List visibility. The update rolls out late November to mid-December 2025 automatically, requiring no admin action and not affecting mail flow or sign-in."
+    }
+  ],
+  "EndDateTime": "2026-01-23T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1187400",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2025-11-17T23:55:08.147Z",
+  "Services": [
+    "Exchange Online",
+    "Microsoft 365 apps"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-11-17T23:54:59Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Syncing HiddenFromAddressListEnabled attribute across tenants for consistent Global Address List (GAL) visibility",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
