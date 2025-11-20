@@ -34,7 +34,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://mc.merill.net/rss.xml"></link>
+          <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
         </head>
         <body
           className={cn(
