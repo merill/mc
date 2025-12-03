@@ -4,6 +4,403 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p><b>Introduction</b></p>\n<p>As part of Microsoft’s <a href=\"https://www.microsoft.com/trust-center/security/secure-future-initiative?msockid=22346ecb805f631739b27a6e81726266\" target=\"_blank\">Secure Future Initiative</a>, we’re updating our <a href=\"http://aka.ms/entracontentsecuritypolicy\" target=\"_blank\">Content Security Policy for the Microsoft Entra ID sign-in experience</a>. This change adds an extra layer of protection by allowing only scripts from trusted Microsoft domains to run during authentication, blocking unauthorized or injected external code. This proactive measure helps safeguard users against threats like <a href=\"https://www.microsoft.com/msrc/blog/2025/09/why-xss-still-matters-msrcs-perspective-on-a-25-year-old-threat\" target=\"_blank\">cross-site scripting (XSS)</a>, further strengthening security for your organization.</p>\n\n<p><b>When this will happen</b></p>\n<p>General Availability (Production/Worldwide only):</p>\n<ul>\n<li>Rollout begins mid-October 2026</li>\n<li>Expected completion by late October 2026</li>\n</ul>\n<p>Periodic communications will be sent closer to release.</p>\n\n<p><b>How this affects your organization</b></p>\n<p><i>Who is affected:</i></p>\n<ul>\n<li>Organizations using browser-based sign-in experiences on URLs starting with <b>login.microsoftonline.com</b>.</li>\n<li><b>No impact to Microsoft Entra External ID tenants.</b></li>\n</ul>\n<p><i>What will happen:</i></p>\n<ul>\n<li>A new Content Security Policy header will be added to Microsoft Entra sign-in pages.</li>\n<li>Scripts will only be allowed from Microsoft trusted CDN domains.</li>\n<li>Inline script execution will only be allowed from trusted Microsoft sources.</li>\n<li>Browser extensions or tools that inject code into the sign-in page will stop working, though users can still sign in.</li>\n</ul>\n\n<p><b>What you can do to prepare</b></p>\n<ul>\n<li>If you do not use tools or extensions that inject code into the sign-in experience, no action is required.</li>\n<li>If you do use such tools, switch to alternatives that don’t inject code.</li>\n<li>Test your sign-in flows thoroughly before rollout to identify and resolve any issues early. Testing instructions can be found on our <a href=\"http://aka.ms/entracontentsecuritypolicy\" target=\"_blank\">CSP Guide for Microsoft Entra ID</a>.</li>\n</ul>\n\n<p><b>Learn more:</b></p><ul><li><a href=\"http://aka.ms/entracontentsecuritypolicy\" target=\"_blank\">Content Security Policy Overview for Microsoft Entra ID</a>&nbsp;</li><li><a href=\"https://techcommunity.microsoft.com/blog/microsoft-entra-blog/enhance-protection-of-microsoft-entra-id-authentication-by-blocking-external-scr/4435200\" target=\"_blank\">Microsoft Entra ID Content Security Policy Public Blog Post on Techcommunity</a></li><li><a href=\"https://www.microsoft.com/trust-center/security/secure-future-initiative?msockid=22346ecb805f631739b27a6e81726266\" target=\"_blank\">Microsoft Secure Future Initiative</a></li><li><a href=\"https://content-security-policy.com/nonce/\" target=\"_blank\">The CSP nonce guide | Content Security Policy (CSP) quick reference guide</a></li><li><a href=\"https://content-security-policy.com/script-src/\" target=\"_blank\">The CSP script-src directive guide | Content Security Policy (CSP) quick reference guide</a></li><li><a href=\"https://www.microsoft.com/msrc/blog/2025/09/why-xss-still-matters-msrcs-perspective-on-a-25-year-old-threat\" target=\"_blank\">Why XSS still matters: MSRC’s perspective on a 25-year-old threat | Microsoft Blog</a><b></b></li></ul><p><b>Compliance considerations</b></p>\n<p>No compliance considerations identified; review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Entra ID will enhance authentication security by enforcing a Content Security Policy that blocks external script injection, allowing only trusted Microsoft scripts. This rollout begins mid-October 2026, affecting browser-based sign-ins on login.microsoftonline.com, with no impact on Entra External ID tenants."
+      }
+    ],
+    "EndDateTime": "2026-11-25T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1191924",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-12-03T21:44:55.89Z",
+    "Services": [
+      "Microsoft Entra"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-12-03T21:44:46Z",
+    "Tags": [
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Entra ID: Enhance protection of the authentication experience by blocking external script injection",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\n<p>We’re introducing <b>Auto Archiving for Exchange Online</b> to help prevent mail flow disruptions caused by mailboxes reaching their storage quota. This update ensures real-time mailbox health monitoring by automatically moving the oldest items to the archive when mailbox usage exceeds <b>96%</b> of its quota. This feature addresses customer feedback for proactive mailbox space management and helps maintain business continuity.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li><b>Public Preview:</b> Rollout began in mid-November 2025 and is expected to complete early December 2025</li>\n<li><b>Worldwide rollout:</b>&nbsp;Rollout begins in early January 2026 and is expected to complete late January 2026</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b> Admins managing Exchange Online mailboxes with provisioned archive mailboxes.</p>\n<p><b>What will happen:</b></p>\n<ul>\n<li>When a primary mailbox exceeds 96% of its quota, <b>Managed Folder Assistant</b> will automatically archive the oldest items until usage drops below the threshold.</li>\n<li>Applies to both IPM folders and Recoverable Items folders.</li>\n<li>Honors <b>Never Move to Archive</b>&nbsp;tags.</li>\n<li>Enabled by default for all tenants.</li>\n<li><b>Archive mailbox</b> must be provisioned and have available space for auto-archiving to occur.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No immediate action is required unless you want to adjust or disable this feature.</li>\n<li>To disable auto-archiving for a mailbox:\n<pre>Set-Mailbox &lt;user-smtp-address&gt; -AutoArchivingEnabled $false</pre></li>\n<li>To adjust the organization-level threshold (default = 96%, valid range = 80–100):\n<pre>Set-OrganizationConfig –AutoArchivingThresholdPercentage &lt;value&gt;</pre></li>\n<li>If set to 100, auto-archiving will not occur for the tenant.</li>\n<li>Review internal documentation and communicate this change to helpdesk staff.</li>\n</ul><p>Learn more:</p><ul><li><a href=\"https://learn.microsoft.com/exchange/security-and-compliance/messaging-records-management/auto-archiving\" target=\"_blank\">Auto-archiving in Exchange Online | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "515172"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Auto Archiving for Exchange Online automatically moves oldest mailbox items to archive when usage exceeds 96%, preventing mail flow disruption. Enabled by default, it applies to mailboxes with archives, respects \"Never Move to Archive\" tags, and allows admin adjustments or disabling. Rollout starts January 2026."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-03-05T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1191923",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-12-03T21:44:31.34Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-12-03T21:41:38Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Data lifecycle management – Auto archive for Exchange Online",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated December 3, 2025: We have updated the timeline. Thank you for your patience.\n</p><p>Coming soon: Users will be able to automatically see their automapped calendars when toggling from classic Microsoft Outlook to new Outlook for Windows. This message applies to classic Outlook for Windows desktop and new Outlook for Windows desktop.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=415168\" target=\"_blank\">415168</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling out in early January 2026 (previously early December 2025) and expect to complete by late January 2026 (previously early January).</p><p>General Availability: We will begin rolling out in early February 2026 (previously early January) and expect to complete by late February 2026 (previously late January).&nbsp;&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>Before this rollout, users were not able to see their automapped calendars when toggling from classic Outlook to new Outlook.\n</p><p>To access an automapped calendars, users can go to Microsoft Outlook &gt; <i>Calendar icon on left of screen &gt; My Calendars &gt; Automapped calendar.</i>\n</p><p>This feature is on by default.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. You may want to notify your users about this change and update any relevant documentation.\n</p><p><i>Learn more</i></p><ul><li>The section called Use the shared calendar from the shared mailbox in <a href=\"https://support.microsoft.com/office/open-and-use-a-shared-mailbox-in-outlook-d94a8e9e-21f1-4240-808b-de9c9c088afd#:~:text=Use%20the%20shared%20calendar%20from%20the%20shared%20mailbox\" target=\"_blank\">Open and use a shared mailbox in Outlook - Microsoft Support</a>\n</li><li>Definition of automapping: <a href=\"https://learn.microsoft.com/outlook/troubleshoot/profiles-and-accounts/remove-automapping-for-shared-mailbox\" target=\"_blank\">Remove automapping for a shared mailbox - Outlook | Microsoft Learn</a></li></ul><p>#newoutlookforwindows</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "415168"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Starting early 2026, users will automatically see automapped calendars when switching between classic and new Outlook for Windows. The rollout requires no admin action, is enabled by default, and aims to improve calendar access. Notifications and documentation updates are recommended for users."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop"
+      }
+    ],
+    "EndDateTime": "2026-04-06T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC906502",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-12-03T21:42:27.923Z",
+    "Services": [
+      "Microsoft 365 for the web",
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2024-10-07T23:08:46Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Outlook: Automatically display automapped calendars",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\n<p>We are introducing a new dashboard in Teams Admin Center (TAC) that gives admins new visibility into user voice and face enrollment data to help organizations better understand usage of AI-dependent capabilities such as speaker attribution, voice isolation, and face-based room experiences. Dashboard data includes enrollment status, counts, and aggregate metrics \n</p><p>This update also adds the ability for admins to view and delete end-user voice and face enrollment data  directly from TAC. These controls strengthen compliance posture and provide more direct management of sensitive data.</p><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=506750\" target=\"_blank\">506750</a>.</p>\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide, GCC): We will begin rolling out mid-January 2026 and expect to complete by end of January 2026.</p>\n\n<p><b><b>How this will affect your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b> Admins managing Microsoft Teams in Teams Admin Center.</li>\n<li><b>What will happen:</b>\n<ul>\n<li>A new <b>voice and face enrollment dashboard</b> will appear in Teams Admin Center.</li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/08cb85d4-1ad0-4419-b988-4fc49ee85c0a\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li>Admins will gain <b>data deletion capabilities</b>, allowing removal of voice or face enrollment data for individual users or batches of users.</li>\n<li>Deleted data is <b>permanently removed</b>, and users will need to <b>re-enroll</b> to continue benefiting from features such as <b>speaker attribution</b> or personalized AI meeting experiences.</li>\n<li>There is <b>no change to default enrollment behavior</b>. Existing policies and user controls remain unchanged.</li>\n</ul>\n</li>\n</ul>\n\n<p><b><b>What you need to do to prepare:</b></b></p>\n<ul>\n<li>No action is required to enable this feature. It will appear automatically as part of the rollout.</li>\n</ul><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "506750"
+      },
+      {
+        "Name": "Summary",
+        "Value": "A new voice and face enrollment dashboard in Teams Admin Center will provide admins visibility into AI-related user data and allow deletion of enrollment data. Rolling out January 2026, it enhances data management without changing default enrollment or policies. No action is needed to enable it."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, TeamsAndSurfaceDevices, Web"
+      }
+    ],
+    "EndDateTime": "2026-03-05T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1191921",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2025-12-03T21:41:20.09Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-12-03T21:40:58Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "New enrollment dashboard and data deletion controls in Teams Admin Center",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\n<p>We are introducing three new ways to simplify how Admins manage <b>People Skills</b>:</p>\n<ol>\n<li><b>Admin control:</b> Turn off <b>People Skills user experiences</b></li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/ceb56457-7f7e-4367-a5d5-3abb21a1edf1\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li><b>Feature access management:</b> Configure <b>People Skills</b> settings in the Microsoft 365 Admin Center</li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/68608730-52c2-4d7b-a705-f00d2fba0d1d\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li><b>Ability to import custom skills library:</b> <b>Upload </b>from your local device</li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/77bc9fbe-802a-46ca-a17b-785272d8496a\" style=\"width: 400px;\" alt=\"user settings\"></p></ol><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=529865\" target=\"_blank\">529865</a>.</p><ul>\n</ul>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide): We will begin rolling out mid-December 2025 and expect to complete by mid-December 2025.</p>\n\n<p><b><b>How this will affect your organization:</b></b></p>\n<p><b>Who is affected:</b> Admins managing People Skills in Microsoft 365.</p>\n<p><b>What will happen:</b></p>\n<ul>\n</ul><p><b>Admin control to turn off People Skills user experiences:&nbsp;</b></p><p>As an Admin, you can use the Turn off People Skills user experiences control to manage how People Skills appears across your organization. This control lets you:</p><ul>\n<ul>\n</ul><li>Disable People Skills user experiences for your entire organization, user group subsets, or individual users.</li><li>Pilot People Skills to a small group of users in your organization before rolling it out broadly.</li></ul><p></p><ul></ul><p></p><p>When People Skills is turned off for a user, all People Skills user experiences will be removed for that user. Refer to <a href=\"https://learn.microsoft.com/copilot/microsoft-365/people-skills-overview#where-does-people-skills-data-appear\" target=\"_blank\" style=\"font-family: sans-serif; background-color: rgb(255, 255, 255);\">Where does People Skills data appear?</a> for a list of applications that use People Skills data and will be impacted by this Admin Control.</p><p><b></b></p><p><b>Why use this new admin control?</b></p><ul>\n<ul>\n</ul><li><b>Privacy and compliance:</b> Organizations in regulated industries or Workers Council regions may need to prevent skills data from appearing on user profiles for certain users or groups. Such organizations may use this new Admin Control to turn off People Skills for a specific geographic region (e.g., Germany) who may have Workers Council requirements to limit exposure of People Skills data for impacted users.</li><li><b>Pilot control:</b> Deploy People Skills to a limited audience scope before full rollout.</li><li><b>Deployment flexibility:</b> Limit skills exposure during testing or phased deployment.</li><ul>\n\n</ul><ul>\n</ul>\n\n</ul><p><b>Feature access management interface for People Skills settings:&nbsp;</b></p><p>You can configure People Skills directly in the Microsoft Admin Center using Feature access management—no need to rely on PowerShell commands anymore. This will make configuration of People Skills settings much easier. People Skills Admin settings you can manage directly in the M365 Admin Center interface include:</p><ul>\n<ul>\n</ul><li><b>People Skills user experiences control:</b> Turns all People Skills user experiences on or off for selected users.</li><li><b>People Skills AI inferencing control:</b> Determines whether AI can generate Skills for users and add them to their profiles on their behalf.</li><li><b>People Skills profile visibility control:</b> Controls whether a user’s skills (AI-generated, Confirmed, or Imported) are shared with others on the Microsoft 365 Profile card.</li><li><b>Show AI Skills control:</b> Controls whether AI-Generated Skills appear on a user’s profile.</li><li><b>Show Imported Skills control:</b> Allows or restricts imported skills (organization-added skills) from appearing on user’s profile.</li><ul>\n\n\n\n</ul><ul>\n</ul>\n\n</ul><p><b>Ability to import custom Skills library from your local device:&nbsp;</b></p><ul><li>We will offer the option of importing a custom Skills Library directly from your local device. This allows you to have greater flexibility in how you upload and manage your custom Skills Library.</li>\n</ul>\n\n<p><b><b>What you need to do to prepare:</b></b></p>\n<ul>\n<li>This message is for awareness, and no action is required.</li>\n<li>If you plan to limit or disable People Skills, review the new admin controls in the Microsoft 365 Admin Center after rollout.</li>\n<li>For details on applications impacted when People Skills is turned off, refer to Microsoft documentation.</li></ul><p>Learn more: <a href=\"https://learn.microsoft.com/copilot/microsoft-365/people-skills-sharing-inferencing-controls\" target=\"_blank\">Manage privacy and sharing controls in People Skills</a></p><ul>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified; review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "529865"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Three new admin features for managing People Skills in Microsoft 365 include turning off user experiences, configuring settings via the Admin Center without PowerShell, and importing custom skills libraries from local devices. These enhance privacy, deployment flexibility, and ease of management, rolling out worldwide by mid-December 2025."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Mac"
+      }
+    ],
+    "EndDateTime": "2026-01-16T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1191920",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-12-03T21:40:40.863Z",
+    "Services": [
+      "Microsoft 365 suite",
+      "Microsoft Viva"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-12-03T21:40:33Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Improved People Skills Admin configuration",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\n<p>We’re enhancing <b>Microsoft Purview | Information Protection</b> by adding the ability to preview email attachments directly in <b>Activity explorer</b> for Exchange Online. Previously, only the message body was viewable, limiting visibility into flagged sensitive content. This update helps admins quickly investigate incidents without downloading emails, improving efficiency and security.</p><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=527834\" target=\"_blank\">527834</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n\n<ul><li>Public Preview: Rollout begins early December 2025 and completes by mid-December 2025.</li><li>General Availability (Worldwide): Rollout begins mid-January 2026 and completes by late January 2026.</li></ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b style=\"\">Who is affected:</b> Admins managing Exchange Online and using <b>Activity explorer</b> in Microsoft Purview.</p>\n<p><b>What will happen:</b></p>\n<ul>\n<li>Admins can preview email attachments flagged for sensitive data directly in <b>Activity explorer</b>.</li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/45313afb-86dd-4c9c-bf5c-15fdb97da1a0\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li>No need to download emails for investigation.</li>\n<li>Feature is enabled by default; no configuration changes required.</li>\n<li>Existing DLP (data loss prevention) and Information Protection policies remain unchanged.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No action is required; the feature will be available automatically after rollout.</li>\n<li>Optional: Communicate this update to your security and compliance teams.</li>\n</ul><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified; review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "527834"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Information Protection will enable admins to preview email attachments flagged for sensitive data directly in Activity explorer for Exchange Online, improving incident investigation without downloading emails. The feature rolls out from December 2025 to January 2026, is enabled by default, and requires no action."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-03-10T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1191918",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-12-03T21:40:18.357Z",
+    "Services": [
+      "Microsoft 365 suite",
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-12-03T21:39:45Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Information Protection – Email attachment preview in Activity explorer",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>\n</p><p><b><b>Introduction</b></b></p>\nMicrosoft Teams is improving the notification experience by adding message previews to more types of notifications, including channels, mentions, and reactions. This enhancement helps users quickly assess the importance of a notification without switching context, prioritize responses more effectively, and enjoy a consistent experience across platforms.<p></p><p></p><p>This message applies to Teams for Windows desktop, Teams for Mac desktop and Teams for the web.</p><p>Screenshot: <i>@mention notification with message preview</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/8934bb44-9202-48a8-b18c-d596bc275f11\" style=\"width: 400px;\" alt=\"user settings\"></p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>Targeted Release (Worldwide): Rollout begins mid-December 2025; expected to complete by mid-December 2025</li>\n<li>General Availability (Worldwide): Rollout begins mid-January 2026; expected to complete by mid-January 2026</li>\n<li>General Availability (GCC, GCC High, DoD): Rollout begins mid-January 2026; expected to complete by late January 2026</li>\n</ul><p></p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b> All users of Microsoft Teams on Windows and Mac desktop clients and Teams on the web.</li>\n<li><b>What will happen:</b>\n<ul>\n<li>Notifications for channels, mentions, and reactions will include a message preview, unless the message preview is disabled by users.</li>\n<li>Users can disable previews:\n<ul>\n<li>On Windows and Web: via Teams Notification Settings.</li>\n<li>On Mac: via OS Notification Settings.</li>\n</ul></li>\n<li>No changes to existing admin policies; no policy updates required.</li>\n</ul></li>\n</ul><p></p>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No admin action is required; the feature will be available automatically once users update to the supported Teams client build.</li>\n<li>Consider notifying your users about this update and how they can manage notification settings.</li>\n</ul><p><b><b>Compliance considerations:</b></b></p>\nNo compliance considerations identified; review as appropriate for your organization.<p></p>\n<p></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams will add message previews to channel, mention, and reaction notifications on Windows, Mac, and web starting mid-December 2025. Users can disable previews via notification settings. No admin action or policy changes are needed; the feature activates with client updates."
+      }
+    ],
+    "EndDateTime": "2026-02-23T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1191916",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-12-03T21:38:39.447Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-12-03T21:38:31Z",
+    "Tags": [
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Message preview for channels, mentions, and reactions notifications",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\nWe are excited to announce the upcoming rollout of <b>Microsoft 365 Copilot Chat Adoption Metrics in Microsoft Copilot Dashboard</b> to tenants that have at least one Microsoft 365 Copilot license assigned. This feature has been previously released to tenants that have at least 50 assigned Viva Insights licenses, or 50 assigned Microsoft 365 Copilot licenses.<p></p>\n\n<p>This feature empowers organizations with powerful insights into the adoption and usage of M365 Copilot Chat by users who are not licensed for M365 Copilot. Insights include usage trends, retention and usage intensity insights, app-level breakdowns, and filtering by organizational attributes.</p><p>Screenshot: <i>Copilot chat adoption in Copilot Dashboard</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/b98840da-d87c-4786-8247-218c7ea26232\" style=\"width: 400px;\" alt=\"user settings\"></p><p>This message is associated with Roadmap ID&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=501581\" target=\"_blank\">501581</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide):\nWe will begin rolling out in mid-January 2026 and expect to complete by end of January 2026.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p><ul><li>Tenants with at least one Microsoft 365 Copilot license assigned.</li><li>Admins and users enabled for Microsoft Copilot Dashboard.</li></ul>\n\n<p><b style=\"\">What will happen:</b></p>\n<ul>\n<li>Feature will be <b>enabled by default</b>; no admin action required.\n</li><li>New analytics cards and visualizations will appear in the Copilot Dashboard adoption tab.</li>\n<li>Insights will include:\n<ul>\n<li><b>Usage Trends Over Time:</b>&nbsp;Visualize how Microsoft 365 Copilot Chat adoption evolves at your organization, by measuring the number of active users over time.</li>\n<li><b>Adoption by Group:</b>&nbsp;Compare adoption across organizational attributes, such as organization or job function to uncover where Copilot Chat is gaining traction and where further engagement may be needed.</li>\n<li><b>Usage intensity and retention insights:</b>&nbsp;Analyze how consistently users return to Copilot Chat and how many Copilot actions are being taken, with metrics on recurring usage and usage intensity.</li>\n<li><b>App-Level Breakdowns:</b> Identify which entry points and applications are driving Copilot Chat adoption.</li><li>Filtering and drilldown capabilities will be available for both Microsoft 365 Copilot Chat and Microsoft 365 Copilot views on the adoption and impact tabs.</li>\n<li><b>Filtering and Drilldown:</b>&nbsp;Filter by org attributes to explore adoption patterns, enabling Copilot Dashboard users to tailor their change management and support approaches for maximum impact.</li>\n</ul>\n</li>\n</ul><p><b>Administrator Controls:</b></p><p>Global administrators, Viva Insights Administrators, and AI administrators will continue to have the following controls:&nbsp;&nbsp;</p>\n<ul>\n<li>Create a policy for the Microsoft 365 Copilot Chat in Copilot Dashboard feature through Viva Feature Access Management (VFAM) in Microsoft Admin Center or PowerShell. </li><li>Create a policy for access to the Viva Insights web app through Viva Feature Access Management (VFAM) in Microsoft Admin Center or PowerShell.&nbsp;</li><li>Exclude certain users or groups of users of Microsoft 365 Copilot chat from being included in the aggregated insights through the exclusion feature.&nbsp;</li></ul><p>Learn more:&nbsp;</p><ul></ul><p></p><ul><li><a href=\"https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard#manage-access-to-the-viva-insights-web-app-for-individual-users-and-groups\" target=\"_blank\">Manage access to Viva Insights web app for individual users and groups in Microsoft 365 admin center</a></li><li><a href=\"https://learn.microsoft.com/viva/feature-access-management\" target=\"_blank\">Control access to features in Microsoft 365</a></li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Read the <a href=\"https://www.microsoft.com/microsoft-365/blog/2025/01/15/copilot-for-all-introducing-microsoft-365-copilot-chat/\" target=\"_blank\">Microsoft announcement regarding Microsoft 365 Copilot Chat</a>.</li><li>Review and assess the impact on your organization.</li>\n<li>Update training and documentation as appropriate.</li>\n<li>No additional configuration is required; metrics will be enabled by default.</li>\n\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\nNo compliance considerations identified; review as appropriate for your organization.<p></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "501581"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft 365 Copilot Chat Adoption Metrics will roll out by January 2026 to tenants with at least one Copilot license, enabling default analytics in the Copilot Dashboard. It provides insights on usage trends, adoption by group, retention, app-level breakdowns, and filtering, with admin controls for access and exclusions."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-03-02T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1191915",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-12-03T21:38:12.7Z",
+    "Services": [
+      "Microsoft Viva"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-12-03T21:38:04Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Viva: Copilot Dashboard - Broader access to M365 Copilot Chat insights",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated December 3, 2025: We have updated the timeline. Thank you for your patience.</p><p>Admins will be able to ensure that new Loop workspaces are connected to and managed by an existing Microsoft 365 Group, similar to SharePoint Team sites.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=422725\" target=\"_blank\">422725</a></p><p><b>When this will happen:</b></p><p>General Availability (Worldwide): We will begin rolling out early March 2026 (previously late November 2025) and expect to complete by late March 2026 (previously late December 2025).&nbsp;</p><p><b>How this will affect your organization:</b></p><p>Once Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=422728\" target=\"_blank\">422728</a> is available, end-users will have the ability to choose existing Microsoft 365 Groups for managing new Loop workspaces. This means that new Loop workspaces can optionally be connected to and managed by an existing Microsoft 365 Group, similar to how SharePoint Team sites are managed.</p><p>Additionally, Microsoft 365 Roadmap ID 422725 covers the capability to <b>ensure</b> that new Loop workspaces are connected to and managed by an existing Microsoft 365 Group, similar to SharePoint Team sites (it will not be an option for users to skip selecting an existing Microsoft 365 group if this policy is configured).</p><p>While this setting may align with existing governance processes, it's important for admins to note that scenarios like <a href=\"https://techcommunity.microsoft.com/blog/microsoft365insiderblog/automatically-aggregate-teams-meeting-content-in-a-loop-workspace/4287319\" target=\"_blank\">automatic aggregation of Teams meeting content into a Loop workspace</a>, or the creation of small, short-term project workspaces, will be more challenging for end-users unless they can skillfully select an existing M365 group during creation. Please consider this tradeoff in your adoption strategy.</p><p>If your organization has governance tools for SharePoint Communication sites that work effectively in a reactive manner (i.e., governance is applied after the site is created), Microsoft recommends extending this process to include Loop workspaces rather than using this policy.</p><p><b>What you need to do to prepare:</b>\n</p><p>There is nothing you need to do to prepare. This capability will roll to your tenant automatically.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "422725"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Starting March 2026, admins can require new Microsoft Loop workspaces to be connected to existing Microsoft 365 Groups for management, similar to SharePoint Team sites. This may affect scenarios like automatic Teams meeting content aggregation. No preparation is needed; the feature will roll out automatically."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-05-04T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC929022",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2025-12-03T21:19:13.397Z",
+    "Services": [
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2024-11-08T23:21:55Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Microsoft Loop – Require Existing Microsoft 365 Group for New Loop workspaces",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated December 3, 2025: We have updated the timeline. This feature will now be included as part of another update referenced in <a href=\"https://lynx.office.net/messagecenter/MC796790\">MC796790</a>. Administrators will gain the ability to manage Microsoft 365 certified SaaS applications through org-wide settings for third-party apps. No changes will be applied to tenant-wide settings unless initiated by an administrator. Thank you for your patience.</p><p>This feature will empower administrators to manage the availability of trusted Microsoft Teams apps based on rules, for enhanced security. Admins will be able to manage Microsoft 365 certified apps in the Teams admin center through a new control in <i>Org-wide settings</i>. You can further customize the availability of these apps based on permissions accessed and publisher names. The system automatically checks the Microsoft 365 certified apps that meet all the conditions you specify and makes those apps available.&nbsp;<b>&nbsp;</b></p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=485712\" target=\"_blank\">485712</a>.\n</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): We will begin rolling out mid-February 2026 (previously mid-January) and expect to complete by late February 2026 (previously early February).</p><p><b>How this will affect your organization:</b></p><p>Before this rollout, you cannot manage at bulk the availability of Microsoft 365 certified apps. They are only controlled by third-party app tenant settings.\n</p><p>After this rollout, you can manage Microsoft 365 certified apps availability from org-wide settings in the Teams admin center at <i>Manage apps &gt; Actions &gt; Org-wide app settings &gt; Microsoft 365 certified apps</i>.&nbsp;</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/e2c6ba81-7623-471a-8d06-0b6ad6e2ef00\" style=\"width: 400px;\" alt=\"admin settings\"></p><p>You can configure additional criteria from the <i>Customize availability </i>option:</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/c2d0f382-0897-432d-8a46-028de82b2e2d\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b></p><p>This rollout will happen automatically by the specified dates with no admin action required before or after the rollout. Review your current configuration to assess the impact on your organization. You may want to notify your users about this change and update any relevant documentation. This new control will be disabled by default.</p><p>Learn more: <i>Manage org-wide app settings</i> in <a href=\"https://learn.microsoft.com/microsoftteams/manage-apps#manage-org-wide-app-settings\" target=\"_blank\">Manage your apps in the Microsoft Teams admin center - Microsoft Teams | Microsoft Learn</a> (will be updated before rollout)</p>",
       "ContentType": "html"
     },
@@ -545,52 +942,6 @@
       "New feature"
     ],
     "Title": "Dynamics 365 Contact Center - Update default Messaging Queues assignment strategy - Least Active",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated December 2, 2025: We have updated the timeline. Thank you for your patience.</p><p>Admins will be able to ensure that new Loop workspaces are connected to and managed by an existing Microsoft 365 Group, similar to SharePoint Team sites.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=422725\" target=\"_blank\">422725</a></p><p><b>When this will happen:</b></p><p>General Availability (Worldwide): We will begin rolling out early September 2026 (previously late November 2025) and expect to complete by late September 2026 (previously late December 2025).&nbsp;</p><p><b>How this will affect your organization:</b></p><p>Once Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=422728\" target=\"_blank\">422728</a> is available, end-users will have the ability to choose existing Microsoft 365 Groups for managing new Loop workspaces. This means that new Loop workspaces can optionally be connected to and managed by an existing Microsoft 365 Group, similar to how SharePoint Team sites are managed.</p><p>Additionally, Microsoft 365 Roadmap ID 422725 covers the capability to <b>ensure</b> that new Loop workspaces are connected to and managed by an existing Microsoft 365 Group, similar to SharePoint Team sites (it will not be an option for users to skip selecting an existing Microsoft 365 group if this policy is configured).</p><p>While this setting may align with existing governance processes, it's important for admins to note that scenarios like <a href=\"https://techcommunity.microsoft.com/blog/microsoft365insiderblog/automatically-aggregate-teams-meeting-content-in-a-loop-workspace/4287319\" target=\"_blank\">automatic aggregation of Teams meeting content into a Loop workspace</a>, or the creation of small, short-term project workspaces, will be more challenging for end-users unless they can skillfully select an existing M365 group during creation. Please consider this tradeoff in your adoption strategy.</p><p>If your organization has governance tools for SharePoint Communication sites that work effectively in a reactive manner (i.e., governance is applied after the site is created), Microsoft recommends extending this process to include Loop workspaces rather than using this policy.</p><p><b>What you need to do to prepare:</b>\n</p><p>There is nothing you need to do to prepare. This capability will roll to your tenant automatically.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "422725"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Starting September 2026, admins can require new Microsoft Loop workspaces to be connected to existing Microsoft 365 Groups for management, similar to SharePoint Team sites. This may affect scenarios like Teams meeting content aggregation and short-term projects. No preparation is needed; rollout is automatic."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-10-30T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC929022",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-12-03T00:28:07.167Z",
-    "Services": [
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-11-08T23:21:55Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Microsoft Loop – Require Existing Microsoft 365 Group for New Loop workspaces",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -7958,54 +8309,6 @@
       "Retirement"
     ],
     "Title": "Entra ID: Upcoming changes to support passkey profiles in the authentication methods policy (preview)",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated November 5, 2025: We have updated the timeline. Thank you for your patience.\n</p><p>Coming soon: Users will be able to automatically see their automapped calendars when toggling from classic Microsoft Outlook to new Outlook for Windows. This message applies to classic Outlook for Windows desktop and new Outlook for Windows desktop.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=415168\" target=\"_blank\">415168</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling out in early December 2025 (previously early November) and expect to complete by early January 2026 (previously late November 2025).</p><p>General Availability: We will begin rolling out in early January 2026 (previously early December 2025) and expect to complete by late January 2026 (previously late December 2025).&nbsp;&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>Before this rollout, users were not able to see their automapped calendars when toggling from classic Outlook to new Outlook.\n</p><p>To access an automapped calendars, users can go to Microsoft Outlook &gt; <i>Calendar icon on left of screen &gt; My Calendars &gt; Automapped calendar.</i>\n</p><p>This feature is on by default.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. You may want to notify your users about this change and update any relevant documentation.\n</p><p><i>Learn more</i></p><ul><li>The section called Use the shared calendar from the shared mailbox in <a href=\"https://support.microsoft.com/office/open-and-use-a-shared-mailbox-in-outlook-d94a8e9e-21f1-4240-808b-de9c9c088afd#:~:text=Use%20the%20shared%20calendar%20from%20the%20shared%20mailbox\" target=\"_blank\">Open and use a shared mailbox in Outlook - Microsoft Support</a>\n</li><li>Definition of automapping: <a href=\"https://learn.microsoft.com/outlook/troubleshoot/profiles-and-accounts/remove-automapping-for-shared-mailbox\" target=\"_blank\">Remove automapping for a shared mailbox - Outlook | Microsoft Learn</a></li></ul><p>#newoutlookforwindows</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "415168"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Starting December 2025, Outlook will automatically display automapped calendars when switching from classic to new Outlook for Windows. The rollout requires no admin action, is enabled by default, and completes by January 2026. Users previously had to access automapped calendars manually."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop"
-      }
-    ],
-    "EndDateTime": "2026-03-02T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC906502",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-11-05T20:21:28.6Z",
-    "Services": [
-      "Microsoft 365 for the web",
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-10-07T23:08:46Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Outlook: Automatically display automapped calendars",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
