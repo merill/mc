@@ -1,0 +1,46 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p>We’re improving SharePoint Online security via Content Security Policy (CSP) enforcement. Currently CSP is applied in reporting mode but as of March 1, 2026, the Content Security Policy will be enforced which will prevent the loading of script (e.g. JavaScript) from non-allowed sources. This message center post replaces MC1055557 (April 2024).</p><p>This change is associated with Microsoft 365 Roadmap ID: <a href=\"https://www.microsoft.com/microsoft-365/roadmap?id=485797\" target=\"_blank\">485797</a></p><p><b>When this will happen:</b></p><p>This will be implemented starting March 1, 2026.</p><p>\n</p><p><b>How this will affect your organization:</b></p><p>If your organization extended SharePoint Online using SPFx then the created custom SPFx solutions could potentially load scripts from locations which are not allowed. In most cases SPFx solutions use and load script from allowed locations, but that’s not always the case. Any script from a not allowed location will be blocked, the same applies for any inline script usage. SPFx solutions whose script is getting blocked will not function anymore as designed, impacting business scenarios depending on those solutions.\n</p><p>To prevent solutions from breaking there you need to:\n</p><ol><li>Ensure all used script locations are trusted script sources. This can be done without updating the SPFx solution\n</li><li>Move all inline script to script files which can then be defined as trusted source. <b>This will require updating the SPFx solution!\n</b></li></ol><p>If you need more time to review your SPFx solutions, there’s an option to postpone CSP enforcement by 90 days via below SPO Management Shell PowerShell cmdlet.\n</p><p><code>Set-SPOTenant -DelayContentSecurityPolicyEnforcement $true</code>\n</p><p>Note:\n</p><p>This option will be available in the SPO Management Shell version 16.0.26712.12000 (November 2025) or higher.\n</p><p><b>What you need to do to prepare:</b></p><p>In addition to the default CSP settings, SharePoint Online will add locations listed in the Trusted Script Sources area of the SharePoint Online Admin Center as valid locations for CSP, thus enabling script loading from those locations. To add an entry, in a browser, go to the Trusted Script Sources via SharePoint Online Admin Center &gt; Advanced &gt; Script sources.\n</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/65be05c0-aa60-4cd8-8c3d-cbf18cddbb73 \" width=\"400\" height=\"\"></p><p>To understand which script location to add there are two options. First option is testing your SPFx solutions with the browser dev tools console open. As CSP is in reporting mode until March 1, 2026, there will be messages indicating script that will be blocked once CSP is enforced. These messages start with “Loading the script '&lt;path to script&gt;' violates the following…” or “Executing inline script violates the following Content Security Policy directive…”. \n</p><p>Whenever the browser logs a CSP violation, that violation is also logged to <a href=\"https://purview.microsoft.com/\" target=\"_blank\">Microsoft Purview</a>. In the browser, navigate to the Audit solution in Microsoft Purview from the Microsoft 365 Admin Center. From the Search page, search for the Activity - friendly names value Violated Content Security Policy, or the Activity - operation names value ViolatedContentSecurityPolicy:\n</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/ece7b2ac-44f9-4abe-b95f-426e20ab77bf \" width=\"400\" height=\"\"></p><p>Selecting a search result opens the side panel with the audit details. Take note of the following properties:</p><ul><li><b>DocumentUrl:</b> This indicates the page in the SharePoint Online site where the CSP violation occurred.</li><li><b>BlockedUrl:</b> This indicates the URL of the script that violated the CSP configuration or contains “inline” when the violation came from loading inline script\n</li></ul><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/1818988a-08d8-4e41-802e-9abdc94ec2c5 \" width=\"400\" height=\"\"></p><p><b><u>Important\n</u></b></p><p>In the case of inline script, the remediation requires updating the SPFx solution by moving inline script into a separate script file, which then can be added as a trusted source.\n</p><p>Learn more: <a href=\"https://aka.ms/spfx/csp\" target=\"_blank\">Support for Content Security Policy (CSP) in SharePoint Online</a>&nbsp;</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "RoadmapIds",
+      "Value": "485797"
+    },
+    {
+      "Name": "Summary",
+      "Value": "Starting March 1, 2026, SharePoint Online will enforce Content Security Policy (CSP), blocking scripts from non-trusted sources in custom SPFx solutions. To avoid disruption, ensure all scripts come from trusted sources and move inline scripts to files. CSP enforcement can be postponed 90 days via PowerShell."
+    },
+    {
+      "Name": "Platforms",
+      "Value": "Desktop"
+    }
+  ],
+  "EndDateTime": "2026-07-01T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1193419",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2025-12-09T00:19:28.48Z",
+  "Services": [
+    "SharePoint Online"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-12-09T00:19:20Z",
+  "Tags": [
+    "New feature",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Content Security Policies (CSP) are coming to SharePoint Online and might impact your custom SPFx solutions",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
