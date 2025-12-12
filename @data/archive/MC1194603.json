@@ -1,0 +1,37 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>Introduction</b></b></p>\n<p>We’re introducing version storage management for video and audio files in<b> SharePoint Online</b>. This new capability allows admins to define and automate version expiration policies for large media files, helping reduce storage consumption, prevent version sprawl, and maintain consistent governance across sites and libraries.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide): Rollout begins mid-December 2025 and is expected to complete by mid-January 2026.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b> Admins managing SharePoint Online sites and libraries that store audio or video files.</p>\n<p><b>What will happen:</b></p>\n<ul>\n<li>Admins can apply file-type-specific version policies for audio and video files.</li>\n<li>Capabilities include:\n<ul>\n<li>Setting maximum retained versions.</li>\n<li>Defining expiration periods.</li>\n<li>Enabling auto-trim behaviors.</li>\n</ul>\n</li>\n<li>PowerShell support includes:\n<ul>\n<li>Tenant, site, and library-level overrides.</li>\n<li>Syncing policies across existing libraries.</li>\n<li>Trimming existing versions to reclaim storage.</li>\n</ul>\n</li>\n<li>Requires <b>SharePoint Online Management Shell </b><code>16.0.26712.12000</code> or later.</li>\n<li>Policies apply forward unless libraries are manually synced; trimming jobs can delete older versions.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Install the latest SharePoint Online Management PowerShell.</li>\n<li>Review media-heavy sites and plan version policies.</li>\n<li>Test cmdlets in non-production:<ul><li><b>Tenant‑Level Controls</b></li><ul><li>\n<a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps\" target=\"_blank\">Set-SPOTenant</a>&nbsp;(new parameter: FileTypesForVersionExpiration, RemoveVersionExpirationFileTypeOverride )\n</li><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spotenant?view=sharepoint-ps\" target=\"_blank\">Get-SPOTenant</a>&nbsp;(new property: VersionPolicyFileTypeOverride).\n</li></ul><li><b>Site‑Level Contols</b></li><ul><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps\" target=\"_blank\">Set-SPOSite</a>&nbsp;(new parameter: FileTypesForVersionExpiration, RemoveVersionExpirationFileTypeOverride )&nbsp;\n</li><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-sposite?view=sharepoint-ps\" target=\"_blank\">Get-SPOSite</a>&nbsp;(new property: VersionPolicyFileTypeOverride).</li></ul><li><b>Document Library‑Level Controls</b></li><ul><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spolistversionpolicy?view=sharepoint-ps\" target=\"_blank\">Set-SPOListVersionPolicy</a>&nbsp;(new parameters: FileTypes, sync, RemoveVersionExpirationFileTypeOverride )\n</li><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spolistversionpolicy?view=sharepoint-ps\" target=\"_blank\">Get-SPOListVersionPolicy</a>&nbsp;(new property: VersionPolicyFileTypeOverride).\n</li></ul><li><b>Manage Version Policy Jobs</b></li><ul><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spositemanageversionpolicyjob?view=sharepoint-ps\" target=\"_blank\">New-SPOSiteManageVersionPolicyJob</a>\n</li><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spositemanageversionpolicyjobprogress?view=sharepoint-ps\" target=\"_blank\">Get-SPOSiteManageVersionPolicyJobProgress</a>\n</li><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/remove-spositemanageversionpolicyjob?view=sharepoint-ps\" target=\"_blank\">Remove-SPOSiteManageVersionPolicyJob</a></li></ul><li><b>File Version Trimming Operations</b></li><ul><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/new-spolistfileversionbatchdeletejob?view=sharepoint-ps\" target=\"_blank\">New-SPOListFileVersionBatchDeleteJob</a>&nbsp;(new parameter: TrimUseListPolicy)</li></ul></ul></li><li>Decide whether to:\n<ul>\n<li>Override audio, video, or both.</li>\n<li>Use default or custom expiration periods.</li>\n<li>Sync all libraries or target specific file types.</li>\n</ul>\n</li>\n<li>Communicate to site owners:\n<ul>\n<li>Old versions may be deleted.</li>\n<li>Only new versions get expiration stamps unless trimming jobs run.</li>\n</ul>\n</li>\n</ul><p>Before rollout, we will update this post with new documentation.</p><p><b><b>Compliance considerations:</b></b></p><p>The following compliance impacts may apply. Review as appropriate for your organization.</p>\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n  <thead>\n    <tr>\n      <th>Compliance area</th>\n      <th>Explanation</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Data processing changes</td>\n      <td>This change may alter how existing customer data is processed because older audio/video versions can be deleted when exceeding thresholds, and trimming jobs may add or clear expiration timestamps.</td>\n    </tr>\n    <tr>\n      <td>Purview retention and legal hold</td>\n      <td>Retention policies and legal holds will prevent deletion, and trimming jobs respect these constraints. Admins should review retention and legal hold settings to avoid conflicts with version expiration policies.</td>\n    </tr>\n  </tbody>\n</table>\n<p>No new customer data is stored, and no changes to user-facing access or GDPR workflows.</p>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "SharePoint Online will enable admins to set version expiration policies for audio and video files to reduce storage and manage versions. Rolling out mid-Dec 2025, it supports PowerShell controls at tenant, site, and library levels, with compliance considerations for retention and legal holds."
+    }
+  ],
+  "EndDateTime": "2026-02-20T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1194603",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2025-12-12T00:49:28.23Z",
+  "Services": [
+    "SharePoint Online"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2025-12-12T00:49:13Z",
+  "Tags": [
+    "New feature",
+    "Admin impact"
+  ],
+  "Title": "Manage version expiration for audio and video files in SharePoint Online",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
