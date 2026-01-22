@@ -1,5 +1,163 @@
 [
   {
+    "ActionRequiredByDateTime": "2027-01-31T08:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b>\n</p><p>We’re<b> retiring the Microsoft Defender for Endpoint (MDE) API and XDR API</b> and <b>transitioning</b> customers <b>to the Microsoft Graph Security API</b>. This update aligns our security integrations with a unified interface and schema across Microsoft Defender products. The Microsoft Graph Security API provides broader data coverage, improved consistency, and better scalability for automation and security workflows.</p>\n\n<p><b><b>When this will happen</b></b>&nbsp;</p><ul><li>Retirement start: <b>February 6, 2026 </b></li><li>Full retirement: <b>February 1, 2027\n</b></li><li>After February 1, 2027, the MDE and XDR APIs will no longer function.</li></ul>\n\n<p><b><b>How this affects your organization</b></b></p>\n\n<p><i>Who is affected:</i>&nbsp;</p><ul><li>Organizations using the MDE API or XDR API for automation, integration, or custom workflows.</li><li>You are receiving this message because our reporting indicates your organization may be using these APIs.</li></ul>\n\n<p><i>What will happen:</i></p>\n<ul>\n  <li>The <b>MDE and XDR APIs will stop functioning</b> <b>after February 1, 2027</b>.</li>\n  <li>Existing scripts, automations, and workflows that rely on these APIs will fail if not updated.</li>\n  <li>The Microsoft Graph Security API will be the supported API for accessing Microsoft security data.</li>\n  <li><b>No automatic migration</b> will occur; <b>manual updates will be required</b>.</li>\n</ul>\n\n<p><b><b>What you can do to prepare</b></b></p>\n<ul>\n  <li><b>Migrate all existing API workflows to the Microsoft Graph Security API</b> <b>by January 31, 2027</b>.</li>\n  <li>Update internal documentation, automation scripts, and integration endpoints to use the Microsoft Graph Security API.</li>\n  <li>Communicate these changes to your security operations, engineering, and development teams.</li>\n  <li>Review Microsoft documentation to plan your migration: <a href=\"https://learn.microsoft.com/graph/api/resources/security-api-overview?view=graph-rest-1.0\">Use the Microsoft Graph security API</a>.</li>\n  <li>If your organization uses custom solutions, <b>validate</b> that new queries and response schemas work as expected <b>before the retirement date</b>.</li></ul><p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/graph/api/resources/security-api-overview?view=graph-rest-1.0#advanced-hunting\" target=\"_blank\">Advanced hunting - Use the Microsoft Graph security API | Microsoft Graph | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/graph/api/resources/security-api-overview?view=graph-rest-1.0#migrate-from-the-older-apis\" target=\"_blank\">Migrate from the older APIs - Use the Microsoft Graph security API | Microsoft Graph | Microsoft Learn</a></li><li>(to be retired)&nbsp;<a href=\"https://learn.microsoft.com/defender-endpoint/api/run-advanced-query-api\" target=\"_blank\">Microsoft Defender for Endpoint (MDE) API</a>\n</li><li>(to be retired)&nbsp;<a href=\"https://learn.microsoft.com/defender-xdr/api-overview\" target=\"_blank\">Microsoft Defender XDR API</a></li>\n</ul>\n\n<p><b><b>Compliance considerations</b></b>\n</p><p>No compliance considerations identified. Review as appropriate for your organization.</p><p></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [],
+    "EndDateTime": "2027-03-03T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1220762",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-01-22T00:47:21.86Z",
+    "Services": [
+      "Microsoft Defender XDR"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-01-22T00:46:54Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Retirement notice: MDE and XDR APIs retiring; migrate to Microsoft Graph Security API",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b>\n</p><p>This feature provides admin's control over Outbound MTA-STS and SMTP DANE validations for emails sent over outbound connectors in <i>Exchange Online</i>, allowing organizations to choose how strictly the service enforces MTA-STS and SMTP DANE when sending mail to external domains. \n</p><p>Admins will be able to configure each outbound connector to use the following modes: \n</p><ol><li><b>Opportunistic <b>default</b></b>, applies to both MTA-STS and SMTP DANE. Opportunistic Mode means Exchange Online will attempt to perform validations for both MTA-STS and SMTP DANE but still sends the message if the destination doesn't support either protocol.\n</li><li><b>None</b>, which applies to both MTA-STS and SMTP DANE and disables the validation entirely, therefore <b>reducing the security of emails sent over that connector</b> by removing MTA-STS and/or SMTP DANE protections designed to prevent downgrade attacks and spoofed MX redirection.\n</li><li><b>Mandatory</b>, applies only to SMTP DANE and enforces full SMTP DANE and DNSSEC validation, requiring the destination to support Inbound SMTP DANE with DNSSEC and queueing mail if the validation does not succeed.\n</li></ol><p><b><b>When this will happen</b>\n</b></p><p><b>General Availability (Worldwide):</b> We will begin rolling out in<b> late February 2026</b> and expect to complete by<b> late March 2026</b>.</p><p><b><b>How this will affect your organization</b>\n</b></p><p>Connectors will default to Opportunistic Mode. Opportunistic Mode is already the default behavior for Exchange Online outbound connectors.&nbsp;</p><p><b><b>What you need to do to prepare</b>\n</b></p><p>If you do not want to change the MTA-STS and/or SMTP DANE validation behavior for your outbound connectors, there is no action you need to take and you can ignore this post.\n</p><p>If you do want to change the MTA-STS and/or SMTP DANE validation behavior for your outbound connectors, review the documentation on this feature which will be updated and provided in this post prior to release.&nbsp; </p><p><b><b>Compliance considerations</b></b>\n</p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Exchange Online will let admins control MTA-STS and SMTP DANE validation modes on outbound connectors starting late February 2026. Modes include Opportunistic (default), None (disables validation), and Mandatory (enforces SMTP DANE). No action is needed unless changes to validation behavior are desired."
+      }
+    ],
+    "EndDateTime": "2026-05-02T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1220759",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-01-22T00:44:11.917Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-01-22T00:44:04Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "MTA-STS and SMTP DANE mode on connectors",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p></p><p><b><b>Introduction</b></b></p><p>We’re expanding Microsoft Purview Insider Risk Management with <b>new, ready-to-use risk indicators for Microsoft Fabric lakehouse activities</b>. These indicators complement the existing Power BI indicators and help organizations detect potential data theft or data leakage involving Fabric lakehouse assets.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=543243\" target=\"_blank\">543243</a>.</p><p></p><p><b><b>When this will happen</b></b></p><p><b>General Availability (Worldwide): </b>We will begin rolling out in late<b> February 2026</b> and expect to complete by<b> late February 2026</b>.\n</p><p></p><p><b><b>How this will affect your organization</b></b></p><p><i>Who is affected:</i></p><ul><li>Insider Risk Management administrators using indicators within data theft or data leak policies.</li><li>Organizations with users working in Microsoft Fabric lakehouses.</li></ul><p><i>What will happen:</i></p><ul><li>New <b>ready-to-use risk indicators</b> for Fabric lakehouse user activities will be available in the Insider Risk Management indicator catalog.</li><li>You can use these indicators in <i><b>data theft </b></i>and <b><i>data leaks policies</i></b>.</li><li><b>Insider Risk Management admins with appropriate permissions can opt in</b> to these new indicators in the <i><a href=\"https://sip.purview.microsoft.com/home?tid=72f988bf-86f1-41af-91ab-2d7cd011db47\" target=\"_blank\">Microsoft Purview portal</a></i>.</li><li>The indicators are<b> not enabled by default</b>.</li><li>No changes will occur to existing Power BI indicators or policies unless updated by an admin.</li><li>These indicators will appear in the new <i><a href=\"https://sip.purview.microsoft.com/home?tid=72f988bf-86f1-41af-91ab-2d7cd011db47\" target=\"_blank\">Microsoft Purview portal</a></i>.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>No immediate action is required. If you want to use Fabric lakehouse indicators:</p><ul><li>Review your Insider Risk Management configuration in the <i>Microsoft Purview portal</i>.</li><li>Enable the new indicators:<ul><li>Go to<b style=\"font-style: italic;\"> Insider Risk Management &gt; Settings &gt; Indicators</b> in the new <i>Microsoft Purview portal</i>.</li></ul></li><li>Update any internal documentation that lists available indicators.</li><li>Consider informing your security operations and compliance teams about these new detection capabilities.</li><li><b>Learn more: </b><a href=\"https://learn.microsoft.com/purview/insider-risk-management-settings-policy-indicators\" target=\"_blank\">Configure policy indicators in Insider Risk Management | Microsoft Purview | Microsoft Learn</a></li></ul><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/89a5a575-3e1e-4ebb-a3c9-f3a4b70e06f2/4ba2a469191c6fbbadec8688fddfcfb28347475e.png\" style=\"width: 400px;\"><b></b></p><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "543243"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Insider Risk Management will add new ready-to-use risk indicators for Microsoft Fabric lakehouse activities, available worldwide by late February 2026. These indicators help detect data theft or leakage and can be enabled by admins in the Purview portal; they are not enabled by default."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-03-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1220758",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-01-22T00:43:45.533Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-01-22T00:43:15Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview: Insider Risk Management - New Microsoft Fabric lakehouse risk indicators",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>As mentioned in MC540749 and MC1029989, Microsoft Entra ID (formerly known as Azure Active Directory) and Microsoft Intune will retire the Conditional Access “Require approved client app” grant control in <b>June 2026</b> (previously March 2026). We recommend utilizing the \"Require application protection policy\" grant control, which provides the same data loss and protection with additional benefits.</p><p><b>How this will affect your organization:</b></p><p>If you have a Conditional Access policy with \"Require approved client app\" grant control configured, after this change, you will no longer be able to enforce this control, it will be as if this grant is not selected.</p><p><b>What you need to do to prepare:</b></p><p>We recommend updating your Conditional Access policy to using the \"Require application protection policy\" grant control. For more information, see <a href=\"https://learn.microsoft.com/azure/active-directory/conditional-access/migrate-approved-client-app\" target=\"_blank\">Migrate approved client app to application protection policy in Conditional Access</a>.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The \"Require approved client app\" control in Microsoft Entra Conditional Access will retire in June 2026. Organizations should update policies to use the \"Require application protection policy\" control for equivalent and enhanced protection. After retirement, the old control will no longer be enforceable."
+      },
+      {
+        "Name": "ExternalLink",
+        "Value": "http://aka.ms/RetireApprovedClientApp"
+      }
+    ],
+    "EndDateTime": "2026-08-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1220751",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-01-22T00:38:47.407Z",
+    "Services": [
+      "Microsoft Intune"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-01-22T00:38:12Z",
+    "Tags": [
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Reminder: \"Require approved client app\" control in Microsoft Entra Conditional Access will be retired in June 2026",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
     "ActionRequiredByDateTime": null,
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -407,7 +565,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"536572\":[{\"RoadmapId\":536572,\"Platform\":\"Web\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2087778Z\",\"LatestRing\":null},{\"RoadmapId\":536572,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2087779Z\",\"LatestRing\":null}]}"
+        "Value": "{\"536572\":[{\"RoadmapId\":536572,\"Platform\":\"Web\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.094294Z\",\"LatestRing\":null},{\"RoadmapId\":536572,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0942942Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -1034,7 +1192,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"541831\":[{\"RoadmapId\":541831,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-01-21T23:21:47.20862Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":541831,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2086202Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2086203Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2086204Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"541831\":[{\"RoadmapId\":541831,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0942108Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":541831,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0942109Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0942114Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0942115Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -1318,7 +1476,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"542794\":[{\"RoadmapId\":542794,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2087482Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2087484Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2087484Z\",\"LatestRing\":null}]}"
+        "Value": "{\"542794\":[{\"RoadmapId\":542794,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0941776Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0941779Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.094178Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -1837,7 +1995,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"542795\":[{\"RoadmapId\":542795,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2085314Z\",\"LatestRing\":null},{\"RoadmapId\":542795,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2085316Z\",\"LatestRing\":null}]}"
+        "Value": "{\"542795\":[{\"RoadmapId\":542795,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0942569Z\",\"LatestRing\":null},{\"RoadmapId\":542795,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.094257Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2478,7 +2636,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"537279\":[{\"RoadmapId\":537279,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2088506Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2088507Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2088508Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-21T23:21:47.2088509Z\",\"LatestRing\":null}]}"
+        "Value": "{\"537279\":[{\"RoadmapId\":537279,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0943642Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0943643Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0943644Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-01-22T01:26:26.0943645Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
