@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p style=\"\"><b><b>Introduction</b></b></p><p>Starting in <b>March 2026</b>, Microsoft Entra ID will introduce <b>passkey profiles </b>and <b>synced passkeys</b> to General Availability (GA). This update allows administrators to opt in to a new passkey profiles experience that supports group-based passkey configurations and introduces a new <b>passkeyType</b> property.  \n</p><p>\n</p>\n<p>The <b>passkeyType</b>&nbsp;property enables admins to configure:</p><ul><li>Device-bound passkeys</li><li>Synced passkeys</li><li>Both</li></ul><p>If a tenant does not opt in to passkey profiles during the initial rollout window, the new schema will be automatically enabled at the date range specified below. When this occurs:&nbsp;</p><ul><li>Existing Passkey (FIDO2) authentication method configurations will be moved into a <b>Default passkey profile.</b>&nbsp;</li><li>The <b>passkeyType</b> value will be set based on the tenant’s current attestation settings.</li><li>For tenants that have synced passkeys enabled, <b>Microsoft-managed</b> registration campaigns will update to target passkeys.</li></ul><p><b><b>When this will happen</b></b></p>\n<ul>\n<li><b>General Availability (Worldwide):</b> Rollout begins in<b> early March 2026 </b>and is expected to complete by<b> late March 2026</b>.<ul><li><b>Automatic enablement for tenants that have not yet opted in (Worldwide):</b> Rollout begins in <b>early April 2026</b> and is expected to complete by<b> late May 2026</b>.</li></ul></li><li><b>General Availability (GCC, GCC High, and DoD): </b>Rollout begins in<b> early April 2026 </b>and is expected to complete by<b> late April 2026.</b><ul><li><b>Automatic enablement for tenants that have not yet opted in (GCC, GCC High, and DoD): </b>Rollout begins in<b> early June 2026 </b>and is expected to complete by<b> late June 2026.&nbsp;</b></li></ul></li>\n</ul>\n<p><b><b>How this affects your organization</b></b></p>\n<p><i>Who is affected:</i> All Microsoft Entra ID tenants</p>\n<p><i>What will happen:</i></p><p>If you have not opted in to passkey profiles by your automatic enablement period, your tenant will be migrated to passkey profiles.</p>\n<ul>\n<li>Your existing Passkey (FIDO2) configurations will be migrated into a <b>Default passkey profile</b></li><li>New <b>passkeyType </b>property will be auto-populated<ul><li>If <b>enforce attestation </b>is <b>enabled</b>, then device-bound allowed</li><li>If <b>enforce attestation </b>is <b>disabled</b>, then device-bound and synced allowed</li></ul></li><li>Any existing <b>key restrictions </b>will remain intact</li><li>Any existing <b>user targets </b>will be assigned to the <b>Default passkey profile</b></li></ul><p><b><b>Registration Campaign behavior (Microsoft-managed campaigns only)</b></b></p><ul><li>For tenants where synced passkeys are enabled, if your registration campaign is set to Microsoft-managed:&nbsp;<ul><li>The targeted authentication method will be updated from <b>Microsoft Authenticator</b> to <b>passkeys</b>.</li><li>The default user targeting will be updated from <b>voice call </b>or <b>text message</b> <b>users </b>to <b>all multifactor authentication (MFA) capable users.&nbsp;</b></li><li>The settings <b>Limited number of snoozes</b> and<b> Days allowed to snooze </b>will no longer be configurable. These will be set to allow unlimited snoozes with a one-day reminder cadence.</li></ul></li></ul><ul>\n</ul><p><b><b>What you can do to prepare</b></b></p><p>If you want a configuration different from the migration defaults, review the timeline above and opt in to passkey profiles <b>before your tenant’s automatic enablement window begins</b>. Then configure the Default passkey profile’s<b> passkeyType</b> to your preferred values.</p><p>We also recommend:</p><ul><li>Review your <b>registration campaign </b>configuration,<b> especially if its set to Microsoft-managed</b>. If you want synced passkeys enabled in your tenant but do not want registration campaign to target passkeys, you can:&nbsp;<ul><li>Switch the registration campaign state to<b><i> Enabled</i></b> and continue targeting Microsoft Authenticator, or&nbsp;</li><li>Set the registration campaign state to <b><i>Disabled</i></b>.</li></ul></li><li>Update runbooks and help content so your help desk and end users understand any changes in passkey availability or behavior.&nbsp;</li></ul><p>Learn more:</p><ul><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkey-profiles\" target=\"_blank\">How to Enable Passkey (FIDO2) Profiles in Microsoft Entra ID (preview) - Microsoft Entra ID | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-synced-passkeys\" target=\"_blank\">How to Enable Synced Passkeys (FIDO2) in Microsoft Entra ID (preview) - Microsoft Entra ID | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign\" target=\"_blank\">How to run a registration campaign to set up Microsoft Authenticator - Microsoft Entra ID | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/synced-passkey-faq\" target=\"_blank\">Synced passkeys FAQ - Microsoft Entra ID | Microsoft Learn</a></li></ul>\n<p><b><b>Compliance considerations</b></b></p>\n<p>No compliance considerations identified. Review as appropriate for your organization.</p>\n<p></p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Starting March 2026, Microsoft Entra ID will auto-enable passkey profiles with a new passkeyType property for device-bound and synced passkeys. Tenants not opting in will be migrated automatically, with existing settings preserved. Microsoft-managed registration campaigns will update targeting to passkeys. Preparation and configuration before rollout are recommended."
+    }
+  ],
+  "EndDateTime": "2026-08-31T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1221452",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2026-01-23T00:55:10.083Z",
+  "Services": [
+    "Microsoft Entra"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-01-23T00:54:46Z",
+  "Tags": [
+    "New feature",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Entra ID: Auto-enabling passkey profiles",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
