@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><i>You are receiving this message because our telemetry indicates that you have at least one Conditional Access policy targeting All resources with one or more resource exclusions. \n</i></p><p>As described in this <a href=\"https://techcommunity.microsoft.com/blog/microsoft-entra-blog/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/4488925\" target=\"_blank\">Microsoft Entra Blog post</a>, we’re enhancing how Conditional Access policies that target All resources and have resource exclusions are enforced for a narrow set of authentication flows. This is a proactive security measure in alignment with Microsoft’s ongoing commitment to defense-in-depth. \n</p><p><b>What is changing? \n</b></p><p><b>Today</b>, when a user signs in through a client application that requests only <a href=\"https://learn.microsoft.com//entra/identity-platform/scopes-oidc#openid-connect-scopes\" target=\"_blank\">OIDC scopes</a> or a <a href=\"https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps?branch=main&amp;branchFallbackFrom=pr-9833#conditional-access-behavior-when-an-all-resources-policy-has-an-app-exclusion\" target=\"_blank\">limited set of directory scopes</a>, Conditional Access policies that <b>target All resources are not enforced if the policy has one or more resource exclusions. \n</b></p><p><b>After this change</b>, Conditional Access policies that target <i>All resources</i> will be enforced for these sign-ins, <b>even when resource exclusions are present</b>. <a href=\"https://aka.ms/CAforLowValueScopes\" target=\"_blank\">Read more about this change.</a> \n</p><p><b>When will you see this change? \n</b></p><p>Microsoft Entra ID will begin enforcing this change starting March 27, 2026. This will be rolled out progressively over several weeks until June 2026.  \n</p><p><b>How will this affect your organization? \n</b></p><p>When a user signs in through a client application that requests only the scopes listed above, users may now receive Conditional Access challenges (such as MFA or device compliance) where previously they were allowed access without enforcement. The exact challenge depends on the access controls configured in your policies that target <i>All resources</i> or policies that explicitly target <i>Azure AD Graph</i> as a resource. \n</p><p><b>What do you need to do to prepare? \n</b></p><p><b>In most cases, no action is required</b>, as most client applications request additional scopes beyond those listed above and are already subject to Conditional Access enforcement. In such cases, there is no change in behavior. \n</p><p>If you have custom applications that are intentionally designed to request <b>only</b> the scopes listed above, evaluate whether they can handle Conditional Access challenges such as MFA or device compliance. \n</p><ul><li>If they <b>already handle Conditional Access challenges</b>: no changes are required.</li><li>If they <b>do not</b>, updates may be needed. Refer to the Microsoft Conditional Access developer guidance on how to update your application appropriately.&nbsp;</li></ul><p><b>Learn more:&nbsp;</b></p><ul><li><a href=\"https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps#conditional-access-behavior-when-an-all-resources-policy-has-an-app-exclusion\" target=\"_blank\">Conditional Access behavior when an all resources policy has an app exclusion | Conditional Access | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity-platform/scopes-oidc#openid-connect-scopes\" target=\"_blank\"> OpenID Connect scopes - Scopes and permissions in the Microsoft identity platform | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/microsoft-entra-blog/upcoming-conditional-access-change-improved-enforcement-for-policies-with-resour/4488925\" target=\"_blank\">Upcoming Conditional Access change: Improved enforcement for policies with resource exclusions | Microsoft Entra Blog</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Starting March 27, 2026, Conditional Access policies targeting All resources will be enforced even if resource exclusions exist, affecting sign-ins requesting only certain OIDC or directory scopes. Most organizations need no action unless custom apps request only those scopes and cannot handle Conditional Access challenges."
+    }
+  ],
+  "EndDateTime": "2026-07-31T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1223829",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-01-29T00:44:53.503Z",
+  "Services": [
+    "Microsoft Entra"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-01-29T00:44:07Z",
+  "Tags": [
+    "Feature update",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Upcoming Conditional Access change: Improved enforcement for policies with resource exclusions",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
