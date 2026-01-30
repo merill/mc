@@ -1,0 +1,36 @@
+{
+  "ActionRequiredByDateTime": "2026-04-29T07:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>Introduction</b></b></p><p>Action might be    required to avoid service disruption. To maintain secure and uninterrupted mail flow with Exchange Online, organizations must ensure their servers and clients trust the <b>DigiCert Global Root G2 Certificate Authority (CA)</b> and its subordinate CAs.&nbsp;</p><p>Organizations that rely on custom certificate trust stores, disabled Windows CTL updates, or older runtime environments might be impacted and may need to update their trusted certificate chains.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>\nOrganizations must complete required certificate trust updates <b>before April 30, 2026</b>.</p>\n\n<p><b><b>How this affects your organization:</b></b></p><p>\n<b>Who is affected:</b></p>\n\n<p>This change applies to all organizations (Worldwide, GCC, GCC‑High, DoD) that:</p>\n\n<ul>\n  <li>Send or receive email with Exchange Online <b>and</b></li>\n  <li>Either:</li>\n\n<ul>\n  <li>Your organization has disabled the Windows CTL Updater feature that by default downloads the Certificate Trust List (CTL).\n<ul><li>The CTL contains trusted and untrusted root certificates. Learn more: <a href=\"https://learn.microsoft.com/windows-server/identity/ad-cs/certificate-trust\" target=\"_blank\">Certificates and trust in Windows</a>.</li><li>This scenario may apply if your organization maintains its own set of trusted Root and Intermediate Certificates via Group Policy or via a redirected Microsoft Automatic Update URL. Learn more: <a href=\"https://learn.microsoft.com/windows-server/identity/ad-cs/configure-trusted-roots-disallowed-certificates\" target=\"_blank\">Configure trusted roots and disallowed certificates in Windows</a>.</li><li>You can determine whether the Windows CTL Updater feature is disabled by reviewing the <b>Who needs to take action</b>&nbsp;section of this Microsoft guidance: <a href=\"https://techcommunity.microsoft.com/blog/exchange/trust-digicert-global-root-g2-certificate-authority-to-avoid-exchange-online-ema/4488311\" target=\"_blank\">Trust DigiCert Global Root G2 Certificate Authority to Avoid Exchange Online Email Disruption</a>.</li></ul></li>\n\n  <li>You use older or custom application environments such as:</li>\n</ul>\n\n<ul>\n  <li>Legacy Java/JDK/JRE runtimes</li>\n  <li>Embedded systems and appliances</li>\n  <li>Custom or outdated Linux images</li>\n  <li>Air‑gapped systems</li>\n  <li>Third‑party email gateways or security appliances that perform certificate chain validation</li>\n</ul></ul>\n\n<p>This change applies to any system performing full certificate chain validation against Exchange Online, including Exchange Server, security appliances, and third-party email gateways.   If you use third-party email appliances, please contact the vendor directly for support.</p><p>Windows systems with the CTL Updater enabled (default) do not require action.</p>\n\n<p><b>What will happen:</b></p><p>\nIf the DigiCert Global Root G2 certificate or required intermediates are missing or cannot be retrieved during TLS negotiation:</p>\n\n<ul><li>Outbound email clients may:</li>\n<ul>\n  <li>Refuse to send email when strict certificate validation is enforced</li>\n  <li>Fall back to unencrypted SMTP if allowed</li>\n</ul>\n\n<li>Inbound SMTP connections from Exchange Online may fail or be delayed</li>\n\n<li>\nEmail flow reliability may be reduced</li><li>\nSystems not using up‑to‑date certificate chains may be unable to validate TLS certificates presented by Exchange Online</li></ul><p>If your organization already maintains the <b>current Office 365 certificate chains</b>, no impact is expected.</p>\n\n<p><b><b>What you can do to prepare:</b></b></p><p>\n<b>Required actions:</b></p><p>\nIf your environment has <b>disabled Windows CTL updates</b> or relies on <b>older/custom runtimes</b>, complete the actions outlined in the <b>What you must do</b> section of: <a href=\"https://techcommunity.microsoft.com/blog/exchange/trust-digicert-global-root-g2-certificate-authority-to-avoid-exchange-online-ema/4488311\" target=\"_blank\">Trust DigiCert Global Root G2 Certificate Authority to Avoid Exchange Online Email Disruption</a></p>\n\n<p><b>Specific actions include:</b></p>\n<ul>\n  <li>Review whether Windows CTL Updater is disabled in your organization.</li>\n  <li>Confirm whether SMTP servers, security appliances, and gateways fully trust the DigiCert Global Root G2 CA and subordinate CAs.</li>\n  <li>Ensure outdated or custom runtimes (Java, Linux, embedded systems, etc.) include the required certificates.</li>\n  <li>Contact your third‑party email appliance vendor if they manage certificate chains.</li>\n  <li>Update internal documentation and inform helpdesk teams as required.</li>\n</ul>\n\n<p><b>No action required if:</b></p>\n<ul>\n  <li>You are using Windows systems with CTL Updater enabled (default behavior), and</li>\n  <li>Your organization already trusts the latest Office 365 certificate chains.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "To avoid Exchange Online email disruption by April 30, 2026, ensure your servers and clients trust the DigiCert Global Root G2 CA. This is critical if you disable Windows CTL updates or use older/custom runtimes. Windows systems with default CTL updates enabled require no action."
+    }
+  ],
+  "EndDateTime": "2026-05-31T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1224565",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2026-01-30T00:04:47.017Z",
+  "Services": [
+    "Exchange Online"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-01-30T00:04:01Z",
+  "Tags": [
+    "Admin impact"
+  ],
+  "Title": "Trust DigiCert Global Root G2 certificate authority to avoid Exchange Online email disruption",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "AdditionalProperties": {}
+}
