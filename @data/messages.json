@@ -6389,44 +6389,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated January 8, 2026: We have updated the content. Thank you for your patience.</p><p><b><b>Introduction</b></b></p>\n<p>We are pleased to announce that <b>SharePoint Online Management Shell </b>now supports<b> App-Only Certificate-Based Authentication</b>. This update addresses the business need for secure, unattended automation in environments where (for example)<b>&nbsp;Multi-Factor Authentication (MFA)</b> is enforced. With this enhancement, customers can run automation scripts using app identities, ensuring compliance with security policies while maintaining operational efficiency.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>This feature is now generally available. Minimum version of SPO Management Shell required for this is 16.0.26712.12000</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b> SharePoint administrators and automation engineers using <b>SharePoint Online Management Shell</b> for scripting and automation.</p>\n<p><b>What will happen:</b></p>\n<ul>\n<li>Customers can now authenticate scripts using app identities registered in <b>Microsoft Entra ID</b> (formerly Azure AD), instead of user credentials.</li>\n<li>This enables seamless execution of unattended scripts, even when MFA is enforced.</li>\n<li>We expect most scenarios to work with App-Only authentication. However, there could be rare cases where an API needs an explicit user token for security reasons. In such cases, tenant admins should use interactive flows with admin/user credentials. Feel free to reach out to us if needed.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<p>Follow these one-time steps to register your app and enable certificate-based authentication:</p>\n<ol>\n<li><b>Step 1:</b> <a href=\"https://learn.microsoft.com/powershell/exchange/app-only-auth-powershell-v2?view=exchange-ps#step-1-register-the-application-in-microsoft-entra-id\">Register the application in Microsoft Entra ID</a>.</li>\n<li><b>Step 2:</b> Assign API permissions to the application:\n    <ul>\n        <li><b>Tenant Admin APIs</b> allow <b>App-Only</b> permissions for SPO resources using the&nbsp;<code>Sites.FullControl.All</code>&nbsp;App-only scope.</li>\n        <li>We are in the process of supporting more granular scopes for tenant APIs. For up-to-date information, refer to <a href=\"https://learn.microsoft.com/powershell/exchange/app-only-auth-powershell-v2?view=exchange-ps#step-1-register-the-application-in-microsoft-entra-id\">SharePoint Admin APIs Authentication and Authorization</a>.</li>\n        <li>You can assign permissions by:\n            <ul>\n                <li>Selecting and assigning API permissions from the portal.</li><li>Assigning admin role to the service principal in optional.</li>\n                <li>Modifying the app manifest to assign API permissions (required for Microsoft 365 GCC High and DoD organizations).</li>\n            </ul>\n        </li>\n        <li>Learn more: <a href=\"https://learn.microsoft.com/powershell/exchange/app-only-auth-powershell-v2?view=exchange-ps#step-2-assign-api-permissions-to-the-application\" target=\"_blank\">Step 2: Assign API permissions to the application</a></li>\n    </ul>\n</li>\n<li><b>Step 3:</b> <a href=\"https://learn.microsoft.com/powershell/exchange/app-only-auth-powershell-v2?view=exchange-ps#step-3-generate-a-self-signed-certificate\">Generate a self-signed certificate</a> or obtain one from a certificate authority.</li>\n<li><b>Step 4:</b> <a href=\"https://learn.microsoft.com/powershell/exchange/app-only-auth-powershell-v2?view=exchange-ps#step-4-attach-the-certificate-to-the-microsoft-entra-application\">Attach the certificate to the Microsoft Entra application</a>.</li>\n</ol>\n<p>Once these steps are completed, update the <code>Connect-SPOService</code> line at the beginning of your scripts to use the app identity instead of user credentials. For examples, refer examples 7, 8, and 9 in this article: <a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/connect-sposervice?view=sharepoint-ps\">Connect-SPOService (Microsoft.Online.SharePoint.PowerShell)</a>.</p><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "SharePoint Online Management Shell now supports app-only certificate-based authentication for secure, unattended automation, even with MFA enforced. Available from version 16.0.26712.12000, it uses app identities registered in Microsoft Entra ID. Administrators must register apps, assign permissions, generate certificates, and update scripts accordingly."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1188595",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-01-08T17:15:00.297Z",
-    "Services": [
-      "SharePoint Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-11-21T00:14:43Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "App-only certificate-based authentication now available in SharePoint Online Management Shell",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "Starting on February 2, 2026, the following preview Copilot features in Power Apps Canvas Apps will be removed: \n<ul>\n<li>Copilot Control: <a href=\"https://aka.ms/13467/1\" target=\"_blank\">Add a Copilot control to a canvas app (preview)</a></li>\n<li>Copilot Answer Control: <a href=\"https://aka.ms/13467/2\" target=\"_blank\">Overview of Copilot answer control for canvas apps</a></li>\n<li>Custom Copilot: <a href=\"https://aka.ms/13467/3\" target=\"_blank\">Enable a custom Copilot to a canvas app</a></li>\n</ul>\n<b>How does this affect me?</b><br> \nMakers will no longer be able to add these controls to new Canvas apps. Existing apps that already use these controls will continue to function, but these features will not be supported and will be deprecated in the future.<br><br>\nNo other Canvas app functionality is affected. \n<br><br>\nWe are currently working on a future release for <a href=\"https://aka.ms/13467/4\" target=\"_blank\">M365 Copilot in Power Apps for copilot experiences</a> that will provide similar capabilities.<br><br>\n<b>What action do I need to take?</b><br>\nFor apps that currently use these features, we recommend planning a transition to Microsoft 365 Copilot in Power Apps when they are made available.",
       "ContentType": "html"
     },
@@ -8584,52 +8546,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Microsoft 365 Copilot connectors enable your organization to bring content from third-party systems into Microsoft 365 so that Copilot can reason over it, ground responses, and improve knowledge discovery. With connectors, your users can search, retrieve, summarize, and interact with enterprise data—no matter where it resides.</p>\n<p>We are pleased to announce the general availability (GA) of nine new Microsoft 365 connectors across engineering systems, knowledge bases, cloud storage, and service platforms. These connectors have completed all quality, reliability, security, and documentation requirements, and are now fully supported for production use.</p>\n<p>The following connectors are now GA:</p>\n<ul>\n<li><b>GitHub Cloud – Knowledge Base</b></li>\n<li><b>GitHub Cloud – Issues</b></li>\n<li><b>GitHub Cloud – Pull Requests</b></li>\n<li><b>Freshservice (solution articles)</b></li>\n<li><b>Guru (knowledge cards)</b></li>\n<li><b>Dropbox (files)</b></li>\n<li><b>Google Drive (files)</b></li>\n<li><b>Zendesk Help Center (articles)</b></li>\n<li><b>Amazon S3 (files &amp; objects)</b></li>\n</ul>\n<p>These releases represent a major milestone in expanding the Copilot extensibility ecosystem and enabling organizations to unlock high-value knowledge trapped in external systems.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=513282\" target=\"_blank\">513282</a>.</p>\n<b>When this will happen</b><p>General availability is effective immediately.</p>\n<b>How this affects your organization</b><p><i>Who is affected:</i> Admins managing Microsoft 365 Copilot connectors and users leveraging Copilot for external content.</p>\n<p><i>What will happen:</i></p>\n<ul>\n<li>Organizations can deploy nine new GA connectors for Copilot.</li>\n<li>End users will be able to:\n<ul>\n<li>Use Copilot to reason over engineering knowledge, tickets, help-center content, files, and cloud object stores.</li>\n<li>Ask domain-specific questions grounded in indexed content.</li>\n<li>Search connected content through Microsoft Search surfaces such as Copilot Search, SharePoint, Bing, Windows Search, and Microsoft 365 apps.</li>\n</ul>\n</li>\n<li>Existing preview participants do not need to take any action; their connections will continue under GA.</li>\n</ul>\n<b>What you can do to prepare</b><ul>\n<li>Review connector documentation for setup guidance and capabilities.</li>\n<li>Ensure required authentication and permissions are configured.</li>\n<li>Plan indexing scopes to optimize grounding quality in Copilot.</li>\n<li>Optionally run pilot deployments within selected departments before broader rollout.</li>\n</ul>\n<p>Learn more: <a href=\"https://learn.microsoft.com/microsoft-365-copilot/extensibility/overview-copilot-connector\" target=\"_blank\">Microsoft 365 Copilot connectors overview | Microsoft Learn</a></p>\n<b>Compliance considerations</b><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "513282"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Nine new Microsoft 365 Copilot connectors are now generally available, enabling integration with GitHub, Freshservice, Guru, Dropbox, Google Drive, Zendesk, and Amazon S3. These connectors allow users to search, retrieve, and interact with external enterprise data across Microsoft 365 apps immediately."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1198705",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-12-17T19:48:59.603Z",
-    "Services": [
-      "Microsoft 365 Copilot Chat"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-12-17T19:48:53Z",
-    "Tags": [
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft 365 Copilot: Nine new connectors now generally available",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b><b>Introduction</b></b></p>\n<p>SharePoint admins can now <b>customize the emails</b> <b>sent from Data Access Governance reports</b> to site owners and admins for site access reviews. Customizing email content helps improve the read-through rate of these emails, which can lead to faster responses and better governance across the tenant.</p>\n\n<p><b><b>When this will happen</b></b></p>\n<p><b>General Availability (Worldwide, GCC, GCCH, DoD): </b>We will begin rolling out in<b> mid-December 2025</b> and expect to complete by<b> mid-January 2026</b>.</p>\n\n<p><b><b>How this affects your organization</b></b></p>\n<ul>\n<li><b>Who is affected:</b> SharePoint Online admins managing Data Access Governance reports</li>\n<li><b>What will happen:</b>\n<ul>\n<li>Admins can customize email content sent to site owners/admins during site access reviews.</li>\n<li>This feature is designed to improve engagement and response rates.</li>\n<li>No changes to existing policies; customization is optional.</li>\n</ul>\n</li>\n</ul>\n\n<p><b><b>What you need to do to prepare</b></b></p>\n<ul>\n<li>Notify your SharePoint administrators about the ability to <a href=\"https://learn.microsoft.com/sharepoint/site-access-review#customize-email-to-site-owners\" target=\"_blank\">customize emails</a> from Data Access Governance reports.&nbsp;</li>\n<li>Update internal documentation and workflows to reflect this change.</li>\n<li>Review Microsoft documentation for guidance on customizing email templates.</li></ul><p>Learn more:&nbsp;<a href=\"https://learn.microsoft.com/sharepoint/site-access-review#customize-email-to-site-owners\" target=\"_blank\">Customize email to site owners - Initiate site access reviews for Data access governance reports | Microsoft Learn</a></p><ul>\n</ul>\n\n<p><b><b>Compliance considerations</b></b></p>\n<p>No compliance considerations identified. Review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -9095,53 +9011,6 @@
       "User impact"
     ],
     "Title": "New in Teams – open channels in dedicated windows",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated December 16, 2025: We have updated the content for clarity. Thank you for your patience.&nbsp;</p><p><b><b>Introduction:</b></b></p>\n<p>We’ve improved the <b>multilingual meeting experience</b> in <i>Microsoft Teams</i>, focusing on the<b> Interpreter agent</b> to make it more seamless and intuitive. These updates help participants communicate more effectively in multilingual meetings.</p>\n<ul>\n<li><b style=\"\">Automatic spoken language detection when Interpreter agent is enabled</b> - Teams now automatically detects and updates the spoken language across Interpreter, live captions, and transcription—no manual setup required:</li><p>&nbsp;<img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/1f221940-b63e-4da6-a6c7-88d4836da679/851e1b0d5f178b52dd01c84281ae5b2eaf9ea992.png\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li><b style=\"\">“Preparing” status indicator </b>-&nbsp;A new visual cue shows when the Interpreter is initializing, helping users know when it’s ready:</li><p>&nbsp;<img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/38ea5fd2-0d03-4e9f-a0ff-75054469d952/691a133d75b887ba51f5e9ba9514297069ee4757.png\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li><b>Simplified settings </b>- Interpreter settings now include clear explanations for each option, making setup easier and reducing confusion:</li><p>&nbsp;<img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/0dd42af2-ad45-4914-bbd2-36c80f638149/8094222015fb9348ee94015bed1cc8de74e434a6.png\" style=\"width: 400px;\" alt=\"user settings\"></p>\n</ul>\n<p><b>Note:</b> When Interpreter is turned off, live captions and transcription still work, but automatic language updates won’t apply—so captions may become inaccurate if participants switch languages mid-meeting.</p>\n<p><b>Important: </b>Interpreter is only available for Microsoft 365 Copilot licensed users.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=520389\" target=\"_blank\">520389</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p><ul>\n<li><b>Targeted Release: </b>We will begin rolling out <b>early December 2025</b> and expect to complete by<b> mid-December 2025</b>.</li><li><b>General Availability (Worldwide):</b> We will begin rolling out in&nbsp;<b>mid-December 2025</b> and expect to complete by<b> late December 2025</b>.</li>\n</ul>\n\n<p><b><b>How this will affect your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b> All users participating in multilingual meetings in <i>Microsoft Teams</i>.</li>\n<li><b>What will happen:</b>\n<ul>\n<li>Users will experience automatic spoken language detection across Interpreter, captions, and transcription.</li>\n<li>A new <b><i>“Preparing” </i></b>status indicator will appear when Interpreter initializes.</li>\n<li>Interpreter settings will include clearer explanations for each option.</li>\n<li>No impact to admins or tenant configurations.</li><li><b>Platform availability: </b>Android, Desktop, iOS, Linux, and Mac</li>\n</ul>\n</li>\n</ul>\n\n<p><b><b>What you need to do to prepare:</b></b></p>\n<ul>\n<li>No action is required from admins. This update will automatically apply as part of the standard Teams client update.</li>\n<li>You may choose to inform users about these enhancements to improve their meeting experience.</li></ul><p>Learn more:&nbsp;<a href=\"https://learn.microsoft.com/microsoftteams/interpreter-agent-teams\" target=\"_blank\">Manage Interpreter agent for your organization | Microsoft Teams | Microsoft Learn</a></p><ul>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "520389"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams enhanced its multilingual meeting experience by adding automatic spoken language detection, a “Preparing” status indicator for the Interpreter, and clearer settings explanations. These updates, available to Microsoft 365 Copilot users, roll out December 2025 across multiple platforms with no admin action required."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Android, Desktop, iOS, Mac"
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1188227",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-12-16T19:24:14.747Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-11-19T23:31:52Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: Enhancements to Interpreter and multilingual meeting experience",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -10546,44 +10415,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p>\n<p>As part of ongoing infrastructure and security improvements, Microsoft Defender for Identity (MDI) v2.x sensors will begin using new IP addresses to communicate with the MDI cloud. These IPs will come exclusively from the published range associated with the service tag <b>AzureAdvancedThreatProtection</b>. This change improves reliability and aligns with Azure networking standards.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide, GCC, GCCH, DoD): Gradual rollout begins mid-December 2025.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b> Organizations using Microsoft Defender for Identity v2.x sensors and restricting outbound traffic by IP address.</li>\n<li><b>What will happen:</b>\n<ul>\n<li>MDI sensors will start using new IP addresses from the published <b>AzureAdvancedThreatProtection</b> range.</li>\n<li>No addresses outside the published range will be used.</li>\n<li>Organizations that already allow the full published range will not experience any disruption.</li>\n<li>If IP restrictions exist and are not updated, sensors may lose connectivity to the MDI cloud.</li>\n</ul>\n</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>If your organization already allows the full published range, no action is needed.</li>\n<li>Otherwise:\n<ul>\n<li>Review any firewall or network policies that restrict traffic to MDI by IP address.</li>\n<li>Update policies to allow the full published IP range for the service tag <b>AzureAdvancedThreatProtection</b>. Learn more: <a href=\"https://learn.microsoft.com/azure/virtual-network/service-tags-overview\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Azure IP Ranges and Service Tags</a>.</li></ul></li></ul><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Defender for Identity v2.x sensors will start using new IP addresses from the AzureAdvancedThreatProtection service tag range beginning mid-December 2025. Organizations restricting outbound IPs must update firewall rules to allow this range to avoid connectivity loss; no action is needed if the full range is already allowed."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1194061",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-12-10T23:23:25.1Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-12-10T23:23:09Z",
-    "Tags": [
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "IP address changes in Defender for Identity v2.x sensor communication",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated December 10, 2025: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>We are introducing three new ways to simplify how Admins manage <b>People Skills</b>:</p>\n<ol>\n<li><b>Admin control:</b> Turn off <b>People Skills user experiences</b></li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/ceb56457-7f7e-4367-a5d5-3abb21a1edf1\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li><b>Feature access management:</b> Configure <b>People Skills</b> settings in the Microsoft 365 Admin Center</li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/68608730-52c2-4d7b-a705-f00d2fba0d1d\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li><b>Ability to import custom skills library:</b> <b>Upload </b>from your local device</li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/77bc9fbe-802a-46ca-a17b-785272d8496a\" style=\"width: 400px;\" alt=\"user settings\"></p></ol><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=529865\" target=\"_blank\">529865</a>.</p><ul>\n</ul>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide): We will begin rolling out mid-December 2025 and expect to complete by mid-January 2026 (previously mid-December 2025).</p>\n\n<p><b><b>How this will affect your organization:</b></b></p>\n<p><b>Who is affected:</b> Admins managing People Skills in Microsoft 365.</p>\n<p><b>What will happen:</b></p>\n<ul>\n</ul><p><b>Admin control to turn off People Skills user experiences:&nbsp;</b></p><p>As an Admin, you can use the Turn off People Skills user experiences control to manage how People Skills appears across your organization. This control lets you:</p><ul>\n<ul>\n</ul><li>Disable People Skills user experiences for your entire organization, user group subsets, or individual users.</li><li>Pilot People Skills to a small group of users in your organization before rolling it out broadly.</li></ul><p></p><ul></ul><p></p><p>When People Skills is turned off for a user, all People Skills user experiences will be removed for that user. Refer to <a href=\"https://learn.microsoft.com/copilot/microsoft-365/people-skills-overview#where-does-people-skills-data-appear\" target=\"_blank\" style=\"font-family: sans-serif; background-color: rgb(255, 255, 255);\">Where does People Skills data appear?</a> for a list of applications that use People Skills data and will be impacted by this Admin Control.</p><p><b></b></p><p><b>Why use this new admin control?</b></p><ul>\n<ul>\n</ul><li><b>Privacy and compliance:</b> Organizations in regulated industries or Workers Council regions may need to prevent skills data from appearing on user profiles for certain users or groups. Such organizations may use this new Admin Control to turn off People Skills for a specific geographic region (e.g., Germany) who may have Workers Council requirements to limit exposure of People Skills data for impacted users.</li><li><b>Pilot control:</b> Deploy People Skills to a limited audience scope before full rollout.</li><li><b>Deployment flexibility:</b> Limit skills exposure during testing or phased deployment.</li><ul>\n\n</ul><ul>\n</ul>\n\n</ul><p><b>Feature access management interface for People Skills settings:&nbsp;</b></p><p>You can configure People Skills directly in the Microsoft Admin Center using Feature access management—no need to rely on PowerShell commands anymore. This will make configuration of People Skills settings much easier. People Skills Admin settings you can manage directly in the M365 Admin Center interface include:</p><ul>\n<ul>\n</ul><li><b>People Skills user experiences control:</b> Turns all People Skills user experiences on or off for selected users.</li><li><b>People Skills AI inferencing control:</b> Determines whether AI can generate Skills for users and add them to their profiles on their behalf.</li><li><b>People Skills profile visibility control:</b> Controls whether a user’s skills (AI-generated, Confirmed, or Imported) are shared with others on the Microsoft 365 Profile card.</li><li><b>Show AI Skills control:</b> Controls whether AI-Generated Skills appear on a user’s profile.</li><li><b>Show Imported Skills control:</b> Allows or restricts imported skills (organization-added skills) from appearing on user’s profile.</li><ul>\n\n\n\n</ul><ul>\n</ul>\n\n</ul><p><b>Ability to import custom Skills library from your local device:&nbsp;</b></p><ul><li>We will offer the option of importing a custom Skills Library directly from your local device. This allows you to have greater flexibility in how you upload and manage your custom Skills Library.</li>\n</ul>\n\n<p><b><b>What you need to do to prepare:</b></b></p>\n<ul>\n<li>This message is for awareness, and no action is required.</li>\n<li>If you plan to limit or disable People Skills, review the new admin controls in the Microsoft 365 Admin Center after rollout.</li>\n<li>For details on applications impacted when People Skills is turned off, refer to Microsoft documentation.</li></ul><p>Learn more: <a href=\"https://learn.microsoft.com/copilot/microsoft-365/people-skills-sharing-inferencing-controls\" target=\"_blank\">Manage privacy and sharing controls in People Skills</a></p><ul>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified; review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -11085,89 +10916,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Purview | Information Protection: Auto-labeling for Microsoft Azure Storage and Azure SQL",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p>\n<p>We’re adding support for assigning <b>Microsoft SharePoint Online</b> sites to existing <b>administrative units</b> in <b>Microsoft Purview Data Loss Prevention (DLP)</b>. When you assign a DLP policy for SharePoint to an administrative unit, the policy will apply only to sites within that unit. This enhancement helps organizations manage policies more granularly and align with administrative boundaries.</p><p>Learn more about Admin units: <a href=\"https://learn.microsoft.com/purview/purview-admin-units\" target=\"_blank\">Administrative units in Microsoft Purview portal | Microsoft Learn</a></p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=526797\" target=\"_blank\">526797</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p><b>General Availability (GCC, GCC High, DoD):</b> Rollout begins <b>mid-December 2025</b> and is expected to complete by <b>late December 2025</b>.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b> Admins managing DLP policies for SharePoint Online.</li>\n<li><b>What will happen:</b>\n<ul>\n<li>You can assign SharePoint sites to administrative units and scope DLP policies accordingly.</li>\n<li>This feature will be available by default; no opt-in required.</li>\n<li>No impact to end-user workflows unless admins configure policies for specific units.</li>\n</ul>\n</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No action is required before rollout; the feature will be enabled automatically.</li>\n<li>Review your current DLP configuration to determine if scoping policies by administrative unit is beneficial.</li>\n<li>To configure, go to <b>Microsoft Purview compliance portal &gt; Data loss prevention &gt; Create policy &gt; Assign Admin Units</b>.</li>\n<p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/25174d31-a04a-445f-8911-27c2b73c105a\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li>Learn more:&nbsp;<a href=\"https://learn.microsoft.com/purview/dlp-policy-reference?branch=main#support-for-adding-sharepoint-sites-to-administrative-units\" target=\"_blank\">Support for adding SharePoint sites to Administrative Units</a></li>\n</ul>\n\n\n<p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified; review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "526797"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Purview Data Loss Prevention will support assigning SharePoint Online sites to administrative units, allowing DLP policies to apply only within those units. This feature, rolling out mid to late December 2025, requires no action before rollout and enables more granular policy management for admins."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1192256",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-12-05T00:48:00.56Z",
-    "Services": [
-      "Microsoft Purview"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-12-05T00:44:04Z",
-    "Tags": [
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Purview | Data Loss Prevention- Admin units support for Microsoft SharePoint Online",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>We’re introducing <b>new Microsoft Secure Score recommendations for Microsoft Defender for Endpoint (MDE)</b> to help organizations strengthen their security posture. These recommendations are designed to proactively block common attack techniques and improve endpoint protection.</p>\n<b>When this will happen</b><p><b>Public Preview: </b>Rollout will begin at the <b>end of December 2025</b> and is expected to complete by the <b>end of December 2025</b>.</p>\n<b>How this affects your organization</b><p><b>Who is affected:</b> Admins managing Microsoft Defender for Endpoint and Microsoft Secure Score.</p>\n<p><b>What will happen</b></p>\n<ul>\n<li>Customers in<i> Public Preview</i> will see new recommendations in <i>Microsoft Secure Score</i>.</li>\n<li>One example recommendation is: <b><i>Disable NTLM authentication for Windows workstations</i></b>.</li>\n<li>Secure Score will update based on the implementation of these recommendations.</li>\n</ul>\n<b>What you can do to prepare</b><ul>\n<li>Review the new recommendations in <i>Microsoft Secure Score</i> once available.</li>\n<li>Complete the recommended actions to improve your organization’s security posture.</li>\n<li>Communicate these changes to your security and endpoint management teams.</li></ul><p><b>Compliance considerations</b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p><p>\n</p><p>\n</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "New Microsoft Secure Score recommendations for Microsoft Defender for Endpoint will roll out in public preview by the end of December 2025, helping admins improve security by blocking common attacks. Admins should review and implement these recommendations, such as disabling NTLM authentication, to enhance endpoint protection."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1192254",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-12-05T00:43:40.04Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-12-05T00:43:31Z",
-    "Tags": [
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Defender for Endpoint: New Microsoft Secure Score recommendations",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -15117,43 +14865,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p>\n<p>To ensure the best experience and security for our users, Microsoft Teams will no longer release any updates or bug fixes to Teams on devices running Android 8 beginning December 2025. This change allows us to focus development efforts on newer Android versions that offer improved performance, security, and capabilities.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>This change will begin rolling out in late November 2025 and is expected to be completed by late December 2025.</p><p><b><b>How this affects your organization:</b></b></p>\n<ul>\n  <li><b>Who is affected:</b> Users in your organization who access Microsoft Teams on devices running Android 8.</li>\n  <li><b>What will happen:</b>\n    <ul>\n      <li>Users on Android 8 will no longer receive latest updates or changes to Microsoft Teams mobile app after December 2025.</li>\n      <li>Teams will continue to be supported on Android 8 so that users can sign-in and use the app.</li>\n      <li>There is no impact to Teams on desktop, web, or other mobile platforms.</li>\n    </ul>\n  </li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>Identify users in your organization who are using Android 8 devices. You can use the Microsoft Teams Admin Center or Microsoft Endpoint Manager to generate device reports.</li>\n  <li>Communicate this change to affected users and helpdesk staff.&nbsp;</li>\n  <li>Update internal documentation and support materials to reflect this change.</li>\n  <li>Encourage users to upgrade their Android OS or switch to a supported device.</li>\n  </ul><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will stop providing updates and fixes for Android 8 devices starting December 2025, though the app will remain usable. This change rolls out from late November to December 2025. Organizations should identify affected users, communicate the change, and encourage OS upgrades or device changes."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1181212",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2025-10-29T00:24:34.353Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-10-29T00:24:27Z",
-    "Tags": [
-      "User impact",
-      "Retirement"
-    ],
-    "Title": "Microsoft Teams support for Android 8 remains, updates and fixes will no longer be provided",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b>Introduction</b></p><p>We are resurfacing MC670435, published September 2023 to remind admins of the Microsoft Teams Premium self-service trial capability. This message serves as a reminder as we begin a broader rollout of the feature announced in 2023.</p><p>\n</p><p><b>When this will happen:</b></p><p>Ongoing rollout.&nbsp;</p><p><b>How this will affect your organization:</b></p><p>When rolled out, users within your organization will be able to directly initiate a Teams Premium trial. These self-service trial licenses will be a part of your Microsoft organizational tenant, and you will be able to manage these licenses like other Microsoft subscriptions. You will be able to cancel these trial licenses at any time.</p><p>You will also be able to fully control whether trials are converted to paid subscriptions. Users will not need to input payment information when signing up. If a user would like to convert to a paid license, they must work with you directly to do so as there is no auto-renew functionality for these trials. If a user isn’t upgraded to a paid subscription, all services included in their Microsoft Teams Premium will end, and the user may lose read only access to data generated by Teams Premium, stored in Microsoft Teams, OneDrive, and SharePoint.<br></p><p>Users in tenants where self-service trials are disabled may still see the “Get Premium” prompt when accessing features that require a premium license. This is expected behavior and helps signal user interest to admins. It can also help identify which users in your organization may need a Teams Premium license, allowing you to better manage and allocate your available licenses.&nbsp; To reduce confusion and prevent users from submitting license requests, admins can customize the license request flow. Instead of showing the default request form, they can configure a custom message explaining that license requests are not supported in their organization. For setup instructions, see <a href=\"https://learn.microsoft.com/en-us/microsoft-365/commerce/licenses/manage-license-requests?view=o365-worldwide#use-your-own-request-process\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Use your own request process – Microsoft Learn</a>.</p><p>Microsoft Teams Premium helps make your Teams meetings more intelligent, protected, and engaging. Unlike other meeting and collaboration tools, Teams Premium brings advanced capabilities for meetings, virtual appointments, and webinars together for one low cost. You can learn more about Teams Premium<a href=\"https://www.microsoft.com/en-us/microsoft-teams/premium\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\"> here</a>.</p><p>The customer data for all services associated with the Microsoft Teams Premium trial will be handled in accordance with the <a href=\"https://www.microsoft.com/licensing/terms/welcome/WelcomePage?programMoniker=MOSA\" target=\"_blank\">Microsoft Online Subscription Agreement</a> and the <a href=\"https://www.microsoft.com/licensing/terms/welcome/welcomepage\" target=\"_blank\">Product Terms</a>.</p><p><b>What you need to do to prepare:</b></p><p>Global or billing admins can use the same <a href=\"https://learn.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide\" target=\"_blank\">self-service purchase controls</a> to disable self-service trials while making use of subscription management capabilities to oversee and manage trial licenses on the <a href=\"https://go.microsoft.com/fwlink/p/?linkid=842264\" target=\"_blank\">Your Products</a> page in the Billing section of Microsoft 365 admin center.</p><p>Note: This is a new Teams Premium trial and is enabled or disabled independently of past trial offerings.</p><p>Review our updated self-service purchase and trial documentation <a href=\"https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins?view=o365-worldwide%22%20HYPERLINK%20%22https://learn.microsoft.com/en-us/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins?view=o365-worldwide\" target=\"_blank\">here</a>. We’ve added important information about the way trials work, the data that is collected, and the terms that apply.</p>",
       "ContentType": "html"
     },
@@ -15906,43 +15617,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>As part of our ongoing security efforts, we have made a recent change to Certificate-Based Authentication (CBA) behavior for Exchange ActiveSync. The enhancement is designed to support TLS 1.3, strengthening security and reliability for our customers. \n</p><p>With this change all Exchange ActiveSync CBA traffic will be routed to new, dedicated endpoints based on tenant location\n</p><p><b>How this will affect your organization:</b> \n</p><p>This change has already begun to roll out in the worldwide multi-tenant cloud and will start rolling out in other clouds starting November 2025. As a result of this change all Exchange ActiveSync CBA traffic will be routed to new, dedicated endpoints based on tenant location: \n</p><ul><li>Multi-tenant (Worldwide and GCC): outlook-cba.office365.com \n</li><li>DoD: outlook-dod-cba.office365.us \n</li><li>GCC-High: outlook-cba.office365.us</li></ul><p><b>What you need to do to prepare:</b>\n</p><p>For most Exchange ActiveSync clients, this change will be seamless. The client traffic will be implicitly redirected to the new CBA endpoints without any user action required. \n</p><p>However, if your organization uses a Secure Email Gateway (SEG) or similar gateway that filters or inspects ActiveSync traffic, you may need to update your firewall or gateway configuration to allow traffic to and from the new CBA endpoints listed above.  \n</p><p>If you have questions or concerns on this change, please contact your SEG vendor.  We appreciate your cooperation and commitment to maintaining a secure environment.  \n</p><p>Learn more:</p><p><a href=\"https://aka.ms/EASTLS13\" target=\"_blank\">Upcoming TLS Changes for Certificate Based Auth ActiveSync Traffic.</a>&nbsp;</p><p><a href=\"https://datatracker.ietf.org/doc/html/rfc8446\" target=\"_blank\">RFC 8446 - The Transport Layer Security (TLS) Protocol Version 1.3</a> \n</p><p>\n</p>\n<p>Specified at <a href=\"https://learn.microsoft.com/openspecs/exchange_server_protocols/ms-ashttp/7b7fabb9-910c-4f1c-9396-57d7ca579a31\" target=\"_blank\"><b>MS-ASHTTP</b>: Authorization | Microsoft Learn ActiveSync official documentation</a>, EAS requests without authorization header will be treated as a CBA request.&nbsp;&nbsp;</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Exchange ActiveSync Certificate-Based Authentication now supports TLS 1.3, routing traffic to new tenant-location-based endpoints. Most clients will redirect seamlessly, but organizations using Secure Email Gateways may need to update firewall settings. Rollout began globally, expanding to other clouds by November 2025."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1169566",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-10-10T15:51:29.637Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-10-10T15:51:20Z",
-    "Tags": [
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "Exchange ActiveSync TLS 1.3 Certificate Based Authentication Change",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b><b>Introduction</b></b><br>\nWe’re upgrading the Copilot experience in <i>Microsoft Loop</i> to align with Microsoft 365 Copilot Pages. In the interim, some of the Copilot integrations will be temporarily removed. Once fully completed, this update replaces older Copilot integrations with a consistent, high-quality model—reducing user confusion and improving reliability across chat and page contexts.</p>\n\n<p><b><b>When this will happen:</b></b><br>\n</p><ul>\n<li>Temporary removal of older Copilot integrations: Rolled out on September 9, 2025.</li>\n<li>Upgraded experience: Currently in development. More details will be shared in a future post.</li>\n</ul><p></p>\n\n<p><b><b>How this affects your organization:</b></b><br>\n<b>Who is affected:</b> All Microsoft 365 tenants using Microsoft Loop.<br>\n<b>What will happen:</b>\n</p><ul>\n<li>Older Copilot integrations will be removed from Loop.</li>\n<li>Users will see a consistent set of Copilot entry points that match the Microsoft 365 Copilot Pages experience.</li>\n<li>Prompts will return results consistent with Microsoft 365 Copilot Pages.</li>\n<li>During the transition, users can still access Copilot via the chat button or create a Recap on a page, using older integrations.</li>\n<li>Once the upgrade is complete, Copilot Shortcuts, Ask Copilot in the context menu, improved chat performance, and updated model capabilities will be restored.</li>\n</ul><p></p>\n\n<p><b><b>What you can do to prepare:</b></b>\n</p><ul>\n<li>Remove references in training materials to:<ul><li>Slash menu commands like <b>Draft page content</b> or <b>Summarize page</b></li><li>Ask Copilot context menu</li><li>Copilot integration during page creation</li></ul></li><li>Update documentation to reflect that:<ul><ul></ul><li>Page creation and summarization will be fully integrated into the Copilot chat experience.</li><li>Users will be able to interact with Copilot on selected content using Ask Copilot context menu when functionality is restored.</li></ul></li></ul><p></p>\n\n<p><b><b>Compliance considerations:</b></b><br>No compliance considerations identified, all <a href=\"https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide\" target=\"_blank\">compliance capabilities</a> will be the same as the <a href=\"https://support.microsoft.com/topic/get-started-with-microsoft-365-copilot-pages-6674bd51-9ff5-42c4-9256-44d9428a726f\" target=\"_blank\">Microsoft 365 Copilot Pages experience</a>.&nbsp;</p><p>&nbsp;</p>",
       "ContentType": "html"
     },
@@ -16227,53 +15901,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated September 30, 2025: We have updated the content. Thank you for your patience.</p><p><b><b>Introduction</b></b></p>\n<p>Starting in late October 2025, Microsoft will begin automatically installing the Microsoft 365 companion apps—<i>People</i>, <i>Files</i>, and <i>Calendar</i>—on Windows 11 devices that already have Microsoft 365 desktop client apps. These taskbar-integrated apps are designed to streamline everyday workflows, helping users stay focused, reduce context switching, and complete tasks faster.</p><p></p><p>With Copilot integration, users can ground their prompts in the right context—whether it’s a shared file, a meeting, or a collaborator. This integration allows users to catch up, summarize, and take action more efficiently.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=486856\" target=\"_blank\">486856</a>.</p>\n\n<p><b><b>When this will happen:</b></b><b><br></b></p><p><b>General availability</b>: Rollout begins late October 2025 and is expected to complete late December 2025.</p><p><b><b>How this affects your organization:</b></b><b><br></b></p><p><b>Who is affected:</b> </p><p>All users on Windows 11 devices with Microsoft 365 desktop client apps.</p><p><b>What will happen:</b>\n  \n</p><ul><li>Microsoft 365 companion apps (<i>People</i>, <i>Files</i>, <i>Calendar</i>) will be automatically installed.</li><li>Admins can opt out of automatic installation via <i>Device Configuration</i> settings.<ul>\n  </ul></li><li>If <i>Copilot pinning</i> is not yet enabled, admins will be able to pin both <i>Copilot </i>and companion apps starting mid-October.</li><li>If you’ve already enabled <i>Microsoft 365 Copilot pinning</i> in the Microsoft 365 Admin Center, note that companion apps are not included in the pinning configuration at this time but you will be able to enable companions pinning starting mid-October.<ul>\n    </ul></li><li>On devices where the apps are already installed, no visible change will occur.<ul>\n    </ul></li><li>Installation is <b>enabled by default</b> and does not require user interaction.<ul>\n    </ul></li><li>Apps will appear in the <i>Start menu</i> and provide quick access to people, files, and calendar data from the Microsoft Graph.</li></ul><p><b><b>What you can do to prepare:</b></b></p><ul><li>Notify users about this change via an internal announcement to set expectations.\n</li><li>Update any relevant internal documentation to reflect the availability of these apps.\n</li><li>If you want to opt out of automatic installation:\n<ol><li><a href=\"https://config.office.com/officeSettings\" target=\"_blank\">Go to <i>Microsoft 365 App Admin Center.</i></a></li><li>Navigate to <i>Customization -&gt; Device Configuration.</i></li><li>Select <i>Modern App settings\n</i></li><li>Choose <i>Microsoft 365 companion apps</i></li><li>Uncheck <i>Enable automatic installation of Microsoft 365 companion apps and Microsoft 365 Apps</i></li></ol></li><li>Learn more: <a href=\"https://go.microsoft.com/fwlink/?linkid=2302123\" target=\"_blank\">Overview of Microsoft 365 companion apps - Microsoft 365 Apps | Microsoft Learn</a></li><li>Check out the latest features here: <a href=\"https://go.microsoft.com/fwlink/?linkid=2310491\" target=\"_blank\">Get Started with Microsoft 365 companion apps | Microsoft Support</a></li></ul><p><b>App highlights:</b></p><p><i>People </i>app features:</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/1ab1216e-e6b3-456b-b381-4e13b74a9326\" alt=\"user settings\" style=\"width: 400px;\"></p><ul><li>Look up colleagues by name, skills, role, location and more.</li><li>View profile cards, availability, and organizational charts. \n</li><li>Send messages and start chats.  \n</li><li>Use Copilot to ask people-related questions like, <i>What does this person work on?</i>&nbsp;or <i>Draft a message to catch up</i>. \n</li><li>Type freeform prompts for any colleague directly in the app. \n</li></ul><p><i>File </i>app features: \n</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/9b2249a8-a8d7-4d30-a0fa-57dc641621ab\" alt=\"user settings\" style=\"width: 400px;\"></p>\n<ul></ul><p></p><ul><li>Find Microsoft 365 and locally downloaded files.</li><li>Preview file content and share with colleagues. \n</li><li>Filter by person, file type, or activity (<i>Created</i>,<i> Shared</i>,<i> Edited</i>, or <i>@Mentioned</i>). \n</li><li>Use Copilot to summarize, catch up, and act on files.</li></ul><p style=\"\"><i>Calendar </i>app features:&nbsp;</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/231dc5b0-4b22-4bd0-b648-a4207ad7a90d\" alt=\"user settings\" style=\"width: 400px;\"></p><ul><li>Find events by organizer, attendees, or title.&nbsp;</li><li>View agenda or day at a glance.&nbsp;</li><li>Open meeting details and join directly from the calendar.&nbsp;</li><li>Edit meetings, chat with participants, or copy the meeting link.&nbsp;</li><li>Use Copilot to prepare for upcoming meetings or catch up on missed ones.</li></ul><p><br></p><p></p><p><b><b>Compliance considerations:</b></b></p><table border=\"1\">\n<tbody><tr><th>Question</th><th>Explanation</th></tr>\n<tr><td>Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data?</td><td><i>Copilot</i> integration enables contextual AI-driven assistance based on user data such as files, meetings, and contacts.</td></tr>\n<tr><td>Does the change provide end users any new way of interacting with generative AI?</td><td>Users can interact with <i>Copilot Companions</i> directly from the taskbar using contextual prompts grounded in <i>Microsoft Graph</i> data</td></tr>\n\n<tr><td>Does the change allow a user to enable and disable the feature themselves?</td><td>Users can pin or unpin the apps from the taskbar once available.</td></tr>\n</tbody></table><p></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "486856"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Starting late October 2025, Microsoft 365 companion apps—People, Files, and Calendar—will auto-install on Windows 11 devices with Microsoft 365 apps, integrating Copilot for contextual AI assistance. Admins can opt out via Device Configuration. Apps enhance productivity by streamlining access to contacts, files, and meetings."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop"
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1160180",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2025-09-30T21:37:36.483Z",
-    "Services": [
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-26T18:06:13Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "NEW Microsoft 365 companion apps: a suite designed to enhance productivity",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated September 30, 2025: We have updated the timeline. Thank you for your patience.&nbsp;</p><p>&nbsp;Coming soon: Users can share Microsoft Teams apps or agents from the app or agent profile and from the app side panel in Teams.</p><p>This message applies to Teams for Windows desktop, Teams for Mac desktop and Teams on the web.\n</p><p>A Microsoft 365 Copilot license is not required to share agents as described in this message. If a user has access to the agents, the users will be able to share them.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=483355\" target=\"_blank\">483355</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling out early November 2025 and expect to complete by mid-November 2025.\n</p><p>General Availability (Worldwide): We will begin rolling out mid-November 2025 and expect to complete by early December 2025</p><p> \n<b>How this will affect your organization:</b>\n</p><p>After this rollout:\n</p><ul><li>Users can select the <i>Share </i>option when hovering on the app or agent icon in 1:1 chat mode with the app or agent.\n</li><li>After a user selects the <i>+Apps</i> icon from the three-dot menu in the top right of any chat, the user can right-click to share the app or agent.</li></ul><p>Share option from hovering on app/agent icon:\n</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/8c967284-fc8a-4e09-a963-5136568596ad\" style=\"width: 400px;\" alt=\"user controls\">\n</p><p>Sharing from right panel:\n</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/3b30533e-d6d9-41ff-b33b-164dc9962ee1\" style=\"width: 400px;\" alt=\"user controls\">\n</p><p>This change will be on by default.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. Review your current configuration to determine the impact for your organization. You may want to notify your users about this change and update any relevant documentation.</p>",
       "ContentType": "html"
     },
@@ -16437,44 +16064,6 @@
       "Retirement"
     ],
     "Title": "Retirement Announcement: Microsoft Education Learning Tools Interoperability (LTI) Integrations",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b>Introduction</b></p><p>Starting in October 2025, Microsoft is rolling out a refreshed licensing experience in Microsoft admin center. This update improves visibility into license assignments and introduces new tools to help administrators manage licenses more efficiently across their organization.</p><p><b>When this will happen:</b></p><p>General availability (Worldwide): Rollout begins mid-October 2025 and will complete by the end of the calendar year.</p><p><b>How this affects your organization:</b></p><p>Who is affected: Admins managing licenses in Microsoft admin center.</p><p>What will happen:</p><ul><li>A unified licensing view will show both user-based and group-based license assignments in a single list.</li><li>A new “Licensing Errors” tab will surface user-level errors from group-based license assignments, categorize them (e.g., missing prerequisites), and offer resolution options.</li><li>A new “Users without licenses” page will display users in licensed groups who haven’t received licenses due to insufficient availability.</li><li>Existing license assignments remain unchanged.</li><li>No impact to PowerShell scripts or API integrations.</li><li>The new interface will be enabled by default for all tenants.</li></ul><p><i>Screenshot 1 - The License List Page lists all products the customer has licenses for in the tenant:</i></p><p><i>&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/f8918f2f-7a84-45cd-85f3-7a36395250ed/0ca0b341134efc9b4cec99f0304efadb36db178b.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><i>&nbsp;</i></p><p><i>Screenshot 2 - View of the License Detail Page:</i></p><p><i>&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/1519ee31-2180-4f42-92bd-0ba18910ea6b/4445aba20fbb30d8b99adfdeaa652e8822c7405c.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><i>&nbsp;</i></p><p><b>What you can do to prepare:</b></p><p>No action is required. The new experiences will appear automatically.</p><p>You may wish to:</p><ul><li>Inform helpdesk staff of the upcoming interface changes.</li><li>Update internal documentation if you detail license management workflows.</li><li>Review the new licensing pages once available to familiarize yourself with the changes.</li></ul><p><b>Compliance considerations:</b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting October 2025, Microsoft admin center will launch a unified licensing view with new tools like a “Licensing Errors” tab and “Users without licenses” page, improving license management. Existing assignments and integrations remain unchanged. The update is automatic; admins should inform helpdesk and update documentation."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1160187",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-26T18:16:42.947Z",
-    "Services": [
-      "Microsoft 365 suite"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-26T18:16:34Z",
-    "Tags": [
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft admin center: New licensing experiences",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -17084,81 +16673,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<b><b>Introduction</b></b>\n<p>To improve visibility and alignment across Microsoft Defender for Office 365 and Microsoft Sentinel, we’re updating how email verdict and location changes are handled in the <i>EmailEvents</i> table. This change ensures that Sentinel reflects both current and historical verdicts, enabling more accurate threat analysis and investigation.</p>\n\n<b><b>When this will happen:</b></b>\n<p><b>General Availability:</b> Rollout begins in <b>early October 2025</b> and is expected to complete by <b>early November 2025</b>.</p>\n\n<b><b>How this affects your organization:</b></b>\n<ul>\n<li><b>Who is affected:</b> Admins using <i>Microsoft Defender for Office 365</i>, <i>Streaming API</i>, and the <i>EmailEvents</i> table in Microsoft Sentinel.</li>\n<li><b>What will happen:</b>\n  <ul>\n    <li>The <i>Streaming API</i> will begin streaming updated records when an email’s verdict or location changes.</li>\n    <li>Microsoft Sentinel will store both the updated and previous records, rather than replacing them.</li>\n    <li>You may see multiple rows for the same email if its verdict or location is updated.</li>\n    <li>This update aligns the <i>EmailEvents</i> table in Microsoft Sentinel with the behavior of the <i>Advanced Hunting</i> <i>EmailEvents</i> table.</li>\n  </ul>\n</li>\n</ul>\n\n<b><b>What you can do to prepare:</b></b>\n<ul>\n<li>Review and update existing queries and dashboards that rely on the <i>EmailEvents</i> table.</li>\n<li>Use the following KQL pattern to retrieve the latest record per email:</li>\n</ul>\n<pre>summarize arg_max(Timestamp, *) by NetworkMessageId, RecipientEmailAddress\n</pre>\n<p>Example query for emails with a \"Phish\" verdict:</p>\n<pre>EmailEvents\n| where ThreatTypes has \"Phish\"\n| summarize arg_max(Timestamp, *) by NetworkMessageId, RecipientEmailAddress\n</pre>\n<p>Learn more about the <code>arg_max</code> function: <a href=\"https://learn.microsoft.com/kusto/query/arg-max-aggregation-function?view=microsoft-fabric\">KQL arg_max documentation</a></p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.\n</p><p><b><br></b></p><p><a href=\"http://\"></a></p><a href=\"https://learn.microsoft.com/en-us/kusto/query/arg-max-aggregation-function?view=microsoft-fabric\">\n</a>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting early October 2025, Microsoft Defender for Office 365's Streaming API and Sentinel EmailEvents table will store both current and historical email verdicts and locations, showing multiple records per email. Admins should update queries and dashboards accordingly, using KQL's arg_max to retrieve the latest records."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1150118",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-08T23:28:17.123Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-08T23:28:04Z",
-    "Tags": [
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Defender for Office 365: New records in Streaming API and Sentinel EmailEvents table",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<b><b>Introduction</b></b>\n<p>To streamline learning experiences and focus development efforts, we’re retiring the <i>Manage interest</i> feature in Viva Learning and replacing it with <i style=\"\">Manage People Skills</i>. This change reflects our commitment to enhancing skill-based learning and simplifying admin management.</p>\n\n<b><b>When this will happen:</b></b>\n<p>This change will take effect on <b>December 31, 2025</b>.</p>\n\n<b><b>How this affects your organization:</b></b>\n<ul>\n<li><b>Who is affected:</b> Organizations currently using the <i style=\"\">Manage interest</i> feature in Viva Learning.</li>\n<li><b>What will happen:</b>\n  <ul>\n    <li>The <i>Manage interest</i> feature will be retired and removed from Viva Learning.</li>\n    <li>Admins will no longer be able to import or manage interests.</li>\n    <li>Users will no longer be able to select or view interests.</li>\n    <li>All existing interest data—including user-selected interests, interest inventory, and manual interest tags—will be permanently deleted.</li>\n    <li>The <i style=\"\">Manage People Skills</i> feature will be available as the recommended replacement.</li>\n  </ul>\n</li>\n</ul>\n\n<b><b>What you can do to prepare:</b></b>\n<ul>\n<li>Before December 31, 2025:\n  <ul>\n    <li>Explore and test the <i style=\"\">Manage People Skills</i> feature in Viva Learning.</li>\n    <li>Enable <i style=\"\">Manage People Skills</i> for your organization to ensure a smooth transition.</li>\n    <li>Communicate this change to helpdesk and training teams.</li>\n    <li>Update internal documentation to reflect the new feature.</li>\n  </ul>\n</li>\n<li>After December 31, 2025:\n  <ul>\n    <li>No action is needed to remove <i style=\"\">Manage interest</i>; it will be automatically replaced.</li>\n  </ul>\n</li>\n<li>Learn more: <a href=\"https://learn.microsoft.com/viva/learning/manage-people-skills#migrating-from-interests-to-people-skills-in-viva-learning\">Migrating from interests to people skills in Viva Learning</a>\n</li></ul><p>\n<b><b>Compliance considerations:</b></b>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>\n</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The Manage interest feature in Viva Learning will be retired and replaced by Manage People Skills by December 31, 2025. Existing interest data will be deleted, and admins should enable and prepare for Manage People Skills before the transition. No compliance issues are identified."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1150117",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-08T23:27:36.63Z",
-    "Services": [
-      "Microsoft Viva"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-08T23:25:49Z",
-    "Tags": [
-      "User impact",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Manage interest is being replaced by Manage People Skills by December 31, 2025",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated September 8, 2025: We have updated the timeline. Thank you for your patience.\n</p><p>Microsoft Purview Communication Compliance is improving the capabilities and customization of policy alerts.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=181825\" target=\"_blank\">181825</a>.</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out late July 2025 (previously late June) and expect to complete by mid-Aug 2025 (previously mid-July).</p><p>General Availability (Worldwide): We will begin rolling out early January 2026 and expect to complete by early January 2026.</p><p><b>How this will affect your organization:</b>\n</p><p>Communication Compliance is improving the capabilities and customization of policy alerts. Admins will be able to customize the alert frequency per policy as well as adjust the email alerts frequency and recipients within the policy creation wizard by navigating to the new alerts page.</p><p>This new feature is available by default.</p><p><b>What you need to do to prepare:</b>\n</p><p>Microsoft Purview Communication Compliance provides the tools to help organizations detect business conduct and regulatory compliance violations (e.g. SEC or FINRA), such as sensitive or confidential information, harassing or threatening language, and sharing of adult content. Usernames are pseudonymized by default, role-based access controls are built in, investigators are opted in by an admin, and audit logs are in place to help ensure user-level privacy.</p><p>You can access the Communication Compliance solution in the <a href=\"https://purview.microsoft.com/compliance\" target=\"_blank\">Microsoft Purview compliance portal.&nbsp;</a></p><p>Learn more:&nbsp;</p><p>•\t<a href=\"https://docs.microsoft.com/microsoft-365/compliance/communication-compliance?view=o365-worldwide\" target=\"_blank\">Learn about communication compliance&nbsp;</a></p><p>•\t<a href=\"https://learn.microsoft.com/purview/communication-compliance-policies?view=o365-worldwide#alert-policies\" target=\"_blank\">Create and manage communication compliance alert policies | Microsoft Learn</a></p>",
       "ContentType": "html"
     },
@@ -17407,43 +16921,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Purview: Sender email address update for Microsoft Teams Data Loss Prevention Generate Incident Report emails",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b>Introduction</b></p><p>We’re improving the alert experience in Microsoft Defender for Office 365 (MDO) to help security teams triage alerts more efficiently. These updates reduce alert fatigue by consolidating related signals into single, richer alerts—without compromising detection fidelity or coverage.</p>\n\n<b>When this will happen</b>\n<p>General Availability (Worldwide, GCC, GCC High, DoD): Rollout begins mid-September 2025 and will complete by late November 2025. Updates will be delivered incrementally during this period.</p>\n\n<b>How this affects your organization</b>\n<ul>\n<li><b>Fewer near-duplicate alerts:</b> Closely related signals will be grouped, reducing clutter in the alert list.</li>\n<li><b>Richer alert detail: </b>Alerts will include impacted entities (e.g., users, recipients), key identifiers (e.g., message/network IDs), and timelines. Evidence such as URLs, attachments, and IPs remains accessible.</li>\n<li><b>Preserved triage workflows: </b>Existing pivots like <i>Open message in Explorer</i>, <i>View timeline</i>, and <i>List impacted entities</i>&nbsp;remain unchanged. Severity and categorization are unaffected.</li>\n<li><b>Incident correlation: </b>Incidents may contain fewer child alerts but with denser evidence per alert.</li>\n<li><b>APIs and reporting:</b> No schema changes. You may observe lower raw alert counts with higher per-alert density. Dashboards and automation referencing alert IDs will continue to function.</li>\n</ul>\n<p>This feature is on by default and requires no configuration changes.</p>\n\n<b>What you can do to prepare</b>\n<ul>\n<li><b>Review automation logic:</b> Ensure playbooks and scripts can handle alerts with multiple entities and richer context.</li>\n<li><b>Review alert metrics: </b>If you track alert counts, consider also measuring how many users or messages are included in each alert, what actions are taken, and how long it takes to respond and resolve (mean time to acknowledge and mean time to resolve).</li><li><b>Communicate with SecOps teams: </b>Set expectations around reduced alert volume with maintained evidence depth.</li>\n</ul>\n<p>No policy or configuration changes are required before rollout.</p>\n\n<b>Compliance considerations</b>\n<p>No compliance considerations identified, review as appropriate for your organization.\n</p><p></p><p></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Defender for Office 365 will enhance alert experience by consolidating related signals into richer alerts, reducing alert fatigue while preserving detection and workflows. Rollout starts mid-September 2025, requires no configuration changes, and may affect automation and alert metrics tracking. No compliance issues identified."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1147387",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-03T23:25:12.03Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-03T23:24:58Z",
-    "Tags": [
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Defender for Office 365: Alert experience enhancements for faster triage",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -17883,43 +17360,6 @@
       "User impact"
     ],
     "Title": "Microsoft Teams: Specify who can manage the screen in town halls",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": "2025-12-30T08:00:00Z",
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b>Introduction\n</b></p><p>As part of our ongoing efforts to modernize and streamline audit logging in Exchange Online, we are retiring the <code>Search-MailboxAuditLog</code> and <code>New-MailboxAuditLogSearch </code>cmdlet. Organizations should transition to the <code>Search-UnifiedAuditLog</code>cmdlet for long-term audit log access and compliance.\n</p><p><b>When this will happen\n</b></p><ul><li><b>March 1, 2025:</b> New audit log data will no longer be written to individual mailboxes.\n</li><li><b>June 2025:</b> Migration tools and documentation will be available to support transition.\n</li><li><b>End of December 2025: </b>The <code>Search-MailboxAuditLog</code> and <code>New-MailboxAuditLogSearch</code> cmdlets will be fully retired.</li></ul><p><b>How this affects your organization\n</b></p><p>After March 1, 2025, mailbox audit log data will become static and read-only. While existing data will remain accessible for historical review, no new data will be written to mailbox audit logs. By the end of 2025, the legacy cmdlets will no longer be available, and any scripts or tools relying on them will fail.\n</p><p>Organizations should ensure they are using the <code>Search-UnifiedAuditLog</code> cmdlet for audit log access going forward. This change supports improved scalability, centralized access, and long-term retention of audit data.\n</p><p><b>What you can do to prepare\n</b></p><p>To ensure a smooth transition:\n</p><ul><li>Review your current usage of <code>Search-MailboxAuditLog</code> and <code>New-MailboxAuditLogSearch</code> to identify dependencies in scripts, tools, or workflows.\n</li><li>Engage with your legal and compliance teams to ensure regulatory requirements are met.\n</li><li>Confirm that auditing is enabled for your tenant.\n</li><li>Use the documentation (available June 2025) to transition to <code>Search-UnifiedAuditLog</code>.\n</li></ul><p>Learn more:&nbsp;<a href=\"https://techcommunity.microsoft.com/blog/microsoft-security-blog/microsoft-exchange-online-search-mailboxauditlog-and-new-mailboxauditlogsearch-w/4366310\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Microsoft Exchange Online: Search-MailboxAuditLog and New-MailboxAuditLogSearch will retire</a></p><p><b>Compliance considerations</b></p><p>\n</p><table>\n<tbody><tr><th>Impacted Area</th><th>Explanation</th></tr>\n<tr><td>Audit logging capabilities</td><td>Yes – This change retires legacy audit log cmdlets and shifts audit access to the unified audit log.</td></tr>\n<tr><td>eDiscovery or Content Search</td><td>Yes – Organizations must use Search-UnifiedAuditLog for audit log searches going forward.</td></tr>\n<tr><td>Retention policies, holds, or deletion workflows</td><td>Yes – Mailbox audit logs become static and read-only after March 2025.</td></tr>\n<tr><td>Admin monitoring and reporting</td><td>Yes – Admins must update monitoring tools and reports to use the unified audit log.</td></tr>\n</tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The Search-MailboxAuditLog and New-MailboxAuditLogSearch cmdlets will retire by December 2025. After March 1, 2025, mailbox audit logs become read-only. Organizations must transition to the Search-UnifiedAuditLog cmdlet for audit access, with migration support available from June 2025."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1126353",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-07-31T23:20:03.853Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-07-31T23:19:56Z",
-    "Tags": [
-      "User impact",
-      "Retirement"
-    ],
-    "Title": "Retirement of Search-MailboxAuditLog and New-MailboxAuditLogSearch Cmdlets by End of 2025",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -18560,47 +18000,6 @@
       "Retirement"
     ],
     "Title": "Support for Office 2016, Office 2019, and additional apps will end on October 14, 2025",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>As communicated in four previously published posts for Microsoft Defender and Microsoft Exchange Online starting in 2022 and ending with MC960818 <i>(Updated) Microsoft Outlook for iOS/Android: New reporting buttons integrated with Microsoft Defender for Office 365</i> (February 2024), the built-in <i>Report </i>button is available for all Microsoft Outlook platforms. Learn more:&nbsp;<a href=\"https://learn.microsoft.com/defender-office-365/submissions-outlook-report-messages#use-the-built-in-report-button-in-outlook\" target=\"_blank\" style=\"\">Report phishing and suspicious emails in Outlook for admins - Microsoft Defender for Office 365 | Microsoft Learn</a>. </p><p>This message announces the maintenance mode status of the Report Message add-in and Report Phishing add-in and explains how to disable all add-ins so users only see one reporting option in Outlook.</p><p>This message applies to new Outlook for Windows desktop, Outlook for Mac desktop, Outlook for the web, and Outlook for iOS/Android.</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide, GCC, GCC High, DoD): Available now.\n</p><p><b>How this will affect your organization:</b></p><p>Before this change: The Report Message add-in and Report Phishing add-in were available for Outlook.\n</p><p>After this change, the built-in <i>Report </i>button provides these advantages over the add-ins:\n</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/3966367c-a60d-484b-857f-86182a1bfe45\" style=\"width: 400px;\" alt=\"admin documentation\">\n</p><p>The Report Message add-in and Report Phishing add-in are now in maintenance mode, which means we will not make improvements to them. The add-ins will remain functional until we eventually retire them. Any new improvement requests for the add-ins will be rejected. Learn more: <a href=\"https://learn.microsoft.com/defender-office-365/submissions-users-report-message-add-in-configure#frequently-asked-questions\" target=\"_blank\">Transition from Report Message or the Report Phishing add-ins - Microsoft Defender for Office 365 | Microsoft Learn</a> (includes Frequently Asked Questions).\n</p><p>If you have the Report Message add-in and Report Phishing add-in, users will see two reporting options in Outlook: The Report Message add-in and the built-in <i>Report</i> button. It is not possible to remove the built-in <i>Report</i> button and keep the Report Message add-in. Learn more about <a href=\"https://learn.microsoft.com/defender-office-365/submissions-users-report-message-add-in-configure#remove-the-report-message-or-report-phishing-add-ins\" target=\"_blank\">removing the add-in</a>.</p><p>If you are using a third-party add-in, end users might see two reporting options in Outlook. Follow these steps to remove the in-built report button:\n</p><ol><li>Go to Microsoft Defender &gt; <a href=\"https://security.microsoft.com/securitysettings/userSubmission\" target=\"_blank\">User reported settings</a>\n</li><li>Select <i>Monitor reported messages in Outlook</i>.\n</li><li>Select <i>Use a non-Microsoft add-in button.\n</i></li><li>In the <i>Reported message destination</i> section, configure these options:\n<ol><li>For <i>Send reported messages to:,</i> select one of these values:\n<ul><li><i>My reporting mailbox only</i>\n</li><li><i>Microsoft and My reporting mailbox</i>\n</li></ul></li><li>For <i>Add an Exchange Online mailbox to send reported messages to:,</i> specify an existing internal reporting mailbox to hold user reported messages from the third-party add-in.\n</li></ol></li></ol><p><b>What you need to do to prepare:</b>\n</p><p>Review your current configuration to determine the impact for your organization. You may want to notify your users about this change and update any relevant training materials.\n</p><p><i>Learn more</i>\n</p><ul><li><a href=\"https://learn.microsoft.com/defender-office-365/submissions-users-report-message-add-in-configure\" target=\"_blank\">Transition from Report Message or the Report Phishing add-ins - Microsoft Defender for Office 365 | Microsoft Learn</a>\n</li><li><a href=\"https://learn.microsoft.com/defender-office-365/submissions-outlook-report-messages\" target=\"_blank\">Report phishing and suspicious emails in Outlook for admins - Microsoft Defender for Office 365 | Microsoft Learn</a>\n</li><li><a href=\"https://learn.microsoft.com/defender-office-365/submissions-user-reported-messages-custom-mailbox\" target=\"_blank\">User reported settings - Microsoft Defender for Office 365 | Microsoft Learn</a></li></ul><p>#newoutlookforwindows</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Disable add-in user reporting buttons in Microsoft Outlook as the built-in Report button is now generally available across all platforms. The Report Message and Report Phishing add-ins are in maintenance mode and will not receive improvements. Review your configuration and notify users of this change."
-      }
-    ],
-    "EndDateTime": "2026-01-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1030003",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-03-12T23:13:28.127Z",
-    "Services": [
-      "Exchange Online",
-      "Microsoft 365 suite",
-      "Microsoft 365 for the web",
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-03-12T23:13:21Z",
-    "Tags": [
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Outlook: Disable add-in user reporting buttons now that built-in Report button is GA for all platforms",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
