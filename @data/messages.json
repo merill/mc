@@ -1,5 +1,120 @@
 [
   {
+    "ActionRequiredByDateTime": "2026-03-30T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>We’re <b>retiring the isBroadcast property</b> used to create Teams Live Events through Microsoft Graph. This change aligns with our investment in the Virtual Event APIs, which offer richer capabilities for Webinars and Town Halls, including improved registration, attendee management, presenter configuration, and reporting. These APIs provide more modern, flexible, and scalable options for organizations managing large virtual events.</p><p><b><b>When this will happen</b></b></p><ul><li><b>March 31, 2026</b>: isBroadcast will be removed from the Microsoft Graph <b>beta </b>endpoint</li><li><b>June 30, 2026</b>: isBroadcast will be removed from the Microsoft Graph <b>v1.0 </b>endpoint</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected:&nbsp;</i>Organizations and developers who use the Microsoft Graph <b>onlineMeeting</b> resource with the<b> isBroadcast </b>property to create Teams Live Events programmatically.</p><p><i>What will happen:</i></p><ul><li>The <b>isBroadcast </b>property will no longer be available in <i>Microsoft Graph</i> after the dates listed above.</li><li>Attempts to create Teams Live Events using<b> isBroadcast </b>will fail.</li><li>Programmatic creation of new Teams Live Events through Microsoft Graph will no longer be supported.</li><li>Developers should transition to the <b>Virtual Event APIs</b>, which support Webinar and Town Hall scenarios.</li><li>Existing Teams Live Events scheduled before the retirement date will continue to function normally.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>If your apps, scripts, or workflows use <b>isBroadcast</b>, you should:</p><ul><li>Review <a href=\"https://learn.microsoft.com/graph/cloud-communications-virtual-events-overview\" target=\"_blank\">updated API documentation and migration guidance</a>.</li><li>Migrate to the<b> Virtual Event APIs</b>:<ul><li><b>virtualEventWebinar </b>for Webinars</li><li><b>virtualEventTownhall</b> for Town Halls</li></ul></li><li>Test updated workflows before the retirement dates.</li><li>Update any internal documentation and notify app owners or developers who maintain integrations.</li><li>If your organization does not programmatically create Teams Live Events using Microsoft Graph, no action is required.</li></ul><p>Learn more:&nbsp;<a href=\"https://learn.microsoft.com/graph/cloud-communications-virtual-events-overview\" target=\"_blank\">Choose the right Teams meeting type | Microsoft Graph | Microsoft Learn</a></p><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The isBroadcast property for creating Teams Live Events via Microsoft Graph will be retired by June 30, 2026. Developers must transition to Virtual Event APIs for Webinars and Town Halls. Existing events remain unaffected; migration and testing are advised before retirement."
+      }
+    ],
+    "EndDateTime": "2026-08-01T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1226498",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-02-03T18:09:05.47Z",
+    "Services": [
+      "Microsoft Teams",
+      "Microsoft 365 apps"
+    ],
+    "Severity": "high",
+    "StartDateTime": "2026-02-03T18:08:55Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Retirement of the isBroadcast property for Teams Live Events in Microsoft Graph",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b>Introduction</b></p>\n<p>Today, IT administrators can restrict whether an organizer can create a webinar using the <code>AllowWebinars</code> setting under <code>Set-CsTeamsEventsPolicy</code>. Webinars are events that require registration.</p><p>With the new Events scheduling experience launching in the Meet app, we are introducing a new policy,&nbsp;<code>Registration,</code> which will control whether organizers can schedule any event with registration. <code>AllowWebinars</code>&nbsp;will continue to control whether an organizer can create a webinar via the Teams Calendar App.&nbsp;</p><p><code>Registration</code>&nbsp;will default to&nbsp;<b>Enabled</b>.</p><p><b>When this will happen:</b></p>\n\n<ul><li>Targeted Release: We will begin rollout&nbsp;<b>early February 2026</b> and expect to complete by&nbsp;<b>late February 2026.</b></li><li>General Availability (Worldwide, GCC, GCCH, DoD): We will begin rollout <b>mid-March 2026</b>&nbsp;and expect to complete by <b>late March 2026.</b></li></ul>\n\n<p><b>How this affects your organization:</b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Teams administrators managing meeting and events policies</li>\n<li>Users who schedule events or webinars in the Teams Meet app or in the Teams Calendar app</li>\n</ul>\n\n<p><b style=\"\">What will happen:</b></p>\n<ul>\n<li>A new policy setting, <code>Registration</code>, will be added to Teams events policies.</li>\n<li><code>Registration</code>&nbsp;= <b>Enabled </b>(default): Organizers can enable registration for any event.</li>\n<li><code>Registration</code>&nbsp;= <b>Disabled</b>: Organizers cannot enable registration for any event and cannot create webinars.</li>\n<li>If <code>AllowWebinars</code> is <b>Disabled </b>but <code>Registration</code>&nbsp;is <b>Enabled</b>, organizers can schedule events with registration but cannot create webinars on the Teams Calendar app.</li>\n<li>No UI changes occur unless the admin updates policy.</li>\n</ul>\n\n<p><b>What you can do to prepare:</b></p>\n<ul>\n<li>If you want all users to create events with registration, no action is required.</li>\n<li>To disable registration for all events, update the policy using PowerShell:</li>\n</ul>\n\n<pre>Set-CsTeamsEventsPolicy -Identity Global -Registration Disabled\n</pre>\n\n<ul>\n<li>Communicate any changes to organizers or helpdesk staff.</li><li>Update internal documentation as needed.</li>\n<li>Note: if you make changes to&nbsp;<code style=\"\">Registration</code>&nbsp;prior to rollout, it will impact webinars as described above.</li></ul><p>Learn more: <a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps\" target=\"_blank\">Set-CsTeamsEventsPolicy</a>&nbsp;(will be updated before rollout)</p><ul>\n</ul>\n\n<p><b>Compliance considerations:</b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "A new Teams Events policy setting, Registration (default Enabled), will control if organizers can schedule events with registration. It complements AllowWebinars, which controls webinar creation via the Calendar app. Rollout begins February 2026; admins can disable registration via PowerShell if desired."
+      }
+    ],
+    "EndDateTime": "2026-05-01T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1226497",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-02-03T18:08:37.91Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-02-03T18:08:15Z",
+    "Tags": [
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "New Teams Events setting to control registration",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": "2026-06-29T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>Microsoft is retiring <b>Teams Live Events </b>and the <b>Microsoft Graph APIs</b> used to create them on<b> June 30, 2026</b>. Existing events scheduled before that date will continue to function through February 28, 2027. We <b>encourage customers to migrate to Teams town halls</b>, which offer an enhanced, end-to-end experience for large-scale events. This retirement supports Microsoft’s investment in Teams town halls, which provide an improved experience for digital and hybrid events and include comparable Graph APIs for programmatic creation, management, and integration.</p><p><b><b>When this will happen</b></b></p><ul><li>Teams Live Events and associated Microsoft Graph APIs will retire on <b>June 30, 2026</b>.</li><li>Existing Teams Live Events will continue to function through <b>February 28, 2027</b>.</li><li>Customers will no longer be able to schedule Teams Live Events past June 30, 2026, beginning <b>February 3, 2026.</b></li><li>Customers scheduling through Dynamics 365 will not be able to schedule events past June 30, 2026, beginning<b> February 3, 2026</b>.</li><li>The<code> isBroadcast</code> property within the <code>onlineMeeting</code>Graph resource will remain available until <b>June 30, 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p>You are receiving this message because our reporting indicates your organization may be using or has access to Teams Live Events.&nbsp;</p><p><i>Who is affected</i>:</p><ul><li>Organizations using Teams Live Events.</li><li>Organizations using Microsoft Graph APIs to create Teams Live Events.</li><li>Organizations scheduling Teams Live Events through Viva Engage or Microsoft Dynamics 365.</li></ul><p><i>What will happen</i>:</p><ul><li>Teams Live Events and the associated Microsoft Graph APIs will no longer be available after retirement.</li><li>Teams town hall is now the recommended option for large scale events.</li><li>New scheduling of Teams Live Events will become limited as the retirement date approaches.</li><li>Existing scheduled events will remain supported through the end of the service window.</li><li>Workflows or applications that depend on the<code> isBroadcast</code> property will need to transition.</li><li><b>Teams town halls</b> and <b>Teams meeting Graph APIs</b> will serve as <b>replacements for large-scale broadcast scenarios</b>.</li><li>Customers should migrate to <b>Teams town halls</b> or <b>Teams meeting Graph APIs</b>.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>No admin configuration changes are required. We recommend the following:</p><ul><li><b>Assess dependencies</b></li><li style=\"margin-left: 25px;\">Identify where your organization uses Teams Live Events, including events scheduled through Viva Engage, Dynamics 365, or custom Graph-based solutions.</li><li><b>Plan your transition</b></li><li style=\"margin-left: 25px;\">Move large-scale broadcast and virtual event scenarios to Teams town halls or Teams meetings.</li><li style=\"margin-left: 25px;\">Update or replace workflows that rely on the retiring Graph API functionality.</li><li><b>Prepare users</b></li><li style=\"margin-left: 25px;\">Inform event organizers and producers about the retirement and their transition path.</li><li style=\"margin-left: 25px;\">Update internal training, documentation, and support materials.</li></ul><p><b>Use these resources</b></p><ul><li><a href=\"https://learn.microsoft.com/microsoftteams/plan-town-halls\" target=\"_blank\">Plan for Teams town halls | Microsoft Teams | Microsoft Learn</a></li><li><a href=\"https://support.microsoft.com/office/get-started-with-town-hall-in-microsoft-teams-33baf0c6-0283-4c15-9617-3013e8d4804f\" target=\"_blank\">Get started with town hall in Microsoft Teams | Meetings | Microsoft Teams | Microsoft Support</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/microsoftteamsblog/retiring-teams-live-events-the-next-chapter-for-events-at-scale-in-microsoft-tea/4486465\" target=\"_blank\">Retiring Teams live events: The next chapter for events at scale in Microsoft Teams | Microsoft Teams Blog</a><br></li><li><a href=\"https://learn.microsoft.com/graph/cloud-communications-virtual-events-townhall-usecases\" target=\"_blank\">Virtual events town hall API use cases | Microsoft Graph | Microsoft Learn</a></li><li><a href=\"https://adoption.microsoft.com/customer-hub/microsoft-teams-events-readiness/\" target=\"_blank\">Customer Hub events readiness sessions</a>&nbsp;- recommended for Teams Live Events users transitioning to Teams town halls:</li><li style=\"margin-left: 25px;\">What’s new in Microsoft Teams town halls and webinars</li><li style=\"margin-left: 25px;\">Migrating from Teams Live Events to town halls</li><li style=\"margin-left: 25px;\">Tips, tricks, and traps for town halls and webinars in <i>Microsoft Teams</i></li></ul><p><b><b>Compliance considerations</b>\n</b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p><p>\n</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Teams Live Events and related Microsoft Graph APIs will retire on June 30, 2026, with existing events supported until February 28, 2027. Customers should migrate to Teams town halls, which offer enhanced large-scale event features and comparable APIs. No admin changes are needed, but planning and user preparation are recommended."
+      }
+    ],
+    "EndDateTime": "2027-03-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1226495",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-02-03T18:07:58.813Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-02-03T18:07:37Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Microsoft Teams: Teams Live Events is retiring",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
     "ActionRequiredByDateTime": null,
     "Attachments": null,
     "AttachmentsArchive": null,
