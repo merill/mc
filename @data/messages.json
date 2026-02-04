@@ -4,6 +4,90 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated&nbsp;February 4, 2026: We have updated the timeline.&nbsp;Thank you for your patience.</p><p><b><b>Introduction</b></b></p>\n<p>Teams users in tenants with open collaboration policies have long been able to start a chat with anyone who has an email address. However, recipients without a Teams account were previously asked to sign up for one before being able to collaborate. We're introducing a new capability in Microsoft Teams for certain tenants (see ‘Who is affected’ below) that allows these recipients to <b>join the chat as a guest— no account needed</b>, and as long as it is <b>allowed by the tenant’s existing policy configuration</b>.</p><p>This feature will be available across Windows, Mac, Web, iOS, and Android platforms.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=513271\" target=\"_blank\">513271</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li><b>Targeted Release:</b>&nbsp;Rollout for users with the aforementioned licenses begun in early November 2025 and was completed in mid-November 2025</li>\n<li><b>General Availability (Worldwide):</b>&nbsp;May 2026 (previously February)</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p><p>This capability is currently available only to small and medium business customers enrolled in public preview with a Teams Essentials, Business Basic, Business Standard, or Business Premium license. It also only affects organizations with guest chat enabled and that do not limit guest collaboration to specific domains. Organizations without users enrolled in public preview or without users with these licenses may still see this post even if they are not affected.</p>\n<p><b>What will happen for those who are affected:</b></p>\n<ul>\n<li>After Teams users start a chat with someone who is not on Teams, the recipient will receive an email inviting them to join the chat as a guest. Only Teams users in your organization can start the chat, as users without Teams accounts cannot initiate chats.</li>\n<li>Chats will remain within your organization’s boundary.</li>\n<li>This feature is <b>enabled by default</b> but will be governed by your organization’s Entra B2B Guest policies and Teams Admin Center Guest Access policies. It will not override any existing policy configurations.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Update internal documentation to reflect this new capability.</li>\n<li>Inform helpdesk and support teams about the change.</li><li>Review the documentation here: <a href=\"https://learn.microsoft.com/microsoftteams/chat-with-people-not-using-teams\">Chat with anyone not using Teams - Microsoft Teams | Microsoft Learn</a></li><li>To disable the feature, set the <b>UseB2BInvitesToAddExternalUsers </b>attribute of TeamsMessagingPolicy to<b> false</b>. <a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy?view=teams-ps#-useb2binvitestoaddexternalusers\" target=\"_blank\">Set-CsTeamsMessagingPolicy documentation here</a>.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "513271"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams now allows users in certain small and medium business tenants to chat with anyone via email without requiring the recipient to have a Teams account, joining as a guest instead. This feature, enabled by default and governed by existing policies, rolled out in late 2025 with general availability in May 2026."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Android, Desktop, iOS, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2026-06-30T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1182004",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-02-04T17:12:00.763Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-10-31T23:20:44Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: Chat with anyone with an email address",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated February 4, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p>Original: Please do not paste images here. Attach your high-resolution PNGs to the No Reply confirmation email. Thank you!\n</p><p>We are reiterating the guidance for connector settings to ensure customers are using healthy configurations. The key problematic configurations we are seeing are:\n</p><ol><li>When a tenant has an Inbound connector of type OnPremises and the connector does certificate-based authentication using a certificate with a subject/SAN for a domain that is NOT an Accepted Domain of the tenant.\n</li><li>When a tenant has an Inbound connector of type OnPremises and the connector does IP-based authentication, but the IP is used by other tenants On-Premises servers to connect to Exchange Online.\n</li></ol><p>These anti-patterns typically occur when you are using a 3rd party service to relay email through Exchange Online but could also occur if your organization has a single on-premises Exchange Server connecting to multiple Exchange Online tenants.\n</p><p>These configurations can cause incorrect mail flow because Exchange Online is a multi tenant service and relies on message attribution to determine which tenant an incoming message belongs to. When messages are received through an Inbound connector of type OnPremises, attribution is determined using the following priority order:\n</p><ol><li>The domain on the TLS certificate presented by the sending server\n</li><li>The P1 MailFrom (envelope sender) domain</li><li> The P1 RcptTo (recipient) domain</li></ol><p><b>How this will affect your organization:</b>\n</p><p>We may perform internal changes, such as tenant moves, without notice, which can impact mail flow if a tenant has a bad connector configuration. This means a misconfigured connector that works today may unexpectedly stop working.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>If you have a single on-premises Exchange Server connecting to multiple Exchange Online tenants, your on-premises Exchange environment must use a unique client certificate to send to each unique Exchange Online tenant belonging to your organization. You must configure a unique Send Connector on-premises for each unique tenant in Exchange Online that you want to route on-premises traffic to: <a href=\"https://learn.microsoft.com/exchange/mail-flow/connectors/send-connectors\" target=\"_blank\">Send connectors in Exchange Server | Microsoft Learn</a>. You should also prioritize configuring Inbound connectors of type OnPremises in Exchange Online to use certificate-based authentication, rather than IP based . For best performance, Exchange Online tenants Inbound connector’s should reference the unique client certificate dedicated for that connector path.\n</p><p>If you need to use a third-party add-on service to process email messages sent from your organization and then relay through Exchange Online, the third-party service must support a unique certificate for your organization, and the certificate domain (in Subject name or SAN) must be an accepted domain of your organization. In addition, you must update your Inbound connector of OnPremises type to use the unique certificate domain, via property TlsSenderCertificateName. An example of this scenario is your organization using a third-party CRM cloud service to send emails on behalf your organization to mailboxes of your company or other external users. To learn more, see Scenario: <a href=\"https://learn.microsoft.com/exchange/mail-flow-best-practices/use-connectors-to-configure-mail-flow/integrate-office-365-with-an-email-add-on-service\" target=\"_blank\">Integrate Exchange Online with an email add-on service</a>.</p><p><b>\n</b></p>",
+      "ContentType": "html"
+    },
+    "Category": "preventOrFixIssue",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Updated guidance warns against using OnPremises inbound connectors with certificates for domains not accepted by the tenant or IPs shared by multiple tenants. Misconfigurations can disrupt mail flow. Use unique client certificates and send connectors per tenant, and ensure third-party services use certificates matching accepted domains."
+      }
+    ],
+    "EndDateTime": "2026-06-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1226222",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-02-04T17:09:05.853Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-02-02T23:47:07Z",
+    "Tags": [
+      "Updated message",
+      "Admin impact"
+    ],
+    "Title": "Prevent/Fix: Guidance for On-Premises Connectors Configuration",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p><b><b>Introduction</b></b><br>\nWe’re retiring the <b>OneView </b>and <b>TrueTime</b> features from <b>Outlook Web App (OWA)</b>. <b>OneView </b>allows users to connect personal email accounts—such as Outlook.com, Gmail, or other IMAP accounts—to their work mailbox in OWA, providing a unified view of multiple inboxes. <b>TrueTime</b> allows users to view personal and work calendars together in OWA for consolidated scheduling. Once these features are retired, users will no longer be able to connect personal accounts or view personal calendar information inside OWA.</p>\n\n<p><b><b>When this will happen:</b></b><br>\nThis retirement will begin in <b>early March 2026</b> and complete by <b>late&nbsp;June 2026</b>.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Users who currently use <b>OneView </b>or <b>TrueTime</b> in OWA.</li>\n<li>Users who have connected work and personal accounts within OWA.</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li><b>OneView </b>and <b>TrueTime</b> features will be removed from OWA.</li>\n<li>Users will no longer be able to connect or access personal accounts within OWA.</li>\n<li>Existing connected accounts will be automatically disconnected.</li>\n<li>Users must manually schedule corresponding events across calendars if needed.</li>\n<li>No admin configuration changes are required; the retirement occurs automatically.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No admin action is required.</li>\n<li>Notify your users about this retirement.</li>\n<li>Update internal helpdesk guidance and documentation.</li>\n<li>Direct users who need multi-account support to Outlook for Windows or Mac.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b><br>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -491,42 +575,6 @@
       "User impact"
     ],
     "Title": "Viva Engage: New option to hide a user's messages",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>We are reiterating the guidance for connector settings to ensure customers are using healthy configurations. The key problematic configurations we are seeing are:\n</p><ol><li>When a tenant has an Inbound connector of type OnPremises and the connector does certificate-based authentication using a certificate with a subject/SAN for a domain that is NOT an Accepted Domain of the tenant.\n</li><li>When a tenant has an Inbound connector of type OnPremises and the connector does IP-based authentication, but the IP is used by other tenants.\n</li></ol><p>These anti-patterns typically occur when you are using a 3rd party service to relay email through Exchange Online but could also occur if your organization has a single on-premises Exchange Server connecting to multiple Exchange Online tenants.\n</p><p>These configurations can cause incorrect mail flow because Exchange Online is a multi tenant service and relies on message attribution to determine which tenant an incoming message belongs to. When messages are received through an Inbound connector of type OnPremises, attribution is determined using the following priority order:\n</p><ol><li>The domain on the TLS certificate presented by the sending server\n</li><li>The P1 MailFrom (envelope sender) domain</li><li> The P1 RcptTo (recipient) domain</li></ol><p><b>How this will affect your organization:</b>\n</p><p>We may perform internal changes, such as tenant moves, without notice, which can impact mail flow if a tenant has a bad connector configuration. This means a misconfigured connector that works today may unexpectedly stop working.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>If you have a single on-premises Exchange Server connecting to multiple Exchange Online tenants, your on-premises Exchange environment must use a unique client certificate to send to each unique Exchange Online tenant belonging to your organization. You must configure a unique Send Connector on-premises for each unique tenant in Exchange Online that you want to route on-premises traffic to: <a href=\"https://learn.microsoft.com/exchange/mail-flow/connectors/send-connectors\" target=\"_blank\">Send connectors in Exchange Server | Microsoft Learn</a>. You should also prioritize configuring Inbound connectors of type OnPremises in Exchange Online to use certificate-based authentication, rather than IP based . For best performance, Exchange Online tenants Inbound connector’s should reference the unique client certificate dedicated for that connector path.\n</p><p>If you need to use a third-party add-on service to process email messages sent from your organization and then relay through Exchange Online, the third-party service must support a unique certificate for your organization, and the certificate domain (in Subject name or SAN) must be an accepted domain of your organization. In addition, you must update your Inbound connector of OnPremises type to use the unique certificate domain, via property TlsSenderCertificateName. An example of this scenario is your organization using a third-party CRM cloud service to send emails on behalf your organization to mailboxes of your company or other external users. To learn more, see Scenario: <a href=\"https://learn.microsoft.com/exchange/mail-flow-best-practices/use-connectors-to-configure-mail-flow/integrate-office-365-with-an-email-add-on-service\" target=\"_blank\">Integrate Exchange Online with an email add-on service</a>.</p>",
-      "ContentType": "html"
-    },
-    "Category": "preventOrFixIssue",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Ensure On-Premises connectors use unique certificates with domains accepted by the tenant and avoid shared IPs across tenants. Misconfigurations can disrupt mail flow due to Exchange Online's multi-tenant nature. Use unique Send Connectors per tenant and prefer certificate-based authentication for reliable email routing."
-      }
-    ],
-    "EndDateTime": "2026-06-30T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1226222",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-02-02T23:47:44.213Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-02-02T23:47:07Z",
-    "Tags": [
-      "Admin impact"
-    ],
-    "Title": "Prevent/Fix: Guidance for On-Premises Connectors Configuration",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -10424,53 +10472,6 @@
       "User impact"
     ],
     "Title": "Microsoft Outlook: Replace quick compose pop-up with inline appointment creation in new Outlook for Windows and web",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated&nbsp;December 12, 2025: We have added additional content clarifying who is impacted by this feature.&nbsp;Thank you for your patience.</p><p><b><b>Introduction</b></b></p>\n<p>Teams users in tenants with open collaboration policies have long been able to start a chat with anyone who has an email address. However, recipients without a Teams account were previously asked to sign up for one before being able to collaborate. We're introducing a new capability in Microsoft Teams for certain tenants (see ‘Who is affected’ below) that allows these recipients to <b>join the chat as a guest— no account needed</b>, and as long as it is <b>allowed by the tenant’s existing policy configuration</b>.</p><p>This feature will be available across Windows, Mac, Web, iOS, and Android platforms.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=513271\" target=\"_blank\">513271</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li><b>Targeted Release:</b>&nbsp;Rollout for users with the aforementioned licenses begun in early November 2025 and was completed in mid-November 2025</li>\n<li><b>General Availability (Worldwide):</b> February 2026</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p><p>This capability is currently available only to small and medium business customers enrolled in public preview with a Teams Essentials, Business Basic, Business Standard, or Business Premium license. It also only affects organizations with guest chat enabled and that do not limit guest collaboration to specific domains. Organizations without users enrolled in public preview or without users with these licenses may still see this post even if they are not affected.</p>\n<p><b>What will happen for those who are affected:</b></p>\n<ul>\n<li>After Teams users start a chat with someone who is not on Teams, the recipient will receive an email inviting them to join the chat as a guest. Only Teams users in your organization can start the chat, as users without Teams accounts cannot initiate chats.</li>\n<li>Chats will remain within your organization’s boundary.</li>\n<li>This feature is <b>enabled by default</b> but will be governed by your organization’s Entra B2B Guest policies and Teams Admin Center Guest Access policies. It will not override any existing policy configurations.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Update internal documentation to reflect this new capability.</li>\n<li>Inform helpdesk and support teams about the change.</li><li>Review the documentation here: <a href=\"https://learn.microsoft.com/microsoftteams/chat-with-people-not-using-teams\">Chat with anyone not using Teams - Microsoft Teams | Microsoft Learn</a></li><li>To disable the feature, set the <b>UseB2BInvitesToAddExternalUsers </b>attribute of TeamsMessagingPolicy to<b> false</b>. <a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy?view=teams-ps#-useb2binvitestoaddexternalusers\" target=\"_blank\">Set-CsTeamsMessagingPolicy documentation here</a>.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "513271"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams now allows users in certain small and medium business tenants to chat with anyone via email without requiring the recipient to have a Teams account, joining as a guest if allowed by tenant policies. This feature, enabled by default, rolled out in late 2025 and is generally available worldwide in February 2026."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Android, Desktop, iOS, Linux, Mac"
-      }
-    ],
-    "EndDateTime": "2026-03-31T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1182004",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2025-12-12T22:12:22.497Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-10-31T23:20:44Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: Chat with anyone with an email address",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
