@@ -1,5 +1,89 @@
 [
   {
+    "ActionRequiredByDateTime": "2026-03-15T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated February 4, 2026: We have updated the timeline. We’ve been notified that some email providers may distrust the DigiCert G1 root on April 15, which could result in broad ecosystem‑wide email impact. To ensure Exchange Online can rotate certificates ahead of this event, customers must trust the DigiCert Global Root G2 certificate authority by March 15 (previously April 30). Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>Action might be    required to avoid service disruption. To maintain secure and uninterrupted mail flow with Exchange Online, organizations must ensure their servers and clients trust the <b>DigiCert Global Root G2 Certificate Authority (CA)</b> and its subordinate CAs.&nbsp;</p><p>Organizations that rely on custom certificate trust stores, disabled Windows CTL updates, or older runtime environments might be impacted and may need to update their trusted certificate chains.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>\nOrganizations must complete required certificate trust updates <b>before March 15, 2026 (previously April 30)</b>.</p>\n\n<p><b><b>How this affects your organization:</b></b></p><p>\n<b>Who is affected:</b></p>\n\n<p>This change applies to all organizations (Worldwide, GCC, GCC‑High, DoD) that:</p>\n\n<ul>\n  <li>Send or receive email with Exchange Online <b>and</b></li>\n  <li>Either:</li>\n\n<ul>\n  <li>Your organization has disabled the Windows CTL Updater feature that by default downloads the Certificate Trust List (CTL).\n<ul><li>The CTL contains trusted and untrusted root certificates. Learn more: <a href=\"https://learn.microsoft.com/windows-server/identity/ad-cs/certificate-trust\" target=\"_blank\">Certificates and trust in Windows</a>.</li><li>This scenario may apply if your organization maintains its own set of trusted Root and Intermediate Certificates via Group Policy or via a redirected Microsoft Automatic Update URL. Learn more: <a href=\"https://learn.microsoft.com/windows-server/identity/ad-cs/configure-trusted-roots-disallowed-certificates\" target=\"_blank\">Configure trusted roots and disallowed certificates in Windows</a>.</li><li>You can determine whether the Windows CTL Updater feature is disabled by reviewing the <b>Who needs to take action</b>&nbsp;section of this Microsoft guidance: <a href=\"https://techcommunity.microsoft.com/blog/exchange/trust-digicert-global-root-g2-certificate-authority-to-avoid-exchange-online-ema/4488311\" target=\"_blank\">Trust DigiCert Global Root G2 Certificate Authority to Avoid Exchange Online Email Disruption</a>.</li></ul></li>\n\n  <li>You use older or custom application environments such as:</li>\n</ul>\n\n<ul>\n  <li>Legacy Java/JDK/JRE runtimes</li>\n  <li>Embedded systems and appliances</li>\n  <li>Custom or outdated Linux images</li>\n  <li>Air‑gapped systems</li>\n  <li>Third‑party email gateways or security appliances that perform certificate chain validation</li>\n</ul></ul>\n\n<p>This change applies to any system performing full certificate chain validation against Exchange Online, including Exchange Server, security appliances, and third-party email gateways.   If you use third-party email appliances, please contact the vendor directly for support.</p><p>Windows systems with the CTL Updater enabled (default) do not require action.</p>\n\n<p><b>What will happen:</b></p><p>\nIf the DigiCert Global Root G2 certificate or required intermediates are missing or cannot be retrieved during TLS negotiation:</p>\n\n<ul><li>Outbound email clients may:</li>\n<ul>\n  <li>Refuse to send email when strict certificate validation is enforced</li>\n  <li>Fall back to unencrypted SMTP if allowed</li>\n</ul>\n\n<li>Inbound SMTP connections from Exchange Online may fail or be delayed</li>\n\n<li>\nEmail flow reliability may be reduced</li><li>\nSystems not using up‑to‑date certificate chains may be unable to validate TLS certificates presented by Exchange Online</li></ul><p>If your organization already maintains the <b>current Office 365 certificate chains</b>, no impact is expected.</p>\n\n<p><b><b>What you can do to prepare:</b></b></p><p>\n<b>Required actions:</b></p><p>\nIf your environment has <b>disabled Windows CTL updates</b> or relies on <b>older/custom runtimes</b>, complete the actions outlined in the <b>What you must do</b> section of: <a href=\"https://techcommunity.microsoft.com/blog/exchange/trust-digicert-global-root-g2-certificate-authority-to-avoid-exchange-online-ema/4488311\" target=\"_blank\">Trust DigiCert Global Root G2 Certificate Authority to Avoid Exchange Online Email Disruption</a></p>\n\n<p><b>Specific actions include:</b></p>\n<ul>\n  <li>Review whether Windows CTL Updater is disabled in your organization.</li>\n  <li>Confirm whether SMTP servers, security appliances, and gateways fully trust the DigiCert Global Root G2 CA and subordinate CAs.</li>\n  <li>Ensure outdated or custom runtimes (Java, Linux, embedded systems, etc.) include the required certificates.</li>\n  <li>Contact your third‑party email appliance vendor if they manage certificate chains.</li>\n  <li>Update internal documentation and inform helpdesk teams as required.</li>\n</ul>\n\n<p><b>No action required if:</b></p>\n<ul>\n  <li>You are using Windows systems with CTL Updater enabled (default behavior), and</li>\n  <li>Your organization already trusts the latest Office 365 certificate chains.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "To avoid Exchange Online email disruption by March 15, 2026, organizations must trust the DigiCert Global Root G2 certificate authority. This affects those with disabled Windows CTL updates or using older/custom runtimes. Systems with default Windows CTL Updater enabled require no action."
+      }
+    ],
+    "EndDateTime": "2026-04-20T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1224565",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-02-04T21:56:14.14Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-01-30T00:04:01Z",
+    "Tags": [
+      "Updated message",
+      "Admin impact"
+    ],
+    "Title": "Trust DigiCert Global Root G2 certificate authority to avoid Exchange Online email disruption",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated February 4, 2026: This feature has been removed from outlook for iOS and Android in response to user feedback and costs. We apologize for any inconvenience.&nbsp;</p><p>In Microsoft Outlook for iOS/Android, the new priority view will help users find what's important in their Inbox by highlighting high priority emails and ones that need a reply.</p><p>A Microsoft 365 Copilot license is required to use this feature.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=495261\" target=\"_blank\">495261</a>.</p><p><b>When this will happen:</b></p><p>General Availability (Worldwide): We will begin rolling out late June 2025 and expect to complete by late December 2025.\n</p><p><b>How this will affect your organization:</b>\n</p><p>After this rollout, users can enable this feature in Outlook <i>Settings &gt; Copilot &gt; Prioritize &gt; Priority view.</i> Users can choose the number of days of email to be included in this view (from one to three days) and choose if they want to see all emails or just unread emails.</p><p><b>Left:</b> Users who have <a href=\"https://support.microsoft.com/topic/prioritize-my-inbox-65e37040-2c90-4ee3-86d9-e95d5ba0e3cb\" target=\"_blank\">enabled the Prioritize by Copilot feature</a> can access the new view by tapping the sparkle icon at the top of the message list. Then users can swipe between the two groups of emails: <i>High priority</i> (<b>middle</b>) and <i>Needs replies</i> (<b>right</b>). For each group, users will see a filtered view of their message list to just emails that are high priority or need a reply, respectively. From here, users can take a bulk action on those emails or give feedback on the groups.</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/1f10e815-9a3f-4121-ab7c-75fc13d40a7b\" alt=\"user controls\" style=\"width: 400px;\"></p><p>This new feature will be available by default for users who have enabled Prioritize by Copilot by going to <i>Settings &gt; Copilot.</i></p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. Users who have enabled the Prioritize by Copilot feature will start seeing the new view. You may want to notify your users about this change and update your relevant documentation.</p><p>Learn more about enabling Prioritize by Copilot: <a href=\"https://support.microsoft.com/topic/prioritize-my-inbox-65e37040-2c90-4ee3-86d9-e95d5ba0e3cb\" target=\"_blank\">Prioritize my inbox - Microsoft Support</a></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "495261"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Outlook for iOS/Android introduces a new priority view highlighting important emails and those needing replies, available from late June 2025 to late December 2025. A Microsoft 365 Copilot license is required. Users can enable this feature in Outlook settings and customize the view. No admin action is needed."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Android, iOS"
+      }
+    ],
+    "EndDateTime": "2026-02-27T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1089318",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-02-04T21:41:59.607Z",
+    "Services": [
+      "Exchange Online",
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-06-06T23:32:55Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Outlook for iOS/Android: Copilot shows users important emails in new priority view",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
     "ActionRequiredByDateTime": null,
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -550,7 +634,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"537279\":[{\"RoadmapId\":537279,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7003433Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7003435Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7003437Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7003438Z\",\"LatestRing\":null}]}"
+        "Value": "{\"537279\":[{\"RoadmapId\":537279,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7624716Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7624718Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.762474Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7624742Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -642,7 +726,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"513272\":[{\"RoadmapId\":513272,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7003237Z\",\"LatestRing\":null},{\"RoadmapId\":513272,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7003239Z\",\"LatestRing\":null},{\"RoadmapId\":513272,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.700324Z\",\"LatestRing\":null}]}"
+        "Value": "{\"513272\":[{\"RoadmapId\":513272,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7624454Z\",\"LatestRing\":null},{\"RoadmapId\":513272,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7624457Z\",\"LatestRing\":null},{\"RoadmapId\":513272,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7624458Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2109,42 +2193,6 @@
     "AdditionalProperties": {}
   },
   {
-    "ActionRequiredByDateTime": "2026-04-29T07:00:00Z",
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p><p>Action might be    required to avoid service disruption. To maintain secure and uninterrupted mail flow with Exchange Online, organizations must ensure their servers and clients trust the <b>DigiCert Global Root G2 Certificate Authority (CA)</b> and its subordinate CAs.&nbsp;</p><p>Organizations that rely on custom certificate trust stores, disabled Windows CTL updates, or older runtime environments might be impacted and may need to update their trusted certificate chains.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>\nOrganizations must complete required certificate trust updates <b>before April 30, 2026</b>.</p>\n\n<p><b><b>How this affects your organization:</b></b></p><p>\n<b>Who is affected:</b></p>\n\n<p>This change applies to all organizations (Worldwide, GCC, GCC‑High, DoD) that:</p>\n\n<ul>\n  <li>Send or receive email with Exchange Online <b>and</b></li>\n  <li>Either:</li>\n\n<ul>\n  <li>Your organization has disabled the Windows CTL Updater feature that by default downloads the Certificate Trust List (CTL).\n<ul><li>The CTL contains trusted and untrusted root certificates. Learn more: <a href=\"https://learn.microsoft.com/windows-server/identity/ad-cs/certificate-trust\" target=\"_blank\">Certificates and trust in Windows</a>.</li><li>This scenario may apply if your organization maintains its own set of trusted Root and Intermediate Certificates via Group Policy or via a redirected Microsoft Automatic Update URL. Learn more: <a href=\"https://learn.microsoft.com/windows-server/identity/ad-cs/configure-trusted-roots-disallowed-certificates\" target=\"_blank\">Configure trusted roots and disallowed certificates in Windows</a>.</li><li>You can determine whether the Windows CTL Updater feature is disabled by reviewing the <b>Who needs to take action</b>&nbsp;section of this Microsoft guidance: <a href=\"https://techcommunity.microsoft.com/blog/exchange/trust-digicert-global-root-g2-certificate-authority-to-avoid-exchange-online-ema/4488311\" target=\"_blank\">Trust DigiCert Global Root G2 Certificate Authority to Avoid Exchange Online Email Disruption</a>.</li></ul></li>\n\n  <li>You use older or custom application environments such as:</li>\n</ul>\n\n<ul>\n  <li>Legacy Java/JDK/JRE runtimes</li>\n  <li>Embedded systems and appliances</li>\n  <li>Custom or outdated Linux images</li>\n  <li>Air‑gapped systems</li>\n  <li>Third‑party email gateways or security appliances that perform certificate chain validation</li>\n</ul></ul>\n\n<p>This change applies to any system performing full certificate chain validation against Exchange Online, including Exchange Server, security appliances, and third-party email gateways.   If you use third-party email appliances, please contact the vendor directly for support.</p><p>Windows systems with the CTL Updater enabled (default) do not require action.</p>\n\n<p><b>What will happen:</b></p><p>\nIf the DigiCert Global Root G2 certificate or required intermediates are missing or cannot be retrieved during TLS negotiation:</p>\n\n<ul><li>Outbound email clients may:</li>\n<ul>\n  <li>Refuse to send email when strict certificate validation is enforced</li>\n  <li>Fall back to unencrypted SMTP if allowed</li>\n</ul>\n\n<li>Inbound SMTP connections from Exchange Online may fail or be delayed</li>\n\n<li>\nEmail flow reliability may be reduced</li><li>\nSystems not using up‑to‑date certificate chains may be unable to validate TLS certificates presented by Exchange Online</li></ul><p>If your organization already maintains the <b>current Office 365 certificate chains</b>, no impact is expected.</p>\n\n<p><b><b>What you can do to prepare:</b></b></p><p>\n<b>Required actions:</b></p><p>\nIf your environment has <b>disabled Windows CTL updates</b> or relies on <b>older/custom runtimes</b>, complete the actions outlined in the <b>What you must do</b> section of: <a href=\"https://techcommunity.microsoft.com/blog/exchange/trust-digicert-global-root-g2-certificate-authority-to-avoid-exchange-online-ema/4488311\" target=\"_blank\">Trust DigiCert Global Root G2 Certificate Authority to Avoid Exchange Online Email Disruption</a></p>\n\n<p><b>Specific actions include:</b></p>\n<ul>\n  <li>Review whether Windows CTL Updater is disabled in your organization.</li>\n  <li>Confirm whether SMTP servers, security appliances, and gateways fully trust the DigiCert Global Root G2 CA and subordinate CAs.</li>\n  <li>Ensure outdated or custom runtimes (Java, Linux, embedded systems, etc.) include the required certificates.</li>\n  <li>Contact your third‑party email appliance vendor if they manage certificate chains.</li>\n  <li>Update internal documentation and inform helpdesk teams as required.</li>\n</ul>\n\n<p><b>No action required if:</b></p>\n<ul>\n  <li>You are using Windows systems with CTL Updater enabled (default behavior), and</li>\n  <li>Your organization already trusts the latest Office 365 certificate chains.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "To avoid Exchange Online email disruption by April 30, 2026, ensure your servers and clients trust the DigiCert Global Root G2 CA. This is critical if you disable Windows CTL updates or use older/custom runtimes. Windows systems with default CTL updates enabled require no action."
-      }
-    ],
-    "EndDateTime": "2026-05-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1224565",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-01-30T00:04:47.017Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-01-30T00:04:01Z",
-    "Tags": [
-      "Admin impact"
-    ],
-    "Title": "Trust DigiCert Global Root G2 certificate authority to avoid Exchange Online email disruption",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
     "ActionRequiredByDateTime": null,
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -2198,7 +2246,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"536572\":[{\"RoadmapId\":536572,\"Platform\":\"Web\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7003179Z\",\"LatestRing\":null},{\"RoadmapId\":536572,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.700318Z\",\"LatestRing\":null}]}"
+        "Value": "{\"536572\":[{\"RoadmapId\":536572,\"Platform\":\"Web\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7621178Z\",\"LatestRing\":null},{\"RoadmapId\":536572,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7621183Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2716,7 +2764,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"381953\":[{\"RoadmapId\":381953,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301961Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-05-24T13:23:44.2548593Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301966Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-04-30T23:14:44.9196135Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-05-24T13:23:44.2548581Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-30T23:14:44.9196139Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"381953\":[{\"RoadmapId\":381953,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-04-30T23:14:44.9196135Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-05-24T13:23:44.2548581Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301961Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-05-24T13:23:44.2548593Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":381953,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301966Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-30T23:14:44.9196139Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -3505,7 +3553,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"541831\":[{\"RoadmapId\":541831,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7001328Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":541831,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.700133Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7001331Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7001332Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"541831\":[{\"RoadmapId\":541831,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7622672Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":541831,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7622675Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7622677Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7622679Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -4904,42 +4952,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>We&#39;ve released updates to the following update channel for Microsoft 365 Apps:</p>\r\n<ul><li>Current Channel</li></ul>\r\n<p><b>When this will happen:</b></p>\r\n<p>We&#39;ll be gradually rolling out this update of Microsoft 365 Apps to users on that update channel starting January 21st, 2026 (PST).</p>\r\n<p><b>How this will affect your organization:</b></p>\r\n<p>If your Microsoft 365 Apps clients are configured to automatically update from the Office Content Delivery Network (CDN), then no action is required.</p>\r\n<p>If you manage updates directly you can now download this latest update and begin deployment.</p>\r\n<p><b>What you need to do to prepare:</b></p>\r\n<p>To get more details about this update view the following release notes:</p>\r\n<ul><li><a href=\"https://docs.microsoft.com/officeupdates/current-channel#version-2512-january-21\" target=\"_blank\" rel=\"noopener noreferrer\">Current Channel</a></li></ul>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "ExternalLink",
-        "Value": "https://docs.microsoft.com/officeupdates/"
-      }
-    ],
-    "EndDateTime": "2026-02-04T21:45:18.247Z",
-    "HasAttachments": false,
-    "Id": "MC1220722",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-01-21T21:45:19.34Z",
-    "Services": [
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-01-21T21:45:18.247Z",
-    "Tags": [
-      "Feature update"
-    ],
-    "Title": "Updates available for Microsoft 365 Apps for Current Channel",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated January 20, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p>We’re introducing the ability for organizations to<b> customize Microsoft 365 profile cards</b> by adding up to 10 custom properties sourced from external systems such as HR platforms. This enhancement helps enrich user profiles with relevant organizational details, improving discoverability and context for collaboration.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=529851\" target=\"_blank\">529851</a>.</p>\n<b>When this will happen:</b><p><b>General Availability (Worldwide):</b> We will begin rolling out in <b>March 2026</b> (previously&nbsp;mid-January)&nbsp;and expect to complete in <b>March 2026</b> (previously&nbsp;late January).</p><ul>\n</ul>\n<b>How this affects your organization</b><p><i>Who is affected:</i> Microsoft 365 tenant admins managing user profile cards</p>\n<p><i>What will happen:</i></p>\n<ul>\n<li>You can add up to 10 custom properties to profile cards using Microsoft Graph People connectors.</li>\n<li>Properties can be sourced from external systems (such as HR platforms).</li><li><b>This feature is OFF by default and requires admin configuration to enable.</b></li>\n<li>Admins can configure visibility, display name, and icon for each property in <i>Microsoft 365 admin center</i> under: <b><i>Settings &gt; Org settings &gt; People settings &gt; Profile &gt; Person info on profile cards&nbsp;</i></b><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/f0dfbbdd-8108-4924-9253-179773031372/cc331bf01d93d49946982aa0f9e293df2a5518c2.png\" style=\"width: 400px;\" alt=\"user settings\"></p>\n</li><li>Once enabled, properties appear in the <i>Contact Information </i>section of profile cards in <i>Outlook Web:</i></li><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/d284d7ad-c18f-483e-b139-8bfd10e4bf83/a871f3780b6b19d1653abbed7d75d1cec8426e5a.png\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li>Changes may take up to 24 hours to propagate across profile cards.</li>\n<li>Future updates will include direct ingestion from SAP SuccessFactors and Workday connectors.</li>\n</ul>\n<b>What you can do to prepare</b><ul>\n<li>Review external systems for properties you want displayed on profile cards.</li>\n<li>Ingest these properties using a Microsoft Graph People connector.</li>\n<li>Configure visibility and enable properties in the <i>Microsoft 365 admin center</i>.</li>\n<li>Communicate this change to helpdesk staff and update internal documentation if needed.</li></ul><p>Learn more:&nbsp;<a href=\"https://learn.microsoft.com/graph/peopleconnectors\" target=\"_blank\">Microsoft 365 Copilot connectors for people data | Microsoft Learn</a></p><ul>\n</ul>\n<p><b>Compliance considerations</b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -5757,7 +5769,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"542794\":[{\"RoadmapId\":542794,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7000739Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7000742Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7000744Z\",\"LatestRing\":null}]}"
+        "Value": "{\"542794\":[{\"RoadmapId\":542794,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7622116Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7622119Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7622121Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6070,7 +6082,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"542795\":[{\"RoadmapId\":542795,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7002894Z\",\"LatestRing\":null},{\"RoadmapId\":542795,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7002896Z\",\"LatestRing\":null}]}"
+        "Value": "{\"542795\":[{\"RoadmapId\":542795,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7621723Z\",\"LatestRing\":null},{\"RoadmapId\":542795,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7621725Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6901,7 +6913,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"518218\":[{\"RoadmapId\":518218,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7001641Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7001643Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T20:29:52.7001645Z\",\"LatestRing\":null}]}"
+        "Value": "{\"518218\":[{\"RoadmapId\":518218,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7623058Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.762306Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-04T22:23:15.7623061Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17615,53 +17627,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Entra ID: Change in guest authentication experience for B2B collaboration",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>In Microsoft Outlook for iOS/Android, the new priority view will help users find what's important in their Inbox by highlighting high priority emails and ones that need a reply.</p><p>A Microsoft 365 Copilot license is required to use this feature.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=495261\" target=\"_blank\">495261</a>.</p><p><b>When this will happen:</b></p><p>General Availability (Worldwide): We will begin rolling out late June 2025 and expect to complete by late December 2025.\n</p><p><b>How this will affect your organization:</b>\n</p><p>After this rollout, users can enable this feature in Outlook <i>Settings &gt; Copilot &gt; Prioritize &gt; Priority view.</i> Users can choose the number of days of email to be included in this view (from one to three days) and choose if they want to see all emails or just unread emails.</p><p><b>Left:</b> Users who have <a href=\"https://support.microsoft.com/topic/prioritize-my-inbox-65e37040-2c90-4ee3-86d9-e95d5ba0e3cb\" target=\"_blank\">enabled the Prioritize by Copilot feature</a> can access the new view by tapping the sparkle icon at the top of the message list. Then users can swipe between the two groups of emails: <i>High priority</i> (<b>middle</b>) and <i>Needs replies</i> (<b>right</b>). For each group, users will see a filtered view of their message list to just emails that are high priority or need a reply, respectively. From here, users can take a bulk action on those emails or give feedback on the groups.</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/1f10e815-9a3f-4121-ab7c-75fc13d40a7b\" alt=\"user controls\" style=\"width: 400px;\"></p><p>This new feature will be available by default for users who have enabled Prioritize by Copilot by going to <i>Settings &gt; Copilot.</i></p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. Users who have enabled the Prioritize by Copilot feature will start seeing the new view. You may want to notify your users about this change and update your relevant documentation.</p><p>Learn more about enabling Prioritize by Copilot: <a href=\"https://support.microsoft.com/topic/prioritize-my-inbox-65e37040-2c90-4ee3-86d9-e95d5ba0e3cb\" target=\"_blank\">Prioritize my inbox - Microsoft Support</a></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "495261"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Outlook for iOS/Android introduces a new priority view highlighting important emails and those needing replies, available from late June 2025 to late December 2025. A Microsoft 365 Copilot license is required. Users can enable this feature in Outlook settings and customize the view. No admin action is needed."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Android, iOS"
-      }
-    ],
-    "EndDateTime": "2026-02-27T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1089318",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-06-09T21:58:20.757Z",
-    "Services": [
-      "Exchange Online",
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-06-06T23:32:55Z",
-    "Tags": [
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Outlook for iOS/Android: Copilot shows users important emails in new priority view",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
