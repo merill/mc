@@ -3,31 +3,32 @@
   "Attachments": null,
   "AttachmentsArchive": null,
   "Body": {
-    "Content": "<p><b><b>Introduction</b></b></p><p>\nMicrosoft Defender Antivirus on Windows is updating how antivirus configuration settings, such as exclusions, are stored when <b>Microsoft Defender for Endpoint (MDE)</b> configuration management is enabled. Starting with platform release <b>4.18.25110.6</b>, devices using MDE configuration management will no longer store readable exclusion values in the local device registry. Organizations must retrieve configuration using supported Microsoft Defender PowerShell cmdlets, such as <b>Get-MpPreference</b>.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>\n</p><p>General Availability (Worldwide): We will begin rolling out <b>early&nbsp;</b><b>March 2026</b> and expect to complete by <b>late March 2026</b>.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b style=\"\">Who is affected:</b></p>\n<ul>\n<li>Organizations using <b>Microsoft Defender for Endpoint configuration management</b>.</li>\n<li>Admins or tools relying on <b>registry-based monitoring</b> of antivirus settings.</li>\n</ul>\n\n<p><b style=\"\">What will happen:</b></p>\n<ul>\n<li>Antivirus exclusion values will <b>no longer be readable</b> from the local device registry.</li><li>Registry‑based extraction of exclusions will no longer be supported.</li>\n<li>Supported Microsoft Defender PowerShell cmdlets (such as <b>Get-MpPreference</b>) will become the <b>required </b>method to retrieve antivirus configuration settings.</li><li>Devices not using MDE configuration management are <b>not affected</b>.</li>\n<li>The feature is <b>on by default</b> for tenants using MDE configuration management.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Update monitoring workflows and scripts to use supported PowerShell cmdlets such as:<ul><li> <code>Get-MpPreference</code></li><li><code>Get-MpComputerStatus</code></li></ul></li></ul><ul>\n<li>Review internal documentation on retrieving antivirus settings.</li>\n<li>Notify helpdesk or monitoring teams that registry-based queries will no longer return exclusion data.</li>\n</ul><p>Learn more: <a href=\"https://learn.microsoft.com/defender-endpoint/troubleshoot-settings#step-3-identify-policies-or-settings\" target=\"_blank\">Troubleshoot Microsoft Defender Antivirus settings - Microsoft Defender for Endpoint | Microsoft Learn</a>&nbsp;(will be updated to reflect this change)</p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+    "Content": "<p>Updated February 13, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>Microsoft Defender Antivirus on Windows is updating how antivirus configuration settings, such as exclusions, are stored when <b>Microsoft Defender for Endpoint (MDE)</b> security settings management is enabled. Starting with platform release <b>4.18.25110.6</b>, devices using MDE security settings management will no longer store readable exclusion values in the local device registry. Organizations must retrieve configuration using supported Microsoft Defender PowerShell cmdlets, such as <b>Get-MpPreference</b>.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>\n</p><p>General Availability (Worldwide): We will begin rolling out <b>early&nbsp;</b><b>March 2026</b> and expect to complete by <b>late March 2026</b>.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b style=\"\">Who is affected:</b></p>\n<ul>\n<li>Organizations using <b>Microsoft Defender for Endpoint security settings management</b>.</li>\n<li>Admins or tools relying on <b>registry-based monitoring</b> of antivirus settings.</li>\n</ul>\n\n<p><b style=\"\">What will happen:</b></p>\n<ul>\n<li>Defender antivirus configuration, such as exclusions, values will <b>no longer be readable</b> from the local device registry: HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows Defender. As such registry‑based extractions will no longer be supported.</li>\n<li>Supported Microsoft Defender PowerShell cmdlets (such as <b>Get-MpPreference</b>) will become the <b>required </b>method to retrieve antivirus configuration settings.</li><li>Devices not using MDE configuration management are <b>not affected</b>.</li>\n<li>The feature is <b>on by default</b> for tenants using MDE configuration management.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Update monitoring workflows and scripts to use supported PowerShell cmdlets such as:<ul><li> <code>Get-MpPreference</code></li><li><code>Get-MpComputerStatus</code></li></ul></li></ul><ul>\n<li>Review internal documentation on retrieving antivirus settings.</li>\n<li>Notify helpdesk or monitoring teams that registry-based queries will no longer return exclusion data.</li>\n</ul><p>Learn more: <a href=\"https://learn.microsoft.com/defender-endpoint/troubleshoot-settings#step-3-identify-policies-or-settings\" target=\"_blank\">Troubleshoot Microsoft Defender Antivirus settings - Microsoft Defender for Endpoint | Microsoft Learn</a>&nbsp;(will be updated to reflect this change)</p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
     "ContentType": "html"
   },
   "Category": "planForChange",
   "Details": [
     {
       "Name": "Summary",
-      "Value": "Starting March 2026, Microsoft Defender Antivirus with MDE configuration management will stop storing readable exclusion values in the local registry. Organizations must use supported PowerShell cmdlets like Get-MpPreference to retrieve antivirus settings. Registry-based monitoring will no longer work for affected devices."
+      "Value": "Starting March 2026, Microsoft Defender Antivirus with MDE security settings will stop storing readable exclusions in the local registry. Organizations must use PowerShell cmdlets like Get-MpPreference to retrieve settings. Registry-based monitoring will no longer work; update scripts and notify teams accordingly."
     }
   ],
   "EndDateTime": "2026-05-01T07:00:00Z",
   "HasAttachments": false,
   "Id": "MC1227621",
   "IsMajorChange": true,
-  "LastModifiedDateTime": "2026-02-06T00:41:26.143Z",
+  "LastModifiedDateTime": "2026-02-13T23:00:20.803Z",
   "Services": [
     "Microsoft Defender XDR"
   ],
   "Severity": "normal",
   "StartDateTime": "2026-02-06T00:41:04Z",
   "Tags": [
+    "Updated message",
     "Feature update",
     "Admin impact"
   ],
-  "Title": "Microsoft Defender Antivirus: Change to exclusion storage when using MDE configuration management",
+  "Title": "Microsoft Defender Antivirus: Change to exclusion storage when using MDE security settings management",
   "ViewPoint": {
     "IsArchived": null,
     "IsFavorited": null,

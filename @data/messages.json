@@ -4,6 +4,90 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated February 13, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p>Coming soon to Microsoft Purview | Information Protection: To help improve label usability and configuration, the sensitivity labeling scheme will be simplified to only consist of labels and label groupings.</p><p>This move to a dynamic architecture will make it easier to move a child label into label groups, out of label groups, and between label groups without losing referential integrity, allowing customers to better scale and reorganize their labels across their entire data estate.\n</p><p>Tenants in scope for manual migration to the new label scheme will see a message on the <i>Sensitivity labels</i> page in the Purview portal, where the tenant admin can access a simple manual migration wizard to opt in to the migration, which should complete in less than a few minutes or even seconds, depending on the label configuration.</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/490e4ae4-a990-460a-a6e2-35622780e3b1\" width=\"400\" height=\"\"></p><p>\n</p><p>If you do not see this message, your tenant does not meet the criteria for manual migration (your tenant lacks applicable parent labels). This new label scheme will be rolled out to your tenant in the coming months. (and we will send a separate MC post in advance).\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=386900\" target=\"_blank\">386900</a>.</p><p><b>When this will happen:</b></p><p>Public Preview (Worldwide): Modern labels have been in Public Preview since July 7th 2025. This post announces the rollout of modern label scheme to new tenants and tenants with applicable parents.\n</p><p>General Availability (Worldwide): We will being rolling out early December 2025 and expect to be completed by mid-March 2026 (previously end of January). As part of GA, customers with non-applicable parents will be auto migrated to the modern label scheme while migration for customers with applicable parents will continue to be opt-in for 12 months post-GA. We will auto-migrate customers with applicable parents to the modern label scheme once the 12-month extension ends.&nbsp;</p><p><b>How this will affect your organization:</b></p><p>During migration, to ensure label scoping integrity, any applicable parent label will be converted to a child label under a new label group, and then both parent and child label will have the same display name as the original parent label. Non-applicable parent labels will automatically be converted to label groups.\n</p><p>A parent label is deemed applicable if it has a different scope from any of its children, has label actions, or is published separately from its children.\n</p><p>The manual migration wizard provides a preview of the migrated scheme so admins can better understand how their sensitivity label scheme will change after the migration.</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/f27dc36f-6558-4427-9865-7e02ce1e2a4e\" width=\"400\" height=\"\"></p><p>\n</p><p>After migration, admins are free to make changes to their migrated label scheme, including unpublishing applicable parent labels that were converted to children during migration.</p><p>Users will not notice any change in how labels are viewed or applied. This change will be on by default.</p><p>Example of a migrated label scheme:\n</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/89e23e5c-513d-4045-a508-d194e5e573c9\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p><b>What you need to do to prepare:</b></p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. Review your tenant’s label scheme to ensure it is up to date. You may want to notify your admins about this change and update any relevant documentation.\n</p><p>Optionally, before you migrate your production tenant, consider migrating a test tenant configured with a label scheme that is representative of your production tenant, to become familiar with the migration process and the modern label scheme.</p><p>Learn more: <a href=\"https://learn.microsoft.com/en-us/purview/sensitivity-labels\" target=\"_blank\" style=\"\">Learn about sensitivity labels | Microsoft Learn</a></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "386900"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview is modernizing sensitivity labels by simplifying them into labels and label groupings for easier management. Manual migration with a wizard is available for some tenants; others will be auto-migrated by mid-March 2026. Users won’t notice changes, and admins can adjust labels post-migration. No action is required before rollout."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-04-20T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1111778",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-02-13T23:08:10.31Z",
+    "Services": [
+      "Microsoft 365 suite"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-07-08T23:26:31Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Information Protection: Sensitivity label grouping modernization",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated February 13, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>Microsoft Defender Antivirus on Windows is updating how antivirus configuration settings, such as exclusions, are stored when <b>Microsoft Defender for Endpoint (MDE)</b> security settings management is enabled. Starting with platform release <b>4.18.25110.6</b>, devices using MDE security settings management will no longer store readable exclusion values in the local device registry. Organizations must retrieve configuration using supported Microsoft Defender PowerShell cmdlets, such as <b>Get-MpPreference</b>.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>\n</p><p>General Availability (Worldwide): We will begin rolling out <b>early&nbsp;</b><b>March 2026</b> and expect to complete by <b>late March 2026</b>.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b style=\"\">Who is affected:</b></p>\n<ul>\n<li>Organizations using <b>Microsoft Defender for Endpoint security settings management</b>.</li>\n<li>Admins or tools relying on <b>registry-based monitoring</b> of antivirus settings.</li>\n</ul>\n\n<p><b style=\"\">What will happen:</b></p>\n<ul>\n<li>Defender antivirus configuration, such as exclusions, values will <b>no longer be readable</b> from the local device registry: HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows Defender. As such registry‑based extractions will no longer be supported.</li>\n<li>Supported Microsoft Defender PowerShell cmdlets (such as <b>Get-MpPreference</b>) will become the <b>required </b>method to retrieve antivirus configuration settings.</li><li>Devices not using MDE configuration management are <b>not affected</b>.</li>\n<li>The feature is <b>on by default</b> for tenants using MDE configuration management.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Update monitoring workflows and scripts to use supported PowerShell cmdlets such as:<ul><li> <code>Get-MpPreference</code></li><li><code>Get-MpComputerStatus</code></li></ul></li></ul><ul>\n<li>Review internal documentation on retrieving antivirus settings.</li>\n<li>Notify helpdesk or monitoring teams that registry-based queries will no longer return exclusion data.</li>\n</ul><p>Learn more: <a href=\"https://learn.microsoft.com/defender-endpoint/troubleshoot-settings#step-3-identify-policies-or-settings\" target=\"_blank\">Troubleshoot Microsoft Defender Antivirus settings - Microsoft Defender for Endpoint | Microsoft Learn</a>&nbsp;(will be updated to reflect this change)</p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting March 2026, Microsoft Defender Antivirus with MDE security settings will stop storing readable exclusions in the local registry. Organizations must use PowerShell cmdlets like Get-MpPreference to retrieve settings. Registry-based monitoring will no longer work; update scripts and notify teams accordingly."
+      }
+    ],
+    "EndDateTime": "2026-05-01T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1227621",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-02-13T23:00:20.803Z",
+    "Services": [
+      "Microsoft Defender XDR"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-02-06T00:41:04Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Defender Antivirus: Change to exclusion storage when using MDE security settings management",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated February 13, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We are <b>updating the Microsoft Teams app bar</b> to create a cleaner and more focused experience. <b>App names </b>will be <b>hidden by default</b>, showing only app icons. This helps reduce visual noise and improves overall navigation clarity. Users can choose to show app names again in <i>Settings</i>.</p><p>Accessibility reviews have been conducted to verify compliance and ensure screen readers are working properly.</p><p><b><b>When this will happen</b></b></p><p><b>General Availability (Worldwide): </b>We will begin rolling out in mid-March 2026 (previously<b>&nbsp;</b>late&nbsp;February)&nbsp;and expect to complete by early April 2026 (previously&nbsp;early March).</p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i>: <b>All Microsoft Teams users </b>in<i> commercial (non-government) tenants</i>.</p><p><i>What will happen</i>:</p><ul><li>App names in the <i>Teams app bar </i>will be <b>hidden by default</b>.</li><li>Users will see app icons only, providing a simplified vertical navigation experience.</li><li>Users who prefer to show app names may update this setting individually:<ul><li><i><b>Settings &gt; Appearance &gt; Show app names in the app bar</b></i></li></ul></li><li>No admin configuration changes are required.</li><li>There is <b>no impact to existing policies, permissions, or app availability</b>.</li></ul><p><i>Screenshot 1 - Before</i>:</p><p>&nbsp;<img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/d387f29a-2cdd-43a3-a373-8c5de42b8472/cfc020bd0a2368d632002c180a0f325698faeee0.png\" style=\"width: 100px;\"></p><p><i></i></p><p><i>Screenshot 2 - After</i>:</p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/cd1c135b-b4cb-47d8-8040-2d949a1f7f84/47b7fda341b8537b6bcf6a0808cbf8cc553d7240.png\" style=\"width: 100px;\"></p><p></p><p><b><b>What you can do to prepare</b></b></p><ul><li>No action is required.</li><li>If helpful, you may notify users or help desk staff about this visual update and how to re-enable app names.</li><li>If your organization maintains internal documentation or screenshots of the Teams interface, consider updating them after rollout.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -1995,43 +2079,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p><p>\nMicrosoft Defender Antivirus on Windows is updating how antivirus configuration settings, such as exclusions, are stored when <b>Microsoft Defender for Endpoint (MDE)</b> configuration management is enabled. Starting with platform release <b>4.18.25110.6</b>, devices using MDE configuration management will no longer store readable exclusion values in the local device registry. Organizations must retrieve configuration using supported Microsoft Defender PowerShell cmdlets, such as <b>Get-MpPreference</b>.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>\n</p><p>General Availability (Worldwide): We will begin rolling out <b>early&nbsp;</b><b>March 2026</b> and expect to complete by <b>late March 2026</b>.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b style=\"\">Who is affected:</b></p>\n<ul>\n<li>Organizations using <b>Microsoft Defender for Endpoint configuration management</b>.</li>\n<li>Admins or tools relying on <b>registry-based monitoring</b> of antivirus settings.</li>\n</ul>\n\n<p><b style=\"\">What will happen:</b></p>\n<ul>\n<li>Antivirus exclusion values will <b>no longer be readable</b> from the local device registry.</li><li>Registry‑based extraction of exclusions will no longer be supported.</li>\n<li>Supported Microsoft Defender PowerShell cmdlets (such as <b>Get-MpPreference</b>) will become the <b>required </b>method to retrieve antivirus configuration settings.</li><li>Devices not using MDE configuration management are <b>not affected</b>.</li>\n<li>The feature is <b>on by default</b> for tenants using MDE configuration management.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Update monitoring workflows and scripts to use supported PowerShell cmdlets such as:<ul><li> <code>Get-MpPreference</code></li><li><code>Get-MpComputerStatus</code></li></ul></li></ul><ul>\n<li>Review internal documentation on retrieving antivirus settings.</li>\n<li>Notify helpdesk or monitoring teams that registry-based queries will no longer return exclusion data.</li>\n</ul><p>Learn more: <a href=\"https://learn.microsoft.com/defender-endpoint/troubleshoot-settings#step-3-identify-policies-or-settings\" target=\"_blank\">Troubleshoot Microsoft Defender Antivirus settings - Microsoft Defender for Endpoint | Microsoft Learn</a>&nbsp;(will be updated to reflect this change)</p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting March 2026, Microsoft Defender Antivirus with MDE configuration management will stop storing readable exclusion values in the local registry. Organizations must use supported PowerShell cmdlets like Get-MpPreference to retrieve antivirus settings. Registry-based monitoring will no longer work for affected devices."
-      }
-    ],
-    "EndDateTime": "2026-05-01T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1227621",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-02-06T00:41:26.143Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-02-06T00:41:04Z",
-    "Tags": [
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Defender Antivirus: Change to exclusion storage when using MDE configuration management",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b><b>Introduction</b></b></p><p>Insider Risk Management is providing the ability to create a case without content. With this, we will introduce a <b>new active case limit of 2000</b>. This new functionality will allow customers to create more cases particularly when content download is unnecessary. If a case is created without content download, content download can be initiated anytime the case is active pending available content download limits. There is no change to the <b>active content download limit of 100</b>.</p><p>Microsoft Purview Insider Risk Management correlates various signals to identify potential malicious or inadvertent insider risks, such as IP theft, data leakage, and security violations. Insider Risk Management enables customers to create policies based on their own internal policies, governance, and organizational requirements. Built with privacy by design, users are pseudonymized by default, and role-based access controls and audit logs are in place to help ensure user-level privacy.\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=554940#Roadmap\" target=\"_blank\">554940</a>.</p><p><b><b>When this will happen:</b></b></p><p>Public Preview: We will begin rolling out <b>late February 2026</b> and expect to complete by <b>mid-March 2026</b>.</p><p>General Availability (Worldwide, GCC, GCC-High, DoD): We will begin rolling out <b>mid-May 2026</b> and expect to complete by <b>late June 2026</b>.</p><p><b><b>How this will affect your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<p>Admins who manage Insider Risk Management cases and alerts in Microsoft Purview.</p>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>You will be able to create Insider Risk Management cases <b>with or without content download</b>.</li>\n  <li>A new <b>active case limit of 2000</b> will be introduced.</li>\n  <li>There is no change to the <b>active content download limit (100)</b>.</li>\n  <li>Workflow updates for creating or modifying a case will follow these steps:</li>\n</ul>\n\n<ol><ol>\n  <li>Log into Insider Risk Management.</li>\n  <li>Open an active alert.</li>\n  <li>Select <b>Confirm alert &amp; create case</b>.</li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/29d44647-37f6-4cd7-89eb-e484846f133b\" style=\"width: 400px;\" alt=\"user settings\"></p>\n  <li>Choose whether to create the case <b>with or without</b> content download enabled.</li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/995ebac1-0f9f-4d80-8f15-ab017534de16\" style=\"width: 400px;\" alt=\"user settings\"></p>\n  <li>To turn on content download later, open an active case and navigate to <b>Content Explorer</b>.</li><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/ebb304d8-2f34-4530-972b-c69224e7c171\" style=\"width: 400px;\" alt=\"user settings\"></p></ol></ol><p><b><b>What you need to do to prepare:</b>\n</b></p><ul><li>There are no prerequisites to enable this feature.</li></ul><p>Learn more:</p><ul><li><a href=\"https://purview.microsoft.com/insiderriskmgmt\" target=\"_blank\">Microsoft Purview: Insider risk management</a> \n</li><li><a href=\"https://learn.microsoft.com/purview/insider-risk-management-activities#create-a-case-for-an-alert\" target=\"_blank\">Create a case for an alert | Microsoft Support</a></li></ul><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -3269,7 +3316,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"537279\":[{\"RoadmapId\":537279,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871124Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871125Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871126Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871127Z\",\"LatestRing\":null}]}"
+        "Value": "{\"537279\":[{\"RoadmapId\":537279,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871126Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871125Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871124Z\",\"LatestRing\":null},{\"RoadmapId\":537279,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871127Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -3361,7 +3408,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"513272\":[{\"RoadmapId\":513272,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871349Z\",\"LatestRing\":null},{\"RoadmapId\":513272,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387135Z\",\"LatestRing\":null},{\"RoadmapId\":513272,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871351Z\",\"LatestRing\":null}]}"
+        "Value": "{\"513272\":[{\"RoadmapId\":513272,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387135Z\",\"LatestRing\":null},{\"RoadmapId\":513272,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871349Z\",\"LatestRing\":null},{\"RoadmapId\":513272,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871351Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -4880,7 +4927,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"500696\":[{\"RoadmapId\":500696,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.801399Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8013989Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3870802Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":500696,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3870806Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"500696\":[{\"RoadmapId\":500696,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3870802Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":500696,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8013989Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.801399Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3870806Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -5175,7 +5222,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"381953\":[{\"RoadmapId\":381953,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301966Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"Desktop\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3873097Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":381953,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301961Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"Mac\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3873102Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":381953,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3873105Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":381953,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3873109Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"381953\":[{\"RoadmapId\":381953,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3873105Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":381953,\"Platform\":\"Mac\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3873102Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":381953,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301961Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"Desktop\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3873097Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":381953,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301966Z\",\"LatestRing\":null},{\"RoadmapId\":381953,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3873109Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -5890,7 +5937,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"541831\":[{\"RoadmapId\":541831,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872259Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387226Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872261Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":541831,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872262Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"541831\":[{\"RoadmapId\":541831,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872261Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":541831,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387226Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872259Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872262Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -7935,7 +7982,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"542794\":[{\"RoadmapId\":542794,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872721Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872722Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872734Z\",\"LatestRing\":null}]}"
+        "Value": "{\"542794\":[{\"RoadmapId\":542794,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872722Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872721Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872734Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -9079,7 +9126,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"518218\":[{\"RoadmapId\":518218,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387205Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872051Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872052Z\",\"LatestRing\":null}]}"
+        "Value": "{\"518218\":[{\"RoadmapId\":518218,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872051Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387205Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872052Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -11069,52 +11116,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated December 18, 2025: We have updated the timeline. Thank you for your patience.&nbsp;</p><p>Coming soon to Microsoft Purview | Information Protection: To help improve label usability and configuration, the sensitivity labeling scheme will be simplified to only consist of labels and label groupings.</p><p>This move to a dynamic architecture will make it easier to move a child label into label groups, out of label groups, and between label groups without losing referential integrity, allowing customers to better scale and reorganize their labels across their entire data estate.\n</p><p>Tenants in scope for manual migration to the new label scheme will see a message on the <i>Sensitivity labels</i> page in the Purview portal, where the tenant admin can access a simple manual migration wizard to opt in to the migration, which should complete in less than a few minutes or even seconds, depending on the label configuration.</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/490e4ae4-a990-460a-a6e2-35622780e3b1\" width=\"400\" height=\"\"></p><p>\n</p><p>If you do not see this message, your tenant does not meet the criteria for manual migration (your tenant lacks applicable parent labels). This new label scheme will be rolled out to your tenant in the coming months. (and we will send a separate MC post in advance).\n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=386900\" target=\"_blank\">386900</a>.</p><p><b>When this will happen:</b></p><p>Public Preview (Worldwide): Modern labels have been in Public Preview since July 7th 2025. This post announces the rollout of modern label scheme to new tenants and tenants with applicable parents.\n</p><p>General Availability (Worldwide): We will being rolling out early December 2025 and expect to be completed by end of January 2026 (previously late December 2025). As part of GA, customers with non-applicable parents will be auto migrated to the modern label scheme while migration for customers with applicable parents will continue to be opt-in for 12 months post-GA. We will auto-migrate customers with applicable parents to the modern label scheme once the 12-month extension ends in December 2026.&nbsp;</p><p><b>How this will affect your organization:</b></p><p>During migration, to ensure label scoping integrity, any applicable parent label will be converted to a child label under a new label group, and then both parent and child label will have the same display name as the original parent label. Non-applicable parent labels will automatically be converted to label groups.\n</p><p>A parent label is deemed applicable if it has a different scope from any of its children, has label actions, or is published separately from its children.\n</p><p>The manual migration wizard provides a preview of the migrated scheme so admins can better understand how their sensitivity label scheme will change after the migration.</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/f27dc36f-6558-4427-9865-7e02ce1e2a4e\" width=\"400\" height=\"\"></p><p>\n</p><p>After migration, admins are free to make changes to their migrated label scheme, including unpublishing applicable parent labels that were converted to children during migration.</p><p>Users will not notice any change in how labels are viewed or applied. This change will be on by default.</p><p>Example of a migrated label scheme:\n</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/89e23e5c-513d-4045-a508-d194e5e573c9\" style=\"width: 400px;\" alt=\"admin controls\">\n</p><p><b>What you need to do to prepare:</b></p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. Review your tenant’s label scheme to ensure it is up to date. You may want to notify your admins about this change and update any relevant documentation.\n</p><p>Optionally, before you migrate your production tenant, consider migrating a test tenant configured with a label scheme that is representative of your production tenant, to become familiar with the migration process and the modern label scheme.</p><p>Learn more: <a href=\"https://learn.microsoft.com/en-us/purview/sensitivity-labels\" target=\"_blank\" style=\"\">Learn about sensitivity labels | Microsoft Learn</a></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "386900"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Purview is modernizing sensitivity labels by simplifying them into labels and label groupings for easier management. Manual migration via a wizard is available for some tenants; others will be auto-migrated by January 2026. Users won’t see changes, and admins can adjust labels post-migration. No action needed before rollout."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-03-02T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1111778",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-12-18T23:46:20.087Z",
-    "Services": [
-      "Microsoft 365 suite"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-07-08T23:26:31Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Purview | Information Protection: Sensitivity label grouping modernization",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p></p><p><b><b>Introduction</b></b></p><p>We’re introducing the new and improved <b>People Hub</b> in Outlook Web, designed to deliver a modern, multi-column contacts experience with fast search and a streamlined interface. We’re investing in fast, relevant search and modern contact management capabilities that deliver a high-quality experience for everyone.</p><p>This update provides a unified view of each person, automatically links duplicate entries, and enriches contacts with organizational profile information where available. These enhancements aim to improve reliability and scalability for organizations of all sizes, while phasing out older solutions that no longer meet performance expectations.</p><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=537282\" target=\"_blank\">537282</a>.</p><p><b><b>When this will happen:</b></b></p><ul>\n<li>Targeted Release (Worldwide): We will begin rolling out on mid-January 2026 and expect to complete by late January 2026.\n</li><li>General Availability (Worldwide): We will begin rolling out on late February 2026 and expect to complete by mid-March 2026.\n</li>\n</ul><p><b><b>How this affects your organization:</b></b></p><p><b>Who is affected:</b> All Outlook Web users and admins managing contact solutions in Microsoft 365.</p>\n<p><b>What will happen:</b></p>\n<ul>\n<li>Users will see a refreshed <b>People Hub</b> with a modern, multi-column layout and improved search capabilities.&nbsp;</li>\n<li>Duplicate contacts will be automatically linked, and organizational profile data will enrich contact details where available.</li>\n<li>All users will be migrated to the \"New Contacts\" experience automatically. The toggle to switch off \"New Contacts\" will no longer be available.&nbsp;<br></li><li>No admin action is required; the feature will be enabled by default.</li>\n</ul>\n\n<b><b>What you can do to prepare:</b></b><p></p><ul><li>Admins can start training users on the new Contacts experience. Learn more:&nbsp;<a href=\"https://support.microsoft.com/office/add-find-edit-or-delete-a-contact-in-outlook-e1dc4548-3bd6-4644-aecd-47b5728f7b0d#picktab=new_outlook_%28insiders%29\" target=\"_blank\">Add, find, edit, or delete a contact in Outlook</a>.</li><li>Before rollout, we will update this post with updated documentation.</li>\n</ul>\n<p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified; review as appropriate for your organization.</p>\n<p></p>",
       "ContentType": "html"
     },
@@ -12634,7 +12635,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"515169\":[{\"RoadmapId\":515169,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6639672Z\",\"LatestRing\":null},{\"RoadmapId\":515169,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6639671Z\",\"LatestRing\":null},{\"RoadmapId\":515169,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6639669Z\",\"LatestRing\":null},{\"RoadmapId\":515169,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6639668Z\",\"LatestRing\":null},{\"RoadmapId\":515169,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6639673Z\",\"LatestRing\":null}]}"
+        "Value": "{\"515169\":[{\"RoadmapId\":515169,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6639669Z\",\"LatestRing\":null},{\"RoadmapId\":515169,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6639671Z\",\"LatestRing\":null},{\"RoadmapId\":515169,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6639672Z\",\"LatestRing\":null},{\"RoadmapId\":515169,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6639668Z\",\"LatestRing\":null},{\"RoadmapId\":515169,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6639673Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -13327,7 +13328,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"534487\":[{\"RoadmapId\":534487,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-12-16T15:20:37.5939091Z\",\"LatestRing\":null},{\"RoadmapId\":534487,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-12-16T15:20:37.5939093Z\",\"LatestRing\":null},{\"RoadmapId\":534487,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-12-16T15:20:37.5939094Z\",\"LatestRing\":null}]}"
+        "Value": "{\"534487\":[{\"RoadmapId\":534487,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-12-16T15:20:37.5939093Z\",\"LatestRing\":null},{\"RoadmapId\":534487,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-12-16T15:20:37.5939091Z\",\"LatestRing\":null},{\"RoadmapId\":534487,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-12-16T15:20:37.5939094Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -13920,7 +13921,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"528930\":[{\"RoadmapId\":528930,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642664Z\",\"LatestRing\":null},{\"RoadmapId\":528930,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642662Z\",\"LatestRing\":null},{\"RoadmapId\":528930,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642665Z\",\"LatestRing\":null}]}"
+        "Value": "{\"528930\":[{\"RoadmapId\":528930,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642662Z\",\"LatestRing\":null},{\"RoadmapId\":528930,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642664Z\",\"LatestRing\":null},{\"RoadmapId\":528930,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642665Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16140,7 +16141,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"492625\":[{\"RoadmapId\":492625,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9268288Z\",\"LatestRing\":null},{\"RoadmapId\":492625,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9268287Z\",\"LatestRing\":null},{\"RoadmapId\":492625,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-07-17T11:15:09.4174561Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":492625,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-07-17T11:15:09.4174571Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"492625\":[{\"RoadmapId\":492625,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2025-07-17T11:15:09.4174561Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":492625,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9268287Z\",\"LatestRing\":null},{\"RoadmapId\":492625,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2025-06-25T01:20:12.9268288Z\",\"LatestRing\":null},{\"RoadmapId\":492625,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2025-07-17T11:15:09.4174571Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -16708,7 +16709,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"369345\":[{\"RoadmapId\":369345,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.946174Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461736Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461744Z\",\"LatestRing\":null}]}"
+        "Value": "{\"369345\":[{\"RoadmapId\":369345,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461736Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.946174Z\",\"LatestRing\":null},{\"RoadmapId\":369345,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-07-10T17:16:54.9461744Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16968,7 +16969,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872185Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872187Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387219Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872192Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387219Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872187Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872185Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872192Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -17019,7 +17020,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872185Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872187Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387219Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872192Z\",\"LatestRing\":\"TargetedRelease\"}]}"
+        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387219Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872187Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872185Z\",\"LatestRing\":\"TargetedRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872192Z\",\"LatestRing\":\"TargetedRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -17810,7 +17811,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"168524\":[{\"RoadmapId\":168524,\"Platform\":\"Desktop\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871509Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Mac\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871512Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871514Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871516Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"168524\":[{\"RoadmapId\":168524,\"Platform\":\"Desktop\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871509Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Web\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871514Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Mac\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871512Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3871516Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -18295,7 +18296,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"487432\":[{\"RoadmapId\":487432,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301262Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.830126Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301264Z\",\"LatestRing\":null}]}"
+        "Value": "{\"487432\":[{\"RoadmapId\":487432,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.830126Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301262Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301264Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
