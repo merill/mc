@@ -38,4 +38,27 @@ foreach($msg in $msgItems){
 $msgitems | ConvertTo-Json -Depth 10 | Set-Content -Path ($dataPath + "/messages.json")
 $msgitems.Services | Sort-Object | Get-Unique | ConvertTo-Json | Set-Content -Path ($dataPath + "/services.json")
 
+# Build lightweight archive index for IDs not in the active list
+Write-Host "Building messages-archive.json from archive folder"
+$activeIds = $msgItems | Select-Object -ExpandProperty Id
+$archiveFields = @('Id','Title','Services','StartDateTime','EndDateTime','LastModifiedDateTime','IsMajorChange','Category')
+$archiveRecords = Get-ChildItem -Path "$($dataPath)/archive" -Filter "*.json" |
+    Where-Object { $activeIds -notcontains $_.BaseName } |
+    ForEach-Object {
+        $item = Get-Content $_.FullName | ConvertFrom-Json
+        $record = [ordered]@{}
+        foreach ($field in $archiveFields) {
+            $record[$field] = $item.$field
+        }
+        $record
+    } |
+    Sort-Object -Property LastModifiedDateTime -Descending
+
+$archiveRecords | ConvertTo-Json -Depth 5 -Compress | Set-Content -Path ($dataPath + "/messages-archive.json")
+Write-Host "Wrote $($archiveRecords.Count) archive-only records to messages-archive.json"
+
+# Copy to public/ so the client-side fetch can retrieve it from the deployed site
+Copy-Item -Path ($dataPath + "/messages-archive.json") -Destination "./public/messages-archive.json" -Force
+Write-Host "Copied messages-archive.json to public/"
+
 Write-Host "Completed updating"

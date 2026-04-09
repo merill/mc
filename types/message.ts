@@ -93,3 +93,14 @@ export interface ViewPoint {
     IsFavorited?: null;
     IsRead?: null;
 }
+
+export interface MessageArchive {
+    Id: string;
+    Title: string;
+    Services?: string[];
+    StartDateTime?: string;
+    EndDateTime?: string;
+    LastModifiedDateTime?: string;
+    IsMajorChange?: boolean;
+    Category?: string;
+}

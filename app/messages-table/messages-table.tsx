@@ -12,7 +12,8 @@ function getData(): MessageView[] {
         title: item.Title,
         service: item.Services,
         lastUpdated: getFormattedDate(item.LastModifiedDateTime),
-        isMajor: item.IsMajorChange ?? false
+        isMajor: item.IsMajorChange ?? false,
+        isArchived: false
     }));
 }
 
@@ -21,7 +22,7 @@ export default function MessagesTable2() {
 
     return (
         <div className="">
-            <DataTable columns={columns} data={data} />
+            <DataTable columns={columns} data={data} archiveUrl="/messages-archive.json" />
         </div>
     )
 }

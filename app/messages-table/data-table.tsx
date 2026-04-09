@@ -21,22 +21,57 @@ import {
 } from "@/components/ui/table"
 import React from "react"
 import Link from "next/link"
+import { MessageArchive } from "@/types/message"
+import { MessageView } from "@/app/messages-table/columns"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  archiveUrl?: string
+}
+
+function toMessageView(item: MessageArchive): MessageView {
+  const d = item.LastModifiedDateTime ? new Date(item.LastModifiedDateTime) : null;
+  const lastUpdated = d
+    ? `${d.toLocaleString("default", { month: "short" })} ${d.getDate()}, ${d.getFullYear()}`
+    : undefined;
+  return {
+    id: item.Id,
+    title: item.Title,
+    service: item.Services,
+    lastUpdated,
+    isMajor: item.IsMajorChange ?? false,
+    isArchived: true,
+  };
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  archiveUrl,
 }: DataTableProps<TData, TValue>) {
 
+  const [allData, setAllData] = React.useState<TData[]>(data)
+  const [archiveLoaded, setArchiveLoaded] = React.useState(false)
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
 
+  React.useEffect(() => {
+    if (!archiveUrl || archiveLoaded) return;
+    fetch(archiveUrl)
+      .then((res) => res.json())
+      .then((items: MessageArchive[]) => {
+        const archiveRows = items.map(toMessageView) as unknown as TData[];
+        setAllData((prev) => [...prev, ...archiveRows]);
+        setArchiveLoaded(true);
+      })
+      .catch(() => {
+        // Archive fetch is best-effort; silently ignore errors
+      });
+  }, [archiveUrl, archiveLoaded])
+
   const table = useReactTable({
-    data,
+    data: allData,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
