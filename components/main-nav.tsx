@@ -12,13 +12,14 @@ interface MainNavProps {
 
 export function MainNav({ items }: MainNavProps) {
   return (
-    <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="flex items-center space-x-2">
-        <Icons.logo className="h-6 w-6" />
-        <span className="inline-block font-bold">{siteConfig.name}</span>
+    <div className="flex min-w-0 flex-1 items-center gap-6 md:gap-10">
+      <Link href="/" className="flex min-w-0 items-center space-x-2">
+        <Icons.logo className="h-6 w-6 shrink-0" />
+        <span className="inline-block truncate font-bold sm:hidden">M365 Archive</span>
+        <span className="hidden truncate font-bold sm:inline-block">{siteConfig.name}</span>
       </Link>
       {items?.length ? (
-        <nav className="flex gap-6">
+        <nav className="hidden gap-6 md:flex">
           {items?.map(
             (item, index) =>
               item.href && (

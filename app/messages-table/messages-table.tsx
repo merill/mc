@@ -1,7 +1,7 @@
 
 import { DataTable } from "@/app/messages-table/data-table"
 import { MessageView, columns } from "@/app/messages-table/columns";
-import { getAllMessages, getFormattedDate } from "@/lib/messages";
+import { getAllMessages, getFormattedDate, getMessageSource, getMessageSourceLabel } from "@/lib/messages";
 
 function getData(): MessageView[] {
 
@@ -12,7 +12,9 @@ function getData(): MessageView[] {
         title: item.Title,
         service: item.Services,
         lastUpdated: getFormattedDate(item.LastModifiedDateTime),
-        isMajor: item.IsMajorChange ?? false
+        isMajor: item.IsMajorChange ?? false,
+        source: getMessageSource(item),
+        sourceLabel: getMessageSourceLabel(item)
     }));
 }
 

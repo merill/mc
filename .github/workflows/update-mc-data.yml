@@ -1,6 +1,6 @@
-# Run daily and when custom data is updated to generate a new csv/json
+# Refresh Message Center and Microsoft 365 Roadmap data
 
-name: update-message-center-data
+name: update-m365-data
 
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -11,7 +11,7 @@ on:
       - '@data/**'
   pull_request:
     branches: [ "main" ]
-  # Run twice a day (5.30am and 5.30pm)
+  # Refresh data hourly
   schedule:
     - cron:  '0 * * * *'
     
@@ -29,7 +29,7 @@ jobs:
     steps:          
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: Get messages from Message Center
+      - name: Get Message Center and Roadmap data
         run: |
           ./@build/Update-Site.ps1 -GraphSecret ${{ secrets.GRAPH_SECRET }}
         shell: pwsh

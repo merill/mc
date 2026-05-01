@@ -4,15 +4,15 @@ export default function IndexPage() {
 
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex flex-col items-start gap-2">
-        <h1 className="text-3xl font-extrabold md:text-4xl">
-          Microsoft 365 Message Center Archive</h1>
-        <p className="text-lg text-muted-foreground">
-          This site is an archive of Microsoft 365 Message Center messages for quick reference.
+      <div className="flex min-w-0 flex-col items-start gap-2">
+        <h1 className="max-w-full text-2xl font-extrabold leading-tight md:text-4xl">
+          Microsoft 365 Message Center and Roadmap Archive</h1>
+        <p className="max-w-full text-base text-muted-foreground md:text-lg">
+          This site is an archive of Microsoft 365 Message Center messages and Microsoft 365 Roadmap items for quick reference.
         </p>
       </div>
 
-      <div className="">
+      <div className="min-w-0">
         <MessagesTable2 />
       </div>
     </section>

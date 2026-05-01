@@ -1,4 +1,4 @@
-import { getMessageData, getMessageSummary } from "@/lib/messages"
+import { getMessageData, getMessageSource, getMessageSummary } from "@/lib/messages"
 import {
     Card,
     CardContent,
@@ -6,10 +6,12 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import InfoCards from "@/app/message/[id]/components/info-cards";
+import { MessageSource } from "@/types/message";
 
 export default function MessageDetail(props: { id: string }) {
     const msg = getMessageData(props.id);
     const summary = getMessageSummary(msg);
+    const contentTitle = getMessageSource(msg) === MessageSource.Roadmap ? "Description" : "More information";
     return (
         <div className="flex flex-col items-start gap-5 pt-5">
             <InfoCards id={props.id} />
@@ -28,12 +30,10 @@ export default function MessageDetail(props: { id: string }) {
 
             <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
                 <CardHeader>
-                    <CardTitle>More information</CardTitle>
+                    <CardTitle>{contentTitle}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <p className="text-lg">
-                        <div className="space-y-4" dangerouslySetInnerHTML={{ __html: msg?.Body?.Content || '' }} />
-                    </p>
+                    <div className="message-content space-y-4 text-lg" dangerouslySetInnerHTML={{ __html: msg?.Body?.Content || '' }} />
                 </CardContent>
             </Card>
         </div>

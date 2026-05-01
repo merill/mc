@@ -1,10 +1,16 @@
-import { Message } from '@/types/message';
+import { Message, MessageSource } from '@/types/message';
 import dataMessages from '@/@data/messages.json'
+import dataRoadmap from '@/@data/roadmap.json'
 
-const messages: Message[] = dataMessages;
+const messages: Message[] = [...dataMessages, ...dataRoadmap].sort((a, b) => {
+    const dateA = new Date(a.LastModifiedDateTime || a.StartDateTime || 0).getTime();
+    const dateB = new Date(b.LastModifiedDateTime || b.StartDateTime || 0).getTime();
+
+    return dateB - dateA;
+});
 
 export function getAllMessageIds(): { id: string }[] {
-    return dataMessages.map((item) => {
+    return messages.map((item) => {
         return {
             id: item.Id,
         };
@@ -12,7 +18,7 @@ export function getAllMessageIds(): { id: string }[] {
 }
 
 export function getAllMessages(): Message[] {
-    return dataMessages;
+    return messages;
 }
 
 export function getMessageData(id: string): Message | undefined{
@@ -35,6 +41,18 @@ export function getMessagePlatforms(msg: Message | undefined): string {
     return platforms?.Value?.toString() || "";
 }
 
+export function getMessageDetailValue(msg: Message | undefined, name: string): string {
+    const detail = msg?.Details?.find((item) => item.Name === name);
+    return detail?.Value?.toString() || "";
+}
+
+export function getMessageSource(msg: Message | undefined): MessageSource {
+    return msg?.Source === MessageSource.Roadmap ? MessageSource.Roadmap : MessageSource.MessageCenter;
+}
+
+export function getMessageSourceLabel(msg: Message | undefined): string {
+    return getMessageSource(msg) === MessageSource.Roadmap ? "Microsoft 365 Roadmap" : "Message Center";
+}
 
 export function getFormattedDate(dateInput: string | undefined | null): string {
     if (!dateInput) return "";

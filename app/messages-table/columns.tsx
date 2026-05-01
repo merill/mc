@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { ColumnDef } from "@tanstack/react-table"
+import { Inbox, Milestone } from "lucide-react"
 
 export type MessageView = {
   id: string
@@ -10,6 +11,8 @@ export type MessageView = {
   service: string[] | undefined
   lastUpdated: string | undefined
   isMajor: boolean
+  source: "messageCenter" | "roadmap"
+  sourceLabel: string
 }
 
 export const columns: ColumnDef<MessageView>[] = [
@@ -21,8 +24,22 @@ export const columns: ColumnDef<MessageView>[] = [
       )
     },
     cell: ({ row }) => {
+      const SourceIcon = row.original.source === "roadmap" ? Milestone : Inbox
+
       return (
         <div className="flex items-center gap-2">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span className="inline-flex text-muted-foreground">
+                  <SourceIcon size={16} aria-label={row.original.sourceLabel} />
+                </span>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{row.original.sourceLabel}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <span className="text-nowrap">{row.original.id}</span>
           {(row.original.isMajor &&
             <TooltipProvider>
@@ -47,7 +64,7 @@ export const columns: ColumnDef<MessageView>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className="w-full">{row.original.title}</div>
+        <div className="w-full whitespace-normal break-words">{row.original.title}</div>
       )
     },
   },
