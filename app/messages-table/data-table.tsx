@@ -22,9 +22,9 @@ import {
 } from "@/components/ui/table"
 import React from "react"
 import Link from "next/link"
+import { Check, ChevronDown, Inbox, Milestone, X } from "lucide-react"
 
 type SourceFilter = "all" | "messageCenter" | "roadmap"
-type ServiceFilter = "all" | string
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -54,7 +54,10 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
   const [sourceFilter, setSourceFilter] = React.useState<SourceFilter>("all")
-  const [serviceFilter, setServiceFilter] = React.useState<ServiceFilter>("all")
+  const [selectedServices, setSelectedServices] = React.useState<string[]>([])
+  const [serviceSearch, setServiceSearch] = React.useState("")
+  const [isServiceFilterOpen, setIsServiceFilterOpen] = React.useState(false)
+  const serviceFilterRef = React.useRef<HTMLDivElement>(null)
   const services = React.useMemo(() => {
     const values = new Set<string>()
 
@@ -66,14 +69,48 @@ export function DataTable<TData, TValue>({
 
     return Array.from(values).sort((a, b) => a.localeCompare(b))
   }, [data])
+  const filteredServices = React.useMemo(() => {
+    const search = serviceSearch.trim().toLowerCase()
+
+    if (!search) return services
+
+    return services.filter((service) => service.toLowerCase().includes(search))
+  }, [serviceSearch, services])
   const filteredData = React.useMemo(() => {
     return data.filter((item) => {
       const sourceMatches = sourceFilter === "all" || (item as { source?: string }).source === sourceFilter
-      const serviceMatches = serviceFilter === "all" || ((item as { service?: string[] }).service || []).includes(serviceFilter)
+      const itemServices = (item as { service?: string[] }).service || []
+      const serviceMatches = selectedServices.length === 0 || selectedServices.some((service) => itemServices.includes(service))
 
       return sourceMatches && serviceMatches
     })
-  }, [data, serviceFilter, sourceFilter])
+  }, [data, selectedServices, sourceFilter])
+
+  React.useEffect(() => {
+    function handlePointerDown(event: MouseEvent) {
+      if (!serviceFilterRef.current?.contains(event.target as Node)) {
+        setIsServiceFilterOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handlePointerDown)
+
+    return () => document.removeEventListener("mousedown", handlePointerDown)
+  }, [])
+
+  const toggleService = (service: string) => {
+    setSelectedServices((current) =>
+      current.includes(service)
+        ? current.filter((item) => item !== service)
+        : [...current, service].sort((a, b) => a.localeCompare(b))
+    )
+  }
+
+  const selectedServiceLabel = selectedServices.length === 0
+    ? "All services"
+    : selectedServices.length === 1
+      ? selectedServices[0]
+      : `${selectedServices.length} services`
 
   const table = useReactTable({
     data: filteredData,
@@ -97,6 +134,7 @@ export function DataTable<TData, TValue>({
             type="button"
             variant={sourceFilter === "all" ? "default" : "outline"}
             size="sm"
+            className="gap-2"
             onClick={() => setSourceFilter("all")}
           >
             All
@@ -105,16 +143,20 @@ export function DataTable<TData, TValue>({
             type="button"
             variant={sourceFilter === "messageCenter" ? "default" : "outline"}
             size="sm"
+            className="gap-2"
             onClick={() => setSourceFilter("messageCenter")}
           >
+            <Inbox size={15} />
             Message Center
           </Button>
           <Button
             type="button"
             variant={sourceFilter === "roadmap" ? "default" : "outline"}
             size="sm"
+            className="gap-2"
             onClick={() => setSourceFilter("roadmap")}
           >
+            <Milestone size={15} />
             Microsoft 365 Roadmap
           </Button>
         </div>
@@ -133,19 +175,68 @@ export function DataTable<TData, TValue>({
               table.getColumn("title")?.setFilterValue(event.target.value)
             }
           />
-          <select
-            aria-label="Filter by Service"
-            value={serviceFilter}
-            onChange={(event) => setServiceFilter(event.target.value)}
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            <option value="all">All services</option>
-            {services.map((service) => (
-              <option key={service} value={service}>
-                {service}
-              </option>
-            ))}
-          </select>
+          <div ref={serviceFilterRef} className="relative">
+            <Button
+              type="button"
+              variant="outline"
+              className="h-10 w-full justify-between gap-2 px-3"
+              onClick={() => setIsServiceFilterOpen((value) => !value)}
+              aria-expanded={isServiceFilterOpen}
+            >
+              <span className="truncate text-left">{selectedServiceLabel}</span>
+              <ChevronDown size={16} className="shrink-0 text-muted-foreground" />
+            </Button>
+            {isServiceFilterOpen && (
+              <div className="absolute right-0 z-50 mt-2 w-full min-w-[20rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md">
+                <div className="border-b p-2">
+                  <Input
+                    placeholder="Search services..."
+                    value={serviceSearch}
+                    onChange={(event) => setServiceSearch(event.target.value)}
+                    className="h-9"
+                  />
+                </div>
+                {selectedServices.length > 0 && (
+                  <div className="flex items-center justify-between border-b px-3 py-2">
+                    <span className="text-xs text-muted-foreground">{selectedServices.length} selected</span>
+                    <button
+                      type="button"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground"
+                      onClick={() => setSelectedServices([])}
+                    >
+                      <X size={13} />
+                      Clear
+                    </button>
+                  </div>
+                )}
+                <div className="max-h-72 overflow-y-auto p-1">
+                  {filteredServices.length ? (
+                    filteredServices.map((service) => {
+                      const isSelected = selectedServices.includes(service)
+
+                      return (
+                        <button
+                          key={service}
+                          type="button"
+                          className="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-left text-sm hover:bg-accent hover:text-accent-foreground"
+                          onClick={() => toggleService(service)}
+                        >
+                          <span className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border ${isSelected ? "bg-primary text-primary-foreground" : "bg-background"}`}>
+                            {isSelected && <Check size={12} />}
+                          </span>
+                          <span className="min-w-0 flex-1 truncate">{service}</span>
+                        </button>
+                      )
+                    })
+                  ) : (
+                    <div className="px-2 py-6 text-center text-sm text-muted-foreground">
+                      No services found.
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="rounded-md border">
