@@ -89,6 +89,29 @@ export default function AboutPage() {
           </p>
         </CardContent>
       </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Release notes</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-5 text-sm leading-7 text-muted-foreground md:text-base">
+          <div>
+            <h2 className="mb-2 text-lg font-semibold text-foreground">May 2, 2026</h2>
+            <ul className="list-disc space-y-2 pl-5">
+              <li>Added Microsoft 365 Roadmap posts alongside Message Center posts, with source labels, icons, filtering, and detail pages.</li>
+              <li>Added archived Message Center support, including archive-only detail pages, expired badges, and expired announcement banners.</li>
+              <li>Improved home page performance with precomputed service filters and natural incremental row loading.</li>
+              <li>Added searchable multi-select service filtering, wider fixed-width dropdown behavior, and source filters for Message Center and Roadmap.</li>
+              <li>Added SEO and sharing support with canonical metadata, Open Graph and Twitter cards, sitemap, robots file, and a branded social image.</li>
+              <li>Added AI-friendly discovery through llms.txt and a compact messages-index.json for agents and search tools.</li>
+              <li>Added a static RSS feed with the latest 500 active Message Center and Roadmap items.</li>
+              <li>Added this About page, updated homepage guidance about tenant-specific Message Center posts, and added top navigation links.</li>
+              <li>Updated dependencies to clear Dependabot vulnerabilities and moved the site to Next.js 15.</li>
+              <li>Improved the data refresh script, including more reliable Roadmap fetching on GitHub Actions.</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
     </section>
   )
 }
