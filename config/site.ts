@@ -15,6 +15,12 @@ export const siteConfig = {
       href: "/about",
     },
     {
+      title: "Agent Skill",
+      href: "/skill",
+    },
+  ],
+  rightNav: [
+    {
       title: "Merill.Net",
       href: "https://merill.net",
     },

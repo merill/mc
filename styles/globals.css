@@ -75,12 +75,101 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-base leading-6 text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 @layer components {
+  .page-shell {
+    @apply container grid items-center gap-8 pb-10 pt-7 md:py-12;
+  }
+
+  .page-intro {
+    @apply flex w-full max-w-none flex-col gap-4;
+  }
+
+  .page-title {
+    @apply max-w-6xl text-3xl font-extrabold tracking-tight text-foreground md:text-5xl md:leading-[1.08];
+  }
+
+  .page-description {
+    @apply max-w-6xl text-lg leading-7 text-foreground/80 md:text-xl md:leading-8;
+  }
+
+  .readable-card-content {
+    @apply space-y-3 text-base leading-7 text-foreground/85;
+  }
+
+  .readable-card-content ul {
+    @apply list-disc space-y-2 pl-5;
+  }
+
+  .readable-card-content li {
+    @apply pl-1;
+  }
+
+  .readable-link {
+    @apply font-medium text-foreground underline underline-offset-4 hover:text-foreground/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .code-block {
+    @apply overflow-x-auto rounded-lg border bg-muted p-4 font-mono text-sm leading-6 text-foreground;
+  }
+
+  .message-content {
+    @apply max-w-none space-y-4 text-lg leading-7 text-foreground/90;
+  }
+
+  .message-content :is(p, ul, ol, table, blockquote) {
+    @apply my-3;
+  }
+
+  .message-content :is(ul, ol) {
+    @apply space-y-1 pl-6;
+  }
+
+  .message-content ul {
+    @apply list-disc;
+  }
+
+  .message-content ol {
+    @apply list-decimal;
+  }
+
+  .message-content li {
+    @apply pl-1;
+  }
+
+  .message-content :is(h2, h3, h4) {
+    @apply mt-6 font-semibold tracking-tight text-foreground;
+  }
+
+  .message-content h2 {
+    @apply text-2xl;
+  }
+
+  .message-content h3 {
+    @apply text-xl;
+  }
+
+  .message-content h4 {
+    @apply text-lg;
+  }
+
+  .message-content table {
+    @apply w-full border-collapse text-base;
+  }
+
+  .message-content th,
+  .message-content td {
+    @apply border px-3 py-2 text-left align-top;
+  }
+
+  .message-content th {
+    @apply bg-muted font-semibold text-foreground;
+  }
+
   .message-content a {
     @apply font-medium text-blue-700 underline underline-offset-4 hover:text-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 dark:text-blue-300 dark:hover:text-blue-200;
   }

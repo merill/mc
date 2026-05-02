@@ -1,5 +1,8 @@
 "use client"
+
 import "./table.css"
+import React from "react"
+import Link from "next/link"
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -10,8 +13,11 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { Input } from "@/components/ui/input"
+import { Check, ChevronDown, Inbox, Milestone, X } from "lucide-react"
+
+import type { MessageArchive } from "@/types/message"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import {
   Table,
   TableBody,
@@ -20,10 +26,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import React from "react"
-import Link from "next/link"
-import { Check, ChevronDown, Inbox, Milestone, X } from "lucide-react"
-import type { MessageArchive } from "@/types/message"
 import type { MessageView } from "@/app/messages-table/columns"
 
 type SourceFilter = "all" | "messageCenter" | "roadmap"
@@ -38,14 +40,18 @@ interface DataTableProps<TData, TValue> {
 }
 
 function toArchivedMessageView(item: MessageArchive): MessageView {
-  const date = item.LastModifiedDateTime ? new Date(item.LastModifiedDateTime) : null
+  const date = item.LastModifiedDateTime
+    ? new Date(item.LastModifiedDateTime)
+    : null
 
   return {
     id: item.Id,
     title: item.Title,
     service: item.Services,
     lastUpdated: date
-      ? `${date.toLocaleString("default", { month: "short" })} ${date.getDate()}, ${date.getFullYear()}`
+      ? `${date.toLocaleString("default", {
+          month: "short",
+        })} ${date.getDate()}, ${date.getFullYear()}`
       : undefined,
     isMajor: item.IsMajorChange ?? false,
     isArchived: true,
@@ -78,7 +84,9 @@ export function DataTable<TData, TValue>({
 
   const [allData, setAllData] = React.useState<TData[]>(data)
   const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  )
   const [sourceFilter, setSourceFilter] = React.useState<SourceFilter>("all")
   const [selectedServices, setSelectedServices] = React.useState<string[]>([])
   const [serviceSearch, setServiceSearch] = React.useState("")
@@ -95,9 +103,13 @@ export function DataTable<TData, TValue>({
   }, [serviceSearch, services])
   const filteredData = React.useMemo(() => {
     return allData.filter((item) => {
-      const sourceMatches = sourceFilter === "all" || (item as { source?: string }).source === sourceFilter
+      const sourceMatches =
+        sourceFilter === "all" ||
+        (item as { source?: string }).source === sourceFilter
       const itemServices = (item as { service?: string[] }).service || []
-      const serviceMatches = selectedServices.length === 0 || selectedServices.some((service) => itemServices.includes(service))
+      const serviceMatches =
+        selectedServices.length === 0 ||
+        selectedServices.some((service) => itemServices.includes(service))
 
       return sourceMatches && serviceMatches
     })
@@ -113,15 +125,19 @@ export function DataTable<TData, TValue>({
     let isMounted = true
 
     fetch(archiveUrl)
-      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((response) => (response.ok ? response.json() : Promise.reject()))
       .then((items: MessageArchive[]) => {
         if (!isMounted) return
 
         const archiveRows = items.map(toArchivedMessageView) as TData[]
 
         setAllData((current) => {
-          const existingIds = new Set(current.map((item) => (item as { id?: string }).id))
-          const newRows = archiveRows.filter((item) => !existingIds.has((item as { id?: string }).id))
+          const existingIds = new Set(
+            current.map((item) => (item as { id?: string }).id)
+          )
+          const newRows = archiveRows.filter(
+            (item) => !existingIds.has((item as { id?: string }).id)
+          )
 
           return [...current, ...newRows]
         })
@@ -155,9 +171,10 @@ export function DataTable<TData, TValue>({
     )
   }
 
-  const selectedServiceLabel = selectedServices.length === 0
-    ? "All services"
-    : selectedServices.length === 1
+  const selectedServiceLabel =
+    selectedServices.length === 0
+      ? "All services"
+      : selectedServices.length === 1
       ? selectedServices[0]
       : `${selectedServices.length} services`
 
@@ -191,7 +208,9 @@ export function DataTable<TData, TValue>({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisibleRowCount((current) => Math.min(current + rowBatchSize, rows.length))
+          setVisibleRowCount((current) =>
+            Math.min(current + rowBatchSize, rows.length)
+          )
         }
       },
       { rootMargin: "800px 0px" }
@@ -260,7 +279,10 @@ export function DataTable<TData, TValue>({
               aria-expanded={isServiceFilterOpen}
             >
               <span className="truncate text-left">{selectedServiceLabel}</span>
-              <ChevronDown size={16} className="shrink-0 text-muted-foreground" />
+              <ChevronDown
+                size={16}
+                className="shrink-0 text-muted-foreground"
+              />
             </Button>
             {isServiceFilterOpen && (
               <div className="absolute right-0 z-50 mt-2 w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md sm:w-80">
@@ -274,7 +296,9 @@ export function DataTable<TData, TValue>({
                 </div>
                 {selectedServices.length > 0 && (
                   <div className="flex items-center justify-between border-b px-3 py-2">
-                    <span className="text-xs text-muted-foreground">{selectedServices.length} selected</span>
+                    <span className="text-xs text-muted-foreground">
+                      {selectedServices.length} selected
+                    </span>
                     <button
                       type="button"
                       className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground"
@@ -297,10 +321,18 @@ export function DataTable<TData, TValue>({
                           className="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-left text-sm hover:bg-accent hover:text-accent-foreground"
                           onClick={() => toggleService(service)}
                         >
-                          <span className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border ${isSelected ? "bg-primary text-primary-foreground" : "bg-background"}`}>
+                          <span
+                            className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border ${
+                              isSelected
+                                ? "bg-primary text-primary-foreground"
+                                : "bg-background"
+                            }`}
+                          >
                             {isSelected && <Check size={12} />}
                           </span>
-                          <span className="min-w-0 flex-1 truncate">{service}</span>
+                          <span className="min-w-0 flex-1 truncate">
+                            {service}
+                          </span>
                         </button>
                       )
                     })
@@ -315,25 +347,33 @@ export function DataTable<TData, TValue>({
           </div>
         </div>
       </div>
-      <div className="rounded-md border">
+      <div className="rounded-md border text-[15px] leading-6">
         <Table className="table-fixed md:table-auto">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
-
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className={`${getColumnClassName(header.column.id)} px-2 md:px-4`}>
+                    <TableHead
+                      key={header.id}
+                      className={`${getColumnClassName(
+                        header.column.id
+                      )} px-2 text-sm font-semibold text-foreground/75 md:px-4`}
+                    >
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                      )}
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                     </TableHead>
                   )
                 })}
-                <TableHead key="url" aria-label="Detail Page Link" className="hidden p-0 md:table-cell"></TableHead>
+                <TableHead
+                  key="url"
+                  aria-label="Detail Page Link"
+                  className="hidden p-0 md:table-cell"
+                ></TableHead>
               </TableRow>
             ))}
           </TableHeader>
@@ -344,21 +384,40 @@ export function DataTable<TData, TValue>({
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >
-
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className={`${getColumnClassName(cell.column.id)} px-2 py-3 md:p-4`}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    <TableCell
+                      key={cell.id}
+                      className={`${getColumnClassName(
+                        cell.column.id
+                      )} px-2 py-3 align-top md:p-4`}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                       {cell.column.id === "id" && (
-                        <Link className="row-link md:hidden" href={`/message/${row.getValue("id")}`} aria-label={`Open ${row.getValue("id")}`} />
+                        <Link
+                          className="row-link md:hidden"
+                          href={`/message/${row.getValue("id")}`}
+                          aria-label={`Open ${row.getValue("id")}`}
+                        />
                       )}
                     </TableCell>
                   ))}
-                  <TableCell className="hidden p-0 md:table-cell"><Link className="row-link" href={`/message/${row.getValue("id")}`}></Link></TableCell>
+                  <TableCell className="hidden p-0 md:table-cell">
+                    <Link
+                      className="row-link"
+                      href={`/message/${row.getValue("id")}`}
+                    ></Link>
+                  </TableCell>
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
                   No results.
                 </TableCell>
               </TableRow>
@@ -367,8 +426,13 @@ export function DataTable<TData, TValue>({
         </Table>
       </div>
       {rows.length > 0 && (
-        <div ref={loadMoreRef} className="py-4 text-center text-sm text-muted-foreground">
-          {hasMoreRows ? `Showing ${visibleRows.length} of ${rows.length} results` : `Showing all ${rows.length} results`}
+        <div
+          ref={loadMoreRef}
+          className="py-4 text-center text-sm text-muted-foreground"
+        >
+          {hasMoreRows
+            ? `Showing ${visibleRows.length} of ${rows.length} results`
+            : `Showing all ${rows.length} results`}
         </div>
       )}
     </div>
