@@ -46,8 +46,9 @@ export default function SkillPage() {
       <div className="page-intro">
         <h1 className="page-title">Agent Skill</h1>
         <p className="page-description">
-          Use this archive from Claude Code, Cursor, Windsurf, and other agents
-          that support Agent Skills. The skill teaches agents how to search the
+          This skill allows your agent to get grounded answers from the latest
+          Microsoft 365 Message Center posts and Microsoft 365 Roadmap items on
+          features and upcoming changes. It teaches agents how to search the
           archive, cite canonical message pages, and warn that Message Center
           posts are tenant-specific.
         </p>
