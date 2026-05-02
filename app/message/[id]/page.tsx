@@ -5,12 +5,13 @@ import { getMessageData } from "@/lib/messages"
 import { siteConfig } from "@/config/site";
 
 type Props = {
-    params: { id: string }
+    params: Promise<{ id: string }>
   }
 
-export default function Page({ params }: Props) {
+export default async function Page({ params }: Props) {
+    const { id } = await params;
 
-    const msg = getMessageData(params.id);
+    const msg = getMessageData(id);
 
     return (
         <>
@@ -22,7 +23,7 @@ export default function Page({ params }: Props) {
                       {getMessageSourceLabel(msg)}
                     </p>
 
-                        <MessageDetail id={params.id} />
+                        <MessageDetail id={id} />
 
                 </div>
             </section >
@@ -34,10 +35,11 @@ export async function generateMetadata(
     { params }: Props,
     parent: ResolvingMetadata
   ): Promise<Metadata> {
-    const msg = getMessageData(params.id);
-    const title = msg ? `${msg.Id} - ${msg.Title}` : params.id;
+    const { id } = await params;
+    const msg = getMessageData(id);
+    const title = msg ? `${msg.Id} - ${msg.Title}` : id;
     const description = getMessageDescription(msg) || siteConfig.description;
-    const url = `/message/${params.id}`;
+    const url = `/message/${id}`;
     const sourceLabel = getMessageSourceLabel(msg);
     const tags = [...(msg?.Services || []), ...(msg?.Tags || [])].filter(Boolean);
 
