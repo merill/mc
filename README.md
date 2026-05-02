@@ -1,6 +1,6 @@
 # Microsoft 365 Message Center Archive
 
-This site is a simple archive of the Microsoft 365 Message Center. It is updated daily and provides a simple way to search and view the Message Center posts.
+This site is a simple archive of the Microsoft 365 Message Center and Microsoft 365 Roadmap. It is updated daily and provides a simple way to search and view posts.
 
 I created this site so I can link to it from my weekly newsletter [Entra.News](https://entra.news) so folks could ready the message center post without having to log into the admin center.
 
@@ -12,3 +12,13 @@ I created this site so I can link to it from my weekly newsletter [Entra.News](h
 ## Feedback
 
 If you have any feedback or suggestions, please feel free to reach out to me on Twitter [@merill](https://twitter.com/merill) or [LinkedIn](https://linkedin.com/in/merill).
+
+## Agent Skill
+
+This repo includes a skills.sh-compatible agent skill for searching and citing the archive:
+
+```bash
+npx skills add merill/mc
+```
+
+The skill teaches agents to use `https://mc.merill.net/llms.txt`, search `https://mc.merill.net/messages-index.json`, cite canonical message pages, and remind users that Message Center posts are tenant-specific.

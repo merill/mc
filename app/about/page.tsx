@@ -104,6 +104,7 @@ export default function AboutPage() {
               <li>Added searchable multi-select service filtering, wider fixed-width dropdown behavior, and source filters for Message Center and Roadmap.</li>
               <li>Added SEO and sharing support with canonical metadata, Open Graph and Twitter cards, sitemap, robots file, and a branded social image.</li>
               <li>Added AI-friendly discovery through llms.txt and a compact messages-index.json for agents and search tools.</li>
+              <li>Added a skills.sh-compatible agent skill for AI-assisted archive search and canonical citation.</li>
               <li>Added a static RSS feed with the latest 500 active Message Center and Roadmap items.</li>
               <li>Added this About page, updated homepage guidance about tenant-specific Message Center posts, and added top navigation links.</li>
               <li>Updated dependencies to clear Dependabot vulnerabilities and moved the site to Next.js 15.</li>
