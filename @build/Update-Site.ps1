@@ -28,7 +28,7 @@ function Get-M365MessageCenterItems() {
 }
 function Get-RoadmapRssItems() {
     Write-Host "Getting Microsoft 365 Roadmap RSS items"
-    $curlCommand = Get-Command curl -CommandType Application -ErrorAction SilentlyContinue
+    $curlCommand = Get-Command curl -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($curlCommand) {
         $content = & $curlCommand.Source -L -s "https://www.microsoft.com/en-us/microsoft-365/RoadmapFeatureRSS"
         if ($LASTEXITCODE -ne 0) {
