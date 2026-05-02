@@ -23,17 +23,42 @@ import {
 import React from "react"
 import Link from "next/link"
 import { Check, ChevronDown, Inbox, Milestone, X } from "lucide-react"
+import type { MessageArchive } from "@/types/message"
+import type { MessageView } from "@/app/messages-table/columns"
 
 type SourceFilter = "all" | "messageCenter" | "roadmap"
+
+const rowBatchSize = 200
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  archiveUrl?: string
+  services: string[]
+}
+
+function toArchivedMessageView(item: MessageArchive): MessageView {
+  const date = item.LastModifiedDateTime ? new Date(item.LastModifiedDateTime) : null
+
+  return {
+    id: item.Id,
+    title: item.Title,
+    service: item.Services,
+    lastUpdated: date
+      ? `${date.toLocaleString("default", { month: "short" })} ${date.getDate()}, ${date.getFullYear()}`
+      : undefined,
+    isMajor: item.IsMajorChange ?? false,
+    isArchived: true,
+    source: "messageCenter",
+    sourceLabel: "Message Center",
+  }
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  archiveUrl,
+  services,
 }: DataTableProps<TData, TValue>) {
   const getColumnClassName = (columnId: string) => {
     if (columnId === "service" || columnId === "lastUpdated") {
@@ -51,24 +76,16 @@ export function DataTable<TData, TValue>({
     return ""
   }
 
+  const [allData, setAllData] = React.useState<TData[]>(data)
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
   const [sourceFilter, setSourceFilter] = React.useState<SourceFilter>("all")
   const [selectedServices, setSelectedServices] = React.useState<string[]>([])
   const [serviceSearch, setServiceSearch] = React.useState("")
   const [isServiceFilterOpen, setIsServiceFilterOpen] = React.useState(false)
+  const [visibleRowCount, setVisibleRowCount] = React.useState(rowBatchSize)
   const serviceFilterRef = React.useRef<HTMLDivElement>(null)
-  const services = React.useMemo(() => {
-    const values = new Set<string>()
-
-    data.forEach((item) => {
-      ;((item as { service?: string[] }).service || []).forEach((service) => {
-        values.add(service)
-      })
-    })
-
-    return Array.from(values).sort((a, b) => a.localeCompare(b))
-  }, [data])
+  const loadMoreRef = React.useRef<HTMLDivElement>(null)
   const filteredServices = React.useMemo(() => {
     const search = serviceSearch.trim().toLowerCase()
 
@@ -77,14 +94,46 @@ export function DataTable<TData, TValue>({
     return services.filter((service) => service.toLowerCase().includes(search))
   }, [serviceSearch, services])
   const filteredData = React.useMemo(() => {
-    return data.filter((item) => {
+    return allData.filter((item) => {
       const sourceMatches = sourceFilter === "all" || (item as { source?: string }).source === sourceFilter
       const itemServices = (item as { service?: string[] }).service || []
       const serviceMatches = selectedServices.length === 0 || selectedServices.some((service) => itemServices.includes(service))
 
       return sourceMatches && serviceMatches
     })
-  }, [data, selectedServices, sourceFilter])
+  }, [allData, selectedServices, sourceFilter])
+
+  React.useEffect(() => {
+    setAllData(data)
+  }, [data])
+
+  React.useEffect(() => {
+    if (!archiveUrl) return
+
+    let isMounted = true
+
+    fetch(archiveUrl)
+      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((items: MessageArchive[]) => {
+        if (!isMounted) return
+
+        const archiveRows = items.map(toArchivedMessageView) as TData[]
+
+        setAllData((current) => {
+          const existingIds = new Set(current.map((item) => (item as { id?: string }).id))
+          const newRows = archiveRows.filter((item) => !existingIds.has((item as { id?: string }).id))
+
+          return [...current, ...newRows]
+        })
+      })
+      .catch(() => {
+        // Archive rows are optional; active messages and roadmap still render if fetch fails.
+      })
+
+    return () => {
+      isMounted = false
+    }
+  }, [archiveUrl])
 
   React.useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
@@ -125,6 +174,33 @@ export function DataTable<TData, TValue>({
       columnFilters,
     },
   })
+  const rows = table.getRowModel().rows
+  const visibleRows = rows.slice(0, visibleRowCount)
+  const hasMoreRows = visibleRowCount < rows.length
+
+  React.useEffect(() => {
+    setVisibleRowCount(rowBatchSize)
+  }, [rows.length, selectedServices, sourceFilter])
+
+  React.useEffect(() => {
+    if (!hasMoreRows) return
+
+    const loadMoreNode = loadMoreRef.current
+    if (!loadMoreNode) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisibleRowCount((current) => Math.min(current + rowBatchSize, rows.length))
+        }
+      },
+      { rootMargin: "800px 0px" }
+    )
+
+    observer.observe(loadMoreNode)
+
+    return () => observer.disconnect()
+  }, [hasMoreRows, rows.length])
 
   return (
     <div>
@@ -175,7 +251,7 @@ export function DataTable<TData, TValue>({
               table.getColumn("title")?.setFilterValue(event.target.value)
             }
           />
-          <div ref={serviceFilterRef} className="relative">
+          <div ref={serviceFilterRef} className="relative w-full sm:w-72">
             <Button
               type="button"
               variant="outline"
@@ -187,7 +263,7 @@ export function DataTable<TData, TValue>({
               <ChevronDown size={16} className="shrink-0 text-muted-foreground" />
             </Button>
             {isServiceFilterOpen && (
-              <div className="absolute right-0 z-50 mt-2 w-full min-w-[20rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md">
+              <div className="absolute right-0 z-50 mt-2 w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md sm:w-80">
                 <div className="border-b p-2">
                   <Input
                     placeholder="Search services..."
@@ -262,8 +338,8 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+            {rows.length ? (
+              visibleRows.map((row) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
@@ -290,6 +366,11 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
+      {rows.length > 0 && (
+        <div ref={loadMoreRef} className="py-4 text-center text-sm text-muted-foreground">
+          {hasMoreRows ? `Showing ${visibleRows.length} of ${rows.length} results` : `Showing all ${rows.length} results`}
+        </div>
+      )}
     </div>
   )
 }

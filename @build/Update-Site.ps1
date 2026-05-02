@@ -84,6 +84,52 @@ function Join-CategoryValues([array]$values) {
     return (($values | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Sort-Object -Unique) -join ", ")
 }
 
+function Limit-Text([string]$value, [int]$maxLength = 500) {
+    if ([string]::IsNullOrWhiteSpace($value)) {
+        return ""
+    }
+
+    $clean = ($value -replace '\s+', ' ').Trim()
+    if ($clean.Length -le $maxLength) {
+        return $clean
+    }
+
+    return $clean.Substring(0, $maxLength).Trim() + "..."
+}
+
+function Get-MessageSummaryText($item) {
+    $summary = @($item.Details | Where-Object { $_.Name -eq "Summary" } | Select-Object -First 1).Value
+
+    if ([string]::IsNullOrWhiteSpace($summary) -and $item.Body.Markdown) {
+        $summary = $item.Body.Markdown
+    }
+
+    if ([string]::IsNullOrWhiteSpace($summary) -and $item.Body.Content) {
+        $summary = ConvertTo-PlainText $item.Body.Content
+    }
+
+    return Limit-Text $summary
+}
+
+function New-MessageIndexRecord($item) {
+    $source = if ($item.Source -eq "roadmap") { "roadmap" } else { "messageCenter" }
+
+    return [ordered]@{
+        Id = $item.Id
+        Title = $item.Title
+        Source = $source
+        Url = "https://mc.merill.net/message/$($item.Id)"
+        Services = @($item.Services)
+        StartDateTime = $item.StartDateTime
+        EndDateTime = $item.EndDateTime
+        LastModifiedDateTime = $item.LastModifiedDateTime
+        IsMajorChange = $item.IsMajorChange
+        Category = $item.Category
+        Tags = @($item.Tags)
+        Summary = Get-MessageSummaryText $item
+    }
+}
+
 function ConvertTo-RoadmapMessage($item) {
     $categories = @($item.category | ForEach-Object { [string]$_ })
     $statusValues = @("In development", "Rolling out", "Launched", "Cancelled", "Postponed", "Modified")
@@ -181,5 +227,56 @@ else {
 $roadmapItems = Get-RoadmapRssItems | ForEach-Object { ConvertTo-RoadmapMessage $_ }
 Write-Host "Updating roadmap data with $($roadmapItems.Count) items"
 $roadmapItems | ConvertTo-Json -Depth 10 | Set-Content -Path ($dataPath + "/roadmap.json")
+
+Write-Host "Building messages-archive.json from archive folder"
+$activeMessages = Get-Content ($dataPath + "/messages.json") | ConvertFrom-Json
+$activeIds = $activeMessages | Select-Object -ExpandProperty Id
+$archiveFields = @('Id','Title','Services','StartDateTime','EndDateTime','LastModifiedDateTime','IsMajorChange','Category')
+$archiveRecords = @(Get-ChildItem -Path "$($dataPath)/archive" -Filter "*.json" |
+    Where-Object { $activeIds -notcontains $_.BaseName } |
+    ForEach-Object {
+        $item = Get-Content $_.FullName | ConvertFrom-Json
+        $record = [ordered]@{}
+
+        foreach ($field in $archiveFields) {
+            $record[$field] = $item.$field
+        }
+
+        $record
+    } |
+    Sort-Object -Property LastModifiedDateTime -Descending)
+
+ConvertTo-Json -InputObject $archiveRecords -Depth 5 -Compress | Set-Content -Path ($dataPath + "/messages-archive.json")
+Copy-Item -Path ($dataPath + "/messages-archive.json") -Destination "./public/messages-archive.json" -Force
+Write-Host "Wrote $($archiveRecords.Count) archive-only records to messages-archive.json"
+
+$tableServices = @($activeMessages.Services + $roadmapItems.Services + $archiveRecords.Services) |
+    Where-Object { -not [string]::IsNullOrWhiteSpace($_) } |
+    Sort-Object -Unique
+ConvertTo-Json -InputObject $tableServices -Depth 3 -Compress | Set-Content -Path ($dataPath + "/table-services.json")
+Write-Host "Wrote $($tableServices.Count) table services to table-services.json"
+
+Write-Host "Building messages-index.json for AI and search consumers"
+$messageIndexRecords = New-Object System.Collections.Generic.List[object]
+
+foreach ($item in @($activeMessages)) {
+    $messageIndexRecords.Add((New-MessageIndexRecord $item))
+}
+
+foreach ($item in @($roadmapItems)) {
+    $messageIndexRecords.Add((New-MessageIndexRecord $item))
+}
+
+Get-ChildItem -Path "$($dataPath)/archive" -Filter "*.json" |
+    Where-Object { $activeIds -notcontains $_.BaseName } |
+    ForEach-Object {
+        $item = Get-Content $_.FullName | ConvertFrom-Json
+        $messageIndexRecords.Add((New-MessageIndexRecord $item))
+    }
+
+$sortedMessageIndexRecords = $messageIndexRecords.ToArray() | Sort-Object -Property @{ Expression = { [string]$_.LastModifiedDateTime }; Descending = $true }
+ConvertTo-Json -InputObject $sortedMessageIndexRecords -Depth 6 -Compress | Set-Content -Path ($dataPath + "/messages-index.json")
+Copy-Item -Path ($dataPath + "/messages-index.json") -Destination "./public/messages-index.json" -Force
+Write-Host "Wrote $($sortedMessageIndexRecords.Count) records to messages-index.json"
 
 Write-Host "Completed updating"

@@ -11,6 +11,7 @@ export type MessageView = {
   service: string[] | undefined
   lastUpdated: string | undefined
   isMajor: boolean
+  isArchived: boolean
   source: "messageCenter" | "roadmap"
   sourceLabel: string
 }
@@ -41,6 +42,11 @@ export const columns: ColumnDef<MessageView>[] = [
             </Tooltip>
           </TooltipProvider>
           <span className="text-nowrap">{row.original.id}</span>
+          {row.original.isArchived && (
+            <Badge variant="outline" className="text-nowrap text-xs text-muted-foreground">
+              Expired
+            </Badge>
+          )}
           {(row.original.isMajor &&
             <TooltipProvider>
               <Tooltip>

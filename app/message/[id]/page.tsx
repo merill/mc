@@ -1,7 +1,8 @@
 import { Metadata, ResolvingMetadata } from "next"
-import { getAllMessageIds, getMessageSourceLabel, getMessageSummary } from "@/lib/messages"
+import { getAllMessageIds, getMessageDescription, getMessageSourceLabel } from "@/lib/messages"
 import MessageDetail from "@/app/message/[id]/components/message-detail";
 import { getMessageData } from "@/lib/messages"
+import { siteConfig } from "@/config/site";
 
 type Props = {
     params: { id: string }
@@ -34,15 +35,44 @@ export async function generateMetadata(
     parent: ResolvingMetadata
   ): Promise<Metadata> {
     const msg = getMessageData(params.id);
-    //get message summary if summary is empty the return detail
-    var summary = getMessageSummary(msg);
-    if(summary === ""){
-      summary = msg?.Body?.Content || "";
-    }
+    const title = msg ? `${msg.Id} - ${msg.Title}` : params.id;
+    const description = getMessageDescription(msg) || siteConfig.description;
+    const url = `/message/${params.id}`;
+    const sourceLabel = getMessageSourceLabel(msg);
+    const tags = [...(msg?.Services || []), ...(msg?.Tags || [])].filter(Boolean);
 
     return {
-      title: msg?.Id + " - " + msg?.Title,
-      description: summary
+      title,
+      description,
+      alternates: {
+        canonical: url,
+      },
+      openGraph: {
+        type: "article",
+        url,
+        siteName: siteConfig.name,
+        title,
+        description,
+        publishedTime: msg?.StartDateTime,
+        modifiedTime: msg?.LastModifiedDateTime,
+        section: sourceLabel,
+        tags,
+        images: [
+          {
+            url: "/og-default.png",
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        creator: "@merill",
+        images: ["/og-default.png"],
+      },
     }
   }
   

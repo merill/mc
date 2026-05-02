@@ -29,6 +29,14 @@ export default function InfoCards(props: { id: string }) {
     const releasePhase = getMessageDetailValue(msg, "ReleasePhase");
     const clouds = getMessageDetailValue(msg, "CloudInstances");
     const isRoadmap = source === MessageSource.Roadmap;
+    const isExpired = !isRoadmap && msg?.EndDateTime ? new Date(msg.EndDateTime) < new Date() : false;
+    const dateExpired = getFormattedDate(msg?.EndDateTime);
+    const expiredBanner = isExpired && (
+        <div className="flex items-center gap-2 rounded-md border border-amber-300 bg-amber-50 px-4 py-2 text-sm text-amber-800 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
+            <CalendarClock size={16} />
+            <span>This announcement expired on <strong>{dateExpired}</strong> and is no longer active in Message Center.</span>
+        </div>
+    );
 
     const idCard = (
         <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
@@ -227,6 +235,7 @@ export default function InfoCards(props: { id: string }) {
     if (isRoadmap) {
         return (
             <div className="space-y-4 w-full">
+                {expiredBanner}
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
                     {idCard}
                     {statusCard}
@@ -245,6 +254,7 @@ export default function InfoCards(props: { id: string }) {
 
     return (
         <div className="space-y-4 w-full">
+            {expiredBanner}
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
                 {idCard}
                 {serviceCard}
