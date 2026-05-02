@@ -11,6 +11,10 @@ export const siteConfig = {
       href: "/",
     },
     {
+      title: "About",
+      href: "/about",
+    },
+    {
       title: "Merill.Net",
       href: "https://merill.net",
     },

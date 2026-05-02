@@ -111,6 +111,36 @@ function Get-MessageSummaryText($item) {
     return Limit-Text $summary
 }
 
+function ConvertTo-RssText([string]$value) {
+    if ([string]::IsNullOrWhiteSpace($value)) {
+        return ""
+    }
+
+    return [System.Security.SecurityElement]::Escape($value)
+}
+
+function New-RssItem($item) {
+    $source = if ($item.Source -eq "roadmap") { "Microsoft 365 Roadmap" } else { "Message Center" }
+    $url = "https://mc.merill.net/message/$($item.Id)"
+    $lastModified = if ($item.LastModifiedDateTime) { [datetimeoffset]::Parse([string]$item.LastModifiedDateTime) } else { [datetimeoffset]::Parse([string]$item.StartDateTime) }
+    $summary = Get-MessageSummaryText $item
+    $services = @($item.Services | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
+    $categories = @($source) + $services
+
+    $categoryXml = ($categories | Sort-Object -Unique | ForEach-Object { "    <category>$(ConvertTo-RssText $_)</category>" }) -join "`n"
+
+    return @"
+  <item>
+    <title>$(ConvertTo-RssText "$($item.Id): $($item.Title)")</title>
+    <link>$(ConvertTo-RssText $url)</link>
+    <guid isPermaLink="true">$(ConvertTo-RssText $url)</guid>
+    <pubDate>$($lastModified.UtcDateTime.ToString("r"))</pubDate>
+    <description>$(ConvertTo-RssText $summary)</description>
+$categoryXml
+  </item>
+"@
+}
+
 function New-MessageIndexRecord($item) {
     $source = if ($item.Source -eq "roadmap") { "roadmap" } else { "messageCenter" }
 
@@ -278,5 +308,34 @@ $sortedMessageIndexRecords = $messageIndexRecords.ToArray() | Sort-Object -Prope
 ConvertTo-Json -InputObject $sortedMessageIndexRecords -Depth 6 -Compress | Set-Content -Path ($dataPath + "/messages-index.json")
 Copy-Item -Path ($dataPath + "/messages-index.json") -Destination "./public/messages-index.json" -Force
 Write-Host "Wrote $($sortedMessageIndexRecords.Count) records to messages-index.json"
+
+Write-Host "Building rss.xml with latest 500 active Message Center and Roadmap records"
+$rssItems = @($activeMessages + $roadmapItems) |
+    Sort-Object -Property @{ Expression = { [string]$_.LastModifiedDateTime }; Descending = $true } |
+    Select-Object -First 500
+$rssPubDate = if ($rssItems.Count -gt 0) {
+    ([datetimeoffset]::Parse([string]$rssItems[0].LastModifiedDateTime)).UtcDateTime.ToString("r")
+}
+else {
+    (Get-Date).ToUniversalTime().ToString("r")
+}
+$rssItemXml = ($rssItems | ForEach-Object { New-RssItem $_ }) -join "`n"
+$rssXml = @"
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Microsoft 365 Message Center and Roadmap Archive</title>
+  <link>https://mc.merill.net/</link>
+  <atom:link href="https://mc.merill.net/rss.xml" rel="self" type="application/rss+xml" />
+  <description>Latest Microsoft 365 Message Center messages and Microsoft 365 Roadmap posts. Message Center posts vary by tenant; always use your tenant's Message Center as the source of truth.</description>
+  <language>en-us</language>
+  <lastBuildDate>$rssPubDate</lastBuildDate>
+  <ttl>60</ttl>
+$rssItemXml
+</channel>
+</rss>
+"@
+$rssXml | Set-Content -Path "./public/rss.xml"
+Write-Host "Wrote $($rssItems.Count) items to public/rss.xml"
 
 Write-Host "Completed updating"
