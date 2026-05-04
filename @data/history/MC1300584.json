@@ -1,0 +1,48 @@
+{
+  "id": "MC1300584",
+  "versions": [
+    {
+      "capturedAt": "2026-05-04T15:35:57.877Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-05-28T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p><p>To improve application security, Microsoft Entra ID will enable App Instance Lock by default for newly created applications. This change prevents sensitive application properties from being modified outside the application’s home tenant, reducing the risk of unauthorized changes that can lead to application compromise. Based on our data analysis, we do not expect this change to cause customer impact. App owners or administrators in the application home tenant can still disable App Instance Lock for specific applications if their scenario requires updates to protected properties in other tenants.</p><p><b></b></p><p><b><b>When this will happen</b></b></p><p><b>General Availability (Worldwide): </b>We will begin rolling out in <b>early June 2026 </b>and expect to complete by<b> late June 2026.</b></p><p><b></b></p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft Entra administrators</li><li>Developers who manage Microsoft Entra applications</li><li>Organizations using automation or scripts to update application credentials or security settings after app creation</li></ul><p><b>What will happen?</b></p><ul><li>App Instance Lock will be <b>enabled by default for all newly created applications</b>.</li><li>Sensitive service principal properties will be protected by default.</li><li>Attempts to modify these <a href=\"https://learn.microsoft.com/en-us/entra/identity-platform/howto-configure-app-instance-property-locks\" target=\"_blank\">protected properties</a> will be <b>blocked unless App Instance Lock is explicitly disabled</b>.</li><li>Blocked update <b>attempts will return a 400 Bad Request error,</b> and the update will not be applied.</li><li><b>Existing applications are not affected </b>by this change.</li></ul><p><i>Example Microsoft Graph error returned when attempting to update passwordCredentials on a locked application:</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/9cf75157-6d59-4921-a212-8ec6ee19e17e/88ab297e762809524363da1c76b8a03905949838.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p></p><p><b><b>What you can do to prepare</b></b></p><ul><li>Review automation, scripts, or provisioning workflows that modify service principal credentials or related settings.</li><li>Validate that existing workflows do not depend on App Instance Lock being disabled and update them to avoid modifying protected properties unless the lock is intentionally disabled.</li><li>Disable App Instance Lock for specific applications if post‑creation updates are required.</li><li>Test application provisioning and credential management flows prior to rollout in mid-May.</li></ul><p><b>Learn more: </b><a href=\"https://learn.microsoft.com/entra/identity-platform/howto-configure-app-instance-property-locks\" target=\"_blank\">How to configure app instance property lock in your applications | Microsoft identity platform | Microsoft Entra | Microsoft Learn</a></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change include an admin control?</td><td>Yes. Admins can disable App Instance Lock per application when required.</td></tr></tbody></table><p><b></b></p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Entra ID will enable App Instance Lock by default for new applications starting June 2026, protecting sensitive properties from unauthorized changes outside the home tenant. Existing apps are unaffected. Admins can disable the lock if needed. Review and update automation or scripts accordingly before rollout."
+          }
+        ],
+        "EndDateTime": "2026-07-23T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1300584",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-05-04T15:35:57.877Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-05-04T15:35:37Z",
+        "Tags": [
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Entra: App Instance Lock enabled by default for new applications",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
