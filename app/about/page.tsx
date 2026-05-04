@@ -135,6 +135,12 @@ export default function AboutPage() {
                 comparing any two versions of a Message Center or Roadmap
                 post.
               </li>
+              <li>
+                Linked plain-text references between Message Center posts
+                inside body content, added a Related posts panel showing
+                References and Referenced by, and exposed those edges in
+                messages-index.json for AI and search consumers.
+              </li>
             </ul>
           </div>
           <div>

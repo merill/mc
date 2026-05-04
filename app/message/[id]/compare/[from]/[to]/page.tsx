@@ -122,6 +122,7 @@ export default async function ComparePage({ params }: Props) {
               <BodyDiff
                 oldHtml={fromVersion.message.Body?.Content || ""}
                 newHtml={toVersion.message.Body?.Content || ""}
+                currentId={id}
               />
             </CardContent>
           </Card>

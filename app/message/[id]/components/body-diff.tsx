@@ -1,5 +1,6 @@
 import htmldiff from "node-htmldiff"
 
+import { linkifyMcIds } from "@/lib/messages"
 import MessageContent from "@/app/message/[id]/components/message-content"
 
 /**
@@ -13,7 +14,9 @@ import MessageContent from "@/app/message/[id]/components/message-content"
 export default function BodyDiff(props: {
   oldHtml: string
   newHtml: string
+  currentId?: string
 }) {
   const diffed = htmldiff(props.oldHtml || "", props.newHtml || "")
-  return <MessageContent html={diffed} />
+  const linked = linkifyMcIds(diffed, props.currentId)
+  return <MessageContent html={linked} />
 }

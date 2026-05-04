@@ -9,6 +9,7 @@ import {
   getMessageHistory,
   getMessageSourceLabel,
   getMessageVersion,
+  linkifyMcIds,
   slugifyCapturedAt,
 } from "@/lib/messages"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -114,6 +115,7 @@ export default async function VersionPage({ params }: Props) {
                 <BodyDiff
                   oldHtml={version.message.Body?.Content || ""}
                   newHtml={latest.message.Body?.Content || ""}
+                  currentId={id}
                 />
               </CardContent>
             </Card>
@@ -128,7 +130,9 @@ export default async function VersionPage({ params }: Props) {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <MessageContent html={version.message.Body?.Content || ""} />
+              <MessageContent
+                html={linkifyMcIds(version.message.Body?.Content || "", id)}
+              />
             </CardContent>
           </Card>
         </div>

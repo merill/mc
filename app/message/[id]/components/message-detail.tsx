@@ -3,11 +3,13 @@ import {
   getMessageData,
   getMessageSource,
   getMessageSummary,
+  linkifyMcIds,
 } from "@/lib/messages"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import InfoCards from "@/app/message/[id]/components/info-cards"
 import MessageContent from "@/app/message/[id]/components/message-content"
 import MessageHistory from "@/app/message/[id]/components/message-history"
+import RelatedMessages from "@/app/message/[id]/components/related-messages"
 
 export default function MessageDetail(props: { id: string }) {
   const msg = getMessageData(props.id)
@@ -16,6 +18,7 @@ export default function MessageDetail(props: { id: string }) {
     getMessageSource(msg) === MessageSource.Roadmap
       ? "Description"
       : "More information"
+  const linkedBody = linkifyMcIds(msg?.Body?.Content || "", props.id)
   return (
     <div className="flex w-full max-w-none flex-col items-start gap-6 pt-5">
       <InfoCards id={props.id} />
@@ -37,10 +40,11 @@ export default function MessageDetail(props: { id: string }) {
           <CardTitle>{contentTitle}</CardTitle>
         </CardHeader>
         <CardContent>
-          <MessageContent html={msg?.Body?.Content || ""} />
+          <MessageContent html={linkedBody} />
         </CardContent>
       </Card>
 
+      <RelatedMessages id={props.id} />
       <MessageHistory id={props.id} />
     </div>
   )
