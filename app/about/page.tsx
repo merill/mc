@@ -120,6 +120,18 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              May 3, 2026
+            </h2>
+            <ul>
+              <li>
+                Added click-to-enlarge image previews on Message Center and
+                Roadmap detail pages, with a fullscreen lightbox and keyboard
+                support.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               May 2, 2026
             </h2>
             <ul>

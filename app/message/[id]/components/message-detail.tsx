@@ -6,6 +6,7 @@ import {
 } from "@/lib/messages"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import InfoCards from "@/app/message/[id]/components/info-cards"
+import MessageContent from "@/app/message/[id]/components/message-content"
 
 export default function MessageDetail(props: { id: string }) {
   const msg = getMessageData(props.id)
@@ -34,12 +35,9 @@ export default function MessageDetail(props: { id: string }) {
         <CardHeader>
           <CardTitle>{contentTitle}</CardTitle>
         </CardHeader>
-        <CardContent>
-          <div
-            className="message-content"
-            dangerouslySetInnerHTML={{ __html: msg?.Body?.Content || "" }}
-          />
-        </CardContent>
+          <CardContent>
+            <MessageContent html={msg?.Body?.Content || ""} />
+          </CardContent>
       </Card>
     </div>
   )
