@@ -124,18 +124,6 @@ export default function AboutPage() {
             </h2>
             <ul>
               <li>
-                Redesigned Message Center and Roadmap detail pages with a
-                two-column layout on larger screens, moving metadata into a
-                sticky right sidebar so the summary and announcement body
-                appear above the fold.
-              </li>
-              <li>
-                Reordered sidebar metadata to lead with the last-updated date
-                and message ID, added a compact Related card listing linked
-                Message Center IDs, and added a History shortcut that jumps to
-                the version history section.
-              </li>
-              <li>
                 Linked Message Center IDs that appear in post summaries, in
                 addition to the post body.
               </li>
@@ -149,6 +137,13 @@ export default function AboutPage() {
                 Smooth-scroll when jumping to in-page sections like Version
                 history, with a brief highlight pulse on arrival. Honors the
                 operating system&apos;s reduced-motion preference.
+              </li>
+              <li>
+                Reworked the Version history card so the two most common
+                comparisons &mdash; latest vs previous and latest vs original
+                &mdash; are one-click primary buttons at the top, with a
+                summary line showing how many times the post has been updated
+                since its original publish date.
               </li>
             </ul>
           </div>

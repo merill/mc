@@ -30,6 +30,14 @@ export default function MessageHistory(props: { id: string }) {
   const reversed = [...history.versions].reverse()
   const latest = reversed[0]
   const latestSlug = slugifyCapturedAt(latest.capturedAt)
+  const totalVersions = history.versions.length
+
+  // The original (oldest) version sits at the end of the reversed array.
+  const original = reversed[reversed.length - 1]
+  const originalSlug = slugifyCapturedAt(original.capturedAt)
+  // The version immediately before the latest one.
+  const previous = reversed[1]
+  const previousSlug = previous ? slugifyCapturedAt(previous.capturedAt) : null
 
   // Pre-compute "what changed since the previous version" for each entry.
   const summaries = reversed.map((v, i) => {
@@ -37,6 +45,10 @@ export default function MessageHistory(props: { id: string }) {
     const prev = reversed[i + 1]?.message
     return summarizeChanges(prev, v.message)
   })
+
+  // Only show "Compare to original" when the original isn't already the
+  // immediate predecessor (i.e., when there are 3+ versions).
+  const showCompareToOriginal = totalVersions >= 3
 
   return (
     <Card className="w-full overflow-hidden rounded-[0.5rem] border bg-background shadow-sm md:shadow-sm">
@@ -46,15 +58,41 @@ export default function MessageHistory(props: { id: string }) {
           Version history
         </CardTitle>
         <p className="text-sm text-muted-foreground">
-          {history.versions.length} versions tracked
+          {totalVersions} versions tracked
         </p>
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground">
-          This post has been updated over time. Browse prior versions or
-          compare any two below. Microsoft Message Center only ever shows the
-          current version; this archive preserves the history.
+          Updated {totalVersions - 1}{" "}
+          {totalVersions - 1 === 1 ? "time" : "times"} since{" "}
+          <span className="font-medium text-foreground">
+            {getFormattedDate(original.capturedAt)}
+          </span>
+          . Microsoft Message Center only ever shows the current version; this
+          archive preserves the history.
         </p>
+
+        {/* Primary CTAs: the two most common comparisons. */}
+        <div className="flex flex-wrap gap-2">
+          {previousSlug && (
+            <Link
+              href={`/message/${props.id}/compare/${previousSlug}/${latestSlug}`}
+              className="inline-flex items-center gap-1.5 rounded-md border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-800 shadow-sm hover:bg-blue-100 dark:border-blue-900 dark:bg-blue-950/50 dark:text-blue-200 dark:hover:bg-blue-900/40"
+            >
+              <GitCompare size={14} />
+              Compare latest to previous (v{totalVersions - 1})
+            </Link>
+          )}
+          {showCompareToOriginal && (
+            <Link
+              href={`/message/${props.id}/compare/${originalSlug}/${latestSlug}`}
+              className="inline-flex items-center gap-1.5 rounded-md border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-800 shadow-sm hover:bg-blue-100 dark:border-blue-900 dark:bg-blue-950/50 dark:text-blue-200 dark:hover:bg-blue-900/40"
+            >
+              <GitCompare size={14} />
+              Compare latest to original (v1)
+            </Link>
+          )}
+        </div>
 
         <VersionPicker
           id={props.id}
@@ -70,7 +108,7 @@ export default function MessageHistory(props: { id: string }) {
           {reversed.map((v, i) => {
             const slug = slugifyCapturedAt(v.capturedAt)
             const isLatest = i === 0
-            const prev = reversed[i + 1]
+            const versionNumber = totalVersions - i
             return (
               <li key={slug} className="relative">
                 <span
@@ -86,27 +124,29 @@ export default function MessageHistory(props: { id: string }) {
                   </span>
                   {isLatest ? (
                     <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-100">
-                      Latest
+                      Latest · v{versionNumber}
+                    </span>
+                  ) : versionNumber === 1 ? (
+                    <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
+                      Original · v1
                     </span>
                   ) : (
                     <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
-                      v{history.versions.length - i}
+                      v{versionNumber}
                     </span>
                   )}
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Changed: {summaries[i].join(", ")}
                 </p>
-                <div className="mt-2 flex flex-wrap items-center gap-3 text-sm">
-                  {!isLatest && (
+                {!isLatest && (
+                  <div className="mt-2 flex flex-wrap items-center gap-3 text-sm">
                     <Link
                       href={`/message/${props.id}/v/${slug}`}
                       className="font-medium text-blue-700 underline underline-offset-4 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-200"
                     >
                       View this version
                     </Link>
-                  )}
-                  {!isLatest && (
                     <Link
                       href={`/message/${props.id}/compare/${slug}/${latestSlug}`}
                       className="inline-flex items-center gap-1 font-medium text-blue-700 underline underline-offset-4 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-200"
@@ -114,19 +154,8 @@ export default function MessageHistory(props: { id: string }) {
                       <GitCompare size={14} />
                       Compare to latest
                     </Link>
-                  )}
-                  {!isLatest && prev && (
-                    <Link
-                      href={`/message/${props.id}/compare/${slugifyCapturedAt(
-                        prev.capturedAt
-                      )}/${slug}`}
-                      className="inline-flex items-center gap-1 text-sm font-medium text-foreground/80 underline underline-offset-4 hover:text-foreground"
-                    >
-                      <GitCompare size={14} />
-                      Compare to previous
-                    </Link>
-                  )}
-                </div>
+                  </div>
+                )}
               </li>
             )
           })}

@@ -4,6 +4,14 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { GitCompare } from "lucide-react"
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 interface VersionEntry {
   slug: string
   label: string
@@ -33,41 +41,43 @@ export default function VersionPicker(props: {
         Compare any two versions
       </p>
       <div className="flex flex-wrap items-end gap-2">
-        <label className="flex flex-col gap-1 text-xs text-muted-foreground">
-          <span>From</span>
-          <select
-            value={from}
-            onChange={(e) => setFrom(e.target.value)}
-            className="min-w-[14rem] rounded-md border border-input bg-background px-2 py-1.5 text-sm text-foreground shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {props.versions.map((v) => (
-              <option key={v.slug} value={v.slug}>
-                {v.label}
-                {v.isLatest ? " (latest)" : ""}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="flex flex-col gap-1 text-xs text-muted-foreground">
-          <span>To</span>
-          <select
-            value={to}
-            onChange={(e) => setTo(e.target.value)}
-            className="min-w-[14rem] rounded-md border border-input bg-background px-2 py-1.5 text-sm text-foreground shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {props.versions.map((v) => (
-              <option key={v.slug} value={v.slug}>
-                {v.label}
-                {v.isLatest ? " (latest)" : ""}
-              </option>
-            ))}
-          </select>
-        </label>
+        <div className="flex flex-col gap-1">
+          <span className="text-xs text-muted-foreground">From</span>
+          <Select value={from} onValueChange={setFrom}>
+            <SelectTrigger className="min-w-[14rem]">
+              <SelectValue placeholder="Select a version" />
+            </SelectTrigger>
+            <SelectContent>
+              {props.versions.map((v) => (
+                <SelectItem key={v.slug} value={v.slug}>
+                  {v.label}
+                  {v.isLatest ? " (latest)" : ""}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex flex-col gap-1">
+          <span className="text-xs text-muted-foreground">To</span>
+          <Select value={to} onValueChange={setTo}>
+            <SelectTrigger className="min-w-[14rem]">
+              <SelectValue placeholder="Select a version" />
+            </SelectTrigger>
+            <SelectContent>
+              {props.versions.map((v) => (
+                <SelectItem key={v.slug} value={v.slug}>
+                  {v.label}
+                  {v.isLatest ? " (latest)" : ""}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
         <button
           type="button"
           onClick={onCompare}
           disabled={!from || !to || from === to}
-          className="inline-flex h-9 items-center gap-1.5 rounded-md bg-foreground px-3 text-sm font-medium text-background shadow hover:bg-foreground/90 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex h-9 items-center gap-1.5 rounded-md border border-input bg-background px-3 text-sm font-medium text-foreground shadow-sm hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
         >
           <GitCompare size={14} />
           Compare
