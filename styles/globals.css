@@ -200,3 +200,30 @@
     @apply opacity-60 ring-2 ring-rose-500;
   }
 }
+
+/* Respect users who request reduced motion: disable smooth scrolling. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  :target {
+    animation: none !important;
+  }
+}
+
+/* Brief highlight pulse when an in-page anchor target receives focus from
+   the URL hash. Helps the eye land on the section after the smooth scroll. */
+@keyframes pulse-highlight {
+  from {
+    background-color: rgb(59 130 246 / 0.18);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+#version-history:target {
+  animation: pulse-highlight 1.4s ease-out;
+  border-radius: 0.5rem;
+}

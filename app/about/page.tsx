@@ -145,6 +145,11 @@ export default function AboutPage() {
                 status, and release phase are visible at a glance alongside
                 the body diff.
               </li>
+              <li>
+                Smooth-scroll when jumping to in-page sections like Version
+                history, with a brief highlight pulse on arrival. Honors the
+                operating system&apos;s reduced-motion preference.
+              </li>
             </ul>
           </div>
           <div>
