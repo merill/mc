@@ -1,0 +1,108 @@
+{
+  "id": "MC1294524",
+  "versions": [
+    {
+      "capturedAt": "2026-04-28T22:13:21.35Z",
+      "source": "git",
+      "sha": "542b992f4e4af849c531c1bcfe2eda4416f6ddd5",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p><p>We’re <b>updating dynamic distribution groups (DDGs)</b> in <i>Exchange Online</i> so group membership is available sooner after a group is created or its filter is changed. For DDGs whose filter returns 5,000 members or fewer, membership will be populated during the creation or modification operation, eliminating the previous wait of up to two hours.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=560550\" target=\"_blank\">560550</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>General Availability (Worldwide): </b>We will begin rolling out in<b> late May 2026 </b>and expect rollout to complete by <b>early June 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><p>Exchange Online administrators who create or manage dynamic distribution groups using the Exchange admin center (EAC) or PowerShell</p><p><i>What will happen</i></p><ul><li>For DDGs whose filter returns&nbsp;<b>5,000 members or fewer</b>, membership will be <b>populated as part of the create or modify operation</b>.</li><li>For DDGs whose filter returns&nbsp;<b>more than 5,000 members:</b><ul><li><b>Membership will be populated</b> by a background process <b>within up to 2 hours.</b><p style=\"margin-left: 25px;\"></p></li><li>A <b>warning message</b> will now be shown at creation or modification time, indicating that membership will be populated in the background.<p style=\"margin-left: 25px;\"><i>Warning in PowerShell</i>:</p><p style=\"margin-left: 50px;\"><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/5c399448-a0eb-4d54-a610-11556529b167/369fbd884d330eb49c3c574423187bd28ee1350d.png\" style=\"width: 400px;\" alt=\"admin settings\"></p><p style=\"margin-left: 25px;\"><i>Warning in EAC</i>:</p><p style=\"margin-left: 25px;\"><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/02fe41e9-53cb-4dd7-86e4-178344cc9813/234d80ffc724ab9f248f265e4701a246daf48950.png\" style=\"width: 400px;\" alt=\"admin settings\"></p><p></p></li></ul></li><li><b>For modifications</b>, the DDG <b>continues to use the previous membership list</b> until the background process completes.</li><li><b>The routine 24-hour membership refresh cycle will not be affected.</b></li><li>This behavior will apply to DDGs created or modified using:<ul><li>Exchange admin center (EAC)</li><li>PowerShell (<i><b>New-DynamicDistributionGroup</b></i>, <i><b>Set-DynamicDistributionGroup</b></i>)</li></ul></li></ul><p></p><p><b>Summary of behavior after rollout</b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Scenario</b></td><td><b>Members ≤ 5,000&nbsp;</b></td><td><b>Members &gt; 5,000</b></td></tr><tr><td><b>Create new DDG</b></td><td>Membership will be populated immediately as part of the operation.</td><td>Membership will be populated within 2 hours (no change).</td></tr><tr><td><b>Modify DDG filter</b></td><td>Membership will be populated immediately as part of the operation.</td><td><p>Membership will be populated within 2 hours (no change). </p><p>DDG continues to use the previous membership list until background process completes.</p></td></tr><tr><td><b>Routine refresh (every 24 hours)</b></td><td>No change.</td><td>No change.</td></tr></tbody></table><p><b><b>What you can do to prepare</b></b></p><ul><li>No action is required.</li><li>Update internal documentation or helpdesk guidance that<b> references a 2-hour wait time</b> for DDG membership population after creation or modification.</li><li>Inform administrators that<b> immediate membership availability will apply</b> to DDGs whose filter returns 5,000 members or fewer after rollout.</li></ul><p><b>Learn more</b> <b><i>documentation to be updated closer to rollout</i></b>:</p><ul><li><b>to be updated</b> <a href=\"https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-dynamic-distribution-groups/create-manage-dynamic-distribution-groups\" target=\"_blank\">Create and manage dynamic distribution groups in Exchange Online | Recipients in Exchange Online | Exchange Online | Microsoft Learn</a></li><li><b>to be updated</b>&nbsp;<a href=\"https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-dynamic-distribution-groups/troubleshoot-ddg-membership-issues\" target=\"_blank\">Troubleshoot dynamic distribution group membership issues | Dynamic distribution groups | Recipients in Exchange Online | Exchange Online | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "560550"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Dynamic distribution groups (DDGs) in Exchange Online will populate membership immediately upon creation or modification if the filter returns 5,000 or fewer members, eliminating up to a 2-hour wait. For larger groups, membership populates within 2 hours with a warning shown. Rollout begins late May 2026."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Desktop"
+          }
+        ],
+        "EndDateTime": "2026-07-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1294524",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-04-28T22:13:21.35Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-04-28T22:13:13Z",
+        "Tags": [
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Exchange Online: Dynamic distribution groups will populate membership faster on creation and modification",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2026-04-29T18:46:35.227Z",
+      "source": "git",
+      "sha": "e79aa55677d087ac059dba2bfb6bca6d4ff47877",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated April 29, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We’re <b>updating dynamic distribution groups (DDGs)</b> in <i>Exchange Online</i> so group membership is available sooner after a group is created or its filter is changed. For DDGs whose filter returns 5,000 members or fewer, membership will be populated during the creation or modification operation, eliminating the previous wait of up to two hours.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=560550\" target=\"_blank\">560550</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>General Availability (Worldwide): </b>We will begin rolling out in<b> late May 2026 </b>and expect rollout to complete by <b>early June 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><p>Exchange Online administrators who create or manage dynamic distribution groups using the Exchange admin center (EAC) or PowerShell</p><p><i>What will happen</i></p><ul><li>For DDGs whose filter returns&nbsp;<b>5,000 members or fewer</b>, membership will be <b>populated as part of the create or modify operation</b>.</li><li>For DDGs whose filter returns&nbsp;<b>more than 5,000 members:</b><ul><li><b>Membership will be populated</b> by a background process <b>within up to 2 hours.</b><p style=\"margin-left: 25px;\"></p></li><li>A <b>warning message</b> will now be shown at creation or modification time, indicating that membership will be populated in the background.<p style=\"margin-left: 25px;\"><i>Warning in PowerShell</i>:</p><p style=\"margin-left: 50px;\"><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/5c399448-a0eb-4d54-a610-11556529b167/369fbd884d330eb49c3c574423187bd28ee1350d.png\" style=\"width: 400px;\" alt=\"admin settings\"></p><p style=\"margin-left: 25px;\"><i>Warning in EAC</i>:</p><p style=\"margin-left: 25px;\"><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/02fe41e9-53cb-4dd7-86e4-178344cc9813/234d80ffc724ab9f248f265e4701a246daf48950.png\" style=\"width: 400px;\" alt=\"admin settings\"></p><p></p></li></ul></li><li><b>For modifications</b>, the DDG <b>continues to use the previous membership list</b> until the background process completes.</li><li><b>The routine 24-hour membership refresh cycle will not be affected.</b></li><li>This behavior will apply to DDGs created or modified using:<ul><li>Exchange admin center (EAC)</li><li>PowerShell (<i><b>New-DynamicDistributionGroup</b></i>, <i><b>Set-DynamicDistributionGroup</b></i>)</li></ul></li></ul><p></p><p><b>Summary of behavior after rollout</b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Scenario</b></td><td><b>Members ≤ 5,000&nbsp;</b></td><td><b>Members &gt; 5,000</b></td></tr><tr><td><b>Create new DDG</b></td><td>Membership will be populated immediately as part of the operation.</td><td>Membership will be populated within 2 hours (no change).</td></tr><tr><td><b>Modify DDG filter</b></td><td>Membership will be populated immediately as part of the operation.</td><td><p>Membership will be populated within 2 hours (no change). </p><p>DDG continues to use the previous membership list until background process completes.</p></td></tr><tr><td><b>Routine refresh (every 24 hours)</b></td><td>No change.</td><td>No change.</td></tr></tbody></table><p><b><b>What you can do to prepare</b></b></p><ul><li>No action is required.</li><li>Update internal documentation or helpdesk guidance that<b> references a 2-hour wait time</b> for DDG membership population after creation or modification.</li><li>Inform administrators that<b> immediate membership availability will apply</b> to DDGs whose filter returns 5,000 members or fewer after rollout.</li></ul><p><b>Learn more</b>:</p><ul><li><a href=\"https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-dynamic-distribution-groups/create-manage-dynamic-distribution-groups\" target=\"_blank\">Create and manage dynamic distribution groups in Exchange Online | Recipients in Exchange Online | Exchange Online | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-dynamic-distribution-groups/troubleshoot-ddg-membership-issues\" target=\"_blank\">Troubleshoot dynamic distribution group membership issues | Dynamic distribution groups | Recipients in Exchange Online | Exchange Online | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "560550"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Dynamic distribution groups (DDGs) in Exchange Online will populate membership immediately upon creation or modification if the filter returns 5,000 or fewer members, eliminating up to a 2-hour wait. For larger groups, membership populates within 2 hours with a warning shown. Rollout begins late May 2026."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Desktop"
+          }
+        ],
+        "EndDateTime": "2026-07-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1294524",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-04-29T18:46:35.227Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-04-28T22:13:13Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Exchange Online: Dynamic distribution groups will populate membership faster on creation and modification",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

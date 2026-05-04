@@ -1,0 +1,46 @@
+{
+  "id": "MC1268926",
+  "versions": [
+    {
+      "capturedAt": "2026-04-02T20:59:13.51Z",
+      "source": "git",
+      "sha": "97e0ed16d9cf43617ac6c6ebc827f21e31254c59",
+      "message": {
+        "ActionRequiredByDateTime": "2026-05-31T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p>\n<p>We’re updating the content delivery network (CDN) endpoint used by Microsoft AutoUpdate (MAU) to download updates for Microsoft apps on macOS. This change is part of an infrastructure upgrade to improve the reliability, performance, and security of update delivery by standardizing downloads on Microsoft’s latest CDN endpoint.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  <li>September 2025: MAU version 4.80 is released. MAU defaults to downloading updates from the new CDN endpoint unless configured to use a custom update location.</li>\n  <li>Through May 31, 2026: Updates are published to both the legacy and new CDN endpoints.</li>\n  <li>June 1, 2026: Updates are published only to the new CDN endpoint.</li>\n  <li>August 1, 2026: The legacy CDN endpoint is fully decommissioned.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Organizations with macOS devices that use Microsoft AutoUpdate (MAU) to receive updates for Microsoft apps.</li>\n  <li>Administrators who restrict outbound internet access (for example, firewall rules, proxy rules, or domain allowlists).</li>\n  <li>Administrators who override the MAU update location using custom configuration (for example, Custom update channel, ManifestServer, or UpdateCache preferences).</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Starting June 1, 2026, MAU will download updates only from the new CDN endpoint: <ul><li><code>res.public.onecdn.static.microsoft</code><b></b></li></ul></li>\n  <li>The legacy endpoint <ul><li><code>officecdnmac.microsoft.com</code><b></b> </li><li>will no longer host newly released update packages after June 1, 2026.</li></ul></li>\n  <li>If access to the new endpoint is blocked, MAU may fail to download updates, which could result in devices remaining on older versions or missing security updates.</li>\n  <li>There are no changes to MAU app behavior, update channels, update schedules, or how updates are installed or managed.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>If your organization restricts outbound network access, review firewall, proxy, or allowlist rules to ensure managed Mac devices can access <ul><li><code>res.public.onecdn.static.microsoft</code><b></b></li></ul></li>\n  <li>Review MAU preferences to confirm they do not reference <ul><li><code>officecdnmac.microsoft.com</code><b></b></li></ul></li>\n  <li>No action is required if your organization allows outbound internet access and does not configure a custom MAU update location.</li>\n  <li>For more information, review MAU preferences documentation: <a href=\"https://learn.microsoft.com/microsoft-365-apps/mac/mau-preferences\">Microsoft AutoUpdate preferences for macOS</a>.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft AutoUpdate for Mac will switch to a new CDN endpoint by June 1, 2026, improving update reliability and security. Organizations must ensure network access to res.public.onecdn.static.microsoft and update MAU settings if needed. The legacy endpoint will be decommissioned by August 1, 2026."
+          }
+        ],
+        "EndDateTime": "2026-07-31T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1268926",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-04-02T20:59:13.51Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-04-02T20:59:02Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Microsoft AutoUpdate (MAU) CDN Endpoint Update for Mac",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

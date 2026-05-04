@@ -116,3 +116,15 @@ export interface MessageArchive {
     IsMajorChange?: boolean;
     Category?: string;
 }
+
+export interface MessageVersion {
+    capturedAt: string;          // ISO timestamp; LastModifiedDateTime if present, else commit author date
+    source: "git" | "ingest";    // origin of the snapshot
+    sha?: string;                // git commit SHA when source === "git"
+    message: Message;            // full message snapshot at this point
+}
+
+export interface MessageHistory {
+    id: string;
+    versions: MessageVersion[];  // chronological asc; last entry is latest
+}

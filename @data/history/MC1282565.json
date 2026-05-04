@@ -1,0 +1,47 @@
+{
+  "id": "MC1282565",
+  "versions": [
+    {
+      "capturedAt": "2026-04-16T21:18:02.597Z",
+      "source": "git",
+      "sha": "1c652f28baaa08c55c09aed2d62252a4c45402a2",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p><p>To support industry-wide security improvements and modern cryptographic standards, browsers and platforms that follow Mozilla and Chrome trust stores will begin distrusting the <b>DigiCert Global Root CA (G1)</b>&nbsp;starting April<b>&nbsp;15, 2026</b>. Microsoft has already migrated Microsoft 365 services to newer, more secure certificate hierarchies (such as DigiCert Global Root G2 and G3).</p><p>We’re sharing this notification to help you quickly identify and respond to any unexpected certificate-related connection issues that may arise in edge scenarios due to this industry trust change. This change is driven by industry trust store updates and does not represent a new change or rollout within Microsoft 365 services.</p><p><b><b>When this will happen</b></b></p><ul><li><b>April 15, 2026</b>: Industry-wide distrust of DigiCert Global Root CA (G1) begins</li><li>Microsoft monitoring period: <b>April 15, 2026 and onward</b></li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations accessing Microsoft 365 services using:<ul><li>Google Chrome or Mozilla Firefox</li><li>Linux-based systems, containers, appliances, or software stacks that rely on Mozilla/NSS trust stores</li></ul></li><li>Only scenarios where a <b>service endpoint still presents a TLS certificate chaining to DigiCert Global Root CA (G1)</b></li></ul><p><i>What will happen</i></p><ul><li>Most customers <b>will not experience any impact</b>.</li><li>In rare legacy scenarios:<ul><li>TLS connections may fail certificate validation</li><li>Failures may be intermittent depending on:<ul><li>Client OS patch level</li><li>Browser version</li><li>Container or image refresh cadence</li></ul></li></ul></li><li>Common error messages may include:<ul><li>NET::ERR_CERT_AUTHORITY_INVALID</li><li>SEC_ERROR_UNKNOWN_ISSUER</li><li>SunCertPathBuilderException</li><li>verify error:num=19:self signed certificate in certificate chain</li></ul></li></ul><p><b><b>What you can do to prepare</b></b></p><p>No action is required if you are not experiencing certificate or TLS handshake errors.</p><p>If you encounter errors on or after <b>April 15, 2026</b>:</p><ul><li>Review the certificate chain presented by the failing endpoint<ul><li>If <b>DigiCert Global Root CA (G1)</b> appears:<ul><li>Stop local debugging or repeated mitigation attempts</li><li>Collect the following triage information:<ul><li>Target URL or hostname</li><li>Full error message and timestamp (including time zone)</li><li>Client OS, version, browser/runtime, and whether it’s a VM, container, or appliance</li><li>Certificate chain evidence (log output or screenshot)</li></ul></li></ul></li></ul></li><li>Contact Microsoft Support through your normal support channel and reference:<ul><li>“<i>April 15, 2026 DigiCert Global Root CA (G1) industry distrust</i>”</li></ul></li></ul><p>This information helps route your issue directly to certificate and TLS specialists and avoids unnecessary troubleshooting steps.</p><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Starting April 15, 2026, browsers and platforms will distrust DigiCert Global Root CA (G1). Microsoft 365 services use newer certificates, so most users won't be affected. Legacy scenarios may face TLS errors. If issues arise, verify the certificate chain and contact Microsoft Support referencing the April 2026 distrust."
+          }
+        ],
+        "EndDateTime": "2026-05-16T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1282565",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-04-16T21:18:02.597Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-04-16T21:17:39Z",
+        "Tags": [
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Exchange Online, SharePoint Online, and Microsoft Teams: April 2026 industry-wide DigiCert Global Root CA (G1) distrust",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

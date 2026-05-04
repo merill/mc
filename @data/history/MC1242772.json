@@ -1,0 +1,57 @@
+{
+  "id": "MC1242772",
+  "versions": [
+    {
+      "capturedAt": "2026-03-02T23:56:25.65Z",
+      "source": "git",
+      "sha": "36333a6211c1cf8485973a43a6be3632aecc63ab",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p>\n<p>To help organizations reduce the risk of unintended long-term access to internal content, Microsoft is introducing expiration policies for <b>“People in your organization”</b> sharing links in SharePoint and OneDrive. This update enables administrators to automatically expire these sharing links after a defined period, supporting stronger data governance and minimizing exposure from stale links. Admins can configure maximum and recommended expiration timeframes separately for SharePoint sites and OneDrive, aligning link behavior with organizational security and compliance requirements.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?id=553220\" target=\"_blank\">553220</a>.</p><p><b><b>When this will happen</b></b></p>\n<ul>\n<li>General Availability (Worldwide): We will begin rolling out on <b>mid-March 2026</b> and expect to complete by <b>late May 2026</b>.</li><li>General Availability (GCC, GCC High, DoD): We will begin rolling out on <b>mid-March 2026</b> and expect to complete by<b> late June 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>SharePoint and OneDrive administrators</li>\n<li>Users who create “People in your organization” sharing links</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li><b>By default, no behavior changes occur</b>. “People in your organization” links continue to have no expiration unless an admin configures a policy.</li><li>Admins can set tenant-wide maximum expiration periods for these links, separately for:<ul><li>SharePoint sites</li><li>OneDrive</li></ul></li><li>Admins can also set recommended expiration values that appear as the default suggestion when users create sharing links.</li><li>Site-level overrides allow different expiration settings for specific SharePoint sites or OneDrive accounts when needed.</li><li>Only links created after the policy is applied will automatically expire based on the configured timeframe.</li><li>Existing links are not retroactively modified, though expiration will be applied on these links when a user uses them after the policy rolls out.</li></ul>\n\n<p><b><b>What you can do to prepare</b></b></p>\n<p>No action is required if you want to keep the current behavior.</p><p>If you plan to use this feature, consider the following steps:</p><ul><li>Review governance requirements and determine appropriate expiration timeframes (for example, 30, 90, or 180 days).</li><li>Configure tenant-wide maximum expiration values using the SharePoint Online Management Shell:<ul><li><code>Set-SPOTenant -CoreOrganizationSharingLinkMaxExpirationInDays </code>&lt;days&gt; (SharePoint sites)</li><li><code>Set-SPOTenant -OneDriveOrganizationSharingLinkMaxExpirationInDays </code> &lt;days&gt; (OneDrive)</li></ul></li><li>Configure recommended expiration values that appear as default suggestions for users:<ul><li><code>Set-SPOTenant -CoreOrganizationSharingLinkRecommendedExpirationInDays</code> &lt;days&gt; (SharePoint sites)</li><li><code>Set-SPOTenant -OneDriveOrganizationSharingLinkRecommendedExpirationInDays</code> &lt;days&gt; (OneDrive)</li></ul></li><li>Override tenant policies for specific sites or OneDrive accounts, if required:<ul><li> <code>Set-SPOSite -Identity</code> &lt;URL&gt; <code>-OverrideTenantOrganizationSharingLinkExpirationPolicy $true</code></li><li>Then set:</li><ul><li><code>OrganizationSharingLinkMaxExpirationInDays</code> &lt;days&gt;</li><li><code>OrganizationSharingLinkRecommendedExpirationInDays</code> &lt;days&gt;</li></ul></ul></li><li>Communicate the change to users and helpdesk teams so they understand why internal sharing links may stop working after a set period.</li><li>Update internal documentation related to sharing and access governance.</li></ul>\n\n<p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps\" target=\"_blank\">Set-SPOTenant (Microsoft.Online.SharePoint.PowerShell)</a>&nbsp;(will be updated before rollout)</li><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite?view=sharepoint-ps\" target=\"_blank\">Set-SPOSite (Microsoft.Online.SharePoint.PowerShell)</a>&nbsp;(will be updated before rollout)</li></ul><p><b><b>Compliance considerations</b></b></p>\n\n<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\">\n  <tbody><tr>\n    <th>Question</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Does the change alter how existing customer data is accessed?</td>\n    <td>Expired sharing links prevent continued access to content after the configured timeframe, reducing exposure from stale links.</td>\n  </tr>\n  <tr>\n    <td>Does the change modify retention, deletion, or access workflows?</td>\n    <td>Link expiration enforces time-bound access but does not delete content or change retention policies.</td>\n  </tr>\n  <tr>\n    <td>Does the change include an admin control?</td>\n    <td>Admins can configure and enforce expiration policies at the tenant and site level via PowerShell.</td>\n  </tr>\n  <tr>\n    <td>Does the change allow a user to enable or disable the feature themselves?</td>\n    <td>Users can adjust expiration when creating links, but only within admin-defined maximum and recommended values.</td>\n  </tr>\n</tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "553220"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft will roll out expiration policies for “People in your organization” sharing links in SharePoint and OneDrive starting mid-March 2026. Admins can set tenant-wide and site-level expiration limits to enhance data governance, with no default changes unless policies are configured. Existing links expire upon use after rollout."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Android, Desktop, iOS, Mac, Web"
+          }
+        ],
+        "EndDateTime": "2026-08-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1242772",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-03-02T23:56:25.65Z",
+        "Services": [
+          "SharePoint Online",
+          "Microsoft OneDrive"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-03-02T23:56:17Z",
+        "Tags": [
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Set expiration policies for \"People in your organization\" sharing links in SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

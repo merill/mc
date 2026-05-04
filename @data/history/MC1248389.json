@@ -1,0 +1,133 @@
+{
+  "id": "MC1248389",
+  "versions": [
+    {
+      "capturedAt": "2026-03-10T22:47:01.15Z",
+      "source": "git",
+      "sha": "43890d9ddf5527b61738070e3868ac6389713932",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p>\n<p>Microsoft is retiring the <a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/connect-exchangeonline?view=exchange-ps#-credential\" target=\"_blank\" style=\"\">-Credential parameter</a> used when connecting to Exchange Online PowerShell. Starting with module versions released in&nbsp;<b style=\"\">July 2026 and later</b>, the -Credential parameter will be removed from both <a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/connect-exchangeonline?view=exchange-ps\" target=\"_blank\">Connect-ExchangeOnline</a> and <a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/connect-ippssession?view=exchange-ps\" target=\"_blank\">Connect-IppsSession</a> cmdlets. Organizations using this parameter in automation scripts must migrate to a supported authentication method before that date. This change improves security by moving away from legacy authentication methods that do not support modern protections such as multifactor authentication (MFA).</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>The <b>-Credential parameter</b> will be removed from <b>Connect-ExchangeOnline</b> and <b>Connect-IppsSession</b> cmdlets in <b>Exchange Online PowerShell</b> module versions released beginning <b>July 2026</b>.</li>\n<li>A separate server-side retirement of the underlying authentication flow is planned for a later date and will be communicated in advance.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Microsoft 365 administrators using <b>Exchange Online </b>or <b>Security &amp; Compliance PowerShell</b></li>\n<li>Organizations with automation scripts that use the <b>-Credential parameter</b></li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>If your organization uses the <b>-Credential parameter</b> in PowerShell scripts or automation workflows connecting to <b>Exchange Online</b> or <b>Security &amp; Compliance PowerShell</b>, those scripts will break when you update to an Exchange Online PowerShell module version released beginning <b style=\"\">July 2026</b>.</li>\n<li>No impact if your organization does not use the <b>-Credential parameter</b></li>\n</ul>\n\n<p><b>What you can do to prepare:</b></p><ul><li>If you are using the <b>-Credential parameter</b>, begin migrating your scripts now. Do not wait until <b>July&nbsp;2026</b>. Choose the appropriate alternative based on your scenario:</li></ul>\n<ul>\n\n<ul><li><b>Interactive admin access:</b> Switch to modern authentication with MFA. Learn more:&nbsp;<a href=\"https://learn.microsoft.com/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps\" target=\"_blank\">Connect to Exchange Online PowerShell</a>.</li><li><b>Automation outside Azure: </b>Use app-only authentication (certificate-based or client secret). Learn more: <a href=\"https://learn.microsoft.com/powershell/exchange/app-only-auth-powershell-v2?view=exchange-ps\" target=\"_blank\">App-only authentication for unattended scripts in Exchange Online PowerShell and Security &amp; Compliance PowerShell</a>.</li><li><b>Automation within Azure: </b>Use managed identity authentication (no secrets required). Learn more:&nbsp;<a href=\"https://learn.microsoft.com/powershell/exchange/connect-exo-powershell-managed-identity?view=exchange-ps\" target=\"_blank\">Use Azure managed identities to connect to Exchange Online PowerShell</a>.</li></ul><li>Review internal documentation and communicate changes to admins</li>\n</ul>\n\n<ul><li>If you are not using the <b>-Credential parameter</b>, no action is required.</li></ul><p><b>Additional information</b></p>\n\n<p>This change is currently <b>client-side only</b> and will not take effect automatically. Your existing scripts will continue to work if you continue using an Exchange Online PowerShell module version released before <b>July 2026</b>. The <b>-Credential parameter</b> will only be removed when you upgrade to a module version released in <b>July 2026 and later</b>.</p>\n\n<p>A separate <b>server-side retirement</b> of the Credential parameter authentication flow is planned for a later date. When that occurs, the <b>-Credential parameter</b> will stop functioning even on older module versions. Microsoft will communicate that timeline separately and provide advance notice before any service-side changes take effect.</p>\n\n<p>We strongly recommend migrating proactively rather than waiting, to avoid disruption when either change occurs. If you have questions or concerns, contact Microsoft Support or leave a comment on the&nbsp;<a href=\"https://techcommunity.microsoft.com/blog/exchange/deprecation-of-the--credential-parameter-in-exchange-online-powershell/4494584\" target=\"_blank\">Exchange Team Blog</a> post.</p><p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\">\n<tbody><tr><td><b>Compliance area</b></td>\n<td><b>Impact</b></td>\n</tr>\n<tr>\n<td>Conditional Access policies</td>\n<td>Retiring the -Credential parameter removes use of the ROPC authentication flow and enables enforcement of Conditional Access and multifactor authentication for Exchange Online PowerShell connections.</td>\n</tr>\n</tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft will retire the -Credential parameter in Exchange Online PowerShell cmdlets starting July 2026, requiring organizations to migrate scripts to modern authentication methods with MFA or app-only/managed identity authentication to avoid disruptions. This enhances security by eliminating legacy authentication."
+          }
+        ],
+        "EndDateTime": "2026-11-29T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1248389",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-03-10T22:47:01.15Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-03-10T22:46:28Z",
+        "Tags": [
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Retirement of -Credential parameter when connecting to Exchange Online PowerShell",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2026-03-25T16:14:37.65Z",
+      "source": "git",
+      "sha": "6d499c74d926d4ea0475d3bf55ed8052b6d3ec20",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p>\n<p>Microsoft is retiring the <a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/connect-exchangeonline?view=exchange-ps#-credential\" target=\"_blank\" style=\"\">-Credential parameter</a> used when connecting to Exchange Online PowerShell. Starting with module versions released in&nbsp;<b style=\"\">July 2026 and later</b>, the -Credential parameter will be removed from both <a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/connect-exchangeonline?view=exchange-ps\" target=\"_blank\">Connect-ExchangeOnline</a> and <a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/connect-ippssession?view=exchange-ps\" target=\"_blank\">Connect-IppsSession</a> cmdlets. Organizations using this parameter in automation scripts must migrate to a supported authentication method before that date. This change improves security by moving away from legacy authentication methods that do not support modern protections such as multifactor authentication (MFA).</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>The <b>-Credential parameter</b> will be removed from <b>Connect-ExchangeOnline</b> and <b>Connect-IppsSession</b> cmdlets in <b>Exchange Online PowerShell</b> module versions released beginning <b>July 2026</b>.</li>\n<li>A separate server-side retirement of the underlying authentication flow is planned for a later date and will be communicated in advance.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Microsoft 365 administrators using <b>Exchange Online </b>or <b>Security &amp; Compliance PowerShell</b></li>\n<li>Organizations with automation scripts that use the <b>-Credential parameter</b></li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>If your organization uses the <b>-Credential parameter</b> in PowerShell scripts or automation workflows connecting to <b>Exchange Online</b> or <b>Security &amp; Compliance PowerShell</b>, those scripts will break when you update to an Exchange Online PowerShell module version released beginning <b style=\"\">July 2026</b>.</li>\n<li>No impact if your organization does not use the <b>-Credential parameter</b></li>\n</ul>\n\n<p><b>What you can do to prepare:</b></p><ul><li>If you are using the <b>-Credential parameter</b>, begin migrating your scripts now. Do not wait until <b>July&nbsp;2026</b>. Choose the appropriate alternative based on your scenario:</li></ul>\n<ul>\n\n<ul><li><b>Interactive admin access:</b> Switch to modern authentication with MFA. Learn more:&nbsp;<a href=\"https://learn.microsoft.com/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps\" target=\"_blank\">Connect to Exchange Online PowerShell</a>.</li><li><b>Automation outside Azure: </b>Use app-only authentication (certificate-based). Learn more: <a href=\"https://learn.microsoft.com/powershell/exchange/app-only-auth-powershell-v2?view=exchange-ps\" target=\"_blank\">App-only authentication for unattended scripts in Exchange Online PowerShell and Security &amp; Compliance PowerShell</a>.</li><li><b>Automation within Azure: </b>Use managed identity authentication (no secrets required). Learn more:&nbsp;<a href=\"https://learn.microsoft.com/powershell/exchange/connect-exo-powershell-managed-identity?view=exchange-ps\" target=\"_blank\">Use Azure managed identities to connect to Exchange Online PowerShell</a>.</li></ul><li>Review internal documentation and communicate changes to admins</li>\n</ul>\n\n<ul><li>If you are not using the <b>-Credential parameter</b>, no action is required.</li></ul><p><b>Additional information</b></p>\n\n<p>This change is currently <b>client-side only</b> and will not take effect automatically. Your existing scripts will continue to work if you continue using an Exchange Online PowerShell module version released before <b>July 2026</b>. The <b>-Credential parameter</b> will only be removed when you upgrade to a module version released in <b>July 2026 and later</b>.</p>\n\n<p>A separate <b>server-side retirement</b> of the Credential parameter authentication flow is planned for a later date. When that occurs, the <b>-Credential parameter</b> will stop functioning even on older module versions. Microsoft will communicate that timeline separately and provide advance notice before any service-side changes take effect.</p>\n\n<p>We strongly recommend migrating proactively rather than waiting, to avoid disruption when either change occurs. If you have questions or concerns, contact Microsoft Support or leave a comment on the&nbsp;<a href=\"https://techcommunity.microsoft.com/blog/exchange/deprecation-of-the--credential-parameter-in-exchange-online-powershell/4494584\" target=\"_blank\">Exchange Team Blog</a> post.</p><p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\">\n<tbody><tr><td><b>Compliance area</b></td>\n<td><b>Impact</b></td>\n</tr>\n<tr>\n<td>Conditional Access policies</td>\n<td>Retiring the -Credential parameter removes use of the ROPC authentication flow and enables enforcement of Conditional Access and multifactor authentication for Exchange Online PowerShell connections.</td>\n</tr>\n</tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft will retire the -Credential parameter in Exchange Online PowerShell cmdlets starting July 2026, requiring organizations to migrate scripts to modern authentication methods like MFA, app-only, or managed identity authentication to avoid disruption. This enhances security by eliminating legacy authentication."
+          }
+        ],
+        "EndDateTime": "2026-11-29T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1248389",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-03-25T16:14:37.65Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-03-10T22:46:28Z",
+        "Tags": [
+          "Updated message",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Retirement of -Credential parameter when connecting to Exchange Online PowerShell",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2026-03-31T18:04:06.4Z",
+      "source": "git",
+      "sha": "37eef2320dba78665b1ec9fa99d51d2c027cca24",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated March 25, 2026: We have updated the second bullet in 'What you can do to prepare'. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>Microsoft is retiring the <a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/connect-exchangeonline?view=exchange-ps#-credential\" target=\"_blank\" style=\"\">-Credential parameter</a> used when connecting to Exchange Online PowerShell. Starting with module versions released in&nbsp;<b style=\"\">July 2026 and later</b>, the -Credential parameter will be removed from both <a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/connect-exchangeonline?view=exchange-ps\" target=\"_blank\">Connect-ExchangeOnline</a> and <a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/connect-ippssession?view=exchange-ps\" target=\"_blank\">Connect-IppsSession</a> cmdlets. Organizations using this parameter in automation scripts must migrate to a supported authentication method before that date. This change improves security by moving away from legacy authentication methods that do not support modern protections such as multifactor authentication (MFA).</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>The <b>-Credential parameter</b> will be removed from <b>Connect-ExchangeOnline</b> and <b>Connect-IppsSession</b> cmdlets in <b>Exchange Online PowerShell</b> module versions released beginning <b>July 2026</b>.</li>\n<li>A separate server-side retirement of the underlying authentication flow is planned for a later date and will be communicated in advance.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Microsoft 365 administrators using <b>Exchange Online </b>or <b>Security &amp; Compliance PowerShell</b></li>\n<li>Organizations with automation scripts that use the <b>-Credential parameter</b></li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>If your organization uses the <b>-Credential parameter</b> in PowerShell scripts or automation workflows connecting to <b>Exchange Online</b> or <b>Security &amp; Compliance PowerShell</b>, those scripts will break when you update to an Exchange Online PowerShell module version released beginning <b style=\"\">July 2026</b>.</li>\n<li>No impact if your organization does not use the <b>-Credential parameter</b></li>\n</ul>\n\n<p><b>What you can do to prepare:</b></p><ul><li>If you are using the <b>-Credential parameter</b>, begin migrating your scripts now. Do not wait until <b>July&nbsp;2026</b>. Choose the appropriate alternative based on your scenario:</li></ul>\n<ul>\n\n<ul><li><b>Interactive admin access:</b> Switch to modern authentication with MFA. Learn more:&nbsp;<a href=\"https://learn.microsoft.com/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps\" target=\"_blank\">Connect to Exchange Online PowerShell</a>.</li><li><b>Automation outside Azure: </b>Use app-only authentication (certificate-based). Learn more: <a href=\"https://learn.microsoft.com/powershell/exchange/app-only-auth-powershell-v2?view=exchange-ps\" target=\"_blank\">App-only authentication for unattended scripts in Exchange Online PowerShell and Security &amp; Compliance PowerShell</a>.</li><li><b>Automation within Azure: </b>Use managed identity authentication (no secrets required). Learn more:&nbsp;<a href=\"https://learn.microsoft.com/powershell/exchange/connect-exo-powershell-managed-identity?view=exchange-ps\" target=\"_blank\">Use Azure managed identities to connect to Exchange Online PowerShell</a>.</li></ul><li>Review internal documentation and communicate changes to admins</li>\n</ul>\n\n<ul><li>If you are not using the <b>-Credential parameter</b>, no action is required.</li></ul><p><b>Additional information</b></p>\n\n<p>This change is currently <b>client-side only</b> and will not take effect automatically. Your existing scripts will continue to work if you continue using an Exchange Online PowerShell module version released before <b>July 2026</b>. The <b>-Credential parameter</b> will only be removed when you upgrade to a module version released in <b>July 2026 and later</b>.</p>\n\n<p>A separate <b>server-side retirement</b> of the Credential parameter authentication flow is planned for a later date. When that occurs, the <b>-Credential parameter</b> will stop functioning even on older module versions. Microsoft will communicate that timeline separately and provide advance notice before any service-side changes take effect.</p>\n\n<p>We strongly recommend migrating proactively rather than waiting, to avoid disruption when either change occurs. If you have questions or concerns, contact Microsoft Support or leave a comment on the&nbsp;<a href=\"https://techcommunity.microsoft.com/blog/exchange/deprecation-of-the--credential-parameter-in-exchange-online-powershell/4494584\" target=\"_blank\">Exchange Team Blog</a> post.</p><p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\">\n<tbody><tr><td><b>Compliance area</b></td>\n<td><b>Impact</b></td>\n</tr>\n<tr>\n<td>Conditional Access policies</td>\n<td>Retiring the -Credential parameter removes use of the ROPC authentication flow and enables enforcement of Conditional Access and multifactor authentication for Exchange Online PowerShell connections.</td>\n</tr>\n</tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft will retire the -Credential parameter in Exchange Online PowerShell cmdlets starting July 2026, requiring organizations to migrate scripts to modern authentication methods like MFA, app-only, or managed identity authentication to avoid disruption. This enhances security by eliminating legacy authentication."
+          }
+        ],
+        "EndDateTime": "2026-11-29T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1248389",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-03-31T18:04:06.4Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-03-10T22:46:28Z",
+        "Tags": [
+          "Updated message",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Retirement of -Credential parameter when connecting to Exchange Online PowerShell",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

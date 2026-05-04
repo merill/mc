@@ -7,6 +7,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import InfoCards from "@/app/message/[id]/components/info-cards"
 import MessageContent from "@/app/message/[id]/components/message-content"
+import MessageHistory from "@/app/message/[id]/components/message-history"
 
 export default function MessageDetail(props: { id: string }) {
   const msg = getMessageData(props.id)
@@ -35,10 +36,12 @@ export default function MessageDetail(props: { id: string }) {
         <CardHeader>
           <CardTitle>{contentTitle}</CardTitle>
         </CardHeader>
-          <CardContent>
-            <MessageContent html={msg?.Body?.Content || ""} />
-          </CardContent>
+        <CardContent>
+          <MessageContent html={msg?.Body?.Content || ""} />
+        </CardContent>
       </Card>
+
+      <MessageHistory id={props.id} />
     </div>
   )
 }

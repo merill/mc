@@ -1,0 +1,180 @@
+{
+  "id": "MC1253746",
+  "versions": [
+    {
+      "capturedAt": "2026-03-16T22:27:27.43Z",
+      "source": "git",
+      "sha": "195f68002de9e4a2502bdb4c6bf56a35d70d2203",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p><p>As previously announced in <i>MC1221452</i>,<b> Microsoft Registration Campaigns </b>will support <b>Passkeys (FIDO2)</b> as an <b>additional authentication method</b> starting in early April 2026. This update helps organizations accelerate adoption of phishing‑resistant credentials by allowing administrators to opt users into Passkeys and deliver Passkey registration nudges during sign‑in.</p><p><br></p><p></p><p><b><b>When this will happen</b>&nbsp;</b></p><p><b>General Availability (Worldwide):</b> We will begin rolling out in <b>early April 2026</b> and expect to complete in<b> late May 2026</b>.</p><p><br></p><p></p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 tenants using Microsoft Registration Campaigns</li><li>Tenants configured in either <b>Microsoft‑managed</b> or <b>Enabled</b> states</li><li>Users who are <b>MFA‑capable</b> and<b> eligible for Passkeys (FIDO2)</b></li></ul><p><i>What will happen</i></p><p><b><u>Microsoft‑managed state</u></b></p><p>Your tenant will be impacted <b>when all of the following conditions are met:</b></p><ul><li>The <b>Passkeys (FIDO2) authentication method policy</b> is enabled.</li><li><b>Allow self‑service setup</b> is enabled.</li><li><b><i>Target specific AAGUIDs</i></b> is <b>not</b> selected (no AAGUID restrictions configured).</li><li>The <b>Authentication Methods Registration Campaign</b> state is set to <i><b>Microsoft‑managed</b></i>.</li></ul><p>When these conditions are met, the following settings will update automatically:</p><ul><li>The targeted<b> authentication method</b> will change from <b>Microsoft Authenticator</b> to <b>Passkeys (FIDO2).</b></li><li><i><b>Days allowed to snooze</b></i> will change from three days to <b>one day.&nbsp;</b>(This setting will no longer be configurable.)</li><li><i><b>Limit number of snoozes </b></i>will be <b>disabled. </b>(This setting will no longer be configurable.)</li><li>Targeting will expand to <b>all MFA‑capable users</b>. (This setting will no longer be configurable.)</li><li>Default user targeting will change from <b>voice call or text message users</b> to <b>all multifactor authentication (MFA)–capable users</b>.</li></ul><p>Affected users will receive Passkey registration nudges at sign‑in after completing MFA.</p><p>We will roll out these changes incrementally over time to in‑scope tenants.</p><p><br></p><p></p><p><b><u>Enabled state</u></b></p><p>Passkey (FIDO2) can be selected as the Targeted Authentication Method when Microsoft Registration Campaigns are in the Enabled state.&nbsp;</p><p><i>Note: Registration Campaigns support targeting only one authentication method at a time—either Microsoft Authenticator or Passkeys (FIDO2), but not both simultaneously.</i></p><p><i><br></i></p><p></p><p><b><b>What you can do to prepare</b></b></p><p><b>Opting into Passkey Registration Nudges: \n</b></p><p><b>\n</b></p>You can opt into Passkeys and switch your users to receive a <b>Passkey registration nudge</b>. \nHowever, the nudge will only appear for the user if <b>all</b> of the following conditions are met:&nbsp;<ul><li>The user is <b>MFA‑capable</b><ul><li>They have at least one registered MFA method</li><li>They can successfully complete MFA at sign‑in</li></ul></li><li>Unde<b>r Authentication methods &gt; Policies,</b> the<b> user is in scope for Passkeys (FIDO2)</b></li><li>Under <b>Authentication methods &gt; Policies &gt; Passkeys (FIDO2) &gt; Configure</b>, make sure you have <b>Allow self-service set up </b>checked.&nbsp;</li></ul><p></p><p><b>Important Guidance:</b></p><b><u>Microsoft Managed State:</u></b><p>We will roll out these changes incrementally to in-scope tenants starting in early April. This rollout will take time, and even if your tenant meets the eligibility criteria, you may not see the changes immediately.&nbsp;</p><p></p><p><u style=\"\"><b>Enabled State&nbsp;</b></u></p><p>Over time, we will incrementally refine the logic for Passkeys nudges in<i> Microsoft Registration Campaigns</i> to guide users toward the appropriate passkey registration experience based on their passkey profile scope. Initially, the logic may not account for every edge‑case scenario, but we are actively expanding and improving it on an ongoing basis. When users have<a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkey-profiles\" target=\"_blank\"> passkey profile restrictions</a> (for example, AAGUID restrictions), the registration experience triggered by the nudge may not be optimal.&nbsp; &nbsp;</p><p><b></b></p><p><b>Using Passkeys Despite Restrictions</b></p><p>You can still set Passkeys as the target authentication method in Microsoft Registration Campaigns. However, users may encounter a poor or confusing experience if they have passkey profile restrictions.</p><p><b>Example:&nbsp;</b></p><p>If a user is scoped into specific <b>AAGUID synced passkeys only</b>, they may see a Passkey nudge at sign‑in. If they attempt to register a <b>device‑bound passkey,</b> the registration will fail because they are not in scope for that passkey type.&nbsp; </p><p><b></b></p><p><b>Recommended next steps</b></p><ul></ul><p></p><ul><li>Review your Registration Campaign state by <b>early April 2026</b>.</li><li>Communicate this change to helpdesk or support teams.</li><li>Update internal documentation on authentication method enrollment.</li><li>If you prefer to continue targeting Microsoft Authenticator, verify this configuration before rollout.</li></ul><p><b>Learn more:</b>&nbsp;<a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkey-profiles\" target=\"_blank\">How to enable passkey (FIDO2) profiles in Microsoft Entra ID (preview) | Authentication | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Starting April 2026, Microsoft Registration Campaigns will support Passkeys (FIDO2) as an additional authentication method, enabling phishing-resistant credentials. Eligible Microsoft 365 tenants can opt users into Passkey registration nudges during sign-in. Changes will roll out gradually, affecting MFA-capable users with specific policy settings."
+          }
+        ],
+        "EndDateTime": "2026-07-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1253746",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-03-16T22:27:27.43Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-03-16T22:27:17Z",
+        "Tags": [
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Entra: Passkeys in Microsoft registration campaigns",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2026-04-09T16:35:37.96Z",
+      "source": "git",
+      "sha": "b6627ef86d2e0dfb1d30171d0bc9419d16de9b33",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated April 9, 2026: After further review, we have decided not to move forward with this change at this time. We will communicate via a new Message center post when we are ready to proceed. We apologize for any inconvenience this may cause and appreciate your understanding.</p><p><b><b>Introduction</b></b></p><p>As previously announced in <i>MC1221452</i>,<b> Microsoft Registration Campaigns </b>will support <b>Passkeys (FIDO2)</b> as an <b>additional authentication method</b> starting in early April 2026. This update helps organizations accelerate adoption of phishing‑resistant credentials by allowing administrators to opt users into Passkeys and deliver Passkey registration nudges during sign‑in.</p><p><br></p><p></p><p><b><b>When this will happen</b>&nbsp;</b></p><p><b>General Availability (Worldwide):</b> We will begin rolling out in <b>early April 2026</b> and expect to complete in<b> late May 2026</b>.</p><p><br></p><p></p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 tenants using Microsoft Registration Campaigns</li><li>Tenants configured in either <b>Microsoft‑managed</b> or <b>Enabled</b> states</li><li>Users who are <b>MFA‑capable</b> and<b> eligible for Passkeys (FIDO2)</b></li></ul><p><i>What will happen</i></p><p><b><u>Microsoft‑managed state</u></b></p><p>Your tenant will be impacted <b>when all of the following conditions are met:</b></p><ul><li>The <b>Passkeys (FIDO2) authentication method policy</b> is enabled.</li><li><b>Allow self‑service setup</b> is enabled.</li><li><b><i>Target specific AAGUIDs</i></b> is <b>not</b> selected (no AAGUID restrictions configured).</li><li>The <b>Authentication Methods Registration Campaign</b> state is set to <i><b>Microsoft‑managed</b></i>.</li></ul><p>When these conditions are met, the following settings will update automatically:</p><ul><li>The targeted<b> authentication method</b> will change from <b>Microsoft Authenticator</b> to <b>Passkeys (FIDO2).</b></li><li><i><b>Days allowed to snooze</b></i> will change from three days to <b>one day.&nbsp;</b>(This setting will no longer be configurable.)</li><li><i><b>Limit number of snoozes </b></i>will be <b>disabled. </b>(This setting will no longer be configurable.)</li><li>Targeting will expand to <b>all MFA‑capable users</b>. (This setting will no longer be configurable.)</li><li>Default user targeting will change from <b>voice call or text message users</b> to <b>all multifactor authentication (MFA)–capable users</b>.</li></ul><p>Affected users will receive Passkey registration nudges at sign‑in after completing MFA.</p><p>We will roll out these changes incrementally over time to in‑scope tenants.</p><p><br></p><p></p><p><b><u>Enabled state</u></b></p><p>Passkey (FIDO2) can be selected as the Targeted Authentication Method when Microsoft Registration Campaigns are in the Enabled state.&nbsp;</p><p><i>Note: Registration Campaigns support targeting only one authentication method at a time—either Microsoft Authenticator or Passkeys (FIDO2), but not both simultaneously.</i></p><p><i><br></i></p><p></p><p><b><b>What you can do to prepare</b></b></p><p><b>Opting into Passkey Registration Nudges: \n</b></p><p><b>\n</b></p>You can opt into Passkeys and switch your users to receive a <b>Passkey registration nudge</b>. \nHowever, the nudge will only appear for the user if <b>all</b> of the following conditions are met:&nbsp;<ul><li>The user is <b>MFA‑capable</b><ul><li>They have at least one registered MFA method</li><li>They can successfully complete MFA at sign‑in</li></ul></li><li>Unde<b>r Authentication methods &gt; Policies,</b> the<b> user is in scope for Passkeys (FIDO2)</b></li><li>Under <b>Authentication methods &gt; Policies &gt; Passkeys (FIDO2) &gt; Configure</b>, make sure you have <b>Allow self-service set up </b>checked.&nbsp;</li></ul><p></p><p><b>Important Guidance:</b></p><b><u>Microsoft Managed State:</u></b><p>We will roll out these changes incrementally to in-scope tenants starting in early April. This rollout will take time, and even if your tenant meets the eligibility criteria, you may not see the changes immediately.&nbsp;</p><p></p><p><u style=\"\"><b>Enabled State&nbsp;</b></u></p><p>Over time, we will incrementally refine the logic for Passkeys nudges in<i> Microsoft Registration Campaigns</i> to guide users toward the appropriate passkey registration experience based on their passkey profile scope. Initially, the logic may not account for every edge‑case scenario, but we are actively expanding and improving it on an ongoing basis. When users have<a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkey-profiles\" target=\"_blank\"> passkey profile restrictions</a> (for example, AAGUID restrictions), the registration experience triggered by the nudge may not be optimal.&nbsp; &nbsp;</p><p><b></b></p><p><b>Using Passkeys Despite Restrictions</b></p><p>You can still set Passkeys as the target authentication method in Microsoft Registration Campaigns. However, users may encounter a poor or confusing experience if they have passkey profile restrictions.</p><p><b>Example:&nbsp;</b></p><p>If a user is scoped into specific <b>AAGUID synced passkeys only</b>, they may see a Passkey nudge at sign‑in. If they attempt to register a <b>device‑bound passkey,</b> the registration will fail because they are not in scope for that passkey type.&nbsp; </p><p><b></b></p><p><b>Recommended next steps</b></p><ul></ul><p></p><ul><li>Review your Registration Campaign state by <b>early April 2026</b>.</li><li>Communicate this change to helpdesk or support teams.</li><li>Update internal documentation on authentication method enrollment.</li><li>If you prefer to continue targeting Microsoft Authenticator, verify this configuration before rollout.</li></ul><p><b>Learn more:</b>&nbsp;<a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkey-profiles\" target=\"_blank\">How to enable passkey (FIDO2) profiles in Microsoft Entra ID (preview) | Authentication | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft has decided to delay the rollout of Passkeys (FIDO2) support in Microsoft Registration Campaigns initially planned for April 2026. When implemented, it will enable admins to nudge MFA-capable users to register Passkeys, changing default settings and targeting. Organizations should review configurations and prepare accordingly."
+          }
+        ],
+        "EndDateTime": "2026-04-15T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1253746",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-04-09T16:35:37.96Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-03-16T22:27:17Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Entra: Passkeys in Microsoft registration campaigns",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2026-04-14T18:43:16.963Z",
+      "source": "git",
+      "sha": "0a62a5d52db9425ee4188b673c7965b490438ee0",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated April 14, 2026: After further review, we have decided not to move forward with this change at this time. You can refer to <a href=\"https://portal.prod.iridias.microsofticm.com/messagecenter?id=1279092\">MC1279092</a> for updates. We apologize for any inconvenience this may cause and appreciate your understanding.</p><p><b><b>Introduction</b></b></p><p>As previously announced in <i>MC1221452</i>,<b> Microsoft Registration Campaigns </b>will support <b>Passkeys (FIDO2)</b> as an <b>additional authentication method</b> starting in early April 2026. This update helps organizations accelerate adoption of phishing‑resistant credentials by allowing administrators to opt users into Passkeys and deliver Passkey registration nudges during sign‑in.</p><p>Please refer to <a href=\"https://portal.prod.iridias.microsofticm.com/messagecenter?id=1279092\">MC1279092</a>&nbsp;for updates.&nbsp;</p><p></p><p><b><b>When this will happen</b>&nbsp;</b></p><p><b>General Availability (Worldwide):</b> We will begin rolling out in <b>early April 2026</b> and expect to complete in<b> late May 2026</b>.</p><p><br></p><p></p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 tenants using Microsoft Registration Campaigns</li><li>Tenants configured in either <b>Microsoft‑managed</b> or <b>Enabled</b> states</li><li>Users who are <b>MFA‑capable</b> and<b> eligible for Passkeys (FIDO2)</b></li></ul><p><i>What will happen</i></p><p><b><u>Microsoft‑managed state</u></b></p><p>Your tenant will be impacted <b>when all of the following conditions are met:</b></p><ul><li>The <b>Passkeys (FIDO2) authentication method policy</b> is enabled.</li><li><b>Allow self‑service setup</b> is enabled.</li><li><b><i>Target specific AAGUIDs</i></b> is <b>not</b> selected (no AAGUID restrictions configured).</li><li>The <b>Authentication Methods Registration Campaign</b> state is set to <i><b>Microsoft‑managed</b></i>.</li></ul><p>When these conditions are met, the following settings will update automatically:</p><ul><li>The targeted<b> authentication method</b> will change from <b>Microsoft Authenticator</b> to <b>Passkeys (FIDO2).</b></li><li><i><b>Days allowed to snooze</b></i> will change from three days to <b>one day.&nbsp;</b>(This setting will no longer be configurable.)</li><li><i><b>Limit number of snoozes </b></i>will be <b>disabled. </b>(This setting will no longer be configurable.)</li><li>Targeting will expand to <b>all MFA‑capable users</b>. (This setting will no longer be configurable.)</li><li>Default user targeting will change from <b>voice call or text message users</b> to <b>all multifactor authentication (MFA)–capable users</b>.</li></ul><p>Affected users will receive Passkey registration nudges at sign‑in after completing MFA.</p><p>We will roll out these changes incrementally over time to in‑scope tenants.</p><p><br></p><p></p><p><b><u>Enabled state</u></b></p><p>Passkey (FIDO2) can be selected as the Targeted Authentication Method when Microsoft Registration Campaigns are in the Enabled state.&nbsp;</p><p><i>Note: Registration Campaigns support targeting only one authentication method at a time—either Microsoft Authenticator or Passkeys (FIDO2), but not both simultaneously.</i></p><p><i><br></i></p><p></p><p><b><b>What you can do to prepare</b></b></p><p><b>Opting into Passkey Registration Nudges: \n</b></p><p><b>\n</b></p>You can opt into Passkeys and switch your users to receive a <b>Passkey registration nudge</b>. \nHowever, the nudge will only appear for the user if <b>all</b> of the following conditions are met:&nbsp;<ul><li>The user is <b>MFA‑capable</b><ul><li>They have at least one registered MFA method</li><li>They can successfully complete MFA at sign‑in</li></ul></li><li>Unde<b>r Authentication methods &gt; Policies,</b> the<b> user is in scope for Passkeys (FIDO2)</b></li><li>Under <b>Authentication methods &gt; Policies &gt; Passkeys (FIDO2) &gt; Configure</b>, make sure you have <b>Allow self-service set up </b>checked.&nbsp;</li></ul><p></p><p><b>Important Guidance:</b></p><b><u>Microsoft Managed State:</u></b><p>We will roll out these changes incrementally to in-scope tenants starting in early April. This rollout will take time, and even if your tenant meets the eligibility criteria, you may not see the changes immediately.&nbsp;</p><p></p><p><u style=\"\"><b>Enabled State&nbsp;</b></u></p><p>Over time, we will incrementally refine the logic for Passkeys nudges in<i> Microsoft Registration Campaigns</i> to guide users toward the appropriate passkey registration experience based on their passkey profile scope. Initially, the logic may not account for every edge‑case scenario, but we are actively expanding and improving it on an ongoing basis. When users have<a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkey-profiles\" target=\"_blank\"> passkey profile restrictions</a> (for example, AAGUID restrictions), the registration experience triggered by the nudge may not be optimal.&nbsp; &nbsp;</p><p><b></b></p><p><b>Using Passkeys Despite Restrictions</b></p><p>You can still set Passkeys as the target authentication method in Microsoft Registration Campaigns. However, users may encounter a poor or confusing experience if they have passkey profile restrictions.</p><p><b>Example:&nbsp;</b></p><p>If a user is scoped into specific <b>AAGUID synced passkeys only</b>, they may see a Passkey nudge at sign‑in. If they attempt to register a <b>device‑bound passkey,</b> the registration will fail because they are not in scope for that passkey type.&nbsp; </p><p><b></b></p><p><b>Recommended next steps</b></p><ul></ul><p></p><ul><li>Review your Registration Campaign state by <b>early April 2026</b>.</li><li>Communicate this change to helpdesk or support teams.</li><li>Update internal documentation on authentication method enrollment.</li><li>If you prefer to continue targeting Microsoft Authenticator, verify this configuration before rollout.</li></ul><p><b>Learn more:</b>&nbsp;<a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkey-profiles\" target=\"_blank\">How to enable passkey (FIDO2) profiles in Microsoft Entra ID (preview) | Authentication | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft has decided not to proceed with adding Passkeys (FIDO2) as an authentication method in Microsoft Registration Campaigns starting April 2026. Previously planned changes, including automatic updates and nudges for MFA-capable users, will not be implemented at this time. Updates are available in MC1279092."
+          }
+        ],
+        "EndDateTime": "2026-04-17T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1253746",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-04-14T18:43:16.963Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-03-16T22:27:17Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Entra: Passkeys in Microsoft registration campaigns",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2026-04-15T16:34:58.437Z",
+      "source": "git",
+      "sha": "b6dd6183beffc4b37f8eb9a0f4fd8017bab71731",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated April 14, 2026: After further review, we have decided not to move forward with this change at this time. You can refer to MC1279092 for updates. We apologize for any inconvenience this may cause and appreciate your understanding.</p><p><b><b>Introduction</b></b></p><p>As previously announced in <i>MC1221452</i>,<b> Microsoft Registration Campaigns </b>will support <b>Passkeys (FIDO2)</b> as an <b>additional authentication method</b> starting in early April 2026. This update helps organizations accelerate adoption of phishing‑resistant credentials by allowing administrators to opt users into Passkeys and deliver Passkey registration nudges during sign‑in.</p><p>Please refer to MC1279092&nbsp;for updates.&nbsp;</p><p></p><p><b><b>When this will happen</b>&nbsp;</b></p><p><b>General Availability (Worldwide):</b> We will begin rolling out in <b>early April 2026</b> and expect to complete in<b> late May 2026</b>.</p><p><br></p><p></p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 tenants using Microsoft Registration Campaigns</li><li>Tenants configured in either <b>Microsoft‑managed</b> or <b>Enabled</b> states</li><li>Users who are <b>MFA‑capable</b> and<b> eligible for Passkeys (FIDO2)</b></li></ul><p><i>What will happen</i></p><p><b><u>Microsoft‑managed state</u></b></p><p>Your tenant will be impacted <b>when all of the following conditions are met:</b></p><ul><li>The <b>Passkeys (FIDO2) authentication method policy</b> is enabled.</li><li><b>Allow self‑service setup</b> is enabled.</li><li><b><i>Target specific AAGUIDs</i></b> is <b>not</b> selected (no AAGUID restrictions configured).</li><li>The <b>Authentication Methods Registration Campaign</b> state is set to <i><b>Microsoft‑managed</b></i>.</li></ul><p>When these conditions are met, the following settings will update automatically:</p><ul><li>The targeted<b> authentication method</b> will change from <b>Microsoft Authenticator</b> to <b>Passkeys (FIDO2).</b></li><li><i><b>Days allowed to snooze</b></i> will change from three days to <b>one day.&nbsp;</b>(This setting will no longer be configurable.)</li><li><i><b>Limit number of snoozes </b></i>will be <b>disabled. </b>(This setting will no longer be configurable.)</li><li>Targeting will expand to <b>all MFA‑capable users</b>. (This setting will no longer be configurable.)</li><li>Default user targeting will change from <b>voice call or text message users</b> to <b>all multifactor authentication (MFA)–capable users</b>.</li></ul><p>Affected users will receive Passkey registration nudges at sign‑in after completing MFA.</p><p>We will roll out these changes incrementally over time to in‑scope tenants.</p><p><br></p><p></p><p><b><u>Enabled state</u></b></p><p>Passkey (FIDO2) can be selected as the Targeted Authentication Method when Microsoft Registration Campaigns are in the Enabled state.&nbsp;</p><p><i>Note: Registration Campaigns support targeting only one authentication method at a time—either Microsoft Authenticator or Passkeys (FIDO2), but not both simultaneously.</i></p><p><i><br></i></p><p></p><p><b><b>What you can do to prepare</b></b></p><p><b>Opting into Passkey Registration Nudges: \n</b></p><p><b>\n</b></p>You can opt into Passkeys and switch your users to receive a <b>Passkey registration nudge</b>. \nHowever, the nudge will only appear for the user if <b>all</b> of the following conditions are met:&nbsp;<ul><li>The user is <b>MFA‑capable</b><ul><li>They have at least one registered MFA method</li><li>They can successfully complete MFA at sign‑in</li></ul></li><li>Unde<b>r Authentication methods &gt; Policies,</b> the<b> user is in scope for Passkeys (FIDO2)</b></li><li>Under <b>Authentication methods &gt; Policies &gt; Passkeys (FIDO2) &gt; Configure</b>, make sure you have <b>Allow self-service set up </b>checked.&nbsp;</li></ul><p></p><p><b>Important Guidance:</b></p><b><u>Microsoft Managed State:</u></b><p>We will roll out these changes incrementally to in-scope tenants starting in early April. This rollout will take time, and even if your tenant meets the eligibility criteria, you may not see the changes immediately.&nbsp;</p><p></p><p><u style=\"\"><b>Enabled State&nbsp;</b></u></p><p>Over time, we will incrementally refine the logic for Passkeys nudges in<i> Microsoft Registration Campaigns</i> to guide users toward the appropriate passkey registration experience based on their passkey profile scope. Initially, the logic may not account for every edge‑case scenario, but we are actively expanding and improving it on an ongoing basis. When users have<a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkey-profiles\" target=\"_blank\"> passkey profile restrictions</a> (for example, AAGUID restrictions), the registration experience triggered by the nudge may not be optimal.&nbsp; &nbsp;</p><p><b></b></p><p><b>Using Passkeys Despite Restrictions</b></p><p>You can still set Passkeys as the target authentication method in Microsoft Registration Campaigns. However, users may encounter a poor or confusing experience if they have passkey profile restrictions.</p><p><b>Example:&nbsp;</b></p><p>If a user is scoped into specific <b>AAGUID synced passkeys only</b>, they may see a Passkey nudge at sign‑in. If they attempt to register a <b>device‑bound passkey,</b> the registration will fail because they are not in scope for that passkey type.&nbsp; </p><p><b></b></p><p><b>Recommended next steps</b></p><ul></ul><p></p><ul><li>Review your Registration Campaign state by <b>early April 2026</b>.</li><li>Communicate this change to helpdesk or support teams.</li><li>Update internal documentation on authentication method enrollment.</li><li>If you prefer to continue targeting Microsoft Authenticator, verify this configuration before rollout.</li></ul><p><b>Learn more:</b>&nbsp;<a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkey-profiles\" target=\"_blank\">How to enable passkey (FIDO2) profiles in Microsoft Entra ID (preview) | Authentication | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft has decided not to proceed with adding Passkeys (FIDO2) as an authentication method in Microsoft Registration Campaigns starting April 2026. Previously planned changes, including automatic updates and nudges for MFA-capable users, will not be implemented at this time. Updates are available in MC1279092."
+          }
+        ],
+        "EndDateTime": "2026-04-17T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1253746",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-04-15T16:34:58.437Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-03-16T22:27:17Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Entra: Passkeys in Microsoft registration campaigns",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

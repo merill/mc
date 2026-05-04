@@ -1,0 +1,577 @@
+{
+  "id": "MC791114",
+  "versions": [
+    {
+      "capturedAt": "2024-05-08T00:14:35.113Z",
+      "source": "git",
+      "sha": "31b2acfc20771ac84266b9c8485abd9c47da17c3",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:\n</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out mid-May 2024 and expect to complete by late May 2024.\n</p><p>General Availability Worldwide: We will begin rolling out mid-June 2024 and expect to complete by late June 2024.\n</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1kW9T?ver=4d63\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l03Z?ver=4026\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1kOD4?ver=2307\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l046?ver=0530\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l2vg?ver=900a\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l04d?ver=f53e\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview | Data Loss Prevention will soon allow separate configuration of policy tips and user email notifications for SharePoint and OneDrive, aligning with Microsoft Exchange behavior. Admins can enable either or both features, or neither. Rollout begins mid-May 2024 for Public Preview and mid-June 2024 for General Availability. Configuration can be done via PowerShell or DLP settings post-rollout."
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview | Data Loss Prevention will soon allow separate configuration of policy tips and user email notifications for SharePoint and OneDrive, aligning with Microsoft Exchange behavior. Admins can enable either or both features, or neither. Rollout begins mid-May 2024 for Public Preview and mid-June 2024 for General Availability. Configuration can be done via PowerShell or DLP settings post-rollout."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2024-09-30T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2024-05-08T00:14:35.113Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Purview | Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2024-05-08T00:14:35.113Z",
+      "source": "git",
+      "sha": "d3bbc3f0bd4def0af3a783eb995ceb485912d740",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:\n</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out mid-May 2024 and expect to complete by late May 2024.\n</p><p>General Availability Worldwide: We will begin rolling out mid-June 2024 and expect to complete by late June 2024.\n</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1kW9T?ver=4d63\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l03Z?ver=4026\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1kOD4?ver=2307\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l046?ver=0530\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l2vg?ver=900a\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l04d?ver=f53e\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview | Data Loss Prevention will soon allow separate configuration of policy tips and user email notifications for SharePoint and OneDrive, aligning with Microsoft Exchange behavior. Admins can enable either or both features, or neither. Rollout begins mid-May 2024 for Public Preview and mid-June 2024 for General Availability. Configuration can be done via PowerShell or DLP settings post-rollout."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2024-09-30T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2024-05-08T00:14:35.113Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Purview | Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2024-06-14T17:46:57.04Z",
+      "source": "git",
+      "sha": "575cbd0d5593c7d9f4f655a33a4683acacf73670",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated June 14, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:\n</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out early July 2024 (previously mid-May) and expect to complete by mid-August 2024 (previously late May).\n</p><p>General Availability Worldwide: We will begin rolling out mid-September 2024 (previously mid-June) and expect to complete by late September 2024 (previously late June).\n</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1kW9T?ver=4d63\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l03Z?ver=4026\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1kOD4?ver=2307\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l046?ver=0530\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l2vg?ver=900a\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l04d?ver=f53e\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview | Data Loss Prevention will soon allow separate configuration of policy tips and user email notifications for SharePoint and OneDrive, aligning with Microsoft Exchange behavior. Admins can enable either or both features, or neither. Rollout begins early July 2024 for Public Preview and mid-September 2024 for General Availability. Configuration can be done via PowerShell or DLP settings post-rollout."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2024-11-04T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2024-06-14T17:46:57.04Z",
+        "Services": [
+          "Microsoft 365 suite",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2024-08-02T18:17:58.737Z",
+      "source": "git",
+      "sha": "a6b977e97f5755b8c365e855dd7de1284ae2c1a7",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated August 2, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:\n</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out late October 2024 (previously early July) and expect to complete by late November 2024 (previously mid-August).\n</p><p>General Availability Worldwide: We will begin rolling out late November 2024 (previously mid-September) and expect to complete by late December 2024 (previously late September).\n</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1kW9T?ver=4d63\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l03Z?ver=4026\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1kOD4?ver=2307\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l046?ver=0530\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l2vg?ver=900a\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1l04d?ver=f53e\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft is updating Data Loss Prevention for SharePoint and OneDrive by separating policy tips and email notifications. Admins will be able to configure them independently. Rollout begins late October 2024, with General Availability by late December 2024. Admins can use PowerShell or Purview to configure settings after the update."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2025-02-03T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2024-08-02T18:17:58.737Z",
+        "Services": [
+          "Microsoft 365 suite",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2024-08-02T18:17:58.737Z",
+      "source": "git",
+      "sha": "a91ee5df560f4164a7eb27124c7e9fce2d05dde9",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated August 2, 2024: We have updated the rollout timeline below. Thank you for your patience.</p><p>Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:\n</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out late October 2024 (previously early July) and expect to complete by late November 2024 (previously mid-August).\n</p><p>General Availability Worldwide: We will begin rolling out late November 2024 (previously mid-September) and expect to complete by late December 2024 (previously late September).\n</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/8369cc7e-5277-4a7b-ac84-ffab2178eb39\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/aee78a82-6204-421d-bde3-2058e2ebbdc7\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1fe17aad-895c-4f73-b315-46150f0cf699\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/7bb0a7f9-1a4c-47cd-8606-af06c14e7942\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/08a72195-d40b-4104-b810-2f9bc4ef35c5\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/e9d7bfed-7a14-49c1-b060-b082c85f7697\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft is updating Data Loss Prevention for SharePoint and OneDrive by separating policy tips and email notifications. Admins will be able to configure them independently. Rollout begins late October 2024, with General Availability by late December 2024. Admins can use PowerShell or Purview to configure settings after the update."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2025-02-03T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2024-08-02T18:17:58.737Z",
+        "Services": [
+          "Microsoft 365 suite",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2025-02-12T16:54:00.903Z",
+      "source": "git",
+      "sha": "582f1443095cafd169d71034c719783e783b71d6",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated February 12, 2025: We have updated the rollout timeline below. Thank you for your patience.</p><p>Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:\n</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out late June 2025 (previously late January) and expect to complete by late July 2025 (previously late February).\n</p><p>General Availability Worldwide: We will begin rolling out late August 2025 (previously late March) and expect to complete by late September 2025 (previously late April).&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/8369cc7e-5277-4a7b-ac84-ffab2178eb39\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/aee78a82-6204-421d-bde3-2058e2ebbdc7\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1fe17aad-895c-4f73-b315-46150f0cf699\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/7bb0a7f9-1a4c-47cd-8606-af06c14e7942\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/08a72195-d40b-4104-b810-2f9bc4ef35c5\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/e9d7bfed-7a14-49c1-b060-b082c85f7697\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft is updating Data Loss Prevention for SharePoint and OneDrive by separating policy tips and email notifications. Admins will be able to configure them independently. Rollout begins late June 2025, with General Availability by late September 2025. Admins can use PowerShell or Purview to configure settings after the update."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2025-11-24T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2025-02-12T16:54:00.903Z",
+        "Services": [
+          "Microsoft 365 suite",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2025-09-12T14:18:23.367Z",
+      "source": "git",
+      "sha": "0537d92aaf209b7fdea7c2593b75b82cb06c0d92",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated September 12, 2025: We have updated the timeline. Thank you for your patience.\n</p><p>Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out late June 2025 (previously late January) and expect to complete by late July 2025 (previously late February).\n</p><p>General Availability Worldwide: We will begin rolling out late December 2025 (previously late August) and expect to complete by late January 2025 (previously late September).&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/8369cc7e-5277-4a7b-ac84-ffab2178eb39\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/aee78a82-6204-421d-bde3-2058e2ebbdc7\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1fe17aad-895c-4f73-b315-46150f0cf699\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/7bb0a7f9-1a4c-47cd-8606-af06c14e7942\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/08a72195-d40b-4104-b810-2f9bc4ef35c5\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/e9d7bfed-7a14-49c1-b060-b082c85f7697\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview Data Loss Prevention will decouple policy tips and user email notifications, allowing admins to configure them independently. Rollout begins late June 2025 (preview) and late December 2025 (general availability). Configuration will be via PowerShell or Purview DLP with a new -NotifyUserType parameter. No pre-rollout action needed."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2026-03-02T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2025-09-12T14:18:23.367Z",
+        "Services": [
+          "Microsoft 365 suite",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2025-09-26T17:08:31.18Z",
+      "source": "git",
+      "sha": "e65279af0e157b9d9c81fd629a6942716a7a7826",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated September 26, 2025: We have updated the timeline. Thank you for your patience.&nbsp;</p><p>&nbsp;Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out late January 2026 (previously late June) and expect to complete by late February 2026 (previously late July).\n</p><p>General Availability Worldwide: We will begin rolling out late March 2025 (previously late December) and expect to complete by late April 2026 (previously&nbsp; late January).&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/8369cc7e-5277-4a7b-ac84-ffab2178eb39\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/aee78a82-6204-421d-bde3-2058e2ebbdc7\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1fe17aad-895c-4f73-b315-46150f0cf699\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/7bb0a7f9-1a4c-47cd-8606-af06c14e7942\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/08a72195-d40b-4104-b810-2f9bc4ef35c5\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/e9d7bfed-7a14-49c1-b060-b082c85f7697\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview Data Loss Prevention will decouple policy tips and user email notifications for SharePoint and OneDrive, allowing admins to configure either or both independently. Rollout begins late January 2026 (preview) and late March 2026 (general availability). Configuration uses the new -NotifyUserType parameter in PowerShell or the DLP portal. No admin action needed before rollout."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2026-04-06T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2025-09-26T17:08:31.18Z",
+        "Services": [
+          "Microsoft 365 suite",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2025-12-22T17:37:17.6Z",
+      "source": "git",
+      "sha": "d43fb1a1a4622d657904c81e2827191ff9bd7a87",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated December 22, 2025: We have updated the timeline. Thank you for your patience.&nbsp;</p><p>&nbsp;Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out February 20, 2026 (previously late January 2026) and expect to complete by late February 2026 (previously late July).\n</p><p>General Availability Worldwide: We will begin rolling out March 2026 (previously late March) and expect to complete in March 2026 (previously late April).&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/8369cc7e-5277-4a7b-ac84-ffab2178eb39\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/aee78a82-6204-421d-bde3-2058e2ebbdc7\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1fe17aad-895c-4f73-b315-46150f0cf699\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/7bb0a7f9-1a4c-47cd-8606-af06c14e7942\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/08a72195-d40b-4104-b810-2f9bc4ef35c5\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/e9d7bfed-7a14-49c1-b060-b082c85f7697\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview Data Loss Prevention will decouple policy tips and user email notifications, allowing admins to configure either or both independently via PowerShell or the DLP portal. Rollout begins February 20, 2026, with general availability in March 2026. No pre-rollout admin action is needed."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2026-05-04T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2025-12-22T17:37:17.6Z",
+        "Services": [
+          "Microsoft 365 suite",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2026-03-02T17:09:06.383Z",
+      "source": "git",
+      "sha": "5eb3681585437969433313b9f42c005b6a2c766b",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated March 2, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p>&nbsp;Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out mid-April 2026 (previously February 20) and expect to complete by late April 2026 (previously late February).\n</p><p>General Availability Worldwide: We will begin rolling out mid-May 2026 (previously March) and expect to complete in late May 2026 (previously March).&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/8369cc7e-5277-4a7b-ac84-ffab2178eb39\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/aee78a82-6204-421d-bde3-2058e2ebbdc7\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1fe17aad-895c-4f73-b315-46150f0cf699\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/7bb0a7f9-1a4c-47cd-8606-af06c14e7942\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/08a72195-d40b-4104-b810-2f9bc4ef35c5\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/e9d7bfed-7a14-49c1-b060-b082c85f7697\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview Data Loss Prevention will decouple policy tips and user email notifications for SharePoint and OneDrive, allowing admins to configure either or both independently. Rollout begins mid-April 2026 (preview) and mid-May 2026 (general availability). Configuration will be via PowerShell or Purview DLP settings."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2026-06-29T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-03-02T17:09:06.383Z",
+        "Services": [
+          "Microsoft 365 suite",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    },
+    {
+      "capturedAt": "2026-04-20T16:23:41.743Z",
+      "source": "git",
+      "sha": "a2dba7ac3a10a5483720b234e1ff601d1ee6c34b",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated April 20, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p>&nbsp;Coming soon to Microsoft Purview | Data Loss Prevention: When an admin wants to enable user email notifications, policy tips also need to be enabled and vice versa. After this rollout, notifications and policy tips will be decoupled, and admins can configure the following rules to enable:</p><ol><li>Only a user email notification\n</li><li>Only a policy tip\n</li><li>A user email notification and a policy tip\n</li><li>No policy tips or user email notifications\n</li></ol><p>After this rollout, policy tips and user email notifications will align with the behavior currently available with Microsoft Exchange. \n</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=394279\" target=\"_blank\">394279</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Public Preview: We will begin rolling out mid-April 2026 (previously February 20) and expect to complete by late April 2026 (previously late February).\n</p><p>General Availability Worldwide: We will begin rolling out early June 2026 (previously mid-May) and expect to complete in mid-June 2026 (previously late May).&nbsp;</p><p><b>How this will affect your organization:</b>\n</p><p>After rollout, to configure policy tips and user email notifications, you can use PowerShell or Purview | Data Loss Prevention.\n</p><p><i style=\"\">In PowerShell</i>\n</p><p>After rollout, use the new parameter called <code>-NotifyUserType</code> with the cmdlets <code>New-DlpComplianceRule</code> and <code>Set-DlpComplianceRule</code>. </p><p>Use <code>New-DlpComplianceRule</code> to create a new rule. Use <code>Set-DlpComplianceRule</code> to update an existing rule. \n</p><ul><li>Default value: <code>NotSet</code>\n</li><li>To enable a policy tip: <code>PolicyTip</code>\n</li><li>To enable a user email notification: <code>Email</code>\n</li><li>To enable a user email notification and a policy tip: <code>Email,PolicyTip</code> \t\n</li></ul><p>Example 1: <code>New-DlpComplianceRule -Name \"PT rule\" -Policy \"Policy Name\" -ContentContainsSensitiveInformation @{Name=\"India Unique Identification (Aadhaar) Number\"} -NotifyUserType PolicyTip -NotifyUser SiteAdmin,LastModifier,Owner</code>\n</p><p>Example 2: <code>Set-DlpComplianceRule -Identity \"Rule Name\"  -NotifyUserType Email</code>\n</p><p>To check that the value is set correctly, check the following and check the parameter value for <code>NotifyUserType</code>:\n</p><p><code>Get-DlpComplianceRule -Identity \"Rule Name\" | fl</code>\n</p><p><i>In Data Loss Prevention (DLP)</i></p><p>Before rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/8369cc7e-5277-4a7b-ac84-ffab2178eb39\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>After rollout:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/aee78a82-6204-421d-bde3-2058e2ebbdc7\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><i>DLP examples</i></p><p>Rule 1: Configured to only trigger a user email notification:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/1fe17aad-895c-4f73-b315-46150f0cf699\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 2: Configured to only trigger a policy tip:</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/7bb0a7f9-1a4c-47cd-8606-af06c14e7942\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p>Rule 3: Configured to trigger a user email notification and a policy tip:\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/08a72195-d40b-4104-b810-2f9bc4ef35c5\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><img src=\"https://cxcs.microsoft.net/file/messagecenter/en-us/e9d7bfed-7a14-49c1-b060-b082c85f7697\" style=\"width: 400px;\" alt=\"admin settings\">\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified dates with no admin action required before the rollout. You may want to update any relevant documentation as appropriate.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "394279"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview Data Loss Prevention will decouple policy tips and user email notifications for SharePoint and OneDrive, allowing admins to enable either or both independently. Rollout begins mid-April 2026 (preview) and early June 2026 (general availability). Configuration will use PowerShell or the DLP portal."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2026-07-20T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC791114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-04-20T16:23:41.743Z",
+        "Services": [
+          "Microsoft 365 suite",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2024-05-08T00:13:57Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Data Loss Prevention: Decoupling policy tips and email notifications for SharePoint and OneDrive",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

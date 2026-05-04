@@ -338,4 +338,7 @@ $rssItemXml
 $rssXml | Set-Content -Path "./public/rss.xml"
 Write-Host "Wrote $($rssItems.Count) items to public/rss.xml"
 
+Write-Host "Updating per-message version history under @data/history"
+node ./scripts/update-history.mjs
+
 Write-Host "Completed updating"

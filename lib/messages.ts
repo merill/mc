@@ -1,4 +1,4 @@
-import { Message, MessageArchive, MessageSource } from '@/types/message';
+import { Message, MessageArchive, MessageHistory, MessageSource, MessageVersion } from '@/types/message';
 import dataMessages from '@/@data/messages.json'
 import dataArchive from '@/@data/messages-archive.json'
 import dataRoadmap from '@/@data/roadmap.json'
@@ -113,3 +113,133 @@ export function getFormattedDate(dateInput: string | undefined | null): string {
 
     return `${month} ${day}, ${year}`;
   }
+
+// ---------------------------------------------------------------------------
+// Version history
+// ---------------------------------------------------------------------------
+
+const historyCache = new Map<string, MessageHistory | null>();
+
+export function getMessageHistory(id: string): MessageHistory | undefined {
+    if (historyCache.has(id)) {
+        const cached = historyCache.get(id);
+        return cached ?? undefined;
+    }
+    try {
+        const filePath = path.join(process.cwd(), '@data', 'history', `${id}.json`);
+        const raw = fs.readFileSync(filePath, 'utf-8');
+        const parsed = JSON.parse(raw) as MessageHistory;
+        historyCache.set(id, parsed);
+        return parsed;
+    } catch {
+        historyCache.set(id, null);
+        return undefined;
+    }
+}
+
+export function hasMultipleVersions(id: string): boolean {
+    const history = getMessageHistory(id);
+    return !!history && history.versions.length > 1;
+}
+
+// URL-safe slug for an ISO timestamp. We replace `:` and `.` with `-` so the
+// slug is filesystem- and URL-safe while remaining humanly readable.
+export function slugifyCapturedAt(capturedAt: string): string {
+    return capturedAt.replace(/[:.]/g, '-');
+}
+
+export function unslugifyCapturedAt(slug: string): string {
+    // ISO format: YYYY-MM-DDTHH-MM-SS-sssZ → reinsert separators.
+    const m = slug.match(/^(\d{4}-\d{2}-\d{2}T\d{2})-(\d{2})-(\d{2})(?:-(\d+))?(Z)?$/);
+    if (m) {
+        const [, ymdHH, mm, ss, ms, z] = m;
+        const base = `${ymdHH}:${mm}:${ss}`;
+        return ms ? `${base}.${ms}${z ?? ''}` : `${base}${z ?? ''}`;
+    }
+    return slug;
+}
+
+export function getMessageVersion(id: string, capturedAtSlug: string): MessageVersion | undefined {
+    const history = getMessageHistory(id);
+    if (!history) return undefined;
+    return history.versions.find((v) => slugifyCapturedAt(v.capturedAt) === capturedAtSlug);
+}
+
+export function getAllVersionParams(): { id: string; capturedAt: string }[] {
+    const ids = listAllHistoryIds();
+    const out: { id: string; capturedAt: string }[] = [];
+    for (const id of ids) {
+        const history = getMessageHistory(id);
+        if (!history || history.versions.length < 2) continue;
+        // Latest version is rendered by the main /message/[id] page; only
+        // older versions need their own snapshot page.
+        const versions = history.versions.slice(0, -1);
+        for (const v of versions) {
+            out.push({ id, capturedAt: slugifyCapturedAt(v.capturedAt) });
+        }
+    }
+    return out;
+}
+
+const MAX_PAIRS_PER_MESSAGE = 20;
+
+export function getAllComparePairs(): { id: string; from: string; to: string }[] {
+    const ids = listAllHistoryIds();
+    const out: { id: string; from: string; to: string }[] = [];
+    for (const id of ids) {
+        const history = getMessageHistory(id);
+        if (!history || history.versions.length < 2) continue;
+        // Cap to avoid combinatorial explosion on very volatile messages.
+        const versions = history.versions.length > MAX_PAIRS_PER_MESSAGE
+            ? history.versions.slice(history.versions.length - MAX_PAIRS_PER_MESSAGE)
+            : history.versions;
+        for (let i = 0; i < versions.length; i++) {
+            for (let j = 0; j < versions.length; j++) {
+                if (i === j) continue;
+                out.push({
+                    id,
+                    from: slugifyCapturedAt(versions[i].capturedAt),
+                    to: slugifyCapturedAt(versions[j].capturedAt),
+                });
+            }
+        }
+    }
+    return out;
+}
+
+function listAllHistoryIds(): string[] {
+    try {
+        const dir = path.join(process.cwd(), '@data', 'history');
+        return fs.readdirSync(dir)
+            .filter((f) => f.endsWith('.json'))
+            .map((f) => f.slice(0, -5));
+    } catch {
+        return [];
+    }
+}
+
+// Returns a short label of which top-level fields differ between two
+// messages — used for the timeline summary line. Body changes are detected
+// by content equality, not diff size.
+export function summarizeChanges(prev: Message | undefined, next: Message): string[] {
+    if (!prev) return ["Initial version"];
+    const changed: string[] = [];
+    if ((prev.Title ?? "") !== (next.Title ?? "")) changed.push("Title");
+    if ((prev.Body?.Content ?? "") !== (next.Body?.Content ?? "")) changed.push("Body");
+    if (JSON.stringify([...(prev.Tags ?? [])].sort()) !== JSON.stringify([...(next.Tags ?? [])].sort())) changed.push("Tags");
+    if (JSON.stringify([...(prev.Services ?? [])].sort()) !== JSON.stringify([...(next.Services ?? [])].sort())) changed.push("Services");
+    if ((prev.Category ?? "") !== (next.Category ?? "")) changed.push("Category");
+    if ((prev.Severity ?? "") !== (next.Severity ?? "")) changed.push("Severity");
+    if (!!prev.IsMajorChange !== !!next.IsMajorChange) changed.push("Major change flag");
+    if ((prev.ActionRequiredByDateTime ?? null) !== (next.ActionRequiredByDateTime ?? null)) changed.push("Act-by date");
+    if ((prev.EndDateTime ?? null) !== (next.EndDateTime ?? null)) changed.push("End date");
+
+    const prevStatus = prev.Details?.find((d) => d.Name === "Status")?.Value ?? "";
+    const nextStatus = next.Details?.find((d) => d.Name === "Status")?.Value ?? "";
+    if (prevStatus !== nextStatus) changed.push("Status");
+    const prevPhase = prev.Details?.find((d) => d.Name === "ReleasePhase")?.Value ?? "";
+    const nextPhase = next.Details?.find((d) => d.Name === "ReleasePhase")?.Value ?? "";
+    if (prevPhase !== nextPhase) changed.push("Release phase");
+
+    return changed.length ? changed : ["No tracked field changed"];
+}

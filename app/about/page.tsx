@@ -128,6 +128,13 @@ export default function AboutPage() {
                 Roadmap detail pages, with a fullscreen lightbox and keyboard
                 support.
               </li>
+              <li>
+                Added per-message version history with a timeline of prior
+                versions, dedicated snapshot pages for each version, and
+                inline visual diffs (additions in green, deletions in red)
+                comparing any two versions of a Message Center or Roadmap
+                post.
+              </li>
             </ul>
           </div>
           <div>
