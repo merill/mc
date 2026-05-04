@@ -14,6 +14,7 @@ import {
 } from "@/lib/messages"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import BodyDiff from "@/app/message/[id]/components/body-diff"
+import InfoCards from "@/app/message/[id]/components/info-cards"
 import MessageContent from "@/app/message/[id]/components/message-content"
 
 type Props = {
@@ -75,7 +76,22 @@ export default async function VersionPage({ params }: Props) {
               )}
             </span>
           </div>
-          {!isLatest && (
+        {!isLatest && (
+          <div className="w-full pt-4">
+            <Card className="w-full overflow-hidden rounded-[0.5rem] border bg-background shadow-sm md:shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-base font-semibold">
+                  Metadata at {getFormattedDate(version.capturedAt)}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <InfoCards id={id} layout="grid" message={version.message} />
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {!isLatest && (
             <div className="mt-2 flex flex-wrap gap-3">
               <Link
                 href={`/message/${id}`}

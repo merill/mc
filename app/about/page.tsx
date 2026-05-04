@@ -120,6 +120,35 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              May 4, 2026
+            </h2>
+            <ul>
+              <li>
+                Redesigned Message Center and Roadmap detail pages with a
+                two-column layout on larger screens, moving metadata into a
+                sticky right sidebar so the summary and announcement body
+                appear above the fold.
+              </li>
+              <li>
+                Reordered sidebar metadata to lead with the last-updated date
+                and message ID, added a compact Related card listing linked
+                Message Center IDs, and added a History shortcut that jumps to
+                the version history section.
+              </li>
+              <li>
+                Linked Message Center IDs that appear in post summaries, in
+                addition to the post body.
+              </li>
+              <li>
+                Added a metadata cards panel to version comparison and
+                snapshot pages so changes to fields like tags, severity,
+                status, and release phase are visible at a glance alongside
+                the body diff.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               May 3, 2026
             </h2>
             <ul>

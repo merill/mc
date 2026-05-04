@@ -13,6 +13,7 @@ import {
 } from "@/lib/messages"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import BodyDiff from "@/app/message/[id]/components/body-diff"
+import InfoCards from "@/app/message/[id]/components/info-cards"
 import MetadataDiff from "@/app/message/[id]/components/metadata-diff"
 
 type Props = {
@@ -105,6 +106,21 @@ export default async function ComparePage({ params }: Props) {
         </p>
 
         <div className="w-full space-y-4 pt-4">
+          <Card className="w-full overflow-hidden rounded-[0.5rem] border bg-background shadow-sm md:shadow-sm">
+            <CardHeader>
+              <CardTitle className="text-base font-semibold">
+                Metadata at {isToLatest ? "latest" : toDate}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <InfoCards
+                id={id}
+                layout="grid"
+                message={toVersion.message}
+              />
+            </CardContent>
+          </Card>
+
           <MetadataDiff
             oldMessage={fromVersion.message}
             newMessage={toVersion.message}

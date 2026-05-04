@@ -1,36 +1,84 @@
+import Link from "next/link"
 import {
   Calendar,
   CalendarClock,
   Cloud,
   ExternalLink,
   Flag,
+  History,
   Layers,
+  Link2,
   MessageSquare,
   MonitorSmartphone,
   Tag,
 } from "lucide-react"
 
-import { MessageSource } from "@/types/message"
+import { Message, MessageSource } from "@/types/message"
 import {
   getFormattedDate,
   getMessageData,
   getMessageDetailValue,
   getMessagePlatforms,
   getMessageRoadmapID,
+  getMessageReferencedBy,
+  getMessageReferences,
   getMessageSource,
+  hasMultipleVersions,
 } from "@/lib/messages"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 
-export default function InfoCards(props: { id: string }) {
+export function ExpiredBanner(props: { id: string }) {
   const msg = getMessageData(props.id)
+  const source = getMessageSource(msg)
+  const isRoadmap = source === MessageSource.Roadmap
+  const isExpired =
+    !isRoadmap && msg?.EndDateTime
+      ? new Date(msg.EndDateTime) < new Date()
+      : false
+  if (!isExpired) return null
+  const dateExpired = getFormattedDate(msg?.EndDateTime)
+  return (
+    <div className="flex items-center gap-2 rounded-md border border-amber-300 bg-amber-50 px-4 py-2 text-sm text-amber-800 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
+      <CalendarClock size={16} />
+      <span>
+        This announcement expired on <strong>{dateExpired}</strong> and is no
+        longer active in Message Center.
+      </span>
+    </div>
+  )
+}
+
+type InfoCardsLayout = "grid" | "stack"
+
+export default function InfoCards(props: {
+  id: string
+  layout?: InfoCardsLayout
+  showHistoryLink?: boolean
+  /**
+   * Optional explicit message snapshot. When supplied, the cards reflect this
+   * snapshot instead of the latest stored message. Used by the version
+   * snapshot and version comparison pages.
+   */
+  message?: Message
+}) {
+  const layout: InfoCardsLayout = props.layout ?? "grid"
+  const showHistoryLink = props.showHistoryLink ?? false
+  const msg = props.message ?? getMessageData(props.id)
+  const hasHistory = hasMultipleVersions(props.id)
+  const referenceIds = Array.from(
+    new Set([
+      ...getMessageReferences(props.id),
+      ...getMessageReferencedBy(props.id),
+    ])
+  )
+  const RELATED_CAP = 8
+  const relatedCapped = referenceIds.slice(0, RELATED_CAP)
   const datePublished = getFormattedDate(msg?.StartDateTime)
   const dateActBy = getFormattedDate(msg?.ActionRequiredByDateTime)
   const dateUpdated = getFormattedDate(msg?.LastModifiedDateTime)
@@ -50,20 +98,6 @@ export default function InfoCards(props: { id: string }) {
   const releasePhase = getMessageDetailValue(msg, "ReleasePhase")
   const clouds = getMessageDetailValue(msg, "CloudInstances")
   const isRoadmap = source === MessageSource.Roadmap
-  const isExpired =
-    !isRoadmap && msg?.EndDateTime
-      ? new Date(msg.EndDateTime) < new Date()
-      : false
-  const dateExpired = getFormattedDate(msg?.EndDateTime)
-  const expiredBanner = isExpired && (
-    <div className="flex items-center gap-2 rounded-md border border-amber-300 bg-amber-50 px-4 py-2 text-sm text-amber-800 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
-      <CalendarClock size={16} />
-      <span>
-        This announcement expired on <strong>{dateExpired}</strong> and is no
-        longer active in Message Center.
-      </span>
-    </div>
-  )
 
   const idCard = (
     <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
@@ -176,6 +210,26 @@ export default function InfoCards(props: { id: string }) {
       <CardContent>
         <div className="text-2xl font-bold">{dateUpdated}</div>
         <p className="text-xs text-muted-foreground">{dateSubtitle}</p>
+        {hasHistory && showHistoryLink && (
+          <a
+            href="#version-history"
+            className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-blue-700 hover:underline dark:text-blue-300"
+          >
+            <History size={12} />
+            View version history
+          </a>
+        )}
+        {hasHistory && !showHistoryLink && (
+          <a
+            href="#version-history"
+            className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-blue-700 hover:underline dark:text-blue-300"
+            aria-label="View version history"
+            title="View version history"
+          >
+            <History size={12} />
+            History
+          </a>
+        )}
       </CardContent>
     </Card>
   )
@@ -284,10 +338,77 @@ export default function InfoCards(props: { id: string }) {
     </Card>
   )
 
+  const relatedCard = relatedCapped.length > 0 && (
+    <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">Related</CardTitle>
+        <Link2 size={20} color="#757575" />
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-wrap gap-1">
+          {relatedCapped.map((rid) => (
+            <Link
+              key={rid}
+              href={`/message/${rid}`}
+              className="inline-block"
+            >
+              <Badge
+                variant="secondary"
+                className="font-mono hover:bg-muted-foreground/20"
+              >
+                {rid}
+              </Badge>
+            </Link>
+          ))}
+        </div>
+        {referenceIds.length > RELATED_CAP && (
+          <p className="mt-2 text-xs text-muted-foreground">
+            +{referenceIds.length - RELATED_CAP} more below
+          </p>
+        )}
+      </CardContent>
+    </Card>
+  )
+
+  if (layout === "stack") {
+    // Vertical stack used in the desktop sidebar.
+    // Order: Last Updated, ID, Service, Tag, Related, Status, Release, then
+    // remaining metadata.
+    if (isRoadmap) {
+      return (
+        <div className="flex w-full flex-col gap-4">
+          {dateCard}
+          {idCard}
+          {serviceCard}
+          {tagCard}
+          {relatedCard}
+          {statusCard}
+          {releaseCard}
+          {platformsCard}
+          {cloudCard}
+        </div>
+      )
+    }
+    return (
+      <div className="flex w-full flex-col gap-4">
+        {dateCard}
+        {idCard}
+        {serviceCard}
+        {tagCard}
+        {relatedCard}
+        {statusCard}
+        {releaseCard}
+        {roadmapCard}
+        {actByCard}
+        {platformsCard}
+        {cloudCard}
+      </div>
+    )
+  }
+
   if (isRoadmap) {
     return (
       <div className="w-full space-y-4">
-        {expiredBanner}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {idCard}
           {statusCard}
@@ -306,7 +427,6 @@ export default function InfoCards(props: { id: string }) {
 
   return (
     <div className="w-full space-y-4">
-      {expiredBanner}
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
         {idCard}
         {serviceCard}
