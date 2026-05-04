@@ -91,9 +91,17 @@ export default function InfoCards(props: {
   const platforms = getMessagePlatforms(msg)
   const source = getMessageSource(msg)
   const sourceId = getMessageDetailValue(msg, "SourceId") || msg?.Id
-  const roadmapLink =
+  const externalRoadmapLink =
     getMessageDetailValue(msg, "RoadmapLink") ||
     `https://www.microsoft.com/en-US/microsoft-365/roadmap?filters=&searchterms=${roadmapId}`
+  // If we have an internal roadmap detail page for this id, link there.
+  // The detail Id format is `RM<numeric>`; the RoadmapIds detail value on MC
+  // posts is just the numeric portion.
+  const internalRoadmapId = roadmapId ? `RM${roadmapId}` : ""
+  const internalRoadmapExists = internalRoadmapId
+    ? Boolean(getMessageData(internalRoadmapId))
+    : false
+  const roadmapLink = externalRoadmapLink
   const status = getMessageDetailValue(msg, "Status")
   const releasePhase = getMessageDetailValue(msg, "ReleasePhase")
   const clouds = getMessageDetailValue(msg, "CloudInstances")
@@ -219,17 +227,6 @@ export default function InfoCards(props: {
             View version history
           </a>
         )}
-        {hasHistory && !showHistoryLink && (
-          <a
-            href="#version-history"
-            className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-blue-700 hover:underline dark:text-blue-300"
-            aria-label="View version history"
-            title="View version history"
-          >
-            <History size={12} />
-            History
-          </a>
-        )}
       </CardContent>
     </Card>
   )
@@ -257,35 +254,50 @@ export default function InfoCards(props: {
     </Card>
   )
 
+  const roadmapCardInner = (
+    <>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium flex gap-1">
+          Roadmap ID{" "}
+          {!internalRoadmapExists && <ExternalLink size={10} color="gray" />}
+        </CardTitle>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#808080"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-route"
+        >
+          <circle cx="6" cy="19" r="3" />
+          <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+          <circle cx="18" cy="5" r="3" />
+        </svg>
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold">{roadmapId}</div>
+        <p className="text-xs text-muted-foreground">
+          {internalRoadmapExists
+            ? "View roadmap details"
+            : "View in M365 Roadmap"}
+        </p>
+      </CardContent>
+    </>
+  )
+
   const roadmapCard = roadmapId && !isRoadmap && (
     <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
-      <a href={roadmapLink} target="_blank" rel="noopener">
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium flex gap-1">
-            Roadmap ID <ExternalLink size={10} color="gray" />
-          </CardTitle>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#808080"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-route"
-          >
-            <circle cx="6" cy="19" r="3" />
-            <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
-            <circle cx="18" cy="5" r="3" />
-          </svg>
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{roadmapId}</div>
-          <p className="text-xs text-muted-foreground">View in M365 Roadmap</p>
-        </CardContent>
-      </a>
+      {internalRoadmapExists ? (
+        <Link href={`/message/${internalRoadmapId}`}>{roadmapCardInner}</Link>
+      ) : (
+        <a href={roadmapLink} target="_blank" rel="noopener">
+          {roadmapCardInner}
+        </a>
+      )}
     </Card>
   )
 
@@ -411,9 +423,9 @@ export default function InfoCards(props: {
       <div className="w-full space-y-4">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {idCard}
+          {dateCard}
           {statusCard}
           {releaseCard}
-          {dateCard}
           {platformsCard}
         </div>
         <div className="grid gap-4 md:grid-cols-3">
@@ -429,14 +441,14 @@ export default function InfoCards(props: {
     <div className="w-full space-y-4">
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
         {idCard}
-        {serviceCard}
-        {statusCard}
-        {releaseCard}
         {dateCard}
+        {serviceCard}
         {tagCard}
         {roadmapCard}
-        {actByCard}
         {platformsCard}
+        {statusCard}
+        {releaseCard}
+        {actByCard}
         {cloudCard}
       </div>
     </div>
