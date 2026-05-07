@@ -1,0 +1,46 @@
+{
+  "id": "MC1303719",
+  "versions": [
+    {
+      "capturedAt": "2026-05-07T22:39:10.867Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-08-11T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p><p>To strengthen security for federated authentication, Microsoft Entra will update the default behavior of<b> federatedTokenValidationPolicy</b>. This policy governs how Microsoft Entra validates federated authentication tokens and determines whether sign-ins are allowed when the <b>internalDomainFederation</b> does not match the user’s UPN domain. Previously, enforcing this behavior required explicit tenant configuration, but it will now be applied by default to reduce the risk of unintended cross-domain sign-ins caused by misconfigured or overly permissive federation trust relationships.</p><p><b><b>When this will happen</b></b></p><p><b>General Availability (Worldwide, GCC, GCCH, and DoD): </b>We will begin rolling out in <b>mid-August 2026</b> and expect to complete by <b>mid-August 2026</b>.</p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 tenants using <b>federated authentication</b> in <i>Microsoft Entra</i></li><li>Admins managing federated domains that were configured <b>before December 2025</b></li><li>Applies only to federated domains that have an<b> internalDomainFederation</b> object</li></ul><p><i>What will happen</i></p><ul><li>By default, federated sign-ins will be <b>blocked </b>when the<b>&nbsp;internalDomainFederation</b> does not match the user’s UPN domain.</li><li>The<b> internalDomainFederation </b>object is typically created automatically during federation setup with Active Directory Federation Services (AD FS) or other identity providers (IdPs).</li><li>This <b>stricter default behavior </b>of the <b>federatedTokenValidationPolicy is already enforced</b> for federated domains added <b>since December 2025</b>.</li><li>After this change, the same behavior will apply to <b>all existing federated domains</b> with an <b><a href=\"https://learn.microsoft.com/graph/api/internaldomainfederation-get?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">internalDomainFederation</a></b> object.</li><li>Impacted sign-ins will fail with the error:</li></ul><p style=\"margin-left: 75px;\"><b>AADSTS5000820: Sign-in blocked by Federated Token Validation policy. Contact your administrator for details.</b></p><ul><li>There is <b>no change to the user experience </b>unless cross-domain federated sign-ins are currently occurring.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>No action is required for most organizations.</li><li>Cross-domain federated sign-ins will be blocked automatically as part of this security improvement.</li><li>Organizations that rely on cross-domain federated sign-ins should review their existing federation configurations before rollout.</li><li>(<b>Strongly discouraged</b>) If required for business continuity, Security Administrators, Hybrid Identity Administrators, or External Identity Provider Administrators can use <b>Microsoft Graph</b> to create a custom <b><a href=\"https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-get?view=graph-rest-beta&amp;tabs=http\" target=\"_blank\">federatedTokenValidationPolicy</a></b> with <b><a href=\"https://learn.microsoft.com/graph/api/resources/validatingdomains?view=graph-rest-beta\" target=\"_blank\">rootDomains</a> = none</b> to allow cross-domain sign-ins.</li><li>Communicate this change to identity and helpdesk teams to reduce support escalations.</li></ul><p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-get?view=graph-rest-beta&amp;tabs=http\" target=\"_blank\">Get federatedTokenValidationPolicy | Microsoft Graph | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/graph/api/internaldomainfederation-get?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">Get internalDomainFederation | Microsoft Graph | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/graph/graph-explorer/graph-explorer-overview\" target=\"_blank\">Use Graph Explorer to try Microsoft Graph APIs | Microsoft Graph | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/graph/api/resources/validatingdomains?view=graph-rest-beta\" target=\"_blank\">validatingDomains resource type | Microsoft Graph | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change include an admin control, and can it be controlled through Microsoft Entra ID group membership?</td><td>Yes. Administrators can configure a custom <b>federatedTokenValidationPolicy</b> using Microsoft Graph to override the default behavior, although this is strongly discouraged due to security risks.</td></tr><tr><td>Does the change modify, interrupt, or disable Purview capabilities such as Data Loss Prevention, Information Protection, Conditional Access, audit logging, eDiscovery, encryption, or retention policies?</td><td>Yes. This change affects authentication enforcement behavior in Microsoft Entra, which may indirectly influence how Conditional Access policies evaluate federated sign-ins.</td></tr></tbody></table><p><b></b></p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Entra will enforce stricter federatedTokenValidationPolicy by default starting mid-August 2026, blocking federated sign-ins when internalDomainFederation doesn't match the user's UPN domain. This affects tenants with federated domains configured before December 2025 and aims to enhance security against cross-domain sign-in risks."
+          }
+        ],
+        "EndDateTime": "2026-09-12T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1303719",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-05-07T22:39:10.867Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-05-07T22:39:04Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Microsoft Entra: Upcoming changes to federatedTokenValidationPolicy default settings",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

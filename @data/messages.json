@@ -1,5 +1,119 @@
 [
   {
+    "ActionRequiredByDateTime": "2026-08-11T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>To strengthen security for federated authentication, Microsoft Entra will update the default behavior of<b> federatedTokenValidationPolicy</b>. This policy governs how Microsoft Entra validates federated authentication tokens and determines whether sign-ins are allowed when the <b>internalDomainFederation</b> does not match the user’s UPN domain. Previously, enforcing this behavior required explicit tenant configuration, but it will now be applied by default to reduce the risk of unintended cross-domain sign-ins caused by misconfigured or overly permissive federation trust relationships.</p><p><b><b>When this will happen</b></b></p><p><b>General Availability (Worldwide, GCC, GCCH, and DoD): </b>We will begin rolling out in <b>mid-August 2026</b> and expect to complete by <b>mid-August 2026</b>.</p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 tenants using <b>federated authentication</b> in <i>Microsoft Entra</i></li><li>Admins managing federated domains that were configured <b>before December 2025</b></li><li>Applies only to federated domains that have an<b> internalDomainFederation</b> object</li></ul><p><i>What will happen</i></p><ul><li>By default, federated sign-ins will be <b>blocked </b>when the<b>&nbsp;internalDomainFederation</b> does not match the user’s UPN domain.</li><li>The<b> internalDomainFederation </b>object is typically created automatically during federation setup with Active Directory Federation Services (AD FS) or other identity providers (IdPs).</li><li>This <b>stricter default behavior </b>of the <b>federatedTokenValidationPolicy is already enforced</b> for federated domains added <b>since December 2025</b>.</li><li>After this change, the same behavior will apply to <b>all existing federated domains</b> with an <b><a href=\"https://learn.microsoft.com/graph/api/internaldomainfederation-get?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">internalDomainFederation</a></b> object.</li><li>Impacted sign-ins will fail with the error:</li></ul><p style=\"margin-left: 75px;\"><b>AADSTS5000820: Sign-in blocked by Federated Token Validation policy. Contact your administrator for details.</b></p><ul><li>There is <b>no change to the user experience </b>unless cross-domain federated sign-ins are currently occurring.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>No action is required for most organizations.</li><li>Cross-domain federated sign-ins will be blocked automatically as part of this security improvement.</li><li>Organizations that rely on cross-domain federated sign-ins should review their existing federation configurations before rollout.</li><li>(<b>Strongly discouraged</b>) If required for business continuity, Security Administrators, Hybrid Identity Administrators, or External Identity Provider Administrators can use <b>Microsoft Graph</b> to create a custom <b><a href=\"https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-get?view=graph-rest-beta&amp;tabs=http\" target=\"_blank\">federatedTokenValidationPolicy</a></b> with <b><a href=\"https://learn.microsoft.com/graph/api/resources/validatingdomains?view=graph-rest-beta\" target=\"_blank\">rootDomains</a> = none</b> to allow cross-domain sign-ins.</li><li>Communicate this change to identity and helpdesk teams to reduce support escalations.</li></ul><p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/graph/api/federatedtokenvalidationpolicy-get?view=graph-rest-beta&amp;tabs=http\" target=\"_blank\">Get federatedTokenValidationPolicy | Microsoft Graph | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/graph/api/internaldomainfederation-get?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">Get internalDomainFederation | Microsoft Graph | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/graph/graph-explorer/graph-explorer-overview\" target=\"_blank\">Use Graph Explorer to try Microsoft Graph APIs | Microsoft Graph | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/graph/api/resources/validatingdomains?view=graph-rest-beta\" target=\"_blank\">validatingDomains resource type | Microsoft Graph | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change include an admin control, and can it be controlled through Microsoft Entra ID group membership?</td><td>Yes. Administrators can configure a custom <b>federatedTokenValidationPolicy</b> using Microsoft Graph to override the default behavior, although this is strongly discouraged due to security risks.</td></tr><tr><td>Does the change modify, interrupt, or disable Purview capabilities such as Data Loss Prevention, Information Protection, Conditional Access, audit logging, eDiscovery, encryption, or retention policies?</td><td>Yes. This change affects authentication enforcement behavior in Microsoft Entra, which may indirectly influence how Conditional Access policies evaluate federated sign-ins.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Entra will enforce stricter federatedTokenValidationPolicy by default starting mid-August 2026, blocking federated sign-ins when internalDomainFederation doesn't match the user's UPN domain. This affects tenants with federated domains configured before December 2025 and aims to enhance security against cross-domain sign-in risks."
+      }
+    ],
+    "EndDateTime": "2026-09-12T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1303719",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-07T22:39:10.867Z",
+    "Services": [
+      "Microsoft Entra"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-07T22:39:04Z",
+    "Tags": [
+      "Admin impact"
+    ],
+    "Title": "Microsoft Entra: Upcoming changes to federatedTokenValidationPolicy default settings",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>To balance organizational branding with user flexibility, administrators will be able to control whether users can change the default compose font in <i>Outlook for iOS </i>and <i>Android</i>. When a default font name or size is set using Microsoft Intune app configuration policies, new configuration keys will allow administrators to decide if users can modify those defaults.</p><p><b><b>When this will happen</b></b></p><p style=\"margin-left: 25px;\"><b>General Availability (Worldwide): </b>We will begin rolling out in <b>early June 2026 </b>and expect to complete by<b> late June 2026</b>.</p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Administrators managing Outlook for iOS and Android using Microsoft Intune</li><li>Users <b>only if </b>administrators enable user changes</li></ul><p><i>What will happen</i></p><ul><li>Today, when a default compose font name or size is configured through Intune app configuration, users cannot change it.</li><li>With this update, administrators will be able to optionally allow users to change:<ul><li>The default font name</li><li>The default font size</li><li>Both</li></ul></li><li>Two new Intune app configuration keys will be available:<ul><li><b>com.microsoft.outlook.Settings.defaultFontName.UserChangeAllowed</b></li><li><b>com.microsoft.outlook.Settings.defaultFontSize.UserChangeAllowed</b></li></ul></li><li>By default:<ul><li>Both keys will be set to false, preserving existing behavior.</li><li>No changes will occur unless an administrator enables them.</li></ul></li><li>The keys will apply only when the corresponding default font setting is already configured.</li><li>If a user changes the font:<ul><li>The administrator-configured default will no longer apply for that user.</li><li>Future administrator updates will not override the user’s selection.</li><li>There is<b> no automatic reset</b> to the administrator-defined value.</li></ul></li><li>This feature will be off by default and requires explicit administrator configuration.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>No action is required to maintain the current locked-font behavior.</p><p><b>Optional (recommended):</b></p><ul><li>Review your Intune app configuration policies for Outlook for iOS and Android.</li><li>To allow user changes:<ul><li>Set<b> com.microsoft.outlook.Settings.defaultFontName.UserChangeAllowed</b> to<b><i> true</i></b> to allow font name changes.</li><li>Set <b>com.microsoft.outlook.Settings.defaultFontSize.UserChangeAllowed</b> to <i><b>true</b></i> to allow font size changes.</li></ul></li><li>Update internal documentation or helpdesk guidance as appropriate.</li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does this change introduce a new administrator control?</td><td>Yes. Administrators can control whether users are allowed to change the default compose font name and/or size using new Intune app configuration keys.</td></tr></tbody></table><p></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting June 2026, administrators can use new Intune app configuration keys to allow or block users from changing the default compose font name and size in Outlook for iOS and Android. By default, user changes remain blocked unless explicitly enabled by administrators."
+      }
+    ],
+    "EndDateTime": "2026-07-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1303717",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-07T22:38:06.393Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-07T22:37:53Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Default compose font: Administrators can allow users to change the default font in Outlook for iOS and Android",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>We are introducing a new<b> “Filmstrip” layout </b>for the SharePoint News web part and expanding support for aggregating news from multiple SharePoint sites. This update provides an additional layout option for displaying news and extends cross-site news aggregation capabilities.</p><p><b><b>When this will happen:</b></b></p><p>\n</p><ul>\n<li>Targeted Release (Worldwide): We will begin rolling out in <b>early May 2026 </b>and expect to complete by <b>mid-May 2026</b>.</li>\n<li>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out in <b>mid-May 2026</b> and expect to complete by <b>late June 2026</b>.</li>\n</ul><p></p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>SharePoint page editors and site owners with permissions to edit pages</li>\n<li>Organizations using SharePoint Online across Worldwide, GCC, GCC High, and DoD clouds</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>A new <b>“Filmstrip” layout</b> will be available in the News web part.</li><p><img src=\" https://cxcs.microsoft.net/file/ccp/en-us/d59d4631-5230-4170-b500-a3cb00ad945d\" style=\"width: 400px;\" alt=\"Filmstrip example.\"></p>\n<li><span style=\"background-color: rgb(255, 255, 255);\">The Filmstrip layout displays news posts in a large, visually prominent format to improve discoverability.</span></li><li>Editors can select multiple SharePoint sites as news sources, allowing the News web part to aggregate and display posts from those sites in a single view. Users will only see content they have permission to access. <ul><li>This capability is now available in GCC, GCC High, and DoD environments; it was previously available in Worldwide environments.</li></ul></li><li>Both the Filmstrip layout and multi-site news capabilities are available by default and are optional to use.</li><li>Existing news configurations, permissions, and publishing workflows remain unchanged.</li></ul><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n</ul><p>No required action.</p><p>Recommended actions:</p><ul><li>Inform SharePoint site owners and page editors about the new layout option.</li><li>Update internal documentation or training materials to include the Filmstrip layout.</li><li>Review intranet pages where enhanced visual storytelling may improve engagement.</li><li>If applicable, guide users on leveraging multi-site news aggregation.</li></ul><p><b>Learn more:</b> <a href=\"https://support.microsoft.com/office/use-the-news-web-part-on-a-sharepoint-page-c2dcee50-f5d7-434b-8cb9-a7feefd9f165\" target=\"_blank\">Use the News web part on a SharePoint page | Microsoft Support</a></p><ul>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p><p>The multi-site news capability enables the News web part to aggregate and display content from multiple SharePoint sites. This expands how existing content is accessed and presented across site collections while continuing to respect existing permissions.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "SharePoint News web part introduces a new \"Filmstrip\" layout for visually prominent news display and expands multi-site news aggregation to GCC, GCC High, and DoD environments. Rollout begins May 2026, affecting SharePoint editors and site owners with no required action but recommended communication and documentation updates."
+      }
+    ],
+    "EndDateTime": "2026-07-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1303716",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-07T22:37:32.487Z",
+    "Services": [
+      "SharePoint Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-07T22:37:24Z",
+    "Tags": [
+      "New feature",
+      "User impact"
+    ],
+    "Title": "SharePoint News web part: New Filmstrip layout and multi-site news support",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
     "ActionRequiredByDateTime": null,
     "Attachments": null,
     "AttachmentsArchive": null,
