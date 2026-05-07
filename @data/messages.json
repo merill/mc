@@ -4,6 +4,95 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated May 7, 2026: We have updated the timeline. Thank you for your patience.</p><p><b>Introduction</b></p><p>We’re updating the default behavior of <b>Microsoft Teams Copilot in meetings</b>. Copilot without transcription will become the default mode for newly scheduled Teams meetings where Copilot is allowed. Additionally, conversation history will now persist during meetings, improving multitasking and continuity of insights.\n</p><p>This update is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=478611\" target=\"_blank\">478611</a>.\n</p><p><b>When this will happen</b></p><p><b>General Availability (Worldwide): </b>We will begin rolling out in mid-July 2026 (previously late April) and expect to complete by end of July 2026 (previously mid-May).</p><p>\n<b><b>What's changing?</b></b>\n</p><p><b>Who is affected:</b></p>\n<ul>\n  <li>Affected tenants: If your TeamsMeetingPolicy was created or modified before the Copilot without transcription policy option was introduced (June 2024), your tenant will be affected by this change.</li>\n  <li>Not Affected: If your TeamsMeetingPolicy was created or modified after June 2024 when the Copilot without transcription option was introduced, your tenant will not be affected.</li>\n</ul>\n\n<p style=\"font-weight: bold;\">What will happen:</p>\n<ul style=\"\">\n  <li style=\"\">The default Copilot policy will change from <code>EnabledWithTranscript</code> to <code>Enabled</code> for both new and existing Teams meetings where Copilot is allowed.</li>\n  <li style=\"\">Copilot and Facilitator will no longer automatically start transcription for meetings in affected tenants.</li>\n  <li style=\"\">Users must manually enable transcription to use post-meeting Copilot or Facilitator queries.</li>\n  <li style=\"\">Conversation history will persist during meetings for Copilot without transcription.</li>\n  <li style=\"\">Tenants with TeamsMeetingPolicy created or modified after <b>June 2024</b> are <b>not affected</b>.</li>\n</ul>\n\n<b style=\"font-weight: bold;\"><b>What you can do to prepare:</b></b>\n<p style=\"\"><b>If adopting the new defaults:</b></p>\n<ul style=\"\">\n  <li style=\"\">Review TeamsMeetingPolicy for transcription dependencies.</li>\n  <li style=\"\">Update internal documentation and training.</li>\n  <li style=\"\">Communicate to users how to enable transcription when needed.</li>\n</ul>\n\n<p style=\"font-weight: bold;\">Optional admin steps to retain current behavior:</p>\n<ul style=\"\">\n  <li style=\"\">Update Global and Custom TeamsMeetingPolicy settings via TAC or PowerShell.</li>\n  <li style=\"\">TAC UI Portal: Navigate to Teams Admin Center and set the Copilot policy default value as required. For example, if the current default value is desired, update it to a different value, then set it back. Please ensure both TeamsMeetingPolicy and all Custom Policies are updated.</li>\n  <li style=\"\">PowerShell example to set Copilot policy to <code>EnabledWithTranscript</code> for all relevant meeting policies:\n\n<pre style=\"\">get-csteamsmeetingpolicy | ? {\n &nbsp;$_.Identity -ne \"Tag:AllOn\" -and\n &nbsp;$_.Identity -ne \"Tag:AllOff\" -and\n &nbsp;$_.Identity -ne \"Tag:Default\" -and\n &nbsp;$_.Identity -ne \"Tag:Kiosk\" -and\n &nbsp;$_.Identity -ne \"Tag:RestrictedAnonymousAccess\" -and\n &nbsp;$_.Identity -ne \"Tag:RestrictedAnonymousNoRecording\"\n} | % {\n &nbsp;$_.Identity;\n &nbsp;set-csteamsmeetingpolicy -identity $_.Identity -Copilot EnabledWithTranscript\n}<b>\n    </b></pre>\n  </li>\n</ul>\n<p style=\"font-weight: bold;\">Learn more:&nbsp;</p><ul style=\"\"><li style=\"\"><a href=\"https://learn.microsoft.com/microsoftteams/copilot-teams-transcription\" target=\"_blank\" style=\"\">Manage Microsoft 365 Copilot in Teams meetings and events | Microsoft Teams | Microsoft Learn</a></li><li style=\"\"><a href=\"https://support.microsoft.com/office/use-copilot-without-recording-a-teams-meeting-a59cb88c-0f6b-4a20-a47a-3a1c9a818bd9\" target=\"_blank\" style=\"\">Use Copilot without recording a Teams meeting | Copilot in Teams | Copilot | Microsoft Support</a></li></ul><p style=\"font-weight: bold;\"><b>Compliance considerations</b></p><table class=\"table table-bordered\" style=\"font-weight: bold;\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change alter how existing customer data is processed, stored, or accessed?</span></td><td><span style=\"font-weight: normal;\">Conversation history is now retained during the meeting instead of being cleared when switching panels.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data?</span></td><td><span style=\"font-weight: normal;\">Copilot behavior is updated to persist conversation history, enhancing AI-driven meeting insights.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change provide end users any new way of interacting with generative AI?</span></td><td><span style=\"font-weight: normal;\">Users can now maintain a continuous Copilot interaction during meetings without transcription.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change include an admin control and, can it be controlled through Entra ID group membership?</span></td><td><span style=\"font-weight: normal;\">IT admins can enforce or override defaults via Teams meeting policy.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change allow a user to enable and disable the feature themselves?</span></td><td><span style=\"font-weight: normal;\">Users can manually enable transcription during meetings to retain Copilot insights post-meeting.</span></td></tr></tbody></table><p style=\"font-weight: bold;\"></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "478611"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams Copilot will default to running without transcription for new meetings starting mid-July 2026, with conversation history persisting during meetings. Transcription must be manually enabled for post-meeting queries. Tenants with policies updated after June 2024 are unaffected; admins can adjust policies to retain current behavior."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Android, Desktop, iOS, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2026-08-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1139493",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-07T19:47:56.82Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-08-22T00:09:47Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams Copilot without transcription becomes default for meetings - conversation history now persists",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 7, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We are<b> retiring SharePoint One‑Time Passcode (SPO OTP) authentication</b> in <i>OneDrive</i> and <i>SharePoint</i> starting <b>July 2026</b>. Beginning in <b>May 2026</b>, new external sharing invitations and authentication will start using Microsoft Entra B2B instead of SPO OTP. This transition simplifies external collaboration, aligns authentication with Microsoft identity standards, and enables consistent guest lifecycle management, governance, and Conditional Access coverage across Microsoft 365.</p>\n<p><b><b>When this will happen</b></b></p><ul><li><b>May &amp; June 2026: </b>Invitation and authentication for new external sharing transitions to Microsoft Entra B2B. Users who previously authenticated via SPO OTP will continue to have access to specific people links even without a B2B guest account yet.</li><li><b>July 2026: </b>Retirement of SPO OTP authentication begins. External users without a guest account get access denied on previously shared specific people links. To restore access, a guest account must be created in Entra B2B, or an allowed user must share/re-share at least one file/folder/site.</li><li><b>Retirement is expected to complete by August 31, 2026.</b></li></ul>\n<p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>All Microsoft 365 tenants (commercial, government, sovereign).</li><li>All external users who access OneDrive or SharePoint files, folders, or sites.</li></ul><p><i>What will happen</i></p><ul><li>The <i>EnableAzureADB2BIntegration </i>setting will no longer control external sharing behavior beginning May 2026.</li><li>SPO OTP authentication will retire beginning July 2026.</li><li>The option to disable Entra B2B integration will be removed.</li></ul><p><i>Impact on external users</i></p><ul><li><b>External users who already have an Entra B2B guest account in your directory:</b><ul><li>No change in behavior.</li></ul></li><li><b>External users without a B2B guest account:</b><ul style=\"\"><li style=\"\">Specific people links <b>shared </b>after changes rolled out to your tenant:<ul style=\"\"><li style=\"\">A guest account will be automatically created via the Entra B2B Invitation Manager.</li><li style=\"\">Authentication will use Entra B2B (email OTP available if enabled).</li></ul></li><li style=\"\">Specific people links shared <b>before </b>changes rolled out to your tenant:<ul style=\"\"><li style=\"\">SPO OTP authentication continues until July 2026.</li><li style=\"\">After July 2026, these users will receive <b>access denied</b> until a matching B2B guest account exists.</li></ul></li></ul></li></ul><p><i>Restoring access after retirement</i></p><ul><li>Admins can manually create a guest account for the external user at any time.</li><li>Alternatively, an internal user with permissions needs to share or re-share at least one file, folder, or site, which will automatically create the guest account and restore access to all previously shared content.</li>\n</ul>\n<p><b><b>What you need to do to prepare</b></b></p>\n<p>No admin action is required. However, to ensure a smooth transition:</p>\n<ul>\n<li>Inform users that some external collaborators may see <b>access denied </b>beginning July 2026 for older links authenticated via SPO OTP.</li><li>If your organization relies on email OTP authentication via Entra, ensure it is <b>not disabled</b> in <i>Entra External ID settings</i>. See <a href=\"https://learn.microsoft.com/entra/external-id/one-time-passcode\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Email OTP for B2B guests</a>.</li>\n<li>Review external sharing policies and conditional access settings for guests in SharePoint and Entra admin centers.</li>\n<li>Optionally, identify external collaborators without guest accounts via external sharing reports. Proactively <a href=\"https://learn.microsoft.com/entra/external-id/add-users-administrator\">create guest accounts</a> to retain access.</li>\n<li>Update internal documentation.</li>\n</ul>\n<p><b>Learn more:</b> </p><ul><li><a href=\"https://learn.microsoft.com/entra/external-id/add-users-administrator\" target=\"_blank\">Add and manage B2B collaboration users in the Microsoft Entra admin center | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/one-time-passcode\" target=\"_blank\">Email one-time passcode authentication for B2B guest users | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b\" target=\"_blank\">Frequently Asked Questions: Improvements to external sharing in OneDrive &amp; SharePoint | SharePoint in Microsoft 365 | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/what-is-b2b\" target=\"_blank\">Overview: B2B collaboration with external guests for your workforce | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/b2b-quickstart-add-guest-users-portal\" target=\"_blank\">Quickstart: Add a guest user and send an invitation | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration\" target=\"_blank\">SharePoint and OneDrive integration with Microsoft Entra B2B | SharePoint in Microsoft 365 | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Compliance Question</b></td><td><b>Answer</b></td></tr><tr><td><b>Does the change alter how existing customer data is accessed, processed, or stored?</b></td><td><b>Yes. </b>This change retires SPO OTP authentication and requires all external users to authenticate using Microsoft Entra B2B guest accounts, which alters the authentication method used to access existing SharePoint and OneDrive content.</td></tr><tr><td><b>Does the change modify Conditional Access policies or enforcement?</b></td><td><b>Yes. </b>After retirement, all external users will authenticate through Entra B2B and become fully subject to Microsoft Entra Conditional Access, Identity Protection, and guest governance policies.</td></tr><tr><td><b>Does the change provide a new way of communicating between users, tenants, or subscriptions?</b></td><td><b>Yes. </b>External sharing invitations will be routed through Microsoft Entra B2B Invitation Manager instead of SharePoint’s OTP invitation flow.</td></tr><tr><td><b>Does the change alter how admins monitor, report on, or demonstrate compliance activities?</b></td><td><b>Yes. </b>Authentication events and guest lifecycle actions will be logged through Entra audit logs rather than SPO OTP logs, changing where admins review authentication and guest access activity.</td></tr></tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "SharePoint One-Time Passcode (SPO OTP) authentication will retire by August 31, 2026, transitioning external sharing and authentication in OneDrive and SharePoint to Microsoft Entra B2B starting May 2026. External users must have Entra B2B guest accounts for access, enabling unified guest management and Conditional Access enforcement."
+      }
+    ],
+    "EndDateTime": "2026-10-01T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1243549",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-05-07T19:44:32.743Z",
+    "Services": [
+      "SharePoint Online",
+      "Microsoft OneDrive"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-03-04T01:21:32Z",
+    "Tags": [
+      "Updated message",
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Retirement of SharePoint One-Time Passcode (SPO OTP) and transition to Microsoft Entra B2B",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated May 7, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We are introducing <b><i>Catch up</i></b> in <i>Microsoft Teams mobile</i>. This new, consolidated view helps users triage conversations that need their attention across chats, meeting chats, and followed channels or threads. The experience uses a mobile-optimized card layout with swipe actions to help users stay organized and act quickly on important messages.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=558108\" target=\"_blank\">558108</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Targeted Release:</b> Rolling out in <b>early April 2026</b>; expected completion in <b>early April 2026</b>.</li><li><b>General Availability (Worldwide): </b>Rolling out in <b>early May 2026</b>; expected completion in <b>late June 2026</b> (previously&nbsp;early May).</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>All users accessing Microsoft Teams on mobile clients.</li></ul><p><i>What will happen</i></p><ul><li>Users will see a<b> new Catch up experience</b> summarizing:<ul><li>@mentions</li><li>Replies in followed channels/threads</li><li>Chats and meeting chats where actions may be required</li></ul></li><li>A new card‑based view will appear in<i> Teams mobile:&nbsp;</i><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/9acc6655-99c1-44a1-87d7-a9a5c18e38b0/323718edc5144db30a94d2402110c37ca8166ca9.png\" style=\"width: 400px;\" alt=\"user settings\"></p></li><li>Users can swipe cards to take quick actions and triage messages:<p>&nbsp;<img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/862230ed-0769-4f55-ac3b-0083978ef3ff/9a1f4a45e2e8a8a1295d1734c53ccab0ab32cfbc.png\" style=\"width: 587px;\"></p></li><li>No admin configuration changes are required.</li><li>The feature is<b> enabled by default </b>for all tenants.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>No admin action is required at this time.</p><p>If your organization provides guidance or training for Teams usage, you may want to:</p><ul><li>Inform users about the<b> new Catch up mobile view </b>and how it supports triage.</li><li>Update internal helpdesk or user‑support documentation if it references existing Teams mobile views.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -675,7 +764,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559387\":[{\"RoadmapId\":559387,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.909665Z\",\"LatestRing\":null},{\"RoadmapId\":559387,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9096652Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559387\":[{\"RoadmapId\":559387,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8570294Z\",\"LatestRing\":null},{\"RoadmapId\":559387,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8570296Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -1308,7 +1397,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"543239\":[{\"RoadmapId\":543239,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489521Z\",\"LatestRing\":null},{\"RoadmapId\":543239,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489523Z\",\"LatestRing\":null},{\"RoadmapId\":543239,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489525Z\",\"LatestRing\":null}]}"
+        "Value": "{\"543239\":[{\"RoadmapId\":543239,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489523Z\",\"LatestRing\":null},{\"RoadmapId\":543239,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489521Z\",\"LatestRing\":null},{\"RoadmapId\":543239,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489525Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -3043,7 +3132,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"554927\":[{\"RoadmapId\":554927,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985796Z\",\"LatestRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781246Z\",\"LatestRing\":null},{\"RoadmapId\":554927,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781247Z\",\"LatestRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781249Z\",\"LatestRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.878125Z\",\"LatestRing\":null},{\"RoadmapId\":554927,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781252Z\",\"LatestRing\":null}]}"
+        "Value": "{\"554927\":[{\"RoadmapId\":554927,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.878125Z\",\"LatestRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781249Z\",\"LatestRing\":null},{\"RoadmapId\":554927,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781247Z\",\"LatestRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781246Z\",\"LatestRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985796Z\",\"LatestRing\":null},{\"RoadmapId\":554927,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781252Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -3299,7 +3388,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"558544\":[{\"RoadmapId\":558544,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8779796Z\",\"LatestRing\":null},{\"RoadmapId\":558544,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8779799Z\",\"LatestRing\":null},{\"RoadmapId\":558544,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.87798Z\",\"LatestRing\":null}]}"
+        "Value": "{\"558544\":[{\"RoadmapId\":558544,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8779799Z\",\"LatestRing\":null},{\"RoadmapId\":558544,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8779796Z\",\"LatestRing\":null},{\"RoadmapId\":558544,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.87798Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -5767,7 +5856,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"557170\":[{\"RoadmapId\":557170,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9095287Z\",\"LatestRing\":null},{\"RoadmapId\":557170,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9095289Z\",\"LatestRing\":null}]}"
+        "Value": "{\"557170\":[{\"RoadmapId\":557170,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8571775Z\",\"LatestRing\":null},{\"RoadmapId\":557170,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8571777Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6210,7 +6299,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559611\":[{\"RoadmapId\":559611,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9093246Z\",\"LatestRing\":null},{\"RoadmapId\":559611,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9093248Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559611\":[{\"RoadmapId\":559611,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8572739Z\",\"LatestRing\":null},{\"RoadmapId\":559611,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8572741Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6781,7 +6870,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559612\":[{\"RoadmapId\":559612,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9492967Z\",\"LatestRing\":null},{\"RoadmapId\":559612,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9492968Z\",\"LatestRing\":null},{\"RoadmapId\":559612,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9492969Z\",\"LatestRing\":null},{\"RoadmapId\":559612,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9492969Z\",\"LatestRing\":null},{\"RoadmapId\":559612,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.949297Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559612\":[{\"RoadmapId\":559612,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9492969Z\",\"LatestRing\":null},{\"RoadmapId\":559612,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9492969Z\",\"LatestRing\":null},{\"RoadmapId\":559612,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9492968Z\",\"LatestRing\":null},{\"RoadmapId\":559612,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9492967Z\",\"LatestRing\":null},{\"RoadmapId\":559612,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.949297Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6928,7 +7017,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"168524\":[{\"RoadmapId\":168524,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985489Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985491Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985493Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985495Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"168524\":[{\"RoadmapId\":168524,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985493Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985491Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985489Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":168524,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985495Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -8158,7 +8247,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"500696\":[{\"RoadmapId\":500696,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.698697Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":500696,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8013989Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.801399Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6986977Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"500696\":[{\"RoadmapId\":500696,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.801399Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-09-25T07:16:04.8013989Z\",\"LatestRing\":null},{\"RoadmapId\":500696,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.698697Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":500696,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6986977Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -8818,7 +8907,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559386\":[{\"RoadmapId\":559386,\"Platform\":\"iOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9092457Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9092459Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9092461Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559386\":[{\"RoadmapId\":559386,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8573505Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"iOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8573507Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8573508Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -10348,7 +10437,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"528930\":[{\"RoadmapId\":528930,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642662Z\",\"LatestRing\":null},{\"RoadmapId\":528930,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642664Z\",\"LatestRing\":null},{\"RoadmapId\":528930,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642665Z\",\"LatestRing\":null}]}"
+        "Value": "{\"528930\":[{\"RoadmapId\":528930,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642664Z\",\"LatestRing\":null},{\"RoadmapId\":528930,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642662Z\",\"LatestRing\":null},{\"RoadmapId\":528930,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-11-27T13:29:07.6642665Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -10846,7 +10935,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559605\":[{\"RoadmapId\":559605,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6986358Z\",\"LatestRing\":null},{\"RoadmapId\":559605,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9494576Z\",\"LatestRing\":null},{\"RoadmapId\":559605,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9494577Z\",\"LatestRing\":null},{\"RoadmapId\":559605,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9494578Z\",\"LatestRing\":null},{\"RoadmapId\":559605,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9494579Z\",\"LatestRing\":null},{\"RoadmapId\":559605,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.949458Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559605\":[{\"RoadmapId\":559605,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9494579Z\",\"LatestRing\":null},{\"RoadmapId\":559605,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9494578Z\",\"LatestRing\":null},{\"RoadmapId\":559605,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9494577Z\",\"LatestRing\":null},{\"RoadmapId\":559605,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.9494576Z\",\"LatestRing\":null},{\"RoadmapId\":559605,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6986358Z\",\"LatestRing\":null},{\"RoadmapId\":559605,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-07T05:06:09.949458Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12755,7 +12844,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"554933\":[{\"RoadmapId\":554933,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T11:28:55.7045396Z\",\"LatestRing\":null},{\"RoadmapId\":554933,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T11:28:55.7045395Z\",\"LatestRing\":null},{\"RoadmapId\":554933,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T11:28:55.7045397Z\",\"LatestRing\":null}]}"
+        "Value": "{\"554933\":[{\"RoadmapId\":554933,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T11:28:55.7045395Z\",\"LatestRing\":null},{\"RoadmapId\":554933,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T11:28:55.7045396Z\",\"LatestRing\":null},{\"RoadmapId\":554933,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T11:28:55.7045397Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -13463,7 +13552,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"554932\":[{\"RoadmapId\":554932,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6983374Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":554932,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6983376Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":554932,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6983378Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"554932\":[{\"RoadmapId\":554932,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6983376Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":554932,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6983374Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":554932,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6983378Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -15620,7 +15709,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"557716\":[{\"RoadmapId\":557716,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984396Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":557716,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984398Z\",\"LatestRing\":null},{\"RoadmapId\":557716,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984399Z\",\"LatestRing\":null},{\"RoadmapId\":557716,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984413Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"557716\":[{\"RoadmapId\":557716,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984399Z\",\"LatestRing\":null},{\"RoadmapId\":557716,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984398Z\",\"LatestRing\":null},{\"RoadmapId\":557716,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984396Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":557716,\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984413Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -15806,7 +15895,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"518218\":[{\"RoadmapId\":518218,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872051Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387205Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872052Z\",\"LatestRing\":null}]}"
+        "Value": "{\"518218\":[{\"RoadmapId\":518218,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387205Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872051Z\",\"LatestRing\":null},{\"RoadmapId\":518218,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872052Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -15857,7 +15946,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"558107\":[{\"RoadmapId\":558107,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9095026Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9095028Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.909503Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9095031Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9095033Z\",\"LatestRing\":null}]}"
+        "Value": "{\"558107\":[{\"RoadmapId\":558107,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8571976Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8571978Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8571979Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8571981Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8571982Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16044,7 +16133,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"476488\":[{\"RoadmapId\":476488,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748238Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748236Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.374824Z\",\"LatestRing\":null}]}"
+        "Value": "{\"476488\":[{\"RoadmapId\":476488,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748236Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.3748238Z\",\"LatestRing\":null},{\"RoadmapId\":476488,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-02-20T06:19:52.374824Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16710,54 +16799,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated March 6, 2026: We have updated the timeline. Thank you for your patience.</p><p><b>Introduction</b></p><p>We’re updating the default behavior of <b>Microsoft Teams Copilot in meetings</b>. Copilot without transcription will become the default mode for newly scheduled Teams meetings where Copilot is allowed. Additionally, conversation history will now persist during meetings, improving multitasking and continuity of insights.\n</p><p>This update is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=478611\" target=\"_blank\">478611</a>.\n</p><p><b>When this will happen</b></p><p><b>General Availability (Worldwide): </b>We will begin rolling out in late April 2026 (previously late March) and expect to complete by mid-May 2026 (previously early April).</p><p>\n<b><b>What's changing?</b></b>\n</p><p><b>Who is affected:</b></p>\n<ul>\n  <li>Affected tenants: If your TeamsMeetingPolicy was created or modified before the Copilot without transcription policy option was introduced (June 2024), your tenant will be affected by this change.</li>\n  <li>Not Affected: If your TeamsMeetingPolicy was created or modified after June 2024 when the Copilot without transcription option was introduced, your tenant will not be affected.</li>\n</ul>\n\n<p style=\"font-weight: bold;\">What will happen:</p>\n<ul style=\"\">\n  <li style=\"\">The default Copilot policy will change from <code>EnabledWithTranscript</code> to <code>Enabled</code> for both new and existing Teams meetings where Copilot is allowed.</li>\n  <li style=\"\">Copilot and Facilitator will no longer automatically start transcription for meetings in affected tenants.</li>\n  <li style=\"\">Users must manually enable transcription to use post-meeting Copilot or Facilitator queries.</li>\n  <li style=\"\">Conversation history will persist during meetings for Copilot without transcription.</li>\n  <li style=\"\">Tenants with TeamsMeetingPolicy created or modified after <b>June 2024</b> are <b>not affected</b>.</li>\n</ul>\n\n<b style=\"font-weight: bold;\"><b>What you can do to prepare:</b></b>\n<p style=\"\"><b>If adopting the new defaults:</b></p>\n<ul style=\"\">\n  <li style=\"\">Review TeamsMeetingPolicy for transcription dependencies.</li>\n  <li style=\"\">Update internal documentation and training.</li>\n  <li style=\"\">Communicate to users how to enable transcription when needed.</li>\n</ul>\n\n<p style=\"font-weight: bold;\">Optional admin steps to retain current behavior:</p>\n<ul style=\"\">\n  <li style=\"\">Update Global and Custom TeamsMeetingPolicy settings via TAC or PowerShell.</li>\n  <li style=\"\">TAC UI Portal: Navigate to Teams Admin Center and set the Copilot policy default value as required. For example, if the current default value is desired, update it to a different value, then set it back. Please ensure both TeamsMeetingPolicy and all Custom Policies are updated.</li>\n  <li style=\"\">PowerShell example to set Copilot policy to <code>EnabledWithTranscript</code> for all relevant meeting policies:\n\n<pre style=\"\">get-csteamsmeetingpolicy | ? {\n &nbsp;$_.Identity -ne \"Tag:AllOn\" -and\n &nbsp;$_.Identity -ne \"Tag:AllOff\" -and\n &nbsp;$_.Identity -ne \"Tag:Default\" -and\n &nbsp;$_.Identity -ne \"Tag:Kiosk\" -and\n &nbsp;$_.Identity -ne \"Tag:RestrictedAnonymousAccess\" -and\n &nbsp;$_.Identity -ne \"Tag:RestrictedAnonymousNoRecording\"\n} | % {\n &nbsp;$_.Identity;\n &nbsp;set-csteamsmeetingpolicy -identity $_.Identity -Copilot EnabledWithTranscript\n}<b>\n    </b></pre>\n  </li>\n</ul>\n<p style=\"font-weight: bold;\">Learn more:&nbsp;</p><ul style=\"\"><li style=\"\"><a href=\"https://learn.microsoft.com/microsoftteams/copilot-teams-transcription\" target=\"_blank\" style=\"\">Manage Microsoft 365 Copilot in Teams meetings and events | Microsoft Teams | Microsoft Learn</a></li><li style=\"\"><a href=\"https://support.microsoft.com/office/use-copilot-without-recording-a-teams-meeting-a59cb88c-0f6b-4a20-a47a-3a1c9a818bd9\" target=\"_blank\" style=\"\">Use Copilot without recording a Teams meeting | Copilot in Teams | Copilot | Microsoft Support</a></li></ul><p style=\"font-weight: bold;\"><b>Compliance considerations</b></p><table class=\"table table-bordered\" style=\"font-weight: bold;\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change alter how existing customer data is processed, stored, or accessed?</span></td><td><span style=\"font-weight: normal;\">Conversation history is now retained during the meeting instead of being cleared when switching panels.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data?</span></td><td><span style=\"font-weight: normal;\">Copilot behavior is updated to persist conversation history, enhancing AI-driven meeting insights.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change provide end users any new way of interacting with generative AI?</span></td><td><span style=\"font-weight: normal;\">Users can now maintain a continuous Copilot interaction during meetings without transcription.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change include an admin control and, can it be controlled through Entra ID group membership?</span></td><td><span style=\"font-weight: normal;\">IT admins can enforce or override defaults via Teams meeting policy.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change allow a user to enable and disable the feature themselves?</span></td><td><span style=\"font-weight: normal;\">Users can manually enable transcription during meetings to retain Copilot insights post-meeting.</span></td></tr></tbody></table><p style=\"font-weight: bold;\"></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "478611"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams Copilot will default to operating without transcription in new meetings starting late April 2026, with conversation history persisting during meetings. Transcription must be manually enabled for post-meeting queries. Tenants with policies updated after June 2024 are unaffected; admins can adjust policies to retain current behavior."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Android, Desktop, iOS, Mac, Web"
-      }
-    ],
-    "EndDateTime": "2026-06-22T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1139493",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-03-06T18:29:52.207Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-08-22T00:09:47Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams Copilot without transcription becomes default for meetings - conversation history now persists",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated March 6, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We're introducing two new remediation actions as part of the <b>Email</b> table in&nbsp;Advanced Hunting that help&nbsp;<b>security operations (SecOps) </b>teams respond more quickly during investigations:</p><ul><li><b>Attachment  block action\n</b></li><li><b>Top-level URL domain block action\n</b></li></ul><p>These actions let SecOps teams move directly from detection to mitigation within the same workflow, reducing response time and operational friction when addressing malicious campaigns.</p><p>These actions will be available through <b>Take action</b> if the query returns all the required columns.</p><p><b><b>When this will happen:</b></b></p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out <b>early March 2026</b> and expect to complete by <b>early April 2026</b> (previously&nbsp;end of March).</p><p><b><b>How this affects your organization:</b>\n\n</b></p><p><b>Who is affected:</b></p>\n<ul>\n<li>Security operations teams and administrators using Advanced Hunting in Microsoft Defender for Office 365</li><li><b>T</b>his feature is available to customers with <b>Microsoft Defender for Office 365 Plan 2 </b>or<b> Microsoft 365 E5 licenses.</b></li></ul><p><b>What will happen:</b></p>\n<ul>\n<li>Security teams can block malicious email attachments directly from Advanced Hunting results.</li>\n<li>Security teams can block top-level URL domains<b> </b>associated with phishing or malicious campaigns.</li>\n<li>Remediation actions are available in the Advanced Hunting “Take action” wizard.</li>\n<li>The feature is<b> enabled by default</b>; no configuration changes are required.</li>\n<li>There is <b>no impact to user workflows</b> unless a security action is taken.</li></ul><p><b style=\"\">Note: </b></p><ul><li>Attachment entries in the Tenant Allow/Block List are supported only if the query results include the <b>Attachment </b>column by joining with the <b>EmailAttachmentInfo</b> table on <b>NetworkMessageId</b>.</li><li><b>Submit to Microsoft</b> may be unavailable if required columns are missing.&nbsp;To resolve this issue, select <b>Show empty columns</b> before you select <b>Take actions</b>.</li>\n</ul>\n\n<p><b>What you can do to prepare:</b></p>\n<ul>\n<li>No action is required.</li>\n<li>Review security investigation and response procedures to include the new remediation options.</li>\n<li>Inform SecOps teams of the updated<b> </b>Advanced Hunting capabilities.</li></ul><p>Learn more: <a href=\"https://learn.microsoft.com/defender-xdr/advanced-hunting-take-action\" target=\"_blank\">Take action on advanced hunting query results in Microsoft Defender XDR - Microsoft Defender XDR | Microsoft Learn</a>&nbsp;(documentation will be updated before rollout)</p><ul>\n</ul>\n\n<p><b>Compliance considerations:</b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -17004,47 +17045,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Purview | Insider Risk Management - Ability to preview content in Insider Risk Management Alerts",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated March 4, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We are<b> retiring SharePoint One‑Time Passcode (SPO OTP) authentication</b> in <i>OneDrive</i> and <i>SharePoint</i> starting <b>July 2026</b>. Beginning in <b>May 2026</b>, new external sharing invitations and authentication will start using Microsoft Entra B2B instead of SPO OTP. This transition simplifies external collaboration, aligns authentication with Microsoft identity standards, and enables consistent guest lifecycle management, governance, and Conditional Access coverage across Microsoft 365.</p>\n<p><b><b>When this will happen</b></b></p><ul><li><b>May 2026: </b>Invitation and authentication for new external sharing begins transitioning to Microsoft Entra B2B. Users who previously authenticated via SPO OTP will continue to have access to specific people links even without a B2B guest account yet.</li><li><b>July 2026: </b>Retirement of SPO OTP authentication begins. External users without a guest account get access denied on previously shared specific people links. To restore access, a guest account must be created in Entra B2B, or an allowed user must share/re-share at least one file/folder/site.</li><li><b>Retirement is expected to complete by August 31, 2026.</b></li></ul>\n<p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>All Microsoft 365 tenants (commercial, government, sovereign).</li><li>All external users who access OneDrive or SharePoint files, folders, or sites.</li></ul><p><i>What will happen</i></p><ul><li>The <i>EnableAzureADB2BIntegration </i>setting will no longer control external sharing behavior beginning May 2026.</li><li>SPO OTP authentication will retire beginning July 2026.</li><li>The option to disable Entra B2B integration will be removed.</li></ul><p><i>Impact on external users</i></p><ul><li><b>External users who already have an Entra B2B guest account in your directory:</b><ul><li>No change in behavior.</li></ul></li><li><b>External users without a B2B guest account:</b><ul style=\"\"><li style=\"\">Specific people links <b>shared </b>after changes rolled out to your tenant:<ul style=\"\"><li style=\"\">A guest account will be automatically created via the Entra B2B Invitation Manager.</li><li style=\"\">Authentication will use Entra B2B (email OTP available if enabled).</li></ul></li><li style=\"\">Specific people links shared <b>before </b>changes rolled out to your tenant:<ul style=\"\"><li style=\"\">SPO OTP authentication continues until July 2026.</li><li style=\"\">After July 2026, these users will receive <b>access denied</b> until a matching B2B guest account exists.</li></ul></li></ul></li></ul><p><i>Restoring access after retirement</i></p><ul><li>Admins can manually create a guest account for the external user at any time.</li><li>Alternatively, an internal user with permissions needs to share or re-share at least one file, folder, or site, which will automatically create the guest account and restore access to all previously shared content.</li>\n</ul>\n<p><b><b>What you need to do to prepare</b></b></p>\n<p>No admin action is required. However, to ensure a smooth transition:</p>\n<ul>\n<li>Inform users that some external collaborators may see <b>access denied </b>beginning July 2026 for older links authenticated via SPO OTP.</li><li>If your organization relies on email OTP authentication via Entra, ensure it is <b>not disabled</b> in <i>Entra External ID settings</i>. See <a href=\"https://learn.microsoft.com/entra/external-id/one-time-passcode\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Email OTP for B2B guests</a>.</li>\n<li>Review external sharing policies and conditional access settings for guests in SharePoint and Entra admin centers.</li>\n<li>Optionally, identify external collaborators without guest accounts via external sharing reports. Proactively <a href=\"https://learn.microsoft.com/entra/external-id/add-users-administrator\">create guest accounts</a> to retain access.</li>\n<li>Update internal documentation.</li>\n</ul>\n<p><b>Learn more:</b> </p><ul><li><a href=\"https://learn.microsoft.com/entra/external-id/add-users-administrator\" target=\"_blank\">Add and manage B2B collaboration users in the Microsoft Entra admin center | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/one-time-passcode\" target=\"_blank\">Email one-time passcode authentication for B2B guest users | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b\" target=\"_blank\">Frequently Asked Questions: Improvements to external sharing in OneDrive &amp; SharePoint | SharePoint in Microsoft 365 | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/what-is-b2b\" target=\"_blank\">Overview: B2B collaboration with external guests for your workforce | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/b2b-quickstart-add-guest-users-portal\" target=\"_blank\">Quickstart: Add a guest user and send an invitation | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration\" target=\"_blank\">SharePoint and OneDrive integration with Microsoft Entra B2B | SharePoint in Microsoft 365 | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Compliance Question</b></td><td><b>Answer</b></td></tr><tr><td><b>Does the change alter how existing customer data is accessed, processed, or stored?</b></td><td><b>Yes. </b>This change retires SPO OTP authentication and requires all external users to authenticate using Microsoft Entra B2B guest accounts, which alters the authentication method used to access existing SharePoint and OneDrive content.</td></tr><tr><td><b>Does the change modify Conditional Access policies or enforcement?</b></td><td><b>Yes. </b>After retirement, all external users will authenticate through Entra B2B and become fully subject to Microsoft Entra Conditional Access, Identity Protection, and guest governance policies.</td></tr><tr><td><b>Does the change provide a new way of communicating between users, tenants, or subscriptions?</b></td><td><b>Yes. </b>External sharing invitations will be routed through Microsoft Entra B2B Invitation Manager instead of SharePoint’s OTP invitation flow.</td></tr><tr><td><b>Does the change alter how admins monitor, report on, or demonstrate compliance activities?</b></td><td><b>Yes. </b>Authentication events and guest lifecycle actions will be logged through Entra audit logs rather than SPO OTP logs, changing where admins review authentication and guest access activity.</td></tr></tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "SharePoint One-Time Passcode (SPO OTP) authentication will retire by August 31, 2026, transitioning external sharing and authentication in OneDrive and SharePoint to Microsoft Entra B2B starting May 2026. External users must have Entra B2B guest accounts for access, enabling consistent governance and Conditional Access across Microsoft 365."
-      }
-    ],
-    "EndDateTime": "2026-10-01T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1243549",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-03-04T18:27:32.183Z",
-    "Services": [
-      "SharePoint Online",
-      "Microsoft OneDrive"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-03-04T01:21:32Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Retirement of SharePoint One-Time Passcode (SPO OTP) and transition to Microsoft Entra B2B",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -17370,7 +17370,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985051Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985054Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985056Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985057Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985056Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985054Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985051Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985057Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -17421,7 +17421,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985051Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985054Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985056Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985057Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"325780\":[{\"RoadmapId\":325780,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985056Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985054Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985051Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":325780,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985057Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -17786,7 +17786,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"541831\":[{\"RoadmapId\":541831,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984554Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":541831,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387226Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872259Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984561Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"541831\":[{\"RoadmapId\":541831,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872259Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.387226Z\",\"LatestRing\":null},{\"RoadmapId\":541831,\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984554Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":541831,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6984561Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -17877,7 +17877,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"557184\":[{\"RoadmapId\":557184,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985619Z\",\"LatestRing\":null},{\"RoadmapId\":557184,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985621Z\",\"LatestRing\":null},{\"RoadmapId\":557184,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985623Z\",\"LatestRing\":null}]}"
+        "Value": "{\"557184\":[{\"RoadmapId\":557184,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985621Z\",\"LatestRing\":null},{\"RoadmapId\":557184,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985619Z\",\"LatestRing\":null},{\"RoadmapId\":557184,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985623Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -19575,7 +19575,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"542794\":[{\"RoadmapId\":542794,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872722Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T15:55:37.5989083Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872734Z\",\"LatestRing\":null}]}"
+        "Value": "{\"542794\":[{\"RoadmapId\":542794,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T15:55:37.5989083Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872722Z\",\"LatestRing\":null},{\"RoadmapId\":542794,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-02-10T20:39:40.3872734Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -19788,7 +19788,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"482747\":[{\"RoadmapId\":482747,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9096869Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9096871Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T18:20:30.9096872Z\",\"LatestRing\":null}]}"
+        "Value": "{\"482747\":[{\"RoadmapId\":482747,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8569533Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.8569558Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-07T20:10:56.856956Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
