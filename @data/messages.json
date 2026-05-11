@@ -4,6 +4,54 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated May 11, 2026: We have decided not to move forward with this change at this time. We apologize for any inconvenience.</p><p><b>Introduction</b></p><p>We’re updating the default behavior of <b>Microsoft Teams Copilot in meetings</b>. Copilot without transcription will become the default mode for newly scheduled Teams meetings where Copilot is allowed. Additionally, conversation history will now persist during meetings, improving multitasking and continuity of insights.\n</p><p>This update is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=478611\" target=\"_blank\">478611</a>.\n</p><p><b>When this will happen</b></p><p><b>General Availability (Worldwide): </b>We have decided not to move forward with this change at this time.&nbsp;</p><p>\n<b><b>What's changing?</b></b>\n</p><p><b>Who is affected:</b></p>\n<ul>\n  <li>Affected tenants: If your TeamsMeetingPolicy was created or modified before the Copilot without transcription policy option was introduced (June 2024), your tenant will be affected by this change.</li>\n  <li>Not Affected: If your TeamsMeetingPolicy was created or modified after June 2024 when the Copilot without transcription option was introduced, your tenant will not be affected.</li>\n</ul>\n\n<p style=\"font-weight: bold;\">What will happen:</p>\n<ul style=\"\">\n  <li style=\"\">The default Copilot policy will change from <code>EnabledWithTranscript</code> to <code>Enabled</code> for both new and existing Teams meetings where Copilot is allowed.</li>\n  <li style=\"\">Copilot and Facilitator will no longer automatically start transcription for meetings in affected tenants.</li>\n  <li style=\"\">Users must manually enable transcription to use post-meeting Copilot or Facilitator queries.</li>\n  <li style=\"\">Conversation history will persist during meetings for Copilot without transcription.</li>\n  <li style=\"\">Tenants with TeamsMeetingPolicy created or modified after <b>June 2024</b> are <b>not affected</b>.</li>\n</ul>\n\n<b style=\"font-weight: bold;\"><b>What you can do to prepare:</b></b>\n<p style=\"\"><b>If adopting the new defaults:</b></p>\n<ul style=\"\">\n  <li style=\"\">Review TeamsMeetingPolicy for transcription dependencies.</li>\n  <li style=\"\">Update internal documentation and training.</li>\n  <li style=\"\">Communicate to users how to enable transcription when needed.</li>\n</ul>\n\n<p style=\"font-weight: bold;\">Optional admin steps to retain current behavior:</p>\n<ul style=\"\">\n  <li style=\"\">Update Global and Custom TeamsMeetingPolicy settings via TAC or PowerShell.</li>\n  <li style=\"\">TAC UI Portal: Navigate to Teams Admin Center and set the Copilot policy default value as required. For example, if the current default value is desired, update it to a different value, then set it back. Please ensure both TeamsMeetingPolicy and all Custom Policies are updated.</li>\n  <li style=\"\">PowerShell example to set Copilot policy to <code>EnabledWithTranscript</code> for all relevant meeting policies:\n\n<pre style=\"\">get-csteamsmeetingpolicy | ? {\n &nbsp;$_.Identity -ne \"Tag:AllOn\" -and\n &nbsp;$_.Identity -ne \"Tag:AllOff\" -and\n &nbsp;$_.Identity -ne \"Tag:Default\" -and\n &nbsp;$_.Identity -ne \"Tag:Kiosk\" -and\n &nbsp;$_.Identity -ne \"Tag:RestrictedAnonymousAccess\" -and\n &nbsp;$_.Identity -ne \"Tag:RestrictedAnonymousNoRecording\"\n} | % {\n &nbsp;$_.Identity;\n &nbsp;set-csteamsmeetingpolicy -identity $_.Identity -Copilot EnabledWithTranscript\n}<b>\n    </b></pre>\n  </li>\n</ul>\n<p style=\"font-weight: bold;\">Learn more:&nbsp;</p><ul style=\"\"><li style=\"\"><a href=\"https://learn.microsoft.com/microsoftteams/copilot-teams-transcription\" target=\"_blank\" style=\"\">Manage Microsoft 365 Copilot in Teams meetings and events | Microsoft Teams | Microsoft Learn</a></li><li style=\"\"><a href=\"https://support.microsoft.com/office/use-copilot-without-recording-a-teams-meeting-a59cb88c-0f6b-4a20-a47a-3a1c9a818bd9\" target=\"_blank\" style=\"\">Use Copilot without recording a Teams meeting | Copilot in Teams | Copilot | Microsoft Support</a></li></ul><p style=\"font-weight: bold;\"><b>Compliance considerations</b></p><table class=\"table table-bordered\" style=\"font-weight: bold;\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change alter how existing customer data is processed, stored, or accessed?</span></td><td><span style=\"font-weight: normal;\">Conversation history is now retained during the meeting instead of being cleared when switching panels.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data?</span></td><td><span style=\"font-weight: normal;\">Copilot behavior is updated to persist conversation history, enhancing AI-driven meeting insights.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change provide end users any new way of interacting with generative AI?</span></td><td><span style=\"font-weight: normal;\">Users can now maintain a continuous Copilot interaction during meetings without transcription.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change include an admin control and, can it be controlled through Entra ID group membership?</span></td><td><span style=\"font-weight: normal;\">IT admins can enforce or override defaults via Teams meeting policy.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change allow a user to enable and disable the feature themselves?</span></td><td><span style=\"font-weight: normal;\">Users can manually enable transcription during meetings to retain Copilot insights post-meeting.</span></td></tr></tbody></table><p style=\"font-weight: bold;\"></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "478611"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams Copilot's default mode would switch to no transcription with persistent conversation history, but this change is currently not proceeding. Affected tenants must manually enable transcription for post-meeting queries. Admins can adjust policies to retain current behavior; tenants updated after June 2024 are unaffected."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Android, Desktop, iOS, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2026-05-15T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1139493",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-11T17:19:44.887Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-08-22T00:09:47Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams Copilot without transcription becomes default for meetings - conversation history now persists",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated May 11, 2026: We have updated the content. Thank you for your patience.</p><p><b>Introduction</b><br>A new organization-level Cloud Policy setting&nbsp;(OCPS)&nbsp;is available, allowing admins to block creation of tenant-owned Loop workspaces. When this setting is on, the \"New workspace\" ability in the Loop app will be unavailable. The only valid option for creating workspaces will be through standard channels in Teams, as these are connected to and managed by existing Microsoft 365 Groups. For more information about creating workspaces in Teams standard channels, visit <a href=\"https://support.microsoft.com/office/loop-workspaces-in-teams-channels-ed4d78b4-67c4-4685-86cc-12ffd791c2aa\">Loop Workspaces in Teams Channels - Microsoft Support</a>.</p><p>Admins will be able to ensure that new Loop workspaces are connected to and managed by an existing Microsoft 365 Group, similar to SharePoint Team sites.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=422725\" target=\"_blank\">422725</a></p><p><b>When this will happen:</b></p><p>General Availability (Worldwide): We will begin rolling out late April 2026 (previously early April) and expect to complete by early May 2026 (previously late April).&nbsp;</p><p><b>How this will affect your organization:</b></p><p>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=422725\" target=\"_blank\">422725</a>&nbsp;covers the capability to <b>ensure </b>that new Loop workspaces are connected to and managed by an existing Microsoft 365 Group, similar to SharePoint Team sites. Workspace creation must be initiated from the Loop app within standard Teams channels.</p><p>While this setting may align with existing governance processes, it's important for admins to note that scenarios like <a href=\"https://techcommunity.microsoft.com/blog/microsoft365insiderblog/automatically-aggregate-teams-meeting-content-in-a-loop-workspace/4287319\" target=\"_blank\">automatic aggregation of Teams meeting content into a Loop workspace</a>, or the creation of small, short-term project workspaces, will be more challenging for end-users unless they can skillfully select an existing M365 group during creation. Please consider this tradeoff in your adoption strategy.</p><p>If your organization has governance tools for SharePoint Communication sites that work effectively in a reactive manner (i.e., governance is applied after the site is created), Microsoft recommends extending this process to include Loop workspaces rather than using this policy.</p><p><b>What you need to do to prepare:</b>\n</p><p>There is nothing you need to do to prepare. This capability will roll to your tenant automatically.</p>",
       "ContentType": "html"
     },
@@ -843,54 +891,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated May 7, 2026: We have updated the timeline. Thank you for your patience.</p><p><b>Introduction</b></p><p>We’re updating the default behavior of <b>Microsoft Teams Copilot in meetings</b>. Copilot without transcription will become the default mode for newly scheduled Teams meetings where Copilot is allowed. Additionally, conversation history will now persist during meetings, improving multitasking and continuity of insights.\n</p><p>This update is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=478611\" target=\"_blank\">478611</a>.\n</p><p><b>When this will happen</b></p><p><b>General Availability (Worldwide): </b>We will begin rolling out in mid-July 2026 (previously late April) and expect to complete by end of July 2026 (previously mid-May).</p><p>\n<b><b>What's changing?</b></b>\n</p><p><b>Who is affected:</b></p>\n<ul>\n  <li>Affected tenants: If your TeamsMeetingPolicy was created or modified before the Copilot without transcription policy option was introduced (June 2024), your tenant will be affected by this change.</li>\n  <li>Not Affected: If your TeamsMeetingPolicy was created or modified after June 2024 when the Copilot without transcription option was introduced, your tenant will not be affected.</li>\n</ul>\n\n<p style=\"font-weight: bold;\">What will happen:</p>\n<ul style=\"\">\n  <li style=\"\">The default Copilot policy will change from <code>EnabledWithTranscript</code> to <code>Enabled</code> for both new and existing Teams meetings where Copilot is allowed.</li>\n  <li style=\"\">Copilot and Facilitator will no longer automatically start transcription for meetings in affected tenants.</li>\n  <li style=\"\">Users must manually enable transcription to use post-meeting Copilot or Facilitator queries.</li>\n  <li style=\"\">Conversation history will persist during meetings for Copilot without transcription.</li>\n  <li style=\"\">Tenants with TeamsMeetingPolicy created or modified after <b>June 2024</b> are <b>not affected</b>.</li>\n</ul>\n\n<b style=\"font-weight: bold;\"><b>What you can do to prepare:</b></b>\n<p style=\"\"><b>If adopting the new defaults:</b></p>\n<ul style=\"\">\n  <li style=\"\">Review TeamsMeetingPolicy for transcription dependencies.</li>\n  <li style=\"\">Update internal documentation and training.</li>\n  <li style=\"\">Communicate to users how to enable transcription when needed.</li>\n</ul>\n\n<p style=\"font-weight: bold;\">Optional admin steps to retain current behavior:</p>\n<ul style=\"\">\n  <li style=\"\">Update Global and Custom TeamsMeetingPolicy settings via TAC or PowerShell.</li>\n  <li style=\"\">TAC UI Portal: Navigate to Teams Admin Center and set the Copilot policy default value as required. For example, if the current default value is desired, update it to a different value, then set it back. Please ensure both TeamsMeetingPolicy and all Custom Policies are updated.</li>\n  <li style=\"\">PowerShell example to set Copilot policy to <code>EnabledWithTranscript</code> for all relevant meeting policies:\n\n<pre style=\"\">get-csteamsmeetingpolicy | ? {\n &nbsp;$_.Identity -ne \"Tag:AllOn\" -and\n &nbsp;$_.Identity -ne \"Tag:AllOff\" -and\n &nbsp;$_.Identity -ne \"Tag:Default\" -and\n &nbsp;$_.Identity -ne \"Tag:Kiosk\" -and\n &nbsp;$_.Identity -ne \"Tag:RestrictedAnonymousAccess\" -and\n &nbsp;$_.Identity -ne \"Tag:RestrictedAnonymousNoRecording\"\n} | % {\n &nbsp;$_.Identity;\n &nbsp;set-csteamsmeetingpolicy -identity $_.Identity -Copilot EnabledWithTranscript\n}<b>\n    </b></pre>\n  </li>\n</ul>\n<p style=\"font-weight: bold;\">Learn more:&nbsp;</p><ul style=\"\"><li style=\"\"><a href=\"https://learn.microsoft.com/microsoftteams/copilot-teams-transcription\" target=\"_blank\" style=\"\">Manage Microsoft 365 Copilot in Teams meetings and events | Microsoft Teams | Microsoft Learn</a></li><li style=\"\"><a href=\"https://support.microsoft.com/office/use-copilot-without-recording-a-teams-meeting-a59cb88c-0f6b-4a20-a47a-3a1c9a818bd9\" target=\"_blank\" style=\"\">Use Copilot without recording a Teams meeting | Copilot in Teams | Copilot | Microsoft Support</a></li></ul><p style=\"font-weight: bold;\"><b>Compliance considerations</b></p><table class=\"table table-bordered\" style=\"font-weight: bold;\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change alter how existing customer data is processed, stored, or accessed?</span></td><td><span style=\"font-weight: normal;\">Conversation history is now retained during the meeting instead of being cleared when switching panels.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data?</span></td><td><span style=\"font-weight: normal;\">Copilot behavior is updated to persist conversation history, enhancing AI-driven meeting insights.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change provide end users any new way of interacting with generative AI?</span></td><td><span style=\"font-weight: normal;\">Users can now maintain a continuous Copilot interaction during meetings without transcription.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change include an admin control and, can it be controlled through Entra ID group membership?</span></td><td><span style=\"font-weight: normal;\">IT admins can enforce or override defaults via Teams meeting policy.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change allow a user to enable and disable the feature themselves?</span></td><td><span style=\"font-weight: normal;\">Users can manually enable transcription during meetings to retain Copilot insights post-meeting.</span></td></tr></tbody></table><p style=\"font-weight: bold;\"></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "478611"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams Copilot will default to running without transcription for new meetings starting mid-July 2026, with conversation history persisting during meetings. Transcription must be manually enabled for post-meeting queries. Tenants with policies updated after June 2024 are unaffected; admins can adjust policies to retain current behavior."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Android, Desktop, iOS, Mac, Web"
-      }
-    ],
-    "EndDateTime": "2026-08-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1139493",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-07T19:47:56.82Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-08-22T00:09:47Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams Copilot without transcription becomes default for meetings - conversation history now persists",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated May 7, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We are<b> retiring SharePoint One‑Time Passcode (SPO OTP) authentication</b> in <i>OneDrive</i> and <i>SharePoint</i> starting <b>July 2026</b>. Beginning in <b>May 2026</b>, new external sharing invitations and authentication will start using Microsoft Entra B2B instead of SPO OTP. This transition simplifies external collaboration, aligns authentication with Microsoft identity standards, and enables consistent guest lifecycle management, governance, and Conditional Access coverage across Microsoft 365.</p>\n<p><b><b>When this will happen</b></b></p><ul><li><b>May &amp; June 2026: </b>Invitation and authentication for new external sharing transitions to Microsoft Entra B2B. Users who previously authenticated via SPO OTP will continue to have access to specific people links even without a B2B guest account yet.</li><li><b>July 2026: </b>Retirement of SPO OTP authentication begins. External users without a guest account get access denied on previously shared specific people links. To restore access, a guest account must be created in Entra B2B, or an allowed user must share/re-share at least one file/folder/site.</li><li><b>Retirement is expected to complete by August 31, 2026.</b></li></ul>\n<p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>All Microsoft 365 tenants (commercial, government, sovereign).</li><li>All external users who access OneDrive or SharePoint files, folders, or sites.</li></ul><p><i>What will happen</i></p><ul><li>The <i>EnableAzureADB2BIntegration </i>setting will no longer control external sharing behavior beginning May 2026.</li><li>SPO OTP authentication will retire beginning July 2026.</li><li>The option to disable Entra B2B integration will be removed.</li></ul><p><i>Impact on external users</i></p><ul><li><b>External users who already have an Entra B2B guest account in your directory:</b><ul><li>No change in behavior.</li></ul></li><li><b>External users without a B2B guest account:</b><ul style=\"\"><li style=\"\">Specific people links <b>shared </b>after changes rolled out to your tenant:<ul style=\"\"><li style=\"\">A guest account will be automatically created via the Entra B2B Invitation Manager.</li><li style=\"\">Authentication will use Entra B2B (email OTP available if enabled).</li></ul></li><li style=\"\">Specific people links shared <b>before </b>changes rolled out to your tenant:<ul style=\"\"><li style=\"\">SPO OTP authentication continues until July 2026.</li><li style=\"\">After July 2026, these users will receive <b>access denied</b> until a matching B2B guest account exists.</li></ul></li></ul></li></ul><p><i>Restoring access after retirement</i></p><ul><li>Admins can manually create a guest account for the external user at any time.</li><li>Alternatively, an internal user with permissions needs to share or re-share at least one file, folder, or site, which will automatically create the guest account and restore access to all previously shared content.</li>\n</ul>\n<p><b><b>What you need to do to prepare</b></b></p>\n<p>No admin action is required. However, to ensure a smooth transition:</p>\n<ul>\n<li>Inform users that some external collaborators may see <b>access denied </b>beginning July 2026 for older links authenticated via SPO OTP.</li><li>If your organization relies on email OTP authentication via Entra, ensure it is <b>not disabled</b> in <i>Entra External ID settings</i>. See <a href=\"https://learn.microsoft.com/entra/external-id/one-time-passcode\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Email OTP for B2B guests</a>.</li>\n<li>Review external sharing policies and conditional access settings for guests in SharePoint and Entra admin centers.</li>\n<li>Optionally, identify external collaborators without guest accounts via external sharing reports. Proactively <a href=\"https://learn.microsoft.com/entra/external-id/add-users-administrator\">create guest accounts</a> to retain access.</li>\n<li>Update internal documentation.</li>\n</ul>\n<p><b>Learn more:</b> </p><ul><li><a href=\"https://learn.microsoft.com/entra/external-id/add-users-administrator\" target=\"_blank\">Add and manage B2B collaboration users in the Microsoft Entra admin center | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/one-time-passcode\" target=\"_blank\">Email one-time passcode authentication for B2B guest users | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b\" target=\"_blank\">Frequently Asked Questions: Improvements to external sharing in OneDrive &amp; SharePoint | SharePoint in Microsoft 365 | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/what-is-b2b\" target=\"_blank\">Overview: B2B collaboration with external guests for your workforce | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/b2b-quickstart-add-guest-users-portal\" target=\"_blank\">Quickstart: Add a guest user and send an invitation | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration\" target=\"_blank\">SharePoint and OneDrive integration with Microsoft Entra B2B | SharePoint in Microsoft 365 | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Compliance Question</b></td><td><b>Answer</b></td></tr><tr><td><b>Does the change alter how existing customer data is accessed, processed, or stored?</b></td><td><b>Yes. </b>This change retires SPO OTP authentication and requires all external users to authenticate using Microsoft Entra B2B guest accounts, which alters the authentication method used to access existing SharePoint and OneDrive content.</td></tr><tr><td><b>Does the change modify Conditional Access policies or enforcement?</b></td><td><b>Yes. </b>After retirement, all external users will authenticate through Entra B2B and become fully subject to Microsoft Entra Conditional Access, Identity Protection, and guest governance policies.</td></tr><tr><td><b>Does the change provide a new way of communicating between users, tenants, or subscriptions?</b></td><td><b>Yes. </b>External sharing invitations will be routed through Microsoft Entra B2B Invitation Manager instead of SharePoint’s OTP invitation flow.</td></tr><tr><td><b>Does the change alter how admins monitor, report on, or demonstrate compliance activities?</b></td><td><b>Yes. </b>Authentication events and guest lifecycle actions will be logged through Entra audit logs rather than SPO OTP logs, changing where admins review authentication and guest access activity.</td></tr></tbody></table>",
       "ContentType": "html"
     },
@@ -1603,7 +1603,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559387\":[{\"RoadmapId\":559387,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.854119Z\",\"LatestRing\":null},{\"RoadmapId\":559387,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8541191Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559387\":[{\"RoadmapId\":559387,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8410136Z\",\"LatestRing\":null},{\"RoadmapId\":559387,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8410138Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6695,7 +6695,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"557170\":[{\"RoadmapId\":557170,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8540379Z\",\"LatestRing\":null},{\"RoadmapId\":557170,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.854038Z\",\"LatestRing\":null}]}"
+        "Value": "{\"557170\":[{\"RoadmapId\":557170,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.840904Z\",\"LatestRing\":null},{\"RoadmapId\":557170,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8409042Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -7138,7 +7138,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559611\":[{\"RoadmapId\":559611,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8539088Z\",\"LatestRing\":null},{\"RoadmapId\":559611,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8539089Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559611\":[{\"RoadmapId\":559611,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408361Z\",\"LatestRing\":null},{\"RoadmapId\":559611,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408363Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -9651,7 +9651,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559386\":[{\"RoadmapId\":559386,\"Platform\":\"iOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8538633Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8538636Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8538637Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559386\":[{\"RoadmapId\":559386,\"Platform\":\"iOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8407748Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8407751Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8407753Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16402,7 +16402,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"558107\":[{\"RoadmapId\":558107,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8540216Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8540217Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8540218Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8540219Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.854022Z\",\"LatestRing\":null}]}"
+        "Value": "{\"558107\":[{\"RoadmapId\":558107,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408822Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408824Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408825Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408827Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408828Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -20039,7 +20039,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"482747\":[{\"RoadmapId\":482747,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8541307Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8541308Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T16:29:34.8541309Z\",\"LatestRing\":null}]}"
+        "Value": "{\"482747\":[{\"RoadmapId\":482747,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8410296Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8410298Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8410299Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
