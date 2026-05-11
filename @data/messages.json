@@ -4,6 +4,53 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated May 11, 2026: We have decided not to move forward with this change at this time. We apologize for the inconvenience.</p><p>View and monitor Loop usage in the tenant through existing Microsoft 365 admin usage dashboards.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=421611\" target=\"_blank\">421611</a>.</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): We have decided not to move forward with this change at this time.&nbsp;</p><p><b>How this will affect your organization:</b></p><p>Once available, administrators can view and monitor Loop usage in the tenant through the <a href=\"https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide\" target=\"_blank\">existing Microsoft 365 admin usage dashboards</a>.</p><p><b>What you need to do to prepare:</b></p><p>There is nothing you need to do to prepare. These changes will roll to your tenant automatically.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "421611"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft decided not to proceed with the planned Microsoft Loop admin usage reports. Loop usage can still be monitored through existing Microsoft 365 admin usage dashboards. No action is required from administrators, and the change will not be implemented at this time."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-05-15T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC929020",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-11T18:56:43.237Z",
+    "Services": [
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2024-11-08T23:20:15Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Loop – Admin Usage Reports",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated May 11, 2026: We have decided not to move forward with this change at this time. We apologize for any inconvenience.</p><p><b>Introduction</b></p><p>We’re updating the default behavior of <b>Microsoft Teams Copilot in meetings</b>. Copilot without transcription will become the default mode for newly scheduled Teams meetings where Copilot is allowed. Additionally, conversation history will now persist during meetings, improving multitasking and continuity of insights.\n</p><p>This update is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=478611\" target=\"_blank\">478611</a>.\n</p><p><b>When this will happen</b></p><p><b>General Availability (Worldwide): </b>We have decided not to move forward with this change at this time.&nbsp;</p><p>\n<b><b>What's changing?</b></b>\n</p><p><b>Who is affected:</b></p>\n<ul>\n  <li>Affected tenants: If your TeamsMeetingPolicy was created or modified before the Copilot without transcription policy option was introduced (June 2024), your tenant will be affected by this change.</li>\n  <li>Not Affected: If your TeamsMeetingPolicy was created or modified after June 2024 when the Copilot without transcription option was introduced, your tenant will not be affected.</li>\n</ul>\n\n<p style=\"font-weight: bold;\">What will happen:</p>\n<ul style=\"\">\n  <li style=\"\">The default Copilot policy will change from <code>EnabledWithTranscript</code> to <code>Enabled</code> for both new and existing Teams meetings where Copilot is allowed.</li>\n  <li style=\"\">Copilot and Facilitator will no longer automatically start transcription for meetings in affected tenants.</li>\n  <li style=\"\">Users must manually enable transcription to use post-meeting Copilot or Facilitator queries.</li>\n  <li style=\"\">Conversation history will persist during meetings for Copilot without transcription.</li>\n  <li style=\"\">Tenants with TeamsMeetingPolicy created or modified after <b>June 2024</b> are <b>not affected</b>.</li>\n</ul>\n\n<b style=\"font-weight: bold;\"><b>What you can do to prepare:</b></b>\n<p style=\"\"><b>If adopting the new defaults:</b></p>\n<ul style=\"\">\n  <li style=\"\">Review TeamsMeetingPolicy for transcription dependencies.</li>\n  <li style=\"\">Update internal documentation and training.</li>\n  <li style=\"\">Communicate to users how to enable transcription when needed.</li>\n</ul>\n\n<p style=\"font-weight: bold;\">Optional admin steps to retain current behavior:</p>\n<ul style=\"\">\n  <li style=\"\">Update Global and Custom TeamsMeetingPolicy settings via TAC or PowerShell.</li>\n  <li style=\"\">TAC UI Portal: Navigate to Teams Admin Center and set the Copilot policy default value as required. For example, if the current default value is desired, update it to a different value, then set it back. Please ensure both TeamsMeetingPolicy and all Custom Policies are updated.</li>\n  <li style=\"\">PowerShell example to set Copilot policy to <code>EnabledWithTranscript</code> for all relevant meeting policies:\n\n<pre style=\"\">get-csteamsmeetingpolicy | ? {\n &nbsp;$_.Identity -ne \"Tag:AllOn\" -and\n &nbsp;$_.Identity -ne \"Tag:AllOff\" -and\n &nbsp;$_.Identity -ne \"Tag:Default\" -and\n &nbsp;$_.Identity -ne \"Tag:Kiosk\" -and\n &nbsp;$_.Identity -ne \"Tag:RestrictedAnonymousAccess\" -and\n &nbsp;$_.Identity -ne \"Tag:RestrictedAnonymousNoRecording\"\n} | % {\n &nbsp;$_.Identity;\n &nbsp;set-csteamsmeetingpolicy -identity $_.Identity -Copilot EnabledWithTranscript\n}<b>\n    </b></pre>\n  </li>\n</ul>\n<p style=\"font-weight: bold;\">Learn more:&nbsp;</p><ul style=\"\"><li style=\"\"><a href=\"https://learn.microsoft.com/microsoftteams/copilot-teams-transcription\" target=\"_blank\" style=\"\">Manage Microsoft 365 Copilot in Teams meetings and events | Microsoft Teams | Microsoft Learn</a></li><li style=\"\"><a href=\"https://support.microsoft.com/office/use-copilot-without-recording-a-teams-meeting-a59cb88c-0f6b-4a20-a47a-3a1c9a818bd9\" target=\"_blank\" style=\"\">Use Copilot without recording a Teams meeting | Copilot in Teams | Copilot | Microsoft Support</a></li></ul><p style=\"font-weight: bold;\"><b>Compliance considerations</b></p><table class=\"table table-bordered\" style=\"font-weight: bold;\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change alter how existing customer data is processed, stored, or accessed?</span></td><td><span style=\"font-weight: normal;\">Conversation history is now retained during the meeting instead of being cleared when switching panels.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data?</span></td><td><span style=\"font-weight: normal;\">Copilot behavior is updated to persist conversation history, enhancing AI-driven meeting insights.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change provide end users any new way of interacting with generative AI?</span></td><td><span style=\"font-weight: normal;\">Users can now maintain a continuous Copilot interaction during meetings without transcription.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change include an admin control and, can it be controlled through Entra ID group membership?</span></td><td><span style=\"font-weight: normal;\">IT admins can enforce or override defaults via Teams meeting policy.</span></td></tr><tr><td><span style=\"font-weight: normal;\">Does the change allow a user to enable and disable the feature themselves?</span></td><td><span style=\"font-weight: normal;\">Users can manually enable transcription during meetings to retain Copilot insights post-meeting.</span></td></tr></tbody></table><p style=\"font-weight: bold;\"></p>",
       "ContentType": "html"
     },
@@ -1603,7 +1650,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559387\":[{\"RoadmapId\":559387,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8410136Z\",\"LatestRing\":null},{\"RoadmapId\":559387,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8410138Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559387\":[{\"RoadmapId\":559387,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5554742Z\",\"LatestRing\":null},{\"RoadmapId\":559387,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5554743Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6695,7 +6742,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"557170\":[{\"RoadmapId\":557170,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.840904Z\",\"LatestRing\":null},{\"RoadmapId\":557170,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8409042Z\",\"LatestRing\":null}]}"
+        "Value": "{\"557170\":[{\"RoadmapId\":557170,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5553926Z\",\"LatestRing\":null},{\"RoadmapId\":557170,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5553927Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -7138,7 +7185,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559611\":[{\"RoadmapId\":559611,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408361Z\",\"LatestRing\":null},{\"RoadmapId\":559611,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408363Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559611\":[{\"RoadmapId\":559611,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5551773Z\",\"LatestRing\":null},{\"RoadmapId\":559611,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5551775Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -9651,7 +9698,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"559386\":[{\"RoadmapId\":559386,\"Platform\":\"iOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8407748Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8407751Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8407753Z\",\"LatestRing\":null}]}"
+        "Value": "{\"559386\":[{\"RoadmapId\":559386,\"Platform\":\"iOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5553258Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5553272Z\",\"LatestRing\":null},{\"RoadmapId\":559386,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5553273Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -16402,7 +16449,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"558107\":[{\"RoadmapId\":558107,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408822Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408824Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408825Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408827Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8408828Z\",\"LatestRing\":null}]}"
+        "Value": "{\"558107\":[{\"RoadmapId\":558107,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5553757Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5553758Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5553759Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.555376Z\",\"LatestRing\":null},{\"RoadmapId\":558107,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5553761Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -18465,53 +18512,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated February 19, 2026: After further review, this has been delayed. A new Message Center post will be published closer to the updated release date. It will still correspond to the existing Roadmap ID 421611.&nbsp; We apologize for any inconvenience.</p><p>View and monitor Loop usage in the tenant through existing Microsoft 365 admin usage dashboards.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=421611\" target=\"_blank\">421611</a>.</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): We will communicate via Message center when the rollout date is getting closer.</p><p><b>How this will affect your organization:</b></p><p>Once available, administrators can view and monitor Loop usage in the tenant through the <a href=\"https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?view=o365-worldwide\" target=\"_blank\">existing Microsoft 365 admin usage dashboards</a>.</p><p><b>What you need to do to prepare:</b></p><p>There is nothing you need to do to prepare. These changes will roll to your tenant automatically.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "421611"
-      },
-      {
-        "Name": "Summary",
-        "Value": "The release of Microsoft Loop admin usage reports has been delayed, with a new update forthcoming. Once available, admins can monitor Loop usage via existing Microsoft 365 admin usage dashboards. No preparation is needed; the feature will roll out automatically."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-07-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC929020",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-02-20T17:19:35.353Z",
-    "Services": [
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-11-08T23:20:15Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Loop – Admin Usage Reports",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b><b>Introduction</b></b></p><p>We’re introducing <b>automatic local backups </b>in <i>OneNote for iOS</i> to improve notebook resilience and provide a self‑service recovery option that aligns with the backup experience already available on Windows and macOS. This update helps users recover notebooks independently while giving organizations control through existing Intune app protection policies.</p><p></p><p><b><b>When this will happen</b></b></p><p><b>General Availability (Worldwide, GCC, GCCH and DoD):</b> Rollout will begin in <b>mid-March 2026</b> and is expected to complete by <b>mid-April 2026</b>.</p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>All organizations with users who run <b>OneNote for iOS</b>.</li><li>Applies to Commercial, GCC, GCC High, and DoD tenants that receive the standard OneNote for iOS app.</li></ul><p><i>What will happen</i></p><ul><li>OneNote for iOS will automatically create<b> local backups</b> of notebooks.</li><li>Backups will be stored in a <b>user‑accessible location</b> in the <i>Files app on iOS</i>.</li><li>Users will be able to recover notebooks using these backups by transferring the backup file to a Windows PC or Mac (iOS does not support opening notebook files directly).</li><li>The feature will be&nbsp;<b>on by default </b>unless restricted through existing Intune app protection policies.</li><li>The feature <b>will respect your organization’s existing data protection settings</b>. No new policy configuration will be required.</li><li>If the Intune <i>Send org data to other apps</i> setting is not set to<b> All apps</b>, OneNote local backups will be automatically disabled for managed users.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>If you want to manage or restrict this capability:</p><ul><li>Review your existing<b> Intune app protection policies</b>:<ul><li><i>Send org data to other apps</i> (parent policy)</li><li><i>Save copies of org data</i> (child policy)</li><li><i>Allow user to save copies to selected services</i> (child policy), with location validation set to<i> Other</i>.</li></ul></li><li>If <i>Send org data to other apps</i> is set to anything other than <b>All apps</b>, no action is required—backups will remain disabled automatically.</li><li>If your organization has<b> no Intune app protection policies configured</b>, backups will be <b>enabled by default</b>.</li><li>Update internal documentation or helpdesk materials if you describe OneNote backup and recovery behavior.</li><li>Share the following user note internally if needed:<ul><li>“<i>Notebook recovery from iOS requires transferring the backup file to a Windows PC or Mac.</i>\"</li></ul></li></ul><p>Learn more:&nbsp;</p><ul><li><a href=\"https://learn.microsoft.com/intune/intune-service/apps/app-protection-policies\" target=\"_blank\">Create and deploy app protection policies | Microsoft Intune | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/intune/intune-service/apps/app-protection-policy-settings-ios#data-protection\" target=\"_blank\">Data protection - iOS/iPadOS app protection policy settings | Microsoft Intune | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td><b>Does the change store new customer data, and if so, where?</b></td><td><b>Yes. </b>The change stores new copies of organizational notebook data as local backup files in user‑accessible device storage on iOS (Files app). These backups are automatically created and retained on the device.</td></tr><tr><td><b>Does the change modify, interrupt, or disable any Purview‑related capabilities such as DLP, sensitivity labels, conditional access, auditing, eDiscovery, or retention?</b></td><td><b>Yes.</b> The feature is governed by Intune app protection policies. If an organization restricts data movement—for example, if “Send org data to other apps” is not set to “All apps”—OneNote local backups on iOS are automatically disabled for managed users.</td></tr><tr><td><b>Does the change modify how users can access, export, delete, or correct their personal data within Microsoft 365 services?</b></td><td><b>Yes. </b>The change provides users with a new method to access and export notebook data from iOS devices by accessing local backup files stored in the Files app. Users can move these files to a Mac or PC to complete notebook recovery.</td></tr><tr><td><b>Does the change include an admin control, and can it be controlled through Entra ID group membership?</b></td><td><b>Yes. </b>Admins can manage this feature through existing Intune app protection policies, which can be scoped using Entra ID groups. This allows organizations to allow or block local backups based on group membership.</td></tr><tr><td><b>Does the change allow a user to enable or disable the feature themselves?</b></td><td><b>Yes. </b>Users can choose whether to access or move their local backup files, but the availability of the feature itself is controlled by the organization’s Intune policies rather than an in‑app user toggle.</td></tr></tbody></table><p></p>",
       "ContentType": "html"
     },
@@ -20039,7 +20039,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"482747\":[{\"RoadmapId\":482747,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8410296Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8410298Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T18:55:06.8410299Z\",\"LatestRing\":null}]}"
+        "Value": "{\"482747\":[{\"RoadmapId\":482747,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5554861Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5554862Z\",\"LatestRing\":null},{\"RoadmapId\":482747,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-11T20:44:49.5554863Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
