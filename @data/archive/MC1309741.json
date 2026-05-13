@@ -1,0 +1,46 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p></p><p><b><b>Introduction</b></b></p>\n<p>To help security and compliance teams more easily correlate <b>Microsoft Purview Data Loss Prevention (DLP) </b>activity with Microsoft Defender alerts, we’re enriching Microsoft Graph security APIs so DLP event (rule match) details can be retrieved alongside Defender alert data. This simplifies exporting data to SIEM tools, building automated workflows, and generating custom reports without needing to stitch together data from multiple APIs.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=558681\" target=\"_blank\">558681</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  <li><b>Public Preview:</b> Rollout begins in&nbsp;<b>late May 2026</b> and is expected to complete <b>early June 2026</b>.</li>\n  <li><b>General Availability (Worldwide):</b> Rollout begins in<b> late June 2026</b> and is expected to complete <b>early July 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Admins, security engineers, and developers who use Microsoft Graph Security APIs to retrieve Defender alerts and/or Purview DLP event data for reporting, investigations, SIEM integration, or automation.</li>\n  <li>This applies <b>only to DLP-related Defender alerts</b> (the DLP events query will not return results for non-DLP alerts).</li>\n</ul>\n<p><b>What will happen:</b></p><p><b>Before this update:</b></p><p>Alert data is available through Microsoft Graph Security APIs, while DLP rule match event details are available through the Management API. Customers who need to correlate alerts with underlying DLP activity must retrieve data from multiple APIs and manually join the results.</p><p><b>With this update:</b></p><ul><li>Microsoft Graph will include DLP event data associated with Defender alerts.</li><li>This enables simplified correlation and integration without relying on multiple APIs.</li><li>There is no impact to user experience.</li>\n</ul>\n\n\n<p><b>The following table shows the combined data available through this enhancement:</b></p>\n<table>\n  <tbody><tr>\n    <th>Common Alert Data (Already present in Graph API)</th>\n    <th>Common Event Data (Present in all events)</th>\n  </tr>\n  <tr>\n    <td>Alert ID</td>\n    <td>Event ID</td>\n  </tr>\n  <tr>\n    <td>Incident ID</td>\n    <td>User ID</td>\n  </tr>\n  <tr>\n    <td>Status</td>\n    <td>Workload</td>\n  </tr>\n  <tr>\n    <td>Severity</td>\n    <td>Event time</td>\n  </tr>\n  <tr>\n    <td>Classification</td>\n    <td>Operation</td>\n  </tr>\n  <tr>\n    <td>Assigned to</td>\n    <td>Policy details (ID, name, rule, action)</td>\n  </tr>\n  <tr>\n    <td>Creation time</td>\n    <td>Sensitive info types (ID, counts, confidence, values)</td>\n  </tr>\n  <tr>\n    <td>Last update time</td>\n    <td>Trainable classifier</td>\n  </tr>\n  <tr>\n    <td>Resolve date time</td>\n    <td>User override</td>\n  </tr>\n  <tr>\n    <td>First activity time / Last activity time</td>\n    <td></td>\n  </tr>\n</tbody></table>\n<p><b>Admin experience (high level flow):</b></p><b>Step 1:</b> Fetch Defender alerts using the alerts_v2 Graph API. Learn more:&nbsp;<a href=\"https://learn.microsoft.com/graph/api/security-list-alerts_v2?view=graph-rest-1.0&amp;tabs=http\" target=\"_blank\">List alerts_v2 | Microsoft Learn</a>.<p></p>\n<p><b>Endpoint: </b><code>https://graph.microsoft.com/beta/security/alerts_v2/{alert-id}</code></p>\n<p><b>From the response, capture:</b></p>\n<ul>\n  <li><code>alertCorrelationId </code>(DetectorId)</li>\n  <li><code>startDateTime </code>(firstActivityDateTime)</li>\n  <li><code>endDateTime </code>(lastActivityDateTime)</li>\n</ul>\n\n<p><b>Note</b>: Alert must be a DLP alert.</p><p>Screenshot: <i>Example response from the alerts_v2 Graph API showing a Defender DLP alert and correlation details:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/251fc424-ab84-4d9a-90c3-e9fb743a9c6e\" style=\"width: 400px;\" alt=\"Screenshot of Microsoft Graph Explorer displaying a successful alerts_v2 API request and JSON response for a Defender DLP alert, including alert identifiers, activity timestamps, and correlation information.\"></p>\n\n<p><b>Step 2:</b> Query DLP event data using the correlation details.</p>\n\n<p><b>Endpoint:&nbsp;</b><code>https://graph.microsoft.com/beta/security/dlpAlertEvent</code></p>\n\n<p><b>Example filter:&nbsp;</b><code>$filter=alertCorrelationId eq '{alertCorrelationId}' \nand startDateTime ge {startDateTime} \nand endDateTime le {endDateTime}</code></p>\n\n<p>The response returns events where <code>auditRecord</code> contains the event JSON.</p>\n\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<p><b>No action is required</b> if you don’t use Graph APIs for alert/event export or automation.</p><p>If you do use these APIs, we recommend the following:\n</p><p>\n</p><ul><li>Update SIEM connectors / scripts / playbooks that currently join data from Graph + Management APIs, so they can use the enriched Graph experience for correlation.</li><li>Validate with a DLP alert in a test environment during Public Preview (late May–early June 2026) to confirm your parsing of the auditRecord JSON and your time-window logic.</li></ul><p><b>Prerequisites</b></p><p><b>Baseline access: </b>Users must have the Security Reader role to access alerts and events via the API.</p>\n<ul>\n  <li>SecurityEvents.Read.All</li>\n  <li>SecurityAlerts.Read.All</li>\n  <li>CustomTags.Read.All</li>\n</ul>\n<p><b>Note:</b></p>\n<ul>\n  <li>If a user has the <b>Security Reader role</b> and calls the API, they will receive output without sensitive information</li><li>If the user also has the <b>Data Classification Content Viewer role (Purview RBAC)</b>, the output will include sensitive information.</li></ul><p><b><b>Compliance considerations:</b></b></p>\n<table>\n  <tbody><tr>\n    <th>Area</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Alters how existing customer data is accessed</td>\n    <td>Introduces a new Microsoft Graph API method to retrieve DLP event (rule match) data alongside Defender alerts, provided simpler way of accessing and correlating existing data.</td>\n  </tr>\n  <tr>\n    <td>Alters admin monitoring/reporting capabilities</td>\n    <td>Enables simplified export and correlation of DLP alert and event data, improving SIEM integration and compliance reporting workflows.</td>\n  </tr>\n  <tr>\n    <td>Supports third-party integrations</td>\n    <td>The enriched API is designed to integrate with SIEM and other external tools, enabling automated workflows and data export to third-party systems.</td>\n  </tr>\n  <tr>\n    <td>Admin control and access governance</td>\n    <td>Access is governed by Graph permissions and Purview RBAC roles; while configurable, no new dedicated admin toggle is introduced.</td>\n  </tr>\n</tbody></table><p></p>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [
+    {
+      "Name": "RoadmapIds",
+      "Value": "558681"
+    },
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Purview DLP event details will be integrated into Microsoft Graph Security APIs alongside Defender alerts, simplifying correlation, reporting, and SIEM integration. Public preview starts late May 2026; general availability begins late June 2026. This affects admins using these APIs for DLP-related alert data."
+    },
+    {
+      "Name": "Platforms",
+      "Value": "Web"
+    }
+  ],
+  "EndDateTime": "2026-08-04T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1309741",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-05-13T23:06:59.667Z",
+  "Services": [
+    "Microsoft Purview"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-05-13T23:06:23Z",
+  "Tags": [
+    "New feature",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Purview | Data Loss Prevention - Enrich Defender alerts Graph API with DLP event data",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
