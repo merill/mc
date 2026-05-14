@@ -4,6 +4,346 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p><b>\nAuthoritative Sites</b> enables administrators to designate specific SharePoint sites as trusted sources of organizational information. By prioritizing content from these sites in Copilot Chat and Copilot Search, this feature improves content reliability, enhances search relevance, and helps users quickly find accurate company information. This capability supports stronger governance and aligns Copilot responses with verified organizational content.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>Public Preview (Worldwide): We began rolling out in <b>mid-May 2026</b> and expect to complete by <b>late May 2026</b>.\n</li><li>General Availability (Worldwide): We will begin rolling out on <b>mid-June 2026</b> and expect to complete by<b style=\"\">&nbsp;late June 2026.</b></li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>SharePoint Online administrators</li>\n<li>Microsoft 365 administrators managing Copilot and search experiences</li>\n<li>Users interacting with Copilot Chat and Copilot Search</li><li>A <b>Microsoft 365 Copilot (Premium) license</b> is required to use this feature</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Admins can designate SharePoint sites as authoritative using PowerShell.</li>\n<li>Content from authoritative sites will be prioritized in Copilot Chat responses and Copilot Search results.</li>\n<li>Users will see clearer indicators of trusted content in the user experience.</li><p>Screenshot: <i>Example showing results labeled <b>“From your organization,”</b> helping users quickly identify trusted, internal content:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/c520b0a5-215a-4749-9a29-46e195c9913e\" style=\"width: 400px;\" alt=\"user settings\"></p>\n<li>The feature is <b>off by default</b> until configured by an admin.</li>\n<li>No changes occur to existing SharePoint permissions or content access.</li>\n<li>Improved relevance and trust in AI-driven responses grounded in authoritative content.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Identify key SharePoint sites (for example: HR, Legal, Communications) that should be marked as authoritative.</li>\n<li>Configure authoritative sites using SharePoint Online PowerShell. Before running the commands, ensure the <a href=\"https://www.microsoft.com/download/details.aspx?id=35588\" target=\"_blank\">latest SharePoint Online Management Shell</a> is installed.</li></ul>\n<pre>Set-SPOSite -Identity \"https://&lt;tenant&gt;.sharepoint.com/sites/&lt;siteName&gt;\" -IsAuthoritative $true\n</pre>\n<ul>\n<li>Validate configuration in Copilot Search and Chat experiences.</li>\n<li>Pilot with a limited group of users.</li>\n<li>Gather feedback and refine site selection.</li>\n<li>Update internal documentation and inform helpdesk teams.</li>\n</ul>\n\n<p>Before rollout, we will update this post with new documentation.</p><p><b><b>Compliance considerations:</b></b></p><p>\n</p><table border=\"1\">\n<tbody><tr>\n<th>Area</th>\n<th>Explanation</th>\n</tr>\n<tr>\n<td>Alters processing of existing data</td>\n<td>Copilot and Microsoft Search will prioritize content from designated authoritative SharePoint sites, changing how existing content is ranked and surfaced.</td>\n</tr>\n<tr>\n<td>AI/ML capabilities interacting with data</td>\n<td>Copilot responses will be influenced by authoritative site signals, improving grounding of AI outputs using trusted organizational content.</td>\n</tr>\n<tr>\n<td>New interaction with generative AI</td>\n<td>Users will receive enhanced Copilot responses that emphasize authoritative content, improving trust and relevance in AI-generated answers.</td>\n</tr>\n<tr>\n<td>Admin control available</td>\n<td>Admins can configure authoritative sites using SharePoint Online PowerShell, enabling control over</td></tr></tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Authoritative Sites lets admins mark specific SharePoint sites as trusted, prioritizing their content in Microsoft Copilot Chat and Search to improve reliability and relevance. Rolling out May-June 2026, it requires a Microsoft 365 Copilot (Premium) license and is configurable via PowerShell without changing permissions."
+      }
+    ],
+    "EndDateTime": "2026-07-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1310687",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-14T20:18:27.147Z",
+    "Services": [
+      "SharePoint Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-14T20:18:19Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Authoritative Sites for SharePoint in Microsoft Copilot",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": "2026-05-26T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>We’re updating the way SharePoint Online enforces user storage quotas to ensure they are consistently aligned with license entitlements. This change fixes an issue where user-specific storage limits could be incorrectly applied during quota refreshes, which could result in inaccurate storage enforcement. These updates help ensure predictable storage behavior and improve reliability for admins managing storage at scale.</p><p><b><b>When this will happen</b></b></p><p style=\"margin-left: 25px;\"><b>General Availability (Worldwide, GCC, GCCH, and DoD)</b>: We will begin rolling out in<b>&nbsp;late May 2026</b> and expect to complete in&nbsp;<b>June 2026</b>.</p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 tenants using SharePoint Online</li><li>Users who are currently over the OneDrive for Business storage quota allowed by their assigned license</li><li>Admins who have set user-specific storage limits above licensed entitlements</li></ul><p><i>What will happen</i></p><ul><li>User storage quotas will be re-evaluated against license limits during the refresh process.</li><li>Users whose OneDrive for Business storage usage exceeds their licensed quota will be placed into a<b> read-only state</b>, which temporarily restricts write access to existing SharePoint content until storage usage is remediated.</li><li>This includes scenarios where:<ul><li>An admin-set user quota exceeds the license allowance, or</li><li>A user with an EDU license exceeds their licensed storage limit.</li></ul></li><li>No changes are made for users who are within their licensed storage limits.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li><b>Identify users exceeding licensed storage limits</b><ul style=\"\"><li style=\"\">Review OneDrive storage usage across your organization to identify users whose usage exceeds their licensed quota.</li><li style=\"\"><i>Microsoft will provide a PowerShell script to assist with this assessment. A link to the script will be added to this message when available.</i></li></ul></li><li style=\"\"><b>Take corrective action for affected users. </b>For users exceeding their licensed storage limits:<ul><li>Upgrade the user’s license to increase available storage, or</li><li>Work with the user to reduce storage usage to within licensed limits.</li></ul></li><li>Inform your helpdesk and SharePoint admins about this change so they can support users who may be placed into a read-only state.</li><li>If all users are within their licensed storage quotas, no action is required.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "preventOrFixIssue",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "SharePoint Online will update storage quota enforcement by late May to June 2026, aligning user quotas with license limits. Users exceeding licensed storage will enter read-only mode until usage is reduced or licenses upgraded. Admins should identify and address over-quota users; no action needed if users comply."
+      }
+    ],
+    "EndDateTime": "2026-07-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1310684",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-14T20:17:48.683Z",
+    "Services": [
+      "SharePoint Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-14T20:17:18Z",
+    "Tags": [
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "SharePoint Online: Storage quota enforcement updated to align with license limits",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>We’re introducing a standardized preview experience for Word, Excel, and PowerPoint files in Microsoft Teams across desktop and mobile platforms. This update improves performance, reliability, and consistency when previewing files, resulting in faster load times and fewer preview failures. Availability varies by platform; PowerPoint and Excel are supported on iOS and Android, while Word preview is currently available on iOS only.</p><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=558679\" target=\"_blank\">558679</a>.</p>\n\n<p><b><b>When this will happen:</b></b><br>\n</p><ul>\n<li>General Availability (Worldwide):&nbsp; Rollout will be completed by<b> late June 2026</b>.</li>\n</ul><p></p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>All Microsoft Teams users who preview Word, Excel, and PowerPoint files</li>\n<li>Mobile users on iOS and Android (platform-specific availability applies)</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Users will experience faster file preview load times in Teams.</li>\n<li>A standardized preview experience will be applied across Word, Excel, and PowerPoint files in Teams, with availability varying by platform:<ul><li>PowerPoint and Excel previewers available on iOS and Android\n</li><li>Word previewer available on iOS only (Android support coming later)</li></ul></li><li>Users will be able to open protected files directly within Teams previews.</li>\n<li>Feature is <b>enabled by default</b> with no admin configuration required.</li>\n<li>This update does not change existing file storage, sharing permissions, or policies.</li><p>Screenshot: <i>Standardized preview experience for Word, Excel, and PowerPoint:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/343edf28-6c1f-48b9-b76a-a8f8c15d54ef\" style=\"width: 400px;\" alt=\"user settings\">&gt;</p></ul><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No action is required from admins; the feature will be automatically enabled.</li>\n<li>Inform helpdesk and support staff of the updated preview experience.</li>\n<li>Update internal documentation referencing file previews in Teams.</li>\n<li>Communicate the improved experience to users if appropriate.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "558679"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams will standardize the preview experience for Word, Excel, and PowerPoint files across desktop and mobile, improving speed and reliability. PowerPoint and Excel previews are on iOS and Android; Word preview is iOS only (Android later). Rollout completes by late June 2026, enabled by default with no admin action needed."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Android, iOS"
+      }
+    ],
+    "EndDateTime": "2026-08-01T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1310683",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-14T20:16:58.927Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-14T20:16:49Z",
+    "Tags": [
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Microsoft Teams: Standardized preview experience for PowerPoint, Excel, and Word files",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\n<p>We are introducing <b>optical character recognition (OCR)</b> scanning support for <b>Microsoft Purview Data Loss Prevention (DLP)</b> on Windows endpoint devices. This enhancement enables DLP policies to detect sensitive information within images embedded inside Office documents and PDF files.</p>\n<p>Previously, embedded images were skipped during endpoint DLP scanning, creating a detection blind spot. With this update, embedded images are OCR-processed, helping improve data protection coverage and reduce risk of accidental data exposure.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=381750\" target=\"_blank\">381750</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Rollout will begin in <b>mid-May 2026</b> and is expected to complete by <b>late May 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Admins managing Microsoft Purview Data Loss Prevention</li>\n<li>Organizations using Endpoint DLP on Windows devices</li>\n<li>Users working with Word, Excel, PowerPoint, and PDF files on Windows endpoints</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n</ul><p>Once OCR is enabled for your organization, DLP policies applied to endpoint devices will be able to scan images embedded inside Office documents (Word, PowerPoint, Excel) and pdf files on Windows devices. This means: \n</p><ul><li><b>Sensitive data detection in embedded images:</b> If a document contains an embedded image with sensitive information (such as credit card numbers, Social Security numbers, or financial data), DLP policies can now detect that data and enforce configured actions (audit, block, or block with override). \n</li><li><b>Closes a detection blind spot:</b> Previously, embedded images were entirely skipped during endpoint DLP scanning. This update ensures those images are processed using OCR and evaluated against your DLP policies. \n</li><li><b>Cost implications:</b> Enabling OCR incurs additional costs based on the volume of images scanned. Costs are charged per image scanned via Azure AI Services. Organizations can monitor OCR costs through:<ul><li>The <b>OCR cost dashboard</b> in the Microsoft Purview compliance portal under <b>Data loss prevention → Overview</b></li><li><b>Cost Management + Billing</b> in the Azure portal, filtered by your Azure AI Services resource&nbsp;</li></ul></li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p><p>To take advantage of this feature, complete the following steps:&nbsp;</p>\n<ol>\n<li><b>Verify prerequisites:</b>\n  <ul>\n    <li>Confirm Microsoft Sense Client version <b>10.8820.27904.1000</b> or later.</li>\n    <li>Run: <code>MsSense.exe --version</code> from <code>C:\\Program Files\\Windows Defender Advanced Threat Protection</code>.</li>\n    <li>Ensure Windows OS update <b>KB5079473 </b>is installed on endpoint devices.</li>\n  </ul>\n</li>\n<li><b>Enable OCR in Microsoft Purview:</b>\n  <ol>\n    <li>Navigate to the Microsoft Purview compliance portal.</li>\n    <li>Go to<b> Data loss prevention → Overview → Data loss prevention settings</b>.</li>\n    <li>Under <b>Optical Character Recognition (OCR),</b>&nbsp;select <b>Turn on OCR scanning</b>.</li>\n    <li>Select the appropriate Azure <a href=\"https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing#set-up-microsoft-syntex-billing-in-azure\" target=\"_blank\">pay-as-you-go</a> subscription and Azure AI Services resource.</li>\n    <li>Select <b>Save</b>.</li>\n  </ol>\n</li>\n<li><b>Review and update DLP policies:</b>\n  <ul>\n    <li>Ensure policies include <b>Devices </b>as a location.</li>\n    <li>Consider testing with <b>Test mode and policy tips </b>before enforcing actions.</li>\n    <li>Verify sensitive information types are configured for detection in embedded images.</li>\n  </ul>\n</li>\n<li><b>Set up billing and monitor costs:</b>\n  <ul>\n    <li>Configure OCR billing before enabling the feature.</li>\n    <li>Review the OCR cost dashboard in Purview after enabling.</li>\n  </ul>\n</li>\n<li><b>Assign appropriate roles:</b>\n  <ul>\n    <li>Compliance Data Administrator</li>\n    <li>Compliance Administrator</li>\n    <li>Information Protection</li>\n    <li>Information Protection Admin</li>\n  </ul></li></ol>\n\n<p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/ocr-learn-about\" target=\"_blank\">Learn about optical character recognition in Microsoft Purview | Microsoft Learn</a> \n</li><li><a href=\"https://learn.microsoft.com/purview/data-classification-activity-explorer\" target=\"_blank\">Get started with Activity Explorer | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/dlp-create-deploy-policy\" target=\"_blank\">Create and deploy a DLP policy | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/endpoint-dlp-learn-about\" target=\"_blank\">Learn about Endpoint DLP&nbsp;| Microsoft Learn</a></li></ul><p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n  <tbody><tr>\n    <th align=\"left\">Area</th>\n    <th align=\"left\">Explanation</th>\n  </tr>\n  <tr>\n    <td>Data processing changes</td>\n    <td>Embedded images within Office documents and PDFs are now processed using OCR, expanding how DLP evaluates file content.</td>\n  </tr>\n  <tr>\n    <td>AI/ML capabilities</td>\n    <td>OCR uses Azure AI Services to analyze images for sensitive information detection.</td>\n  </tr>\n  <tr>\n    <td>DLP policy enforcement</td>\n    <td>DLP policies are enhanced to detect sensitive information contained within embedded images.</td>\n  </tr>\n  <tr>\n    <td>Admin monitoring and reporting</td>\n    <td>Admins can monitor OCR usage and associated costs through the Purview dashboard and Azure Cost Management.</td>\n  </tr>\n  <tr>\n    <td>Admin control</td>\n    <td>The feature is disabled by default and must be explicitly enabled by an administrator.</td>\n  </tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "381750"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Data Loss Prevention on Windows endpoints will support OCR scanning of images embedded in Office documents and PDFs starting mid-May 2026. This closes detection gaps by identifying sensitive data in images, requires enabling OCR with associated Azure AI costs, and involves updating DLP policies and prerequisites."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-06-20T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1310681",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-14T20:16:20.747Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-14T20:15:43Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview Data Loss Prevention: Optical character recognition for images in Office and PDFs on Windows",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>New Outlook for Windows now supports <b>Lightweight Directory Access Protocol (LDAP)</b> directories for S/MIME certificate lookup. This enables tenants to configure LDAP directories for their organization as well as enabling users to configure LDAP directories themselves. Once configured, users can find recipients’ public encryption certificates from the directories when sending encrypted email, improving secure collaboration with external partners. This is especially valuable for tenants who collaborate with external partners and rely on public/partner LDAP directories to store public S/MIME certificates of users.&nbsp;</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=518287\" target=\"_blank\">518287</a>.</p><p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): We will begin rolling out in <b>l</b><b>ate May 2026</b> and expect to complete by <b>late&nbsp;May&nbsp;2026</b>.\n</li><li>General Availability (GCC): We will begin rolling out in <b style=\"\">early June 2026</b> and expect to complete by <b style=\"\">late June 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>&nbsp;Organizations that use S/MIME encryption with <b>external recipients</b> whose public certificates are hosted in third-party LDAP directories&nbsp;</li><li>&nbsp;Admins managing Exchange Online</li>\n</ul><p><b>What will happen:</b></p>\n<ul>\n<li>Admins can configure LDAP directories using <a href=\"https://learn.microsoft.com/powershell/exchange/connect-to-exchange-online-powershell\" target=\"_blank\">Exchange Online PowerShell</a>.</li>\n<li>Users can add LDAP directories in <b>Settings &gt; Mail &gt; S/MIME</b> in new Outlook.</li>\n<li>When composing an S/MIME encrypted email, users can select recipients from the LDAP directory via the <b>To</b> field.</li><li>LDAP endpoints <b>must not require authentication</b>, as authentication is not currently supported.</li><p>Screenshot: <i><b>“Add LDAP directory”</b> option in <b>Settings &gt; Mail &gt; S/MIME</b> and LDAP recipient picker in the <b>To</b> field during message composition:</i></p><p><img src=\" https://cxcs.microsoft.net/file/ccp/en-us/103ff0c5-3287-4f83-9a34-f2dab1c557a4\" style=\"width: 400px;\" alt=\"Add LDAP directory settings in new Outlook.\"></p><li>Feature is <b>enabled by default </b>once available.</li>\n<li>No impact to:\n  <ul>\n    <li>Classic Outlook for Windows users</li>\n    <li>Organizations not using LDAP for S/MIME certificate discovery</li></ul></li></ul><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No action is required to enable this feature</li>\n<li>If your organization uses LDAP for S/MIME certificates:\n  <ul>\n    <li>Identify LDAP directory endpoints used by your organization</li><li>Run the Add-LdapDirectory cmdlet to register a new directory:</li>\n\n<pre><code>Add-LdapDirectory -Organization \"contoso.com\" -Id \"corp-ldap\" -Host \"ldap.corp.com\" -Port 636 -UseSsl</code></pre>\n    <li>Configure directories using Exchange Online PowerShell (Add-LdapDirectory).</li>\n    <li>Ensure LDAP endpoints do not require authentication.</li><li>Communicate guidance to users transitioning to new Outlook: <a href=\"https://support.microsoft.com/office/set-up-outlook-to-use-s-mime-encryption-2e57e4bd-4cc2-4531-9a39-426e7c873e26\" target=\"_blank\">Set up Outlook to use S/MIME encryption | Microsoft Support</a>.</li></ul></li></ul><p></p><ul></ul><p></p><p><b>Learn more:</b> <a href=\"https://learn.microsoft.com/exchange/security-and-compliance/smime-exo/configure-smime-exo\" target=\"_blank\">Configure S/MIME in Exchange Online | Microsoft Learn</a> (will be updated before we complete rollout)</p><p></p><ul></ul><p></p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "518287"
+      },
+      {
+        "Name": "Summary",
+        "Value": "New Outlook for Windows will support LDAP directories for S/MIME certificate lookup starting late May 2026, enabling admins and users to configure LDAP for finding recipients’ public encryption certificates when sending encrypted emails. LDAP endpoints must not require authentication. This benefits organizations collaborating with external partners."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop"
+      }
+    ],
+    "EndDateTime": "2026-07-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1310680",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-14T20:15:13.403Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-14T20:15:05Z",
+    "Tags": [
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "New Outlook for Windows: LDAP support for S/MIME certificate lookup",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\n<p>To simplify backup administration and align with how SharePoint admins work today, Microsoft is integrating <b>Microsoft 365 Backup management directly into the SharePoint Admin Center</b>. This centralized experience lets admins configure and manage backup for SharePoint and OneDrive without switching to the Microsoft 365 Admin Center.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  <li>General Availability (Worldwide, GCC): We began rolling out in <b>early-May 2026</b> and expect to complete by <b>mid-May 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>SharePoint administrators</li>\n  <li>Organizations using or planning to use <b>Microsoft 365 Backup for SharePoint and OneDrive</b></li></ul><p><b>What will happen:</b></p>\n<ul>\n  <li>Backup configuration and management for SharePoint and OneDrive will be available directly in the <b>SharePoint Admin Center</b>.</li><li>Admins will no longer need to switch to the Microsoft 365 Admin Center to manage Backup.</li><li>Existing Microsoft 365 Backup settings and policies are respected.</li><li>No change to user experience.</li><li>The feature is <b>available by default</b> for eligible tenants; no additional enablement is required.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<p>No immediate action is required.</p><p><b>Recommended actions for admins:</b></p><ul><li>Review the <b>Microsoft 365 Backup</b> section in the SharePoint Admin Center once the feature is available.</li><li>Update internal admin documentation or runbooks to reflect the new management location.</li><li>Inform helpdesk or operations teams that Backup is now managed from the SharePoint Admin Center.</li></ul><p><b>Learn more:&nbsp;</b><a href=\"https://learn.microsoft.com/en-us/microsoft-365/backup/backup-setup?view=o365-worldwide\" target=\"_blank\">Set up Microsoft 365 Backup | Microsoft Learn</a></p><p><b><b>Compliance considerations:</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Compliance question</b></td><td><b>Explanation</b></td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Backup administration is accessed through a new admin surface (SharePoint Admin Center), but underlying data handling and storage remain unchanged.</td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td>Admins can manage and monitor Microsoft 365 Backup from an additional centralized admin experience, improving operational oversight without changing compliance data.</td></tr><tr><td>Does the change include an admin control?</td><td>Backup configuration and management controls are available to SharePoint admins through the SharePoint Admin Center.</td></tr></tbody></table><p><br></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft 365 Backup management for SharePoint and OneDrive will be integrated into the SharePoint Admin Center by mid-May 2026. This centralizes backup configuration without changing user experience or data handling. No action is required, but admins should update documentation and inform teams."
+      }
+    ],
+    "EndDateTime": "2026-06-19T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1310678",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-14T20:13:00.997Z",
+    "Services": [
+      "SharePoint Online",
+      "Microsoft OneDrive"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-14T20:12:51Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft 365 Backup management through SharePoint Admin Center",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>To improve performance and provide better visibility into query progress, we are updating the behavior of the <b>ResultCount </b>parameter for the <b>Search-UnifiedAuditLog cmdlet </b>in <i>Microsoft Purview Audit</i>.</p><p>Previously, the <b>ResultCount</b> parameter returned the total number of results expected from a query. With this update, <b>ResultCount</b> <b>will display a running count of results</b> as they are retrieved in <i>real time</i>.</p><p>We are also introducing a new boolean property, <b>AuditSearchRequestMetadata.moreRecordsAvailable</b>, which indicates whether additional records are still being retrieved.</p><p>Together, these updates provide administrators with improved transparency into audit log search progress and better support for script and automation scenarios.</p><p><b><b>When this will happen</b></b></p><ul><li><b>General Availability (Worldwide, GCC): </b>We began rolling out in <b>mid-May 2026 </b>and expect to complete by<b> late May 2026</b>.</li><li><b>General Availability (GCC High, DoD):</b> We will begin rolling out in <b>early June 2026</b> and expect to complete by <b>late June 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Administrators who use <b>Microsoft Purview Audit</b></li><li>Administrators running the <b>Search-UnifiedAuditLog cmdlet</b> in <i>PowerShell</i></li><li>Organizations with<b> scripts or automation that rely on audit log search results</b></li></ul><p><i>What will happen</i></p><ul><li>The <b>ResultCount parameter </b>will now display a running count of results as they are retrieved during query execution.</li><li>A new boolean property, <b>AuditSearchRequestMetadata.moreRecordsAvailable</b>, will indicate whether additional records are still being retrieved.</li><li>While the query is running:<ul><li><b>ResultCount</b> shows the number of records retrieved so far.</li><li><b>moreRecordsAvailable</b> is set to <b><i>true</i></b>.</li></ul></li><li>When the query completes:<ul><li><b>ResultCount</b> reflects the final total number of results.</li><li><b>moreRecordsAvailable</b> is set to <i><b>false</b></i>.</li></ul></li><li>This feature is <b>enabled by default</b>.</li><li>There is no change to audit log data or retention.</li><li>Existing scripts that rely on <b>ResultCount </b>representing a final total before completion may require updates.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>Review existing scripts and automation that rely on <b>ResultCount </b>to determine total results.</li><li>Update scripts to use <b>AuditSearchRequestMetadata.moreRecordsAvailable </b>to confirm when queries are complete.</li><li>Adjust pagination or query logic to incorporate a check for <b>AuditSearchRequestMetadata.moreRecordsAvailable</b> to reliably determine whether more records remain.</li><li>Test audit log searches and automation during the rollout window from <b>mid-May through late May 2026</b>.</li><li>If you run <b>Search-UnifiedAuditLog</b> manually in <i>PowerShell </i>and review results interactively, no changes are needed. You will benefit from improved real-time progress visibility.</li></ul><p><b>Learn more:&nbsp;</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/audit-solutions-overview\" target=\"_blank\">Learn about auditing solutions in Microsoft Purview | Microsoft Purview | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps\" target=\"_blank\">Search-UnifiedAuditLog | policy-and-compliance-audit | ExchangePowerShell | Microsoft Learn</a></li></ul><p><i>If you have questions or need assistance, contact Microsoft Support.</i></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. The change modifies how audit search results are reported during execution by providing incremental counts instead of a final total upfront.</td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td>Yes. Administrators gain improved visibility into audit search progress through real-time result reporting, which can enhance monitoring workflows.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview updates the Search-UnifiedAuditLog cmdlet's ResultCount parameter to show a running count of results in real time, adding a new boolean property, AuditSearchRequestMetadata.moreRecordsAvailable, to indicate if more records remain. This improves query progress visibility and affects scripts relying on ResultCount as a final total."
+      }
+    ],
+    "EndDateTime": "2026-07-22T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1310672",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-14T20:10:44.89Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-14T20:10:32Z",
+    "Tags": [
+      "Feature update",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview: Update to ResultCount parameter in the Search-UnifiedAuditLog cmdlet",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 14, 2025: We have decided not to move forward with this change at this time. We apologize for any inconvenience.</p><p>When users delete a Loop workspace, owners will be able to restore it from a recycle bin in Loop.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=421615\" target=\"_blank\">421615</a></p><p><b>When this will happen:</b>\n</p><p>We have decided not to move forward with this change at this time.</p><p><b>How this will affect your organization:</b></p><p>Once available, when users delete a Loop workspace, owners can restore it from a recycle bin in Loop.</p><p><b>What you need to do to prepare:</b></p><p>There is nothing you need to do to prepare. These changes will roll to your tenant automatically.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "421615"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft has decided not to proceed with adding a user-accessible recycle bin for Loop workspaces, which would have allowed owners to restore deleted workspaces. No action is needed from users, and the change will not be implemented at this time."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-05-15T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC929021",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-14T19:53:16.82Z",
+    "Services": [
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2024-11-08T23:21:20Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Microsoft Loop – User Accessible Recycle Bin for Loop workspaces",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated May 14, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p><b>Recap without saving transcript</b> provides an&nbsp;alternative now for Copilot users to generate a meeting summary using live meeting context, in case where saving a meeting transcript or recording is not preferred or allowed.</p>\n<p>This capability is intended for scenarios where organizations want AI‑generated recaps but have policies that limit or prohibit the retention of transcripts or recordings. When disabled, no AI recap is generated. Existing Copilot licensing and tenant‑level AI controls continue to apply.</p><p>This feature will be available to users with an M365 Copilot (Premium) license across platforms, including desktop (Windows and Mac), web, and mobile.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=558286\" target=\"_blank\">558286</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  <li>Targeted Release: We will begin rolling out <b>early June 2026</b> (previously&nbsp;mid-May)&nbsp;and expect to complete by <b>mid-June 2026 </b>(previously&nbsp;late May).\n</li><li>General Availability (Worldwide): We will begin rolling out <b>mid-June 2026</b> (previously&nbsp;early June)&nbsp;and expect to complete by <b>late June 2026 </b>(previously&nbsp;mid-June).</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Microsoft Teams meeting organizers and participants with an <b>M365 Copilot (Premium) license</b></li>\n  <li>Microsoft 365 administrators managing Copilot and AI controls</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Teams admin center - Tenant admins will have control to opt in or out for AI features (e.g. Copilot, Intelligent Recap) for the meeting under the tenant. This feature is controlled by AI toggle/setting in the admin center. If AI is disabled at the tenant level, this experience is not available.</li><li>Meeting options (before meeting) - Meeting organizers with a Copilot license can enable or disable Recap without saving transcript in meeting options under Copilot and other AI before the meeting\n</li><li>In-Meeting controls (during meeting) – Meeting organizers with a Copilot license can enable or disable Recap without saving transcript anytime during the meeting via the AI toggle (appears at top-left). Participants can see whether AI is being turned on/off, while participants cannot change this setting.\n</li><li>Post-meeting AI summary - When enabled, Intelligent Recap will generate an AI summary even if recording and transcription are not turned on. Meeting attendees with Copilot license can view the AI summary after the meeting. No transcript or recording is saved as part of this experience.\n</li><li>Storage – When enabled, a doc will be stored in organizer’s OneDrive for default 120days, and it will be configurable in admin center for longer/shorter days as needed.\n</li><li>Deletion – For post-meeting AI summary, organizer can choose to delete the content from the Recap page, and it will result in the deletion of the doc in organizer’s OneDrive, and vice versa.</li>\n</ul><p><b><b>What you can do to prepare:</b></b></p><ul><li>Review your organization’s <b>AI and Copilot governance policies</b> to determine whether this experience aligns with your compliance posture.</li><li>If you want to opt out, <b>disable the AI toggle</b> in your tenant settings to prevent Recap without saving transcript from being used.</li><li>Update internal guidance and helpdesk documentation to reflect that meeting recaps may be generated <b>without recordings or transcripts</b>.</li><li>Communicate this change to meeting organizers, especially in regulated environments.</li></ul><p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\" width=\"100%\">\n  <tbody><tr>\n    <th align=\"left\">Compliance area</th>\n    <th align=\"left\">Explanation</th>\n  </tr>\n  <tr>\n    <td>AI/ML interaction with customer data</td>\n    <td>Copilot generates AI-based meeting recaps using live meeting context even when recording and transcription are not enabled. No meeting transcript or recording is saved.</td>\n  </tr>\n  <tr>\n    <td>New way for users to interact with generative AI</td>\n    <td>Users can receive AI-generated Intelligent Recap without starting or saving a meeting recording or transcript.</td>\n  </tr>\n  <tr>\n    <td>Admin controls available</td><td>This capability is governed by the existing tenant-level AI toggle. Disabling AI prevents Recap without saving transcript from being used.</td>\n  </tr>\n  <tr>\n    <td>User enable/disable capability</td>\n    <td>Meeting organizers can enable or disable the feature before the meeting, and organizers or participants with Copilot licenses can toggle it during the meeting.</td>\n  </tr>\n</tbody></table>",
       "ContentType": "html"
     },
@@ -707,7 +1047,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"560547\":[{\"RoadmapId\":560547,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-14T18:54:13.2468167Z\",\"LatestRing\":null},{\"RoadmapId\":560547,\"Platform\":\"iOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-14T18:54:13.246817Z\",\"LatestRing\":null},{\"RoadmapId\":560547,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-14T18:54:13.2468171Z\",\"LatestRing\":null},{\"RoadmapId\":560547,\"Platform\":\"Android\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-14T18:54:13.2468172Z\",\"LatestRing\":null},{\"RoadmapId\":560547,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-14T18:54:13.2468173Z\",\"LatestRing\":null}]}"
+        "Value": "{\"560547\":[{\"RoadmapId\":560547,\"Platform\":\"Mac\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-14T20:25:47.2782941Z\",\"LatestRing\":null},{\"RoadmapId\":560547,\"Platform\":\"iOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-14T20:25:47.2782943Z\",\"LatestRing\":null},{\"RoadmapId\":560547,\"Platform\":\"Desktop\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-14T20:25:47.2782945Z\",\"LatestRing\":null},{\"RoadmapId\":560547,\"Platform\":\"Android\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-14T20:25:47.2782946Z\",\"LatestRing\":null},{\"RoadmapId\":560547,\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-14T20:25:47.2782948Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12922,7 +13262,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"554925\":[{\"RoadmapId\":554925,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489446Z\",\"LatestRing\":null},{\"RoadmapId\":554925,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489444Z\",\"LatestRing\":null},{\"RoadmapId\":554925,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489448Z\",\"LatestRing\":null}]}"
+        "Value": "{\"554925\":[{\"RoadmapId\":554925,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489444Z\",\"LatestRing\":null},{\"RoadmapId\":554925,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489446Z\",\"LatestRing\":null},{\"RoadmapId\":554925,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-12T14:01:13.2489448Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -18081,53 +18421,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated March 11, 2025: We have updated the timeline. Thank you for your patience.</p><p>When users delete a Loop workspace, owners will be able to restore it from a recycle bin in Loop.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=421615\" target=\"_blank\">421615</a></p><p><b>When this will happen:</b>\n</p><p>We will begin rolling out June 2026 (previously early March) and expect to complete by end of June 2026 (previously late March).</p><p><b>How this will affect your organization:</b></p><p>Once available, when users delete a Loop workspace, owners can restore it from a recycle bin in Loop.</p><p><b>What you need to do to prepare:</b></p><p>There is nothing you need to do to prepare. These changes will roll to your tenant automatically.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "421615"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Starting June 2026, owners can restore deleted Microsoft Loop workspaces from a recycle bin. The rollout will complete by the end of June 2026, with no action needed from organizations. The timeline was updated from early March to June 2026."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-07-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC929021",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-03-11T16:23:48.317Z",
-    "Services": [
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-11-08T23:21:20Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Microsoft Loop – User Accessible Recycle Bin for Loop workspaces",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated March 11, 2026: We have updated the timeline. Thank you for your patience.</p><p><b><b>Introduction</b></b></p>\n<p>We’re enhancing <b>Microsoft Purview Content Explorer </b>with new summary metrics to improve visibility into scanning and classification activities. These updates will help admins identify unscanned files and monitor classification trends, enabling better data governance and informed decisions.</p><p>This message is associated with Roadmap ID&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=526796\" target=\"_blank\">526796</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li><b style=\"\">Public Preview:</b>&nbsp;We will begin rolling out mid-July 2026 (previously late&nbsp;January) and expect to complete by early August 2026 (previously mid-February).&nbsp;</li>\n<li><b style=\"\">General Availability (Worldwide):</b>&nbsp;We will begin rolling out mid-August 2026 (previously early March) and expect to complete by late August 2026 (previously late March).&nbsp;</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b> Admins managing <b>Microsoft Purview Information Protection</b> and using <b>Content Explorer</b>.</li>\n<li><b>What will happen:</b>\n<ul>\n<li>A new <b>Unscanned Files Summary</b> will display the count and percentage of files not scanned for classification.</li>\n<li><b>Classification History Insights</b> will show trends and details of classification changes over time.</li>\n<li>These metrics will appear in <b>Content Explorer</b> alongside existing <b>Sensitive Information Types (SITs)</b> and labels.</li><li>Admins can explore the new metrics to identify gaps and use on-demand classification capabilities to retrigger scans if needed.</li>\n<li>No changes to existing policies or configurations; the feature is enabled by default.<p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/6fca886b-7dca-418c-a7c9-aeeee7493d47\" style=\"width: 400px;\" alt=\"user settings\"></p></li></ul></li></ul><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No action is required. </li><li>These metrics will automatically appear in <b>Content Explorer.</b></li></ul><ul>\n</ul><p><b><b>Compliance considerations:</b></b></p>\n\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n<tbody><tr>\n<th>Question</th>\n<th>Explanation</th>\n</tr>\n<tr>\n<td>Does the change alter how existing customer data is processed, stored, or accessed (e.g., documents, emails, chats, etc.)?</td>\n<td>The feature accesses existing classification metadata to display trends and scanning status in <b>Content Explorer</b>.</td>\n</tr>\n</tbody></table>",
       "ContentType": "html"
     },
@@ -22537,7 +22830,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"487432\":[{\"RoadmapId\":487432,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301262Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.830126Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301264Z\",\"LatestRing\":null}]}"
+        "Value": "{\"487432\":[{\"RoadmapId\":487432,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.830126Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301262Z\",\"LatestRing\":null},{\"RoadmapId\":487432,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2025-04-29T01:14:43.8301264Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",

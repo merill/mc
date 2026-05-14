@@ -1,0 +1,56 @@
+{
+  "id": "MC1310681",
+  "versions": [
+    {
+      "capturedAt": "2026-05-14T20:16:20.747Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p>\n<p>We are introducing <b>optical character recognition (OCR)</b> scanning support for <b>Microsoft Purview Data Loss Prevention (DLP)</b> on Windows endpoint devices. This enhancement enables DLP policies to detect sensitive information within images embedded inside Office documents and PDF files.</p>\n<p>Previously, embedded images were skipped during endpoint DLP scanning, creating a detection blind spot. With this update, embedded images are OCR-processed, helping improve data protection coverage and reduce risk of accidental data exposure.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=381750\" target=\"_blank\">381750</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Rollout will begin in <b>mid-May 2026</b> and is expected to complete by <b>late May 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Admins managing Microsoft Purview Data Loss Prevention</li>\n<li>Organizations using Endpoint DLP on Windows devices</li>\n<li>Users working with Word, Excel, PowerPoint, and PDF files on Windows endpoints</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n</ul><p>Once OCR is enabled for your organization, DLP policies applied to endpoint devices will be able to scan images embedded inside Office documents (Word, PowerPoint, Excel) and pdf files on Windows devices. This means: \n</p><ul><li><b>Sensitive data detection in embedded images:</b> If a document contains an embedded image with sensitive information (such as credit card numbers, Social Security numbers, or financial data), DLP policies can now detect that data and enforce configured actions (audit, block, or block with override). \n</li><li><b>Closes a detection blind spot:</b> Previously, embedded images were entirely skipped during endpoint DLP scanning. This update ensures those images are processed using OCR and evaluated against your DLP policies. \n</li><li><b>Cost implications:</b> Enabling OCR incurs additional costs based on the volume of images scanned. Costs are charged per image scanned via Azure AI Services. Organizations can monitor OCR costs through:<ul><li>The <b>OCR cost dashboard</b> in the Microsoft Purview compliance portal under <b>Data loss prevention → Overview</b></li><li><b>Cost Management + Billing</b> in the Azure portal, filtered by your Azure AI Services resource&nbsp;</li></ul></li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p><p>To take advantage of this feature, complete the following steps:&nbsp;</p>\n<ol>\n<li><b>Verify prerequisites:</b>\n  <ul>\n    <li>Confirm Microsoft Sense Client version <b>10.8820.27904.1000</b> or later.</li>\n    <li>Run: <code>MsSense.exe --version</code> from <code>C:\\Program Files\\Windows Defender Advanced Threat Protection</code>.</li>\n    <li>Ensure Windows OS update <b>KB5079473 </b>is installed on endpoint devices.</li>\n  </ul>\n</li>\n<li><b>Enable OCR in Microsoft Purview:</b>\n  <ol>\n    <li>Navigate to the Microsoft Purview compliance portal.</li>\n    <li>Go to<b> Data loss prevention → Overview → Data loss prevention settings</b>.</li>\n    <li>Under <b>Optical Character Recognition (OCR),</b>&nbsp;select <b>Turn on OCR scanning</b>.</li>\n    <li>Select the appropriate Azure <a href=\"https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing#set-up-microsoft-syntex-billing-in-azure\" target=\"_blank\">pay-as-you-go</a> subscription and Azure AI Services resource.</li>\n    <li>Select <b>Save</b>.</li>\n  </ol>\n</li>\n<li><b>Review and update DLP policies:</b>\n  <ul>\n    <li>Ensure policies include <b>Devices </b>as a location.</li>\n    <li>Consider testing with <b>Test mode and policy tips </b>before enforcing actions.</li>\n    <li>Verify sensitive information types are configured for detection in embedded images.</li>\n  </ul>\n</li>\n<li><b>Set up billing and monitor costs:</b>\n  <ul>\n    <li>Configure OCR billing before enabling the feature.</li>\n    <li>Review the OCR cost dashboard in Purview after enabling.</li>\n  </ul>\n</li>\n<li><b>Assign appropriate roles:</b>\n  <ul>\n    <li>Compliance Data Administrator</li>\n    <li>Compliance Administrator</li>\n    <li>Information Protection</li>\n    <li>Information Protection Admin</li>\n  </ul></li></ol>\n\n<p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/ocr-learn-about\" target=\"_blank\">Learn about optical character recognition in Microsoft Purview | Microsoft Learn</a> \n</li><li><a href=\"https://learn.microsoft.com/purview/data-classification-activity-explorer\" target=\"_blank\">Get started with Activity Explorer | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/dlp-create-deploy-policy\" target=\"_blank\">Create and deploy a DLP policy | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/endpoint-dlp-learn-about\" target=\"_blank\">Learn about Endpoint DLP&nbsp;| Microsoft Learn</a></li></ul><p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n  <tbody><tr>\n    <th align=\"left\">Area</th>\n    <th align=\"left\">Explanation</th>\n  </tr>\n  <tr>\n    <td>Data processing changes</td>\n    <td>Embedded images within Office documents and PDFs are now processed using OCR, expanding how DLP evaluates file content.</td>\n  </tr>\n  <tr>\n    <td>AI/ML capabilities</td>\n    <td>OCR uses Azure AI Services to analyze images for sensitive information detection.</td>\n  </tr>\n  <tr>\n    <td>DLP policy enforcement</td>\n    <td>DLP policies are enhanced to detect sensitive information contained within embedded images.</td>\n  </tr>\n  <tr>\n    <td>Admin monitoring and reporting</td>\n    <td>Admins can monitor OCR usage and associated costs through the Purview dashboard and Azure Cost Management.</td>\n  </tr>\n  <tr>\n    <td>Admin control</td>\n    <td>The feature is disabled by default and must be explicitly enabled by an administrator.</td>\n  </tr>\n</tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "381750"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview Data Loss Prevention on Windows endpoints will support OCR scanning of images embedded in Office documents and PDFs starting mid-May 2026. This closes detection gaps by identifying sensitive data in images, requires enabling OCR with associated Azure AI costs, and involves updating DLP policies and prerequisites."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2026-06-20T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1310681",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-05-14T20:16:20.747Z",
+        "Services": [
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-05-14T20:15:43Z",
+        "Tags": [
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Purview Data Loss Prevention: Optical character recognition for images in Office and PDFs on Windows",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

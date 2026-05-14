@@ -1,0 +1,47 @@
+{
+  "id": "MC1310672",
+  "versions": [
+    {
+      "capturedAt": "2026-05-14T20:10:44.89Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p><p>To improve performance and provide better visibility into query progress, we are updating the behavior of the <b>ResultCount </b>parameter for the <b>Search-UnifiedAuditLog cmdlet </b>in <i>Microsoft Purview Audit</i>.</p><p>Previously, the <b>ResultCount</b> parameter returned the total number of results expected from a query. With this update, <b>ResultCount</b> <b>will display a running count of results</b> as they are retrieved in <i>real time</i>.</p><p>We are also introducing a new boolean property, <b>AuditSearchRequestMetadata.moreRecordsAvailable</b>, which indicates whether additional records are still being retrieved.</p><p>Together, these updates provide administrators with improved transparency into audit log search progress and better support for script and automation scenarios.</p><p><b><b>When this will happen</b></b></p><ul><li><b>General Availability (Worldwide, GCC): </b>We began rolling out in <b>mid-May 2026 </b>and expect to complete by<b> late May 2026</b>.</li><li><b>General Availability (GCC High, DoD):</b> We will begin rolling out in <b>early June 2026</b> and expect to complete by <b>late June 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Administrators who use <b>Microsoft Purview Audit</b></li><li>Administrators running the <b>Search-UnifiedAuditLog cmdlet</b> in <i>PowerShell</i></li><li>Organizations with<b> scripts or automation that rely on audit log search results</b></li></ul><p><i>What will happen</i></p><ul><li>The <b>ResultCount parameter </b>will now display a running count of results as they are retrieved during query execution.</li><li>A new boolean property, <b>AuditSearchRequestMetadata.moreRecordsAvailable</b>, will indicate whether additional records are still being retrieved.</li><li>While the query is running:<ul><li><b>ResultCount</b> shows the number of records retrieved so far.</li><li><b>moreRecordsAvailable</b> is set to <b><i>true</i></b>.</li></ul></li><li>When the query completes:<ul><li><b>ResultCount</b> reflects the final total number of results.</li><li><b>moreRecordsAvailable</b> is set to <i><b>false</b></i>.</li></ul></li><li>This feature is <b>enabled by default</b>.</li><li>There is no change to audit log data or retention.</li><li>Existing scripts that rely on <b>ResultCount </b>representing a final total before completion may require updates.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>Review existing scripts and automation that rely on <b>ResultCount </b>to determine total results.</li><li>Update scripts to use <b>AuditSearchRequestMetadata.moreRecordsAvailable </b>to confirm when queries are complete.</li><li>Adjust pagination or query logic to incorporate a check for <b>AuditSearchRequestMetadata.moreRecordsAvailable</b> to reliably determine whether more records remain.</li><li>Test audit log searches and automation during the rollout window from <b>mid-May through late May 2026</b>.</li><li>If you run <b>Search-UnifiedAuditLog</b> manually in <i>PowerShell </i>and review results interactively, no changes are needed. You will benefit from improved real-time progress visibility.</li></ul><p><b>Learn more:&nbsp;</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/audit-solutions-overview\" target=\"_blank\">Learn about auditing solutions in Microsoft Purview | Microsoft Purview | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps\" target=\"_blank\">Search-UnifiedAuditLog | policy-and-compliance-audit | ExchangePowerShell | Microsoft Learn</a></li></ul><p><i>If you have questions or need assistance, contact Microsoft Support.</i></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. The change modifies how audit search results are reported during execution by providing incremental counts instead of a final total upfront.</td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td>Yes. Administrators gain improved visibility into audit search progress through real-time result reporting, which can enhance monitoring workflows.</td></tr></tbody></table><p><b></b></p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview updates the Search-UnifiedAuditLog cmdlet's ResultCount parameter to show a running count of results in real time, adding a new boolean property, AuditSearchRequestMetadata.moreRecordsAvailable, to indicate if more records remain. This improves query progress visibility and affects scripts relying on ResultCount as a final total."
+          }
+        ],
+        "EndDateTime": "2026-07-22T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1310672",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-05-14T20:10:44.89Z",
+        "Services": [
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-05-14T20:10:32Z",
+        "Tags": [
+          "Feature update",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Purview: Update to ResultCount parameter in the Search-UnifiedAuditLog cmdlet",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
