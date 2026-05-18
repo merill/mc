@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b>Introduction</b></p>\n<p>We are introducing a new organization-level setting that allows admins to migrate <b>Outlook on the web (OWA)</b> from Exchange-based <b>Data Loss Prevention (DLP)</b>&nbsp;policy evaluation to <b>Data Classification Services (DCS)</b>-based DLP policy evaluation. This change brings OWA in line with the new Outlook experience, enabling enhanced capabilities such as the new oversharing policy tips experience and “Wait to send.” This update helps provide a more consistent, modern, and scalable DLP experience across Outlook clients.</p>\n\n<p><b>When this will happen:</b></p>\n<ul>\n<li>General Availability (Worldwide): Rollout will begin <b>mid-May 2026</b> and complete by <b>late May 2026</b>.</li>\n<li>General Availability (GCC): Rollout will begin <b>mid-May 2026</b> and complete by <b>mid-June 2026</b>.</li>\n</ul>\n\n<p><b>How this affects your organization:</b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Admins managing <b>Exchange Online and Microsoft Purview DLP policies</b></li>\n<li>Organizations using <b>DLP policies in Outlook on the web</b></li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>A new organization-level setting (<code>DlpViaDcsEnabled</code>) will be available to control DLP evaluation mode in OWA.</li>\n<li>By default, the setting is <code>False</code>, meaning Exchange-based DLP remains in use.</li>\n<li>Admins can manually enable DCS-based DLP evaluation for OWA using PowerShell.</li>\n<li>Once enabled, OWA will use DCS-based DLP policy evaluation instead of Exchange-based evaluation.</li>\n<li>Users may experience enhanced DLP features, including:\n<ul>\n<li>Improved oversharing policy tips</li>\n<li>“Wait to send” functionality</li>\n<li>Alignment with new Outlook DLP behavior</li>\n</ul>\n</li>\n<li>Some legacy Exchange-based DLP predicates will no longer be supported after migration. Refer to <a href=\"https://learn.microsoft.com/purview/dlp-ol365-win32-policy-tips#sensitive-information-types-that-support-policy-tips-for-outlook-perpetual-users\" target=\"_blank\">Data loss prevention policy tip reference for Outlook for Microsoft 365 | Microsoft Learn</a>&nbsp;for details about supported features.</li>\n</ul><p><b>What you can do to prepare:</b></p>\n\n\n<ul>\n<li>If you plan to continue using Exchange-based DLP evaluation, no action is required.</li>\n<li>If you plan to migrate to DCS-based DLP evaluation by enabling the <code>DlpViaDcsEnabled</code> setting:</li>\n<ul>\n<li><b>Important:</b> Review existing DLP policies before enabling this setting. Some Exchange-based predicates are not supported with DCS-based DLP and policies using them may no longer work as expected after migration.</li>\n<li>Test DCS-based DLP evaluation in a controlled environment</li>\n<li>Enable the setting using Exchange Online PowerShell:</li>\n</ul>\n\n\n\n<pre><code>Get-OrganizationConfig | Select DlpViaDcsEnabled\nSet-OrganizationConfig -DlpViaDcsEnabled $true\n</code></pre>\n\n<ul>\n<li>Communicate changes to compliance teams.</li>\n<li>Update internal documentation.</li>\n</ul></ul>\n\n<p><b>Learn more:&nbsp;</b><a href=\"https://learn.microsoft.com/powershell/module/exchangepowershell/set-organizationconfig?view=exchange-ps\" target=\"_blank\">Set-OrganizationConfig (ExchangePowerShell) | Microsoft Learn</a></p><p><b>Compliance considerations:</b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Compliance area</b></td><td><b>Explanation</b></td></tr><tr><td>Alters how existing customer data is processed</td><td>DLP evaluation shifts from Exchange-based processing to DCS-based processing, which may change how email content is analyzed and classified. This is existing analyzation classification flows for New Outlook and Classic Outlook.</td></tr><tr><td>Modifies Purview Data Loss Prevention (DLP) policies or enforcement</td><td>Some Exchange-based predicates are no longer supported, and enforcement behavior may differ under DCS-based evaluation.</td></tr><tr><td>Includes an admin control</td><td><p>Admins can enable or disable the feature using the <code>DlpViaDcsEnabled</code> organization setting.</p></td></tr></tbody></table><ul>\n</ul>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Outlook on the web will gain a new organization-level setting to switch DLP evaluation from Exchange-based to Data Classification Services (DCS)-based, enabling enhanced features like improved policy tips and “Wait to send.” Rollout starts mid-May 2026, with admins controlling the change via PowerShell."
+    }
+  ],
+  "EndDateTime": "2026-07-15T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1315220",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2026-05-18T21:46:01.37Z",
+  "Services": [
+    "Exchange Online"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-05-18T21:45:39Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Outlook on the web: New setting to use data classification services for DLP evaluation",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
