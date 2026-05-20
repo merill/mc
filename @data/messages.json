@@ -4,6 +4,169 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated May 20, 2026: We have paused rollout of this feature and will resume soon. We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>We are introducing <b>optical character recognition (OCR)</b> scanning support for <b>Microsoft Purview Data Loss Prevention (DLP)</b> on Windows endpoint devices. This enhancement enables DLP policies to detect sensitive information within images embedded inside Office documents and PDF files.</p>\n<p>Previously, embedded images were skipped during endpoint DLP scanning, creating a detection blind spot. With this update, embedded images are OCR-processed, helping improve data protection coverage and reduce risk of accidental data exposure.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=381750\" target=\"_blank\">381750</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Rollout will begin in<b> late May 2026</b> (previously&nbsp;mid-May)&nbsp;and is expected to complete by<b> end of May 2026</b> (previously&nbsp;late May).</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Admins managing Microsoft Purview Data Loss Prevention</li>\n<li>Organizations using Endpoint DLP on Windows devices</li>\n<li>Users working with Word, Excel, PowerPoint, and PDF files on Windows endpoints</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n</ul><p>Once OCR is enabled for your organization, DLP policies applied to endpoint devices will be able to scan images embedded inside Office documents (Word, PowerPoint, Excel) and pdf files on Windows devices. This means: \n</p><ul><li><b>Sensitive data detection in embedded images:</b> If a document contains an embedded image with sensitive information (such as credit card numbers, Social Security numbers, or financial data), DLP policies can now detect that data and enforce configured actions (audit, block, or block with override). \n</li><li><b>Closes a detection blind spot:</b> Previously, embedded images were entirely skipped during endpoint DLP scanning. This update ensures those images are processed using OCR and evaluated against your DLP policies. \n</li><li><b>Cost implications:</b> Enabling OCR incurs additional costs based on the volume of images scanned. Costs are charged per image scanned via Azure AI Services. Organizations can monitor OCR costs through:<ul><li>The <b>OCR cost dashboard</b> in the Microsoft Purview compliance portal under <b>Data loss prevention → Overview</b></li><li><b>Cost Management + Billing</b> in the Azure portal, filtered by your Azure AI Services resource&nbsp;</li></ul></li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p><p>To take advantage of this feature, complete the following steps:&nbsp;</p>\n<ol>\n<li><b>Verify prerequisites:</b>\n  <ul>\n    <li>Confirm Microsoft Sense Client version <b>10.8820.27904.1000</b> or later.</li>\n    <li>Run: <code>MsSense.exe --version</code> from <code>C:\\Program Files\\Windows Defender Advanced Threat Protection</code>.</li>\n    <li>Ensure Windows OS update <b>KB5079473 </b>is installed on endpoint devices.</li>\n  </ul>\n</li>\n<li><b>Enable OCR in Microsoft Purview:</b>\n  <ol>\n    <li>Navigate to the Microsoft Purview compliance portal.</li>\n    <li>Go to<b> Data loss prevention → Overview → Data loss prevention settings</b>.</li>\n    <li>Under <b>Optical Character Recognition (OCR),</b>&nbsp;select <b>Turn on OCR scanning</b>.</li>\n    <li>Select the appropriate Azure <a href=\"https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing#set-up-microsoft-syntex-billing-in-azure\" target=\"_blank\">pay-as-you-go</a> subscription and Azure AI Services resource.</li>\n    <li>Select <b>Save</b>.</li>\n  </ol>\n</li>\n<li><b>Review and update DLP policies:</b>\n  <ul>\n    <li>Ensure policies include <b>Devices </b>as a location.</li>\n    <li>Consider testing with <b>Test mode and policy tips </b>before enforcing actions.</li>\n    <li>Verify sensitive information types are configured for detection in embedded images.</li>\n  </ul>\n</li>\n<li><b>Set up billing and monitor costs:</b>\n  <ul>\n    <li>Configure OCR billing before enabling the feature.</li>\n    <li>Review the OCR cost dashboard in Purview after enabling.</li>\n  </ul>\n</li>\n<li><b>Assign appropriate roles:</b>\n  <ul>\n    <li>Compliance Data Administrator</li>\n    <li>Compliance Administrator</li>\n    <li>Information Protection</li>\n    <li>Information Protection Admin</li>\n  </ul></li></ol>\n\n<p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/ocr-learn-about\" target=\"_blank\">Learn about optical character recognition in Microsoft Purview | Microsoft Learn</a> \n</li><li><a href=\"https://learn.microsoft.com/purview/data-classification-activity-explorer\" target=\"_blank\">Get started with Activity Explorer | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/dlp-create-deploy-policy\" target=\"_blank\">Create and deploy a DLP policy | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/endpoint-dlp-learn-about\" target=\"_blank\">Learn about Endpoint DLP&nbsp;| Microsoft Learn</a></li></ul><p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n  <tbody><tr>\n    <th align=\"left\">Area</th>\n    <th align=\"left\">Explanation</th>\n  </tr>\n  <tr>\n    <td>Data processing changes</td>\n    <td>Embedded images within Office documents and PDFs are now processed using OCR, expanding how DLP evaluates file content.</td>\n  </tr>\n  <tr>\n    <td>AI/ML capabilities</td>\n    <td>OCR uses Azure AI Services to analyze images for sensitive information detection.</td>\n  </tr>\n  <tr>\n    <td>DLP policy enforcement</td>\n    <td>DLP policies are enhanced to detect sensitive information contained within embedded images.</td>\n  </tr>\n  <tr>\n    <td>Admin monitoring and reporting</td>\n    <td>Admins can monitor OCR usage and associated costs through the Purview dashboard and Azure Cost Management.</td>\n  </tr>\n  <tr>\n    <td>Admin control</td>\n    <td>The feature is disabled by default and must be explicitly enabled by an administrator.</td>\n  </tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "381750"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview DLP on Windows now supports OCR to scan embedded images in Office documents and PDFs for sensitive data, closing a detection gap. Rollout is paused, resuming late May 2026. Enabling OCR incurs Azure AI service costs and requires specific client versions, updates, and admin configuration."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-06-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1310681",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-20T16:16:49.343Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-14T20:15:43Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview Data Loss Prevention: Optical character recognition for images in Office and PDFs on Windows",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 20, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We’re making a change to the characters allowed in naming and description fields across Microsoft Purview eDiscovery. As part of ongoing security hardening efforts, this update strengthens input validation for eDiscovery cases, holds, searches, and review sets to improve service resilience and reliability.</p><p><b><b>When this will happen:</b></b></p><p>General Availability (Production, GCC, GCC High, DoD): This change will begin rolling out in <b>mid-June 2026</b> (previously&nbsp;mid-May)&nbsp;and is expected to be completed by <b>end of June 2026</b> (previously&nbsp;late May).</p><p><b><b>How this affects your organization:</b></b></p><p><b>Who is affected:</b></p><p>Organizations with users or administrators who create or manage Microsoft Purview eDiscovery:</p><ul><li>Cases</li><li>Holds</li><li>Searches</li><li>Review sets</li></ul><p><b>\n</b></p><p><b>What will happen:</b></p><ul><li>Beginning May 15th, 2026, the following special characters will no longer be permitted in naming or description fields when creating or editing:<ul><li>+ (plus sign)&nbsp;</li><li>= (equals sign)&nbsp;</li><li>@ (at sign)&nbsp;</li><li>/ (forward slash)&nbsp;</li><li>* (asterisk)&nbsp;</li></ul></li><li>This restriction applies to:<ul><li>Case name and description</li><li>Hold policy name and description</li><li>Search name and description</li><li>Review set name and description</li></ul></li><li>Existing entities are not affected. <ul><li>Cases, holds, searches, and review sets that already contain these characters will continue to function normally.</li></ul></li><li><b>Editing triggers enforcement:</b><ul><li>If a user edits an existing entity's name or description (e.g., updating an eDiscovery case name) that contains a restricted character, they will see a validation message prompting them to remove the special character before saving. Note that this does not apply when an existing hold policy is being reapplied or when data&nbsp;sources are added to or removed from hold policies.</li><li>The original name and description are preserved until the user chooses to make changes.</li></ul></li><li><b>New entities are enforced immediately:</b><ul><li>Any newly created case, hold, search, or review set must not contain restricted characters in name or description fields.</li></ul></li></ul><p><b><b>What you can do to prepare:</b>\n</b></p><p>No admin action is required to enable this change. However, we recommend the following:</p><ul><li>Inform your eDiscovery users that the characters + = @ / <b>and </b>* will no longer be accepted in entity names and descriptions. \n</li><li>Review and update existing naming conventions or templates that include these characters.</li><li>Update internal documentation or guidance for eDiscovery naming standards.</li><li>Communicate this change to helpdesk and compliance teams to prepare for validation messages when editing existing entities.</li></ul><p><a href=\"https://learn.microsoft.com/purview/edisc\" target=\"_blank\">Learn about eDiscovery (Premium) | Microsoft Learn</a></p><p>No data loss will occur. Existing entities retain their current names and continue to function. Enforcement applies only at the time of creation or editing.</p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting mid-June 2026, Microsoft Purview eDiscovery will restrict special characters (+, =, @, /, *) in naming and description fields for new or edited cases, holds, searches, and review sets. Existing entities remain unaffected. No admin action is required, but users should update naming practices accordingly."
+      }
+    ],
+    "EndDateTime": "2026-07-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1282562",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-05-20T16:13:12.357Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-04-16T21:16:06Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "User impact"
+    ],
+    "Title": "Microsoft Purview eDiscovery: Naming and description fields will restrict certain special characters",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 20, 2026: We’re reminding you that <b>billing for High Volume Email will begin soon</b>. To avoid service disruption, ensure your billing configuration is set up before billing starts. We have updated the content below. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>Exchange Online includes email‑sending limits based on three factors: recipient rate limit, recipient limit, and message rate limit. To support customers whose internal communication needs exceed these standard limits, we are introducing <b>High Volume Email (HVE)</b>&nbsp;for&nbsp;<i>Microsoft 365</i>. HVE is designed for large‑scale internal communications and integrates with business applications and devices to support operational and mass‑mailing scenarios. It uses a transactional pricing model based on the number of recipients.</p><p>Usage will be metered starting <b>June 1, 2026</b>, based on the number of expanded delivered recipients. Pricing is <b>$42 per one million recipients</b> (equivalent to $0.000042 per recipient) through Microsoft commerce.</p><p>To ensure uninterrupted service, you must <b>configure your billing settings before billing starts</b>. If billing is not configured by this date, your organization may experience <b>interruption in High Volume Email message delivery</b> until billing is set up.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?searchterms=382633#Roadmap\" target=\"_blank\">382633</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Public Preview: </b>Available now.\n</li><li><b>General Availability (worldwide): </b>Available now.&nbsp;</li><li>Billing for High Volume Email will begin on <b>June 1, 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Admins managing Exchange Online mail flow and reporting\n</li><li>Organizations with large-scale internal email distribution needs\n</li></ul><p><i>What will happen</i></p><ul><li>A new<b> High Volume Email page</b> will appear under <b><i>Mail flow </i></b>in the<i> Exchange admin center</i>.\n</li><li>Admins can create and manage<b> Mail User accounts enabled for HVE</b>.\n</li><li>HVE accounts use a<b> dedicated SMTP endpoint</b> for high-volume sending.\n</li><li>A new High Volume Email report will appear under <b><i>Reports &gt; Mail flow</i></b> to help admins monitor HVE usage per account.\n</li><li>HVE is <b>opt‑in</b>; it does not modify default sending limits or existing mail flow behavior.</li></ul><p><i>Screenshot 1 - Create new HVE specific accounts:&nbsp;</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/bd67e955-ee37-4ef5-b684-fcb3d0c4a421/0712d8ef517d8c135585b2b1f7a7e4636ed7416d.png\" style=\"width: 400px;\" alt=\"user settings\"><i></i></p><p><i></i></p><p><i>Screenshot 2 - Manage HVE accounts, including assigned billing policies:</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/8c18f190-00f9-476e-a743-4469b3b31327/0b87b1f6570e862f542957a06968b71c77a84c40.png\" style=\"width: 400px;\" alt=\"user settings\"><i></i></p><p></p><p><b><b>What you can do to prepare</b></b></p><p>To continue using High Volume Email without interruption:</p><ol><li>(Optional) Review your current usage of High Volume Email. For more information, see View HVE usage report.</li><li>(Required) Set up billing configuration for High Volume Email. For more information, see Set up Billing for High Volume Email.\n</li><li>(Required) Verify that your billing configuration is active and correctly associated with your tenant.\n</li></ol><p>You may want to:</p><ul><li>Review and update any internal documentation that describes email‑sending processes.</li><li>Learn more about setup and configuration:&nbsp;<a href=\"https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365\" target=\"_blank\">Manage high volume emails for Microsoft 365 Public preview | Mail flow best practices | Exchange Online | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "382633"
+      },
+      {
+        "Name": "Summary",
+        "Value": "High Volume Email (HVE) for Microsoft 365 is now generally available with billing starting June 1, 2026, at $42 per million recipients. Admins must configure billing to avoid service disruption. HVE supports large-scale internal emails via dedicated SMTP endpoints and includes new management and reporting features."
+      }
+    ],
+    "EndDateTime": "2026-06-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1243552",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-20T16:09:44.14Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-03-04T01:27:55Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "High Volume Email for Microsoft 365 now generally available",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "We are announcing the ability to create and visualize custom KPIs in the process intelligence experience in Power Automate. This feature will reach public preview on June 31, 2026.<br><br><b>How does this affect me?</b><br>The process intelligence experience allows flexible metric creation with seamless visualization integration. You can create custom metrics using configurable formulas that can incorporate existing process data, standard KPIs, and mathematical operations. <br><br>Key capabilities include:<ul> <li>Building new KPIs using an intuitive formula editor that supports calculations based on case attributes, event data, timestamps, and existing metrics. </li> <li>Modify, refine, or delete custom metrics as business needs evolve, with changes automatically reflected across all visualizations using those metrics. </li> <li>Integrate custom KPIs seamlessly into all process intelligence experience tiles and components, and display them in process maps, trend charts, statistical breakdowns, and comparative analyses just like standard metrics. </li> <li>Define metrics that reflect your unique business context, such as weighted performance scores, custom cost calculations, compliance rates, or domain-specific efficiency ratios. </li> <li>Reuse custom KPIs throughout the process intelligence experience, applying them to filters and analysis scenarios. Custom metrics are evaluated dynamically against your process data, ensuring calculations remain current with each data refresh and providing consistent measurement across your process intelligence environment. </li></ul> <b>What action do I need to take? </b><br>This message is for awareness, and no action is required.<br><br>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [],
+    "EndDateTime": "2026-06-30T14:04:00Z",
+    "HasAttachments": false,
+    "Id": "MC1310386",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-20T13:37:45.983Z",
+    "Services": [
+      "Microsoft Power Automate"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-14T14:04:17Z",
+    "Tags": [
+      "New feature"
+    ],
+    "Title": "Power Automate - Create and visualize custom KPIs in the process intelligence experience",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p><b><b>Introduction</b></b></p><p>We’re introducing a new capability that gives Microsoft 365 tenant administrators more control over how public organizational (HR) attributes are shared across Microsoft 365 Profile and Viva applications. This update lets admins choose which public organizational attributes are shared with Microsoft 365 Profile and which are shared only with specific Viva apps.</p><p><b><b>When this will happen</b></b></p><p style=\"margin-left: 25px;\"><b>General Availability (Worldwide): </b>We began rolling out in <b>early May 2026</b> and expect to complete by the&nbsp;<b>end of May 2026</b>.</p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 tenants that ingest organizational data using <b>MODIS</b></li><li>Tenant administrators who manage organizational profile data</li><li>Viva applications that consume Microsoft 365 Profile data (for example, Viva Insights and Viva Glint)</li></ul><p><i>What will happen</i></p><p>Today, <b>all 26 public organizational attributes</b> ingested via MODIS are automatically sent to Microsoft 365 Profile and made available to onboarded Microsoft 365 apps by default.</p><p>With this release:</p><ul><li><b>Six core attributes</b> will continue to be shared automatically across Microsoft 365:<ul><li>First name</li><li>Last name</li><li>Display name</li><li>Job title</li><li>Company</li><li>Country or region</li></ul></li><li>Tenant admins can configure public organizational attributes for sharing across Microsoft 365 Profile and supported Viva apps, including:<ul><li>Choose which public HR attributes are shared with Microsoft 365 Profile</li><li>Share attributes with selected Viva apps independently of Profile</li><li>Upload organizational data intended only for app‑specific scenarios without making it available across Microsoft 365</li></ul></li><li>Attributes shared with Microsoft 365 Profile will continue to be available to onboarded Microsoft 365 apps that consume Profile data, based on existing configurations.</li></ul><p><b>Impact to existing customers:</b></p><ul><li>Existing MODIS customers will be transitioned to the updated ingestion flow.</li><li>There is <b>no impact to existing data‑sharing configurations</b>.</li><li>After rollout:<ul><li>Public attributes currently shared with Microsoft 365 Profile will continue to be shared by default.</li><li>Admins will see <b>new configuration options in the MODIS ingestion flow</b> to modify attribute‑level sharing as needed.</li></ul></li></ul><p><i>Screenshot 1 - Choose access for custom attributes:</i></p><p>&nbsp;<img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/ff42fd6b-492a-4141-8897-16172039bda3/0eb28065ecff1694939dcff56dcaa19cb159bf0f.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><i>Screenshot 2 - Choose attribute access for app-specific attributes:&nbsp;</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/53cf494a-9ef9-41ed-a054-e8c1089460d0/87cd47141373534171848eb5c6fd0e2add1f3ead.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><i>Screenshot 3 - Choose attribute access for Microsoft 365 attributes:</i></p><p><i>&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/25403700-dcaa-4d00-947d-c2d101ae805a/f898517b915eada18120a541fa093f7b422f978e.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><i>Screenshot 4 - View Microsoft 365 attributes available for all apps and services:</i></p><p><i>&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/3482c66f-083d-40b0-a7d9-6e47d077f8e6/5fc07c9312f77641919e168d9390d8a29d587714.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p>Screenshot 5 - Choose apps and services to share data with:</p><p>&nbsp;<img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/d4a71b2e-8132-433c-955b-0ba7ff502be5/64cb8a0701c2d1e23cd9c61415eed3ffee61596c.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><b><b>What you can do to prepare</b></b></p><ul><li><b>No immediate action is required.</b></li><li>After rollout, review organizational data ingestion settings in <i>MODIS</i> to ensure that only appropriate public attributes are shared with Microsoft 365 Profile or Viva applications.</li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. Admins can control how public organizational attributes are shared between Microsoft 365 Profile and Viva apps.</td></tr><tr><td>Does the change include an admin control?</td><td>Yes. Attribute‑level sharing can be configured through the MODIS ingestion flow.</td></tr><tr><td>Does the change modify how users can access, export, delete, or correct their personal data (GDPR DSR)?</td><td>Yes. Changes to attribute sharing may affect where user profile data is visible across apps.</td></tr></tbody></table><p><b></b></p>",
       "ContentType": "html"
     },
@@ -147,7 +310,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"562413\":[{\"RoadmapId\":562413,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-20T12:19:54.6302705Z\",\"LatestRing\":null},{\"RoadmapId\":562413,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-20T00:00:25.5357724Z\",\"LatestRing\":null},{\"RoadmapId\":562413,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-20T00:00:25.5357722Z\",\"LatestRing\":null},{\"RoadmapId\":562413,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-20T00:00:25.5357725Z\",\"LatestRing\":null}]}"
+        "Value": "{\"562413\":[{\"RoadmapId\":562413,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-05-20T16:22:17.4047388Z\",\"LatestRing\":null},{\"RoadmapId\":562413,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-20T00:00:25.5357724Z\",\"LatestRing\":null},{\"RoadmapId\":562413,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-20T00:00:25.5357722Z\",\"LatestRing\":null},{\"RoadmapId\":562413,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-20T00:00:25.5357725Z\",\"LatestRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2558,53 +2721,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p>\n<p>We are introducing <b>optical character recognition (OCR)</b> scanning support for <b>Microsoft Purview Data Loss Prevention (DLP)</b> on Windows endpoint devices. This enhancement enables DLP policies to detect sensitive information within images embedded inside Office documents and PDF files.</p>\n<p>Previously, embedded images were skipped during endpoint DLP scanning, creating a detection blind spot. With this update, embedded images are OCR-processed, helping improve data protection coverage and reduce risk of accidental data exposure.</p>\n<p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=381750\" target=\"_blank\">381750</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Rollout will begin in <b>mid-May 2026</b> and is expected to complete by <b>late May 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Admins managing Microsoft Purview Data Loss Prevention</li>\n<li>Organizations using Endpoint DLP on Windows devices</li>\n<li>Users working with Word, Excel, PowerPoint, and PDF files on Windows endpoints</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n</ul><p>Once OCR is enabled for your organization, DLP policies applied to endpoint devices will be able to scan images embedded inside Office documents (Word, PowerPoint, Excel) and pdf files on Windows devices. This means: \n</p><ul><li><b>Sensitive data detection in embedded images:</b> If a document contains an embedded image with sensitive information (such as credit card numbers, Social Security numbers, or financial data), DLP policies can now detect that data and enforce configured actions (audit, block, or block with override). \n</li><li><b>Closes a detection blind spot:</b> Previously, embedded images were entirely skipped during endpoint DLP scanning. This update ensures those images are processed using OCR and evaluated against your DLP policies. \n</li><li><b>Cost implications:</b> Enabling OCR incurs additional costs based on the volume of images scanned. Costs are charged per image scanned via Azure AI Services. Organizations can monitor OCR costs through:<ul><li>The <b>OCR cost dashboard</b> in the Microsoft Purview compliance portal under <b>Data loss prevention → Overview</b></li><li><b>Cost Management + Billing</b> in the Azure portal, filtered by your Azure AI Services resource&nbsp;</li></ul></li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p><p>To take advantage of this feature, complete the following steps:&nbsp;</p>\n<ol>\n<li><b>Verify prerequisites:</b>\n  <ul>\n    <li>Confirm Microsoft Sense Client version <b>10.8820.27904.1000</b> or later.</li>\n    <li>Run: <code>MsSense.exe --version</code> from <code>C:\\Program Files\\Windows Defender Advanced Threat Protection</code>.</li>\n    <li>Ensure Windows OS update <b>KB5079473 </b>is installed on endpoint devices.</li>\n  </ul>\n</li>\n<li><b>Enable OCR in Microsoft Purview:</b>\n  <ol>\n    <li>Navigate to the Microsoft Purview compliance portal.</li>\n    <li>Go to<b> Data loss prevention → Overview → Data loss prevention settings</b>.</li>\n    <li>Under <b>Optical Character Recognition (OCR),</b>&nbsp;select <b>Turn on OCR scanning</b>.</li>\n    <li>Select the appropriate Azure <a href=\"https://learn.microsoft.com/microsoft-365/syntex/syntex-azure-billing#set-up-microsoft-syntex-billing-in-azure\" target=\"_blank\">pay-as-you-go</a> subscription and Azure AI Services resource.</li>\n    <li>Select <b>Save</b>.</li>\n  </ol>\n</li>\n<li><b>Review and update DLP policies:</b>\n  <ul>\n    <li>Ensure policies include <b>Devices </b>as a location.</li>\n    <li>Consider testing with <b>Test mode and policy tips </b>before enforcing actions.</li>\n    <li>Verify sensitive information types are configured for detection in embedded images.</li>\n  </ul>\n</li>\n<li><b>Set up billing and monitor costs:</b>\n  <ul>\n    <li>Configure OCR billing before enabling the feature.</li>\n    <li>Review the OCR cost dashboard in Purview after enabling.</li>\n  </ul>\n</li>\n<li><b>Assign appropriate roles:</b>\n  <ul>\n    <li>Compliance Data Administrator</li>\n    <li>Compliance Administrator</li>\n    <li>Information Protection</li>\n    <li>Information Protection Admin</li>\n  </ul></li></ol>\n\n<p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/ocr-learn-about\" target=\"_blank\">Learn about optical character recognition in Microsoft Purview | Microsoft Learn</a> \n</li><li><a href=\"https://learn.microsoft.com/purview/data-classification-activity-explorer\" target=\"_blank\">Get started with Activity Explorer | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/dlp-create-deploy-policy\" target=\"_blank\">Create and deploy a DLP policy | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/endpoint-dlp-learn-about\" target=\"_blank\">Learn about Endpoint DLP&nbsp;| Microsoft Learn</a></li></ul><p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n  <tbody><tr>\n    <th align=\"left\">Area</th>\n    <th align=\"left\">Explanation</th>\n  </tr>\n  <tr>\n    <td>Data processing changes</td>\n    <td>Embedded images within Office documents and PDFs are now processed using OCR, expanding how DLP evaluates file content.</td>\n  </tr>\n  <tr>\n    <td>AI/ML capabilities</td>\n    <td>OCR uses Azure AI Services to analyze images for sensitive information detection.</td>\n  </tr>\n  <tr>\n    <td>DLP policy enforcement</td>\n    <td>DLP policies are enhanced to detect sensitive information contained within embedded images.</td>\n  </tr>\n  <tr>\n    <td>Admin monitoring and reporting</td>\n    <td>Admins can monitor OCR usage and associated costs through the Purview dashboard and Azure Cost Management.</td>\n  </tr>\n  <tr>\n    <td>Admin control</td>\n    <td>The feature is disabled by default and must be explicitly enabled by an administrator.</td>\n  </tr>\n</tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "381750"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Purview Data Loss Prevention on Windows endpoints will support OCR scanning of images embedded in Office documents and PDFs starting mid-May 2026. This closes detection gaps by identifying sensitive data in images, requires enabling OCR with associated Azure AI costs, and involves updating DLP policies and prerequisites."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-06-20T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1310681",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-14T20:16:20.747Z",
-    "Services": [
-      "Microsoft Purview"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-14T20:15:43Z",
-    "Tags": [
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Purview Data Loss Prevention: Optical character recognition for images in Office and PDFs on Windows",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b><b>Introduction</b></b></p><p>New Outlook for Windows now supports <b>Lightweight Directory Access Protocol (LDAP)</b> directories for S/MIME certificate lookup. This enables tenants to configure LDAP directories for their organization as well as enabling users to configure LDAP directories themselves. Once configured, users can find recipients’ public encryption certificates from the directories when sending encrypted email, improving secure collaboration with external partners. This is especially valuable for tenants who collaborate with external partners and rely on public/partner LDAP directories to store public S/MIME certificates of users.&nbsp;</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=518287\" target=\"_blank\">518287</a>.</p><p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): We will begin rolling out in <b>l</b><b>ate May 2026</b> and expect to complete by <b>late&nbsp;May&nbsp;2026</b>.\n</li><li>General Availability (GCC): We will begin rolling out in <b style=\"\">early June 2026</b> and expect to complete by <b style=\"\">late June 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>&nbsp;Organizations that use S/MIME encryption with <b>external recipients</b> whose public certificates are hosted in third-party LDAP directories&nbsp;</li><li>&nbsp;Admins managing Exchange Online</li>\n</ul><p><b>What will happen:</b></p>\n<ul>\n<li>Admins can configure LDAP directories using <a href=\"https://learn.microsoft.com/powershell/exchange/connect-to-exchange-online-powershell\" target=\"_blank\">Exchange Online PowerShell</a>.</li>\n<li>Users can add LDAP directories in <b>Settings &gt; Mail &gt; S/MIME</b> in new Outlook.</li>\n<li>When composing an S/MIME encrypted email, users can select recipients from the LDAP directory via the <b>To</b> field.</li><li>LDAP endpoints <b>must not require authentication</b>, as authentication is not currently supported.</li><p>Screenshot: <i><b>“Add LDAP directory”</b> option in <b>Settings &gt; Mail &gt; S/MIME</b> and LDAP recipient picker in the <b>To</b> field during message composition:</i></p><p><img src=\" https://cxcs.microsoft.net/file/ccp/en-us/103ff0c5-3287-4f83-9a34-f2dab1c557a4\" style=\"width: 400px;\" alt=\"Add LDAP directory settings in new Outlook.\"></p><li>Feature is <b>enabled by default </b>once available.</li>\n<li>No impact to:\n  <ul>\n    <li>Classic Outlook for Windows users</li>\n    <li>Organizations not using LDAP for S/MIME certificate discovery</li></ul></li></ul><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No action is required to enable this feature</li>\n<li>If your organization uses LDAP for S/MIME certificates:\n  <ul>\n    <li>Identify LDAP directory endpoints used by your organization</li><li>Run the Add-LdapDirectory cmdlet to register a new directory:</li>\n\n<pre><code>Add-LdapDirectory -Organization \"contoso.com\" -Id \"corp-ldap\" -Host \"ldap.corp.com\" -Port 636 -UseSsl</code></pre>\n    <li>Configure directories using Exchange Online PowerShell (Add-LdapDirectory).</li>\n    <li>Ensure LDAP endpoints do not require authentication.</li><li>Communicate guidance to users transitioning to new Outlook: <a href=\"https://support.microsoft.com/office/set-up-outlook-to-use-s-mime-encryption-2e57e4bd-4cc2-4531-9a39-426e7c873e26\" target=\"_blank\">Set up Outlook to use S/MIME encryption | Microsoft Support</a>.</li></ul></li></ul><p></p><ul></ul><p></p><p><b>Learn more:</b> <a href=\"https://learn.microsoft.com/exchange/security-and-compliance/smime-exo/configure-smime-exo\" target=\"_blank\">Configure S/MIME in Exchange Online | Microsoft Learn</a> (will be updated before we complete rollout)</p><p></p><ul></ul><p></p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -3041,38 +3157,6 @@
       "New feature"
     ],
     "Title": "Dynamics 365 Customer Insights - Data - Use Microsoft Fabric OneLake as a data source",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "We are announcing the ability to create and visualize custom KPIs in the process intelligence experience in Power Automate. This feature will reach public preview on May 31, 2026.<br><br><b>How does this affect me?</b><br>The process intelligence experience allows flexible metric creation with seamless visualization integration. You can create custom metrics using configurable formulas that can incorporate existing process data, standard KPIs, and mathematical operations. <br><br>Key capabilities include:<ul> <li>Building new KPIs using an intuitive formula editor that supports calculations based on case attributes, event data, timestamps, and existing metrics. </li> <li>Modify, refine, or delete custom metrics as business needs evolve, with changes automatically reflected across all visualizations using those metrics. </li> <li>Integrate custom KPIs seamlessly into all process intelligence experience tiles and components, and display them in process maps, trend charts, statistical breakdowns, and comparative analyses just like standard metrics. </li> <li>Define metrics that reflect your unique business context, such as weighted performance scores, custom cost calculations, compliance rates, or domain-specific efficiency ratios. </li> <li>Reuse custom KPIs throughout the process intelligence experience, applying them to filters and analysis scenarios. Custom metrics are evaluated dynamically against your process data, ensuring calculations remain current with each data refresh and providing consistent measurement across your process intelligence environment. </li></ul> <b>What action do I need to take? </b><br>This message is for awareness, and no action is required.<br><br> If you would like more information on this feature, please visit: <a target=\"_blank\" href=\"https://aka.ms/15405 \">Create and visualize custom KPIs in the process intelligence experience</a>.",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2026-06-30T14:04:00Z",
-    "HasAttachments": false,
-    "Id": "MC1310386",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-14T14:07:44.697Z",
-    "Services": [
-      "Microsoft Power Automate"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-14T14:04:17Z",
-    "Tags": [
-      "New feature"
-    ],
-    "Title": "Power Automate - Create and visualize custom KPIs in the process intelligence experience",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -10819,45 +10903,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Teams: Browser selection for links in Teams Mobile",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated April 23, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We’re making a change to the characters allowed in naming and description fields across Microsoft Purview eDiscovery. As part of ongoing security hardening efforts, this update strengthens input validation for eDiscovery cases, holds, searches, and review sets to improve service resilience and reliability.</p><p><b><b>When this will happen:</b></b></p><p>General Availability (Production, GCC, GCC High, DoD): This change will begin rolling out in <b>mid-May 2026</b> and is expected to be completed by <b>late May 2026</b>.</p><p><b><b>How this affects your organization:</b></b></p><p><b>Who is affected:</b></p><p>Organizations with users or administrators who create or manage Microsoft Purview eDiscovery:</p><ul><li>Cases</li><li>Holds</li><li>Searches</li><li>Review sets</li></ul><p><b>\n</b></p><p><b>What will happen:</b></p><ul><li>Beginning May 15th, 2026, the following special characters will no longer be permitted in naming or description fields when creating or editing:<ul><li>+ (plus sign)&nbsp;</li><li>= (equals sign)&nbsp;</li><li>@ (at sign)&nbsp;</li><li>/ (forward slash)&nbsp;</li><li>* (asterisk)&nbsp;</li></ul></li><li>This restriction applies to:<ul><li>Case name and description</li><li>Hold policy name and description</li><li>Search name and description</li><li>Review set name and description</li></ul></li><li>Existing entities are not affected. <ul><li>Cases, holds, searches, and review sets that already contain these characters will continue to function normally.</li></ul></li><li><b>Editing triggers enforcement:</b><ul><li>If a user edits an existing entity's name or description (e.g., updating an eDiscovery case name) that contains a restricted character, they will see a validation message prompting them to remove the special character before saving. Note that this does not apply when an existing hold policy is being reapplied or when data&nbsp;sources are added to or removed from hold policies.</li><li>The original name and description are preserved until the user chooses to make changes.</li></ul></li><li><b>New entities are enforced immediately:</b><ul><li>Any newly created case, hold, search, or review set must not contain restricted characters in name or description fields.</li></ul></li></ul><p><b><b>What you can do to prepare:</b>\n</b></p><p>No admin action is required to enable this change. However, we recommend the following:</p><ul><li>Inform your eDiscovery users that the characters + = @ / <b>and </b>* will no longer be accepted in entity names and descriptions. \n</li><li>Review and update existing naming conventions or templates that include these characters.</li><li>Update internal documentation or guidance for eDiscovery naming standards.</li><li>Communicate this change to helpdesk and compliance teams to prepare for validation messages when editing existing entities.</li></ul><p><a href=\"https://learn.microsoft.com/purview/edisc\" target=\"_blank\">Learn about eDiscovery (Premium) | Microsoft Learn</a></p><p>No data loss will occur. Existing entities retain their current names and continue to function. Enforcement applies only at the time of creation or editing.</p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting mid-May 2026, Microsoft Purview eDiscovery will restrict the use of +, =, @, /, and * in naming and description fields for new or edited cases, holds, searches, and review sets. Existing entities remain unaffected, and no admin action is required."
-      }
-    ],
-    "EndDateTime": "2026-06-18T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1282562",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-04-23T17:04:10.207Z",
-    "Services": [
-      "Microsoft Purview"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-16T21:16:06Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "User impact"
-    ],
-    "Title": "Microsoft Purview eDiscovery: Naming and description fields will restrict certain special characters",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
