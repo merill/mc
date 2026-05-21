@@ -50,6 +50,57 @@
         "Source": "messageCenter",
         "AdditionalProperties": {}
       }
+    },
+    {
+      "capturedAt": "2026-05-21T20:28:39.78Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated May 21, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>New Outlook for Windows now supports <b>Lightweight Directory Access Protocol (LDAP)</b> directories for S/MIME certificate lookup. This enables tenants to configure LDAP directories for their organization as well as enabling users to configure LDAP directories themselves. Once configured, users can find recipients’ public encryption certificates from the directories when sending encrypted email, improving secure collaboration with external partners. This is especially valuable for tenants who collaborate with external partners and rely on public/partner LDAP directories to store public S/MIME certificates of users.&nbsp;</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=518287\" target=\"_blank\">518287</a>.</p><p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): We will begin rolling out in <b>l</b><b>ate May 2026</b> and expect to complete by <b>late&nbsp;May&nbsp;2026</b>.\n</li><li>General Availability (GCC): We will begin rolling out in <b style=\"\">early June 2026</b> and expect to complete by <b style=\"\">late June 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>&nbsp;Organizations that use S/MIME encryption with <b>external recipients</b> whose public certificates are hosted in third-party LDAP directories&nbsp;</li><li>&nbsp;Admins managing Exchange Online</li>\n</ul><p><b>What will happen:</b></p>\n<ul>\n<li>Admins can configure LDAP directories using <a href=\"https://learn.microsoft.com/powershell/exchange/connect-to-exchange-online-powershell\" target=\"_blank\">Exchange Online PowerShell</a>.</li>\n<li>Users can add LDAP directories in <b>Settings &gt; Mail &gt; S/MIME</b> in new Outlook.</li>\n<li>When composing an S/MIME encrypted email, users can select recipients from the LDAP directory via the <b>To</b> field. This will directly enable Outlook to retrieve the certificate from the selected LDAP directory. If users add a recipient directly to the 'To list', Outlook will scan all available certificate sources, including the configured LDAP directories.</li><li>LDAP endpoints <b>must not require authentication</b>, as authentication is not currently supported.</li><p>Screenshot: <i><b>“Add LDAP directory”</b> option in <b>Settings &gt; Mail &gt; S/MIME</b> and LDAP recipient picker in the <b>To</b> field during message composition:</i></p><p><img src=\" https://cxcs.microsoft.net/file/ccp/en-us/103ff0c5-3287-4f83-9a34-f2dab1c557a4\" style=\"width: 400px;\" alt=\"Add LDAP directory settings in new Outlook.\"></p><li>Feature is <b>enabled by default </b>once available.</li>\n<li>No impact to:\n  <ul>\n    <li>Classic Outlook for Windows users</li>\n    <li>Organizations not using LDAP for S/MIME certificate discovery</li></ul></li></ul><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No action is required to enable this feature</li>\n<li>If your organization uses LDAP for S/MIME certificates:\n  <ul>\n    <li>Identify LDAP directory endpoints used by your organization</li><li>Run the Add-LdapDirectory cmdlet to register a new directory:</li>\n\n<pre><code>Add-LdapDirectory -Organization \"contoso.com\" -Id \"corp-ldap\" -Host \"ldap.corp.com\" -Port 636 -UseSsl</code></pre>\n    <li>Configure directories using Exchange Online PowerShell (Add-LdapDirectory).</li>\n    <li>Ensure LDAP endpoints do not require authentication.</li><li>Communicate guidance to users transitioning to new Outlook: <a href=\"https://support.microsoft.com/office/set-up-outlook-to-use-s-mime-encryption-2e57e4bd-4cc2-4531-9a39-426e7c873e26\" target=\"_blank\">Set up Outlook to use S/MIME encryption | Microsoft Support</a>.</li></ul></li></ul><p></p><ul></ul><p></p><p><b>Learn more:</b> <a href=\"https://learn.microsoft.com/exchange/security-and-compliance/smime-exo/configure-smime-exo\" target=\"_blank\">Configure S/MIME in Exchange Online | Microsoft Learn</a> (will be updated before we complete rollout)</p><p></p><ul></ul><p></p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "518287"
+          },
+          {
+            "Name": "Summary",
+            "Value": "New Outlook for Windows supports LDAP directories for S/MIME certificate lookup, enabling secure encrypted email with external partners. Admins configure LDAP via Exchange Online PowerShell; users add directories in Outlook settings. Rollout starts late May 2026 worldwide, early June in GCC. Feature enabled by default, no authentication supported."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Desktop"
+          }
+        ],
+        "EndDateTime": "2026-07-30T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1310680",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-05-21T20:28:39.78Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-05-14T20:15:05Z",
+        "Tags": [
+          "Updated message",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "New Outlook for Windows: LDAP support for S/MIME certificate lookup",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
     }
   ]
 }
