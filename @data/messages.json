@@ -1,5 +1,630 @@
 [
   {
+    "ActionRequiredByDateTime": "2026-07-30T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p>\n<p>To improve clarity, precision, and performance of transport rule reporting, Microsoft is updating the behavior of two Exchange Online reporting cmdlets. Starting July 30, 2026, <b>Get-MailDetailTransportRuleReport</b> and <b>Get-MailTrafficPolicyReport</b> will return transport rule data <b>only when the request explicitly specifies the relevant EventType</b>. This change helps ensure that reporting queries are intentional, predictable, and aligned with how transport rule events are generated and logged.</p><p>This update supports enterprise‑ready manageability by reducing ambiguous results and helping administrators build more reliable automation and compliance reporting.</p><p><b><b>Rollout Schedule:</b></b></p>\n<p>General Availability (Worldwide):&nbsp;We will begin rolling out in <b>late July 2026</b> and expect to complete by <b>late July 2026</b>.</p><p><b><b>Impact on Your Organization:</b></b><br></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Exchange Online administrators</li>\n  <li>Security, compliance, or messaging teams</li><li>Any organization using PowerShell scripts, automation, or reporting that relies on transport rule data from these cmdlets</li></ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n  <li>Exchange Online</li>\n  <li>Exchange Online PowerShell</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li><b>Get-MailDetailTransportRuleReport </b>and <b>Get-MailTrafficPolicyReport</b> will no longer return transport rule results by default.</li><li>Transport rule data will be returned only when one of the following parameters is explicitly included:<ul><li><code>-EventType TransportRuleHits</code></li><li><code>-EventType TransportRuleActionHits</code></li></ul></li><li>Scripts or reports that do not include one of these parameters may return <b>empty or incomplete results</b>.</li><li>This change applies only to these two cmdlets. No other Exchange Online cmdlets are affected.&nbsp;</li></ul><p><b><b>Action Required / Recommendations:</b></b></p><p>If your organization uses these cmdlets for transport rule reporting, <b>action is required before July 30, 2026</b>.</p><p><b>Recommended actions:</b></p><ul><li>Review all scripts, scheduled jobs, and automation that use:<ul><li><code>Get-MailDetailTransportRuleReport</code><b></b><b><br></b></li><li><code>Get-MailTrafficPolicyReport</code><b><br></b></li></ul></li><li>Update queries that require transport rule results to explicitly include:<ul><li><code>-EventType TransportRuleHits</code><b> </b>or<b><br></b></li><li><code>-EventType TransportRuleActionHits</code><b><br></b></li></ul></li><li>Validate updated scripts in a non‑production or test context.</li><li>Update internal documentation and operational runbooks.<br></li><li>Notify messaging and security operations teams of this change.</li></ul><p><b><b>Compliance considerations:</b></b></p>\n<p>This change alters how admins retrieve and report on transport rule data for compliance and auditing purposes.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting July 30, 2026, Get-MailDetailTransportRuleReport and Get-MailTrafficPolicyReport will return transport rule data only when the -EventType parameter (TransportRuleHits or TransportRuleActionHits) is explicitly specified. Administrators must update related scripts and automation before this date to avoid incomplete results."
+      }
+    ],
+    "EndDateTime": "2026-08-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1323250",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-05-27T18:13:03.323Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-26T21:58:46Z",
+    "Tags": [
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "[Action Required] Update scripts using Get-MailDetailTransportRuleReport and Get-MailTrafficPolicyReport",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "We are announcing that beginning on June 8, 2026, with full availability by June 31, 2026, Dynamics 365 Contact Center will now track session rejection reasons with greater granularity. Previously, all automatic session rejection reasons were all recorded under a single rejection category, \"Agent Reject\". This could make it challenging for supervisors to distinguish between representative-initiated rejections and system-triggered ones. This update separates session rejections into distinct, clearly labelled reasons, giving supervisors accurate visibility into why sessions are being rejected.<br><br><b>How does this affect me?</b><br>\nSupervisors will notice a change in the <a target=\"_blank\" href=\"https://aka.ms/15751/1\">sessions rejected</a> and <a target=\"_blank\" href=\"https://aka.ms/15751/2\">session rejection rate</a> metrics across both Realtime and Historic analytics dashboards. This metric will now reflect only sessions that were manually rejected by a representative and exclude system-triggered rejections. Additionally, session rejection reasons are now logged within Azure Application Insights under the Traces table, within the <b>CSRAssignment</b> sub-scenario.<br><br> The session rejection reasons are defined as follows:<ol><li><b>AgentReject</b>  — The representative manually rejected the notification for an assigned conversation.</li><li><b>MaximumSessionsReached</b>  — The representative had 10 conversation sessions open in a single browser tab.</li><li><b>VoiceConnectivityProblem</b>  — A network issue prevented connection to the voice SDK during a voice call.</li><li><b>FailedToAssignDueToSystemError</b>  — An internal system error triggered the rejection automatically.</li><li><b>CallTimedOut</b>  — Connectivity or browser-related issues caused the incoming conversation to automatically rejected.</li></ol><b>What do I need to do to prepare?</b><br>\nThis message is for awareness, and no action is required.",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [],
+    "EndDateTime": "2026-06-27T17:20:24Z",
+    "HasAttachments": false,
+    "Id": "MC1324072",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T18:00:42.043Z",
+    "Services": [
+      "Dynamics 365 Apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-27T17:20:24Z",
+    "Tags": [
+      "New feature"
+    ],
+    "Title": "Dynamics 365 Contact Center – Update to provide greater granularity to session rejection reasons",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 27, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>As part of our ongoing protection investments in<i> Microsoft Teams</i>, we will continue expanding the ways users can report suspicious or incorrect activity. Users can already report security concerns and incorrect detections in chats and channels (MC1037768, MC1147984), and more recently in calls (MC1223828). These user‑submitted reports help identify potential malicious activity and strengthen your organization’s security posture.</p><p>Building on this foundation, we will introduce new capabilities that allow Teams administrators to review and export user‑reported security submissions directly in the <i>Teams admin center</i>. A new<b> Protection reports</b> section will be added under <i><b>Analytics and reports</b></i>, giving admins unified visibility into user‑reported calls, chats, and channels.</p><p>This message relates to Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?searchterms=536571#Roadmap\" target=\"_blank\">536571</a>.</p><p><b><b>When this will happen</b></b></p><p><b>Phase 1 – User‑reported call data</b></p><ul><li><b>Targeted Release: </b>Rollout will begin in<b>&nbsp;mid-April 2026&nbsp;</b>(previously mid‑March)<b>&nbsp;</b>and complete in <b>late April 2026</b> (previously&nbsp;late March).</li><li><b>General Availability (Worldwide)</b>: Rollout will begin in <b>late April 2026</b> (previously&nbsp;mid‑April)&nbsp;and complete in <b>mid-June 2026</b> (previously&nbsp;early May).</li></ul><p><b>Phase 2 – User‑reported chats and channels</b></p><ul><li>This phase will add message‑level reporting for security concerns and incorrect detections.</li><li>The timeline will be communicated in a future update to this Message center post.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i>: Teams administrators who have access to <b>Analytics and reports</b> in the <i>Teams admin center</i>.</p><p><i>What will happen</i>:</p><ul><li>A new <b>Protection reports </b>section will appear under<b style=\"font-style: italic;\"> Teams admin center &gt; Analytics &amp; reports</b>:<p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/9063fe57-d14e-401d-b7ce-c676b97a6ec7/476f4992fbfe76a78ca8b425da10f23db24e4b40.png\" style=\"width: 400px;\" alt=\"user settings\"> </p></li><li>Admins will be able to view and export data about user‑submitted security reports for calls (Phase 1) and later chats and channels (Phase 2).</li><li>Reported interactions will begin populating once users submit reports.</li><li>Admins will be able to review reported calls or messages and take appropriate action.</li><li>Admins will be able to view 1‑day, 7‑day, and 30‑day reporting windows.</li><li>This feature<b> will require that user reporting settings be enabled</b> in the <i>Teams admin center</i>.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>To ensure reporting data is available when rollout begins, verify that end‑user reporting features are enabled:</p><ul><li>Enable <b>Report a call</b>: <i><b>Teams admin center &gt; Calling settings</b></i></li><li>Enable <b>Report a security concern </b>and <b>Report incorrect detection</b>: <i><b>Teams admin center &gt; Messaging settings</b></i></li><li>Once enabled and users begin submitting reports, access data at: <b><i>Teams admin center &gt; Analytics &amp; reports &gt; Protection reports &gt; User‑reported security submission</i></b></li><li>Update internal documentation if your helpdesk relies on reporting workflows.</li><li>If you maintain training or onboarding materials about Teams security practices, consider adding guidance on how users can report suspicious interactions.</li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change store new customer data, if so, where, and is the data cached or permanently stored?</td><td>Yes. This change stores new customer data because user‑submitted security reports for calls, chats, and channels are collected and made available in the Teams admin center for administrative review.</td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. This change alters how existing customer data is accessed because it surfaces reported calls, messages, and detections to Teams administrators for investigation within the new Protection reports area.</td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td>Yes. This change adds new monitoring and reporting capabilities by providing a dedicated Protection reports section where admins can view and export user‑reported security submissions.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "536571"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams will add a Protection reports section in the Teams admin center for admins to review and export user-reported security submissions on calls (starting mid-April 2026) and later chats and channels. Admins must enable user reporting settings to access these new security insights."
+      }
+    ],
+    "EndDateTime": "2026-07-20T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1227625",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T17:20:15.26Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-02-06T00:44:02Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "User reported security signals in Teams admin center",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 27, 2026: We have updated the timeline. This feature will now be included as part of another update referenced in <a href=\"https://lynx.office.net/messagecenter/MC796790\">MC796790</a>. Administrators will gain the ability to manage Microsoft 365 certified SaaS applications through org-wide settings for third-party apps. No changes will be applied to tenant-wide settings unless initiated by an administrator. Thank you for your patience.</p><p>This feature will empower administrators to manage the availability of trusted Microsoft Teams apps based on rules, for enhanced security. Admins will be able to manage Microsoft 365 certified apps in the Teams admin center through a new control in <i>Org-wide settings</i>. You can further customize the availability of these apps based on permissions accessed and publisher names. The system automatically checks the Microsoft 365 certified apps that meet all the conditions you specify and makes those apps available.&nbsp;<b>&nbsp;</b></p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=485712\" target=\"_blank\">485712</a>.\n</p><p><b>When this will happen:</b>\n</p><p>General Availability (Worldwide): We will begin rolling out mid-April 2026 (previously early April) and expect to complete by end of July 2026 (previously late April).</p><p><b>How this will affect your organization:</b></p><p>Before this rollout, you cannot manage at bulk the availability of Microsoft 365 certified apps. They are only controlled by third-party app tenant settings.\n</p><p>After this rollout, you can manage Microsoft 365 certified apps availability from org-wide settings in the Teams admin center at Manage apps &gt; Actions &gt; Org-wide app settings &gt; Third-party apps.&nbsp;</p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/b904b62c-98de-46df-8e23-a4aa8d7e3145/3294b0793a05d6886b66967edbfa6a9c1f926703.png\" style=\"width: 400px;\" alt=\"admin settings\"></p><p><b>What you need to do to prepare:</b></p><p>This rollout will happen automatically by the specified dates with no admin action required before or after the rollout. Review your current configuration to assess the impact on your organization. You may want to notify your users about this change and update any relevant documentation. This new control will be disabled by default.</p><p>Learn more: <i>Manage org-wide app settings</i> in <a href=\"https://learn.microsoft.com/microsoftteams/manage-apps#manage-org-wide-app-settings\" target=\"_blank\">Manage your apps in the Microsoft Teams admin center - Microsoft Teams | Microsoft Learn</a> (will be updated before rollout)</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "485712"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Starting mid-April 2026, admins can manage Microsoft 365 certified third-party Teams apps via org-wide settings in the Teams admin center, enabling rule-based app availability control. This feature rolls out automatically by July 2026, is disabled by default, and requires no prior admin action."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-08-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1085133",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-05-27T17:16:44.423Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-05-29T23:14:18Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: Rule-based enablement of Microsoft 365 third-party apps in the Teams admin center",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "We are announcing the ability to protect the customer experience on direct inward dialing lines with overflow actions in Dynamics 365 Contact Center. This feature will reach general availability on June 20, 2026.<br><br> \n\n <b>How does this affect me?</b><br> \nThis feature leverages Conversation Orchestration to detect key related events such as the user being busy, offline, rejecting the call, or failing to answer to apply administrator-defined fallback actions.<br><br> \nAdministrators can configure natural language playbooks using Conversation Orchestration at the global or profile level to specify what should happen when a direct inward dialing call cannot be completed.<br><br> \nSupported actions include offering a direct callback, sending callers to voicemail, transferring to another queue or external number, or ending the call.<br><br> \n <b>What action do I need to take?</b><br> \nThis message is for awareness, and no action is required.",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [],
+    "EndDateTime": "2026-06-27T17:08:26Z",
+    "HasAttachments": false,
+    "Id": "MC1323940",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T17:12:47.587Z",
+    "Services": [
+      "Dynamics 365 Apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-27T17:08:26Z",
+    "Tags": [
+      "New feature"
+    ],
+    "Title": "Dynamics 365 Contact Center - Protect customer experience on direct inward dialing lines with overflow actions",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 27, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>Microsoft Teams is introducing <b>slash (/) commands for apps</b> in the compose box across chats and channels. This change provides a standardized way for users to invoke app functionality directly from the compose box and receive responses inline.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=495002\" target=\"_blank\">495002</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>\n</p><ul>\n<li>Targeted Release (Worldwide): We will begin rolling out in <b>early July 2026</b> (previously&nbsp;late May)&nbsp;and expect to complete by <b>early July 2026</b> (previously&nbsp;late June).</li>\n<li>General Availability (Worldwide): We will begin rolling out in <b style=\"\">early July 2026</b> and expect to complete by <b style=\"\">late July 2026</b>.</li>\n</ul><p></p>\n\n<p><b><b>How this affects your organization:</b></b></p><p><b>Who is affected:</b>\n</p><ul>\n<li>All Microsoft Teams users</li>\n<li>App developers publishing apps in the Teams Store</li>\n</ul>\n<b>What will happen:</b>\n<ul>\n<li>Users can type<b> “/” in the compose box</b> to discover and invoke supported app commands.</li><li>Apps can return responses as Targeted Messages (visible only to the user who invoked the command).</li><li>The feature is<b> available by default</b> when apps support slash commands</li><li>No changes to existing admin policies or permissions.</li><li>Apps will only appear in slash commands if their developers update the app manifest to define supported commands.</li></ul><p><b><b>What you can do to prepare:</b></b></p><ul>\n<li>No action is required.</li><li>Review internal app inventory and confirm continued availability of apps that adopt slash commands.</li><li>Update internal guidance if you provide documentation on Teams app usage.</li>\n</ul><p></p>\n\n<p><b><b>Compliance considerations:</b></b></p><p>Introduces a new targeted messaging pattern (user-only visibility) within chats and channels.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "495002"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams will roll out slash (/) commands for apps in the compose box starting early July 2026, enabling users to invoke app functions inline. This affects all Teams users and app developers, requires no admin changes, and apps must update manifests to support commands. No action is needed."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, Mac"
+      }
+    ],
+    "EndDateTime": "2026-08-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1319214",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T17:12:04.48Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-22T22:23:16Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Interact with your favorite apps on Teams using Slash ( / ) Commands",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 27, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>To help organizations deliver more polished and branded town hall events, Microsoft Teams is introducing the ability for organizers and presenters to <b>upload custom background images</b> in the <i>Manage what attendees see experience</i>. This enhancement allows teams to replace default backgrounds with branded visuals—such as company logos or event-specific designs—so presenters and shared content appear consistently on brand for attendees. This capability is available with a Teams Premium license. This update applies to Teams for Windows desktop and Mac desktop.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?searchterms=561493\" target=\"_blank\">561493</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Targeted Release: </b>Rollout begins in<b>&nbsp;early June 2026 </b>(previously late May)<b>&nbsp;</b>and is expected to complete by<b>&nbsp;early June 2026 </b>(previously late May).</li><li><b>General Availability (Worldwide): </b>Rollout begins in<b> early June 2026</b> and is expected to complete by<b> mid-June 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizers and presenters of <b>Teams town hall events</b></li><li>Users assigned a <b>Teams Premium </b>license</li><li>Tenants using <b>Manage what attendees see</b> in <i>town halls</i></li></ul><p><i>What will happen</i></p><ul><li>Organizers and presenters can upload<b> custom background images </b>directly within the <i><b>Manage what attendees see</b> experience</i>.</li><li>Uploaded backgrounds appear behind presenters and shared content in supported town hall layouts.</li><li>JPEG and PNG image formats are supported, with recommended resolution guidance shown during upload.</li><li><b>Custom backgrounds</b> appear alongside existing default background options in the background picker.</li><li>The feature is<b> enabled by default </b>for eligible users and <b>applies only to town hall events where Manage what attendees see is enabled</b>.</li><li>There is<b> no change</b> to standard Teams meetings or webinars.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>No admin action is required before rollout.</li><li>Consider notifying users who organize or present town halls about this new capability.</li><li>Prepare branded background images that align with your organization’s visual identity guidelines.</li><li>Update internal documentation or event playbooks if you provide guidance on hosting town halls.</li><li>Optionally, run a test town hall event to familiarize presenters with the upload flow and attendee experience.</li></ul><p><b>Learn more:</b>&nbsp;<a href=\"https://support.microsoft.com/office/manage-what-attendees-see-in-microsoft-teams-19bfd690-8122-49f4-bc04-c2c5f69b4e16#bkmk_customize_event_screen\" target=\"_blank\">Customize the event screen - Manage what attendees see in Microsoft Teams | Microsoft Support</a></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change store new customer data?</td><td><b>Yes.</b> Uploaded custom background images are stored as part of the Teams town hall event configuration.</td></tr><tr><td>Does the change alter how existing customer data is processed or accessed?</td><td><b>Yes.</b> Background images are rendered behind presenters and shared content during the live event for attendees.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "561493"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams Premium will allow organizers and presenters of town hall events to upload custom background images in the \"Manage what attendees see\" feature, enhancing branded visuals. Rollout begins early June 2026, applies only to town halls with this feature enabled, and supports JPEG/PNG formats."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, Mac"
+      }
+    ],
+    "EndDateTime": "2026-07-12T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1307982",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T17:09:44.44Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-12T01:21:10Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams Town halls (Teams Premium): Upload custom backgrounds in Manage what attendees see",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 27, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>New Outlook for Windows now supports <b>Lightweight Directory Access Protocol (LDAP)</b> directories for S/MIME certificate lookup. This enables tenants to configure LDAP directories for their organization as well as enabling users to configure LDAP directories themselves. Once configured, users can find recipients’ public encryption certificates from the directories when sending encrypted email, improving secure collaboration with external partners. This is especially valuable for tenants who collaborate with external partners and rely on public/partner LDAP directories to store public S/MIME certificates of users.&nbsp;</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=518287\" target=\"_blank\">518287</a>.</p><p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): We will begin rolling out in <b>l</b><b>ate May 2026</b> and expect to complete by<b> mid-June 2026</b> (previously&nbsp;late&nbsp;May).\n</li><li>General Availability (GCC): We will begin rolling out in <b>mid-June 2026</b> (previously&nbsp;early June)&nbsp;and expect to complete by <b style=\"\">late June 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>&nbsp;Organizations that use S/MIME encryption with <b>external recipients</b> whose public certificates are hosted in third-party LDAP directories&nbsp;</li><li>&nbsp;Admins managing Exchange Online</li>\n</ul><p><b>What will happen:</b></p>\n<ul>\n<li>Admins can configure LDAP directories using <a href=\"https://learn.microsoft.com/powershell/exchange/connect-to-exchange-online-powershell\" target=\"_blank\">Exchange Online PowerShell</a>.</li>\n<li>Users can add LDAP directories in <b>Settings &gt; Mail &gt; S/MIME</b> in new Outlook.</li>\n<li>When composing an S/MIME encrypted email, users can select recipients from the LDAP directory via the <b>To</b> field. This will directly enable Outlook to retrieve the certificate from the selected LDAP directory. If users add a recipient directly to the 'To list', Outlook will scan all available certificate sources, including the configured LDAP directories.</li><li>LDAP endpoints <b>must not require authentication</b>, as authentication is not currently supported.</li><p>Screenshot: <i><b>“Add LDAP directory”</b> option in <b>Settings &gt; Mail &gt; S/MIME</b> and LDAP recipient picker in the <b>To</b> field during message composition:</i></p><p><img src=\" https://cxcs.microsoft.net/file/ccp/en-us/103ff0c5-3287-4f83-9a34-f2dab1c557a4\" style=\"width: 400px;\" alt=\"Add LDAP directory settings in new Outlook.\"></p><li>Feature is <b>enabled by default </b>once available.</li>\n<li>No impact to:\n  <ul>\n    <li>Classic Outlook for Windows users</li>\n    <li>Organizations not using LDAP for S/MIME certificate discovery</li></ul></li></ul><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No action is required to enable this feature</li>\n<li>If your organization uses LDAP for S/MIME certificates:\n  <ul>\n    <li>Identify LDAP directory endpoints used by your organization</li><li>Run the Add-LdapDirectory cmdlet to register a new directory:</li>\n\n<pre><code>Add-LdapDirectory -Organization \"contoso.com\" -Id \"corp-ldap\" -Host \"ldap.corp.com\" -Port 636 -UseSsl</code></pre>\n    <li>Configure directories using Exchange Online PowerShell (Add-LdapDirectory).</li>\n    <li>Ensure LDAP endpoints do not require authentication.</li><li>Communicate guidance to users transitioning to new Outlook: <a href=\"https://support.microsoft.com/office/set-up-outlook-to-use-s-mime-encryption-2e57e4bd-4cc2-4531-9a39-426e7c873e26\" target=\"_blank\">Set up Outlook to use S/MIME encryption | Microsoft Support</a>.</li></ul></li></ul><p></p><ul></ul><p></p><p><b>Learn more:</b> <a href=\"https://learn.microsoft.com/exchange/security-and-compliance/smime-exo/configure-smime-exo\" target=\"_blank\">Configure S/MIME in Exchange Online | Microsoft Learn</a> (will be updated before we complete rollout)</p><p></p><ul></ul><p></p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "518287"
+      },
+      {
+        "Name": "Summary",
+        "Value": "New Outlook for Windows will support LDAP directories for S/MIME certificate lookup, enabling secure encrypted email with external partners. Rollout begins late May 2026 worldwide, mid-June in GCC. Admins configure LDAP via Exchange Online PowerShell; users add directories in Outlook settings. LDAP must not require authentication."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop"
+      }
+    ],
+    "EndDateTime": "2026-07-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1310680",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T17:00:54.15Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-14T20:15:05Z",
+    "Tags": [
+      "Updated message",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "New Outlook for Windows: LDAP support for S/MIME certificate lookup",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 27, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>\nThe<b> new Outlook for Windows </b>now allows users to store <b>S/MIME </b>encryption certificates directly within Contacts. This capability enables users to save recipients’ public certificates and use them to send S/MIME encrypted emails, improving secure communication and continuity when transitioning from <b>classic Outlook for Windows (Win32)</b>. Certificates previously stored in Contacts in classic Outlook will automatically be available in new Outlook.</p><p>\nThis message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=518288\" target=\"_blank\">518288</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): We will begin rolling out in <b>late May 2026</b> (previously&nbsp;mid-May)&nbsp;and expect to complete by mid-June 2026 (previously&nbsp;late May).\n</li><li>General Availability (GCC): We will begin rolling out in <b>mid-June 2026</b> (previously&nbsp;early June)&nbsp;and expect to complete by <b>late June 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Users of <b>new Outlook for Windows</b></li>\n<li>Organizations that use <b>S/MIME encryption</b></li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Users can store recipients’ S/MIME public certificates directly in Contacts.</li><p>Screenshot: <i>To add a S/MIME certificate, go to <b>Your contacts</b> &gt; <b>Certificates </b>&gt; <b>Add certificate</b>:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/5f20f0ad-0dbc-4652-8558-c3e21b7ae72b\" style=\"width: 400px;\" alt=\"Add certificate option in contacts.\"></p>\n<li>Stored certificates can be used to encrypt outgoing email to those recipients.</li>\n<li>Certificates saved in Contacts in classic Outlook (Win32) will automatically carry over.</li>\n<li>Feature is <b>available by default</b>; no admin configuration required.</li>\n<li>No impact to users who are not using new Outlook for Windows.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No admin action is required to enable this feature.</li>\n<li>If your organization uses S/MIME:\n  <ul>\n    <li>Instruct users to add or import S/MIME public certificates into Contacts.</li>\n    <li>Communicate how to select S/MIME encryption when composing emails. Learn more: <a href=\"https://support.microsoft.com/office/send-s-mime-or-microsoft-purview-encrypted-emails-in-outlook-373339cb-bf1a-4509-b296-802a39d801dc\" target=\"_blank\">Send S/MIME or Microsoft Purview encrypted emails in Outlook | Microsoft Support</a>.</li>\n  </ul>\n</li>\n<li>Update internal documentation for users transitioning from classic Outlook.</li>\n<li>Inform helpdesk teams of this improved certificate handling experience.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Area</b></td><td><b>Explanation</b></td></tr><tr><td>Does the change store new customer data?</td><td>Classic Outlook already has this capability, and we are bringing it to new Outlook as well. S/MIME public certificates can now be stored in Outlook Contacts; these persist as part of contact data.</td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Existing certificates stored in classic Outlook Contacts are now accessible in new Outlook, improving continuity.</td></tr></tbody></table><p></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "518288"
+      },
+      {
+        "Name": "Summary",
+        "Value": "The new Outlook for Windows will support storing S/MIME certificates directly in Contacts, enabling encrypted emails and seamless transition from classic Outlook. Rollout starts late May 2026 worldwide, mid-June for GCC. No admin action needed; users should add certificates and update documentation accordingly."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop"
+      }
+    ],
+    "EndDateTime": "2026-07-21T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1302908",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T16:58:33.307Z",
+    "Services": [
+      "Exchange Online",
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-06T22:54:41Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Outlook: Support for storing S/MIME certificates in contacts in new Outlook",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 26, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>The <b>Review this presentation</b> skill is rolling out as part of Copilot in&nbsp;PowerPoint for the web. In Copilot, a \"skill\" is a user‑initiated action that performs a specific task on existing content. This capability reviews existing slides and provides detailed recommendations to improve structure, clarity, and storytelling, helping users refine presentations more efficiently.</p><p>This skill requires Anthropic model. GPT5.5 support coming soon.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide): Available now</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p><p>Users with access to PowerPoint Copilot on the web.</p>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>The <b>Review this presentation</b> option becomes available within PowerPoint Copilot.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Review this presentation</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/891dc87d-2fec-4f0a-89d2-858fdcf61120/575b2a7a9dfeb43a991e3f347db63d882b8c7d1d.png\" style=\"width: 400px;\" alt=\"user settings\"></p></ul><ul><li>Copilot will analyze the current presentation and generate suggestions to improve narrative flow, organization, and slide clarity.</li>\n  <li>Suggestions are provided for review only; no changes are applied automatically.</li>\n  <li>The feature is <b>available by default</b> for eligible users and respects existing Copilot access controls.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul><li>No admin configuration is required. </li><li>Optionally, you might notify users with access to PowerPoint Copilot about the new <b>Review this presentation</b> option.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li></ul>\n\n<p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified; review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The \"Review this presentation\" skill in PowerPoint for the web Copilot is now generally available. It analyzes slides and offers improvement suggestions for structure, clarity, and storytelling without applying changes automatically. No admin setup is needed, and availability depends on Anthropic model access."
+      }
+    ],
+    "EndDateTime": "2026-06-14T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1309737",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T16:54:34.117Z",
+    "Services": [
+      "Microsoft 365 apps",
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-13T23:01:57Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "PowerPoint for the web: \"Review this presentation\" skill in Copilot",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 26, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>The <b>Review this presentation</b> skill is rolling out as part of Copilot in&nbsp;PowerPoint for Windows desktop. In Copilot, a \"skill\" is a user‑initiated action that performs a specific task on existing content. This capability reviews existing slides and provides detailed recommendations to improve structure, clarity, and storytelling, helping users refine presentations more efficiently.</p><p>This skill requires Anthropic model. GPT5.5 support coming soon.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide): Available now</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p><p>Users with access to PowerPoint Copilot on Windows desktop.</p>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>The <b>Review this presentation</b> option becomes available within PowerPoint Copilot.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Review this presentation</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/891dc87d-2fec-4f0a-89d2-858fdcf61120/575b2a7a9dfeb43a991e3f347db63d882b8c7d1d.png\" style=\"width: 400px;\" alt=\"user settings\"></p></ul><ul><li>Copilot will analyze the current presentation and generate suggestions to improve narrative flow, organization, and slide clarity.</li>\n  <li>Suggestions are provided for review only; no changes are applied automatically.</li>\n  <li>The feature is <b>available by default</b> for eligible users and respects existing Copilot access controls.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul><li>No admin configuration is required. </li><li>Optionally, you might notify users with access to PowerPoint Copilot about the new <b>Review this presentation</b> option.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li></ul>\n\n<p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified; review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The \"Review this presentation\" skill in PowerPoint Copilot for Windows analyzes slides and offers improvement suggestions for structure, clarity, and storytelling. It uses the Anthropic model, is available now by default to eligible users, requires no admin setup, and respects existing Copilot access controls."
+      }
+    ],
+    "EndDateTime": "2026-06-14T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1309735",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T16:54:13.457Z",
+    "Services": [
+      "Microsoft 365 apps",
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-13T23:00:45Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "PowerPoint for Windows desktop: \"Review this presentation\" skill in Copilot",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 26, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>The <b>Review this presentation</b> skill is rolling out as part of Copilot in&nbsp;PowerPoint for Mac. In Copilot, a \"skill\" is a user‑initiated action that performs a specific task on existing content. This capability reviews existing slides and provides detailed recommendations to improve structure, clarity, and storytelling, helping users refine presentations more efficiently.</p><p>This skill requires Anthropic model. GPT5.5 support coming soon.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide): Available now</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p><p>Users with access to PowerPoint Copilot on Mac desktop.</p>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>The <b>Review this presentation</b> option becomes available within PowerPoint Copilot.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Review this presentation</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/891dc87d-2fec-4f0a-89d2-858fdcf61120/575b2a7a9dfeb43a991e3f347db63d882b8c7d1d.png\" style=\"width: 400px;\" alt=\"user settings\"></p></ul><ul><li>Copilot will analyze the current presentation and generate suggestions to improve narrative flow, organization, and slide clarity.</li>\n  <li>Suggestions are provided for review only; no changes are applied automatically.</li>\n  <li>The feature is <b>available by default</b> for eligible users and respects existing Copilot access controls.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul><li>No admin configuration is required. </li><li>Optionally, you might notify users with access to PowerPoint Copilot about the new <b>Review this presentation</b> option.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li></ul>\n\n<p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified; review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The \"Review this presentation\" skill in PowerPoint for Mac Copilot is now available worldwide. It analyzes slides and offers improvement suggestions for structure and clarity without automatic changes. It requires the Anthropic model, needs no admin setup, and respects existing Copilot access controls."
+      }
+    ],
+    "EndDateTime": "2026-06-14T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1309736",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T16:53:49.897Z",
+    "Services": [
+      "Microsoft 365 apps",
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-13T23:01:21Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "PowerPoint for Mac: \"Review this presentation\" skill in Copilot",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 26, 2026: We have updated the content. Thank you for your patience. </p><p><b><b>Introduction</b></b></p>\n<p>We’re introducing the <b>Visualize this slide</b> skill in <b>Copilot in PowerPoint for the web</b>. In Copilot, a skill is a user‑initiated action that performs a specific task on existing content. This new capability helps users quickly transform both simple text into a visually stunning image and text-heavy slides into polished, professional visuals.&nbsp;</p><p>This skill requires Anthropic model. GPT5.5 support coming soon.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  </ul><p><b>General Availability (Worldwide):</b> Rollout begins in <b>mid-May 2026</b> and completes by <b>mid-May 2026</b>.</p><ul>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Users with access to Copilot in PowerPoint for the web</li>\n</ul>\n<p><b>What will happen:</b></p>\n<ul>\n  <li>A new <b>Visualize this slide</b>&nbsp;skill option appears in Copilot in PowerPoint for the web.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Visualize this slide</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/4c727eb8-3194-4774-8618-bc72eecf14d9\" style=\"width: 400px;\" alt=\"Copilot in PowerPoint \" visualize=\"\" this=\"\" slide\"=\"\" skill.=\"\" \"=\"\"></p><p></p>\n  <li>Text-based slides can be transformed into visually rich layouts.</li>\n  <li>The feature is enabled by default for eligible users.</li>\n  <li>Existing Copilot and compliance policies are respected.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>No admin action is required.</li>\n  <li>Consider informing users about this new Copilot capability.</li>\n  <li>Update internal documentation if needed.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li>\n</ul><p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\">\n  <tbody><tr>\n    <th>Compliance question</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Introduces or modifies AI/ML capabilities</td>\n    <td>This change adds a new Copilot skill that uses generative AI to create visual slide designs.</td>\n  </tr>\n  <tr>\n    <td>New way for users to interact with generative AI</td>\n    <td>Users can visualize slides using Copilot-generated layouts and imagery.</td>\n  </tr>\n  <tr>\n    <td>Admin control via Entra ID groups</td>\n    <td>Availability depends on existing Copilot licensing and tenant controls.</td>\n  </tr>\n  <tr>\n    <td>User ability to enable or disable the feature</td>\n    <td>Users can choose whether to apply the visualization but cannot disable the skill itself.</td>\n  </tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The \"Visualize this slide\" skill in Copilot for PowerPoint for the web, launching mid-May 2026, transforms text slides into visually rich layouts using the Anthropic model. Enabled by default, it respects existing compliance and admin settings, with no admin action required to prepare."
+      }
+    ],
+    "EndDateTime": "2026-06-14T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1309733",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T16:53:30.3Z",
+    "Services": [
+      "Microsoft 365 for the web",
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-13T22:59:31Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "PowerPoint for the web: “Visualize this slide” skill in Copilot",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 26, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>We’re introducing the <b>Visualize this slide</b> skill in <b>Copilot in PowerPoint for Windows desktop</b>. In Copilot, a skill is a user‑initiated action that performs a specific task on existing content. This new capability helps users quickly transform both simple text into a visually stunning image and text-heavy slides into polished, professional visuals.&nbsp;</p><p>This skill requires Anthropic model. GPT5.5 support coming soon.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  </ul><p><b>General Availability (Worldwide):</b> Rollout begins in <b>mid-May 2026</b> and completes by <b>mid-May 2026</b>.</p><ul>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Users with access to Copilot in PowerPoint for the web</li>\n</ul>\n<p><b>What will happen:</b></p>\n<ul>\n  <li>A new <b>Visualize this slide</b>&nbsp;skill option appears in Copilot in PowerPoint for the web.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Visualize this slide</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/4c727eb8-3194-4774-8618-bc72eecf14d9\" style=\"width: 400px;\" alt=\"Copilot in PowerPoint visualize this slide skill.\"></p>\n  <li>Text-based slides can be transformed into visually rich layouts.</li>\n  <li>The feature is enabled by default for eligible users.</li>\n  <li>Existing Copilot and compliance policies are respected.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>No admin action is required.</li>\n  <li>Consider informing users about this new Copilot capability.</li>\n  <li>Update internal documentation if needed.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li>\n</ul><p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\">\n  <tbody><tr>\n    <th>Compliance question</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Introduces or modifies AI/ML capabilities</td>\n    <td>This change adds a new Copilot skill that uses generative AI to create visual slide designs.</td>\n  </tr>\n  <tr>\n    <td>New way for users to interact with generative AI</td>\n    <td>Users can visualize slides using Copilot-generated layouts and imagery.</td>\n  </tr>\n  <tr>\n    <td>Admin control via Entra ID groups</td>\n    <td>Availability depends on existing Copilot licensing and tenant controls.</td>\n  </tr>\n  <tr>\n    <td>User ability to enable or disable the feature</td>\n    <td>Users can choose whether to apply the visualization but cannot disable the skill itself.</td>\n  </tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The \"Visualize this slide\" skill in Copilot for PowerPoint on Windows desktop transforms text slides into visually rich designs using the Anthropic model. It rolls out worldwide by mid-May 2026, is enabled by default, requires no admin action, and respects existing compliance and licensing policies."
+      }
+    ],
+    "EndDateTime": "2026-06-15T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1309731",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T16:53:06.153Z",
+    "Services": [
+      "Microsoft 365 apps",
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-13T22:56:41Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "PowerPoint for Windows desktop: “Visualize this slide” skill in Copilot",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 26, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>We’re introducing the <b>Visualize this slide</b> skill in <b>Copilot in PowerPoint for Mac</b>. In Copilot, a skill is a user‑initiated action that performs a specific task on existing content. This new capability helps users quickly transform both simple text into a visually stunning image and text-heavy slides into polished, professional visuals.</p><p>This skill requires Anthropic model. GPT5.5 support coming soon.&nbsp;</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  </ul><p><b>General Availability (Worldwide):</b> Rollout begins in <b>mid-May 2026</b> and completes by <b>mid-May 2026</b>.</p><ul>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Users with access to Copilot in PowerPoint on Mac desktop</li>\n</ul>\n<p><b>What will happen:</b></p>\n<ul>\n  <li>A new <b>Visualize this slide</b>&nbsp;skill option appears in Copilot in PowerPoint.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Visualize this slide</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/4c727eb8-3194-4774-8618-bc72eecf14d9\" style=\"width: 400px;\" alt=\"Copilot in PowerPoint \" visualize=\"\" this=\"\" slide\"=\"\" skill.=\"\" \"=\"\"></p><p></p>\n  <li>Text-based slides can be transformed into visually rich layouts.</li>\n  <li>The feature is enabled by default for eligible users.</li>\n  <li>Existing Copilot and compliance policies are respected.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>No admin action is required.</li>\n  <li>Consider informing users about this new Copilot capability.</li>\n  <li>Update internal documentation if needed.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li>\n</ul><p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\">\n  <tbody><tr>\n    <th>Compliance question</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Introduces or modifies AI/ML capabilities</td>\n    <td>This change adds a new Copilot skill that uses generative AI to create visual slide designs.</td>\n  </tr>\n  <tr>\n    <td>New way for users to interact with generative AI</td>\n    <td>Users can visualize slides using Copilot-generated layouts and imagery.</td>\n  </tr>\n  <tr>\n    <td>Admin control via Entra ID groups</td>\n    <td>Availability depends on existing Copilot licensing and tenant controls.</td>\n  </tr>\n  <tr>\n    <td>User ability to enable or disable the feature</td>\n    <td>Users can choose whether to apply the visualization but cannot disable the skill itself.</td>\n  </tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The \"Visualize this slide\" skill in Copilot for PowerPoint on Mac, launching mid-May 2026, transforms text slides into visual layouts using the Anthropic model. It’s enabled by default for eligible users, requires no admin action, and respects existing compliance and admin settings."
+      }
+    ],
+    "EndDateTime": "2026-06-14T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1309732",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-27T16:52:43.613Z",
+    "Services": [
+      "Microsoft 365 apps",
+      "Microsoft 365 Copilot Chat"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-13T22:58:16Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "PowerPoint for Mac: “Visualize this slide” skill in Copilot",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
     "ActionRequiredByDateTime": null,
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -431,45 +1056,6 @@
     "AdditionalProperties": {}
   },
   {
-    "ActionRequiredByDateTime": "2026-07-30T07:00:00Z",
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>What and Why:</b></b></p>\n<p>To improve clarity, precision, and performance of transport rule reporting, Microsoft is updating the behavior of two Exchange Online reporting cmdlets. Starting July 30, 2026, <b>Get-MailDetailTransportRuleReport</b> and <b>Get-MailTrafficPolicyReport</b> will return transport rule data <b>only when the request explicitly specifies the relevant EventType</b>. This change helps ensure that reporting queries are intentional, predictable, and aligned with how transport rule events are generated and logged.</p><p>This update supports enterprise‑ready manageability by reducing ambiguous results and helping administrators build more reliable automation and compliance reporting.</p><p><b><b>Rollout Schedule:</b></b></p>\n<p>General Availability (Worldwide):&nbsp;We will begin rolling out in <b>late July 2026</b> and expect to complete by <b>late July 2026</b>.</p><p><b><b>Impact on Your Organization:</b></b><br></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Exchange Online administrators</li>\n  <li>Security, compliance, or messaging teams</li><li>Any organization using PowerShell scripts, automation, or reporting that relies on transport rule data from these cmdlets</li></ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n  <li>Exchange Online</li>\n  <li>Exchange Online PowerShell</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li><b>Get-MailDetailTransportRuleReport </b>and <b>Get-MailTrafficPolicyReport</b> will no longer return transport rule results by default.</li><li>Transport rule data will be returned only when one of the following parameters is explicitly included:<ul><li><code>-EventType TransportRuleHits</code></li><li><code>-EventType TransportRuleActionHits</code></li></ul></li><li>Scripts or reports that do not include one of these parameters may return <b>empty or incomplete results</b>.</li><li>This change applies only to these two cmdlets. No other Exchange Online cmdlets are affected.&nbsp;</li></ul><p><b><b>Action Required / Recommendations:</b></b></p><p>If your organization uses these cmdlets for transport rule reporting, <b>action is required before July 30, 2026</b>.</p><p><b>Recommended actions:</b></p><ul><li>Review all scripts, scheduled jobs, and automation that use:<ul><li><code>Get-MailDetailTransportRuleReport</code><b></b><b><br></b></li><li><code>Get-MailTrafficPolicyReport</code><b><br></b></li></ul></li><li>Update queries that require transport rule results to explicitly include:<ul><li><code>-EventType TransportRuleHits</code><b> </b>or<b><br></b></li><li><code>-EventType TransportRuleActionHits</code><b><br></b></li></ul></li><li>Validate updated scripts in a non‑production or test context.</li><li>Update internal documentation and operational runbooks.<br></li><li>Notify messaging and security operations teams of this change.</li></ul><p><b><b>Compliance considerations:</b></b></p>\n<p>This change alters how admins retrieve and report on transport rule data for compliance and auditing purposes.</p><br><br><br><br><br><strong>^^^^^^^^^^^^^^^^^^^^delete this a line and above^^^^^^^^^^^^^^^^^^^^</strong><br><br><br><br><br><br><p><b>Please do not paste images here. Attach your high-resolution PNGs to the No Reply confirmation email. Thank you!</b>\n</p><p>We're making some changes to &lt;insert what we are changing&gt;.\n</p><p>On/Starting &lt;month, date 2025&gt;, we're &lt;insert what we are changing&gt;.\n</p><p><br></p><p><b>How this will affect your organization:</b>\n</p><p>You are receiving this message because our reporting indicates one or more users in your organization may be using this &lt;insert feature/service/product version&gt;.</p><p>&lt;Note: admins often want to know which users are using the feature. Can we point them to a report to run?&gt;\n</p><p><br></p><p>&lt;Users or Administrators?&gt; will &lt;insert impact of configuration change&gt;, when this change is implemented.\n</p><p>or</p><p>&lt;Users or Administrators?&gt; may no longer be able to &lt;insert impact of feature change&gt;, when this change is implemented.\n</p><p><br></p><p><b>What you need to do to prepare:</b>\n</p><p>When this change takes effect, you will need to &lt;insert any actions required. if none, state that&gt;.&nbsp;\n</p><p>&lt;insert any workarounds, or alternatives&gt;\n</p><p><br></p><p>Learn more: &lt;article name and link; use link tool if possible&gt;</p>\n<p><br></p><p><b>Compliance considerations:</b></p><p>&lt;&lt;To assist our customers with identifying compliance concerns, review the questions below and provide details for impact if appropriate&gt;&gt;</p><ul><li>Does the change store new customer data?</li><li>Does the change alter how existing customer data is processed, stored, or accessed (e.g. documents, emails, chats, etc.)?</li><li>Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data?</li><li>Does the change provide a new way of communicating between users, tenants, or subscriptions?</li><li>Does the change provide end users any new way of interacting with generative AI?</li><li>Does the change modify, interrupt, or disable any of the following capabilities (Purview):</li><ul><li>Data Loss Prevention (DLP) policies or enforcement</li><li>Information Protection labels or sensitive information types</li><li>Conditional Access policies</li><li>Audit logging capabilities</li><li>eDiscovery or Content Search</li><li>Encryption methods or key management</li><li>Retention policies, holds, or deletion workflows?</li></ul><li>Does the change alter how admins can monitor, report on, or demonstrate compliance activities e.g. Purview or admin reporting?</li><li>Does the change modify how users can access, export, delete, or correct their personal data within Microsoft 365 services (GDPR Data Subject Rights)?</li></ul><p><br></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting July 30, 2026, Get-MailDetailTransportRuleReport and Get-MailTrafficPolicyReport will return transport rule data only when the -EventType parameter (TransportRuleHits or TransportRuleActionHits) is explicitly specified. Administrators must update related scripts and automation before this date to avoid incomplete results."
-      }
-    ],
-    "EndDateTime": "2026-08-30T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1323250",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-05-26T21:59:05.96Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-26T21:58:46Z",
-    "Tags": [
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "[Action Required] Update scripts using Get-MailDetailTransportRuleReport and Get-MailTrafficPolicyReport",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
     "ActionRequiredByDateTime": null,
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -836,52 +1422,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p><p>Microsoft Teams is introducing <b>slash (/) commands for apps</b> in the compose box across chats and channels. This change provides a standardized way for users to invoke app functionality directly from the compose box and receive responses inline.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=495002\" target=\"_blank\">495002</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>\n</p><ul>\n<li>Targeted Release (Worldwide): We will begin rolling out in <b style=\"\">late May 2026</b> and expect to complete by <b style=\"\">late June 2026</b>.</li>\n<li>General Availability (Worldwide): We will begin rolling out in <b style=\"\">early July 2026</b> and expect to complete by <b style=\"\">late July 2026</b>.</li>\n</ul><p></p>\n\n<p><b><b>How this affects your organization:</b></b></p><p><b>Who is affected:</b>\n</p><ul>\n<li>All Microsoft Teams users</li>\n<li>App developers publishing apps in the Teams Store</li>\n</ul>\n<b>What will happen:</b>\n<ul>\n<li>Users can type<b> “/” in the compose box</b> to discover and invoke supported app commands.</li><li>Apps can return responses as Targeted Messages (visible only to the user who invoked the command).</li><li>The feature is<b> available by default</b> when apps support slash commands</li><li>No changes to existing admin policies or permissions.</li><li>Apps will only appear in slash commands if their developers update the app manifest to define supported commands.</li></ul><p><b><b>What you can do to prepare:</b></b></p><ul>\n<li>No action is required.</li><li>Review internal app inventory and confirm continued availability of apps that adopt slash commands.</li><li>Update internal guidance if you provide documentation on Teams app usage.</li>\n</ul><p></p>\n\n<p><b><b>Compliance considerations:</b></b></p><p>Introduces a new targeted messaging pattern (user-only visibility) within chats and channels.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "495002"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will roll out slash (/) commands for apps in the compose box from late May to late July 2026, allowing users to invoke app functions inline. This affects all Teams users and app developers, requires no admin changes, and apps must update manifests to support commands."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac"
-      }
-    ],
-    "EndDateTime": "2026-08-30T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1319214",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-22T22:23:22.833Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-22T22:23:16Z",
-    "Tags": [
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Interact with your favorite apps on Teams using Slash ( / ) Commands",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b><b>What and Why</b></b></p><p>We are introducing <b>proximity join support for presenters</b> in <i>Microsoft Teams events (town halls, webinars, and structured meetings)</i> using Teams Rooms on Windows and Android. This improvement enables presenters to quickly connect their personal device to a nearby Teams Room system, delivering a more seamless and efficient presentation experience. This update enhances hybrid meeting scenarios by simplifying room system interactions and improving presenter productivity.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=561550\" target=\"_blank\">561550</a></b>.</p><p><b><b>Rollout Schedule</b></b></p><ul><li><b>General Availability (Worldwide, GCC, and GCCH):</b> Begins rolling out in<b> early June 2026</b> and completes by <b>mid-June 2026</b>.</li></ul><p><b><b>Impact on Your Organization</b></b></p><p><i>Who is affected</i></p><ul><li>Presenters participating in <i>Teams events (town halls, webinars, structured meetings)</i></li><li>Organizations using Teams Rooms on Windows or Android devices</li></ul><p>Platforms/Services<i style=\"box-sizing: border-box; color: rgb(0, 0, 0); font-family: sans-serif; font-size: 14px; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Platforms/Services</i></p><ul><li>Microsoft Teams</li><li>Teams Rooms on Windows</li><li>Teams Rooms on Android</li><li>Desktop/mobile Teams clients (for proximity join initiation)</li></ul><p><i>What will happen</i></p><ul><li>Presenters can use proximity join from their personal device to connect to nearby Teams Rooms during events.</li><li>The connected Teams Room can be used to support live presentations.</li><li>The experience is designed to reduce setup time and simplify presenter workflows in shared spaces.</li><li>This feature will be <b>enabled by default</b>.</li><li>No changes to existing policies or configurations are required.</li></ul><p><b><b>Action Required/Recommendations</b></b></p><p>No action is required to enable this feature.</p><p>Recommended actions:</p><ul><li>Inform presenters and meeting organizers about this improved experience.</li><li>Update internal training or documentation for Teams Rooms and hybrid presentations.</li><li>Review Teams Rooms configurations to ensure devices are updated and functioning as expected.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -893,7 +1433,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"561550\":[{\"RoadmapId\":561550,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-27T15:32:01.3031594Z\",\"LatestRing\":null},{\"RoadmapId\":561550,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-05-27T15:32:01.3031598Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":561550,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-27T15:32:01.30316Z\",\"LatestRing\":null},{\"RoadmapId\":561550,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-27T15:32:01.3031602Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"561550\":[{\"RoadmapId\":561550,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-27T18:23:09.3999814Z\",\"LatestRing\":null},{\"RoadmapId\":561550,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-05-27T18:23:09.3999817Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":561550,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-27T18:23:09.3999819Z\",\"LatestRing\":null},{\"RoadmapId\":561550,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-27T18:23:09.3999822Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -1415,53 +1955,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated May 21, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>New Outlook for Windows now supports <b>Lightweight Directory Access Protocol (LDAP)</b> directories for S/MIME certificate lookup. This enables tenants to configure LDAP directories for their organization as well as enabling users to configure LDAP directories themselves. Once configured, users can find recipients’ public encryption certificates from the directories when sending encrypted email, improving secure collaboration with external partners. This is especially valuable for tenants who collaborate with external partners and rely on public/partner LDAP directories to store public S/MIME certificates of users.&nbsp;</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=518287\" target=\"_blank\">518287</a>.</p><p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): We will begin rolling out in <b>l</b><b>ate May 2026</b> and expect to complete by <b>late&nbsp;May&nbsp;2026</b>.\n</li><li>General Availability (GCC): We will begin rolling out in <b style=\"\">early June 2026</b> and expect to complete by <b style=\"\">late June 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>&nbsp;Organizations that use S/MIME encryption with <b>external recipients</b> whose public certificates are hosted in third-party LDAP directories&nbsp;</li><li>&nbsp;Admins managing Exchange Online</li>\n</ul><p><b>What will happen:</b></p>\n<ul>\n<li>Admins can configure LDAP directories using <a href=\"https://learn.microsoft.com/powershell/exchange/connect-to-exchange-online-powershell\" target=\"_blank\">Exchange Online PowerShell</a>.</li>\n<li>Users can add LDAP directories in <b>Settings &gt; Mail &gt; S/MIME</b> in new Outlook.</li>\n<li>When composing an S/MIME encrypted email, users can select recipients from the LDAP directory via the <b>To</b> field. This will directly enable Outlook to retrieve the certificate from the selected LDAP directory. If users add a recipient directly to the 'To list', Outlook will scan all available certificate sources, including the configured LDAP directories.</li><li>LDAP endpoints <b>must not require authentication</b>, as authentication is not currently supported.</li><p>Screenshot: <i><b>“Add LDAP directory”</b> option in <b>Settings &gt; Mail &gt; S/MIME</b> and LDAP recipient picker in the <b>To</b> field during message composition:</i></p><p><img src=\" https://cxcs.microsoft.net/file/ccp/en-us/103ff0c5-3287-4f83-9a34-f2dab1c557a4\" style=\"width: 400px;\" alt=\"Add LDAP directory settings in new Outlook.\"></p><li>Feature is <b>enabled by default </b>once available.</li>\n<li>No impact to:\n  <ul>\n    <li>Classic Outlook for Windows users</li>\n    <li>Organizations not using LDAP for S/MIME certificate discovery</li></ul></li></ul><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No action is required to enable this feature</li>\n<li>If your organization uses LDAP for S/MIME certificates:\n  <ul>\n    <li>Identify LDAP directory endpoints used by your organization</li><li>Run the Add-LdapDirectory cmdlet to register a new directory:</li>\n\n<pre><code>Add-LdapDirectory -Organization \"contoso.com\" -Id \"corp-ldap\" -Host \"ldap.corp.com\" -Port 636 -UseSsl</code></pre>\n    <li>Configure directories using Exchange Online PowerShell (Add-LdapDirectory).</li>\n    <li>Ensure LDAP endpoints do not require authentication.</li><li>Communicate guidance to users transitioning to new Outlook: <a href=\"https://support.microsoft.com/office/set-up-outlook-to-use-s-mime-encryption-2e57e4bd-4cc2-4531-9a39-426e7c873e26\" target=\"_blank\">Set up Outlook to use S/MIME encryption | Microsoft Support</a>.</li></ul></li></ul><p></p><ul></ul><p></p><p><b>Learn more:</b> <a href=\"https://learn.microsoft.com/exchange/security-and-compliance/smime-exo/configure-smime-exo\" target=\"_blank\">Configure S/MIME in Exchange Online | Microsoft Learn</a> (will be updated before we complete rollout)</p><p></p><ul></ul><p></p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "518287"
-      },
-      {
-        "Name": "Summary",
-        "Value": "New Outlook for Windows supports LDAP directories for S/MIME certificate lookup, enabling secure encrypted email with external partners. Admins configure LDAP via Exchange Online PowerShell; users add directories in Outlook settings. Rollout starts late May 2026 worldwide, early June in GCC. Feature enabled by default, no authentication supported."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop"
-      }
-    ],
-    "EndDateTime": "2026-07-30T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1310680",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-21T20:28:39.78Z",
-    "Services": [
-      "Exchange Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-14T20:15:05Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "New Outlook for Windows: LDAP support for S/MIME certificate lookup",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated May 21, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>What and Why</b></b></p>\n<p>As Microsoft Teams has added meeting capabilities over time, the meeting controls and share panel have grown crowded, contributing to mis-clicks between high‑impact actions like Share, Leave, and Raise hand, and to accidental shares of unintended content. Drawing on extensive customer feedback and telemetry, we’re introducing two coordinated updates: <b>simplified meeting controls</b> and a <b>redesigned share panel</b>. Together, they make core actions easier to find, reduce accidental clicks, and give users more confidence when sharing content.</p><p>This update supports <b>personal and team productivity</b> by reducing friction in everyday meetings and improving confidence when presenting or sharing content.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=560321\" target=\"_blank\">560321</a>&nbsp;and <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=502520\" target=\"_blank\">502520</a>. It applies to Teams for Windows desktop, Teams for Mac desktop, and Teams for the web.</p><p><b><b>Rollout Schedule</b></b></p>\n<ul>\n  <li>Targeted Release: We will begin rolling out in <b>early July 2026</b> and expect to complete by <b>late July 2026</b>.\n</li><li>General Availability (Worldwide): We will begin rolling out in <b>early&nbsp;August 2026</b> and expect to complete by <b>late August 2026</b>.\n</li><li>General Availability (GCC, GCC High): We will begin rolling out in <b>early&nbsp;September 2026</b> and expect to complete by <b>late&nbsp;October 2026</b>.\n</li><li>General Availability (DoD): We will begin rolling out in <b>early&nbsp;October 2026</b> and expect to complete by <b>late&nbsp;November 2026</b>.</li>\n</ul>\n\n<p><b><b>Impact on Your Organization</b></b></p>\n<p><b>Who is affected:</b> </p><ul><li>All Teams work and school users joining meetings</li></ul>\n<p><b>Platforms:</b> </p><ul><li>Teams for Windows desktop</li><li>Teams for Mac desktop</li><li>Teams for the web</li><li>Not in scope: Teams (consumer), iOS, Android, Teams Rooms, Linux</li></ul><p><b>What will happen:</b></p>\n<ul>\n  <li>Meeting controls will be center‑aligned, with microphone, camera, and share grouped together.</li><li>The Leave button will be separated to reduce accidental exits.</li><li>Less‑used actions will move into a reorganized More menu.</li></ul><p><i>Screenshot: New More options menu</i>&nbsp;</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/10644554-2764-4e7a-aab6-17de502a2030\" style=\"width: 50%;\"></p><ul><li><b>Users can personalize meeting controls</b> by pinning, unpinning, and rearranging controls using drag and drop.</li><li>The redesigned share panel will include:<ul><li>Live previews of screens and windows.</li><li>A tabbed layout (Screens &amp; Apps, Interactive Files, More options).</li><li>A <b>two‑step share confirmation</b> to reduce accidental sharing.</li></ul></li></ul><p><i>Screenshot: Reorganized share panel</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/cb3a72f2-1975-4d2e-961a-6b23d8348f2a\" style=\"width: 50%;\"></p><p></p><ul><li>The new experience is <b>enabled by default</b> and cannot be disabled at the tenant level.</li><li>During rollout, users may opt in early and can temporarily return to the previous experience from Teams settings.</li><li>Existing meeting app pinning policies will continue to be honored.</li><li>New meeting app pinning policies will support up to two apps pinned to the main meeting controls, with additional apps available in the More menu.</li></ul><p><b>Known limitations:</b></p><ul><li>Meeting controls customization preferences (such as pinned controls) do not sync across devices at launch. Preferences persist across meetings on the same client. Cross‑device sync is planned for a future release.</li><li>The opt‑out toggle for the new meeting experience is controlled by individual users and cannot be managed at the tenant level. This opt‑out is a temporary adoption aid and will be retired in a future release. Microsoft will provide advance notice via a separate Message Center post before removal.</li></ul>\n\n<p><b><b>Action Required / Recommendations</b></b></p>\n<ul>\n  </ul><p>No immediate action is required.</p><p>We recommend that you:</p><ul><li>Review existing Teams meeting app pinning policies and plan future policies around the two‑app limit.\n</li><li>Communicate this change to users, helpdesk, and internal support teams ahead of the June 2026 rollout. Detailed change management guidance for Champions and IT Pros/admins, along with user training resources, will be published in early May 2026 on <a href=\"http://adoption.microsoft.com\" target=\"_blank\">adoption.microsoft.com</a>.</li><li>Update internal documentation and training materials to reflect:<ul><li>The new meeting controls layout.</li><li>User customization options.</li><li>The updated share panel experience.</li></ul></li></ul>\n\n<p><b><b>Compliance Considerations</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -1815,54 +2308,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Teams: Attend Microsoft webinars from Teams Rooms on Android",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 21, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>\nThe<b> new Outlook for Windows </b>now allows users to store <b>S/MIME </b>encryption certificates directly within Contacts. This capability enables users to save recipients’ public certificates and use them to send S/MIME encrypted emails, improving secure communication and continuity when transitioning from <b>classic Outlook for Windows (Win32)</b>. Certificates previously stored in Contacts in classic Outlook will automatically be available in new Outlook.</p><p>\nThis message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=518288\" target=\"_blank\">518288</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): We will begin rolling out in <b>late May 2026</b> (previously&nbsp;mid-May)&nbsp;and expect to complete&nbsp;<b>late May 2026</b>.\n</li><li>General Availability (GCC): We will begin rolling out in <b style=\"\">early June 2026</b> and expect to complete by <b>late June 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Users of <b>new Outlook for Windows</b></li>\n<li>Organizations that use <b>S/MIME encryption</b></li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Users can store recipients’ S/MIME public certificates directly in Contacts.</li><p>Screenshot: <i>To add a S/MIME certificate, go to <b>Your contacts</b> &gt; <b>Certificates </b>&gt; <b>Add certificate</b>:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/5f20f0ad-0dbc-4652-8558-c3e21b7ae72b\" style=\"width: 400px;\" alt=\"Add certificate option in contacts.\"></p>\n<li>Stored certificates can be used to encrypt outgoing email to those recipients.</li>\n<li>Certificates saved in Contacts in classic Outlook (Win32) will automatically carry over.</li>\n<li>Feature is <b>available by default</b>; no admin configuration required.</li>\n<li>No impact to users who are not using new Outlook for Windows.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No admin action is required to enable this feature.</li>\n<li>If your organization uses S/MIME:\n  <ul>\n    <li>Instruct users to add or import S/MIME public certificates into Contacts.</li>\n    <li>Communicate how to select S/MIME encryption when composing emails. Learn more: <a href=\"https://support.microsoft.com/office/send-s-mime-or-microsoft-purview-encrypted-emails-in-outlook-373339cb-bf1a-4509-b296-802a39d801dc\" target=\"_blank\">Send S/MIME or Microsoft Purview encrypted emails in Outlook | Microsoft Support</a>.</li>\n  </ul>\n</li>\n<li>Update internal documentation for users transitioning from classic Outlook.</li>\n<li>Inform helpdesk teams of this improved certificate handling experience.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Area</b></td><td><b>Explanation</b></td></tr><tr><td>Does the change store new customer data?</td><td>Classic Outlook already has this capability, and we are bringing it to new Outlook as well. S/MIME public certificates can now be stored in Outlook Contacts; these persist as part of contact data.</td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Existing certificates stored in classic Outlook Contacts are now accessible in new Outlook, improving continuity.</td></tr></tbody></table><p></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "518288"
-      },
-      {
-        "Name": "Summary",
-        "Value": "The new Outlook for Windows will support storing S/MIME certificates directly in Contacts, enabling encrypted emails and continuity from classic Outlook. This feature rolls out worldwide late-May 2026, requires no admin setup, and improves secure communication for organizations using S/MIME encryption."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop"
-      }
-    ],
-    "EndDateTime": "2026-07-21T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1302908",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-21T16:16:43.517Z",
-    "Services": [
-      "Exchange Online",
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-06T22:54:41Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Outlook: Support for storing S/MIME certificates in contacts in new Outlook",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -2359,246 +2804,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft 365 Copilot: Copilot chat pane and Summary feature in OneNote Mobile (iPhone)",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 20, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>The <b>Review this presentation</b> skill is rolling out as part of Copilot in&nbsp;PowerPoint for Windows desktop. In Copilot, a \"skill\" is a user‑initiated action that performs a specific task on existing content. This capability reviews existing slides and provides detailed recommendations to improve structure, clarity, and storytelling, helping users refine presentations more efficiently.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide): Available now</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p><p>Users with access to PowerPoint Copilot on Windows desktop.</p>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>The <b>Review this presentation</b> option becomes available within PowerPoint Copilot.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Review this presentation</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/891dc87d-2fec-4f0a-89d2-858fdcf61120/575b2a7a9dfeb43a991e3f347db63d882b8c7d1d.png\" style=\"width: 400px;\" alt=\"user settings\"></p></ul><ul><li>Copilot will analyze the current presentation and generate suggestions to improve narrative flow, organization, and slide clarity.</li>\n  <li>Suggestions are provided for review only; no changes are applied automatically.</li>\n  <li>The feature is <b>available by default</b> for eligible users and respects existing Copilot access controls.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul><li>No admin configuration is required. </li><li>Optionally, you might notify users with access to PowerPoint Copilot about the new <b>Review this presentation</b> option.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li></ul>\n\n<p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified; review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The \"Review this presentation\" skill in PowerPoint Copilot for Windows desktop is now generally available. It analyzes slides and offers improvement suggestions for structure, clarity, and storytelling without applying changes automatically. No admin setup is needed, and availability respects existing Copilot access controls."
-      }
-    ],
-    "EndDateTime": "2026-06-14T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1309735",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-20T16:30:15.65Z",
-    "Services": [
-      "Microsoft 365 apps",
-      "Microsoft 365 Copilot Chat"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-13T23:00:45Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "PowerPoint for Windows desktop: \"Review this presentation\" skill in Copilot",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 20, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>We’re introducing the <b>Visualize this slide</b> skill in <b>Copilot in PowerPoint for Windows desktop</b>. In Copilot, a skill is a user‑initiated action that performs a specific task on existing content. This new capability helps users quickly transform both simple text into a visually stunning image and text-heavy slides into polished, professional visuals.&nbsp;</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  </ul><p><b>General Availability (Worldwide):</b> Rollout begins in <b>mid-May 2026</b> and completes by <b>mid-May 2026</b>.</p><ul>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Users with access to Copilot in PowerPoint for the web</li>\n</ul>\n<p><b>What will happen:</b></p>\n<ul>\n  <li>A new <b>Visualize this slide</b>&nbsp;skill option appears in Copilot in PowerPoint for the web.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Visualize this slide</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/4c727eb8-3194-4774-8618-bc72eecf14d9\" style=\"width: 400px;\" alt=\"Copilot in PowerPoint visualize this slide skill.\"></p>\n  <li>Text-based slides can be transformed into visually rich layouts.</li>\n  <li>The feature is enabled by default for eligible users.</li>\n  <li>Existing Copilot and compliance policies are respected.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>No admin action is required.</li>\n  <li>Consider informing users about this new Copilot capability.</li>\n  <li>Update internal documentation if needed.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li>\n</ul><p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\">\n  <tbody><tr>\n    <th>Compliance question</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Introduces or modifies AI/ML capabilities</td>\n    <td>This change adds a new Copilot skill that uses generative AI to create visual slide designs.</td>\n  </tr>\n  <tr>\n    <td>New way for users to interact with generative AI</td>\n    <td>Users can visualize slides using Copilot-generated layouts and imagery.</td>\n  </tr>\n  <tr>\n    <td>Admin control via Entra ID groups</td>\n    <td>Availability depends on existing Copilot licensing and tenant controls.</td>\n  </tr>\n  <tr>\n    <td>User ability to enable or disable the feature</td>\n    <td>Users can choose whether to apply the visualization but cannot disable the skill itself.</td>\n  </tr>\n</tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The \"Visualize this slide\" skill in Copilot for PowerPoint on Windows desktop, launching mid-May 2026, transforms text slides into polished visuals. Enabled by default for eligible users, no admin action is needed. Users can choose to apply visualizations, but admins cannot disable the skill itself."
-      }
-    ],
-    "EndDateTime": "2026-06-15T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1309731",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-20T16:29:43.017Z",
-    "Services": [
-      "Microsoft 365 apps",
-      "Microsoft 365 Copilot Chat"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-13T22:56:41Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "PowerPoint for Windows desktop: “Visualize this slide” skill in Copilot",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 20, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>The <b>Review this presentation</b> skill is rolling out as part of Copilot in&nbsp;PowerPoint for the web. In Copilot, a \"skill\" is a user‑initiated action that performs a specific task on existing content. This capability reviews existing slides and provides detailed recommendations to improve structure, clarity, and storytelling, helping users refine presentations more efficiently.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide): Available now</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p><p>Users with access to PowerPoint Copilot on the web.</p>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>The <b>Review this presentation</b> option becomes available within PowerPoint Copilot.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Review this presentation</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/891dc87d-2fec-4f0a-89d2-858fdcf61120/575b2a7a9dfeb43a991e3f347db63d882b8c7d1d.png\" style=\"width: 400px;\" alt=\"user settings\"></p></ul><ul><li>Copilot will analyze the current presentation and generate suggestions to improve narrative flow, organization, and slide clarity.</li>\n  <li>Suggestions are provided for review only; no changes are applied automatically.</li>\n  <li>The feature is <b>available by default</b> for eligible users and respects existing Copilot access controls.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul><li>No admin configuration is required. </li><li>Optionally, you might notify users with access to PowerPoint Copilot about the new <b>Review this presentation</b> option.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li></ul>\n\n<p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified; review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The \"Review this presentation\" skill in PowerPoint for the web Copilot is now generally available. It analyzes slides and suggests improvements for structure, clarity, and storytelling without applying changes automatically. No admin setup is needed, and availability depends on existing Copilot and Anthropic model access."
-      }
-    ],
-    "EndDateTime": "2026-06-14T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1309737",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-20T16:29:01.513Z",
-    "Services": [
-      "Microsoft 365 apps",
-      "Microsoft 365 Copilot Chat"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-13T23:01:57Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "PowerPoint for the web: \"Review this presentation\" skill in Copilot",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 20, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>We’re introducing the <b>Visualize this slide</b> skill in <b>Copilot in PowerPoint for Mac</b>. In Copilot, a skill is a user‑initiated action that performs a specific task on existing content. This new capability helps users quickly transform both simple text into a visually stunning image and text-heavy slides into polished, professional visuals.&nbsp;</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  </ul><p><b>General Availability (Worldwide):</b> Rollout begins in <b>mid-May 2026</b> and completes by <b>mid-May 2026</b>.</p><ul>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Users with access to Copilot in PowerPoint on Mac desktop</li>\n</ul>\n<p><b>What will happen:</b></p>\n<ul>\n  <li>A new <b>Visualize this slide</b>&nbsp;skill option appears in Copilot in PowerPoint.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Visualize this slide</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/4c727eb8-3194-4774-8618-bc72eecf14d9\" style=\"width: 400px;\" alt=\"Copilot in PowerPoint \" visualize=\"\" this=\"\" slide\"=\"\" skill.=\"\" \"=\"\"></p><p></p>\n  <li>Text-based slides can be transformed into visually rich layouts.</li>\n  <li>The feature is enabled by default for eligible users.</li>\n  <li>Existing Copilot and compliance policies are respected.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>No admin action is required.</li>\n  <li>Consider informing users about this new Copilot capability.</li>\n  <li>Update internal documentation if needed.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li>\n</ul><p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\">\n  <tbody><tr>\n    <th>Compliance question</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Introduces or modifies AI/ML capabilities</td>\n    <td>This change adds a new Copilot skill that uses generative AI to create visual slide designs.</td>\n  </tr>\n  <tr>\n    <td>New way for users to interact with generative AI</td>\n    <td>Users can visualize slides using Copilot-generated layouts and imagery.</td>\n  </tr>\n  <tr>\n    <td>Admin control via Entra ID groups</td>\n    <td>Availability depends on existing Copilot licensing and tenant controls.</td>\n  </tr>\n  <tr>\n    <td>User ability to enable or disable the feature</td>\n    <td>Users can choose whether to apply the visualization but cannot disable the skill itself.</td>\n  </tr>\n</tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The \"Visualize this slide\" skill in Copilot for PowerPoint on Mac, launching mid-May 2026, transforms text slides into polished visuals. Enabled by default, it respects existing policies. No admin action is needed, but admins can control related AI model access. Users can choose to apply the feature."
-      }
-    ],
-    "EndDateTime": "2026-06-14T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1309732",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-20T16:28:22.88Z",
-    "Services": [
-      "Microsoft 365 apps",
-      "Microsoft 365 Copilot Chat"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-13T22:58:16Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "PowerPoint for Mac: “Visualize this slide” skill in Copilot",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 20, 2026: We have updated the content. Thank you for your patience. </p><p><b><b>Introduction</b></b></p>\n<p>We’re introducing the <b>Visualize this slide</b> skill in <b>Copilot in PowerPoint for the web</b>. In Copilot, a skill is a user‑initiated action that performs a specific task on existing content. This new capability helps users quickly transform both simple text into a visually stunning image and text-heavy slides into polished, professional visuals.&nbsp;</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  </ul><p><b>General Availability (Worldwide):</b> Rollout begins in <b>mid-May 2026</b> and completes by <b>mid-May 2026</b>.</p><ul>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Users with access to Copilot in PowerPoint for the web</li>\n</ul>\n<p><b>What will happen:</b></p>\n<ul>\n  <li>A new <b>Visualize this slide</b>&nbsp;skill option appears in Copilot in PowerPoint for the web.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Visualize this slide</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/4c727eb8-3194-4774-8618-bc72eecf14d9\" style=\"width: 400px;\" alt=\"Copilot in PowerPoint \" visualize=\"\" this=\"\" slide\"=\"\" skill.=\"\" \"=\"\"></p><p></p>\n  <li>Text-based slides can be transformed into visually rich layouts.</li>\n  <li>The feature is enabled by default for eligible users.</li>\n  <li>Existing Copilot and compliance policies are respected.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>No admin action is required.</li>\n  <li>Consider informing users about this new Copilot capability.</li>\n  <li>Update internal documentation if needed.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li>\n</ul><p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\">\n  <tbody><tr>\n    <th>Compliance question</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Introduces or modifies AI/ML capabilities</td>\n    <td>This change adds a new Copilot skill that uses generative AI to create visual slide designs.</td>\n  </tr>\n  <tr>\n    <td>New way for users to interact with generative AI</td>\n    <td>Users can visualize slides using Copilot-generated layouts and imagery.</td>\n  </tr>\n  <tr>\n    <td>Admin control via Entra ID groups</td>\n    <td>Availability depends on existing Copilot licensing and tenant controls.</td>\n  </tr>\n  <tr>\n    <td>User ability to enable or disable the feature</td>\n    <td>Users can choose whether to apply the visualization but cannot disable the skill itself.</td>\n  </tr>\n</tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The \"Visualize this slide\" skill in Copilot for PowerPoint for the web, launching mid-May 2026, transforms text slides into visually rich layouts. Enabled by default for eligible users, no admin action is needed. Users can choose to apply the feature, which respects existing compliance and admin controls."
-      }
-    ],
-    "EndDateTime": "2026-06-14T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1309733",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-20T16:27:42.193Z",
-    "Services": [
-      "Microsoft 365 for the web",
-      "Microsoft 365 Copilot Chat"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-13T22:59:31Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "PowerPoint for the web: “Visualize this slide” skill in Copilot",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 20, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>The <b>Review this presentation</b> skill is rolling out as part of Copilot in&nbsp;PowerPoint for Mac. In Copilot, a \"skill\" is a user‑initiated action that performs a specific task on existing content. This capability reviews existing slides and provides detailed recommendations to improve structure, clarity, and storytelling, helping users refine presentations more efficiently.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<p>General Availability (Worldwide): Available now</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p><p>Users with access to PowerPoint Copilot on Mac desktop.</p>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>The <b>Review this presentation</b> option becomes available within PowerPoint Copilot.</li><p>Screenshot: <i>Copilot in PowerPoint with the <b>Review this presentation</b> skill selected:</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/891dc87d-2fec-4f0a-89d2-858fdcf61120/575b2a7a9dfeb43a991e3f347db63d882b8c7d1d.png\" style=\"width: 400px;\" alt=\"user settings\"></p></ul><ul><li>Copilot will analyze the current presentation and generate suggestions to improve narrative flow, organization, and slide clarity.</li>\n  <li>Suggestions are provided for review only; no changes are applied automatically.</li>\n  <li>The feature is <b>available by default</b> for eligible users and respects existing Copilot access controls.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul><li>No admin configuration is required. </li><li>Optionally, you might notify users with access to PowerPoint Copilot about the new <b>Review this presentation</b> option.</li><li><b>IT admins cannot control the availability of individual skills.</b> However, skills that depend on the Anthropic model adhere to existing admin configurations—if the Anthropic model is disabled for a tenant by the IT admins, those associated skills will not be available to users in that tenant.</li></ul>\n\n<p><b>Learn more: </b><a href=\"https://support.microsoft.com/topic/edit-with-copilot-in-powerpoint-008f17aa-8e5f-4cda-ba6c-0588000bdad7\" target=\"_blank\">Edit with Copilot in PowerPoint - Microsoft Support</a> (will be updated soon)</p><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified; review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The \"Review this presentation\" skill in PowerPoint for Mac Copilot is now generally available. It analyzes slides to suggest improvements in structure, clarity, and storytelling without applying changes automatically. No admin setup is needed, and availability depends on existing Copilot and Anthropic model access."
-      }
-    ],
-    "EndDateTime": "2026-06-14T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1309736",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-20T16:27:05.333Z",
-    "Services": [
-      "Microsoft 365 apps",
-      "Microsoft 365 Copilot Chat"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-13T23:01:21Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "PowerPoint for Mac: \"Review this presentation\" skill in Copilot",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -6569,53 +6774,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p><p>To help organizations deliver more polished and branded town hall events, Microsoft Teams is introducing the ability for organizers and presenters to <b>upload custom background images</b> in the <i>Manage what attendees see experience</i>. This enhancement allows teams to replace default backgrounds with branded visuals—such as company logos or event-specific designs—so presenters and shared content appear consistently on brand for attendees. This capability is available with a Teams Premium license. This update applies to Teams for Windows desktop and Mac desktop.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?searchterms=561493\" target=\"_blank\">561493</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Targeted Release: </b>Rollout begins in<b> late May 2026 </b>and is expected to complete by<b> late May 2026</b>.</li><li><b>General Availability (Worldwide): </b>Rollout begins in<b> early June 2026</b> and is expected to complete by<b> mid-June 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizers and presenters of <b>Teams town hall events</b></li><li>Users assigned a <b>Teams Premium </b>license</li><li>Tenants using <b>Manage what attendees see</b> in <i>town halls</i></li></ul><p><i>What will happen</i></p><ul><li>Organizers and presenters can upload<b> custom background images </b>directly within the <i><b>Manage what attendees see</b> experience</i>.</li><li>Uploaded backgrounds appear behind presenters and shared content in supported town hall layouts.</li><li>JPEG and PNG image formats are supported, with recommended resolution guidance shown during upload.</li><li><b>Custom backgrounds</b> appear alongside existing default background options in the background picker.</li><li>The feature is<b> enabled by default </b>for eligible users and <b>applies only to town hall events where Manage what attendees see is enabled</b>.</li><li>There is<b> no change</b> to standard Teams meetings or webinars.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>No admin action is required before rollout.</li><li>Consider notifying users who organize or present town halls about this new capability.</li><li>Prepare branded background images that align with your organization’s visual identity guidelines.</li><li>Update internal documentation or event playbooks if you provide guidance on hosting town halls.</li><li>Optionally, run a test town hall event to familiarize presenters with the upload flow and attendee experience.</li></ul><p><b>Learn more:</b>&nbsp;<a href=\"https://support.microsoft.com/office/manage-what-attendees-see-in-microsoft-teams-19bfd690-8122-49f4-bc04-c2c5f69b4e16#bkmk_customize_event_screen\" target=\"_blank\">Customize the event screen - Manage what attendees see in Microsoft Teams | Microsoft Support</a></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change store new customer data?</td><td><b>Yes.</b> Uploaded custom background images are stored as part of the Teams town hall event configuration.</td></tr><tr><td>Does the change alter how existing customer data is processed or accessed?</td><td><b>Yes.</b> Background images are rendered behind presenters and shared content during the live event for attendees.</td></tr></tbody></table><p><b></b></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "561493"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams Premium will allow organizers and presenters of town halls to upload custom background images in the \"Manage what attendees see\" feature, enhancing branded visuals. This rollout starts late May 2026, applies only to town halls with this feature enabled, and supports JPEG/PNG formats on Windows and Mac."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac"
-      }
-    ],
-    "EndDateTime": "2026-07-12T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1307982",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-12T01:21:20.333Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-12T01:21:10Z",
-    "Tags": [
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams Town halls (Teams Premium): Upload custom backgrounds in Manage what attendees see",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b>Introduction:</b></p>\n<p>To improve readability and consistency across Microsoft admin tools, we’re updating Message center (MC) posts that are <a href=\"https://learn.microsoft.com/en-us/planner/track-message-center-tasks-planner\" target=\"_blank\">synchronized to Planner</a> to support <b>HTML formatting</b>. This change ensures that admins see Message center content in Planner with the same rich formatting they see in Message center, making it easier to review updates, understand impact, and follow links without losing context.</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/\n4a1cac31-03a8-4d54-ab61-6a0cf13e3a93\" width=\"400\" height=\"\"></p>\n\n<p><b>When this will happen:</b></p>\n<p>We will begin rolling out this change May 13, 2026.</p>\n\n<p><b>How this affects your organization:</b></p>\n<p>Who is affected:</p>\n<ul>\n  <li>Microsoft 365 admins who view Message center posts that are synchronized to Planner via <a href=\"https://learn.microsoft.com/en-us/planner/track-message-center-tasks-planner\" target=\"_blank\">Planner syncing</a>.</li>\n</ul>\n\n<p>What will happen:</p>\n<ul>\n  <li>Message center posts synchronized to Planner will display HTML formatting, including text formatting, links, and images.</li>\n  <li>Planner will present a cleaner, more consistent view that aligns with Message center.</li>\n  <li>The feature is on by default.</li>\n  <li>Existing items already synced to Planner will be updated over time to display HTML formatting.</li>\n</ul>\n\n<p><b>What you can do to prepare:</b></p>\n<ul>\n  <li>No action is required.</li>\n  <li>You may want to inform admins about the improved formatting experience.</li>\n</ul>\n\n<p><b>Compliance considerations:</b></p>\n<p>This change affects how existing Message center content is rendered in Planner but does not introduce new data storage, processing, or compliance controls.</p>",
       "ContentType": "html"
     },
@@ -8413,7 +8571,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"557168\":[{\"RoadmapId\":557168,\"Platform\":\"Android\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-05-27T15:32:01.3036744Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":557168,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-05-27T15:32:01.3036747Z\",\"LatestRing\":\"StandardRelease\"}]}"
+        "Value": "{\"557168\":[{\"RoadmapId\":557168,\"Platform\":\"Android\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-05-27T18:23:09.3997076Z\",\"LatestRing\":\"StandardRelease\"},{\"RoadmapId\":557168,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-05-27T18:23:09.399708Z\",\"LatestRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -17199,50 +17357,6 @@
       "Admin impact"
     ],
     "Title": "Viva Engage: Agents in Viva Engage communities Public Preview",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated March 26, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>As part of our ongoing protection investments in<i> Microsoft Teams</i>, we will continue expanding the ways users can report suspicious or incorrect activity. Users can already report security concerns and incorrect detections in chats and channels (MC1037768, MC1147984), and more recently in calls (MC1223828). These user‑submitted reports help identify potential malicious activity and strengthen your organization’s security posture.</p><p>Building on this foundation, we will introduce new capabilities that allow Teams administrators to review and export user‑reported security submissions directly in the <i>Teams admin center</i>. A new<b> Protection reports</b> section will be added under <i><b>Analytics and reports</b></i>, giving admins unified visibility into user‑reported calls, chats, and channels.</p><p>This message relates to Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?searchterms=536571#Roadmap\" target=\"_blank\">536571</a>.</p><p><b><b>When this will happen</b></b></p><p><b>Phase 1 – User‑reported call data</b></p><ul><li><b>Targeted Release: </b>Rollout will begin in<b>&nbsp;mid-April 2026&nbsp;</b>(previously mid‑March)<b>&nbsp;</b>and complete in <b>late April 2026</b> (previously&nbsp;late March).</li><li><b>General Availability (Worldwide)</b>: Rollout will begin in <b>late April 2026</b> (previously&nbsp;mid‑April)&nbsp;and complete in <b>early May 2026</b> (previously&nbsp;late April).</li></ul><p><b>Phase 2 – User‑reported chats and channels</b></p><ul><li>This phase will add message‑level reporting for security concerns and incorrect detections.</li><li>The timeline will be communicated in a future update to this Message center post.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i>: Teams administrators who have access to <b>Analytics and reports</b> in the <i>Teams admin center</i>.</p><p><i>What will happen</i>:</p><ul><li>A new <b>Protection reports </b>section will appear under<b style=\"font-style: italic;\"> Teams admin center &gt; Analytics &amp; reports</b>:<p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/9063fe57-d14e-401d-b7ce-c676b97a6ec7/476f4992fbfe76a78ca8b425da10f23db24e4b40.png\" style=\"width: 400px;\" alt=\"user settings\"> </p></li><li>Admins will be able to view and export data about user‑submitted security reports for calls (Phase 1) and later chats and channels (Phase 2).</li><li>Reported interactions will begin populating once users submit reports.</li><li>Admins will be able to review reported calls or messages and take appropriate action.</li><li>Admins will be able to view 1‑day, 7‑day, and 30‑day reporting windows.</li><li>This feature<b> will require that user reporting settings be enabled</b> in the <i>Teams admin center</i>.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>To ensure reporting data is available when rollout begins, verify that end‑user reporting features are enabled:</p><ul><li>Enable <b>Report a call</b>: <i><b>Teams admin center &gt; Calling settings</b></i></li><li>Enable <b>Report a security concern </b>and <b>Report incorrect detection</b>: <i><b>Teams admin center &gt; Messaging settings</b></i></li><li>Once enabled and users begin submitting reports, access data at: <b><i>Teams admin center &gt; Analytics &amp; reports &gt; Protection reports &gt; User‑reported security submission</i></b></li><li>Update internal documentation if your helpdesk relies on reporting workflows.</li><li>If you maintain training or onboarding materials about Teams security practices, consider adding guidance on how users can report suspicious interactions.</li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change store new customer data, if so, where, and is the data cached or permanently stored?</td><td>Yes. This change stores new customer data because user‑submitted security reports for calls, chats, and channels are collected and made available in the Teams admin center for administrative review.</td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. This change alters how existing customer data is accessed because it surfaces reported calls, messages, and detections to Teams administrators for investigation within the new Protection reports area.</td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td>Yes. This change adds new monitoring and reporting capabilities by providing a dedicated Protection reports section where admins can view and export user‑reported security submissions.</td></tr></tbody></table><p><b></b></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "536571"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will add a Protection reports section in the Teams admin center for admins to review and export user-reported security issues in calls (starting mid-April 2026) and later chats and channels. Admins must enable user reporting settings to access these new monitoring features."
-      }
-    ],
-    "EndDateTime": "2026-06-08T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1227625",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-03-26T16:27:53.843Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-02-06T00:44:02Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "User reported security signals in Teams admin center",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
