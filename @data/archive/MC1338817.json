@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and Why</b></b></p><p>We are updating the Microsoft Teams PowerShell module to use <b>Web Account Manager (WAM) </b>as the default authentication broker for sign-in. This change improves security and provides a more consistent authentication experience on Windows.</p><p>A new temporary parameter,<b> -DisableWAM,</b> is available in the <i>Connect-MicrosoftTeams cmdlet</i>, allowing admins to bypass WAM for a single connection if it is not supported in their environment.</p><p>This change is available starting with<b> preview version 7.8.1 of the Teams PowerShell module</b>.</p><p><b><b>Rollout Schedule</b></b></p><p style=\"margin-left: 25px;\"><b>General Availability (Worldwide, GCC, GCCH, DoD):</b> Rollout will begin in<b> late June 2026</b> and is expected to complete in<b> late June 2026</b>.</p><p><b><b>Impact on Your Organization</b></b></p><p><i>Who is affected</i></p><ul><li>Admins using the Microsoft Teams PowerShell module on Windows</li></ul><p><i>Platforms/Services</i></p><ul><li>Microsoft Teams PowerShell module</li><li>Windows</li></ul><p><i>What will happen</i></p><ul><li>Sign-in for the following scenarios will use WAM as the authentication broker:<ul><li>Interactive sign-in using Connect-MicrosoftTeams</li><li>Connect-MicrosoftTeams with credential (-Credential)</li><li>Connect-MicrosoftTeams with AccountId (-AccountId, Integrated Windows Authentication)</li></ul></li><li>The following sign-in methods are <b>not affected</b>:<ul><li>Service principal with certificate</li><li>Managed identity</li><li>Pre-acquired access tokens</li></ul></li><li>A temporary <b>-DisableWAM</b> parameter is available to bypass WAM for a single connection.</li><li>The <b>-DisableWAM</b> parameter will be removed in a future release.</li></ul><p><u>Known limitations:</u></p><ul><li>On macOS, Linux, and Windows versions earlier than Windows 10 or Windows Server 2019, existing authentication behavior remains unchanged.</li><li>WAM requires an interactive Windows session with UI access.</li><li>WAM will not work in non-interactive scenarios such as Windows services, scheduled tasks without a logged-in user, or scenarios that run under impersonation.</li></ul><p><b><b>Action Required / Recommendations</b></b></p><ul><li>Review any scripts that use the Teams PowerShell module, especially those running in non-interactive environments.</li><li>Update scripts if needed to support WAM authentication.</li><li>Use the <b>-DisableWAM</b> parameter as a temporary workaround if required.</li></ul><p><b>Learn more:</b> <a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/connect-microsoftteams?view=teams-ps\" target=\"_blank\">Connect-MicrosoftTeams | Microsoft Teams | Microsoft Learn</a></p><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.\n</p><p><b></b></p><p>\n</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Teams PowerShell module will use Web Account Manager (WAM) as the default authentication broker on Windows starting late June 2026 (version 7.8.1). A temporary -DisableWAM parameter allows bypassing WAM. Non-interactive and older Windows versions are unaffected. Admins should review and update scripts accordingly."
+    }
+  ],
+  "EndDateTime": "2026-07-30T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1338817",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-06-03T22:46:07.033Z",
+  "Services": [
+    "Microsoft Teams"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-06-03T22:45:57Z",
+  "Tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Teams PowerShell: Web Account Manager (WAM) becomes the default authentication broker",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
