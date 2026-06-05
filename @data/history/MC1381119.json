@@ -1,0 +1,48 @@
+{
+  "id": "MC1381119",
+  "versions": [
+    {
+      "capturedAt": "2026-06-05T22:44:00.067Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and Why:</b></b></p>\n<p>Instead of being bundled with the monthly Windows security update, Microsoft Defender <b>endpoint detection and response (EDR)</b> updates will now be delivered through Microsoft Update, consistent with how other Microsoft Defender components are serviced.</p>\n<p>This change allows EDR security improvements to be delivered independently of monthly operating system updates.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>Rollout began with Windows 10 in <b>late May 2026</b>.</li><li>Rollout will expand to Windows 11, followed by remaining supported Windows versions.</li><li>We expect the rollout for Windows 10 and 11 to be completed by <b>fall 2026</b>.</li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:</b> Organizations using Microsoft Defender for Endpoint on supported Windows devices.</p>\n<p><b>Platforms / Services:</b></p>\n<ul>\n<li>All Windows OSes currently supported by Microsoft Defender for Endpoint</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>EDR updates will no longer be bundled with the monthly Windows security update.</li><li>EDR updates will be delivered through Microsoft Update via KB 5005292 once required prerequisite updates are installed.</li><li>A new <b>Defender Update Service</b> will be introduced.</li><li>When the first update is installed, a new directory will be created on the device: <code>%ProgramData%\\Microsoft\\Microsoft Defender\\Defender Update</code></li><li>EDR updates typically do <b>not </b>require a device restart. In rare failure scenarios, a restart may be required.</li>\n</ul>\n\n<p><b>Prerequisite updates:</b></p><p>Devices must be running <b>Sense version 10.8798.25857.1000 or later</b> and have one of the following updates (or later) installed:</p><ul><li>Win11 24H2 KB 5062660 (2025-07 Cumulative Update Preview)</li><li>Win11 23H2 KB 5062663 (2025-07 Cumulative Update Preview)</li><li>Win11 22H2 KB 5062663 (2025-07 Cumulative Update Preview)</li><li>Win10 22H2 KB 5062649 (2025-07 Cumulative Update Preview)</li><li>Win10 1809 KB 5063877 (2025-08 Cumulative Update)</li><li>Server 2019 KB 5063877 (2025-08 Cumulative Update)</li><li>Server 2022 KB 5063880 (2025-08 Cumulative Update)</li><li>Server 2025 KB 5063878 (2025-08 Cumulative Update)</li></ul><p><b><b>Action Required / Recommendations:</b></b></p>\n<ul>\n<li><b>No action is required</b> for organizations that allow updates through Microsoft Update.</li><li>If your organization uses manual update package deployment, ensure this new Defender update package is included in your standard update process.</li><li>Review internal documentation and operational procedures that reference Defender for Endpoint update behavior.</li><li>Inform helpdesk and security operations teams about the new update delivery method.</li>\n</ul><p><b>Rollback guidance (if needed):</b></p><p>Administrators can roll back EDR updates using the Microsoft Defender command-line utility.</p><p>Revert EDR to the inbox version stored in <code>%ProgramFiles%\\\\Windows Defender Advanced Threat Protection</code>:</p><p></p>\n<pre><code>MpCmdRun.exe -RevertMde -Product Edr -ToVersion Inbox</code></pre>\n\n<p>Revert EDR to the N-1 version, if there is available backup in <code>%ProgramData%\\\\Microsoft\\\\Windows Defender Advanced Threat Protection\\\\Platform</code></p>\n<pre><code>MpCmdRun.exe -RevertMde -Product Edr -ToVersion Previous</code></pre>\n\n\n<p><b><b>Compliance considerations:</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Compliance Area</td><td>Explanation</td></tr><tr><td>Data processing or storage changes</td><td>The change introduces a new local update service directory for Defender updates but does not introduce new customer data types.</td></tr><tr><td>Admin controls</td><td>Update delivery is governed by existing Windows Update and Microsoft Update configuration policies.</td></tr></tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Defender for Endpoint EDR updates will move from monthly Windows security updates to Microsoft Update starting late May 2026 for Windows 10, expanding to Windows 11 and others by fall 2026. Updates won't usually require restarts. No action needed if using Microsoft Update; manual deployment requires adjustment."
+          }
+        ],
+        "EndDateTime": "2026-10-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1381119",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-06-05T22:44:00.067Z",
+        "Services": [
+          "Microsoft Defender XDR"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-06-05T22:43:52Z",
+        "Tags": [
+          "Feature update",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Defender for Endpoint security updates move to Microsoft Update on Windows",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
