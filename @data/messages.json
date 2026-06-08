@@ -4,6 +4,276 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p><p><b>Microsoft\nPurview Endpoint Data Loss Prevention (DLP)</b> is introducing the ability to\nprotect sensitive files even when they reside in commonly excluded Windows\nfolders such as <b>AppData</b> directories and temporary folders. Previously, files\nstored in these excluded paths were not subjected to Endpoint DLP policy\nenforcement. With this update, policy checks will apply during key egress\nactions, including copying, printing, saving to network shares, and uploading to\ncloud services, helping reduce the risk of sensitive data leaving your\norganization from these user-writable locations.&nbsp;</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=562992\" target=\"_blank\">562992</a>.</p>\n<p><b><b>Rollout Schedule:</b></b></p><p>General Availability (Worldwide): We will begin rolling out in <b>early July 2026</b> and expect to complete by <b>early July 2026</b>.</p><p><b><b>How this will affect your organization:</b></b></p><p><b>Who is affected: </b>Admins and users in organizations that use <b>Microsoft Purview Endpoint Data Loss Prevention (DLP) </b>on Windows devices</p><p><b>Platforms:</b></p><ul><li>Microsoft Purview compliance portal</li><li>Windows endpoints supported by Microsoft Purview Endpoint DLP</li><li>Microsoft Defender anti-malware <b>client version 4.18.26051 or later</b> required</li></ul><p><b>What will happen:</b></p><p>With this update, admins can extend\nEndpoint DLP protection to files stored in excluded Windows folders (for\nexample, <code>%AppData%</code> and temporary directories) during egress activities.&nbsp;</p><ul><li> Users in <b>audit mode</b> can continue their actions, which will\nbe logged for review.&nbsp;</li><li>Users in <b>block mode</b> will be prevented from performing\nrestricted actions (for example, copying to removable media, uploading to cloud\nservices, or printing)&nbsp;</li><li>If both audit and block policies apply to a user, <b>block takes\nprecedence&nbsp;</b></li></ul><p>This change improves protection coverage by\naddressing scenarios where sensitive data in excluded paths may have previously\ngone unmonitored.&nbsp;</p><p>Screenshot: <i style=\"\">Endpoint DLP settings for excluded Windows folders and file egress activities:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/d3f572a4-d077-41c6-bcaf-0a0006fe3aeb\" style=\"width: 400px;\" alt=\"user settings\"></p><p><b><b>Action Required / Recommendations:</b></b></p><ul><li>Before enabling this feature, you must first deploy anti-malware <b>Client\nversion 4.18.26051 or later</b> &nbsp;</li><li><b>Review excluded folder paths:</b> Identify which excluded paths (such as <b>AppData</b> and temporary directories)\ncontain or could contain sensitive files and should be added to the protected\nexclusion paths list. &nbsp;</li><li><b>Stage your rollout</b>: Start with an audit-mode pilot to assess impact before enabling\nenforcement.&nbsp;</li><li><b>Update DLP policies:</b>&nbsp;Extend existing Endpoint DLP policies to cover protected excluded folders where applicable.</li><li><b>Educate users and support teams:</b>&nbsp;Inform them of expected behavior changes, including potentially blocked actions such as copy, print, or upload operations.</li></ul><p><b><b>Compliance considerations:</b></b></p><table>\n  <tbody><tr>\n    <th>Compliance consideration</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Admin control</td><td>Admins must review excluded Windows folder paths and update Endpoint DLP policies to enable protection for files stored in excluded folders.</td>\n  </tr>\n  <tr>\n    <td>User impact</td>\n    <td>Users may experience blocked actions such as copying to removable media, printing, saving to network shares, or uploading to cloud services when interacting with sensitive files stored in protected excluded folders.</td>\n  </tr>\n  <tr>\n    <td>Policy changes</td>\n    <td>Organizations may need to extend existing Endpoint DLP policies to include protected excluded folders.</td>\n  </tr>\n  <tr>\n    <td>User training</td>\n    <td>Organizations should educate users and support teams about new enforcement behavior and potential blocked actions.</td>\n  </tr>\n  <tr>\n    <td>Monitoring/Auditing</td>\n    <td>Audit mode logging will capture user actions involving sensitive files in protected excluded paths for review and analysis.</td>\n  </tr>\n  <tr>\n    <td>Prerequisite dependency</td>\n    <td>Devices must run anti-malware client version 4.18.26051 or later before enabling this feature.</td>\n  </tr>\n  <tr>\n    <td>Security/Compliance impact</td>\n    <td>This update expands Endpoint DLP protection coverage to previously excluded Windows folder locations, helping reduce the risk of sensitive data exfiltration.</td>\n  </tr>\n  <tr>\n    <td>Rollout risk assessment</td>\n    <td>Organizations may want to pilot the feature in audit mode before enabling enforcement to assess operational impact.</td>\n  </tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "562992"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Endpoint DLP will protect sensitive files in previously excluded Windows folders (e.g., AppData) during egress actions starting July 2026. Admins must update policies, deploy anti-malware client 4.18.26051+, and educate users. Audit mode logs actions; block mode enforces restrictions to reduce data loss risk."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-08-06T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1384420",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-06-08T22:18:58.263Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-06-08T22:18:40Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Endpoint Data Loss Prevention - Ability to protect files stored in the excluded folders in Windows",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p><p>We’re updating the PDF preview experience in Outlook for iOS. This change adds support for <b>Microsoft Information Protection (MIP)</b>–labeled PDFs and introduces a built-in controls toolbar to improve navigation and search when viewing PDF attachments.</p><p>This message is associated with Roadmap ID&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=564970\" target=\"_blank\">564970</a>.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p><p>General Availability (Worldwide, GCC, GCC High, DoD): Rollout begins in <b>early July 2026</b> and is expected to complete by <b>early September 2026</b>.</p>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:&nbsp;</b>All users who view PDF attachments in Outlook for iOS.</p>\n\n<p><b>Platforms/Services:</b></p><ul><li>Outlook for iOS (mobile)</li><li>PDF attachment preview</li></ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Users can preview <b>MIP-labeled (protected) PDF files</b> directly in Outlook for iOS.</li><li>A <b>controls toolbar</b> appears at the bottom of the PDF preview, enabling:</li><ul><li>Zoom in and out</li><li>Page navigation</li><li>Keyword search within the PDF</li></ul><li>The <b>Open in Copilot</b> button has moved to the <b>More (…) menu</b> in the upper-right corner.</li><li>The feature is <b>enabled by default</b>.</li>\n<li>No changes are made to current admin configurations or user workflows beyond the enhanced preview experience.</li>\n</ul><p><b><b>Action Required / Recommendations:</b></b></p><ul><li><b>No action is required.&nbsp;</b>This feature is enabled automatically.</li><li>Consider notifying end users about the improved PDF preview and new toolbar controls to reduce help desk inquiries.</li><li>Update internal documentation or training materials if you reference Outlook mobile PDF behavior.</li></ul><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "564970"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Outlook for iOS will enhance PDF preview by supporting Microsoft Information Protection-labeled PDFs and adding a controls toolbar for zoom, navigation, and search. The update rolls out from July to September 2026, is enabled by default, requires no admin action, and maintains existing workflows."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "iOS"
+      }
+    ],
+    "EndDateTime": "2026-10-07T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1384419",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-06-08T22:18:04.31Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-06-08T22:17:29Z",
+    "Tags": [
+      "Feature update",
+      "User impact"
+    ],
+    "Title": "Improved PDF preview in Outlook for iOS",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p>\n<p>\nMicrosoft Purview Endpoint <b>Data Loss Prevention (DLP)</b> is improving how file extension conditions are configured to help ensure policies are accurate, reliable, and efficient. By limiting file extension selection to supported, scannable file types, this update reduces misconfiguration risk and improves enforcement consistency across endpoints while maintaining existing protection coverage.\n</p>\n<p>\nThis change aligns Endpoint DLP configuration with supported enforcement capabilities and helps admins create policies that behave as expected.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=562993\" target=\"_blank\">562993</a>.</p><p>\n</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<p>\nGeneral Availability (Worldwide): We will begin rolling out in <b>early July 2026</b> and expect to complete by<b> late July 2026</b>.\n</p>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Microsoft 365 administrators managing Microsoft Purview Endpoint DLP device policies.</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n  <li>Microsoft Purview</li>\n  <li>Endpoint Data Loss Prevention</li>\n  <li>Supported Windows endpoints</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Endpoint DLP now includes a pre‑curated list of supported file extensions for the <b>File extension</b> condition.</li>\n  <li>Only file types that are supported and can be scanned appear in the picker.</li>\n  <li>Free‑form text entry for file extensions is no longer available.</li>\n  <li>Existing policies continue to enforce as they do today unless edited.</li>\n  <li>If an edited policy contains unsupported file extensions, those entries must be removed before the policy can be saved.</li>\n  <li>To maintain coverage for unsupported or non‑scannable file types, use the <b>Apply restrictions to only unsupported file extensions</b> feature. Learn more: <a href=\"https://learn.microsoft.com/purview/dlp-create-policy-sharing-set-unsupported-files#help-protect-against-sharing-of-a-defined-set-of-unsupported-files\" target=\"_blank\">Help protect against sharing of a defined set of unsupported files</a>.&nbsp;</li><li>Your overall protection posture does not change with this update.</li>\n\n\n<p>Screenshot 1: <i>Add file extension options:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/32666774-fffa-492f-ac9a-6af9e8c8b7c2\" style=\"width: 400px;\" alt=\"user settings\"></p><p>Screenshot 2: <i>Unsupported file extension warning in Microsoft Purview policy settings:</i></p><p></p>\n<p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/9880465a-72ad-46a6-866a-0d809e640cb6/8e643567e5c8c0ac0e080239c2a6f077456c015e.png\" style=\"width: 400px;\" alt=\"user settings\"></p></ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n<ul>\n  <li><b>No action required</b> if you are not modifying existing policies.</li>\n  <li>If you plan to edit or create a policy:\n    <ul>\n      <li>Review your current file extension list.</li>\n      <li>Keep supported file extensions.</li>\n      <li>Remove unsupported file extensions and use<b> Apply restrictions to only unsupported file extensions feature</b> instead.</li><li>Use the curated list when adding new supported file types.</li>\n    </ul>\n  </li>\n</ul>\n\n<p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/endpoint-dlp-learn-about\" target=\"_blank\">Learn about Endpoint data loss prevention | Microsoft Learn</a>&nbsp;(will be updated before rollout)</li><li><a href=\"https://learn.microsoft.com/purview/dlp-policy-reference#conditions-supported-for-endpoints\" target=\"_blank\">Conditions supported for Endpoints | Microsoft Learn</a>&nbsp;(will be updated before rollout)</li></ul><p><b><b>Compliance considerations:</b></b></p>\n<p>\nNo compliance considerations identified, review as appropriate for your organization.\n</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "562993"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Endpoint DLP will restrict file extension selection to a pre-curated list of supported, scannable types starting July 2026. Free-form entry is removed; unsupported extensions must be managed via a specific feature. Existing policies remain unchanged unless edited. No action is needed if policies are not modified."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-08-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1384415",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-06-08T22:16:31.2Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-06-08T22:16:03Z",
+    "Tags": [
+      "Feature update",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Endpoint Data Loss Prevention now supports a pre‑curated file extension list",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p><p>\nWe're introducing support in Microsoft Purview <b>Data Lifecycle Management (DLM)</b> to apply retention and deletion policies to Microsoft Planner content. This enhancement allows compliance administrators to manage Planner tasks using enterprise-grade governance controls, helping organizations meet regulatory and internal compliance requirements while reducing manual data management.</p><p>This change is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=486828#Roadmap\" target=\"_blank\">486828</a>.\n</p><p>\n</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n  <li>General Availability (Worldwide): Rollout begins in <b>mid-June 2026</b> and is expected to complete by <b>mid-June 2026</b>.</li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n<ul>\n  </ul><p><b>Who is affected:</b> Compliance and IT administrators managing Microsoft Purview and Microsoft Planner.</p><p><b>Platforms/Services:</b> </p><ul><li>Microsoft Purview</li><li>Microsoft Planner</li><li>Microsoft 365</li></ul><p><b>What will happen:</b>\n    </p><ul>\n      \n      \n      \n      \n    </ul>\n  <p></p><ul><li>Admins can create and apply <b>DLM retention policies</b> to Microsoft Planner tasks.</li><li>Planner tasks will be<b> retained or deleted automatically</b> based on their<b> individual creation date or last modified date</b>.</li><li>Policies can be scoped to<b> user and group-backed Planner plans</b>.</li><li>There is <b>no immediate user experience change</b> unless a retention or deletion policy is configured and enforced.</li><li>Existing Purview compliance capabilities remain unchanged and are respected.</li>\n  \n  </ul><ul>\n</ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p><p><b>If you do not require retention or deletion controls for Planner:</b></p><ul><li>No action is required at this time.</li></ul><p></p><ul></ul><p></p><p><b>If you want to manage Planner data lifecycle:</b></p><ul><li>Review your organization’s compliance and data retention requirements for Planner content.</li><li>Configure <b>Data Lifecycle Management retention policies</b> in <b>Microsoft Purview </b>for:<ul><li>Planner roster plans</li><li>Planner group-backed plans</li></ul></li><li>Update internal compliance documentation to include Planner data governance.</li><li>Inform compliance and legal stakeholders of the new coverage for Planner content.</li></ul><p><b>Compliance Considerations:</b>\n</p><table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n  <tbody><tr>\n    <th>Area</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Retention policies, holds, or deletion workflows</td>\n    <td>This change introduces the ability to apply Microsoft Purview Data Lifecycle Management retention and deletion policies to Microsoft Planner tasks, enabling automated retention or deletion based on task creation or last modification date.</td>\n  </tr>\n  <tr>\n    <td>Processing, storage, or access to existing customer data</td>\n    <td>Existing Microsoft Planner task data can now be governed by retention policies, which may alter how long data is stored and when it is deleted, based on administrator-defined lifecycle rules.</td>\n  </tr>\n  <tr>\n    <td>Admin monitoring, reporting, or compliance management</td>\n    <td>Admins gain expanded compliance governance capabilities in Microsoft Purview, allowing monitoring and enforcement of Planner data lifecycle policies alongside other Microsoft 365 workloads.</td>\n  </tr>\n  <tr>\n    <td>GDPR / Data Subject Rights (access, deletion, correction)</td>\n    <td>Automated deletion of Planner tasks based on retention policies may impact how personal data is deleted in accordance with defined retention periods and regulatory requirements.</td>\n  </tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "486828"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Data Lifecycle Management will support retention and deletion policies for Microsoft Planner tasks starting mid-June 2026. Compliance admins can automate data governance based on task dates, helping meet regulatory requirements without immediate user changes unless policies are applied."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-07-19T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1384412",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-06-08T22:14:09.82Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-06-08T22:12:55Z",
+    "Tags": [
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Data Lifecycle Management: Retention policies for Microsoft Planner content",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p>\n<p>We’re refreshing the <b>Outlook Actionable Messages onboarding portal </b>with a modernized experience and a<b> new URL</b> to improve usability, strengthen security, and streamline onboarding for developers and administrators. This refresh aligns with Microsoft’s enterprise-ready security standards and provides a more modern, intuitive experience for managing actionable message integrations.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out in <b>early June 2026</b> and expect to complete by <b>late June 2026</b>.</p>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Administrators and developers who manage or onboard <b>Outlook Actionable Messages</b> integrations.</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>Outlook Actionable Messages onboarding portal (web)</li>\n<li>Exchange Online / Outlook ecosystem</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Admins will see a refreshed onboarding portal UI with improved navigation and clarity for common tasks.</li><li>A <b>new portal URL</b> will replace the existing onboarding endpoint: <a href=\"https://aka.ms/ActionableMessagesPortal\" target=\"_blank\">https://aka.ms/ActionableMessagesPortal</a></li><li>Security enhancements aligned with Microsoft enterprise standards will be applied.</li><li>The <b>legacy portal URL will be retired</b> after the transition period.</li><li>There are <b>no changes to existing actionable message functionality or runtime behavior</b>.</li>\n</ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p><p>If you manage Outlook Actionable Messages, we recommend the following actions:</p>\n<ul>\n<li>Review and update any <b>bookmarks, scripts, or tools</b> that reference the legacy onboarding portal URL.</li>\n<li>Communicate the updated portal URL and experience to developers and administrators in your organization.</li>\n<li>Update internal documentation or onboarding guides that reference the legacy portal.</li>\n<li>Visit the updated portal after rollout and validate your existing onboarding workflows.</li></ul><p><b>Learn more:</b>&nbsp;<a href=\"https://learn.microsoft.com/outlook/actionable-messages/get-started\" target=\"_blank\">Get started with actionable messages in Office 365 | Microsoft Learn</a>&nbsp;(will be updated before rollout)</p>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n<tbody><tr>\n<th>Compliance area</th>\n\n<th>Explanation</th>\n</tr>\n<tr>\n<td>Admin compliance monitoring and reporting</td>\n\n<td>The onboarding portal UI and URL are updated, which may affect how administrators access and manage actionable message onboarding workflows. There are no changes to how customer data is processed, stored, or governed.</td>\n</tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The Outlook Actionable Messages onboarding portal will be refreshed with a modern UI, new URL (https://aka.ms/ActionableMessagesPortal), and enhanced security, rolling out worldwide in June 2026. Existing functionality remains unchanged. Administrators should update bookmarks, tools, and documentation accordingly."
+      }
+    ],
+    "EndDateTime": "2026-07-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1384409",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-06-08T22:11:54.62Z",
+    "Services": [
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-06-08T22:11:44Z",
+    "Tags": [
+      "Feature update",
+      "Admin impact"
+    ],
+    "Title": "Outlook Actionable Messages onboarding portal refresh: new experience and updated URL",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated June 8, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>To help organizations manage SharePoint storage more flexibly and avoid over-provisioning, Microsoft is introducing a <b>pay-as-you-go, consumption-based billing model for SharePoint storage overages</b>. This option allows you to pay only for the additional storage you actually use, rather than pre-purchasing extra capacity. The experience integrates with Microsoft 365 Archive and helps align storage costs with real usage.</p>\n\n<p>This change is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=506743\" target=\"_blank\">506743</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  <li>Public Preview (Worldwide): We will begin rolling out in <b>early June 2026</b> and expect to complete by <b>mid-June 2026.</b></li><li>General Availability (WW): We expect to begin rolling out in <b>September 2026 </b>and to complete rolling by <b>end of October 2026</b>.&nbsp;</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Microsoft 365 administrators managing <b>SharePoint Online storage</b></li><li><b>Note: </b>This feature isn’t currently available to education tenants. Let us know if you’d like it to be supported in the future.</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Admins can <b>enable pay-as-you-go SharePoint storage billing</b> in the Microsoft 365 admin center.</li>\n  <li>Storage used above the included tenant quota will be automatically billed based on consumption.</li>\n  <li>There is no impact to users.</li>\n  <li>The existing<b> Office 365 Extra File Storage</b> add‑on remains available if you prefer to <b>manually increase your storage quota</b> instead.</li><li>The feature is <b>opt-in</b> and<b> off by default</b>.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>No immediate action is required. However, we recommend the following:</li>\n<li>Review your tenant’s current SharePoint storage usage in the <b>SharePoint admin center</b> &gt; <b>Active sites</b>.</li><li>Evaluate whether a <b>consumption‑based model</b> or <b>manually purchased storage</b> best fits your organization’s cost and governance preferences.</li><li>If you plan to enable pay‑as‑you‑go billing:<ul><li>Ensure the appropriate <b>Azure subscription and billing permissions</b> are in place.</li><li>Update internal documentation or cost‑management processes as needed.</li></ul></li><li>Share this information with finance or procurement teams if they track usage‑based charges.</li></ul>\n\n<p>Learn more:<a href=\"https://learn.microsoft.com/microsoft-365/commerce/add-storage-space?view=o365-worldwide\"> Add more SharePoint storage to your subscription | Microsoft Learn</a></p>\n\n<p><b><b>Compliance considerations</b></b></p>\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n  <tbody><tr>\n    <th align=\"left\">Compliance area</th>\n    <th align=\"left\">Impact and explanation</th>\n  </tr>\n  <tr>\n    <td>Admin monitoring and reporting</td>\n    <td>SharePoint storage usage above the included tenant quota will be reflected in consumption-based billing and usage reports, which may affect how admins monitor and track storage consumption and costs.</td>\n  </tr>\n  <tr>\n    <td>Admin control</td>\n    <td>Administrators must explicitly enable</td></tr></tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "506743"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft is introducing a pay-as-you-go billing model for SharePoint storage overages, allowing admins to pay only for extra storage used. Rolling out from June to October 2026, this opt-in feature integrates with Microsoft 365 Archive and requires Azure billing permissions. Education tenants are currently excluded."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-11-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1330893",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-06-08T21:11:36.743Z",
+    "Services": [
+      "SharePoint Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-06-01T23:26:28Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Pay-as-you-go consumption-based meter for your extra SharePoint storage needs",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated June 8, 2026: We have updated the timeline and content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p><b>Express voice enrollment</b> in Microsoft Teams makes registering your voice profile quick and seamless. A voice profile enables features such as voice isolation, speaker recognition, identification in meeting rooms, improved transcripts, and enhanced meeting recaps and insights powered by Microsoft 365 Copilot. If you haven’t enrolled, you’ll receive an in-product prompt to opt in and enroll simply by speaking during a meeting. <b>Admins can enable or disable this feature for their organization.</b></p><p>This message is associated with Roadmap ID&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=537269\" target=\"_blank\">537269</a>.</p>\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li><b>Targeted Release: </b>Rollout begins mid-June 2026 (previously early June) and is expected to complete by end of June (previously mid-June).</li>\n<li><b>General Availability:</b> Rollout begins end of June 2026 (previously mid-June) and is expected to complete by early July 2026 (previously late June).</li>\n</ul>\n\n<p><b><b>How this will affect your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>All commercial Microsoft Teams customers except Education (EDU) tenants.</li>\n</ul>\n<p><b>What will happen:</b></p>\n<ul>\n<li>A new voice enrollment experience will be available in Teams. Users can proceed to the Teams global settings &gt; Recognition tab to opt in and enroll their voice profile by speaking during a meeting</li>\n<li>User prompts will be released with a later version to drive awareness on the functionality and prompt users to enroll their voice profile.</li>\n<li>The feature will be<b> ON by default</b> for enterprise tenants.</li>\n<li>EDU tenants are excluded from this rollout.</li><li>Admins can disable this feature or manage settings using PowerShell in the <code>PassiveVoiceEnrollment</code> configuration in the <code>csTeamsAIPolicy</code> policy. Refer to <a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps\">Set-CsTeamsAIPolicy (MicrosoftTeams) | Microsoft Learn</a> for more information.</li>\n<li>If your organization previously disabled voice enrollment policies (under the <code>EnrollVoice</code> configuration), that policy will still be in effect and this express enrollment feature will not apply change this value.</li><li>As of May 2026, all tenants that previously had&nbsp;<code>EnrollVoice</code>&nbsp;set to disabled, Microsoft applied the same value to <code>PassiveVoiceEnrollment</code> for consistency.</li><li>To disable voice enrollment entirely for your organization, please make sure both <code>EnrollVoice</code> and <code>PassiveVoiceEnrollment</code> configurations are disabled.</li>\n<li>If you choose to change the default policy setting or disable voice enrollment entirely, users will not be able to fully benefit from features like speaker recognition, transcript attribution, intelligent audio/video experiences, or receive the most insightful meeting recaps and responses from Copilot and agents.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Review your organization’s Teams AI policy settings before rollout.</li>\n<li>If you want to disable this feature, update the <code>PassiveVoiceEnrollment</code> configuration using PowerShell.</li>\n<li>Communicate this change to your helpdesk and end users as needed.</li>\n<li>Update internal documentation to reflect this new capability.</li>\n</ul><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified; review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -3200,52 +3470,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p>\n<p>To help organizations manage SharePoint storage more flexibly and avoid over-provisioning, Microsoft is introducing a <b>pay-as-you-go, consumption-based billing model for SharePoint storage overages</b>. This option allows you to pay only for the additional storage you actually use, rather than pre-purchasing extra capacity. The experience integrates with Microsoft 365 Archive and helps align storage costs with real usage.</p>\n\n<p>This change is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=506743\" target=\"_blank\">506743</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  <li>Public Preview (Worldwide): We will begin rolling out in <b>early June 2026</b> and expect to complete by <b>mid-June 2026.</b></li><li>We will update this message with General Availability (GA) details as they become available.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Microsoft 365 administrators managing <b>SharePoint Online storage</b></li><li><b>Note: </b>This feature isn’t currently available to education tenants. Let us know if you’d like it to be supported in the future.</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Admins can <b>enable pay-as-you-go SharePoint storage billing</b> in the Microsoft 365 admin center.</li>\n  <li>Storage used above the included tenant quota will be automatically billed based on consumption.</li>\n  <li>There is no impact to users.</li>\n  <li>The existing<b> Office 365 Extra File Storage</b> add‑on remains available if you prefer to <b>manually increase your storage quota</b> instead.</li><li>The feature is <b>opt-in</b> and<b> off by default</b>.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>No immediate action is required. However, we recommend the following:</li>\n<li>Review your tenant’s current SharePoint storage usage in the <b>SharePoint admin center</b> &gt; <b>Active sites</b>.</li><li>Evaluate whether a <b>consumption‑based model</b> or <b>manually purchased storage</b> best fits your organization’s cost and governance preferences.</li><li>If you plan to enable pay‑as‑you‑go billing:<ul><li>Ensure the appropriate <b>Azure subscription and billing permissions</b> are in place.</li><li>Update internal documentation or cost‑management processes as needed.</li></ul></li><li>Share this information with finance or procurement teams if they track usage‑based charges.</li></ul>\n\n<p>Learn more:<a href=\"https://learn.microsoft.com/microsoft-365/commerce/add-storage-space?view=o365-worldwide\"> Add more SharePoint storage to your subscription | Microsoft Learn</a></p>\n\n<p><b><b>Compliance considerations</b></b></p>\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n  <tbody><tr>\n    <th align=\"left\">Compliance area</th>\n    <th align=\"left\">Impact and explanation</th>\n  </tr>\n  <tr>\n    <td>Admin monitoring and reporting</td>\n    <td>SharePoint storage usage above the included tenant quota will be reflected in consumption-based billing and usage reports, which may affect how admins monitor and track storage consumption and costs.</td>\n  </tr>\n  <tr>\n    <td>Admin control</td>\n    <td>Administrators must explicitly enable</td></tr></tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "506743"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft will introduce a pay-as-you-go billing model for SharePoint storage overages starting early June 2026. Admins can opt in to pay only for extra storage used beyond the included quota, with no user impact. Education tenants are excluded, and manual storage purchase remains available."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-07-16T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1330893",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-06-01T23:26:36.417Z",
-    "Services": [
-      "SharePoint Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-06-01T23:26:28Z",
-    "Tags": [
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Pay-as-you-go consumption-based meter for your extra SharePoint storage needs",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Expected with Intune's June (2606) service release, we are making an update to the Microsoft Intune admin center to streamline where admins configure Microsoft 365 Apps policy settings. Currently, the same policy configuration experience is available in both the Microsoft Intune admin center (Apps &gt; Policies for Microsoft 365 apps) and the <a href=\"https://config.office.com/officeSettings/officePolicies\" target=\"_blank\">Microsoft 365 Apps admin center</a> (Customization &gt; Policy management). To provide a more consistent and centralized management experience, we will remove the ability to configure these policies in the Intune admin center. Instead, the page will be updated to provide a direct link to the Microsoft 365 Apps admin center where this functionality will continue to be available.</p><p><b>How this will affect your organization:</b>\n</p><p>If you are accustomed to creating or editing Microsoft 365 Apps policies directly within the Intune admin center, you will need to use the Microsoft 365 Apps admin center to perform these tasks.</p><p><b>Important</b>: There is no change to configured policies, functionality, or the configuration experience, the user interface is identical to the existing experience in the Intune admin center. Additionally, there is no change to the required roles or permissions needed to create or manage policies.\n</p><p><b>What you need to do to prepare:</b>\n</p><p>Update your IT admin guidance and documentation as needed. No additional action is required to retain existing policy functionality.</p><p>\n</p>",
       "ContentType": "html"
     },
@@ -3294,7 +3518,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"560320\":[{\"RoadmapId\":560320,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-06-03T11:53:21.0645184Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":560320,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-06-03T11:53:21.0645186Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":560320,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-06-03T11:53:21.0645187Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
+        "Value": "{\"560320\":[{\"RoadmapId\":560320,\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-06-03T11:53:21.0645186Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":560320,\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-06-03T11:53:21.0645184Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":560320,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-06-03T11:53:21.0645187Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -3824,6 +4048,190 @@
       "Admin impact"
     ],
     "Title": "Microsoft Viva Glint: Export Heat Map reports as editable PowerPoint slides",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why</b></b></p><p><b>Microsoft Purview Information Protection</b> is introducing <b>File Labeler</b> and<b> File Viewer applications</b> for <b>macOS</b>. These clients will bring sensitivity labeling and protected file viewing capabilities to Mac users, aligning with the experience already available on Windows.</p><p>This update will help organizations consistently apply and enforce protection policies across platforms, supporting enterprise-grade security and compliance for sensitive content across devices.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=561327\" target=\"_blank\">561327</a></b>.</p><p><b><b>Rollout Schedule</b></b></p><ul><li><b>Public Preview: </b>The macOS client will be made available for download <b>on or around May 29, 2026.</b></li><li><b>General Availability (Worldwide)</b>: The macOS client will be made available for download <b>on or around September 30, 2026</b>.</li></ul><p><b><b>Impact on Your Organization</b></b></p><p><i>Who is affected</i></p><ul><li>Users on <b>macOS </b>who work with labeled and protected files</li><li>Admins managing <b>Microsoft Purview Information Protection</b></li></ul><p><i>Platforms/Services</i></p><ul><li>macOS</li><li>Microsoft Purview Information Protection</li></ul><p><i>What will happen</i></p><ul><li>The macOS client will be made available to download via the <a href=\"https://www.microsoft.com/download/details.aspx?id=53018\" target=\"_blank\">Microsoft Purview Information Protection page</a>.</li><li>Users will be able to apply, change, and remove sensitivity labels on supported files, including Office documents, PDFs, images, text files, and other file types.</li><li>Users will be able to apply labels and protection to single files, or multiple files</li><li>Labels and protection will remain applied when files are shared or moved.</li><li>Users will be able to open and view protected files (including .pfile-based formats) that are not supported by their originating applications.</li><li>The macOS client will provide parity with the Windows File Labeler and File Viewer, with the following exceptions:<ul><li>Advanced label-based protection will not be supported in this release.</li><li>Need to work with files, selecting a folder will not show the option.</li></ul></li><li>The client will not be pre-installed and will need to be downloaded separately.</li><li>Existing sensitivity labeling policies will continue to apply; no changes will be required.</li></ul><p><b><b>Action Required/Recommendations</b></b></p><p>No immediate action is required.</p><p>Admins may consider the following:</p><ul><li>Review your current sensitivity labeling policies to ensure they meet cross-platform needs.</li><li>Inform macOS users about the availability of labeling and protected file viewing capabilities.</li><li>Download the <a href=\"https://www.microsoft.com/download/details.aspx?id=53018\" target=\"_blank\">macOS client</a> from the Microsoft Purview Information Protection page when it becomes available.</li></ul><p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/dlp-learn-about-advanced-label-protection\" target=\"_blank\">Learn about Advanced label-based protection for all files on devices | Microsoft Purview | Microsoft Support</a></li><li><a href=\"https://learn.microsoft.com/purview/sensitivity-labels\" target=\"_blank\">Learn about sensitivity labels | Microsoft Purview | Microsoft Learn</a></li><li><a href=\"https://support.microsoft.com/topic/label-and-protect-files-in-file-explorer-in-windows-67829155-2d0e-4122-9677-7c53c8cba18a\" target=\"_blank\">Label and protect files in File Explorer in Windows | Microsoft Support</a></li><li><a href=\"https://support.microsoft.com/topic/view-protected-files-with-microsoft-purview-information-protection-viewer-9fb56fae-7989-48b0-850f-f446e057cf73\" target=\"_blank\">View protected files with Microsoft Purview Information Protection viewer | Microsoft Support</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. Files can now be labeled and accessed on macOS, extending existing sensitivity labeling and protection workflows to another platform.</td></tr><tr><td>Does the change modify Information Protection labels or encryption capabilities?</td><td>Yes. Labeling capabilities are extended to macOS; however, advanced label-based protection is not supported in this release.</td></tr><tr><td>Does the change include an admin control and can it be controlled via Entra ID groups?</td><td>Yes. Existing Purview labeling policies and controls continue to govern behavior across platforms.</td></tr></tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "561327"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview is launching File Labeler and File Viewer apps for macOS to enable sensitivity labeling and protected file viewing, aligning with Windows capabilities. Public preview starts May 29, 2026, with general availability on September 30, 2026. Advanced label-based protection is not supported initially."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-10-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1326509",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-29T20:49:02.983Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-29T20:48:37Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview: Information Protection- File Labeler and File Viewer for MacOS",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p>\n<p>We are updating the page editing experience in SharePoint Online by reorganizing the <b>content pane toolbox</b> used when creating or editing pages and news posts. This change allows users to see all web parts on opening the toolbox and separates stock images, videos and recently used images into dedicated tabs within the toolbox. Section templates are moved to a separate tab.&nbsp;</p><p><b><b>When this will happen:</b></b></p>\n<p><b>General Availability (Worldwide, GCC, GCC High, DoD):</b> Rollout will begin in<b> late May 2026</b> and is expected to complete by<b> late June 2026</b>.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>All users who create or edit pages and news posts in SharePoint Online.</li>\n</ul>\n\n<p><b>What will happen:</b></p><ul><li>When opening the content pane toolbox, <b>all available web parts are visible by default</b>, with no extra navigation required. </li><li>The content pane has additional tabs for Stock images, Videos, and Recently used. </li><li>Section templates are moved to a separate tab. </li><li>Tabs group content by category, so you can easily switch between content types.</li><p>Screenshot: <i>Toolbox showing different web parts and tabs for Stock images, Videos, and Recent:&nbsp;</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/5025f209-0856-4689-a011-b788c015efa8\" style=\"width: 400px;\" alt=\"user settings\"></p><li>Existing pages are not affected.</li><li>This update is <b>enabled by default</b> and does not introduce new admin controls.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul><li>No admin action is required.</li><li>Optionally notify page authors about the updated content pane layout.</li>\n  </ul><p><b>Learn more:&nbsp;</b><a href=\"https://support.microsoft.com/office/using-web-parts-on-sharepoint-pages-336e8e92-3e2d-4298-ae01-d404bbe751e0\" target=\"_blank\">Using web parts on SharePoint pages | Microsoft Support</a></p><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "SharePoint Online's content pane toolbox for page editing will be updated by late June 2026 to show all web parts by default, add tabs for Stock images, Videos, Recently used, and move section templates to a separate tab. No admin action is needed; existing pages remain unchanged."
+      }
+    ],
+    "EndDateTime": "2026-07-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1326507",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-29T20:47:09.943Z",
+    "Services": [
+      "SharePoint Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-29T20:47:02Z",
+    "Tags": [
+      "Feature update",
+      "User impact"
+    ],
+    "Title": "SharePoint Pages: Updates to the Toolbox within the Content pane",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p>\n<p>We’re introducing shared and delegate mailbox scheduling for events, which allows executive assistants and delegates to organize events on behalf of leaders using shared or delegated mailboxes. This ensures invitations and updates are sent from recognized organizational mailboxes, improving trust, consistency, and overall event coordination.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=561912\" target=\"_blank\">561912</a>.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n  <li>Targeted Release (Worldwide): We will begin rolling out in <b>early June 2026</b> and expect to complete by <b>late June 2026</b>.\n</li><li>General Availability (Worldwide):&nbsp;We will begin rolling out in <b>early July 2026</b> and expect to complete by <b>late July 2026</b>.</li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:</b> Event organizers, executive assistants, Chiefs of Staff, delegates, and admins managing events on behalf of leaders or teams.</p>\n<p><b>Platforms/Services:</b> Microsoft Teams, Exchange Online (delegate, shared, and group mailboxes)</p>\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Events can be created and managed using <b>delegate, shared mailboxes</b>.</li>\n  <li>Invitations, updates, and notifications are sent from the <b>selected mailbox identity</b>.</li>\n  <li>Delegates can manage scheduling and logistics<b> on behalf of leaders or teams</b>.</li>\n  <li>Event communications align with trusted organizational mailboxes, improving credibility and recipient trust.</li><li>The feature is<b> enabled by default </b>and respects existing Exchange permissions.</li>\n</ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n<ul>\n  <li>No action is required.</li>\n  <li>Review delegate and shared mailbox permissions to ensure appropriate access.</li>\n  <li>Communicate this change to executive support staff and helpdesk teams.</li>\n</ul>\n\n<p><b><b>Compliance Considerations:</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Compliance Area</b></td><td><b>Explanation</b></td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Event-related communications (invites, updates, notifications) are sent using delegate, shared mailbox identities instead of individual user mailboxes.</td></tr><tr><td>Does the change provide a new way of communicating between users?</td><td>Events and notifications are now communicated from organizational mailboxes, changing the sender identity model for events.</td></tr><tr><td>Does the change include an admin control?</td><td>Access is governed by existing Exchange delegate and shared mailbox permissions; no new policy is required.</td></tr></tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "561912"
+      },
+      {
+        "Name": "FeatureStatusJson",
+        "Value": "{\"561912\":[{\"RoadmapId\":561912,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-30T00:06:08.9652482Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":561912,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-30T00:06:08.9652479Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":561912,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-05-30T00:06:08.9652484Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Shared and delegate mailbox scheduling for events lets delegates organize events on behalf of leaders using shared or delegated mailboxes, sending invitations from trusted organizational identities. Rolling out worldwide June–July 2026, it improves event coordination and trust, requires no action, and respects existing Exchange permissions."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, Mac"
+      }
+    ],
+    "EndDateTime": "2026-08-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1326502",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-29T20:21:10.06Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-29T20:21:00Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Shared and delegate mailbox scheduling for events",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 29, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We are adding <b>new Copilot metrics across Microsoft 365 apps</b> to help you better understand how users engage with Copilot. These metrics include actions taken in the <i>Microsoft 365 Copilot app</i>, <i>Microsoft Edge</i>, and <i>OneNote</i>, and intent-based usage across Outlook, Word, Excel, and PowerPoint. This update expands visibility into how users adopt Copilot and supports improved insights in the<i> Copilot Dashboard </i>and <i>Advanced Analysis</i> in <i>Copilot Analytics</i>.&nbsp;</p><p>In parallel, Microsoft 365 Copilot Chat will unify Work and Web tabs into a single, streamlined Copilot Chat experience. As part of this change, Copilot Analytics will consolidate Copilot Chat (Work)&nbsp;and Copilot Chat (Web) reporting into one unified Copilot Chat metric.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=557981\" target=\"_blank\">557981</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>General Availability (Worldwide): </b>We will begin rolling out in<b>&nbsp;early June 2026 </b>(previously late May)&nbsp;and expect to complete in<b>&nbsp;mid-June 2026 </b>(previously early June).</li><li><b>General Availability (GCC)</b>: We will begin rolling out in <b>early June 2026</b> and expect to complete in <b>end of June 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>This capability is <b>available to users who are licensed for Microsoft 365 Copilot</b>.</li><li>All Microsoft 365 tenants with access to Copilot Dashboard or Copilot Analytics in<i> Viva Insights</i></li></ul><p><i>What will happen</i></p><ul><li><b>New metrics</b> will appear in the <i>Copilot Dashboard</i> and <i>Advanced Analysis</i>.</li><li>Copilot Chat (Work) will be renamed as Copilot Chat, and Copilot Chat (web) will be&nbsp;renamed as Copilot Chat (legacy web).</li><li>You will be able to<b> track Copilot usage</b> in the <i>Microsoft 365 Copilot app</i>, <i>Microsoft Edge</i>, and <i>OneNote:</i><p><i>&nbsp;</i><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/541186bb-205b-467e-acd9-171a7b90c75b/3cb851af5480cdce76559db63603d26e407f3025.png\" style=\"width: 400px;\" alt=\"user settings\"></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/e8eca007-b073-4613-b500-5a6511c119a9/0223e48964c33ae762d44ace77d3c3b64ea38a35.png\" style=\"width: 400px;\" alt=\"user settings\"></p></li><li><b>Additional intent-based scenarios</b> will be measured in <i>Outlook</i>, <i>Word</i>, <i>Excel</i>, and <i>PowerPoint</i>. These scenarios include suggested replies, translation, coaching, and clean data.</li><li>The feature will be <b>enabled automatically for all tenants</b>.</li><li><b>No configuration changes</b> or policy updates are required.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>No action is required before rollout.</li><li>You may choose to notify relevant teams about the new metrics.</li><li>Update internal documentation if your organization tracks Copilot usage analytics.</li><li>Review updated online documentation when it becomes available in early May.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "557981"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft 365 Copilot Analytics will add new user engagement metrics across apps, unify Copilot Chat reporting, and expand intent-based usage tracking. Rollout begins early June 2026, with automatic enablement and no required configuration changes. Users licensed for Copilot and tenants with Copilot Analytics access are affected."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-07-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1266023",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-29T19:58:05.217Z",
+    "Services": [
+      "Microsoft Viva"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-03-30T21:49:45Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft 365 Copilot: Comprehensive Copilot metrics in Copilot Analytics",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -4579,7 +4987,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"554927\":[{\"RoadmapId\":554927,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985796Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781246Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":554927,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781247Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781249Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.878125Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":554927,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781252Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"554927\":[{\"RoadmapId\":554927,\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781246Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Web\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-04-08T02:05:37.6985796Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":554927,\"Platform\":\"iOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781247Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781249Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":554927,\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.878125Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":554927,\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-03-23T17:50:09.8781252Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8066,180 +8474,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Viva Copilot Analytics: Daily Copilot usage snapshot with fresh data",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 19, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>Microsoft Teams is introducing <b>enhanced recap sharing</b>. Meeting organizers can grant access to meeting recordings, transcripts, AI-generated summaries, and notes when copying or sharing a recap link. This update improves how meeting content can be shared with people who were not part of the original meeting.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=559606\" target=\"_blank\">559606</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  <li>Targeted Release: We will begin rolling out in<b> late May 2026</b> (previously&nbsp;mid-May)&nbsp;and expect to complete by <b>end of May 2026</b> (previously&nbsp;mid-May).</li><li>General Availability (GCC): We will begin rolling out in <b>early June 2026</b> and expect to complete by <b>early June 2026</b>.</li><li>General Availability (Worldwide): We will begin rolling out in&nbsp;<b>early June 2026 </b>and expect to complete by <b>late June 2026</b>.</li><li>General Availability (GCC High): We will begin rolling out in <b>early July 2026</b> and expect to complete by <b>early July 2026</b>.</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Microsoft Teams users who organize or attend meetings with recaps enabled.</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Meeting organizers can:<ul><li>Grant access to the meeting <b>recording, transcript, AI summary, and notes</b> when copying or sharing a recap link.</li><li>Specify which people receive access at the time the recap link is shared.</li></ul></li><li>Meeting attendees who are not organizers can:<ul><li>Copy or share recap links.</li><li>Recipients who were not in the meeting will be prompted to request access.</li></ul></li><li>The feature will be<b> available by default</b>.</li>\n</ul>\n\n<p><b>To use this feature:</b></p><ol><li>Select the <b>Share </b>menu in the top-right corner of the recap page or on the recap thumbnail in the meeting chat.</li><p>Screenshot 1: <i>Recap page with <b>Share </b>menu highlighted:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/70a39b12-7b20-498d-a311-8f4854ebf59d\" style=\"width: 400px;\" alt=\"user settings\">&gt;</p><p></p><p>Screenshot 2: <i>Meeting chat with <b>Share</b> icon highlighted</i>:</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/635edaa7-6885-4458-ac3e-299f303b55df\" style=\"width: 400px;\" alt=\"user settings\"></p><li>If the user is the <b>meeting organizer</b>: The user can specify people and copy or share the recap link while granting recap access to the specified people.</li><p>Screenshot 3: <i><b>Share this recap</b> options available to a <b>meeting organizer</b></i>:</p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/47f87235-dff0-43f8-8371-a364cc19f38f\" style=\"width: 400px;\" alt=\"user settings\"></p><p>If the user is<b> not the organizer</b>: The user can copy the recap link or share it by sending the link in a Teams chat. People who were not in the meeting will need to request access.</p></ol><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>No admin action is required.</li>\n  <li>Inform users about the new sharing experience.</li>\n  <li>Update internal documentation or helpdesk guidance if needed.</li></ul><p><b>Learn more</b>: <a href=\"https://support.microsoft.com/office/recap-in-microsoft-teams-c2e3a0fe-504f-4b2c-bf85-504938f110ef\" target=\"_blank\">Recap in Microsoft Teams | Microsoft Support</a>&nbsp;(we will update the <b>Share recap</b> section before General Availability)</p><ul>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "559606"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will enhance recap sharing by allowing meeting organizers to grant access to recordings, transcripts, AI summaries, and notes when sharing recap links. Rollout begins late May 2026, with no admin action required. Attendees can share links, but non-meeting recipients must request access."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac"
-      }
-    ],
-    "EndDateTime": "2026-08-10T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1289724",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-19T16:18:03.827Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-23T22:37:56Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Microsoft Teams: Sharing recap access",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 19, 2026: We have updated the timeline. Thank you for your patience.</p><p><b><b>Introduction</b></b></p>\n<p>To support frontline workers using personal devices, Microsoft is introducing a dynamic <b>onboarding wizard for Microsoft Teams</b>. This experience is designed to simplify setup on Android and iOS devices, especially in environments with security policies like <b>multi-factor authentication (MFA)</b> and mobile application management. The wizard adapts automatically to your organization’s policies, helping drive secure and efficient <b>Bring Your Own Device (BYOD)</b> adoption.</p><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=523213\" target=\"_blank\">523213</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li><b>Public Preview:&nbsp;</b>Rollout begins in late November 2025 and is and expected to complete by mid-January 2026</li><li><b>General Availability:&nbsp;</b>Rollout begins in mid-August (previously mid-June) and is and expected to complete by mid-September (previously early July).</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b>&nbsp;Frontline workers setting up Microsoft Teams on personal Android or iOS devices</li>\n<li><b>What will happen:</b>\n<ul>\n<li>A new onboarding wizard will be available via web, optimized for desktop kiosks or shared PCs</li>\n<li>The wizard dynamically adjusts based on your organization’s security policies</li>\n<li>Supports MFA setup, with emphasis on Microsoft Authenticator push notifications</li>\n<li>This tool is optional and designed to improve BYOD Microsoft Teams adoption</li>\n</ul>\n</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>Review the admin documentation to understand the onboarding wizard’s capabilities and limitations</li>\n<li>Consider integrating the wizard into your new user onboarding workflows</li>\n<li>Communicate availability to helpdesk and frontline managers</li>\n<li>Update internal documentation if you support BYOD Microsoft Teams deployment</li><li>Review documentation at the following link: <a href=\"https://learn.microsoft.com/microsoft-365/frontline/flw-setup-frontline-personal-devices?view=o365-worldwide\">Set up frontline Teams on personal devices</a></li></ul><ul>\n</ul><p><b><b>Compliance considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "523213"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft is introducing a dynamic onboarding wizard for frontline workers using personal Android or iOS devices with Microsoft Teams. It supports MFA and adapts to security policies to simplify BYOD setup. Public preview starts late November 2025; general availability begins mid-August 2026. Preparation includes reviewing admin documentation."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop"
-      }
-    ],
-    "EndDateTime": "2026-10-12T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1184994",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-19T16:10:48.25Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-11-12T00:09:33Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Microsoft Teams frontline BYOD onboarding wizard",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 18, 2026: We have updated the timeline for Phase 2. Thank you for your patience.&nbsp;&nbsp;</p><p><b>What it is</b></p><p>Microsoft is rolling out a new feature to streamline how app and agent availability is managed across Teams, Outlook, and Microsoft 365 Copilot. Until now, IT admins configured availability settings separately in both the Microsoft 365 Admin Center (MAC) and the Teams Admin Center (TAC), which led to mismatches. With this update, you’ll be able to unify availability policies for apps and agents across both portals, making app management more consistent and efficient<b>.</b></p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=393931\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">393931</a>,&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=485712\">485712</a>&nbsp;and <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=503105\" target=\"_blank\">503105</a>.</p><p><b>When this will happen:\n</b></p><p>We will begin rolling out this feature late September 2025 and expect to complete by August 2026 (previously end of June).</p><p>1. <b>Phase 1 – Default Tenant Unification of App/Agent Availability</b></p><p>We will begin rolling out this feature at the end of September 2025. This initial phase targets tenants that have never modified their organization-wide defaults, app availability, or block/unblock in either the Microsoft 365 admin center or the Teams admin center.  At the end of this phase, agent and app manageability will be unified across both Microsoft 365 admin center and Teams admin center ensuring agent and Microsoft 365 <b>apps availability</b> policies are in alignment for all future administrative changes. This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=393931\" target=\"_blank\">393931.</a></p><p>2.<b>Phase 2 – Modified Tenants Unification of App/Agent Availability</b></p><p>This phase targets tenants that have previously modified their organization-wide defaults, app availability, or block/unblock settings in either admin center. These tenants will be transitioned to a unified management experience across both Microsoft 365 and Teams admin centers.</p><ul><li><b>For tenants with no agent or app availability differences across both admin centers</b>, guidance will be provided to help maintain unified availability policy for all future changes. We will begin rolling out this feature in early November 2025.<br><ul><li>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=485712\">485712</a>&nbsp;&amp;&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=503105\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">503105</a>.</li></ul></li></ul><li><b>For tenants with agent or app availability differences across both admin centers, </b>a <b>wizard </b>in the Teams admin center will help identify affected agents and apps and guide through resolving discrepancies.<ul><li>As part of this phase we will also enable administrators to manage Microsoft 365 certified SaaS applications within their tenant through org-wide settings for third-party apps. We will begin rolling out this feature in January 2026 and complete rollout by end of July 2026 (previously June).</li><li>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=485712\">485712</a>&nbsp;&amp;&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=503105\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">503105</a>.</li></ul></li><li><p><b>Note:</b> In this phase, no changes will be applied to org-wide settings or app-level settings without administrator action.</p><p>3.\t<b>Phase 3 – Automatic Unification\n</b></p><p>Tenants that haven’t transitioned as part of Phase 1 &amp; Phase 2, will be automatically moved to unified app agent management. We will update this post with a timeline and more details later.</p><p><b>How this will affect your organization</b></p><p>Before this rollout, managing Teams apps that also work in Outlook and the Microsoft 365 app was fragmented across two admin centers:</p><ul><li>the Integrated apps and Agent apps pages in the Microsoft 365 admin center, and</li><li>the Manage apps page in the Teams admin center.</li></ul><div>This sometimes resulted in inconsistent availability settings for the same app.</div><div>With Unified agent app management, admins can manage apps and agents from either the Microsoft 365 admin center or the Teams admin center. Availability settings will remain synchronized across both, ensuring a consistent management experience.</div><div><br></div><div><b>What you can expect:</b></div><ul><li>You’ll gain a consolidated view of agent and Microsoft 365 app availability across both Microsoft 365 and Teams admin centers.\n</li><li>Changes made in either admin center to the agent and app availability will automatically apply across all supported hosts.\n</li><li>Organization-wide defaults for both admin centers will be in sync and govern app availability across Teams, Outlook, and the Microsoft 365 copilot app.</li></ul><p><b>What you need to do to prepare</b></p><p>To ensure a smooth transition, review your tenant-level and individual agent/app settings (app allow/block &amp; user availability) in both the Microsoft 365 Admin Center and the Teams Admin Center. If different departments within your organization manage these settings, we suggest coordinating efforts to complete the review collaboratively.\n</p><p>This update will be rolled out automatically by the stated date, and no immediate action is required. However, it's a good time to update any internal documentation related to agent and app management policies.&nbsp;</p><p>Learn more: <a href=\"https://learn.microsoft.com/microsoftteams/uam-tac-mac\" target=\"_blank\">Unified agent and app availability management across Microsoft 365 and Teams Admin Centers - Microsoft Teams | Microsoft Learn&nbsp;</a></p><p>\n</p></li><li><br></li><li><br></li>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "503105,485712,393931"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft is unifying app and agent availability management across Teams, Outlook, and Microsoft 365 admin centers to ensure consistent settings. The rollout begins September 2025 in phases, with automatic unification later. Admins can manage availability from either portal, streamlining app policies and improving efficiency."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Web"
-      }
-    ],
-    "EndDateTime": "2026-10-05T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC796790",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-05-19T16:06:30.127Z",
-    "Services": [
-      "Microsoft Teams",
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2024-05-29T22:15:48Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "M365 and Microsoft Teams: Unified management of app and agent availability in Teams, Outlook, and the Microsoft 365 app",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "We are announcing the ability to get sales operations insights in Sales Research Agent in Dynamics 365 Sales. This feature reached general availability on April 30, 2026.<br><br> \n\n<b>How does this affect me?</b><br> \n\nWith the sales operations business function, you get an AI-powered experience designed specifically for sales and revenue operations scenarios. It enables unified analysis from data across multiple data sources, including Dynamics 365 Sales data and operational data from Fabric lakehouse.<br><br> \n\nCustom data uploads allow you to include supplemental datasets (for example, spreadsheets or external operational files) that aren't stored in CRM or lakehouse.<br><br>The business function includes predefined sales operations insights that correlate CRM and operational data to answer common operational questions, including:<ul> \n\n    <li>Performance versus target and quota attainment </li> \n\n    <li>Pipeline coverage relative to revenue goals </li> \n\n    <li>Variance between forecasted, actual, and invoiced results</li> \n\n    <li>Identification of operational and revenue risk</li> \n\n</ul>You can also extend these insights using natural language queries. The agent reasons across CRM data, lakehouse data, and uploaded files in a single flow, enabling faster analysis while reducing manual effort and improving decision quality.<br><br> \n\n<b>What action do I need to take?</b><br> \n\nThis message is for awareness, and no action is required.<br><br> \n\nIf you would like more information on this feature, please visit <a href=\"https://aka.ms/ADO14417\"target=\"_blank\">Get sales operations insights in Sales Research Agent</a>.",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2026-06-19T15:51:53Z",
-    "HasAttachments": false,
-    "Id": "MC1315879",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-19T15:52:42.283Z",
-    "Services": [
-      "Dynamics 365 Apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-19T15:51:53Z",
-    "Tags": [
-      "New feature"
-    ],
-    "Title": "Dynamics 365 Sales - Get sales operations insights in Sales Research Agent",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -12505,6 +12739,184 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>We’re announcing the <b>public preview</b> of the <b>Change Optics report for Exchange Online</b>, which is now available for all customers. This report helps Exchange administrators proactively identify email traffic that may be affected by upcoming service changes, enabling investigation and remediation ahead of enforcement.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Public preview: </b>The report is now rolled out for all customers. We plan to conduct the public preview for at least one month.&nbsp;</li><li><b>General availability (Worldwide): </b>Depending on feedback from the public preview, we may announce GA as <b>early as June 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><p style=\"margin-left: 25px;\">Exchange Online administrators</p><p><i>What will happen</i></p><ul><li>A new <b>Change Optics report </b>will appear in <i>Exchange Online reporting</i> during public preview.</li><li>The report provides<b>&nbsp;visibility</b> into a sample set of messages that match characteristics expected to be impacted by<b> future Exchange Online transport changes</b>.</li><li>At launch, the report includes the following scenarios:<ul><li><b>OMC (onmicrosoft.com external traffic)</b>: Identifies <b>onmicrosoft.com traffic</b> being sent externally so organizations can address this usage to avoid throttling.</li><li><b>DRS (Direct Send traffic)</b>: Identifies <b>Direct Send traffic </b>being received by the tenant to help organizations prepare to enable the <b>Reject Direct Send</b> setting.</li></ul></li><li>The report <b>does not modify mail flow</b>, enforcement behavior, or tenant configuration.</li><li>The report is <b>enabled by default</b> for Exchange Online tenants.</li><li>There is <b>no impact to users</b>.</li></ul><p><b><b>What you need to do to prepare</b></b></p><p>No action is required to prepare.</p><p>However, Exchange administrators may want to:</p><ul><li>Review the <b>Change Optics report</b> once it becomes available during public preview.</li><li>Use the report findings to:</li><ul><li>Identify and reduce reliance on <b>onmicrosoft.com external email usage</b>.</li><li>Assess <b>Direct Send traffic </b>and plan for enabling <b>Reject Direct Send</b> if appropriate.</li></ul><li>Update internal documentation or operational guidance related to mail flow best practices.</li></ul><p><b>Learn more: </b><a href=\"https://techcommunity.microsoft.com/blog/exchange/change-optics-report-released-into-public-preview-to-showcase-messages-impacted-/4513047\" target=\"_blank\">Change Optics Report released into Public Preview to showcase messages impacted by future changes | Exchange Team Blog</a></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td><b>Yes.</b> The Change Optics report introduces new<b> read-only administrative reporting</b> that provides visibility into message patterns related to future transport enforcement scenarios. No enforcement or policy changes occur.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The Change Optics report for Exchange Online is in public preview, providing administrators visibility into email traffic affected by upcoming transport changes. It identifies onmicrosoft.com external traffic and Direct Send traffic, is enabled by default, requires no preparation, and does not impact mail flow or users."
+      }
+    ],
+    "EndDateTime": "2026-08-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1301802",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-05T22:04:51.157Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-05T22:04:40Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Change Optics report for Exchange Online begins public preview",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 5, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p><b>Azure PST Import</b> provides a structured, PowerShell-based way for administrators to import PST files stored in <b>Azure Blob Storage</b> into <b>Exchange Online mailboxes</b>, which are commonly used to store archived Outlook mailbox content. This capability helps organizations migrate historical email data in a controlled and auditable way by validating readiness before importing and by providing reports throughout the process. The process starts by creating an Azure PST Import endpoint to establish the connection between Azure storage and Exchange Online. Administrators then run a migration batch in <b>Analyze</b> mode to review readiness and validate the input before proceeding. Once the analysis results are reviewed, they use those results to create and start the import batch, which begins importing the PST files into the specified mailboxes.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=557559\" target=\"_blank\">557559</a></b>.</p><p><b><b>When this will happen</b></b></p><p>Global rollout</p><ul><li>Start: <b>August 31, 2026</b> (previously&nbsp;May 4)</li><li>Complete: <b>September 1, 2026</b> (previously&nbsp;May 15)</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 administrators managing <b>Exchange Online</b></li><li>Administrators using <b>Microsoft Purview Data Lifecycle Management</b></li><li>Organizations that import PST files into user or archive mailboxes</li></ul><p><i>What will happen</i></p><ul><li>Administrators complete the Azure PST Import process using <b>PowerShell cmdlets only</b>.</li><li>The workflow includes:<ul><li>Creating an Azure PST Import migration endpoint</li><li>Running a migration batch in <b>Analyze</b> mode to validate readiness</li><li>Reviewing analysis results and reports</li><li>Creating and starting the <b>import</b> batch</li><li>Performing post-import cleanup</li></ul></li><li>This experience is<b> not available through a graphical user interface (GUI)</b>.</li><li>Existing mailbox prerequisites and quotas are validated before importing begins.</li><li>There is<b> no direct user impact</b>; the feature is admin-driven.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>Ensure your <b>Azure storage account and container exist</b> and are reachable; the endpoint creation cmdlet validates both during setup.</li><li>Grant the <b>Storage Blob Data Reader </b>role to the <b>Office 365 Import Service</b> app on the target storage account. Without this permission, creating the Azure PST Import endpoint will fail.</li><li>Prepare your <b>batch input files (XML and/or CSV) </b>and run the migration batch in <b>Analyze</b> mode first so the service can validate readiness before importing.</li><li>Confirm analysis prerequisites for target mailboxes:<ul><li>Appropriate license assigned</li><li>Mailbox is not inactive or soft-deleted</li><li>Recipient type is <b>UserMailbox</b></li><li>Archive is enabled if importing to archive</li><li>Quota validations (ArchiveQuota / RecoverableItemsQuota) occur during analysis</li></ul></li><li>Validate PST files ahead of time:<ul><li>Analysis verifies that all specified PST files exist</li><li>PST file size is validated during analysis</li></ul></li></ul><p>For detailed cmdlet usage and guidance, review the Azure PST Import documentation on Microsoft Learn.</p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. The feature enables administrators to import existing customer email data contained in PST files into Exchange Online mailboxes, where the data is then stored and processed according to existing Exchange Online behaviors.</td></tr><tr><td>Does the change store customer data, and if so, where is it stored?</td><td>Yes. PST file contents are imported into Exchange Online mailboxes within the customer’s Microsoft 365 tenant and are stored according to the tenant’s data residency and storage configuration.</td></tr><tr><td>Does the change modify retention policies, holds, or deletion workflows?</td><td>Yes. Once imported, mailbox data becomes subject to any existing Microsoft Purview retention policies, retention labels, holds, and deletion workflows already configured for the target mailboxes.</td></tr><tr><td>Does the change affect audit logging capabilities?</td><td>Yes. Administrative actions related to PST import and the resulting mailbox changes are logged using existing Exchange Online and Microsoft Purview audit logging mechanisms.</td></tr><tr><td>Does the change alter how admins can monitor or demonstrate compliance?</td><td>Yes. Administrators can use existing Exchange Online and Microsoft Purview reporting and audit tools to monitor PST import activity and demonstrate compliance after the data is imported.</td></tr><tr><td>Does the change include an admin control?</td><td>Yes. The feature is controlled through administrator access to PowerShell cmdlets and Azure role assignments, including permissions on the Azure storage account used for PST import.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "557559"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Azure PST Import enables Microsoft 365 admins to import PST files from Azure Blob Storage into Exchange Online mailboxes using PowerShell. The process includes readiness analysis, import execution, and cleanup, with no GUI available. It starts globally on August 31, 2026, requiring specific Azure permissions and mailbox prerequisites. Imported data follows existing retention and compliance policies."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-10-05T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1281505",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-05T20:32:06.803Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-04-15T23:29:09Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview: Data Lifecycle Management- Azure PST Import",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 5, 2026: We have updated the timeline and content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>We’re introducing several new Copilot Notebooks features to the <b>Frontier Public environment</b> to help users learn faster, create content more efficiently, and collaborate more easily within their organization. These enhancements build on customer feedback and expand how Copilot can reason over notebook content and connected Microsoft 365 resources. Each feature will reach <b>General Availability (GA) </b>on its own schedule following Frontier Public availability.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n\n<ul>\n  <li><b>Frontier Public rollout:</b> Beginning <b>late March, 2026</b>, with broad availability across Frontier Public tenants by March 28, 2026.</li>\n  <li><b>General Availability (GA) (Worldwide):</b> Rolling rollout from <b>early April 2026</b> through <b>early June 2026</b> (previously&nbsp;early May). Each feature will reach GA on its own schedule.</li>\n  <li>Rollout is gradual; availability may vary by tenant and feature.</li></ul>\n\n\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>All Copilot Notebooks users (in the Microsoft 365 app and OneNote) in Frontier Public tenants</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n\n\n<ul>\n  <li>The following new Copilot Notebooks features will become available to Frontier Public tenants starting in late March 2026 and will transition to General Availability according to the timelines listed below. All features are <b>enabled by default</b>.</li>\n\n   <ul><li><b>Chat and Page Interactivity:</b> Allows users to edit and create pages in a notebook directly through chat.\n    <ul>\n      <li><b>Frontier Public:</b>&nbsp;late March, 2026</li>\n      <li><b>GA:</b>&nbsp;mid-April to early June 2026</li>\n    </ul>\n  </li>\n\n  <li><b>Study Guide:</b> Automatically generates quizzes, flashcards, topic pages, and other learning tools based on notebook content.\n    <ul>\n      <li><b>Frontier Public:</b>&nbsp;late March, 2026</li>\n      <li><b>GA:</b>&nbsp;mid-May to late May 2026 (previously Late April)</li>\n    </ul>\n  </li>\n\n  <li><b>SharePoint Sites and Folders grounding:</b> Allows users to add SharePoint sites and folders as references so Copilot can use them when reasoning and generating content.\n    <ul>\n      <li><b>Frontier Public:</b>&nbsp;late March, 2026</li>\n      <li><b>GA:</b>&nbsp;late May to early June 2026 (previously Early April)</li>\n    </ul>\n  </li>\n\n  <li><b>PowerPoint agent in Copilot Notebooks:</b> Enables users to create PowerPoint presentations using notebook content and references in a few clicks.\n    <ul>\n      <li><b>Frontier Public:</b>&nbsp;late March, 2026</li>\n      <li><b>GA:</b>&nbsp;late May to early June 2026 (previously May)</li>\n    </ul>\n  </li>\n\n  <li><b>Word agent in Copilot Notebooks:</b> Enables users to create Word documents using notebook content and references in a few clicks.\n    <ul>\n      <li><b>Frontier Public:</b>&nbsp;late March, 2026</li>\n      <li><b>GA:</b>&nbsp;late May to early June 2026 (previously May)</li>\n    </ul>\n  </li>\n\n  <li><b>Sharing to Microsoft 365 Modern Groups:</b> Allows notebooks to be shared directly with Microsoft 365 Modern Groups.\n    <ul>\n      <li><b>Frontier Public:</b>&nbsp;late March, 2026</li>\n      <li><b>GA:</b> April 2026</li>\n    </ul>\n  </li>\n\n  <li><b>Mind maps:</b> A new interactive visual artifact that helps users understand notebook content through a grounded map of key topics, themes, and relationships. Users can explore nodes, view summaries, and use notebook chat to learn more. Generated Mind Maps are retained for 30 days and remain private to the creator, including in shared notebooks.&nbsp;<ul>\n      <li><b>Frontier Public:</b>&nbsp;late March, 2026</li>\n      <li><b>GA:</b> mid-May to early June 2026</li>\n    </ul>\n  </li>\n\n  </ul><li>Existing Microsoft 365 permissions and access controls are respected.</li><li>No general limitations are known beyond those noted for individual features.</li></ul><ul><ul></ul></ul>\n\n\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li>No admin action is required.</li>\n  <li><b>Consider:</b>\n    <ul>\n      <li>Informing helpdesk and support teams about new Copilot Notebooks capabilities.</li>\n      <li>Updating internal training or adoption materials to reflect the new features.</li>\n      <li>Reviewing how Copilot Notebooks are used in your organization to ensure appropriate SharePoint access is in place.</li>\n    </ul>\n  </li>\n</ul>\n\n<p><b>Learn more:&nbsp;</b><a href=\"https://support.microsoft.com/topic/get-started-with-microsoft-365-copilot-notebooks-0775e693-11c6-4d80-8aba-fcc81a737a06\" target=\"_blank\">Get started with Microsoft 365 Copilot Notebooks</a>&nbsp;(will be updated before GA rollout)</p><p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n  <tbody><tr>\n    <th>Area</th>\n    <th>Impact</th>\n  </tr>\n  <tr>\n    <td>AI / ML or agent capabilities interacting with customer data</td>\n    <td>New Copilot capabilities (Study Guide, Word and PowerPoint agents, mind maps) use existing notebook content and referenced Microsoft 365 data to generate outputs.</td>\n  </tr>\n  <tr>\n    <td>End-user interaction with generative AI</td>\n    <td>Users gain new ways to generate learning materials, documents, presentations, and visual diagrams using Copilot.</td>\n  </tr>\n</tbody></table>\n\n<p>All other compliance areas reviewed (data storage changes, Purview controls, audit, eDiscovery, retention, DLP, Conditional Access, GDPR data subject rights, third-party integrations, admin reporting) are not impacted.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting late March 2026, new Copilot Notebooks features—like chat interactivity, study guides, SharePoint grounding, PowerPoint and Word agents, group sharing, and mind maps—will roll out in Frontier Public tenants, reaching general availability by June 2026. Features are enabled by default with no admin action required."
+      }
+    ],
+    "EndDateTime": "2026-07-13T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1254552",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-05T17:00:09.197Z",
+    "Services": [
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-03-17T22:45:44Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Copilot Notebooks: New features coming to Frontier Public",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated May 5, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>To help organizations schedule shared spaces more efficiently, <b>Microsoft Teams </b>will introduce the ability for users to <b>book future meetings directly</b> from <b>Teams panel devices running on Android</b>. This change reduces the need to switch to a desktop or mobile calendar and helps streamline ad‑hoc and near‑term scheduling in shared spaces. The feature will be available for rooms with Teams Rooms Pro and Shared Device licenses.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=557168\" target=\"_blank\">557168</a></b>.</p><p><b>Note: </b>This feature is supported only on Teams panel devices running Android and is not available on non‑Android panel hardware.</p><p><b><b>When this will happen</b></b></p><ul><li><b>General Availability (Worldwide, GCC, GCCH): </b>We will begin rolling out in <b>mid-May 2026</b> (previously&nbsp;early May)<b>&nbsp;</b>and expect to complete in<b>&nbsp;mid-May 2026 </b>(previously early May).</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using Microsoft Teams Rooms panels on Android</li><li>Admins managing Teams Rooms Pro or Shared Device licensed rooms</li><li>Users who schedule meetings from Teams panel devices</li></ul><p>What will happen:</p><ul><li>When enabled by an admin, users will be able to book future meetings directly from a Teams panel by browsing the room calendar:&nbsp;<p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/e3475512-c5de-4ea6-beef-a797f64129e7/f914b9e7c7acfbc058bcf41da5dba5ca50a7c1a6.png\" style=\"width: 400px;\" alt=\"user settings\"></p></li><li>Available time slots will include any open time through midnight the next day:<p></p>&nbsp;<img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/76643de7-4c9e-4c3e-925f-a173acdc1ab7/df832685b19cad4d803a17d2711c6851ced03187.png\" style=\"width: 400px;\" alt=\"user settings\"><p></p></li><li>If enabled by an admin, users will be able to add a guest while booking from the panel.</li><li>The feature will be <b>OFF by default </b>and requires admin configuration.</li><li>Existing room booking and calendar policies will continue to be respected.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>No immediate action is required at this time.</p><p>Before rollout, admins can:</p><ul><li>Review the upcoming setting in the <i>Teams admin center</i>.</li><li>Decide whether to enable future room booking from Android‑based panel devices.</li><li>Decide whether to allow users to add guests while booking.</li><li>Inform helpdesk or facilities teams about this upcoming capability.</li></ul><p>Read the release notes for devices in <i>Microsoft Teams</i>:&nbsp;&nbsp;<a href=\"https://learn.microsoft.com/microsoftteams/devices/devices-release-notes?tabs=panels\" target=\"_blank\">What's new in Microsoft Teams devices | Microsoft Teams | Microsoft Learn</a></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change provide a new way of communicating between users, tenants, or subscriptions?</td><td>Yes. When enabled, users can create new calendar‑based meeting invitations for future meetings directly from Teams panel devices.</td></tr><tr><td>Does the change include an admin control?</td><td>Yes. The feature is OFF by default and is controlled by an admin setting in the <i>Teams admin center</i>.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "557168"
+      },
+      {
+        "Name": "FeatureStatusJson",
+        "Value": "{\"557168\":[{\"RoadmapId\":557168,\"Platform\":\"Android\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-05-28T08:06:36.8562042Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":557168,\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-05-28T08:06:36.8562044Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams will enable booking future meetings directly from Android-based Teams panel devices starting mid-May 2026. This feature, off by default, requires admin activation and supports Teams Rooms Pro and Shared Device licenses. Users can browse room calendars, add guests, and book available slots through the panel."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Android"
+      }
+    ],
+    "EndDateTime": "2026-06-22T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1274551",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-05-05T16:47:47.3Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-04-08T22:17:35Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: Book future meetings from Microsoft Teams panels (Android)",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated May 5, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p><b>\nBrand Impersonation Protection</b> for Teams Calling adds proactive safeguards against fraudulent or deceptive external callers who attempt to appear as trusted organizations. This helps reduce social-engineering risks and improves tenant security when users receive first-contact external calls. This update aligns with Microsoft’s ongoing investments in caller identity protection and secure collaboration.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=543239\" target=\"_blank\">543239</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p><p>\nTargeted Release: Rollout will begin mid-May 2026 (previously early May)<b>&nbsp;</b>and is expected to complete by late May (previously late April)<b>.</b><br>\nGeneral Availability: Timelines will be communicated in a future message.</p>\n\n<p><b><b>How this affects your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>All organizations using Microsoft Teams Calling that receive inbound VoIP calls from first-contact external callers.</li>\n</ul>\n\n<p><b style=\"\">What will happen:</b></p>\n<ul>\n  <li>Teams will evaluate inbound calls for signs of brand impersonation.</li>\n  <li>Users will see high-risk call warnings before answering suspicious calls.</li>\n  <li>Warnings may continue during the call if risk signals persist.</li>\n  <li>Users can accept, block, or end the call.</li>\n  <li>The feature will be enabled by default.</li>\n  <li>Existing Teams Calling policies remain unchanged.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p><p>\nNo admin action is required at this time.</p>\n\n<ul>\n  <li>Inform helpdesk staff that users may begin seeing high-risk call warnings.</li>\n  <li>Update internal training materials if applicable.</li>\n  <li>Review Microsoft documentation on caller ID security when available.</li></ul><p>Before rollout, we will update this post with new documentation.</p><ul>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -16556,179 +16968,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft 365 Copilot: Podcast voice interactions make audio experiences conversational",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p><p>We’re introducing a redesigned <b>Overview page experience in <i>Microsoft 365 Copilot Notebooks</i></b>. The updated Overview page will provide an AI-generated summary of notebook content and will surface key insights and suggested actions, making it easier for users to understand, navigate, and take action on information in their notebooks without manually reviewing all content.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Frontier: </b>We will begin rolling out in <b>early April 2026 </b>and expect to complete by <b>late April 2026</b>.</li><li><b>General Availability (Worldwide, GCC, GCCH and DoD): </b>We will begin rolling out in<b> late April 2026 </b>and expect to complete by <b>late May 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><p style=\"margin-left: 25px;\">Microsoft 365 tenants with users who have access to <b>Copilot Notebooks</b></p><p><i>What will happen</i></p><ul><li>Users will see an updated <b>Overview page</b> when opening or creating supported notebooks:&nbsp;<p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/1b6a66ae-df3b-4cd7-b6b4-199b82249b24/4e0325193ba14a588fca6b641221c25dd413f578.png\" style=\"width: 400px;\" alt=\"user settings\"> </p></li><li>The updated Overview page will include:<ul><li>An AI-generated summary of notebook content.</li><li>Key insights and suggested actions based on notebook content.</li><li>Clearer organization of high-level themes.</li><li>A simplified layout for improved readability.</li><li>One-click extracts created directly from the Overview page.</li></ul></li><li>The feature will be&nbsp;<b>enabled by default </b>for eligible users.</li><li><b>No admin configuration, policy changes, or controls</b> will be introduced.</li><li>Existing permissions and data access rules will be respected.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>No action is required.</p><p>You may choose to:</p><ul><li>Inform users about the updated Copilot Notebooks Overview page experience.</li><li>Update internal documentation or training materials, if applicable.</li></ul><p>Learn more:&nbsp;</p><ul><li><a href=\"https://www.microsoft.com/microsoft-365-copilot/frontier-program\" target=\"_blank\">Frontier program - Microsoft adoption</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change alter how existing customer data is processed or accessed?</td><td>Yes. Existing notebook content will be summarized and surfaced on the Overview page.</td></tr><tr><td>Does the change introduce or significantly modify AI/ML capabilities that interact with customer data?</td><td>Yes. AI generates summaries, insights, and suggested actions from notebook content.</td></tr><tr><td>Does the change provide end users a new way of interacting with generative AI?</td><td>Users can view AI-generated summaries and take actions directly from the Overview page.</td></tr></tbody></table><p><b></b></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft 365 Copilot Notebooks will have a redesigned Overview page with AI-generated summaries, key insights, suggested actions, and improved layout. Rolling out from April to May 2026, it will be enabled by default without admin changes, respecting existing permissions. No user action is required."
-      }
-    ],
-    "EndDateTime": "2026-07-01T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1275564",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-04-09T22:13:27.977Z",
-    "Services": [
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-09T22:13:19Z",
-    "Tags": [
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft 365 Copilot: Updated Copilot Notebooks overview page experience",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p><p>We’re <b>updating permissions</b> in <i>Microsoft Purview</i> so that all roles that can view <b>Data Loss Prevention (DLP) policies</b> can also run diagnostics on those policies. This change improves visibility and helps authorized users more easily troubleshoot, validate, and understand DLP policy behavior without requiring elevated permissions.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=557192\" target=\"_blank\">557192</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>General Availability (Worldwide): </b>We will begin rolling out in<b> late April 2026</b> and expect to complete rollout by<b> late May 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><p style=\"margin-left: 25px;\">Administrators and security or compliance roles that already have permission to view DLP policies in <i>Microsoft Purview</i>.</p><p><i>What will happen</i></p><p>Users in the following roles will be able to run DLP diagnostics in addition to viewing DLP policies:</p><ul><li>Organization Configuration</li><li>View-Only Configuration</li><li>Compliance Admin</li><li>Security Admin</li><li>Security Reader</li><li>DLP Compliance Management</li><li>View-Only DLP Compliance Management</li><li>Insider Risk Management Admin</li><li>Information Protection Admin</li><li>Information Protection Analyst</li><li>Information Protection Investigator</li><li>Data Security AI Admin</li></ul><p>This change does not modify DLP policy enforcement or behavior. It only expands diagnostic access for existing, authorized roles.</p><p><b><b>What you can do to prepare</b></b></p><p>No action is required.</p><p>Learn more:&nbsp;</p><ul><li><a href=\"https://sip.purview.microsoft.com/datalossprevention/diagnostics\" target=\"_blank\">Diagnostics | Microsoft Purview</a></li><li><a href=\"https://learn.microsoft.com/troubleshoot/microsoft-365/purview/diagnostics/purview-compliance-diagnostics\" target=\"_blank\">Self-help diagnostics for Microsoft Purview | Microsoft Purview Troubleshooting | Troubleshooting | Microsoft 365 | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td>Yes. The change expands diagnostic access so that more existing roles can run DLP diagnostics, improving visibility and troubleshooting without changing enforcement or audit behavior.</td></tr></tbody></table><p><b></b></p><p></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "557192"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Purview is updating permissions so all roles with DLP policy view access can also run diagnostics, enhancing troubleshooting and visibility without changing enforcement. This rollout begins late April 2026 and affects various admin and compliance roles. No action is required from organizations."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-06-30T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1275563",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-04-09T22:12:43.317Z",
-    "Services": [
-      "Microsoft Purview"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-09T22:10:47Z",
-    "Tags": [
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Purview: DLP diagnostics enabled for all roles with DLP policy access",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated April 9, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We’re consolidating agent management experiences to make it easier to observe, govern, and secure all agents in your tenant. <b>Agent 365 will be the single source of truth</b>, offering a unified catalog, consistent visibility, and simplified management. As part of this consolidation, <b>we’re retiring legacy agent management experiences</b> in the <i>Microsoft Entra admin center</i>. </p><p><i>We recognize this change is being communicated with a shorter notice period, and we’re sharing it as early as possible to help you plan.</i></p><p><b><b>When this will happen</b></b></p><p><b>Effective May 1, 2026</b>, the following experiences will be retired in the<i> <a href=\"https://entra.microsoft.com/\" target=\"_blank\">Microsoft Entra admin center</a></i>:</p><ul><li><b>Agent registry </b>blade</li><li><b>Agent collections</b> blade</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 tenants with administrators who currently view or manage agents using:<ul><li>The<b> Agent registry </b>or <b>Agent collections blades</b> in the <i>Microsoft Entra admin center</i></li></ul></li><li>Developers or admins using the <b>existing agent registry Graph API</b></li></ul><p><i>What will happen</i></p><ul><li>The <b>Agent registry </b>and <b>Agent collections</b> blades in the <i>Entra admin center</i> will <b>no longer be available after May 1, 2026</b>.</li><li>Administrators can continue to view agent inventory in the <b><i><a href=\"https://admin.microsoft.com/\" target=\"_blank\">All agents</a></i></b><a href=\"https://admin.microsoft.com/\" target=\"_blank\"> view in the </a><i><a href=\"https://admin.microsoft.com/\" target=\"_blank\">Microsoft 365 admin center (MAC)</a></i>.</li><li><b>Agent 365 becomes the single source of truth </b>for agent discovery, visibility, and management.</li><li><b>Microsoft Entra continues to provide the identity foundation</b> for agents through Agent ID.</li><li>The <b>existing agent <a href=\"https://learn.microsoft.com/graph/api/resources/agentregistry?view=graph-rest-beta\" target=\"_blank\">registry Graph API</a> will be retired</b> and <b>replaced by a new API</b> powered by Agent 365.<ul><li>Agents registered using the current API will need to be <b>re‑registered</b> using the new API.</li><li>Details on the API retirement timeline and availability of the new API will be shared in a follow‑up communication.</li></ul></li><li>There is<b> no change to agent functionality, access, or governance capabilities </b>as part of this retirement.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li><b>No immediate admin action is required</b> for the retirement of the Entra admin center blades.</li><li>If your organization uses the existing agent registry Graph API:<ul><li>Review upcoming communications for the new Agent 365–powered registry API.</li><li>Plan to re‑register agents once the new API becomes available.</li></ul></li><li>Update internal documentation or admin guidance to reference <b>Agent 365</b> and the <b>Microsoft 365 admin center </b>for agent inventory.</li><li>Share this change with helpdesk or platform administrators as appropriate.</li></ul><p><b>Learn more:&nbsp;</b></p><ul><li><a href=\"https://learn.microsoft.com/entra/agent-id/identity-platform/agent-registry-convergence\" target=\"_blank\">Agent Registry convergence with Microsoft Agent 365 | Agent ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/graph/api/resources/agentregistry?view=graph-rest-beta\" target=\"_blank\">agentRegistry resource type | Microsoft Graph | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/fundamentals/whats-new\" target=\"_blank\">Microsoft Entra releases and announcements | Fundamentals | Microsoft Entra | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting May 1, 2026, Microsoft is retiring the Agent registry and Agent collections blades in the Microsoft Entra admin center. Agent 365 will be the unified platform for agent management, with a new API replacing the existing one. No immediate admin action is required."
-      }
-    ],
-    "EndDateTime": "2026-07-01T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1275311",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-04-09T17:58:06.513Z",
-    "Services": [
-      "Microsoft Entra"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-09T16:06:04Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Simplifying agent management with Agent 365",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p><p>To help users stay focused while working in unread only views, Microsoft Teams is introducing a quicker way to access read chats and channels without changing filters. This update improves navigation and reduces friction when users need to quickly reference previously read conversations while keeping their unread list visible.</p><p>This message is associated with<b> Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=559608#Roadmap\" target=\"_blank\">559608</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>General Availability (Worldwide): </b>We will begin rolling out in <b>early May 2026</b> and expect to complete by<b> mid-May 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Users who filter their chat or channel list to unread only mode in <i>Microsoft Teams</i></li></ul><p><i>What will happen</i></p><ul><li>When a section is set to unread only, users will see an eye icon next to the section name.</li><li>Selecting the eye icon opens a list of read chats or channels within that section:&nbsp;<p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/b9b40048-01f3-4b03-a777-ffa4c988a12d/5a0d29d3c6487cd59a693b1cb0782ca85ca6165a.png\" style=\"width: 400px;\" alt=\"user settings\"> </p></li><li>Users can open read items directly from this list without switching out of unread only view.</li><li>This replaces the previous experience where read items were accessed through a see read button in the <i>chat list</i>.</li><li>The feature is <b>enabled by default </b>and requires no admin configuration.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>No admin action is required.</li><li>Consider notifying users about the updated navigation experience to reduce confusion and help desk inquiries.</li><li>Update internal documentation or training materials if you reference unread only views in <i>Teams</i>.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "559608"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will introduce an eye icon in unread only mode to quickly access read chats and channels without changing filters. Rolling out worldwide from early to mid-May 2026, this feature is enabled by default, requires no admin action, and improves navigation while keeping the unread list visible."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac"
-      }
-    ],
-    "EndDateTime": "2026-06-16T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1274550",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-04-08T22:17:12.41Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-08T22:17:03Z",
-    "Tags": [
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: Quick access to read items while using unread only mode",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
