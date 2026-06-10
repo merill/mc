@@ -1,0 +1,46 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and Why:</b></b></p>\n<p>We are enhancing <b>Microsoft Purview Data Loss Prevention (DLP) </b>audit data for Exchange Online by adding enriched matched condition details whenever a DLP rule is triggered. Previously, audit records primarily surfaced <b>sensitive information type (SIT) </b>matches. With this update, audit records now include all contributing rule conditions, including non-SIT conditions such as sender and recipient attributes, attachment properties, subject keywords, and message metadata.</p>\n<p>This change aligns with Microsoft’s enterprise-ready security and compliance commitments. It provides clearer insight into why a DLP rule was triggered without requiring manual cross-referencing of policy configurations and audit logs.</p><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=562051\" target=\"_blank\">562051</a>.</p><p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Rollout begins<b> late June 2026</b> and is expected to complete by <b>late July 2026</b>.</li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Administrators managing Microsoft Purview <b>DLP policies scoped to Exchange Online</b></li>\n<li>Security and compliance teams reviewing DLP alerts, audit logs, or Activity Explorer data</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>Microsoft Purview</li>\n<li>Exchange Online</li>\n<li>Unified Audit Log</li>\n<li>Activity Explorer</li>\n<li>DLP Alerts and user notifications</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>When a DLP rule in Exchange Online matches content, <b>audit records will include enriched matched condition data</b> for all contributing conditions.</li>\n<li>The enriched data includes the condition name, matched value, and the source that produced the match.</li>\n<li>This information appears in DLP Alerts, Activity Explorer, the Unified Audit Log, and user notifications where applicable.</li>\n<li>The feature is <b>enabled by default</b>.</li>\n<li><b>No configuration changes or policy updates are required.</b></li>\n<li>DLP enforcement behavior is unchanged.</li>\n</ul>\n\n<p><b>Supported conditions and example output:</b></p>\n\n<p><b>Attachment conditions</b></p>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tbody><tr><th>Condition</th><th>Example output</th></tr>\n<tr><td>File extension is</td><td>Attachment Extension: txt — Testing.txt</td></tr>\n<tr><td>Document or attachment is password protected</td><td>File.txt — Password Protected</td></tr>\n<tr><td>Document could not be scanned</td><td>File.txt — Other Error</td></tr>\n<tr><td>Document didn’t complete scanning</td><td>File.txt — Other Error</td></tr>\n<tr><td>Attachment count over</td><td>12 — Document1.pdf; Document2.pdf; Document3.pdf; Document4.pdf; Document5.pdf; ...+7 more</td></tr>\n</tbody></table>\n\n<p><b>Sender conditions</b></p>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tbody><tr><th>Condition</th><th>Example output</th></tr>\n<tr><td>Shared by users</td><td>Administrator@contoso.com</td></tr>\n<tr><td>Sender domain is</td><td>contoso.com — Administrator@contoso.com</td></tr>\n<tr><td>Sender IP address is</td><td>192.168.1.100 — sender@contoso.com</td></tr>\n<tr><td>Sender AD attribute contains words</td><td>Sales Department — admin@contoso.com</td></tr>\n</tbody></table>\n\n<p><b>Recipient conditions</b></p>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tbody><tr><th>Condition</th><th>Example output</th></tr>\n<tr><td>Recipient domain is</td><td>fabrikam.com — user@fabrikam.com</td></tr>\n<tr><td>Shared with user</td><td>username@domain.com — USERNAME</td></tr>\n<tr><td>Unique domain count over</td><td>3 — contoso.com; fabrikam.com; adventureworks.net</td></tr>\n<tr><td>Recipient AD attribute contains words</td><td>Seattle — user1@contoso.com; Portland — user2@contoso.com</td></tr>\n</tbody></table>\n\n<p><b>Subject and body conditions</b></p>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tbody><tr><th>Condition</th><th>Example output</th></tr>\n<tr><td>Subject contains words</td><td>Matchedword — Subject: this is Matchedword subject</td></tr>\n</tbody></table>\n\n<p><b>Message conditions</b></p>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tbody><tr><th>Condition</th><th>Example output</th></tr>\n<tr><td>Message size over</td><td>5242880 — Q1 Financial Report with Attachments</td></tr>\n</tbody></table>\n\n<p><b>How matched condition evidence is structured:</b></p>\n<ul>\n<li><b>Condition name:</b> The DLP rule condition evaluated (for example, “Sender domain is”).</li>\n<li><b>Matched value:</b> The specific value that satisfied the condition (for example, “contoso.com”).</li>\n<li><b>Source:</b> The originating item that produced the match (for example, “Administrator@contoso.com”).</li>\n</ul>\n<p>If multiple values match a condition, all contributing sources are listed. If more than five attachments match, the first five are shown followed by a count of additional matches (for example, “+7 more”).</p>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n<p>No action is required. This feature is enabled automatically for all DLP policies scoped to Exchange Online.</p>\n<ul>\n<li>Optionally validate enriched data by triggering a DLP rule match.</li>\n<li>Review the matched event in Activity Explorer under <b>Data Loss Prevention &gt; Activity Explorer</b>.</li>\n<li>Review DLP Alerts for the same enriched matched condition details.</li>\n</ul>\n<p><b>Note:</b> Matched condition details may take up to <b>60 minutes</b> to appear in Activity Explorer.</p>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tbody><tr><th>Area</th><th>Explanation</th></tr>\n<tr><td>Audit logging capabilities</td><td>Audit records now include additional matched condition metadata for DLP rule evaluations in Exchange Online.</td></tr>\n<tr><td>Admin monitoring and reporting</td><td>Admins gain increased visibility into DLP rule triggers via Activity Explorer, alerts, and audit logs.</td></tr>\n<tr><td>Processing of existing customer data</td><td>Existing email metadata and DLP evaluation results are logged with richer detail; no new data types are introduced.</td></tr>\n</tbody></table>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [
+    {
+      "Name": "RoadmapIds",
+      "Value": "562051"
+    },
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Purview DLP for Exchange Online will enrich audit data with detailed matched conditions (e.g., sender, recipient, attachment, subject) when a DLP rule triggers. This enhancement, rolling out late June to July 2026, improves visibility without changing enforcement or requiring configuration."
+    },
+    {
+      "Name": "Platforms",
+      "Value": "Web"
+    }
+  ],
+  "EndDateTime": "2026-08-31T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1385588",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-06-09T22:20:44.17Z",
+  "Services": [
+    "Microsoft Purview"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-06-09T22:20:27Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Purview | Data Loss Prevention - Enriched Audit Data for Matched Rules in Exchange Online",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
