@@ -1,0 +1,56 @@
+{
+  "id": "MC1387682",
+  "versions": [
+    {
+      "capturedAt": "2026-06-11T21:02:13.237Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p></p><p><b><b>What and Why</b></b></p><p><b>Microsoft Purview Data Loss Prevention (DLP) </b>is introducing new capabilities to detect and act on classification failures such as timeout, throttling, and scan errors. This update helps administrators surface previously undetected failures and apply appropriate protection, improving visibility and strengthening compliance outcomes across Exchange Online.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=561916\" target=\"_blank\">561916</a></b>.</p><p><b><b>Rollout Schedule</b></b></p><ul><li><b>Public Preview: </b>Rollout begins in<b> mid-June 2026</b> and is expected to complete by <b>early July 2026</b>.</li><li><b>General Availability (Worldwide):</b> Rollout begins in <b>mid-August 2026</b> and is expected to complete by<b> late August 2026</b>.</li></ul><p><b><b>Impact on Your Organization</b></b></p><p><i>Who is affected</i></p><ul><li>Admins managing Microsoft Purview DLP policies in Exchange Online</li></ul><p>Platforms/Services:</p><ul><li>Exchange Online</li><li>Microsoft Purview Data Loss Prevention</li></ul><p><i>What will happen</i></p><ul><li>The feature is<b> turned off by default</b> and <b>requires explicit tenant-level opt-in</b>.</li><li>There is <b>no change </b>to existing behavior or user experience <b>unless you enable</b> the feature.</li><li>Existing DLP conditions will expand to detect additional classification failure scenarios after opt-in is enabled.</li><li>New classification failure categories include: <ul><li>timeout</li><li>throttling</li><li>other scan errors.</li></ul></li><li>A new condition called<b> DocumentScanFailures </b>allows targeting specific failure types and must be used with existing scan conditions.</li><li>You may see an increase in DLP alerts and rule matches after enabling the feature. This reflects previously undetected classification failures and does not indicate new issues.</li></ul><p><u>Updated condition behavior</u></p><ul><li><b><i>Document couldn't be scanned </i></b>will detect:<ul><li>Text extraction failures</li><li>Classification failures such as timeout, throttling, and other scan errors after opt-in</li></ul></li><li><i><b>Document didn't complete scanning</b></i> will detect:<ul><li>Partial text extraction</li><li>Partial classification failures where some classifiers succeed and others fail</li></ul></li></ul><p><u>New condition</u></p><ul><li><b>DocumentScanFailures</b> enables detection of specific failure types including timeout, throttled, and other errors.</li><li>Must be used with either<i><b> Document couldn't be scanned</b></i> or <i><b>Document didn't complete scanning</b></i>.</li><li>Cannot be used as a standalone condition.</li></ul><p><b><b>Action Required and Recommendations</b></b></p><p>To prepare for this update:</p><ul><li>Review existing DLP policies that use these conditions:<ul><li><i><b>Document couldn't be scanned</b></i></li><li><i><b>Document didn't complete scanning</b></i></li></ul></li><li>Plan when to enable the tenant-level opt-in based on your readiness.</li><li>Enable the feature using <b>PowerShell</b>:<ul><li>Connect using<b> Connect-IPPSSession</b>.</li><li>Run the following commands:</li></ul></li></ul><p style=\"margin-left: 125px;\"><b>$json = '{\"Classification\":{\"State\":1}}'</b></p><p style=\"margin-left: 125px;\"><b>Set-PolicyConfig -DlpErrorHandlingConfig $json</b></p><ul><li>Allow up to one hour for the configuration to take effect.</li><li>Configure rule priority to ensure proper evaluation:<ul><li>Place content-based rules above scan failure rules.</li><li>Scan failure conditions only evaluate classifiers that have already run.</li></ul></li></ul><p><u>Example rule order:</u></p><ul><li><b>Detect credit card numbers</b><ul><li>Condition: Content contains credit card number</li><li>Action: Block</li></ul></li><li><b>Detect account numbers</b><ul><li>Condition: Content contains account number</li><li>Action: Block</li></ul></li><li><b>Detect exact data match</b><ul><li>Condition: Content contains <b>EDM sensitive information</b> type</li><li>Action: Block</li></ul></li><li><b>Catch full scan timeout failures</b><ul><li>Condition: <i><b>Document couldn't be scanned</b></i> and<b><i> DocumentScanFailures </i></b>set to timeout</li><li>Action: Audit</li></ul></li><li><b>Catch partial scan throttling</b><ul><li>Condition: <b><i>Document didn't complete scanning</i></b> and<b> DocumentScanFailures</b> set to <b>throttled</b></li><li>Action: Audit</li></ul></li><li><b>Catch other scan errors</b><ul><li>Condition: <b><i>Document couldn't be scanned</i></b> and<b> DocumentScanFailures</b> set to <b>other</b></li><li>Action: Audit</li></ul></li><li>Monitor results using <b>Activity Explorer</b> and <b>DLP alerts</b> to understand classification failure patterns.</li><li>Communicate this change to security and compliance teams.</li><li>You can disable the opt-in setting to return to previous behavior if needed.</li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. Classification failures are now surfaced and evaluated as part of DLP processing, which changes how content scanning outcomes are interpreted.</td></tr><tr><td>Does the change modify DLP policies or enforcement?</td><td>Yes. Existing DLP conditions are expanded and a new condition is introduced, impacting rule evaluation behavior.</td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td>Yes. Admins gain enhanced visibility into classification failure scenarios through DLP alerts and Activity Explorer.</td></tr><tr><td>Does the change include an admin control?</td><td>Yes. The feature requires explicit tenant-level opt-in through PowerShell and can be disabled.</td></tr></tbody></table><p style=\"margin-left: 25px;\"><b></b></p><p></p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "561916"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview DLP for Exchange Online will introduce an opt-in feature to detect classification failures like timeouts, throttling, and scan errors, enhancing visibility and compliance. It expands existing conditions, adds a new DocumentScanFailures condition, and may increase alerts after enabling. Rollout starts mid-2026."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2026-10-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1387682",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-06-11T21:02:13.237Z",
+        "Services": [
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-06-11T21:01:55Z",
+        "Tags": [
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Purview Data Loss Prevention default protection controls for Exchange Online when classification fails",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
