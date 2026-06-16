@@ -134,6 +134,51 @@
         "Source": "messageCenter",
         "AdditionalProperties": {}
       }
+    },
+    {
+      "capturedAt": "2026-06-16T17:25:57.37Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated June 16, 2026: We have decided to pause GCCH release at this time. We will communicate via Message center when we are ready to proceed. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We are<b> retiring SharePoint One‑Time Passcode (SPO OTP) authentication</b> in <i>OneDrive</i> and <i>SharePoint</i> starting <b>July 2026</b>. Beginning in <b>May 2026</b>, new external sharing invitations and authentication will start using Microsoft Entra B2B instead of SPO OTP. This transition simplifies external collaboration, aligns authentication with Microsoft identity standards, and enables consistent guest lifecycle management, governance, and Conditional Access coverage across Microsoft 365.</p>\n<p><b><b>When this will happen</b></b></p><ul><li><b>May &amp; June 2026: </b>Invitation and authentication for new external sharing transitions to Microsoft Entra B2B. Users who previously authenticated via SPO OTP will continue to have access to specific people links even without a B2B guest account yet.</li><li><b>July 2026: </b>Retirement of SPO OTP authentication begins. External users without a guest account get access denied on previously shared specific people links. To restore access, a guest account must be created in Entra B2B, or an allowed user must share/re-share at least one file/folder/site.</li><li><b>Retirement is expected to complete by August 31, 2026.</b></li><li><b>GCCH: </b>We will communicate via Message center when we are ready to proceed.</li></ul>\n<p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>All Microsoft 365 tenants (commercial, government, sovereign).</li><li>All external users who access OneDrive or SharePoint files, folders, or sites.</li></ul><p><i>What will happen</i></p><ul><li>The <i>EnableAzureADB2BIntegration </i>setting will no longer control external sharing behavior beginning May 2026.</li><li>SPO OTP authentication will retire beginning July 2026.</li><li>The option to disable Entra B2B integration will be removed.</li></ul><p><i>Impact on external users</i></p><ul><li><b>External users who already have an Entra B2B guest account in your directory:</b><ul><li>No change in behavior.</li></ul></li><li><b>External users without a B2B guest account:</b><ul style=\"\"><li style=\"\">Specific people links <b>shared </b>after changes rolled out to your tenant:<ul style=\"\"><li style=\"\">A guest account will be automatically created via the Entra B2B Invitation Manager.</li><li style=\"\">Authentication will use Entra B2B (email OTP available if enabled).</li></ul></li><li style=\"\">Specific people links shared <b>before </b>changes rolled out to your tenant:<ul style=\"\"><li style=\"\">SPO OTP authentication continues until July 2026.</li><li style=\"\">After July 2026, these users will receive <b>access denied</b> until a matching B2B guest account exists.</li></ul></li></ul></li></ul><p><i>Restoring access after retirement</i></p><ul><li>Admins can manually create a guest account for the external user at any time.</li><li>Alternatively, an internal user with permissions needs to share or re-share at least one file, folder, or site, which will automatically create the guest account and restore access to all previously shared content.</li>\n</ul>\n<p><b><b>What you need to do to prepare</b></b></p>\n<p>No admin action is required. However, to ensure a smooth transition:</p>\n<ul>\n<li>Inform users that some external collaborators may see <b>access denied </b>beginning July 2026 for older links authenticated via SPO OTP.</li><li>If your organization relies on email OTP authentication via Entra, ensure it is <b>not disabled</b> in <i>Entra External ID settings</i>. See <a href=\"https://learn.microsoft.com/entra/external-id/one-time-passcode\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Email OTP for B2B guests</a>.</li>\n<li>Review external sharing policies and conditional access settings for guests in SharePoint and Entra admin centers.</li>\n<li>Optionally, identify external collaborators without guest accounts via external sharing reports. Proactively <a href=\"https://learn.microsoft.com/entra/external-id/add-users-administrator\">create guest accounts</a> to retain access.</li>\n<li>Update internal documentation.</li>\n</ul>\n<p><b>Learn more:</b> </p><ul><li><a href=\"https://learn.microsoft.com/entra/external-id/add-users-administrator\" target=\"_blank\">Add and manage B2B collaboration users in the Microsoft Entra admin center | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/one-time-passcode\" target=\"_blank\">Email one-time passcode authentication for B2B guest users | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/sharepoint/faqs-odspintegrationwithentrab2b\" target=\"_blank\">Frequently Asked Questions: Improvements to external sharing in OneDrive &amp; SharePoint | SharePoint in Microsoft 365 | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/what-is-b2b\" target=\"_blank\">Overview: B2B collaboration with external guests for your workforce | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/external-id/b2b-quickstart-add-guest-users-portal\" target=\"_blank\">Quickstart: Add a guest user and send an invitation | External ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/sharepoint/sharepoint-azureb2b-integration\" target=\"_blank\">SharePoint and OneDrive integration with Microsoft Entra B2B | SharePoint in Microsoft 365 | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Compliance Question</b></td><td><b>Answer</b></td></tr><tr><td><b>Does the change alter how existing customer data is accessed, processed, or stored?</b></td><td><b>Yes. </b>This change retires SPO OTP authentication and requires all external users to authenticate using Microsoft Entra B2B guest accounts, which alters the authentication method used to access existing SharePoint and OneDrive content.</td></tr><tr><td><b>Does the change modify Conditional Access policies or enforcement?</b></td><td><b>Yes. </b>After retirement, all external users will authenticate through Entra B2B and become fully subject to Microsoft Entra Conditional Access, Identity Protection, and guest governance policies.</td></tr><tr><td><b>Does the change provide a new way of communicating between users, tenants, or subscriptions?</b></td><td><b>Yes. </b>External sharing invitations will be routed through Microsoft Entra B2B Invitation Manager instead of SharePoint’s OTP invitation flow.</td></tr><tr><td><b>Does the change alter how admins monitor, report on, or demonstrate compliance activities?</b></td><td><b>Yes. </b>Authentication events and guest lifecycle actions will be logged through Entra audit logs rather than SPO OTP logs, changing where admins review authentication and guest access activity.</td></tr></tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "SharePoint One-Time Passcode (SPO OTP) authentication will retire starting July 2026, transitioning external sharing and authentication in OneDrive and SharePoint to Microsoft Entra B2B. New external sharing invitations begin using Entra B2B in May 2026. External users without guest accounts will lose access unless a guest account is created or content is re-shared. No admin action is required, but organizations should inform users and review sharing policies. The change affects all Microsoft 365 tenants and enhances compliance, governance, and conditional access."
+          }
+        ],
+        "EndDateTime": "2026-10-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1243549",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-06-16T17:25:57.37Z",
+        "Services": [
+          "SharePoint Online",
+          "Microsoft OneDrive"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-03-04T01:21:32Z",
+        "Tags": [
+          "Updated message",
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Retirement of SharePoint One-Time Passcode (SPO OTP) and transition to Microsoft Entra B2B",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
     }
   ]
 }
