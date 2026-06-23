@@ -1,0 +1,39 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and Why:</b></b></p><p>\nWe’ve updated <b>Location-Based Routing (LBR)</b> behavior for Operator Connect in India to ensure compliance with India toll bypass regulations. Microsoft Teams now blocks the use of a manually set Windows location (“OS default location”) for LBR-enforced users.</p>\n\n<p>If a user’s location is derived from OS default settings instead of network-based detection, geo-coordinates are stripped and cannot be used for routing decisions. This helps prevent toll bypass and location spoofing.</p>\n\n<p>This change reached General Availability on April 30, 2026. We acknowledge this change was not communicated in advance and are sharing this post to provide guidance.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>This change has completed rollout (Worldwide and GCC).</li></ul><p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:&nbsp;</b></p>\n<ul>\n<li>Tenants using Operator Connect in India with Location Based Routing enabled, especially:</li><ul><li>Users on corporate networks or VPNs (especially Zscaler configurations)</li><li>Users on virtual machines or remote desktop environments</li><li>Environments where Windows Location Services URLs are routed through VPN or proxy instead of split tunneling</li></ul>\n        \n        \n        \n    </ul>\n\n\n<p><b>Platforms/Services:</b></p><ul><li>Microsoft Teams (desktop)</li><li>Windows Location Services</li><li>Operator Connect (India)</li></ul>\n\n<p><b>What will happen:</b></p>\n\n<ul>\n</ul><p></p><ul><li>Teams will no longer accept <b>manually set OS default location </b>as a valid source for LBR enforcement</li><li>When network-based location detection fails:<ul><li>Geo-coordinates are stripped</li><li>LBR cannot validate user location</li><li>PSTN calling may be disabled</li></ul></li><li>Users may experience:<ul><li>Intermittent dial pad or PSTN calling availability</li><li>Calling working outside the corporate network but failing inside</li></ul></li><li>Corporate environments may increase impact due to:<ul><li>VPNs or proxies (including Zscaler configurations)</li><li>Virtual machines or remote desktop environments</li><li>Windows Location Services traffic routed through VPN instead of split tunneling</li></ul></li></ul><p>This behavior is <b>by design</b>. LBR in India requires verified <b>network-based location detection</b> for regulatory compliance.</p>\n\n\n<p><b><b>Action Required / Recommendations:</b></b></p><ul><li>Update VPN split-tunnel configurations to ensure <b>Windows Location Services URLs are routed directly</b> (not through VPN or proxy)</li><li>Do not rely on <b>manually set OS default location</b> for LBR-enforced users</li><li>Validate that <b>network-based location detection is functioning correctly</b>, especially for users reporting intermittent calling issues</li><li>If users report a disabled dial pad:<ul><li>Verify whether their device is falling back to OS default location</li><li>Check network routing configuration</li></ul></li></ul>\n<ul>\n\n\n\n\n</ul>\n\n<p><b>Learn more:</b>&nbsp;<a href=\"https://learn.microsoft.com/microsoftteams/operator-connect-india-plan\">Plan Operator Connect for India | Microsoft Learn</a></p>\n\n<p><b><b>Compliance considerations:</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Consideration</b></td><td><b>Explanation</b></td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>The change modifies how location data is validated and processed by enforcing network-based detection and rejecting OS-derived location sources for LBR decisions.</td></tr><tr><td>Does the change modify, interrupt, or disable any Purview-related capabilities?</td><td>Calling functionality may be disabled when compliant location data is unavailable, which could indirectly impact user activity and communication patterns.</td></tr></tbody></table>",
+    "ContentType": "html"
+  },
+  "Category": "preventOrFixIssue",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Teams updated Location-Based Routing for Operator Connect in India to block manually set Windows OS default locations, enforcing network-based location detection for regulatory compliance. This may cause intermittent PSTN calling issues, especially on VPNs or virtual environments. Organizations should update VPN split-tunnel settings and ensure proper network-based location detection."
+    }
+  ],
+  "EndDateTime": "2026-12-31T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1401300",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-06-22T22:55:20.167Z",
+  "Services": [
+    "Microsoft Teams"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-06-22T22:55:16Z",
+  "Tags": [
+    "Feature update",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Teams: Location-Based Routing update blocks OS default location for Operator Connect in India",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
