@@ -1,0 +1,48 @@
+{
+  "id": "MC1413309",
+  "versions": [
+    {
+      "capturedAt": "2026-07-03T02:10:12.477Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and Why</b></b></p><p>Microsoft Purview is enforcing the documented limit of one capturing group per regular expression in custom <i>Sensitive Information Type (SIT) definitions</i>. This change improves consistency, reliability, and predictability in pattern matching for data classification and Data Loss Prevention scenarios. This enforcement applies when custom SITs are created or updated and may block those operations if the limit is exceeded.</p><p><b><b>Rollout Schedule</b></b></p><p><b>General Availability (Worldwide, GCC, GCC High, and DoD): </b>The rollout is expected to complete by <b>early July 2026</b>.</p><p><b><b>Impact on Your Organization</b></b></p><p><i>Who is affected</i></p><ul><li>&nbsp;Admins who create or manage custom SITs in <i>Microsoft Purview</i></li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Purview portal</li><li>PowerShell cmdlets (New-DlpSensitiveInformationTypeRulePackage and Set-DlpSensitiveInformationTypeRulePackage)</li></ul><p><i>What will happen</i></p><ul><li>New custom SITs that include more than one capturing group in a regular expression will be blocked during creation.</li><li>Updates to existing SITs will fail validation if the regular expression contains more than one capturing group.</li><li>When editing or re-saving SITs that contain more than one capturing group, admins must update regular expression patterns to include only one capturing group before changes can be saved.</li><li>This enforcement applies across both portal and PowerShell experiences.</li><li>Existing SITs with multiple capturing groups will stop functioning.</li></ul><p><b><b>Action Required or Recommendations</b></b></p><p><b>Action required.</b></p><ul><li>Review all custom SITs that use regular expressions to identify any with multiple capturing groups. After rollout, updates to these SITs will fail validation until corrected, which may delay policy updates.</li><li>Update regular expression patterns to comply with the one capturing group limit.</li><li>Test updated SITs to ensure they continue to match the intended content before applying them to production policies.</li><li>Review service limits documentation to confirm compliance requirements.</li></ul><p><b>Learn more (and for the full list of SIT limits):</b>&nbsp;<a href=\"https://learn.microsoft.com/purview/sit-limits\" target=\"_blank\">Sensitive information type limits | Microsoft Purview | Microsoft Learn</a></p><p><b><b>Compliance Considerations</b></b></p><p>This change enforces existing limits for SITs and may affect how Data Loss Prevention policies behave when custom SITs are modified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview will enforce a limit of one capturing group per regular expression in custom Sensitive Information Types by early July 2026. Admins must update existing SITs with multiple capturing groups to comply, or creation and updates will be blocked, affecting DLP policy functionality."
+          }
+        ],
+        "EndDateTime": "2026-08-02T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1413309",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-07-03T02:10:12.477Z",
+        "Services": [
+          "Microsoft 365 suite",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-07-03T02:09:29Z",
+        "Tags": [
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Purview enforcing one capturing group limit for custom sensitive information types",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
