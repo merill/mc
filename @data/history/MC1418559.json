@@ -1,0 +1,48 @@
+{
+  "id": "MC1418559",
+  "versions": [
+    {
+      "capturedAt": "2026-07-07T02:07:57.86Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-08-04T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p><p>We’re <b>retiring</b> the <b>Exchange Web Services (EWS)–based controls</b> used to enable or disable Personal Bookings (Bookings with me) in <i>Microsoft Bookings</i>. Beginning August 5, 2026, access to Personal Bookings will be managed exclusively through OWA Mailbox Policy settings.</p><p>This change aligns with Microsoft’s Exchange Online management and security principles, while providing a single, consistent administrative experience.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Now: </b>The OWA Mailbox Policy setting for Personal Bookings is available.</li><li><b>August 5, 2026: </b>EWS‑based Personal Bookings controls will be retired.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 administrators managing Microsoft Bookings and Exchange Online</li><li>Organizations currently using EWS organization configuration or per‑user CAS mailbox settings to control Personal Bookings</li></ul><p><i>What will happen</i></p><ul><li><b>After August 5, 2026</b>, admins will <b>no longer</b> be able to manage Personal Bookings access using:<ul><li><code>Set-OrganizationConfig</code> (EWS settings)</li><li>EWS‑related parameters in <i>Set-CASMailbox</i></li></ul></li><li>The default OWA Mailbox Policy is tenant‑configurable and may already include customized Personal Bookings settings.</li><li><b>Any existing EWS‑based Personal Bookings configuration will be ignored.</b></li><li>Access to Personal Bookings will be determined only by the <b>OWA Mailbox Policy</b> assigned to the user.</li><li>If no custom OWA Mailbox Policy is assigned to a user, Personal Bookings availability will follow the settings configured in the <i>tenant’s default OWA Mailbox Policy </i>(<code>OwaMailboxPolicy-Default</code>).</li><li>If your default OWA Mailbox Policy already reflects your intended Personal Bookings access state, no additional changes are required.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>Administrators should<b> complete migration</b> of any existing EWS‑based Personal Bookings controls to OWA Mailbox Policy <b>before August 5, 2026,</b> to avoid unintended changes to user access.</p><p>The following steps require Exchange Online PowerShell.</p><p>There is no change to the Personal Bookings user experience. This change affects only how administrators manage access.</p><p style=\"\"><b>Migrate your existing EWS‑based Personal Bookings controls to the new OWA Mailbox Policy</b></p><p><b>Review your current EWS‑based configuration</b></p><ul><li>Organization‑wide:</li></ul><p></p><p style=\"margin-left: 75px;\"><code>Get-OrganizationConfig | Select-Object EwsEnabled,EwsApplicationAccessPolicy,EwsBlockList,EwsAllowList</code></p><ul><li>Per user:</li></ul><p style=\"margin-left: 75px;\"><code>Get-CASMailbox -Identity <smtp> | Select EwsEnabled,EwsApplicationAccessPolicy,EwsBlockList,EwsAllow</smtp></code></p><p><b>Configure Personal Bookings using OWA Mailbox Policy</b></p><p><b>Disable Personal Bookings for the entire organization</b></p><ul><li>Admin should run following PowerShell commands:</li></ul><p style=\"margin-left: 75px;\"><code>Set-OwaMailboxPolicy -Identity \"OwaMailboxPolicy-Default\" -PersonalBookingsDisabled $true</code></p><ul><li>Verification:</li></ul><p style=\"margin-left: 75px;\"><code>Get-OwaMailboxPolicy -Identity \"OwaMailboxPolicy-Default\" | Select PersonalBookingsDisabled</code></p><p><b>Enable Personal Bookings for specific users only</b></p><ul></ul><p></p><ul><li>Disable Personal Bookings org‑wide using the steps above.</li><li>Create a custom policy:</li></ul><p style=\"margin-left: 75px;\"><code>New-OwaMailboxPolicy -Name \"BwmEnablePolicy\"</code></p><ul><li>Assign the policy to selected users:</li></ul><p style=\"margin-left: 75px;\"><code>Set-CASMailbox -Identity &lt;smtp&gt;<smtp>&nbsp;-OwaMailboxPolicy \"BwmEnablePolicy\"</smtp></code></p><p><b>Disable Personal Bookings for specific users only (all others are enabled)</b></p><ul></ul><p></p><ul><li>Ensure Personal Bookings is enabled org‑wide:</li></ul><p style=\"margin-left: 75px;\"><code>Set-OwaMailboxPolicy -Identity \"OwaMailboxPolicy-Default\" -PersonalBookingsDisabled $false</code></p><ul><li>Create and configure a custom policy:</li></ul><p style=\"margin-left: 75px;\"><code>New-OwaMailboxPolicy -Name \"BwmDisablePolicy\"\n</code></p><p style=\"margin-left: 75px;\"><code>Set-OwaMailboxPolicy -Identity \"BwmDisablePolicy\" -PersonalBookingsDisabled $true</code></p><ul><li>Assign the policy:<p></p></li></ul><p style=\"margin-left: 75px;\"><font color=\"#c7254e\" face=\"Menlo, Monaco, Consolas, Courier New, monospace\">Set-CASMailbox -Identity &lt;smtp&gt; -OwaMailboxPolicy \"BwmDisablePolicy\"</font></p><p><b>After migrating</b></p><ul><li>Validate assigned OWA Mailbox Policies.</li><li>Remove any EWS allow or block list entries related to Personal Bookings.</li><li>Update internal administrative documentation.</li><li>Notify helpdesk and Exchange administrators of the change.</li></ul><p>Learn more: <a href=\"https://learn.microsoft.com/microsoft-365/bookings/bookings-in-outlook?view=o365-worldwide\" target=\"_blank\">Turn off Personal Bookings | Microsoft Bookings | Microsoft 365 | Microsoft Learn</a></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does this change include an admin control?</td><td>Yes. Control of Personal Bookings access moves to OWA Mailbox Policy, which can be assigned per user.</td></tr></tbody></table><p><b></b></p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft is retiring EWS-based controls for Personal Bookings in Microsoft Bookings on August 5, 2026. After that, access will be managed only via OWA Mailbox Policy settings. Administrators must migrate existing EWS configurations to OWA policies before this date to maintain control."
+          }
+        ],
+        "EndDateTime": "2026-09-05T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1418559",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-07-07T02:07:57.86Z",
+        "Services": [
+          "Microsoft Bookings"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-07-07T02:06:54Z",
+        "Tags": [
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Action required: Retirement of EWS-based Personal Bookings controls (Microsoft Bookings)",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
