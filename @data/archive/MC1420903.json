@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and Why:</b></b></p><p>\nWe are introducing a reliability improvement to <b>Dynamic Distribution Groups (DDGs)</b> in Exchange Online. To prevent unnecessary duplication and reduce administrative overhead, Exchange Online will block the creation of new DDGs that are <b>exact </b>duplicates of existing ones. This prevents redundant groups from quietly accumulating and counting toward your organization's DDG limit without adding any capability.&nbsp;</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Beginning <b>late&nbsp;July 2026</b> and expected to complete by <b>early August 2026</b></li>\n<li>General Availability (GCC): Beginning <b>early August 2026</b> and expected to complete by <b>early August 2026</b></li><li>General Availability (GCC High): Beginning <b>early August 2026</b> and expected to complete by <b>mid-August</b>&nbsp;<b>2026</b></li><li>General Availability (DoD): Beginning <b>mid-August 2026</b> and expected to complete by <b>late August 2026</b></li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Exchange administrators managing Dynamic Distribution Groups</li>\n<li>Organizations using automation or scripts to create DDGs</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>Exchange Online</li>\n<li>Exchange Admin Center (EAC)</li>\n<li>Exchange Online PowerShell (New-DynamicDistributionGroup)</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Creation of a new DDG will be <b>blocked</b>&nbsp;when <b>all of the following are identical</b> to an existing DDG:<ul>\n<li>Recipient filter</li><li>Delivery management settings</li><li>Message approval (moderation) settings</li><li>Delegation settings</li><li>Message visibility settings</li></ul></li><li>When this occurs, the system will return an error indicating that a matching Dynamic Distribution Group already exists.</li><li>If any one of these settings differs, the new DDG is not a duplicate and can be created normally.</li><li>In most cases, you can use the existing DDG instead of creating a new one.</li><li>Existing DDGs are not affected and will continue to function normally.</li><li>This change is enforced at creation time only (no retroactive changes).</li></ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n<ul>\n<li>No action is required for most organizations.</li>\n<li>Review scripts or automation that create DDGs to handle duplicate failures gracefully.</li>\n<li>Review existing DDGs using <b>Reports &gt; Mail flow &gt; Dynamic distribution group report</b> in EAC.</li>\n<li>Communicate this change to Exchange administrators.</li></ul><p><b>Learn more: </b><a href=\"https://learn.microsoft.com/exchange/recipients-in-exchange-online/manage-dynamic-distribution-groups/create-manage-dynamic-distribution-groups?tabs=create-new-eac%2Ccreate-new-eac-2%2Ccreate-new-eac-3\" target=\"_blank\">Create and manage dynamic distribution groups in Exchange Online</a></p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Exchange Online will block creation of exact duplicate Dynamic Distribution Groups starting late July 2026 to improve reliability and reduce redundancy. Existing DDGs remain unaffected. Administrators should update scripts to handle duplicate errors and review current DDGs. No action is needed for most organizations."
+    }
+  ],
+  "EndDateTime": "2026-09-07T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1420903",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-07-08T23:16:14.673Z",
+  "Services": [
+    "Exchange Online"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-07-08T23:15:59Z",
+  "Tags": [
+    "Feature update",
+    "Admin impact"
+  ],
+  "Title": "Exchange Online will prevent creation of duplicate Dynamic Distribution Groups",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
