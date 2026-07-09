@@ -1,0 +1,47 @@
+{
+  "id": "MC1422057",
+  "versions": [
+    {
+      "capturedAt": "2026-07-09T21:48:37.693Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-07-31T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and Why:</b></b></p>\n<p>Microsoft is making backend changes to the calendar services that support the Microsoft Teams mobile calendar experience. To help maintain uninterrupted calendar functionality in Teams, organizations that use<b> Exchange Web Services (EWS)</b> application access policies may need to update their EWS allow list or block list configuration. This change helps ensure continued calendar access in Teams as service dependencies are updated.</p>\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Rollout begins in <b>early August 2026</b> and is expected to complete by <b>early&nbsp;August 2026</b>.</li><li>General Availability (GCC, GCC High, DoD): Rollout begins in <b style=\"\">mid-August 2026</b> and is expected to complete by <b style=\"\">mid-August 2026</b>.</li>\n</ul>\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Admins who manage <b>Exchange Online</b> organization configuration and <b>Microsoft Teams</b> calendar access.</li>\n<li>Organizations that use <b>EWS application access policies</b> such as <b>AllowList</b> or <b>EnforceBlockList</b>.</li>\n</ul><p><b>Platforms/Services:</b></p>\n<ul>\n<li>Microsoft Teams mobile calendar</li>\n<li>Exchange Online</li>\n<li>Exchange Web Services (EWS)</li>\n<li>PowerShell administration</li>\n</ul>\n<p><b>What will happen:</b></p>\n<ul>\n<li>Microsoft Teams calendar functionality will depend on updated backend support that uses Exchange.</li>\n<li>If your organization uses EWS access controls and the required Teams user agents are not configured correctly, Teams mobile calendar functionality may be affected.</li>\n<li>No end-user setting changes are required.</li>\n<li>Admin action may be required before rollout to avoid calendar disruptions.</li>\n<li>This change is not user-configurable and is managed at the tenant level by admins.</li>\n</ul>\n<p><b><b>Action Required/Recommendations:</b></b></p>\n<p><b>Action is required.</b>&nbsp;Review your EWS application access configuration <b style=\"\">before rollout begins in early August 2026</b>.</p>\n\n<ul><li>Check your current configuration:</li><pre><code>Get-OrganizationConfig | Select Ews*</code></pre>\n\n\n<li> If <code>EwsApplicationAccessPolicy = EnforceBlocklist</code><b></b>, ensure the following user agents are <b>not present</b> in <b>EwsBlockList</b>:\n<ul>\n<li><code>Microsoft%20Teams/*\n</code></li><li><code>okhttp</code>/*</li>\n</ul>\n</li>\n\n<li>If <code>EwsApplicationAccessPolicy = AllowList</code><b></b>, ensure the following user agents are included in <b>EwsAllowList</b>:<p></p>\n<ul>\n<li><code>Microsoft%20Teams/* </code>(iOS)</li>\n<li><code>okhttp/*</code> (Android)</li>\n</ul>\n</li>\n\n<li> If needed, add the required user agents:</li>\n<pre><code>Set-OrganizationConfig -EwsAllowList @{add=\"okhttp/*\"}\nSet-OrganizationConfig -EwsAllowList @{add=\"Microsoft%20Teams/*\"}</code></pre>\n</ul><ul>\n<li>Admins can also scope EWS access policies to individual mailboxes or groups as needed. For example:<pre><code><font color=\"#000000\" style=\"\">Set-CasMailbox -Identity \"user@domain.com\" -EwsAllowList @{add=\"Microsoft%20Teams/*\"}</font></code></pre>To review mailbox-level configuration:<p></p><pre><code><font color=\"#000000\" style=\"\">Get-CasMailbox -Identity \"user@domain.com\"</font></code></pre></li>\n<li>Complete validation before the August 2026 rollout.</li>\n<li>Notify helpdesk teams of potential Teams mobile calendar impact if configuration is not updated.</li>\n<li>Update internal documentation as needed.</li>\n</ul>\n<p><b><b>Compliance considerations:</b></b></p>\n<table>\n<tbody><tr><th>Compliance question</th><th>Explanation</th></tr>\n<tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Calendar data continues to be stored in Exchange Online. However, in certain scenarios, Microsoft Teams mobile will access this data directly through Exchange Web Services (EWS), instead of via the Teams middle-tier service. There is no change to where the data is stored, only to the access path. Telemetry data processing is unchanged.</td></tr>\n<tr><td>Does the change include an admin control and can it be controlled through Entra ID group membership?</td><td>Admins can control access using Exchange Web Services application access policies, which can be scoped to users or groups.</td></tr>\n</tbody></table>\n<p><br></p>",
+          "ContentType": "html"
+        },
+        "Category": "preventOrFixIssue",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft is updating Exchange Web Services (EWS) allow/block list configurations to support Teams mobile calendar changes starting August 2026. Admins must review and update EWS policies to include or exclude specific Teams user agents to avoid calendar disruptions. No end-user changes are needed; action is required before rollout."
+          }
+        ],
+        "EndDateTime": "2026-09-13T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1422057",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-07-09T21:48:37.693Z",
+        "Services": [
+          "Microsoft Teams"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-07-09T21:48:30Z",
+        "Tags": [
+          "Feature update",
+          "Admin impact"
+        ],
+        "Title": "Update Exchange Web Services (EWS) allow list configuration for calendar",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
