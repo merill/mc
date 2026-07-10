@@ -1,0 +1,48 @@
+{
+  "id": "MC1423114",
+  "versions": [
+    {
+      "capturedAt": "2026-07-10T22:51:47.223Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and Why</b></b></p><p>We're introducing two new Microsoft Teams PowerShell controls that help organizations enforce external access and federation policies more consistently in federated group chats:</p><ul><li><b>External Access Restrictions for Chat Participants (EnableExternalAccessRestrictionsForChatParticipants)</b></li><li><b>Mutual Federation for Chat Participants (EnableMutualFederationForChatParticipants)</b></li></ul><p>These controls are independent from each other and help ensure federated chat participation strictly aligns with configured external access policies. They help reduce indirect exposure to unapproved external organizations and provide admins with greater control over cross-tenant communications.&nbsp;</p><p><b><b>Rollout Schedule</b></b></p><ul><li><b>General Availability (Worldwide): </b>Beginning<b> late July 2026 </b>and expected to complete<b> late September 2026</b><ul style=\"\"><li style=\"\">External Access Restrictions for Chat Participants available:<b style=\"font-weight: bold;\"> July 31, 2026</b></li><li style=\"\">Mutual Federation for Chat Participants available:<b style=\"font-weight: bold;\"> September 30, 2026</b></li></ul></li></ul><p><b><b>Impact on Your Organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft Teams administrators managing external access and federation settings</li><li>Organizations using federated group chats with external tenants</li><li>Users assigned External Access Policies that restrict federation access</li></ul><p><i>Platforms/Services</i></p><ul><li>Microsoft Teams</li><li>Teams PowerShell</li></ul><p><i>What will happen</i></p><ul><li>The new controls are <b>disabled by default</b>.</li><li>The change only affects organizations that choose to enable the controls.</li><li>The controls are configured through the existing <b>Set-CsTenantFederationConfiguration </b>PowerShell cmdlet.</li></ul><p>When <b>EnableExternalAccessRestrictionsForChatParticipants</b> is <b>enabled</b>:</p><ul><li>Users whose External Access Policy has EnableFederationAccess set to False cannot be added to federated group chats with external users.</li><li>Those users are automatically removed from existing active federated group chats that include external participants.</li><li>This setting does not change behavior controlled through the CommunicationWithExternalOrgs setting in External Access Policies.</li></ul><p>When EnableExternalAccessRestrictionsForChatParticipants is <b>disabled</b>:</p><ul><li>Users whose External Access Policy has EnableFederationAccess set to False <b>can still participate in federated group chats if the chat was created by a user in their organization who is allowed to use federation.</b></li></ul><p>When <b>EnableMutualFederationForChatParticipants</b> is enabled:</p><ul><li>All federated group chat participants from tenants that have this setting enabled must be allowed to federate with the domains of the other tenants in the chat.&nbsp;</li><li>Users who do not meet mutual federation requirements with all other participants cannot be added to or join the chat (not even facilitated through a third-party tenant that they are allowed to federate with)</li></ul><p>Participants can be automatically removed from active chats when federation requirements are no longer met.</p><p>When <b>EnableMutualFederationForChatParticipants</b> is disabled (default):</p><ul><li>Only the user being added (or joining) and the chat initiator must have a valid federation relationship. Other existing chat participants might not meet the user's effective external access requirements.</li></ul><p></p><ul><li>Supported scenarios include:<ul><li>Creating external federated group chats.</li><li>Adding users to external federated group chats.</li><li>Enforcing updated federation requirements after external access or federation policies change.</li></ul></li></ul><p><b>Additional details:</b></p><ul><li>Automatic participant removal applies only to active group chats (a chat that has had a message sent within the previous two hours). Users in inactive group chats are evaluated when new activity occurs.</li><li>The user who initiated the chat is never automatically removed.</li><li>These two new controls do not affect:<ul><li>Meetings with external users and meeting chats</li><li>Shared Channels</li></ul></li></ul><p></p><p><b><b>Action Required/Recommendations</b></b></p><p>No immediate action is required.</p><p>If you plan to enable these controls:</p><ul><li>Review your organization's external access requirements and federation strategy.</li><li>Verify that your Allowed Domains configuration is complete and current.</li><li>Review External Access Policies to identify users or groups with EnableFederationAccess set to False.</li><li>Assess business processes that rely on federated group chats involving multiple external organizations.</li><li>Communicate potential impacts to helpdesk staff and affected stakeholders.</li><li>Review the Microsoft Teams PowerShell documentation for <a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration?view=teams-ps\" target=\"_blank\">Set-CsTenantFederationConfiguration</a>.</li></ul><p>Organizations may observe users being removed from existing federated group chats after either they or a partner organization enable these controls and federation requirements are no longer satisfied.</p><p><b>Learn more:</b>&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration\" target=\"_blank\">Set-CsTenantFederationConfiguration | Microsoft Teams | Microsoft Learn</a></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change provide a new way of communicating between users, tenants, or subscriptions?</td><td>Yes. The change modifies how existing federated group chat communications are governed by enforcing participant eligibility and mutual federation requirements across tenants.</td></tr><tr><td>Does the change include an admin control and can it be controlled through Entra ID group membership?</td><td>Yes. Two new administrator controls are introduced through Teams PowerShell: EnableExternalAccessRestrictionsForChatParticipants and EnableMutualFederationForChatParticipants. User impact depends on External Access Policy assignments, which can be administered through existing policy assignment mechanisms.</td></tr></tbody></table><p><b></b></p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Teams introduces two new PowerShell controls to enforce stricter external access and mutual federation policies in federated group chats, enhancing admin control and reducing exposure to unapproved external organizations. These controls are disabled by default and roll out worldwide from July to September 2026."
+          }
+        ],
+        "EndDateTime": "2026-10-30T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1423114",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-07-10T22:51:47.223Z",
+        "Services": [
+          "Microsoft Teams"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-07-10T22:51:38Z",
+        "Tags": [
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Teams: Stricter external access controls for federated chats",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

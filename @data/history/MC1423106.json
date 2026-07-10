@@ -1,0 +1,55 @@
+{
+  "id": "MC1423106",
+  "versions": [
+    {
+      "capturedAt": "2026-07-10T22:47:49.003Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and Why:</b></b></p>\n<p>We're introducing <b>Cross-tenant Message Recall in Exchange Online</b>, enabling organizations to allow trusted external Microsoft 365 tenants to recall messages sent to their users. Previously, Message Recall only worked within the same tenant. This enhancement improves organizational collaboration and control, allowing administrators to extend recall capabilities across partner or affiliated tenants while maintaining explicit governance through an allow list.</p><p>This message is associated with Roadmap ID&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=561330\" target=\"_blank\">561330</a>.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>General Availability (Worldwide, GCC, GCC High, DoD): Rollout begins <b>mid-August 2026</b>; expected to complete by <b>early September 2026</b></li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Exchange Online administrators</li>\n<li>Organizations collaborating with external Microsoft 365 tenants</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>Exchange Online</li>\n<li>Outlook (web, desktop, mobile)</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>The feature is <b>disabled by default.</b></li>\n<li>Admins can enable cross-tenant recall using Exchange Online PowerShell.</li>\n<li>Admins can control<b>&nbsp;</b>an <b>allow-list of external tenant IDs</b>.</li>\n<li>Once enabled:<ul><li>External senders from allow-listed tenants can recall messages sent to your users.</li><li>Recipients experience recall the same as intra-tenant recall.</li></ul></li><li>If recipient recall notifications are enabled, they apply to cross-tenant recalls.</li><li>Recall attempts from tenants <b>not on the allow-list will fail.</b></li><li>Each tenant independently controls which external organizations are allowed.</li></ul>\n\n<p><b><b>Action Required/Recommendations:</b></b></p>\n<ul>\n</ul><p>No action is required to keep the default behavior (disabled).</p><p>If you plan to enable this feature:</p><ul>\n<li>Review with messaging and security teams.</li>\n<li>Enable or disable the feature using Exchange Online PowerShell:</li>\n</ul>\n<pre>Set-CrossTenantRecallConfiguration -CrossTenantRecallEnabled $true\nSet-CrossTenantRecallConfiguration -CrossTenantRecallEnabled $false\n</pre>\n<ul>\n<li>Manage the allowed tenant list (add or remove):</li>\n</ul>\n<pre>Set-CrossTenantRecallConfiguration -AllowedSenderTenantIds @{Add=\"tenantId1\",\"tenantId2\"}\nSet-CrossTenantRecallConfiguration -AllowedSenderTenantIds @{Remove=\"tenantId1\",\"tenantId2\"}\n</pre>\n<ul>\n<li>Update internal documentation and notify helpdesk.</li>\n</ul>\n\n<p><b>Learn more:&nbsp;</b><a href=\"https://techcommunity.microsoft.com/blog/exchange/cross-tenant-message-recall-in-exchange-online/4535800\" target=\"_blank\">Cross-Tenant Message Recall in Exchange Online</a></p><p><b><b>Compliance considerations:</b></b></p>\n<table>\n<tbody><tr>\n<th>Area</th>\n<th>Explanation</th>\n</tr>\n<tr>\n<td>New cross-tenant communication capability</td>\n<td>Enables external tenants to recall messages into your organization when explicitly allow-listed, introducing a new controlled interaction between tenants.</td>\n</tr>\n<tr>\n<td>Processing of existing customer email data</td>\n<td>The recall feature operates on existing email messages and may trigger deletion actions in recipient mailboxes, but does not fundamentally change how data is stored.</td>\n</tr>\n<tr>\n<td>Admin control over feature behavior</td>\n<td>Admins can enable or disable the feature using PowerShell and explicitly allow or remove trusted tenant IDs.</td>\n</tr>\n<tr>\n<td>End-user experience changes</td>\n<td>If enabled, users may see message recall activity originating from external tenants, similar to intra-tenant recall behavior.</td>\n</tr>\n</tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "561330"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Exchange Online will support cross-tenant message recall, allowing trusted external Microsoft 365 tenants to recall messages sent to your users. This feature, disabled by default, can be enabled and managed by admins via PowerShell with an allow list of tenant IDs. Rollout starts mid-August 2026."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Android, Desktop, iOS, Mac, Web"
+          }
+        ],
+        "EndDateTime": "2026-10-04T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1423106",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-07-10T22:47:49.003Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-07-10T22:46:49Z",
+        "Tags": [
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Introducing cross-tenant message recall in Exchange Online",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
