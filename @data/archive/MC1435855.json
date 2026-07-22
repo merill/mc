@@ -1,0 +1,39 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and why</b></b></p><p>Following customer feedback, Microsoft Purview is <b>reverting</b> the enforcement of the single capturing group limit for custom Sensitive Information Type (SIT) regular expressions that was previously communicated in <i>MC1413309</i>. This change restores the prior behavior, allowing administrators to create and edit custom SITs that contain multiple capturing groups through both the Microsoft Purview user experience and PowerShell cmdlets.</p><p>While enforcement is being reverted, we recommend that organizations review custom regular expressions and update them to use a single top-level capturing group where possible. This helps prepare for potential future changes. Any future enforcement changes would be communicated in advance to allow sufficient planning time.</p><p>For clarity, <b>this guidance applies to regular expressions that contain multiple top-level capturing groups separated by alternation</b>, such as (pattern1)|(pattern2). It does <b>not</b> apply to nested capturing groups within a single expression.</p><p><b><b>Rollout schedule</b></b></p><ul><li>Beginning <b>late July 2026</b> and expected to complete in<b> late July 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Administrators who create or manage custom Sensitive Information Types (SITs) in <i>Microsoft Purview</i>.</li><li>Organizations that use custom SITs with regular expressions containing multiple top-level capturing groups.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Purview</li><li>Data Loss Prevention (DLP)</li><li>Microsoft Purview compliance portal</li><li>PowerShell cmdlets for SIT management</li></ul><p><i>What will happen</i></p><ul><li>Administrators can create and edit custom SITs that contain multiple capturing groups.</li><li>Creation and editing of these SITs will no longer be blocked.</li><li>Existing custom SITs that use multiple capturing groups will continue to function as before and do not require remediation as a result of this change.</li><li>Existing DLP policies and enforcement behavior are not affected.</li><li>No tenant configuration changes are required.</li><li>The change is <b>on by default as part of the service update</b>.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>No immediate action is required.</p><p>We recommend that administrators:</p><ul><li>Review custom SITs that use multiple top-level capturing groups in regular expressions.</li><li>Update regular expressions to use a single top-level capturing group where feasible.</li><li>Test any updated SITs before deploying them to production policies.</li><li>Communicate this guidance to compliance and information protection administrators who manage custom SIT definitions.</li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td><b>Answer</b></td></tr><tr><td>Does the change modify, interrupt, or disable Information Protection labels or Sensitive Information Types?</td><td>Yes. The update changes how administrators can create and edit custom Sensitive Information Types by removing enforcement of the single capturing group restriction and restoring previous behavior.</td></tr></tbody></table><p><b></b></p>",
+    "ContentType": "html"
+  },
+  "Category": "preventOrFixIssue",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Purview is reverting the enforcement of the single capturing group limit for custom Sensitive Information Type regexes, allowing multiple top-level capturing groups again. This change, effective late July 2026, requires no immediate action but recommends reviewing and updating regexes to a single capturing group where possible."
+    }
+  ],
+  "EndDateTime": "2026-08-30T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1435855",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-07-22T00:54:48.943Z",
+  "Services": [
+    "Microsoft 365 suite",
+    "Microsoft Purview"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-07-22T00:54:11Z",
+  "Tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Purview: Reverting single capturing group enforcement for custom SIT regex",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
