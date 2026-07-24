@@ -1,0 +1,48 @@
+{
+  "id": "MC1438571",
+  "versions": [
+    {
+      "capturedAt": "2026-07-24T21:56:48.637Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b>What and Why:</b></p><p>To help people discover and understand organizational\ninformation more easily, Microsoft is changing the default visibility of 11\nexisting profile card properties in Microsoft 365 profile cards. Today, these\nproperties can be populated from Microsoft Entra ID and other supported external\ndata sources such as People Graph Connectors and Microsoft 365 Organizational\nData, but they are disabled by default and require administrators to manually\nenable them. You can find more on the existing profile card property management\n<a href=\"https://learn.microsoft.com/en-us/microsoft-365/admin/manage/customize-profile-cards?view=o365-worldwide\">here</a>.&nbsp;</p><p>With this update, these properties will be displayed by default\nwhen populated with data. This helps organizations surface relevant employee\ninformation more consistently while reducing administrative effort for commonly\nused profile attributes. Organizations retain administrative controls to manage\nvisibility according to their business, privacy, and compliance requirements.&nbsp;</p><p>The following properties are included in this update:&nbsp;</p><ul>\n <li>Division&nbsp;</li>\n <li>Role&nbsp;</li>\n <li>Employee\n     number&nbsp;</li>\n <li>Employee\n     type&nbsp;</li>\n <li>Cost\n     center&nbsp;</li>\n <li>User\n     principal name (UPN)&nbsp;</li>\n <li>Alias&nbsp;</li>\n <li>Fax&nbsp;</li>\n <li>Street\n     address&nbsp;</li>\n <li>State&nbsp;</li>\n <li>Postal\n     code&nbsp;</li></ul><p><b>Rollout Schedule<b>:</b></b></p><p>General Availability (Worldwide, GCC, GCC High, DoD): we will begin rollout in late August 2026 and expect to complete by late August 2026.</p><p><b>Impact to your organization:</b></p><p><b>Who is affected&nbsp;</b></p><ul>\n <li>Global\n     Administrators and People Administrators responsible for profile card\n     management.&nbsp;</li>\n <li>Organizations with users whose profile data includes\n     one or more of the affected properties.&nbsp;</li></ul><p><b>Platforms/Services&nbsp;</b></p><ul>\n <li>Microsoft\n     365 Profile Cards&nbsp;</li>\n <li>Microsoft\n     Entra ID&nbsp;</li>\n <li>Microsoft\n     365 Organizational Data&nbsp;</li>\n <li>Microsoft\n     Entra People Graph Connectors&nbsp;</li>\n <li>Microsoft\n     Graph profile card management APIs&nbsp;</li>\n <li>Microsoft\n     365 admin center&nbsp;</li></ul><p><b>What will happen&nbsp;</b></p><ul>\n <li>The 11\n     listed properties will automatically appear on profile cards when the\n     corresponding attributes contain data. &nbsp;</li>\n <li>The\n     change is enabled by default.&nbsp;</li>\n <li>Attributes\n     sourced from Microsoft Entra ID, Microsoft 365 Organizational Data, and\n     Microsoft Entra People Graph Connectors follow the same visibility\n     behavior.&nbsp;</li>\n <li>No\n     changes are made to underlying attribute values or source systems.&nbsp;</li>\n <li>No\n     changes are required from end users.&nbsp;</li>\n <li>Tenants\n     that have never configured profile card settings will automatically\n     receive the new default visibility behavior.&nbsp;&nbsp;</li>\n <li>Only properties with populated values will appear on\n     profile cards.&nbsp;</li></ul><p><b>Action Required/Recommendations:</b></p><p><span>If your organization does not want specific properties\ndisplayed on profile cards, action is recommended before August 24, 2026.&nbsp;</span></p><p><b>Review current profile card configuration&nbsp;</b></p><p>Use Microsoft Graph to review existing profile card property\nsettings:<br><br></p><pre><code><p>&nbsp;<span>HTTP&nbsp;</span></p><p>GET&nbsp; https://graph.microsoft.com/v1.0/admin/people/profileCardProperties&nbsp;</p></code></pre><p><b>Hide properties before rollout&nbsp;</b></p><p>To prevent a property from being displayed, configure the\nproperty as hidden using Microsoft Graph.&nbsp;</p><p>Example: Hide Employee Number&nbsp;</p><pre><code><p>HTTP <br><br>POST\nhttps://graph.microsoft.com/v1.0/admin/people/profileCardProperties&nbsp;</p><p>Content-Type: application/json&nbsp;</p><p>{&nbsp;</p><p><span>\"directoryPropertyName\": \"EmployeeId\",&nbsp;</span></p><p>&nbsp;<span>\"isVisible\": false&nbsp;</span><span>&nbsp;</span></p><p>}&nbsp;<br></p></code></pre><p><span>For each property, you can use the property mappings below:</span></p><table>\n <tbody><tr>\n  <td>\n  <p><b><span>Profile\n  card label</span>&nbsp;</b></p>\n  </td>\n  <td>\n  <p><b><span>directoryPropertyName</span>&nbsp;</b></p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>Division&nbsp;</p>\n  </td>\n  <td>\n  <p>Division&nbsp;</p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>Role&nbsp;</p>\n  </td>\n  <td>\n  <p>Role&nbsp;</p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>Employee number&nbsp;</p>\n  </td>\n  <td>\n  <p>EmployeeId&nbsp;</p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>Employee type&nbsp;</p>\n  </td>\n  <td>\n  <p>EmployeeType&nbsp;</p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>Cost center&nbsp;</p>\n  </td>\n  <td>\n  <p>CostCenter&nbsp;</p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>User principal name (UPN)&nbsp;</p>\n  </td>\n  <td>\n  <p>UserPrincipalName&nbsp;</p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>Alias&nbsp;</p>\n  </td>\n  <td>\n  <p>Alias&nbsp;</p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>Fax&nbsp;</p>\n  </td>\n  <td>\n  <p>Fax&nbsp;</p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>Street address&nbsp;</p>\n  </td>\n  <td>\n  <p>StreetAddress&nbsp;</p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>State&nbsp;</p>\n  </td>\n  <td>\n  <p>StateOrProvince&nbsp;</p>\n  </td>\n </tr>\n <tr>\n  <td>\n  <p>Postal code&nbsp;</p>\n  </td>\n  <td>\n  <p>PostalCode&nbsp;</p>\n  </td>\n </tr></tbody></table><p><b>Important:</b> Each property requires a separate\nMicrosoft Graph API call. Bulk enable or bulk disable operations are not\ncurrently supported.<br><br>\nYou can find more on using Microsoft Graph APIs for showing and hiding profile\ncard attributes <a href=\"https://learn.microsoft.com/en-us/graph/add-properties-profilecard\">here</a>.&nbsp;&nbsp;</p><p><b>Recommended Administrator Actions&nbsp;</b></p><ul>\n <li>Verify\n     your current profile card configuration using Microsoft Graph and review\n     which of the affected properties contain data in your tenant.&nbsp;</li>\n <li>Use\n     Microsoft Graph Profile Card APIs to hide any properties that should\n     remain unavailable to users before rollout begins on August 24, 2026.&nbsp;</li>\n <li>Communicate\n     the upcoming change to help desk and support teams.&nbsp;</li></ul><p>After rollout, administrators can continue managing profile\ncard visibility through <b>Microsoft 365 admin center &gt; People settings &gt;\nProfile cards</b>. Changes made can take up to <b>24 hours</b> to be reflected\non profile cards across Microsoft 365 experiences.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft 365 will default-display 11 profile card properties (e.g., Division, Role, Employee number) when populated, starting late August 2026. Admins can review and hide properties via Microsoft Graph API before rollout. Visibility remains manageable post-rollout through the admin center."
+          }
+        ],
+        "EndDateTime": "2026-10-26T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1438571",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-07-24T21:56:48.637Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-07-24T21:56:36Z",
+        "Tags": [
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Default visibility of additional profile card properties in Microsoft 365 profile cards",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
