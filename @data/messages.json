@@ -1,5 +1,264 @@
 [
   {
+    "ActionRequiredByDateTime": "2026-09-01T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated July 27, 2026: We have updated the content; the release of this feature is still paused at this time. We will announce via Message center when we are ready to proceed. We apologize for any inconvenience.&nbsp;</p><p><b><b>What and Why</b></b></p> <p>Microsoft Teams is updating the port and domain requirements for Real-Time Messaging Protocol (RTMP)-In, which enables organizers to stream content into meetings, webinars, and town halls using external hardware or software encoders. This change improves reliability and scalability for Teams streaming scenarios.</p> <p><b><b>Rollout Schedule</b></b></p> <ul> <li><b>General Availability (Worldwide)</b>: We will announce via Message center when we are ready to proceed.</li> </ul> <p><b><b>Impact on Your Organization</b></b></p> <p><i>Who is affected</i></p> <ul> <li>Admins managing Microsoft Teams meetings, webinars, and town halls</li> <li>Event organizers who use RTMP-In with external encoders</li> </ul> <p><i>Platforms/Services</i></p> <ul> <li>Microsoft Teams (meetings, webinars, and town halls)</li> </ul> <p><i>What will happen</i></p> <ul> <li>New meetings, webinars, and town halls that use RTMP-In will require updated network access.</li> <li>Admins must allow the required ports and domain endpoints for RTMP-In streaming.</li> <li>Existing meetings, webinars, and town halls already configured with RTMP-In will continue to function through the end of 2026.</li> <li>RTMP-In continues to allow organizers to stream content into Teams from external hardware or software encoders.</li> <li>Without these updates, organizers may be unable to create or stream RTMP-In events, and newly created events may fail after <b>December 31, 2026</b>.</li> </ul> <p><b>Required network endpoints:</b></p> <ul> <li><b>Ports: 50118 and 50119 (RTMP/RTMPS)</b></li> <li><b>Domain: *.rtmpingest.mcr.teams.cloud.microsoft</b></li> </ul> <p><b><b>Action Required/Recommendations</b></b></p> <p><b>Action required by January 31, 2027.</b></p> <ul> <li>Review your organization’s firewall and network configuration.</li> <li><b>Allow outbound access to:</b></li> <ul> <li><b>Ports 50118 and 50119 (RTMP/RTMPS)</b></li> <li><b>Domain: *.rtmpingest.mcr.teams.cloud.microsoft</b></li> </ul> <li>Validate connectivity against official Microsoft 365 endpoint and firewall guidance.</li> <li>Communicate this change to your networking and IT teams.</li> <li>Update internal documentation if you support RTMP-In streaming scenarios.</li> </ul> <p><b>Learn more:&nbsp;</b><a href=\"https://learn.microsoft.com/microsoftteams/meetings-rtmp-in\" target=\"_blank\">Manage RTMP-In for Teams meetings, webinars, and town halls | Microsoft Teams | Microsoft Learn </a> </p> <p><b><b>Compliance considerations</b></b></p> <p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "preventOrFixIssue",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams is updating RTMP-In port and domain requirements to improve streaming reliability. Admins must allow outbound access to ports 50118, 50119, and domain *.rtmpingest.mcr.teams.cloud.microsoft by January 31, 2027. Existing RTMP-In events work until December 31, 2026. The feature release is currently paused."
+      }
+    ],
+    "EndDateTime": "2027-01-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1387814",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-07-29T14:32:01.05Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-06-11T23:24:56Z",
+    "Tags": [
+      "Updated message",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: RTMP-In port and domain changes required",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated July 27, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p><b>Azure PST Import</b> provides a structured, PowerShell-based way for administrators to import PST files stored in <b>Azure Blob Storage</b> into <b>Exchange Online mailboxes</b>, which are commonly used to store archived Outlook mailbox content. This capability helps organizations migrate historical email data in a controlled and auditable way by validating readiness before importing and by providing reports throughout the process. The process starts by creating an Azure PST Import endpoint to establish the connection between Azure storage and Exchange Online. Administrators then run a migration batch in <b>Analyze</b> mode to review readiness and validate the input before proceeding. Once the analysis results are reviewed, they use those results to create and start the import batch, which begins importing the PST files into the specified mailboxes.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=557559\" target=\"_blank\">557559</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li>Public Preview: We will begin rolling out <b>mid-September 2026</b> and expect to complete by <b>late September 2026</b>.</li><li>Worldwide: We will begin rolling out <b>late October 2026</b> and expect to complete by <b>mid-November 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 administrators managing <b>Exchange Online</b></li><li>Administrators using <b>Microsoft Purview Data Lifecycle Management</b></li><li>Organizations that import PST files into user or archive mailboxes</li></ul><p><i>What will happen</i></p><ul><li>Administrators complete the Azure PST Import process using <b>PowerShell cmdlets only</b>.</li><li>The workflow includes:<ul><li>Creating an Azure PST Import migration endpoint</li><li>Running a migration batch in <b>Analyze</b> mode to validate readiness</li><li>Reviewing analysis results and reports</li><li>Creating and starting the <b>import</b> batch</li><li>Performing post-import cleanup</li></ul></li><li>This experience is<b> not available through a graphical user interface (GUI)</b>.</li><li>Existing mailbox prerequisites and quotas are validated before importing begins.</li><li>There is<b> no direct user impact</b>; the feature is admin-driven.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>Ensure your <b>Azure storage account and container exist</b> and are reachable; the endpoint creation cmdlet validates both during setup.</li><li>Grant the <b>Storage Blob Data Reader </b>role to the <b>Office 365 Import Service</b> app on the target storage account. Without this permission, creating the Azure PST Import endpoint will fail.</li><li>Prepare your <b>batch input files (XML and/or CSV) </b>and run the migration batch in <b>Analyze</b> mode first so the service can validate readiness before importing.</li><li>Confirm analysis prerequisites for target mailboxes:<ul><li>Appropriate license assigned</li><li>Mailbox is not inactive or soft-deleted</li><li>Recipient type is <b>UserMailbox</b></li><li>Archive is enabled if importing to archive</li><li>Quota validations (ArchiveQuota / RecoverableItemsQuota) occur during analysis</li></ul></li><li>Validate PST files ahead of time:<ul><li>Analysis verifies that all specified PST files exist</li><li>PST file size is validated during analysis</li></ul></li></ul><p>For detailed cmdlet usage and guidance, review the Azure PST Import documentation on Microsoft Learn.</p><p><b><b>Compliance considerations</b></b></p><table><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. The feature enables administrators to import existing customer email data contained in PST files into Exchange Online mailboxes, where the data is then stored and processed according to existing Exchange Online behaviors.</td></tr><tr><td>Does the change store customer data, and if so, where is it stored?</td><td>Yes. PST file contents are imported into Exchange Online mailboxes within the customer’s Microsoft 365 tenant and are stored according to the tenant’s data residency and storage configuration.</td></tr><tr><td>Does the change modify retention policies, holds, or deletion workflows?</td><td>Yes. Once imported, mailbox data becomes subject to any existing Microsoft Purview retention policies, retention labels, holds, and deletion workflows already configured for the target mailboxes.</td></tr><tr><td>Does the change affect audit logging capabilities?</td><td>Yes. Administrative actions related to PST import and the resulting mailbox changes are logged using existing Exchange Online and Microsoft Purview audit logging mechanisms.</td></tr><tr><td>Does the change alter how admins can monitor or demonstrate compliance?</td><td>Yes. Administrators can use existing Exchange Online and Microsoft Purview reporting and audit tools to monitor PST import activity and demonstrate compliance after the data is imported.</td></tr><tr><td>Does the change include an admin control?</td><td>Yes. The feature is controlled through administrator access to PowerShell cmdlets and Azure role assignments, including permissions on the Azure storage account used for PST import.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "557559"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Azure PST Import enables Microsoft 365 admins to import PST files from Azure Blob Storage into Exchange Online mailboxes using PowerShell. It includes readiness validation, reporting, and compliance controls. Rollout begins mid-September 2026 (public preview) and late October 2026 (worldwide). No GUI; admin-driven process."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-12-28T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1281505",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-07-29T14:28:45.69Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-04-15T23:29:09Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview: Data Lifecycle Management- Azure PST Import",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated July 20, 2026: This feature was temporarily rolled back, and we have updated the timeline. Thank you for your patience. </p><p><b><b>Introduction</b></b></p><p><b>Microsoft Teams</b> is introducing <b>two new system chat sections</b> called <b>Muted chats</b> and <b>Meeting chats</b>. These sections allow users to organize their chat and channels list by grouping muted conversations and meeting chats into dedicated sections that users can turn on or off. The new Meeting chats section will replace the Meeting chats filter, that was previously available at the top of the chat and channel list. </p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=559605\" target=\"_blank\">559605</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>General Availability (Worldwide, GCC, GCC High, DoD): </b>Rollout begins in<b> mid-August 2026 </b>(previously early May) and is expected to complete by <b>end of September 2026</b> (previously end of July).</li></ul><p><b><b>How this affects your organization</b></b></p><p><em>Who is affected</em></p><ul><li>All Microsoft Teams users in Microsoft 365 tenants, including Worldwide, GCC, GCC High, and DoD</li></ul><p><em>What will happen</em></p><p>Users may see up to two new system sections in their Teams chat and channels list:</p><ul><li><b>Muted chats section</b><ul><li>Enabled by default.</li><li>Muted chats that are not in Favorites or user‑created sections automatically move to this section.</li><li>The section appears at the bottom of the chat list.</li><li>Unread chats continue to appear bold.</li></ul></li><li><b>Meeting chats section</b><ul><li>Disabled by default.</li><li>When enabled by the user, meeting chats that are not in Favorites or user‑created sections automatically move to this section.</li><li>The section appears below the main chats list.</li><li>Unread chats continue to appear bold and contribute to badge counts.</li></ul></li><li>Chats in <em>Favorites</em> or <em>user‑created sections</em> are not moved.</li><li>Users can drag and drop these sections to reorder them.</li><li>There are <b>no admin controls for these sections</b>.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>No admin action is required.</p><p>You may want to:</p><ul><li>Inform users that new chat sections are available and that they can turn them on or off.</li><li>Notify helpdesk staff that muted chats may appear in a <em>separate section</em> by default.</li><li>Direct users to <b><em>Settings &gt; Chats and channels </em></b>to manage these sections.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "559605"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams will introduce two new chat sections—Muted chats (enabled by default) and Meeting chats (disabled by default)—to organize chats. Rollout starts mid-August 2026, completing by end of September. Users can enable/disable and reorder these sections; no admin action or controls are required."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Android, Desktop, iOS, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2026-10-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1269864",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-07-29T14:28:00.32Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-04-03T22:23:30Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: New chat sections for muted and meeting chats",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated January 29, 2026: We are updating this post as a reminder. Upcoming SharePoint Online changes may impact your organization. Please review the below.</p><p>We are implementing the following changes to custom scripting and classic publishing in SharePoint Online.</p><p><b>1. Disablement of custom scripting</b></p><p>Custom scripting will be disabled by default (setting DenyAddAndCustomizePages to 1 or $true) for sites created with the following templates:</p><ul><li>BLANKINTERNETCONTAINER#0 = Classic Publishing Portal Site\n</li><li>CMSPUBLISHING#0 = Classic Publishing Site\n</li><li>BLANKINTERNET#0 = Classic Publishing Site Blank</li><li>CSPCONTAINER#0 = SharePoint Embedded Site</li></ul><p>NOTE:\n</p><ul><li>Existing classic publishing sites created with the templates listed above will have custom scripting disabled by default. \n</li><li>Disabling custom scripting does not affect the execution of scripts that have already been added to a site or page.</li></ul><p>Refer to <a href=\"https://learn.microsoft.com/sharepoint/security-considerations-of-allowing-custom-script\" target=\"_blank\">this documentation</a> to learn more about the security considerations of ungoverned scripting.</p><p><b>2. Ability to set site property bag valued without requiring custom scripting enablement.</b></p><p>Users no longer need to set DenyAddAndCustomizePages to $false or 0 (i.e. enable custom scripting) in a site to manage site property bag values. We have introduced a new AllowWebPropertyBagUpdateWhenDenyAddAndCustomizePagesIsEnabled setting at the site level and at the tenant level to allow adding/managing site property bag values. Please see documentation here for <a href=\"https://learn.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps#-allowwebpropertybagupdatewhendenyaddandcustomizepagesisenabled\" target=\"_blank\">tenant level setting</a>&nbsp;and here for <a href=\"https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite?view=sharepoint-ps#-allowwebpropertybagupdatewhendenyaddandcustomizepagesisenabled\" target=\"_blank\">the site level setting.</a>&nbsp;</p><p><b>3. Classic publishing sites creation and feature activation changes</b></p><p>Users will no longer be able to create new classic publishing related site collections or activate publishing features in existing site collections. This applies to both UX and API interactions.</p><p>Sites collections with the following templates cannot be created:</p><ul><li>BLANKINTERNETCONTAINER#0 = Publishing Portal Site\n</li><li>CMSPUBLISHING#0 = Publishing Site\n</li><li>BLANKINTERNET#0 = Publishing Site Blank\n</li><li>ENTERWIKI#0 = Enterprise Wiki\n</li><li>SRCHCEN#0 = Enterprise Search Center\n</li><li>SPSSITES#0 = Site Directory\n</li><li>SPSNHOME#0 = News Home Site\n</li><li>PRODUCTCATALOG#0 = Product Catalog\n</li><li>SPSREPORTCENTER#0 = Report Center\n</li><li>SPSTOPIC#0 = Topic Area Template</li></ul><p>Existing classic publishing enabled site collections are unaffected and can continue regular usage, including creation of sub sites.</p><p><b>When this will happen</b></p><p>Both changes, the extended custom scripting governance and the new classic publishing restrictions, will take effect starting <b>September 15, 2025</b>.</p><p><b>How this will affect your organization</b><br></p><ul><li>When custom scripting is disabled in classic publishing sites, users will no longer be able to use script editor web parts, create custom master pages or page layouts, and utilize several other features. More details on features affected when custom scripting is disabled can be viewed in <a href=\"https://learn.microsoft.com/en-us/sharepoint/allow-or-prevent-custom-script#features-affected-when-custom-script-is-blocked\" target=\"_blank\">this documentation</a>.</li></ul><p>\n</p><ul><li>With the change to stop the creation of new classic publishing site collections and publishing feature activation, SharePoint admins will no longer be able to create new classic publishing enabled site collections or enable publishing features at site collection level.</li></ul><p><b>What you need to do to prepare</b></p><p>We recommend taking the following actions to prepare for these upcoming changes.</p><p>\n</p><p>1.\tInform owners of the classic publishing sites in your organization of these upcoming changes. Promote switching to use of Modern sites. Refer to <a href=\"https://learn.microsoft.com/sharepoint/dev/transform/modernize-guidance\" target=\"_blank\">this guide</a>.</p><p>2. The following tenant-level opt-out operation, used to allow custom scripting changes in classic publishing sites, will be retired starting <b>March 15, 2026.</b> Please ensure appropriate actions are taken ahead of this change.</p><p><code>Set-SPOTenant -DelayDenyAddAndCustomizePagesEnforcementOnClassicPublishingSites $true</code></p><p>3. Customers may still temporarily opt out of custom scripting enforcement for a specific site (any template) with tenant admin approval. This opt-out is effective for 24 hours&nbsp;and can be enabled using the following PowerShell command:</p><p><code>Set-SPOSite &lt;SiteURL&gt;&nbsp;</code></p><p>4.\tIf you need to allow the creation of new classic publishing site collections or enable publishing feature activations, use the following PowerShell command set the flag to allow.</p><p><code>Set-SPOTenant -AllowClassicPublishingSiteCreation $true</code></p><p>NOTE: </p><ul><li>You need to install the latest (<a href=\"https://www.microsoft.com/en-us/download/details.aspx?id=35588&amp;msockid=1928b372f07766b62b63a78cf1426719\" target=\"_blank\">16.0.26211.12010</a> or higher) SharePoint Online Management Shell in order to run the commands above.</li><li>The DelayDenyAddAndCustomizePagesEnforcementOnClassicPublishingSites command is scheduled to end starting on <b>March 15, 2026,</b> while all other commands are expected to remain functional beyond that date.&nbsp;</li></ul><p><b>Compliance considerations</b></p><p><b>\n</b></p><p>There is no impact or change to compliance.</p><p><b>Referenced content</b>\n</p><p><a href=\"https://learn.microsoft.com/en-us/sharepoint/security-considerations-of-allowing-custom-script\" target=\"_blank\">Security considerations of allowing custom script - SharePoint in Microsoft 365 | Microsoft Learn</a></p><p><a href=\"https://learn.microsoft.com/en-us/sharepoint/allow-or-prevent-custom-script\" target=\"_blank\">Allow or prevent custom script - SharePoint in Microsoft 365 | Microsoft Learn</a></p><p><a href=\"https://learn.microsoft.com/en-us/sharepoint/dev/transform/modernize-guidance\" target=\"_blank\">SharePoint modernization guidance | Microsoft Learn</a></p><p><br></p><p>\n</p><p>\n</p><p>\n</p><p></p><p></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Starting September 15, 2025, SharePoint Online will disable custom scripting by default on classic publishing sites, block creation of new classic publishing sites, and prevent publishing feature activation. New settings allow site property bag updates without enabling custom scripting. Temporary opt-outs via PowerShell are available until March 15, 2026."
+      }
+    ],
+    "EndDateTime": "2026-11-15T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1117115",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-07-29T14:25:16.5Z",
+    "Services": [
+      "SharePoint Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2025-07-18T00:06:36Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "Admin impact"
+    ],
+    "Title": "Updates to custom scripting in sites and Classic Publishing site creation",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": "2026-08-04T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>Introduction</b></b></p><p>We’re <b>retiring</b> the <b>Exchange Web Services (EWS)–based controls</b> used to enable or disable Personal Bookings (Bookings with me) in <i>Microsoft Bookings</i>. Beginning August 5, 2026, access to Personal Bookings will be managed exclusively through OWA Mailbox Policy settings.</p><p>This change aligns with Microsoft’s Exchange Online management and security principles, while providing a single, consistent administrative experience.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Now: </b>The OWA Mailbox Policy setting for Personal Bookings is available.</li><li><b>August 5, 2026: </b>EWS‑based Personal Bookings controls will be retired.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 administrators managing Microsoft Bookings and Exchange Online</li><li>Organizations currently using EWS organization configuration or per‑user CAS mailbox settings to control Personal Bookings</li></ul><p><i>What will happen</i></p><ul><li><b>After August 5, 2026</b>, admins will <b>no longer</b> be able to manage Personal Bookings access using:<ul><li><code>Set-OrganizationConfig</code> (EWS settings)</li><li>EWS‑related parameters in <i>Set-CASMailbox</i></li></ul></li><li>The default OWA Mailbox Policy is tenant‑configurable and may already include customized Personal Bookings settings.</li><li><b>Any existing EWS‑based Personal Bookings configuration will be ignored.</b></li><li>Access to Personal Bookings will be determined only by the <b>OWA Mailbox Policy</b> assigned to the user.</li><li>If no custom OWA Mailbox Policy is assigned to a user, Personal Bookings availability will follow the settings configured in the <i>tenant’s default OWA Mailbox Policy </i>(<code>OwaMailboxPolicy-Default</code>).</li><li>If your default OWA Mailbox Policy already reflects your intended Personal Bookings access state, no additional changes are required.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>Administrators should<b> complete migration</b> of any existing EWS‑based Personal Bookings controls to OWA Mailbox Policy <b>before August 5, 2026,</b> to avoid unintended changes to user access.</p><p>The following steps require Exchange Online PowerShell.</p><p>There is no change to the Personal Bookings user experience. This change affects only how administrators manage access.</p><p><b>Migrate your existing EWS‑based Personal Bookings controls to the new OWA Mailbox Policy</b></p><p><b>Review your current EWS‑based configuration</b></p><ul><li>Organization‑wide:</li></ul><p></p><p><code>Get-OrganizationConfig | Select-Object EwsEnabled,EwsApplicationAccessPolicy,EwsBlockList,EwsAllowList</code></p><ul><li>Per user:</li></ul><p><code>Get-CASMailbox -Identity </code></p><p><b>Configure Personal Bookings using OWA Mailbox Policy</b></p><p><b>Disable Personal Bookings for the entire organization</b></p><ul><li>Admin should run following PowerShell commands:</li></ul><p><code>Set-OwaMailboxPolicy -Identity \"OwaMailboxPolicy-Default\" -PersonalBookingsDisabled $true</code></p><ul><li>Verification:</li></ul><p><code>Get-OwaMailboxPolicy -Identity \"OwaMailboxPolicy-Default\" | Select PersonalBookingsDisabled</code></p><p><b>Enable Personal Bookings for specific users only</b></p><ul></ul><p></p><ul><li>Disable Personal Bookings org‑wide using the steps above.</li><li>Create a custom policy:</li></ul><p><code>New-OwaMailboxPolicy -Name \"BwmEnablePolicy\"</code></p><ul><li>Assign the policy to selected users:</li></ul><p><code>Set-CASMailbox -Identity &lt;smtp&gt;</code></p><p><b>Disable Personal Bookings for specific users only (all others are enabled)</b></p><ul></ul><p></p><ul><li>Ensure Personal Bookings is enabled org‑wide:</li></ul><p><code>Set-OwaMailboxPolicy -Identity \"OwaMailboxPolicy-Default\" -PersonalBookingsDisabled $false</code></p><ul><li>Create and configure a custom policy:</li></ul><p><code>New-OwaMailboxPolicy -Name \"BwmDisablePolicy\"\n</code></p><p><code>Set-OwaMailboxPolicy -Identity \"BwmDisablePolicy\" -PersonalBookingsDisabled $true</code></p><ul><li>Assign the policy:<p></p></li></ul><p></p><p><b>After migrating</b></p><ul><li>Validate assigned OWA Mailbox Policies.</li><li>Remove any EWS allow or block list entries related to Personal Bookings.</li><li>Update internal administrative documentation.</li><li>Notify helpdesk and Exchange administrators of the change.</li></ul><p>Learn more: <a href=\"https://learn.microsoft.com/microsoft-365/bookings/bookings-in-outlook?view=o365-worldwide\" target=\"_blank\">Turn off Personal Bookings | Microsoft Bookings | Microsoft 365 | Microsoft Learn</a></p><p><b><b>Compliance considerations</b></b></p><table><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does this change include an admin control?</td><td>Yes. Control of Personal Bookings access moves to OWA Mailbox Policy, which can be assigned per user.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft is retiring EWS-based controls for Personal Bookings in Microsoft Bookings on August 5, 2026. After that, access will be managed only via OWA Mailbox Policy settings. Administrators must migrate existing EWS configurations to OWA policies before this date to maintain control."
+      }
+    ],
+    "EndDateTime": "2026-09-05T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1418559",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-07-29T14:23:49.853Z",
+    "Services": [
+      "Microsoft Bookings"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-07-07T02:06:54Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Action required: Retirement of EWS-based Personal Bookings controls (Microsoft Bookings)",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p>\n<p>Microsoft is introducing<b> Custom templates in Microsoft Planner</b>, allowing users to convert existing plans into reusable templates that can be shared across Microsoft 365 groups. This capability helps organizations standardize recurring work, reduce setup effort, improve consistency, and accelerate project creation.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=512431\" target=\"_blank\">512431</a>.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Beginning in <b>early July 2026</b>; expected to complete by <b>late July 2026</b></li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Users with Microsoft Planner access</li>\n<li>Members of Microsoft 365 Groups with Planner plans</li>\n<li>Teams using recurring project workflows</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>Microsoft Planner</li>\n<li>Microsoft 365 Groups</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Users can publish existing plans as templates using <b>Share &gt; Publish as template</b>.</li>\n<li>Templates can include tasks, buckets, labels, goals, notes, checklists, and attachment links.</li>\n<li>Users can create new plans from <b>Shared </b>and <b>Created by me</b> template galleries.</li>\n<li>Templates are shared at the Microsoft 365 Group level.</li>\n<li>New plans created from templates reset task progress and status.</li>\n<li>Changes to templates do not update previously created plans.</li>\n<li>Any Microsoft 365 Group member can delete a shared template.</li>\n<li>The feature is <b>enabled by default</b>.</li>\n<li><b>No new admin configuration is required</b>.</li>\n<li>Existing Planner and Microsoft 365 Group permissions continue to apply.</li>\n</ul>\n\n<p><b><b>Action Required/Recommendations:</b></b></p><p><b>No administrative action is required.</b></p><p>Recommended actions:</p><ul><li>Review internal Planner training materials and documentation to include template functionality.</li><li>Notify Planner users and project teams about the new capability.</li><li>Review Microsoft 365 Group governance policies, as group membership determines template visibility and usage.</li><li>Educate users that:<ul><li>Templates are shared assets within the Microsoft 365 Group.</li><li>Any group member can delete a template.</li><li>Plans created from templates do not inherit future template updates.</li></ul></li><li>Consider establishing naming and lifecycle standards for templates used across departments.</li></ul>\n\n<p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/planner/export-manage-custom-template\" target=\"_blank\">Export and manage Planner custom template data - Microsoft Planner | Microsoft Learn</a></li><li><a href=\"https://support.microsoft.com/planner/use-custom-templates-microsoft-planner\" target=\"_blank\">Use Custom templates in Microsoft Planner | Microsoft Support</a></li></ul><p><b><b>Compliance Considerations:</b></b></p>\n\n<table>\n<tbody><tr>\n<th>Compliance Consideration</th>\n<th>Explanation</th>\n</tr>\n<tr>\n<td>Does the change alter how existing customer data is processed, stored, or accessed?</td>\n<td>Planner plan content (tasks, buckets, labels, goals, notes, checklists, and attachment links) can be reused through templates, providing a new way to access and replicate existing plan data.</td>\n</tr>\n<tr>\n<td>Does the change provide a new way of communicating between users, tenants, or subscriptions?</td>\n<td>Templates are shared and discoverable by Microsoft 365 group members, improving collaboration, but they do not introduce a new communication channel.</td>\n</tr>\n<tr>\n<td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td>\n<td>Shared templates may become additional Planner artifacts that organizations may choose to include in governance, retention, and compliance reviews.</td>\n</tr>\n<tr>\n<td>Does the change modify how users can access, export, delete, or correct their personal data within Microsoft 365 services?</td>\n<td>Users can create, reuse, and delete shared templates within Microsoft 365 groups, potentially affecting how Planner content is reused and managed.</td>\n</tr>\n<tr>\n</tr>\n</tbody></table><br>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "512431"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Planner will introduce custom templates in July 2026, enabling users to convert plans into reusable templates shared within Microsoft 365 Groups. This standardizes workflows, improves consistency, and accelerates project creation. Templates include tasks and details, reset progress when reused, and require no admin setup."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2026-08-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1413299",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-07-29T14:23:01.223Z",
+    "Services": [
+      "Planner"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-07-03T02:04:38Z",
+    "Tags": [
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Custom templates in Microsoft Planner",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
     "ActionRequiredByDateTime": null,
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -442,7 +701,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348208Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348209Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234821Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073342Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073343Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073344Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -540,7 +799,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348813Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348814Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348815Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073943Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073944Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073945Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -967,54 +1226,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated July 27, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p><b>Azure PST Import</b> provides a structured, PowerShell-based way for administrators to import PST files stored in <b>Azure Blob Storage</b> into <b>Exchange Online mailboxes</b>, which are commonly used to store archived Outlook mailbox content. This capability helps organizations migrate historical email data in a controlled and auditable way by validating readiness before importing and by providing reports throughout the process. The process starts by creating an Azure PST Import endpoint to establish the connection between Azure storage and Exchange Online. Administrators then run a migration batch in <b>Analyze</b> mode to review readiness and validate the input before proceeding. Once the analysis results are reviewed, they use those results to create and start the import batch, which begins importing the PST files into the specified mailboxes.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=557559\" target=\"_blank\">557559</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li>Public Preview: We will begin rolling out <b>mid-September 2026</b> and expect to complete by <b>late September 2026</b>.</li><li>Worldwide: We will begin rolling out <b>late October 2026</b> and expect to complete by <b>mid-November 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 administrators managing <b>Exchange Online</b></li><li>Administrators using <b>Microsoft Purview Data Lifecycle Management</b></li><li>Organizations that import PST files into user or archive mailboxes</li></ul><p><i>What will happen</i></p><ul><li>Administrators complete the Azure PST Import process using <b>PowerShell cmdlets only</b>.</li><li>The workflow includes:<ul><li>Creating an Azure PST Import migration endpoint</li><li>Running a migration batch in <b>Analyze</b> mode to validate readiness</li><li>Reviewing analysis results and reports</li><li>Creating and starting the <b>import</b> batch</li><li>Performing post-import cleanup</li></ul></li><li>This experience is<b> not available through a graphical user interface (GUI)</b>.</li><li>Existing mailbox prerequisites and quotas are validated before importing begins.</li><li>There is<b> no direct user impact</b>; the feature is admin-driven.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>Ensure your <b>Azure storage account and container exist</b> and are reachable; the endpoint creation cmdlet validates both during setup.</li><li>Grant the <b>Storage Blob Data Reader </b>role to the <b>Office 365 Import Service</b> app on the target storage account. Without this permission, creating the Azure PST Import endpoint will fail.</li><li>Prepare your <b>batch input files (XML and/or CSV) </b>and run the migration batch in <b>Analyze</b> mode first so the service can validate readiness before importing.</li><li>Confirm analysis prerequisites for target mailboxes:<ul><li>Appropriate license assigned</li><li>Mailbox is not inactive or soft-deleted</li><li>Recipient type is <b>UserMailbox</b></li><li>Archive is enabled if importing to archive</li><li>Quota validations (ArchiveQuota / RecoverableItemsQuota) occur during analysis</li></ul></li><li>Validate PST files ahead of time:<ul><li>Analysis verifies that all specified PST files exist</li><li>PST file size is validated during analysis</li></ul></li></ul><p>For detailed cmdlet usage and guidance, review the Azure PST Import documentation on Microsoft Learn.</p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. The feature enables administrators to import existing customer email data contained in PST files into Exchange Online mailboxes, where the data is then stored and processed according to existing Exchange Online behaviors.</td></tr><tr><td>Does the change store customer data, and if so, where is it stored?</td><td>Yes. PST file contents are imported into Exchange Online mailboxes within the customer’s Microsoft 365 tenant and are stored according to the tenant’s data residency and storage configuration.</td></tr><tr><td>Does the change modify retention policies, holds, or deletion workflows?</td><td>Yes. Once imported, mailbox data becomes subject to any existing Microsoft Purview retention policies, retention labels, holds, and deletion workflows already configured for the target mailboxes.</td></tr><tr><td>Does the change affect audit logging capabilities?</td><td>Yes. Administrative actions related to PST import and the resulting mailbox changes are logged using existing Exchange Online and Microsoft Purview audit logging mechanisms.</td></tr><tr><td>Does the change alter how admins can monitor or demonstrate compliance?</td><td>Yes. Administrators can use existing Exchange Online and Microsoft Purview reporting and audit tools to monitor PST import activity and demonstrate compliance after the data is imported.</td></tr><tr><td>Does the change include an admin control?</td><td>Yes. The feature is controlled through administrator access to PowerShell cmdlets and Azure role assignments, including permissions on the Azure storage account used for PST import.</td></tr></tbody></table><p><b></b></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "557559"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Azure PST Import enables Microsoft 365 admins to import PST files from Azure Blob Storage into Exchange Online mailboxes using PowerShell. It includes readiness validation, reporting, and compliance controls. Rollout begins mid-September 2026 (public preview) and late October 2026 (worldwide). No GUI; admin-driven process."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Web"
-      }
-    ],
-    "EndDateTime": "2026-12-28T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1281505",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-07-27T18:04:51.1Z",
-    "Services": [
-      "Microsoft Purview"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-15T23:29:09Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Purview: Data Lifecycle Management- Azure PST Import",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b><b>What and Why:</b></b></p>\n<p>Microsoft is making the <b>Microsoft 365 Admin agent</b> generally available for all Microsoft 365 administrators. The agent provides a unified AI-powered administrative experience across Microsoft 365 admin center and Microsoft 365 Copilot Chat, helping administrators discover, configure, troubleshoot, govern, and manage Microsoft 365 services through natural language conversations. This supports enterprise-ready AI by simplifying administration while respecting existing role-based access controls and requiring administrator approval before any changes are made.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Available now</li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>All users assigned a Microsoft Entra built-in administrator role.</li>\n<li>Global Administrators, AI Administrators, Teams Administrators, SharePoint Administrators, and other Microsoft 365 administrators.</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>Microsoft 365 admin center</li>\n<li>Microsoft 365 Copilot Chat</li>\n<li>Microsoft Entra ID</li>\n<li>Microsoft 365 Copilot</li>\n<li>Agent management services</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>The Microsoft 365 Admin agent will be pre-installed for users assigned a Microsoft Entra built-in administrator role.</li><li>Eligible administrators can use the Microsoft 365 Admin agent at no additional cost.</li><li>The same Microsoft 365 Admin agent experience will be available in both Microsoft 365 admin center and Microsoft 365 Copilot Chat.</li><li>Administrators can use natural language conversations to discover, configure, troubleshoot, and manage Microsoft 365 services, agents, and Copilot.</li><li>Administrators can perform tasks such as managing users, licenses, groups, agent governance, service health, and Message Center activities.</li><li>The agent respects existing Microsoft Entra <b>role-based access controls (RBAC)</b> and only exposes actions permitted by the administrator's assigned roles.</li><li>Administrators can move between Microsoft 365 Copilot Chat and Microsoft 365 admin center without losing conversational context.</li></ul><p><b>Note:</b></p><ul><li>The Microsoft 365 Admin agent is pre-installed for users assigned a Microsoft Entra built-in administrator role.</li><li>Administrators can use the agent at no additional cost.</li></ul><p><b>Important:</b></p><ul><li>The administrator remains in control of all actions.</li><li>Any write or execute action proposed by the Microsoft 365 Admin agent requires explicit administrator confirmation before it is performed.</li><li>The Microsoft 365 Admin agent never makes changes to your tenant automatically.</li><li>Administrative actions performed through the agent are recorded in the underlying workload audit logs.</li><li>Organizations can block or restrict the agent through <b>Microsoft 365 admin center &gt; Agents &gt; Registry</b>.</li>\n</ul>\n\n<p><b><b>Action Required/Recommendations:</b></b></p>\n<p>No action is required to enable this feature.</p>\n<ul>\n<li>Review the documentation: <a href=\"https://learn.microsoft.com/microsoft-365/copilot/copilot-ai-admin-agent\" target=\"_blank\">Microsoft 365 Admin agent documentation</a>.</li>\n<li>Validate Microsoft Entra role assignments to ensure administrators have appropriate permissions for the workloads they manage.</li>\n<li>Communicate this new capability to helpdesk and Microsoft 365 administration teams.</li>\n<li>Review governance and deployment policies for AI agents within your organization.</li>\n<li>If you want to restrict use of the Microsoft 365 Admin agent, navigate to <b>Microsoft 365 admin center &gt; Agents &gt; Registry </b>and block or scope deployment of the agent.</li>\n<li>Review audit monitoring procedures and compliance processes for administrative actions performed through the agent.</li>\n<li>Access the agent in Copilot Chat:\n<a href=\"https://m365.cloud.microsoft/chat/?titleId=P_c0fd1ab0-cbf3-7eb9-1a7d-2d823549ef31\">Microsoft 365 Admin agent</a>.</li>\n</ul>\n\n<p><b><b>Compliance Considerations:</b></b></p>\n\n<table border=\"1\" cellpadding=\"4\" cellspacing=\"0\">\n<tbody><tr>\n<th>Consideration</th>\n<th>Explanation</th>\n</tr>\n<tr>\n<td>Introduces or significantly modifies AI/ML or agent capabilities that interact with customer data</td>\n<td>The Microsoft 365 Admin agent provides a new AI-powered administrative interface that can access tenant information and perform actions according to the administrator's existing permissions.</td>\n</tr>\n<tr>\n<td>Provides end users a new way of interacting with generative AI</td>\n<td>Administrators can manage Microsoft 365 workloads through natural language prompts in Microsoft 365 admin center and Microsoft 365 Copilot Chat.</td>\n</tr>\n<tr>\n<td>Alters how admins can monitor, report on, or demonstrate compliance activities</td>\n<td>Administrators can use natural language prompts to review Message Center content, service health, Copilot usage, licensing, and organizational insights.</td>\n</tr>\n<tr>\n<td>Includes an admin control</td>\n<td>Organizations can block or scope deployment of the Microsoft 365 Admin agent through Microsoft 365 admin center &gt; Agents &gt; Registry.</td>\n</tr>\n</tbody></table>",
       "ContentType": "html"
     },
@@ -1088,45 +1299,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft 365 admin center - Usage reports: Agent usage (preview)",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": "2026-09-01T07:00:00Z",
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated July 27, 2026: We have updated the content; the release of this feature is still paused at this time. We will announce via Message center when we are ready to proceed. We apologize for any inconvenience.&nbsp;</p><p><b><b>What and Why</b></b></p> <p>Microsoft Teams is updating the port and domain requirements for Real-Time Messaging Protocol (RTMP)-In, which enables organizers to stream content into meetings, webinars, and town halls using external hardware or software encoders. This change improves reliability and scalability for Teams streaming scenarios.</p> <p><b><b>Rollout Schedule</b></b></p> <ul> <li><b>General Availability (Worldwide)</b>: We will announce via Message center when we are ready to proceed.</li> </ul> <p><b><b>Impact on Your Organization</b></b></p> <p><i>Who is affected</i></p> <ul> <li>Admins managing Microsoft Teams meetings, webinars, and town halls</li> <li>Event organizers who use RTMP-In with external encoders</li> </ul> <p><i>Platforms/Services</i></p> <ul> <li>Microsoft Teams (meetings, webinars, and town halls)</li> </ul> <p><i>What will happen</i></p> <ul> <li>New meetings, webinars, and town halls that use RTMP-In will require updated network access.</li> <li>Admins must allow the required ports and domain endpoints for RTMP-In streaming.</li> <li>Existing meetings, webinars, and town halls already configured with RTMP-In will continue to function through the end of 2026.</li> <li>RTMP-In continues to allow organizers to stream content into Teams from external hardware or software encoders.</li> <li>Without these updates, organizers may be unable to create or stream RTMP-In events, and newly created events may fail after <b>December 31, 2026</b>.</li> </ul> <p><b>Required network endpoints:</b></p> <ul> <li><b>Ports: 50118 and 50119 (RTMP/RTMPS)</b></li> <li><b>Domain: *.rtmpingest.mcr.teams.cloud.microsoft</b></li> </ul> <p><b><b>Action Required/Recommendations</b></b></p> <p><b>Action required by January 31, 2027.</b></p> <ul> <li>Review your organization’s firewall and network configuration.</li> <li><b>Allow outbound access to:</b></li> <ul> <li><b>Ports 50118 and 50119 (RTMP/RTMPS)</b></li> <li><b>Domain: *.rtmpingest.mcr.teams.cloud.microsoft</b></li> </ul> <li>Validate connectivity against official Microsoft 365 endpoint and firewall guidance.</li> <li>Communicate this change to your networking and IT teams.</li> <li>Update internal documentation if you support RTMP-In streaming scenarios.</li> </ul> <p><b>Learn more:&nbsp;</b><a href=\"https://learn.microsoft.com/microsoftteams/meetings-rtmp-in\" target=\"_blank\">Manage RTMP-In for Teams meetings, webinars, and town halls | Microsoft Teams | Microsoft Learn </a> </p> <p><b><b>Compliance considerations</b></b></p> <p>No compliance considerations identified. Review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "preventOrFixIssue",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams is updating RTMP-In port and domain requirements to improve streaming reliability. Admins must allow outbound access to ports 50118, 50119, and domain *.rtmpingest.mcr.teams.cloud.microsoft by January 31, 2027. Existing RTMP-In events work until December 31, 2026. The feature release is currently paused."
-      }
-    ],
-    "EndDateTime": "2027-01-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1387814",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-07-27T17:18:27.393Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-06-11T23:24:56Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: RTMP-In port and domain changes required",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -2081,7 +2253,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347459Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234746Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347461Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347462Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347463Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072606Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072608Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072608Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072609Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407261Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2133,7 +2305,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234629Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346292Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346293Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071557Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407156Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071561Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2390,54 +2562,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Teams: Governance for built-in agents in the Teams admin center",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated July 20, 2026: This feature was temporarily rolled back, and we have updated the timeline. Thank you for your patience. </p><p><strong><b>Introduction</b></strong></p><p><strong>Microsoft Teams</strong> is introducing <strong>two new system chat sections</strong> called <strong>Muted chats</strong> and <strong>Meeting chats</strong>. These sections allow users to organize their chat and channels list by grouping muted conversations and meeting chats into dedicated sections that users can turn on or off. The new Meeting chats section will replace the Meeting chats filter, that was previously available at the top of the chat and channel list. </p><p>This message is associated with <strong>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=559605\" rel=\"noopener noreferrer\" target=\"_blank\">559605</a></strong>.</p><p><strong><b>When this will happen</b></strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>General Availability (Worldwide, GCC, GCC High, DoD): </strong>Rollout begins in<strong> mid-August 2026 </strong>(previously early May) and is expected to complete by <strong>end of September 2026</strong> (previously end of July).</li></ol><p><strong><b>How this affects your organization</b></strong></p><p><em>Who is affected</em></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>All Microsoft Teams users in Microsoft 365 tenants, including Worldwide, GCC, GCC High, and DoD</li></ol><p><em>What will happen</em></p><p>Users may see up to two new system sections in their Teams chat and channels list:</p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Muted chats section</strong></li><li data-list=\"bullet\" class=\"ql-indent-1\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Enabled by default.</li><li data-list=\"bullet\" class=\"ql-indent-1\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Muted chats that are not in Favorites or user‑created sections automatically move to this section.</li><li data-list=\"bullet\" class=\"ql-indent-1\"><span class=\"ql-ui\" contenteditable=\"false\"></span>The section appears at the bottom of the chat list.</li><li data-list=\"bullet\" class=\"ql-indent-1\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Unread chats continue to appear bold.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Meeting chats section</strong></li><li data-list=\"bullet\" class=\"ql-indent-1\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Disabled by default.</li><li data-list=\"bullet\" class=\"ql-indent-1\"><span class=\"ql-ui\" contenteditable=\"false\"></span>When enabled by the user, meeting chats that are not in Favorites or user‑created sections automatically move to this section.</li><li data-list=\"bullet\" class=\"ql-indent-1\"><span class=\"ql-ui\" contenteditable=\"false\"></span>The section appears below the main chats list.</li><li data-list=\"bullet\" class=\"ql-indent-1\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Unread chats continue to appear bold and contribute to badge counts.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Chats in <em>Favorites</em> or <em>user‑created sections</em> are not moved.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Users can drag and drop these sections to reorder them.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>There are <strong>no admin controls for these sections</strong>.</li></ol><p><strong><b>What you can do to prepare</b></strong></p><p>No admin action is required.</p><p>You may want to:</p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Inform users that new chat sections are available and that they can turn them on or off.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Notify helpdesk staff that muted chats may appear in a <em>separate section</em> by default.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Direct users to <strong><em>Settings &gt; Chats and channels </em></strong>to manage these sections.</li></ol><p><strong><b>Compliance considerations</b></strong></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "559605"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will introduce two new chat sections—Muted chats (enabled by default) and Meeting chats (disabled by default)—to organize chats. Rollout starts mid-August 2026, completing by end of September. Users can enable/disable and reorder these sections; no admin action or controls are required."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Android, Desktop, iOS, Mac, Web"
-      }
-    ],
-    "EndDateTime": "2026-10-30T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1269864",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-07-21T16:42:38.84Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-03T22:23:30Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: New chat sections for muted and meeting chats",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -3063,7 +3187,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348719Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234872Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234872Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073851Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073852Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073853Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -4752,7 +4876,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348147Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348147Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348148Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073295Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073296Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073297Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -5392,7 +5516,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346758Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346759Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234676Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071923Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071924Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071925Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -5634,7 +5758,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348444Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348445Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348445Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073582Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073583Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073584Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -5685,7 +5809,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1227087\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347585Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1227087\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347587Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1227087\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072744Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1227087\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072745Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -7875,7 +7999,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346995Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346996Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346996Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346997Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346998Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072176Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072177Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072178Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072179Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407218Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8582,7 +8706,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347133Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347134Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347135Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072313Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072314Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072315Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8633,7 +8757,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.23473Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347301Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347303Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407248Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072481Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072482Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8684,7 +8808,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347828Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234783Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234783Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072973Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072974Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072975Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8735,7 +8859,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347665Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347666Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347667Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072824Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072825Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072826Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8880,7 +9004,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1279071\",\"Platform\":\"IOS\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347973Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1279071\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347975Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1279071\",\"Platform\":\"IOS\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073128Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1279071\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073129Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -9090,45 +9214,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Teams: Private channels increased limits and transition to group compliance",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": "2026-08-04T07:00:00Z",
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>Introduction</b></b></p><p>We’re <b>retiring</b> the <b>Exchange Web Services (EWS)–based controls</b> used to enable or disable Personal Bookings (Bookings with me) in <i>Microsoft Bookings</i>. Beginning August 5, 2026, access to Personal Bookings will be managed exclusively through OWA Mailbox Policy settings.</p><p>This change aligns with Microsoft’s Exchange Online management and security principles, while providing a single, consistent administrative experience.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Now: </b>The OWA Mailbox Policy setting for Personal Bookings is available.</li><li><b>August 5, 2026: </b>EWS‑based Personal Bookings controls will be retired.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft 365 administrators managing Microsoft Bookings and Exchange Online</li><li>Organizations currently using EWS organization configuration or per‑user CAS mailbox settings to control Personal Bookings</li></ul><p><i>What will happen</i></p><ul><li><b>After August 5, 2026</b>, admins will <b>no longer</b> be able to manage Personal Bookings access using:<ul><li><code>Set-OrganizationConfig</code> (EWS settings)</li><li>EWS‑related parameters in <i>Set-CASMailbox</i></li></ul></li><li>The default OWA Mailbox Policy is tenant‑configurable and may already include customized Personal Bookings settings.</li><li><b>Any existing EWS‑based Personal Bookings configuration will be ignored.</b></li><li>Access to Personal Bookings will be determined only by the <b>OWA Mailbox Policy</b> assigned to the user.</li><li>If no custom OWA Mailbox Policy is assigned to a user, Personal Bookings availability will follow the settings configured in the <i>tenant’s default OWA Mailbox Policy </i>(<code>OwaMailboxPolicy-Default</code>).</li><li>If your default OWA Mailbox Policy already reflects your intended Personal Bookings access state, no additional changes are required.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>Administrators should<b> complete migration</b> of any existing EWS‑based Personal Bookings controls to OWA Mailbox Policy <b>before August 5, 2026,</b> to avoid unintended changes to user access.</p><p>The following steps require Exchange Online PowerShell.</p><p>There is no change to the Personal Bookings user experience. This change affects only how administrators manage access.</p><p style=\"\"><b>Migrate your existing EWS‑based Personal Bookings controls to the new OWA Mailbox Policy</b></p><p><b>Review your current EWS‑based configuration</b></p><ul><li>Organization‑wide:</li></ul><p></p><p style=\"margin-left: 75px;\"><code>Get-OrganizationConfig | Select-Object EwsEnabled,EwsApplicationAccessPolicy,EwsBlockList,EwsAllowList</code></p><ul><li>Per user:</li></ul><p style=\"margin-left: 75px;\"><code>Get-CASMailbox -Identity <smtp> | Select EwsEnabled,EwsApplicationAccessPolicy,EwsBlockList,EwsAllow</smtp></code></p><p><b>Configure Personal Bookings using OWA Mailbox Policy</b></p><p><b>Disable Personal Bookings for the entire organization</b></p><ul><li>Admin should run following PowerShell commands:</li></ul><p style=\"margin-left: 75px;\"><code>Set-OwaMailboxPolicy -Identity \"OwaMailboxPolicy-Default\" -PersonalBookingsDisabled $true</code></p><ul><li>Verification:</li></ul><p style=\"margin-left: 75px;\"><code>Get-OwaMailboxPolicy -Identity \"OwaMailboxPolicy-Default\" | Select PersonalBookingsDisabled</code></p><p><b>Enable Personal Bookings for specific users only</b></p><ul></ul><p></p><ul><li>Disable Personal Bookings org‑wide using the steps above.</li><li>Create a custom policy:</li></ul><p style=\"margin-left: 75px;\"><code>New-OwaMailboxPolicy -Name \"BwmEnablePolicy\"</code></p><ul><li>Assign the policy to selected users:</li></ul><p style=\"margin-left: 75px;\"><code>Set-CASMailbox -Identity &lt;smtp&gt;<smtp>&nbsp;-OwaMailboxPolicy \"BwmEnablePolicy\"</smtp></code></p><p><b>Disable Personal Bookings for specific users only (all others are enabled)</b></p><ul></ul><p></p><ul><li>Ensure Personal Bookings is enabled org‑wide:</li></ul><p style=\"margin-left: 75px;\"><code>Set-OwaMailboxPolicy -Identity \"OwaMailboxPolicy-Default\" -PersonalBookingsDisabled $false</code></p><ul><li>Create and configure a custom policy:</li></ul><p style=\"margin-left: 75px;\"><code>New-OwaMailboxPolicy -Name \"BwmDisablePolicy\"\n</code></p><p style=\"margin-left: 75px;\"><code>Set-OwaMailboxPolicy -Identity \"BwmDisablePolicy\" -PersonalBookingsDisabled $true</code></p><ul><li>Assign the policy:<p></p></li></ul><p style=\"margin-left: 75px;\"><font color=\"#c7254e\" face=\"Menlo, Monaco, Consolas, Courier New, monospace\">Set-CASMailbox -Identity &lt;smtp&gt; -OwaMailboxPolicy \"BwmDisablePolicy\"</font></p><p><b>After migrating</b></p><ul><li>Validate assigned OWA Mailbox Policies.</li><li>Remove any EWS allow or block list entries related to Personal Bookings.</li><li>Update internal administrative documentation.</li><li>Notify helpdesk and Exchange administrators of the change.</li></ul><p>Learn more: <a href=\"https://learn.microsoft.com/microsoft-365/bookings/bookings-in-outlook?view=o365-worldwide\" target=\"_blank\">Turn off Personal Bookings | Microsoft Bookings | Microsoft 365 | Microsoft Learn</a></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does this change include an admin control?</td><td>Yes. Control of Personal Bookings access moves to OWA Mailbox Policy, which can be assigned per user.</td></tr></tbody></table><p><b></b></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft is retiring EWS-based controls for Personal Bookings in Microsoft Bookings on August 5, 2026. After that, access will be managed only via OWA Mailbox Policy settings. Administrators must migrate existing EWS configurations to OWA policies before this date to maintain control."
-      }
-    ],
-    "EndDateTime": "2026-09-05T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1418559",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-07-07T02:07:57.86Z",
-    "Services": [
-      "Microsoft Bookings"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-07-07T02:06:54Z",
-    "Tags": [
-      "User impact",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Action required: Retirement of EWS-based Personal Bookings controls (Microsoft Bookings)",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -9519,52 +9604,6 @@
       "Admin impact"
     ],
     "Title": "New in Catalog Management: Create custom group of sites",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>What and Why:</b></b></p>\n<p>Microsoft is introducing<b> Custom templates in Microsoft Planner</b>, allowing users to convert existing plans into reusable templates that can be shared across Microsoft 365 groups. This capability helps organizations standardize recurring work, reduce setup effort, improve consistency, and accelerate project creation.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=512431\" target=\"_blank\">512431</a>.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Beginning in <b>early July 2026</b>; expected to complete by <b>late July 2026</b></li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Users with Microsoft Planner access</li>\n<li>Members of Microsoft 365 Groups with Planner plans</li>\n<li>Teams using recurring project workflows</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>Microsoft Planner</li>\n<li>Microsoft 365 Groups</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Users can publish existing plans as templates using <b>Share &gt; Publish as template</b>.</li>\n<li>Templates can include tasks, buckets, labels, goals, notes, checklists, and attachment links.</li>\n<li>Users can create new plans from <b>Shared </b>and <b>Created by me</b> template galleries.</li>\n<li>Templates are shared at the Microsoft 365 Group level.</li>\n<li>New plans created from templates reset task progress and status.</li>\n<li>Changes to templates do not update previously created plans.</li>\n<li>Any Microsoft 365 Group member can delete a shared template.</li>\n<li>The feature is <b>enabled by default</b>.</li>\n<li><b>No new admin configuration is required</b>.</li>\n<li>Existing Planner and Microsoft 365 Group permissions continue to apply.</li>\n</ul>\n\n<p><b><b>Action Required/Recommendations:</b></b></p><p><b>No administrative action is required.</b></p><p style=\"box-sizing: border-box; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Recommended actions:</p><ul><li>Review internal Planner training materials and documentation to include template functionality.</li><li>Notify Planner users and project teams about the new capability.</li><li>Review Microsoft 365 Group governance policies, as group membership determines template visibility and usage.</li><li>Educate users that:<ul><li>Templates are shared assets within the Microsoft 365 Group.</li><li>Any group member can delete a template.</li><li>Plans created from templates do not inherit future template updates.</li></ul></li><li>Consider establishing naming and lifecycle standards for templates used across departments.</li></ul>\n\n<p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/planner/export-manage-custom-template\" target=\"_blank\" style=\"\">Export and manage Planner custom template data - Microsoft Planner | Microsoft Learn</a></li><li><a href=\"https://support.microsoft.com/planner/use-custom-templates-microsoft-planner\" target=\"_blank\" style=\"\">Use Custom templates in Microsoft Planner | Microsoft Support</a></li></ul><p><b><b>Compliance Considerations:</b></b></p>\n\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n<tbody><tr>\n<th>Compliance Consideration</th>\n<th>Explanation</th>\n</tr>\n<tr>\n<td>Does the change alter how existing customer data is processed, stored, or accessed?</td>\n<td>Planner plan content (tasks, buckets, labels, goals, notes, checklists, and attachment links) can be reused through templates, providing a new way to access and replicate existing plan data.</td>\n</tr>\n<tr>\n<td>Does the change provide a new way of communicating between users, tenants, or subscriptions?</td>\n<td>Templates are shared and discoverable by Microsoft 365 group members, improving collaboration, but they do not introduce a new communication channel.</td>\n</tr>\n<tr>\n<td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td>\n<td>Shared templates may become additional Planner artifacts that organizations may choose to include in governance, retention, and compliance reviews.</td>\n</tr>\n<tr>\n<td>Does the change modify how users can access, export, delete, or correct their personal data within Microsoft 365 services?</td>\n<td>Users can create, reuse, and delete shared templates within Microsoft 365 groups, potentially affecting how Planner content is reused and managed.</td>\n</tr>\n<tr>\n</tr>\n</tbody></table><br>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "512431"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Planner will introduce custom templates in July 2026, enabling users to convert plans into reusable templates shared within Microsoft 365 Groups. This standardizes workflows, improves consistency, and accelerates project creation. Templates include tasks and details, reset progress when reused, and require no admin setup."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac, Web"
-      }
-    ],
-    "EndDateTime": "2026-08-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1413299",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-07-03T02:04:44.287Z",
-    "Services": [
-      "Planner"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-07-03T02:04:38Z",
-    "Tags": [
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Custom templates in Microsoft Planner",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -10005,7 +10044,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"IOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346639Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346641Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"IOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071821Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071823Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -11117,7 +11156,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348326Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348327Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348328Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073473Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073474Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073475Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -11217,7 +11256,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348505Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348506Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348507Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407364Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073641Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073641Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -11317,7 +11356,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348391Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348392Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348393Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073523Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073524Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073525Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -11510,7 +11549,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346691Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346693Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346694Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407187Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071871Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071872Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12355,7 +12394,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1402306\",\"Platform\":\"IOS\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347534Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":\"StandardRelease\"},{\"RoadmapId\":0,\"McPostId\":\"MC1402306\",\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347535Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":\"StandardRelease\"}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1402306\",\"Platform\":\"IOS\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407269Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":\"StandardRelease\"},{\"RoadmapId\":0,\"McPostId\":\"MC1402306\",\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072691Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -12726,7 +12765,7 @@
     "Details": [
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346804Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346805Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346806Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346807Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071985Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071986Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071987Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4071988Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -13361,7 +13400,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347878Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347879Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234788Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347881Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347882Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073036Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073037Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073038Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073039Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407304Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17149,7 +17188,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347379Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347381Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407253Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072532Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17200,7 +17239,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348084Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348085Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348086Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073235Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073236Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073237Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17431,7 +17470,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346887Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346888Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2346889Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072063Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072064Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072065Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17656,7 +17695,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347619Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234762Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072776Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072777Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17708,7 +17747,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1234548\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347711Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1234548\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347712Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1234548\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347713Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1234548\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407287Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1234548\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072871Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1234548\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072872Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17759,7 +17798,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347224Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Linux\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347225Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347227Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347228Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072406Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Linux\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072408Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072408Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072409Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17993,7 +18032,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1324279\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348779Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324279\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234878Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1324279\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073909Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324279\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.407391Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -18899,7 +18938,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348023Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348024Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348025Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348026Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073163Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073164Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073165Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073166Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -20043,7 +20082,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.234777Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347772Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347772Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072926Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072927Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072928Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -20531,7 +20570,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1266026\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347414Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1266026\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2347415Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1266026\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072574Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1266026\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4072575Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -21123,7 +21162,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348254Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348255Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348256Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348258Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073403Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073404Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073405Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073406Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -21776,45 +21815,6 @@
       "User impact"
     ],
     "Title": "Changes to how users install Microsoft 365 apps from the Microsoft 365 Copilot app",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated January 29, 2026: We are updating this post as a reminder. Upcoming SharePoint Online changes may impact your organization. Please review the below.</p><p>We are implementing the following changes to custom scripting and classic publishing in SharePoint Online.</p><p><b>1. Disablement of custom scripting</b></p><p>Custom scripting will be disabled by default (setting DenyAddAndCustomizePages to 1 or $true) for sites created with the following templates:</p><ul><li>BLANKINTERNETCONTAINER#0 = Classic Publishing Portal Site\n</li><li>CMSPUBLISHING#0 = Classic Publishing Site\n</li><li>BLANKINTERNET#0 = Classic Publishing Site Blank</li><li>CSPCONTAINER#0 = SharePoint Embedded Site</li></ul><p>NOTE:\n</p><ul><li>Existing classic publishing sites created with the templates listed above will have custom scripting disabled by default. \n</li><li>Disabling custom scripting does not affect the execution of scripts that have already been added to a site or page.</li></ul><p>Refer to <a href=\"https://learn.microsoft.com/sharepoint/security-considerations-of-allowing-custom-script\" target=\"_blank\">this documentation</a> to learn more about the security considerations of ungoverned scripting.</p><p><b>2. Ability to set site property bag valued without requiring custom scripting enablement.</b></p><p>Users no longer need to set DenyAddAndCustomizePages to $false or 0 (i.e. enable custom scripting) in a site to manage site property bag values. We have introduced a new AllowWebPropertyBagUpdateWhenDenyAddAndCustomizePagesIsEnabled setting at the site level and at the tenant level to allow adding/managing site property bag values. Please see documentation here for <a href=\"https://learn.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps#-allowwebpropertybagupdatewhendenyaddandcustomizepagesisenabled\" target=\"_blank\">tenant level setting</a>&nbsp;and here for <a href=\"https://learn.microsoft.com/powershell/module/sharepoint-online/set-sposite?view=sharepoint-ps#-allowwebpropertybagupdatewhendenyaddandcustomizepagesisenabled\" target=\"_blank\">the site level setting.</a>&nbsp;</p><p><b>3. Classic publishing sites creation and feature activation changes</b></p><p>Users will no longer be able to create new classic publishing related site collections or activate publishing features in existing site collections. This applies to both UX and API interactions.</p><p>Sites collections with the following templates cannot be created:</p><ul><li>BLANKINTERNETCONTAINER#0 = Publishing Portal Site\n</li><li>CMSPUBLISHING#0 = Publishing Site\n</li><li>BLANKINTERNET#0 = Publishing Site Blank\n</li><li>ENTERWIKI#0 = Enterprise Wiki\n</li><li>SRCHCEN#0 = Enterprise Search Center\n</li><li>SPSSITES#0 = Site Directory\n</li><li>SPSNHOME#0 = News Home Site\n</li><li>PRODUCTCATALOG#0 = Product Catalog\n</li><li>SPSREPORTCENTER#0 = Report Center\n</li><li>SPSTOPIC#0 = Topic Area Template</li></ul><p style=\"\">Existing classic publishing enabled site collections are unaffected and can continue regular usage, including creation of sub sites.</p><p><b>When this will happen</b></p><p>Both changes, the extended custom scripting governance and the new classic publishing restrictions, will take effect starting <b>September 15, 2025</b>.</p><p><b>How this will affect your organization</b><br></p><ul><li>When custom scripting is disabled in classic publishing sites, users will no longer be able to use script editor web parts, create custom master pages or page layouts, and utilize several other features. More details on features affected when custom scripting is disabled can be viewed in <a href=\"https://learn.microsoft.com/en-us/sharepoint/allow-or-prevent-custom-script#features-affected-when-custom-script-is-blocked\" target=\"_blank\">this documentation</a>.</li></ul><p>\n</p><ul><li>With the change to stop the creation of new classic publishing site collections and publishing feature activation, SharePoint admins will no longer be able to create new classic publishing enabled site collections or enable publishing features at site collection level.</li></ul><p><b>What you need to do to prepare</b></p><p>We recommend taking the following actions to prepare for these upcoming changes.</p><p>\n</p><p>1.\tInform owners of the classic publishing sites in your organization of these upcoming changes. Promote switching to use of Modern sites. Refer to <a href=\"https://learn.microsoft.com/sharepoint/dev/transform/modernize-guidance\" target=\"_blank\">this guide</a>.</p><p>2. The following tenant-level opt-out operation, used to allow custom scripting changes in classic publishing sites, will be retired starting <b>March 15, 2026.</b> Please ensure appropriate actions are taken ahead of this change.</p><p><code>Set-SPOTenant -DelayDenyAddAndCustomizePagesEnforcementOnClassicPublishingSites $true</code></p><p>3. Customers may still temporarily opt out of custom scripting enforcement for a specific site (any template) with tenant admin approval. This opt-out is effective for 24 hours&nbsp;and can be enabled using the following PowerShell command:</p><p><code>Set-SPOSite &lt;SiteURL&gt;&nbsp;<siteurl>-DenyAddAndCustomizePages $false</siteurl></code></p><p>4.\tIf you need to allow the creation of new classic publishing site collections or enable publishing feature activations, use the following PowerShell command set the flag to allow.</p><p><code>Set-SPOTenant -AllowClassicPublishingSiteCreation $true</code></p><p>NOTE: </p><ul><li>You need to install the latest (<a href=\"https://www.microsoft.com/en-us/download/details.aspx?id=35588&amp;msockid=1928b372f07766b62b63a78cf1426719\" target=\"_blank\">16.0.26211.12010</a> or higher) SharePoint Online Management Shell in order to run the commands above.</li><li>The DelayDenyAddAndCustomizePagesEnforcementOnClassicPublishingSites command is scheduled to end starting on <b>March 15, 2026,</b> while all other commands are expected to remain functional beyond that date.&nbsp;</li></ul><p><b>Compliance considerations</b></p><p><b>\n</b></p><p>There is no impact or change to compliance.</p><p><b>Referenced content</b>\n</p><p><a href=\"https://learn.microsoft.com/en-us/sharepoint/security-considerations-of-allowing-custom-script\" target=\"_blank\">Security considerations of allowing custom script - SharePoint in Microsoft 365 | Microsoft Learn</a></p><p><a href=\"https://learn.microsoft.com/en-us/sharepoint/allow-or-prevent-custom-script\" target=\"_blank\">Allow or prevent custom script - SharePoint in Microsoft 365 | Microsoft Learn</a></p><p><a href=\"https://learn.microsoft.com/en-us/sharepoint/dev/transform/modernize-guidance\" target=\"_blank\">SharePoint modernization guidance | Microsoft Learn</a></p><p><br></p><p>\n</p><p>\n</p><p>\n</p><p></p><p></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting September 15, 2025, SharePoint Online will disable custom scripting by default on classic publishing sites, block creation of new classic publishing sites, and prevent publishing feature activation. New settings allow site property bag updates without enabling custom scripting. Temporary opt-outs via PowerShell are available until March 15, 2026."
-      }
-    ],
-    "EndDateTime": "2026-11-15T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1117115",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-01-29T17:41:22.237Z",
-    "Services": [
-      "SharePoint Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-07-18T00:06:36Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "Updates to custom scripting in sites and Classic Publishing site creation",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -22835,7 +22835,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348671Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348672Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T12:41:34.2348673Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073793Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073795Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-07-29T14:46:23.4073795Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
