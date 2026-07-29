@@ -1,0 +1,48 @@
+{
+  "id": "MC1442608",
+  "versions": [
+    {
+      "capturedAt": "2026-07-29T23:06:31.537Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>We are updating the behavior of the Microsoft Graph <code>driveItem.webUrl</code> property for content stored in <i>SharePoint Embedded</i>.</p><p>After this change, <code>driveItem.webUrl</code> will return the URL used to open a file in a browser rather than being treated as a stable file location or identifier. Depending on the file type and your SharePoint Embedded configuration, the returned URL may be:</p><ul><li>A Microsoft 365 web viewer URL</li><li>A SharePoint Embedded PDF viewer URL</li><li>A redirect URL generated from your configured urlTemplate</li><li>A Microsoft help page URL</li></ul><p>This update aligns <code>driveItem.webUrl</code> with its intended purpose as a browser launch URL. Applications that require a stable identifier for a file should use <code>driveItemId</code>, which remains the only unique and stable identifier for an item within a drive. The SharePoint Embedded documentation describes <code>driveItem.webUrl</code> as the URL used to launch supported files in <i>Microsoft 365 experiences</i>.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Targeted Release:</b> Beginning in <b>mid-August 2026</b></li><li><b>General Availability (Worldwide):</b> Beginning in <b>mid-February 2027</b></li><li><b>Temporary opt-out available until: August 17, 2026</b>&nbsp;</li><li><b>Customers who opt out before August 17, 2026</b>, will have an additional six months to transition to the new behavior.</li><li><b>Temporary opt-out support ends February 22, 2027</b></li><li>After February 22, 2027, all customers will receive the updated <code>driveItem.webUrl</code> behavior.</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><p>Organizations that develop, manage, or use <b>SharePoint Embedded applications</b> that rely on <code>driveItem.webUrl</code><b> </b>as a permanent file location, stable URL, or file identifier</p><p><i>Platforms and services</i></p><ul><li>SharePoint Embedded</li><li>Microsoft Graph</li><li>Microsoft 365 web viewers</li><li>SharePoint Embedded PDF viewer</li></ul><p><i>What will happen</i></p><p>After this change:</p><ul><li>Word, Excel, PowerPoint, and other supported Microsoft 365 file types will return a Microsoft 365 viewer URL.</li><li>PDF files will return a SharePoint Embedded PDF viewer URL.</li><li>Unsupported file types with a configured urlTemplate will return a redirect URL generated from that template.</li><li>Unsupported file types without a configured urlTemplate will return a Microsoft help page URL.</li></ul><p>Applications are not expected to require changes if driveItem.webUrl is used only to open files in a browser.</p><p>Your application may require updates if it:</p><ul><li>Stores <code>driveItem.webUrl</code> as a permanent file location.</li><li>Uses <code>driveItem.webUrl</code> as a file identifier.</li><li>Compares <code>driveItem.webUrl</code> values over time to determine file identity or location.</li><li>Passes <code>driveItem.webUrl</code> to services that require a stable storage URL.</li><li>Assumes <code>driveItem.webUrl</code> remains unchanged across file types, viewer support scenarios, or redirect configurations.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>Review how your SharePoint Embedded applications use <code>driveItem.webUrl</code>.</p><p><b>No action is required</b> if <code>driveItem.webUrl</code> is used only to open files in a browser.</p><p>We recommend:</p><ul><li>Identify any application dependencies on <code>driveItem.webUrl</code> as a stable identifier or permanent URL.</li><li>Update applications to use <code>driveItemId</code> when a stable item identifier is required.</li><li>Review redirect behavior for unsupported file types.</li><li><b>Configure</b> <code>urlTemplate</code> if users should be redirected back to your application. Review:&nbsp;<a href=\"https://learn.microsoft.com/sharepoint/dev/embedded/build/open-office-files#configure-redirect-behavior\" target=\"_blank\">Configure redirect behavior</a></li><li>Validate application behavior against the updated <code>driveItem.webUrl</code> experience before enforcement begins.</li><li>Remove dependencies on the legacy <code>driveItem.webUrl</code> behavior before temporary opt-out support ends.</li></ul><p>Use <code>driveItem.webUrl​</code> when your application needs a URL that opens the file in a browser. Use the <code>driveItemId</code>​ when you need a stable, unique reference to an item.</p><p>Organizations that need additional migration time can temporarily retain the current behavior for a SharePoint Embedded container type by setting <code>UseLegacyItemWebUrl</code> to <b>true</b>. Review:&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spocontainertypeconfiguration?view=sharepoint-ps\" target=\"_blank\">Set-SPOContainerTypeConfiguration</a>&nbsp;</p><p>The temporary opt-out is intended only as a migration aid and will no longer be honored after February 22, 2027.</p><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/sharepoint/dev/embedded/build/open-office-files#configure-redirect-behavior\" target=\"_blank\">Configure redirect behavior - Open Office files from your app | SharePoint | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spocontainertypeconfiguration?view=sharepoint-ps\" target=\"_blank\">Set-SPOContainerTypeConfiguration | Microsoft.OnlineSharePoint.PowerShell | PowerShell | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft is updating SharePoint Embedded's driveItem.webUrl to return browser launch URLs instead of stable file locations. Use driveItemId for stable identifiers. Changes roll out from mid-August 2026, with a temporary opt-out until February 22, 2027. Review and update applications accordingly."
+          }
+        ],
+        "EndDateTime": "2037-03-01T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1442608",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-07-29T23:06:31.537Z",
+        "Services": [
+          "SharePoint Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-07-29T23:06:12Z",
+        "Tags": [
+          "Feature update",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft SharePoint Embedded: Update to driveItem.webUrl behavior",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
