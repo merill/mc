@@ -232,6 +232,13 @@ function ConvertTo-RoadmapMessage($item) {
 }
 
 $dataPath = "./@data"
+$discordOutboxPath = "$dataPath/discord-outbox.json"
+$previousMessageIds = @()
+$hasPreviousMessageSnapshot = Test-Path "$dataPath/messages.json"
+
+if ($hasPreviousMessageSnapshot) {
+    $previousMessageIds = @(Get-Content "$dataPath/messages.json" | ConvertFrom-Json | Select-Object -ExpandProperty Id)
+}
 
 if(-not $RoadmapOnly){
     Connect-MicrosoftGraph
@@ -247,11 +254,27 @@ if(-not $RoadmapOnly){
         $msg | ConvertTo-Json -Depth 10 | Set-Content -Path ("$($dataPath)/archive/$($msg.Id).json")
     }
 
+    # Only queue genuinely new Message Center posts classified for Microsoft Entra.
+    # An empty previous snapshot establishes a baseline instead of backfilling every post.
+    $newEntraMessages = if ($hasPreviousMessageSnapshot) {
+        @($msgItems | Where-Object {
+            ($previousMessageIds -notcontains $_.Id) -and
+            (@($_.Services) -contains "Microsoft Entra")
+        })
+    }
+    else {
+        @()
+    }
+    $discordOutbox = @($newEntraMessages | ForEach-Object { New-MessageIndexRecord $_ })
+    ConvertTo-Json -InputObject $discordOutbox -Depth 6 | Set-Content -Path $discordOutboxPath
+    Write-Host "Queued $($discordOutbox.Count) new Microsoft Entra Message Center post(s) for Discord"
+
     $msgitems | ConvertTo-Json -Depth 10 | Set-Content -Path ($dataPath + "/messages.json")
     $msgitems.Services | Sort-Object | Get-Unique | ConvertTo-Json | Set-Content -Path ($dataPath + "/services.json")
 }
 else {
     Write-Host "Skipping Message Center update because -RoadmapOnly was supplied"
+    ConvertTo-Json -InputObject @() | Set-Content -Path $discordOutboxPath
 }
 
 $roadmapItems = Get-RoadmapRssItems | ForEach-Object { ConvertTo-RoadmapMessage $_ }
@@ -343,5 +366,11 @@ node ./scripts/build-references.mjs
 
 Write-Host "Updating per-message version history under @data/history"
 node ./scripts/update-history.mjs
+
+Write-Host "Publishing new Microsoft Entra Message Center posts to Discord"
+node ./scripts/publish-discord.mjs
+if ($LASTEXITCODE -ne 0) {
+    Write-Warning "Discord publisher did not complete successfully; queued messages remain in @data/discord-state.json"
+}
 
 Write-Host "Completed updating"

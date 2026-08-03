@@ -120,6 +120,18 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              August 3, 2026
+            </h2>
+            <ul>
+              <li>
+                Added automatic Discord notifications for newly discovered
+                Microsoft Entra Message Center posts, with durable delivery
+                tracking and links to their archived pages.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               May 4, 2026
             </h2>
             <ul>

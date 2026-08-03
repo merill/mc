@@ -30,6 +30,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Get Message Center and Roadmap data
+        env:
+          DISCORD_ENTRA_MC_WEBHOOK_URL: ${{ secrets.DISCORD_ENTRA_MC_WEBHOOK_URL }}
         run: |
           ./@build/Update-Site.ps1 -GraphSecret ${{ secrets.GRAPH_SECRET }}
         shell: pwsh
