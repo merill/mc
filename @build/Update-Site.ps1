@@ -7,6 +7,8 @@
 # Use -RoadmapOnly to refresh only the Roadmap RSS feed during local development.
 
 param($GraphSecret, [switch]$RoadmapOnly)
+. "$PSScriptRoot/Entra-MessageFilter.ps1"
+
 function Connect-MicrosoftGraph(){
     $m365Config = Get-Content ./@build/config-m365.json | ConvertFrom-Json
 
@@ -254,12 +256,13 @@ if(-not $RoadmapOnly){
         $msg | ConvertTo-Json -Depth 10 | Set-Content -Path ("$($dataPath)/archive/$($msg.Id).json")
     }
 
-    # Only queue genuinely new Message Center posts classified for Microsoft Entra.
+    # Only queue genuinely new Message Center posts whose service/product or
+    # title contains the standalone word "Entra" (case-insensitive).
     # An empty previous snapshot establishes a baseline instead of backfilling every post.
     $newEntraMessages = if ($hasPreviousMessageSnapshot) {
         @($msgItems | Where-Object {
             ($previousMessageIds -notcontains $_.Id) -and
-            (@($_.Services) -contains "Microsoft Entra")
+            (Test-IsEntraMessageCenterItem $_)
         })
     }
     else {

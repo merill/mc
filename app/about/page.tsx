@@ -128,7 +128,9 @@ export default function AboutPage() {
                 Microsoft Entra Message Center posts, with durable delivery
                 tracking and links to their archived pages. Documentation and
                 Message Center notifications now share the Entra Scout webhook
-                identity while retaining distinct message formats.
+                identity while retaining distinct message formats. Message
+                Center matching includes Entra product labels and title-only
+                Entra mentions.
               </li>
             </ul>
           </div>
