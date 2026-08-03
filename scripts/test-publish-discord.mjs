@@ -27,6 +27,8 @@ test("builds a safe Message Center Discord embed", () => {
   })
   const payload = publisher.buildPayload(publisher.createEvent(message))
 
+  assert.equal(payload.username, "Entra Scout")
+  assert.match(payload.avatar_url, /entra-scout-avatar-1024\.png$/)
   assert.deepEqual(payload.allowed_mentions, { parse: [] })
   assert.match(payload.embeds[0].title, /MC123456/)
   assert.match(payload.embeds[0].fields[2].value, /mc\.merill\.net/)

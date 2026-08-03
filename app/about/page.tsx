@@ -126,7 +126,9 @@ export default function AboutPage() {
               <li>
                 Added automatic Discord notifications for newly discovered
                 Microsoft Entra Message Center posts, with durable delivery
-                tracking and links to their archived pages.
+                tracking and links to their archived pages. Documentation and
+                Message Center notifications now share the Entra Scout webhook
+                identity while retaining distinct message formats.
               </li>
             </ul>
           </div>
