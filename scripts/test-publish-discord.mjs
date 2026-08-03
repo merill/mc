@@ -28,10 +28,20 @@ test("builds a safe Message Center Discord embed", () => {
   const payload = publisher.buildPayload(publisher.createEvent(message))
 
   assert.equal(payload.username, "Entra Scout")
-  assert.match(payload.avatar_url, /entra-scout-avatar-1024\.png$/)
+  assert.equal(Object.hasOwn(payload, "avatar_url"), false)
   assert.deepEqual(payload.allowed_mentions, { parse: [] })
   assert.match(payload.embeds[0].title, /MC123456/)
   assert.match(payload.embeds[0].fields[2].value, /mc\.merill\.net/)
+})
+
+test("Discord payload accepts an explicit public avatar URL override", () => {
+  const publisher = new MessageCenterDiscordPublisher({
+    enabled: true,
+    avatarUrl: "https://cdn.example.com/entra-scout.png"
+  })
+
+  const payload = publisher.buildPayload(publisher.createEvent(message))
+  assert.equal(payload.avatar_url, "https://cdn.example.com/entra-scout.png")
 })
 
 test("publishes new Entra messages once and retains delivery state", async () => {

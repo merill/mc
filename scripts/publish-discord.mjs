@@ -8,7 +8,9 @@ export class MessageCenterDiscordPublisher {
   constructor(options = {}) {
     this.webhookUrl = options.webhookUrl ?? process.env.DISCORD_ENTRA_SCOUT_WEBHOOK_URL ?? process.env.DISCORD_ENTRA_MC_WEBHOOK_URL ?? ""
     this.webhookName = options.webhookName ?? process.env.DISCORD_ENTRA_SCOUT_NAME ?? "Entra Scout"
-    this.avatarUrl = options.avatarUrl ?? process.env.DISCORD_ENTRA_SCOUT_AVATAR_URL ?? "https://raw.githubusercontent.com/merill/entra-doc-diff/main/design/entra-scout-avatar-1024.png"
+    // Leave avatar_url out by default so Discord uses the image configured on
+    // the webhook. A public URL can still be supplied as an explicit override.
+    this.avatarUrl = options.avatarUrl ?? process.env.DISCORD_ENTRA_SCOUT_AVATAR_URL ?? ""
     this.enabled = options.enabled ?? (process.env.DISCORD_ENABLED !== "false" && Boolean(this.webhookUrl))
     this.dryRun = options.dryRun ?? process.env.DISCORD_DRY_RUN === "true"
     this.outboxPath = options.outboxPath ?? path.join(ROOT, "@data", "discord-outbox.json")
@@ -76,9 +78,13 @@ export class MessageCenterDiscordPublisher {
       .join(" · ")
 
     const timestamp = new Date(event.publishedAt)
-    return {
+    const identity = {
       username: this.truncate(this.webhookName, 80),
-      avatar_url: this.avatarUrl,
+      ...(this.avatarUrl ? { avatar_url: this.avatarUrl } : {})
+    }
+
+    return {
+      ...identity,
       allowed_mentions: { parse: [] },
       embeds: [{
         title: this.truncate(`${event.id} — ${event.title}`, 256),
