@@ -1,6 +1,135 @@
 [
   {
-    "ActionRequiredByDateTime": "2026-09-06T07:00:00Z",
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated August 4, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and Why</b></b></p><p>We're introducing two new Microsoft Teams PowerShell controls that help organizations enforce external access and federation policies more consistently in federated group chats:</p><ul><li><b>External Access Restrictions for Chat Participants (EnableExternalAccessRestrictionsForChatParticipants)</b></li><li><b>Mutual Federation for Chat Participants (EnableMutualFederationForChatParticipants)</b></li></ul><p>These controls are independent from each other and help ensure federated chat participation strictly aligns with configured external access policies. They help reduce indirect exposure to unapproved external organizations and provide admins with greater control over cross-tenant communications.&nbsp;</p><p><b><b>Rollout Schedule</b></b></p><ul><li><b>General Availability (Worldwide): </b>Beginning<b> late July 2026 </b>and expected to complete<b> late September 2026</b><ul style=\"\"><li style=\"\">External Access Restrictions for Chat Participants available:<b style=\"font-weight: bold;\"> August 14, 2026 </b>(previously July 31)</li><li style=\"\">Mutual Federation for Chat Participants available:<b style=\"font-weight: bold;\"> September 30, 2026</b></li></ul></li></ul><p><b><b>Impact on Your Organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft Teams administrators managing external access and federation settings</li><li>Organizations using federated group chats with external tenants</li><li>Users assigned External Access Policies that restrict federation access</li></ul><p><i>Platforms/Services</i></p><ul><li>Microsoft Teams</li><li>Teams PowerShell</li></ul><p><i>What will happen</i></p><ul><li>The new controls are <b>disabled by default</b>.</li><li>The change only affects organizations that choose to enable the controls.</li><li>The controls are configured through the existing <b>Set-CsTenantFederationConfiguration </b>PowerShell cmdlet.</li></ul><p>When <b>EnableExternalAccessRestrictionsForChatParticipants</b> is <b>enabled</b>:</p><ul><li>Users whose External Access Policy has EnableFederationAccess set to False cannot be added to federated group chats with external users.</li><li>Those users are automatically removed from existing active federated group chats that include external participants.</li><li>This setting does not change behavior controlled through the CommunicationWithExternalOrgs setting in External Access Policies.</li></ul><p>When EnableExternalAccessRestrictionsForChatParticipants is <b>disabled</b>:</p><ul><li>Users whose External Access Policy has EnableFederationAccess set to False <b>can still participate in federated group chats if the chat was created by a user in their organization who is allowed to use federation.</b></li></ul><p>When <b>EnableMutualFederationForChatParticipants</b> is enabled:</p><ul><li>All federated group chat participants from tenants that have this setting enabled must be allowed to federate with the domains of the other tenants in the chat.&nbsp;</li><li>Users who do not meet mutual federation requirements with all other participants cannot be added to or join the chat (not even facilitated through a third-party tenant that they are allowed to federate with)</li></ul><p>Participants can be automatically removed from active chats when federation requirements are no longer met.</p><p>When <b>EnableMutualFederationForChatParticipants</b> is disabled (default):</p><ul><li>Only the user being added (or joining) and the chat initiator must have a valid federation relationship. Other existing chat participants might not meet the user's effective external access requirements.</li></ul><p></p><ul><li>Supported scenarios include:<ul><li>Creating external federated group chats.</li><li>Adding users to external federated group chats.</li><li>Enforcing updated federation requirements after external access or federation policies change.</li></ul></li></ul><p><b>Additional details:</b></p><ul><li>Automatic participant removal applies only to active group chats (a chat that has had a message sent within the previous two hours). Users in inactive group chats are evaluated when new activity occurs.</li><li>The user who initiated the chat is never automatically removed.</li><li>These two new controls do not affect:<ul><li>Meetings with external users and meeting chats</li><li>Shared Channels</li></ul></li></ul><p></p><p><b><b>Action Required/Recommendations</b></b></p><p>No immediate action is required.</p><p>If you plan to enable these controls:</p><ul><li>Review your organization's external access requirements and federation strategy.</li><li>Verify that your Allowed Domains configuration is complete and current.</li><li>Review External Access Policies to identify users or groups with EnableFederationAccess set to False.</li><li>Assess business processes that rely on federated group chats involving multiple external organizations.</li><li>Communicate potential impacts to helpdesk staff and affected stakeholders.</li><li>Review the Microsoft Teams PowerShell documentation for <a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration?view=teams-ps\" target=\"_blank\">Set-CsTenantFederationConfiguration</a>.</li></ul><p>Organizations may observe users being removed from existing federated group chats after either they or a partner organization enable these controls and federation requirements are no longer satisfied.</p><p><b>Learn more:</b>&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration\" target=\"_blank\">Set-CsTenantFederationConfiguration | Microsoft Teams | Microsoft Learn</a></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change provide a new way of communicating between users, tenants, or subscriptions?</td><td>Yes. The change modifies how existing federated group chat communications are governed by enforcing participant eligibility and mutual federation requirements across tenants.</td></tr><tr><td>Does the change include an admin control and can it be controlled through Entra ID group membership?</td><td>Yes. Two new administrator controls are introduced through Teams PowerShell: EnableExternalAccessRestrictionsForChatParticipants and EnableMutualFederationForChatParticipants. User impact depends on External Access Policy assignments, which can be administered through existing policy assignment mechanisms.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Teams will introduce two new PowerShell controls by late September 2026 to enforce stricter external access and mutual federation policies in federated group chats. These controls, disabled by default, help admins limit chat participation to approved external users and ensure mutual federation compliance, with automatic removal of non-compliant participants."
+      }
+    ],
+    "EndDateTime": "2026-10-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1423114",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-04T16:50:09.983Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-07-10T22:51:38Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: Stricter external access controls for federated chats",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated August 4, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We’re making it easier for users to manage tasks where they already work. The Microsoft Planner experience is now available directly in <i>Outlook (web and the new Outlook for Windows) </i>and in the <i>Microsoft 365 Copilot app</i>. This change reduces context switching by allowing users to view and manage tasks and plans alongside email, calendar, and Copilot experiences.</p><p>This update is based on customer feedback requesting tighter integration between task management and daily productivity workflows.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=513278\" target=\"_blank\">513278</a></b>.</p><p><b><b>When this will happen</b></b></p><p style=\"margin-left: 25px;\"><b>General Availability (Worldwide): </b>We expect rollout to start early August 2026 (previously late July) and complete early August 2026 (previously end of July).&nbsp;</p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>All Microsoft 365 tenants</li><li>Users who access Outlook on the web, the new Outlook for Windows, or the Microsoft 365 Copilot app</li></ul><p><i>What will happen</i></p><ul><li>The Planner experience will be available directly within<i> Outlook (web and new Outlook for Windows)</i>.</li><li>Users can view and manage:<ul><li>Personal tasks</li><li>Shared plans</li></ul></li><li>Tasks and plans can be accessed alongside email and calendar workflows.</li><li>Where licensed and enabled, users can access Planner through Microsoft 365 Copilot experiences.</li><li>This feature is <b>enabled by default</b>.</li><li>Existing Microsoft 365 permissions, Planner settings, and Copilot policies are respected.</li><li>&nbsp;A Microsoft 365 Copilot (Premium) license is <b>not required&nbsp;</b>to use the Planner app in <i>Outlook</i>.</li><li>There is <b>no change</b> to where Planner data is stored.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>No admin action is required.</p><p>You may consider:</p><ul><li>Informing users that Planner is now accessible within Outlook and the Microsoft 365 Copilot app.</li><li>Updating internal documentation or helpdesk guidance to reflect this new access point.</li><li>Encouraging users to explore Planner for managing tasks and plans.</li><li>Monitoring adoption and feedback using existing usage and feedback channels.</li></ul><p><b>Learn more:&nbsp;</b><a href=\"https://support.microsoft.com/planner\" target=\"_blank\">Microsoft Planner | Microsoft Support</a></p><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "513278"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Planner is now integrated directly into Outlook (web and new Windows version) and Microsoft 365 Copilot, enabling users to manage personal and shared tasks alongside email and calendar. The rollout begins early August 2026, is enabled by default, requires no admin action, and respects existing permissions and policies."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, Web"
+      }
+    ],
+    "EndDateTime": "2026-09-07T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1309747",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-04T16:47:40.343Z",
+    "Services": [
+      "Exchange Online",
+      "Planner"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-05-13T23:11:57Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Planner is now available in Outlook and Microsoft 365 Copilot",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated August 4, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and why</b></b></p><p>We are enhancing <b>Restricted Content Discovery (RCD) for SharePoint</b> to give organizations stronger control over how content is surfaced in <b>Copilot </b>and <i>Microsoft 365 search</i>. These updates help reduce the risk of oversharing while ensuring AI-powered experiences respect organizational policies and support secure and compliant use of enterprise AI.</p><p><b><b>Rollout schedule</b></b></p><p style=\"margin-left: 25px;\"><b>General availability (Worldwide, GCC High, DoD):</b> We will begin rolling out in <b>late July 2026</b> and expect to complete in<b>&nbsp;late September 2026 </b>(previously late July).</p><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>&nbsp;SharePoint administrators managing RCD policies and users accessing content through Copilot and Microsoft 365 search</li></ul><p>Platforms/services</p><ul><li>SharePoint (web)</li><li>Microsoft 365 search</li><li>Copilot (including search and chat experiences)</li></ul><p><i>What will happen</i></p><ul><li>Files recently accessed by a user will no longer appear in <i>Copilot or Microsoft 365 search</i> when governed by RCD policy.</li><li>Recently accessed includes file-level activity such as viewing, editing, or sharing files.</li><li><b>AI-powered entry points will be removed from SharePoint sites with RCD enabled.</b> Users will not see Copilot entry points such as the Copilot button, AI menus, or Create pages with AI. The <b>Create an agent</b> action already follows this behavior.</li><li>These changes apply only to SharePoint sites where Restricted Content Discovery (RCD) policy is enabled.</li><li>Existing RCD policies continue to apply with no configuration changes required.</li><li>Users will no longer see certain files on SharePoint sites with RCD enabled. This will change how users discover content and access Copilot capabilities on those sites.</li><li>The enhancement is applied automatically.</li></ul><p><b><b>Action required / recommendations</b></b></p><p>No immediate action is required. However, you may consider the following:</p><ul><li>Review current RCD policies.</li><li>Review sites where RCD is enabled to understand where Copilot functionality will not be available.</li><li>Inform helpdesk teams about expected changes to content visibility and Copilot entry points.</li><li>Update internal documentation if needed.</li><li>Evaluate additional use of RCD for governance and oversharing scenarios.</li></ul><p><b>Learn more:&nbsp;</b>Documentation will be updated closer to full rollout.</p><ul><li><a href=\"https://learn.microsoft.com/sharepoint/restricted-content-discovery\" target=\"_blank\">Restrict discovery of SharePoint sites and content | SharePoint in Microsoft 365 | SharePoint | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. Content from RCD-enabled sites will no longer be surfaced in Copilot or Microsoft 365 search.</td></tr><tr><td>Does the change introduce or significantly modify AI/ML or agent capabilities that interact with customer data?</td><td>Yes. Copilot behavior is modified by preventing access to content from RCD-enabled sites.</td></tr><tr><td>Does the change alter how users can access their data?</td><td>Yes. Users cannot access RCD-protected content through Copilot or search surfaces.</td></tr><tr><td>Does the change include an admin control and can it be controlled through Entra ID group membership?</td><td>Yes. Behavior is controlled through existing RCD policy.</td></tr></tbody></table><p><b></b></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft is enhancing SharePoint's Restricted Content Discovery (RCD) to limit content visibility in Copilot and Microsoft 365 search, starting late July 2026. Files on RCD-enabled sites won't appear in AI-powered search or Copilot, and AI entry points will be removed, ensuring better compliance and content control."
+      }
+    ],
+    "EndDateTime": "2026-10-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1427972",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-04T16:43:57.217Z",
+    "Services": [
+      "SharePoint Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-07-14T22:44:11Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft SharePoint: Restricted content discovery enhancements for Copilot and Microsoft 365 search",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": "2026-11-06T07:00:00Z",
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
@@ -18,7 +147,7 @@
     "HasAttachments": false,
     "Id": "MC1325414",
     "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-08-04T16:33:51.973Z",
+    "LastModifiedDateTime": "2026-08-04T16:34:28.88Z",
     "Services": [
       "Microsoft Entra"
     ],
@@ -7342,45 +7471,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p><b><b>What and why</b></b></p><p>We are enhancing <b>Restricted Content Discovery (RCD) for SharePoint</b> to give organizations stronger control over how content is surfaced in <b>Copilot </b>and <i>Microsoft 365 search</i>. These updates help reduce the risk of oversharing while ensuring AI-powered experiences respect organizational policies and support secure and compliant use of enterprise AI.</p><p><b><b>Rollout schedule</b></b></p><p style=\"margin-left: 25px;\"><b>General availability (Worldwide, GCC High, DoD):</b> We will begin rolling out in <b>late July 2026</b> and expect to complete in<b> late July 2026</b>.</p><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>&nbsp;SharePoint administrators managing RCD policies and users accessing content through Copilot and Microsoft 365 search</li></ul><p>Platforms/services</p><ul><li>SharePoint (web)</li><li>Microsoft 365 search</li><li>Copilot (including search and chat experiences)</li></ul><p><i>What will happen</i></p><ul><li>Files recently accessed by a user will no longer appear in <i>Copilot or Microsoft 365 search</i> when governed by RCD policy.</li><li>Recently accessed includes file-level activity such as viewing, editing, or sharing files.</li><li><b>AI-powered entry points will be removed from SharePoint sites with RCD enabled.</b> Users will not see Copilot entry points such as the Copilot button, AI menus, or Create pages with AI. The <b>Create an agent</b> action already follows this behavior.</li><li>These changes apply only to SharePoint sites where Restricted Content Discovery (RCD) policy is enabled.</li><li>Existing RCD policies continue to apply with no configuration changes required.</li><li>Users will no longer see certain files on SharePoint sites with RCD enabled. This will change how users discover content and access Copilot capabilities on those sites.</li><li>The enhancement is applied automatically.</li></ul><p><b><b>Action required / recommendations</b></b></p><p>No immediate action is required. However, you may consider the following:</p><ul><li>Review current RCD policies.</li><li>Review sites where RCD is enabled to understand where Copilot functionality will not be available.</li><li>Inform helpdesk teams about expected changes to content visibility and Copilot entry points.</li><li>Update internal documentation if needed.</li><li>Evaluate additional use of RCD for governance and oversharing scenarios.</li></ul><p><b>Learn more:&nbsp;</b>Documentation will be updated closer to full rollout.</p><ul><li><a href=\"https://learn.microsoft.com/sharepoint/restricted-content-discovery\" target=\"_blank\">Restrict discovery of SharePoint sites and content | SharePoint in Microsoft 365 | SharePoint | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. Content from RCD-enabled sites will no longer be surfaced in Copilot or Microsoft 365 search.</td></tr><tr><td>Does the change introduce or significantly modify AI/ML or agent capabilities that interact with customer data?</td><td>Yes. Copilot behavior is modified by preventing access to content from RCD-enabled sites.</td></tr><tr><td>Does the change alter how users can access their data?</td><td>Yes. Users cannot access RCD-protected content through Copilot or search surfaces.</td></tr><tr><td>Does the change include an admin control and can it be controlled through Entra ID group membership?</td><td>Yes. Behavior is controlled through existing RCD policy.</td></tr></tbody></table><p><b></b></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft is enhancing SharePoint's Restricted Content Discovery (RCD) to prevent content from RCD-enabled sites appearing in Copilot and Microsoft 365 search, improving data control and compliance. Changes roll out worldwide in late July 2026, requiring no immediate action but recommending policy reviews and user communication."
-      }
-    ],
-    "EndDateTime": "2026-08-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1427972",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-07-14T22:44:17.903Z",
-    "Services": [
-      "SharePoint Online"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-07-14T22:44:11Z",
-    "Tags": [
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft SharePoint: Restricted content discovery enhancements for Copilot and Microsoft 365 search",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b><b>What and Why:</b></b></p>\n\n<p>Microsoft Forms will update the email address used for automated notifications from <b>maccount@microsoft.com</b> to <b>no-reply@forms.mail.microsoft</b>. This email address is used for Microsoft Forms automated emails, including response receipts, email notifications for new responses, and Forms response monitoring updates.</p>\n\n<p>For GCC, GCC High, and DoD environments, admins will now have the option to configure notification emails. These notifications will also use <b style=\"\">no-reply@forms.mail.microsoft</b>, aligning with Worldwide environments.</p>\n\n<p><b>Bring your own domain (BYOD)</b> email addresses remain supported when configured by a tenant admin.&nbsp;</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n\n<ul>\n<li>General Availability (Worldwide):<b> </b>Rollout begins in <b>mid-August 2026</b> and is expected to complete by <b>early September 2026</b>.</li>\n<li>General Availability (GCC, GCC High, DoD): Rollout begins in<b> early September 2026</b> and is expected to complete by <b>mid-September 2026</b>.</li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n\n<ul>\n<li>Organizations using Microsoft Forms automated email notifications.</li>\n<li>Organizations with mail flow rules, mailbox rules, or filtering policies that reference <b>maccount@microsoft.com</b>.</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n\n<ul>\n<li>Microsoft Forms</li>\n<li>Exchange Online mail flow</li>\n<li>Email filtering and anti-spam solutions</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n\n<ul>\n<li>Microsoft Forms automated emails will be sent from <b>no-reply@forms.mail.microsoft</b> instead of <b>maccount@microsoft.com</b>.</li>\n<li>Response receipts will use the new sender address.</li>\n<li>Email notifications for new responses will use the new sender address.</li>\n<li>Forms response monitoring updates will use the new sender address.</li>\n<li>Admins will be able to configure notification emails that use the new sender address.</li>\n<li>Existing mailbox rules, mail flow rules, or filtering policies that reference the previous sender address may no longer function as intended.</li>\n</ul>\n\n<p><b><b>Action Required/Recommendations:</b></b></p>\n\n<ul>\n<li>Review mail flow rules, mailbox rules, and filtering policies that reference <b>maccount@microsoft.com</b>.</li>\n<li>Update any configurations that depend on the previous sender address.</li>\n<li>Consider adding <b>no-reply@forms.mail.microsoft</b> to your organization's safe sender or allowed sender lists.</li>\n<li>Communicate this change to end users and help desk teams as appropriate.</li>\n<li>Review notification features that use this sender address and determine whether configuration changes are needed.</li>\n</ul>\n\n<p><b>Learn more: </b><a href=\"http://aka.ms/email_byod\" target=\"_blank\">Select the domain to use for email from Microsoft 365 products | Microsoft Learn</a>.</p><p><b><b>Compliance Considerations:</b></b></p>\n\n<p>No compliance considerations identified. Review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -8761,45 +8851,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p><b><b>What and Why</b></b></p><p>We're introducing two new Microsoft Teams PowerShell controls that help organizations enforce external access and federation policies more consistently in federated group chats:</p><ul><li><b>External Access Restrictions for Chat Participants (EnableExternalAccessRestrictionsForChatParticipants)</b></li><li><b>Mutual Federation for Chat Participants (EnableMutualFederationForChatParticipants)</b></li></ul><p>These controls are independent from each other and help ensure federated chat participation strictly aligns with configured external access policies. They help reduce indirect exposure to unapproved external organizations and provide admins with greater control over cross-tenant communications.&nbsp;</p><p><b><b>Rollout Schedule</b></b></p><ul><li><b>General Availability (Worldwide): </b>Beginning<b> late July 2026 </b>and expected to complete<b> late September 2026</b><ul style=\"\"><li style=\"\">External Access Restrictions for Chat Participants available:<b style=\"font-weight: bold;\"> July 31, 2026</b></li><li style=\"\">Mutual Federation for Chat Participants available:<b style=\"font-weight: bold;\"> September 30, 2026</b></li></ul></li></ul><p><b><b>Impact on Your Organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft Teams administrators managing external access and federation settings</li><li>Organizations using federated group chats with external tenants</li><li>Users assigned External Access Policies that restrict federation access</li></ul><p><i>Platforms/Services</i></p><ul><li>Microsoft Teams</li><li>Teams PowerShell</li></ul><p><i>What will happen</i></p><ul><li>The new controls are <b>disabled by default</b>.</li><li>The change only affects organizations that choose to enable the controls.</li><li>The controls are configured through the existing <b>Set-CsTenantFederationConfiguration </b>PowerShell cmdlet.</li></ul><p>When <b>EnableExternalAccessRestrictionsForChatParticipants</b> is <b>enabled</b>:</p><ul><li>Users whose External Access Policy has EnableFederationAccess set to False cannot be added to federated group chats with external users.</li><li>Those users are automatically removed from existing active federated group chats that include external participants.</li><li>This setting does not change behavior controlled through the CommunicationWithExternalOrgs setting in External Access Policies.</li></ul><p>When EnableExternalAccessRestrictionsForChatParticipants is <b>disabled</b>:</p><ul><li>Users whose External Access Policy has EnableFederationAccess set to False <b>can still participate in federated group chats if the chat was created by a user in their organization who is allowed to use federation.</b></li></ul><p>When <b>EnableMutualFederationForChatParticipants</b> is enabled:</p><ul><li>All federated group chat participants from tenants that have this setting enabled must be allowed to federate with the domains of the other tenants in the chat.&nbsp;</li><li>Users who do not meet mutual federation requirements with all other participants cannot be added to or join the chat (not even facilitated through a third-party tenant that they are allowed to federate with)</li></ul><p>Participants can be automatically removed from active chats when federation requirements are no longer met.</p><p>When <b>EnableMutualFederationForChatParticipants</b> is disabled (default):</p><ul><li>Only the user being added (or joining) and the chat initiator must have a valid federation relationship. Other existing chat participants might not meet the user's effective external access requirements.</li></ul><p></p><ul><li>Supported scenarios include:<ul><li>Creating external federated group chats.</li><li>Adding users to external federated group chats.</li><li>Enforcing updated federation requirements after external access or federation policies change.</li></ul></li></ul><p><b>Additional details:</b></p><ul><li>Automatic participant removal applies only to active group chats (a chat that has had a message sent within the previous two hours). Users in inactive group chats are evaluated when new activity occurs.</li><li>The user who initiated the chat is never automatically removed.</li><li>These two new controls do not affect:<ul><li>Meetings with external users and meeting chats</li><li>Shared Channels</li></ul></li></ul><p></p><p><b><b>Action Required/Recommendations</b></b></p><p>No immediate action is required.</p><p>If you plan to enable these controls:</p><ul><li>Review your organization's external access requirements and federation strategy.</li><li>Verify that your Allowed Domains configuration is complete and current.</li><li>Review External Access Policies to identify users or groups with EnableFederationAccess set to False.</li><li>Assess business processes that rely on federated group chats involving multiple external organizations.</li><li>Communicate potential impacts to helpdesk staff and affected stakeholders.</li><li>Review the Microsoft Teams PowerShell documentation for <a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration?view=teams-ps\" target=\"_blank\">Set-CsTenantFederationConfiguration</a>.</li></ul><p>Organizations may observe users being removed from existing federated group chats after either they or a partner organization enable these controls and federation requirements are no longer satisfied.</p><p><b>Learn more:</b>&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration\" target=\"_blank\">Set-CsTenantFederationConfiguration | Microsoft Teams | Microsoft Learn</a></p><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change provide a new way of communicating between users, tenants, or subscriptions?</td><td>Yes. The change modifies how existing federated group chat communications are governed by enforcing participant eligibility and mutual federation requirements across tenants.</td></tr><tr><td>Does the change include an admin control and can it be controlled through Entra ID group membership?</td><td>Yes. Two new administrator controls are introduced through Teams PowerShell: EnableExternalAccessRestrictionsForChatParticipants and EnableMutualFederationForChatParticipants. User impact depends on External Access Policy assignments, which can be administered through existing policy assignment mechanisms.</td></tr></tbody></table><p><b></b></p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams introduces two new PowerShell controls to enforce stricter external access and mutual federation policies in federated group chats, enhancing admin control and reducing exposure to unapproved external organizations. These controls are disabled by default and roll out worldwide from July to September 2026."
-      }
-    ],
-    "EndDateTime": "2026-10-30T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1423114",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-07-10T22:51:47.223Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-07-10T22:51:38Z",
-    "Tags": [
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: Stricter external access controls for federated chats",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p><b><b>What and Why:</b></b></p>\n<p>Microsoft is introducing support for creating, viewing, and editing Markdown (.md) files directly within the OneDrive mobile app for iOS and Android. This enhancement aligns the mobile experience with the web experience and enables users to work with Markdown content from anywhere without downloading files or switching applications.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Rollout begins <b>mid-July 2026</b>; expected to complete by <b>late July 2026</b>.</li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Users accessing Markdown (.md) files in OneDrive mobile applications.</li>\n<li>Organizations using OneDrive on iOS and Android devices.</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>OneDrive for iOS</li>\n<li>OneDrive for Android</li>\n<li>OneDrive mobile applications</li>\n<li>OneDrive storage services</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Users can create Markdown (.md) files directly in OneDrive mobile.</li>\n<li>Users can open Markdown files without downloading them.</li>\n<li>Markdown files will display using a mobile-optimized formatted view.</li>\n<li>Users can edit Markdown content directly within the mobile app.</li>\n<li>The mobile experience will align with the existing OneDrive web experience.</li>\n<li>The feature is <b>enabled by default</b>.</li>\n<li>No additional admin configuration has been announced.</li>\n</ul>\n\n<p><b><b>Action Required/Recommendations:</b></b></p>\n<p>No admin action is required.</p><p>We recommend that you:</p>\n<ul>\n<li>Review the updated OneDrive mobile experience.</li>\n<li>Inform help desk and support teams of the new capability.</li>\n<li>Update internal documentation and training materials.</li>\n<li>Communicate the feature to users who frequently work with Markdown files.</li>\n<li>Monitor adoption and user feedback during rollout.</li></ul>\n\n<p><b><b>Compliance Considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -9065,55 +9116,6 @@
       "User impact"
     ],
     "Title": "Clearer RSVP selection in Outlook Mobile",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated July 10, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>We’re making it easier for users to manage tasks where they already work. The Microsoft Planner experience is now available directly in <i>Outlook (web and the new Outlook for Windows) </i>and in the <i>Microsoft 365 Copilot app</i>. This change reduces context switching by allowing users to view and manage tasks and plans alongside email, calendar, and Copilot experiences.</p><p>This update is based on customer feedback requesting tighter integration between task management and daily productivity workflows.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=513278\" target=\"_blank\">513278</a></b>.</p><p><b><b>When this will happen</b></b></p><p style=\"margin-left: 25px;\"><b>General Availability (Worldwide): </b>We expect rollout to start late July 2026 and complete by end of July 2026.&nbsp;</p><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>All Microsoft 365 tenants</li><li>Users who access Outlook on the web, the new Outlook for Windows, or the Microsoft 365 Copilot app</li></ul><p><i>What will happen</i></p><ul><li>The Planner experience will be available directly within<i> Outlook (web and new Outlook for Windows)</i>.</li><li>Users can view and manage:<ul><li>Personal tasks</li><li>Shared plans</li></ul></li><li>Tasks and plans can be accessed alongside email and calendar workflows.</li><li>Where licensed and enabled, users can access Planner through Microsoft 365 Copilot experiences.</li><li>This feature is <b>enabled by default</b>.</li><li>Existing Microsoft 365 permissions, Planner settings, and Copilot policies are respected.</li><li>&nbsp;A Microsoft 365 Copilot (Premium) license is <b>not required&nbsp;</b>to use the Planner app in <i>Outlook</i>.</li><li>There is <b>no change</b> to where Planner data is stored.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>No admin action is required.</p><p>You may consider:</p><ul><li>Informing users that Planner is now accessible within Outlook and the Microsoft 365 Copilot app.</li><li>Updating internal documentation or helpdesk guidance to reflect this new access point.</li><li>Encouraging users to explore Planner for managing tasks and plans.</li><li>Monitoring adoption and feedback using existing usage and feedback channels.</li></ul><p><b>Learn more:&nbsp;</b><a href=\"https://support.microsoft.com/planner\" target=\"_blank\">Microsoft Planner | Microsoft Support</a></p><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "513278"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Planner is now integrated directly into Outlook (web and new Windows version) and Microsoft 365 Copilot, enabling users to manage tasks alongside email and calendar. The rollout begins late July 2026, is enabled by default, requires no admin action, and respects existing permissions and policies."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Web"
-      }
-    ],
-    "EndDateTime": "2026-08-24T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1309747",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-07-10T16:26:54.92Z",
-    "Services": [
-      "Exchange Online",
-      "Planner"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-13T23:11:57Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Planner is now available in Outlook and Microsoft 365 Copilot",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
