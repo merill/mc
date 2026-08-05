@@ -1,0 +1,47 @@
+{
+  "id": "MC1447671",
+  "versions": [
+    {
+      "capturedAt": "2026-08-05T00:22:38.83Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>GitHub Actions now supports an immutable OpenID Connect (OIDC) subject format that includes immutable repository and owner IDs. This format reduces subject recycling risks associated with Microsoft Entra federated identity credentials (FICs) that rely on mutable repository and owner names.</p><p>Microsoft recommends migrating existing GitHub Actions FICs to the immutable subject format to strengthen workload identity security and reduce the risk of unauthorized access resulting from reused repository or owner names.</p><p><b><b>Rollout schedule</b></b></p><ul><li>Beginning in late July 2026</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations that use GitHub Actions OIDC authentication with Microsoft Entra federated identity credentials.</li><li>Administrators who manage app registrations or user-assigned managed identities that trust GitHub Actions OIDC tokens should review existing FICs.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Entra</li><li>GitHub Actions</li><li>GitHub.com</li></ul><p><i>What will happen</i></p><ul><li>Existing FICs that use name-based subjects will continue to work for repositories that retain their current names and subject format.</li><li>FICs configured to trust only a previous name-based subject will not match tokens from repositories that use the immutable subject format.</li><li>Affected GitHub Actions workflows might fail to obtain Microsoft Entra tokens until the corresponding FICs are updated.</li><li>Existing repositories can be opted in to the immutable subject format through GitHub OIDC settings.</li></ul><p>The immutable format appends the owner ID and repository ID to their corresponding names by using the @ delimiter.</p><p>Previous name-based format:</p><p>repo:&lt;owner&gt;/&lt;repo&gt;:ref:refs/heads/main</p><p>Immutable format:</p><p>repo:&lt;owner&gt;@&lt;owner_id&gt;/&lt;repo&gt;@&lt;repo_id&gt;:ref:refs/heads/main</p><p>The owner and repository IDs remain associated with the original resources and are not reused. This keeps the trust relationship bound to the intended repository.</p><p><b><b>Action required and recommendations</b></b></p><p>Action may be required if your organization uses GitHub Actions OIDC authentication with Microsoft Entra federated identity credentials.</p><p>To migrate an affected credential:</p><ul><li>Create a new FIC that uses the immutable subject format.</li><li>Keep the existing name-based FIC in place during migration.</li><li>Enable the immutable subject format for the repository or workflow if it is not already enabled.</li><li>Validate that the workflow can successfully obtain a Microsoft Entra token using the new credential.</li><li>Remove the old name-based FIC after validation is complete.</li></ul><p>For additional protection, consider using Flexible Federated Identity Credentials (preview) to validate immutable GitHub claims such as repository_id and repository_owner_id in addition to the sub claim.</p><p>Organizations should also periodically review and remove federated identity credentials that are no longer associated with active workloads.</p><p><b>Learn more</b></p><ul><li><a href=\"https://github.blog/changelog/2026-04-23-immutable-subject-claims-for-github-actions-oidc-tokens/\" target=\"_blank\">Immutable subject claims for GitHub Actions OIDC tokens | GitHub Blog</a></li><li><a href=\"https://learn.microsoft.com/entra/workload-id/workload-identities-github-immutable-subjects\" target=\"_blank\">Migrate GitHub Actions federated credentials to immutable subjects | Microsoft Entra Workload ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/workload-id/workload-identities-federated-credential-mutable-subjects\" target=\"_blank\">Mutable subjects in federated identity credentials | Microsoft Entra Workload ID | Microsoft Entra | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "GitHub Actions now supports immutable OIDC subject formats with repository and owner IDs to enhance Microsoft Entra federated identity security. Organizations using GitHub Actions OIDC must migrate to this format by late July 2026 to prevent token mismatches and reduce unauthorized access risks."
+          }
+        ],
+        "EndDateTime": "2026-09-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1447671",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-08-05T00:22:38.83Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-08-05T00:22:24Z",
+        "Tags": [
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Entra: Migrate GitHub Actions federated identity credentials to immutable subjects",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

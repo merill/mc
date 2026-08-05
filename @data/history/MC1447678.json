@@ -1,0 +1,48 @@
+{
+  "id": "MC1447678",
+  "versions": [
+    {
+      "capturedAt": "2026-08-05T00:25:40.547Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-09-30T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>Exchange Web Services (EWS) in Exchange Online will begin retirement on <b>October 1, 2026</b>, with <b>full retirement beginning April 1, 2027</b>.</p><p>To help organizations prepare, Microsoft has released <b>EWSAllowedAppIDs</b>, a new Exchange Online configuration that allows administrators to create an allow list of application IDs that are permitted to use EWS.</p><p>This capability helps administrators identify remaining EWS dependencies, limit EWS access to approved applications, and reduce the risk of service disruption as EWS retirement enforcement begins.</p><p>This feature is available today.</p><p><b><b>Rollout schedule</b></b></p><p><b>General Availability (Worldwide):</b> Available as of late July 2026</p><p><b>General Availability (GCC):</b> Available as of late July 2026</p><p><b>Retirement milestones:</b></p><ul><li><b>October 1, 2026: Retirement enforcement begins in Exchange Online</b></li><li><b>April 1, 2027: Full retirement begins</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Exchange Online administrators</li><li>Organizations that continue to use applications or services that depend on EWS</li></ul><p><i>Platforms and services</i></p><ul><li>Exchange Online</li><li>Exchange Web Services (EWS)</li></ul><p><i>What will happen</i></p><p><b>EWSAllowedAppIDs</b> is a tenant-level allow list that enables administrators to explicitly specify which applications can continue using EWS.</p><p>Prior to October 2026:</p><ul><li>If <b>EWSEnabled</b> is not configured (Null), all EWS traffic is allowed.</li><li>If <b>EWSEnabled=True</b> and no allow list is configured, all EWS traffic is allowed.</li><li>If <b>EWSEnabled=True</b> and an allow list is configured, only applications included in the allow list can use EWS.</li><li>If <b>EWSEnabled=False</b>, all EWS traffic is blocked.</li></ul><p>Beginning in October 2026:</p><ul><li>If <b>EWSEnabled=True</b> and no allow list is configured, all EWS traffic will be blocked.</li><li>If <b>EWSEnabled=True</b> and an allow list is configured, only applications included in the allow list can use EWS.</li><li>If <b>EWSEnabled=False</b>, all EWS traffic will be blocked.</li><li><b>Tenants with EWSEnabled not configured (Null) remain subject to Microsoft's phased retirement process</b> and will have EWS disabled as part of that rollout.</li></ul><p>The most important change administrators should understand is that, beginning with retirement enforcement, setting <b>EWSEnabled=True</b> without configuring <b>EWSAllowedAppIDs</b> will no longer permit unrestricted EWS access.</p><p>Organizations that require EWS after October 2026 should ensure an <b>EWSAllowedAppIDs</b> allow list is configured and validated before enforcement begins.</p><p>Organizations that have <b>EWSEnabled=True</b> and a configured <b>EWSAllowedAppIDs</b> allow list will not have their <b>EWSEnabled</b> setting modified by Microsoft before April 2027.</p><p><b><b>Action required and recommendations</b></b></p><p>We strongly recommend that Exchange Online administrators begin preparation immediately.</p><p>1. Inventory EWS usage</p><p>Identify applications and services currently using EWS in your organization.</p><ul><li>Review EWS usage reports in your tenant.</li><li>Review Message center communications related to EWS usage and retirement.</li><li>Use the guidance in the article <a href=\"https://techcommunity.microsoft.com/blog/exchange/notes-from-the-field-finding-and-remediating-ews-app-usage-before-retirement/4496469\" target=\"_blank\">Notes From the Field: Finding and Remediating EWS App Usage Before Retirement</a>.</li></ul><p>2. Create and validate an allow list</p><p>Create an <b>EWSAllowedAppIDs</b> allow list containing applications that must continue using EWS.</p><p>Important considerations:</p><ul><li>Applications appearing in EWS usage reports that you intend to continue using should be included in the allow list.</li><li>Microsoft first-party applications that continue to rely on EWS must also be included if they appear in your usage reporting.</li><li>Setting <b>EWSAllowedAppIDs</b> replaces the existing list. Ensure all required App IDs are included when updating the configuration.</li></ul><p>Verify the configured allow list:&nbsp;<span style=\"background-color: rgb(249, 242, 244); color: rgb(199, 37, 78); font-family: Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace; font-size: 12.6px;\">Get-OrganizationConfig -RetrieveEwsOperationAccessPolicy | Format-List EwsAllowedAppIDs</span></p><p>The use of <b>RetrieveEwsOperationAccessPolicy</b> is required for performance reasons. The<b> EWSAllowedAppIDs</b> list is only retrieved when explicitly requested. Changes to <b>EWSAllowedAppIDs</b> can take up to 24 hours to take effect. Allow sufficient time after updating the allow list before validating application access or troubleshooting connectivity issues.</p><p>3. Prepare for retirement enforcement</p><p>Before October 2026:</p><ul><li>Validate your EWS dependencies.</li><li>Confirm required applications are included in <b>EWSAllowedAppIDs</b>.</li><li>Enable EWS only if required for approved applications.</li></ul><p>Organizations that complete this work before retirement enforcement begins are less likely to experience service disruption.</p><p><b>Learn more</b></p><ul><li><a href=\"https://techcommunity.microsoft.com/blog/exchange/exchange-online-ews-your-time-is-almost-up/4492361\" target=\"_blank\">Exchange Online EWS, Your Time is Almost Up | Exchange Team Blog</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/exchange/introducing-ewsallowedappids-preparing-for-the-final-phase-of-ews-retirement/4529471\" target=\"_blank\">Introducing EWSAllowedAppIDs: Preparing for the Final Phase of EWS Retirement | Exchange Team Blog</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/exchange/notes-from-the-field-finding-and-remediating-ews-app-usage-before-retirement/4496469\" target=\"_blank\">Notes From the Field: Finding and Remediating EWS App Usage Before Retirement</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does this change include an admin control?</td><td>Yes. EWSAllowedAppIDs introduces a new tenant-level administrative control that allows Exchange Online administrators to explicitly define which applications are permitted to access Exchange Web Services (EWS).</td></tr><tr><td>Does this change alter how customer data is accessed?</td><td>Yes. The change modifies how applications are authorized to access Exchange Online data through EWS by requiring administrators to explicitly allow approved application IDs as retirement enforcement begins.</td></tr><tr><td>Does this change alter how admins monitor, manage, or demonstrate compliance-related activities?</td><td>Yes. Administrators must identify EWS dependencies, configure and maintain an EWSAllowedAppIDs allow list, and validate application access as part of preparing for EWS retirement.</td></tr></tbody></table><p><b></b></p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Exchange Web Services (EWS) in Exchange Online will retire starting October 1, 2026, with full retirement by April 1, 2027. Microsoft introduced EWSAllowedAppIDs, allowing admins to create an allow list of approved apps to manage EWS access and reduce disruption. Immediate preparation is recommended."
+          }
+        ],
+        "EndDateTime": "2027-05-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1447678",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-08-05T00:25:40.547Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-08-05T00:24:59Z",
+        "Tags": [
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Microsoft Exchange Online: Prepare for Exchange Web Services retirement with EWSAllowedAppIDs",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
