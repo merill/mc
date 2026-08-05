@@ -1,0 +1,47 @@
+{
+  "id": "MC1448378",
+  "versions": [
+    {
+      "capturedAt": "2026-08-05T23:22:10.69Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>Apple is introducing a change in <b>macOS Golden Gate (version 27)</b>, currently expected to reach general availability in September 2026. With this change, users can disable Accessibility permissions even when those permissions are deployed and managed through Mobile Device Management (MDM).</p><p>Microsoft Purview Endpoint Data Loss Prevention (Endpoint DLP) relies on Accessibility permissions to accurately identify the websites, applications, and files involved in user activities. To maintain protection and monitoring capabilities, we are updating Endpoint DLP to accommodate this platform change.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Worldwide, GCC, GCC High and DoD:</b> Beginning in <b>early&nbsp;August 2026</b> and expected to complete in <b>early September 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using Microsoft Purview Endpoint DLP on managed macOS devices.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Purview Endpoint DLP</li><li>macOS devices</li><li>Microsoft Edge, Safari, Google Chrome, and Mozilla Firefox</li></ul><p><i>What will happen</i></p><p>On devices where Accessibility permissions are turned off, Safari, Chrome, and Firefox will be treated as unallowed browsers. Endpoint DLP will apply enforcement to upload activities regardless of URL. This may increase block or block with override notifications and may result in additional false-positive events and alerts.</p><p>In <i>Microsoft Purview</i>, affected devices will display:</p><ul><li><b>Configuration status:</b> <b>Not updated</b> on the Device onboarding page</li><li><b>Accessibility status:</b> <b>Off</b> in the device flyout</li></ul><p>Users on affected devices will receive a notification explaining the impact. Organizations can customize this notification through their MDM configuration by updating the plist file.</p><p>Microsoft Edge is not affected by this change and will continue to function as expected.</p><p><b><b>Action required and recommendations</b></b></p><p>To prepare for this change:</p><ul><li>Review the updated guidance when it becomes available in mid-August 2026: <a href=\"https://learn.microsoft.com/purview/device-onboarding-macos-overview#next-steps\" target=\"_blank\">Next steps</a>.</li><li>Deploy or validate the required MDM plist configuration that enables Accessibility permissions on managed macOS devices.</li><li>Upgrade devices to Endpoint DLP client version <b>101.26070 or later</b>.</li><li>Monitor device compliance on the Device onboarding page and identify devices reporting an Accessibility status of Off.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/device-onboarding-macos-overview#next-steps\" target=\"_blank\">Next steps - Onboard macOS devices into Microsoft 365 overview | Microsoft Purview | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does this change modify, interrupt, or disable Purview-related capabilities?</td><td>Yes. If Accessibility permissions are turned off on macOS devices, Microsoft Purview Endpoint DLP may lose visibility into browser activity for Safari, Chrome, and Firefox, which changes how DLP enforcement and monitoring function on those devices.</td></tr><tr><td>Does this change alter how admins monitor, report on, or demonstrate compliance activities?</td><td>Yes. Administrators will need to monitor affected devices using the Device Onboarding page, where device status indicators such as Configuration status and Accessibility status provide visibility into devices impacted by this change.</td></tr><tr><td>Does this change include an admin control?</td><td>Yes. Organizations can deploy or validate the required MDM plist configuration to enable Accessibility permissions on managed macOS devices.</td></tr><tr><td>Does this change allow users to enable or disable the feature themselves?</td><td>Yes. In macOS Golden Gate (version 27), users can disable Accessibility permissions even when those permissions were deployed and managed through MDM.</td></tr></tbody></table><p><b></b></p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Apple's macOS Golden Gate (version 27) lets users disable Accessibility permissions despite MDM settings, affecting Microsoft Purview Endpoint DLP's monitoring of Safari, Chrome, and Firefox. Endpoint DLP will treat these browsers as unallowed, increasing enforcement alerts. Organizations must update configurations, upgrade clients, and monitor device compliance by early September 2026."
+          }
+        ],
+        "EndDateTime": "2026-10-04T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1448378",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-08-05T23:22:10.69Z",
+        "Services": [
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-08-05T23:21:46Z",
+        "Tags": [
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Purview | Endpoint DLP: Prepare for the macOS Golden Gate (version 27) accessibility permission change",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
