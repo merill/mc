@@ -1,0 +1,48 @@
+{
+  "id": "MC1449170",
+  "versions": [
+    {
+      "capturedAt": "2026-08-06T22:48:08.517Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-09-05T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><i>If your websites or applications do not use unload event handlers (unload), the impact described below does not apply and no action is required.</i></p><p><b><b>What and why</b></b></p><p>Microsoft Edge is changing the default behavior of the web platform unload event as part of the ongoing retirement of unload event handlers.</p><p>Today, unload event handlers are allowed by default. As this change rolls out, pages will no longer run unload event handlers unless the site explicitly permits them through Permissions Policy. Organizations should work with application owners to migrate their applications to modern lifecycle events and APIs designed for these scenarios.</p><p>The unload event is not a reliable way to save data, perform cleanup operations, or indicate that a user session has ended because browsers and operating systems can suspend or terminate pages without firing it. It can also prevent pages from using the back/forward cache, which may affect navigation performance.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Worldwide, GCC, GCC High, DoD:</b> Beginning in <b>early September 2026</b> and expected to complete in&nbsp;<b>October 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><p>Organizations may be affected if internal websites, public websites, or third-party web applications that users depend on use unload event handlers to provide required functionality.</p><p>Users are affected only when a website or application depends on unload event handlers and does not provide an alternative implementation.</p><p><i>Platforms and services</i></p><ul><li>Microsoft Edge</li><li>Websites and web applications opened in Microsoft Edge</li><li>WebView2-based applications</li><li>Managed Microsoft Edge environments</li></ul><p><i>What will happen</i></p><p>Websites and applications that rely on unload event handlers may experience functional changes when the handlers no longer run by default.</p><p>Common scenarios include applications that use unload handlers to:</p><ul><li>Save user data</li><li>Release resources</li><li>Send analytics or telemetry</li><li>Notify services that a session has ended</li></ul><p>Organizations can temporarily preserve the current behavior while applications are updated by enabling the <b>ForcePermissionPolicyUnloadDefaultEnabled</b> Microsoft Edge policy. This policy is intended only as a migration aid while application owners update affected applications. A website can still apply a more restrictive Permissions Policy configuration.</p><p><b><b>Action required and recommendations</b></b></p><p>Complete the following actions by September 6,2026:</p><ul><li>Identify internal and business-critical web applications that register unload event handlers, including handlers introduced through third-party libraries.</li><li>Validate application behavior without relying on unload event handlers.</li><li>Use Microsoft Edge DevTools to identify pages that are blocked from using the back/forward cache because of unload listeners.</li><li>Migrate data-saving scenarios to the visibilitychange event and use transitions to the hidden state as the final reliable opportunity to preserve application state.</li><li>Use the pagehide event when code must respond to navigation away from a page while remaining compatible with the back/forward cache.</li><li>Update internal development standards, support documentation, and testing guidance.</li><li>Notify application owners, support teams, and affected users of any application-specific changes.</li></ul><p>If an application cannot be updated before rollout completion, site owners can temporarily enable unload support through Permissions Policy. Administrators can also use the <b>ForcePermissionPolicyUnloadDefaultEnabled</b> Microsoft Edge policy to retain the previous default behavior while migration work is completed. These controls are intended to provide migration time and should not be considered permanent solutions. A website can still apply a more restrictive Permissions Policy configuration.</p><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/deployedge/microsoft-edge-policies/forcepermissionpolicyunloaddefaultenabled\" target=\"_blank\">ForcePermissionPolicyUnloadDefaultEnabled | Microsoft Edge | Microsoft Learn</a></li><li><a href=\"https://developer.mozilla.org/docs/Web/API/Document/visibilitychange_event\" target=\"_blank\">Document: visibilitychange event | Mozilla</a></li><li><a href=\"https://developer.mozilla.org/docs/Web/API/Window/pagehide_event\" target=\"_blank\">Window: pagehide event | Mozilla</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Edge will stop running unload event handlers by default starting September 2026, requiring sites to explicitly permit them via Permissions Policy. Organizations should migrate to modern lifecycle events like visibilitychange and pagehide, update applications, and use provided policies temporarily during transition."
+          }
+        ],
+        "EndDateTime": "2026-12-01T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1449170",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-08-06T22:48:08.517Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-08-06T22:47:52Z",
+        "Tags": [
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Microsoft Edge: Retirement of default unload event support",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
