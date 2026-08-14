@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and why</b></b></p><p>We're updating the SharePoint Online PowerShell setting <code>EnableSensitivityLabelForVideoFiles</code> so it applies to both MP4 video files and Microsoft Clipchamp project files (<code>.clipchamp</code>).</p><p>Today, this setting controls sensitivity label support for MP4 files only. After this change, the setting will also control sensitivity label behavior for <code>.clipchamp</code> files. This update creates a more consistent experience across supported video file types and simplifies administration of sensitivity label behavior for video content.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Beginning in <b>mid-September 2026</b> and expected to complete in <b>mid-October 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>SharePoint Online and OneDrive administrators who manage sensitivity labels for video files</li><li>Organizations that use Microsoft Clipchamp and sensitivity labels</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Clipchamp</li><li>SharePoint Online</li><li>OneDrive</li></ul><p><i>What will happen</i></p><p>The SharePoint Online PowerShell setting:</p><p><code>Set-SPOTenant -EnableSensitivityLabelForVideoFiles</code></p><p>will continue to control MP4 files and will also begin controlling sensitivity label behavior for&nbsp;<code>.clipchamp</code> files.</p><p>If <code>EnableSensitivityLabelForVideoFiles</code> is set to <code>$true</code>:</p><ul><li>The Clipchamp editor will apply the organization's default sensitivity label policy to projects.</li><li>Users will be able to update project labels, subject to the organization's existing sensitivity label policies.</li><li>The Clipchamp editor will enforce the applicable label policies.</li><li>Exported MP4 videos will inherit the sensitivity label applied to the Clipchamp project.</li></ul><p>If <code>EnableSensitivityLabelForVideoFiles</code> is set to <code>$false</code> and a <code>.clipchamp</code> project does not already have a sensitivity label:</p><ul><li>The organization's default sensitivity label policy will not be applied to the project.</li><li>Users will not be able to assign or update a sensitivity label on the project.</li><li>The sensitivity label picker will not be displayed in the Clipchamp editor.</li><li>Exported MP4 videos will not inherit a sensitivity label from the project.</li></ul><p>If <code>EnableSensitivityLabelForVideoFiles</code> is set to <code>$false</code> and a <code>.clipchamp</code> project already has a sensitivity label:</p><ul><li>The existing project label will remain applied and its policies will continue to be enforced.</li><li>Users will not be able to update the project label.</li><li>Exported MP4 videos will not inherit the project's sensitivity label.</li><li>The Clipchamp editor will warn users that the exported video will not inherit the project label.</li></ul><p>Organizations currently using <code>EnableSensitivityLabelForVideoFiles</code> = <code>$true</code> should not experience a change in behavior because sensitivity labels will continue to be supported for both MP4 and&nbsp;<code>.clipchamp</code> files when this setting is enabled.</p><p>Organizations currently using <code>EnableSensitivityLabelForVideoFiles</code> = <code>$false</code>&nbsp;will see a change. Unlabeled <code>.clipchamp</code> projects will remain unlabeled and will not support sensitivity label assignment in the Clipchamp editor. Projects that already have a label will retain it and continue to enforce its policies, but users will not be able to update the label, and exported videos will not inherit it.</p><p><b><b>Action required and recommendations</b></b></p><p>Review your current <code>EnableSensitivityLabelForVideoFiles</code> configuration before rollout completes.</p><p>If your organization wants sensitivity labels applied to video content, including Clipchamp project files and exported MP4 videos, ensure that <code>EnableSensitivityLabelForVideoFiles</code> is set to <code>$true</code>.</p><p>If your organization keeps the setting set to <code>$false</code>, review workflows involving existing labeled Clipchamp projects. Their labels and associated policies will remain in effect, but users will not be able to update those labels, and newly exported videos will not inherit them.</p><p>Administrators can review the current setting in the <a href=\"https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files?tabs=disable-instructions#video-support-mp4-files\" target=\"_blank\">Video support (MP4 files)</a> section of the Microsoft Learn article. Documentation will be updated to include the new <code>.clipchamp</code> behavior.</p><p>Be aware that video files with sensitivity labels will follow your existing sensitivity labeling policies. Depending on your label configuration, protected video files may be subject to restrictions such as limited sharing or download capabilities.</p><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files?tabs=disable-instructions\" target=\"_blank\">Enable sensitivity labels for files in SharePoint and OneDrive | Microsoft Purview | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change modify Information Protection labels or sensitive information types?</td><td><p>Yes. The scope of the existing admin control is expanding to include <code>.clipchamp</code> files in addition to MP4 files. Existing labels on <code>.clipchamp</code> projects will remain applied when the setting is disabled, but users will not be able to update them and exported videos will not inherit them.</p></td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td><p>Yes, indirectly. Sensitivity label behavior for <code>.clipchamp</code> files will align with the existing tenant setting. When the setting is disabled, existing labeled projects will continue to enforce their label policies, while unlabeled projects and newly exported videos will remain unlabeled. This may affect compliance workflows and reporting related to labeled content.</p></td></tr></tbody></table>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "The EnableSensitivityLabelForVideoFiles PowerShell setting in SharePoint Online will expand to include Microsoft Clipchamp project files (.clipchamp) alongside MP4 files starting mid-September 2026. This change standardizes sensitivity label behavior for video files, affecting label application, editing, and inheritance on Clipchamp projects and exported videos."
+    }
+  ],
+  "EndDateTime": "2026-11-05T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1454399",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-08-14T00:12:51.473Z",
+  "Services": [
+    "Microsoft Clipchamp "
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-08-14T00:12:44Z",
+  "Tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Clipchamp: Updates to the EnableSensitivityLabelForVideoFiles PowerShell setting",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}

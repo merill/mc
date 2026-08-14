@@ -1,0 +1,48 @@
+{
+  "id": "MC1454397",
+  "versions": [
+    {
+      "capturedAt": "2026-08-14T00:09:48.22Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and Why:</b></b></p><p>\nTo strengthen protection against abuse and ensure fair use of Exchange Online resources, we are updating how the <b>Tenant External Recipient Rate Limit (TERRL)</b> quota is calculated for certain tenants.</p><p>These changes improve how quotas account for tenant age (how long the tenant has existed since creation), trial subscriptions, and educational organizations using free Education (EDU) licenses.</p><p><b><b>Rollout Schedule:</b></b></p><ul><li>\nGeneral Availability (Worldwide): Rolling out beginning <b>mid-September 2026</b></li></ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Newly created tenants (first 60 days)</li>\n<li>Trial tenants</li>\n<li>Educational organizations with free EDU licenses</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>Exchange Online</li>\n<li>Exchange admin center (EAC)</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n</ul><p>TERRL quota calculations will change based on tenant status and licensing.</p><ul><li><b>New tenant quotas (based on tenant age):</b><ul>\n<li>Less than 31 days: 10% of standard calculated quota</li><li>31–60 days: 25% of standard calculated quota</li><li>More than 60 days: 100% of standard calculated quota</li></ul></li><li><b>Trial tenants:</b></li><ul><li>Daily TERRL quota reduced from <b>5,000 </b>to <b>500 </b>external recipients</li></ul><li><b>Tenants with free EDU licenses (e.g. A1 licenses):</b></li><ul><li>New formula applied: 500 × (Purchased Email Licenses^0.7 + Free EDU Licenses^0.3) + 9500</li><li>Free EDU licenses contribute to the quota at a lower weighting than purchased licenses</li></ul><li><b>Tenants without free EDU licenses:</b><ul><li>Existing formula remains unchanged: 500 × (Purchased Email Licenses^0.7) + 9500</li></ul></li></ul><p>If a tenant exceeds its quota:</p><p></p><ul><li>Additional outbound messages to external recipients will be blocked until usage falls below the rolling 24-hour limit</li><li>Senders will receive one of the following Non-Delivery Reports (NDRs):</li><ul><li><b>Trial tenants:</b> 550 5.7.232 — Message blocked due to trial tenant external recipient limit</li><li><b>Non-trial tenants:</b> 550 5.7.233 — Message blocked due to tenant external recipient limit</li></ul></ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n<ul>\n</ul><p>No immediate action is required.</p><p>Recommended actions:</p><ul><ul>\n</ul><li>Review the <b>Tenant Outbound External Recipients Rate </b>report in the Exchange admin center:&nbsp;<b>EAC &gt; Reports &gt; Mail flow &gt; Tenant Outbound External Recipients Rate.</b></li><li>Monitor:<ul><li>Current TERRL quota</li><li>Outbound recipient volume</li><li>Percentage of quota consumed</li><li>Blocked recipients (if any)</li><li>TERRL enforcement status</li></ul></li><li>If your organization regularly operates near or above quota consider migrating high-volume, application-driven outbound email to a third-party bulk email service or purchasing more licenses to cover your volume needs.</li></ul><p>Learn more: <a href=\"https://techcommunity.microsoft.com/blog/exchange/introducing-exchange-online-tenant-outbound-email-limits/4372797\" target=\"_blank\">Introducing Exchange Online Tenant Outbound Email Limits</a></p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Tenant External Recipient Rate Limit (TERRL) quotas in Exchange Online will change starting mid-September 2026 for new, trial, and EDU tenants, adjusting limits based on tenant age and license type. Trial tenant quotas reduce to 500 recipients daily; EDU quotas use a new formula. Exceeding limits blocks outbound messages."
+          }
+        ],
+        "EndDateTime": "2026-11-14T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1454397",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-08-14T00:09:48.22Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-08-14T00:09:35Z",
+        "Tags": [
+          "Feature update",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Updates to Tenant External Recipient Rate Limit (TERRL) Quotas for New, Trial, and Education Tenants",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

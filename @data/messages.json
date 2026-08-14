@@ -4,32 +4,428 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>As mentioned in MC1403402, we expect macOS Golden Gate 27 to be released by Apple later this year. Microsoft Intune, the Company Portal app and the Intune MDM agent will be moving to support macOS 15 (Sequoia) and later. Since the Company Portal app for iOS and macOS are a unified app, this change will occur shortly after the release of macOS 27. This does not affect existing enrolled devices.</p><p><b>How this will affect your organization:</b></p><p>This will only affect you if you currently manage, or plan to manage macOS devices with Intune. This may not impact you because your users have likely already upgraded their macOS devices. Refer to <a href=\"https://support.apple.com/120282\" target=\"_blank\">macOS Sequoia is compatible with these computers – Apple Support</a> for a list of devices that are supported.</p><p><b>Note:</b> Devices that are currently enrolled on macOS 14.x or below will continue to remain enrolled even when those versions are no longer supported. New devices will be unable to enroll if they are running macOS 14.x or below.</p><p>Enrolled macOS devices without user affinity, either through Automated Device Enrollment (ADE) without user affinity or Direct Enrollment, have a slightly nuanced support statement due to their shared usage. For more details, see <a href=\"https://aka.ms/Intune/macOS/ADE-DE-support\" target=\"_blank\">https://aka.ms/Intune/macOS/ADE-DE-support</a>.</p><p><b>What you need to do to prepare:</b></p><p>Check your Intune reporting to see which devices or users may be affected. Go to <b>Devices </b>&gt; <b>All devices</b> and filter by macOS. You can add in additional columns to help identify who in your organization has devices running macOS 14.x or below. Request that your users upgrade their devices to a supported OS version before this change.&nbsp;</p>",
+      "Content": "<p><b><b>What and why</b></b></p><p>We're updating the SharePoint Online PowerShell setting <code>EnableSensitivityLabelForVideoFiles</code> so it applies to both MP4 video files and Microsoft Clipchamp project files (<code>.clipchamp</code>).</p><p>Today, this setting controls sensitivity label support for MP4 files only. After this change, the setting will also control sensitivity label behavior for <code>.clipchamp</code> files. This update creates a more consistent experience across supported video file types and simplifies administration of sensitivity label behavior for video content.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Beginning in <b>mid-September 2026</b> and expected to complete in <b>mid-October 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>SharePoint Online and OneDrive administrators who manage sensitivity labels for video files</li><li>Organizations that use Microsoft Clipchamp and sensitivity labels</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Clipchamp</li><li>SharePoint Online</li><li>OneDrive</li></ul><p><i>What will happen</i></p><p>The SharePoint Online PowerShell setting:</p><p><code>Set-SPOTenant -EnableSensitivityLabelForVideoFiles</code></p><p>will continue to control MP4 files and will also begin controlling sensitivity label behavior for&nbsp;<code>.clipchamp</code> files.</p><p>If <code>EnableSensitivityLabelForVideoFiles</code> is set to <code>$true</code>:</p><ul><li>The Clipchamp editor will apply the organization's default sensitivity label policy to projects.</li><li>Users will be able to update project labels, subject to the organization's existing sensitivity label policies.</li><li>The Clipchamp editor will enforce the applicable label policies.</li><li>Exported MP4 videos will inherit the sensitivity label applied to the Clipchamp project.</li></ul><p>If <code>EnableSensitivityLabelForVideoFiles</code> is set to <code>$false</code> and a <code>.clipchamp</code> project does not already have a sensitivity label:</p><ul><li>The organization's default sensitivity label policy will not be applied to the project.</li><li>Users will not be able to assign or update a sensitivity label on the project.</li><li>The sensitivity label picker will not be displayed in the Clipchamp editor.</li><li>Exported MP4 videos will not inherit a sensitivity label from the project.</li></ul><p>If <code>EnableSensitivityLabelForVideoFiles</code> is set to <code>$false</code> and a <code>.clipchamp</code> project already has a sensitivity label:</p><ul><li>The existing project label will remain applied and its policies will continue to be enforced.</li><li>Users will not be able to update the project label.</li><li>Exported MP4 videos will not inherit the project's sensitivity label.</li><li>The Clipchamp editor will warn users that the exported video will not inherit the project label.</li></ul><p>Organizations currently using <code>EnableSensitivityLabelForVideoFiles</code> = <code>$true</code> should not experience a change in behavior because sensitivity labels will continue to be supported for both MP4 and&nbsp;<code>.clipchamp</code> files when this setting is enabled.</p><p>Organizations currently using <code>EnableSensitivityLabelForVideoFiles</code> = <code>$false</code>&nbsp;will see a change. Unlabeled <code>.clipchamp</code> projects will remain unlabeled and will not support sensitivity label assignment in the Clipchamp editor. Projects that already have a label will retain it and continue to enforce its policies, but users will not be able to update the label, and exported videos will not inherit it.</p><p><b><b>Action required and recommendations</b></b></p><p>Review your current <code>EnableSensitivityLabelForVideoFiles</code> configuration before rollout completes.</p><p>If your organization wants sensitivity labels applied to video content, including Clipchamp project files and exported MP4 videos, ensure that <code>EnableSensitivityLabelForVideoFiles</code> is set to <code>$true</code>.</p><p>If your organization keeps the setting set to <code>$false</code>, review workflows involving existing labeled Clipchamp projects. Their labels and associated policies will remain in effect, but users will not be able to update those labels, and newly exported videos will not inherit them.</p><p>Administrators can review the current setting in the <a href=\"https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files?tabs=disable-instructions#video-support-mp4-files\" target=\"_blank\">Video support (MP4 files)</a> section of the Microsoft Learn article. Documentation will be updated to include the new <code>.clipchamp</code> behavior.</p><p>Be aware that video files with sensitivity labels will follow your existing sensitivity labeling policies. Depending on your label configuration, protected video files may be subject to restrictions such as limited sharing or download capabilities.</p><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files?tabs=disable-instructions\" target=\"_blank\">Enable sensitivity labels for files in SharePoint and OneDrive | Microsoft Purview | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change modify Information Protection labels or sensitive information types?</td><td><p>Yes. The scope of the existing admin control is expanding to include <code>.clipchamp</code> files in addition to MP4 files. Existing labels on <code>.clipchamp</code> projects will remain applied when the setting is disabled, but users will not be able to update them and exported videos will not inherit them.</p></td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td><p>Yes, indirectly. Sensitivity label behavior for <code>.clipchamp</code> files will align with the existing tenant setting. When the setting is disabled, existing labeled projects will continue to enforce their label policies, while unlabeled projects and newly exported videos will remain unlabeled. This may affect compliance workflows and reporting related to labeled content.</p></td></tr></tbody></table>",
       "ContentType": "html"
     },
     "Category": "planForChange",
     "Details": [
       {
         "Name": "Summary",
-        "Value": "Intune will support macOS 15 and later after macOS Golden Gate 27 release this year. Existing devices on macOS 14.x or below remain enrolled but new enrollments on these versions won't be allowed. Organizations should identify and upgrade affected macOS devices in Intune before the change."
+        "Value": "The EnableSensitivityLabelForVideoFiles PowerShell setting in SharePoint Online will expand to include Microsoft Clipchamp project files (.clipchamp) alongside MP4 files starting mid-September 2026. This change standardizes sensitivity label behavior for video files, affecting label application, editing, and inheritance on Clipchamp projects and exported videos."
       }
     ],
-    "EndDateTime": "2026-10-31T07:00:00Z",
+    "EndDateTime": "2026-11-05T08:00:00Z",
     "HasAttachments": false,
-    "Id": "MC1454370",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-08-13T23:33:27.633Z",
+    "Id": "MC1454399",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-14T00:12:51.473Z",
     "Services": [
-      "Microsoft Intune"
+      "Microsoft Clipchamp "
     ],
     "Severity": "normal",
-    "StartDateTime": "2026-08-13T23:33:12Z",
+    "StartDateTime": "2026-08-14T00:12:44Z",
+    "Tags": [
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Clipchamp: Updates to the EnableSensitivityLabelForVideoFiles PowerShell setting",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p><p>\nTo strengthen protection against abuse and ensure fair use of Exchange Online resources, we are updating how the <b>Tenant External Recipient Rate Limit (TERRL)</b> quota is calculated for certain tenants.</p><p>These changes improve how quotas account for tenant age (how long the tenant has existed since creation), trial subscriptions, and educational organizations using free Education (EDU) licenses.</p><p><b><b>Rollout Schedule:</b></b></p><ul><li>\nGeneral Availability (Worldwide): Rolling out beginning <b>mid-September 2026</b></li></ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Newly created tenants (first 60 days)</li>\n<li>Trial tenants</li>\n<li>Educational organizations with free EDU licenses</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>Exchange Online</li>\n<li>Exchange admin center (EAC)</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n</ul><p>TERRL quota calculations will change based on tenant status and licensing.</p><ul><li><b>New tenant quotas (based on tenant age):</b><ul>\n<li>Less than 31 days: 10% of standard calculated quota</li><li>31–60 days: 25% of standard calculated quota</li><li>More than 60 days: 100% of standard calculated quota</li></ul></li><li><b>Trial tenants:</b></li><ul><li>Daily TERRL quota reduced from <b>5,000 </b>to <b>500 </b>external recipients</li></ul><li><b>Tenants with free EDU licenses (e.g. A1 licenses):</b></li><ul><li>New formula applied: 500 × (Purchased Email Licenses^0.7 + Free EDU Licenses^0.3) + 9500</li><li>Free EDU licenses contribute to the quota at a lower weighting than purchased licenses</li></ul><li><b>Tenants without free EDU licenses:</b><ul><li>Existing formula remains unchanged: 500 × (Purchased Email Licenses^0.7) + 9500</li></ul></li></ul><p>If a tenant exceeds its quota:</p><p></p><ul><li>Additional outbound messages to external recipients will be blocked until usage falls below the rolling 24-hour limit</li><li>Senders will receive one of the following Non-Delivery Reports (NDRs):</li><ul><li><b>Trial tenants:</b> 550 5.7.232 — Message blocked due to trial tenant external recipient limit</li><li><b>Non-trial tenants:</b> 550 5.7.233 — Message blocked due to tenant external recipient limit</li></ul></ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n<ul>\n</ul><p>No immediate action is required.</p><p>Recommended actions:</p><ul><ul>\n</ul><li>Review the <b>Tenant Outbound External Recipients Rate </b>report in the Exchange admin center:&nbsp;<b>EAC &gt; Reports &gt; Mail flow &gt; Tenant Outbound External Recipients Rate.</b></li><li>Monitor:<ul><li>Current TERRL quota</li><li>Outbound recipient volume</li><li>Percentage of quota consumed</li><li>Blocked recipients (if any)</li><li>TERRL enforcement status</li></ul></li><li>If your organization regularly operates near or above quota consider migrating high-volume, application-driven outbound email to a third-party bulk email service or purchasing more licenses to cover your volume needs.</li></ul><p>Learn more: <a href=\"https://techcommunity.microsoft.com/blog/exchange/introducing-exchange-online-tenant-outbound-email-limits/4372797\" target=\"_blank\">Introducing Exchange Online Tenant Outbound Email Limits</a></p><p><b><b>Compliance considerations:</b></b></p><p>\nNo compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Tenant External Recipient Rate Limit (TERRL) quotas in Exchange Online will change starting mid-September 2026 for new, trial, and EDU tenants, adjusting limits based on tenant age and license type. Trial tenant quotas reduce to 500 recipients daily; EDU quotas use a new formula. Exceeding limits blocks outbound messages."
+      }
+    ],
+    "EndDateTime": "2026-11-14T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454397",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-14T00:09:48.22Z",
+    "Services": [
+      "Microsoft 365 suite"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-14T00:09:35Z",
+    "Tags": [
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Updates to Tenant External Recipient Rate Limit (TERRL) Quotas for New, Trial, and Education Tenants",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p>\n\n<p>Microsoft is removing support for Teams Shifts Connection PowerShell cmdlets in <b>Microsoft Teams PowerShell Module 7.9.0</b>. Organizations that currently use these cmdlets to manage Teams Shifts connector scenarios will no longer be able to rely on them after upgrading to version 7.9.0 or later.</p>\n\n<p>This change affects the following cmdlets:</p>\n\n<ul>\n  <li><code>New-CsTeamsShiftsConnection</code>, <code>Set-CsTeamsShiftsConnection</code>, <code>Remove-CsTeamsShiftsConnection</code>, <code>Update-CsTeamsShiftsConnection</code></li>\n  <li><code>New-CsTeamsShiftsConnectionInstance</code>, <code>Set-CsTeamsShiftsConnectionInstance</code>, <code>Remove-CsTeamsShiftsConnectionInstance</code>, <code>Update-CsTeamsShiftsConnectionInstance</code></li>\n  <li><code>Remove-CsTeamsShiftsConnectionTeamMap</code></li>\n  <li><code>New-CsTeamsShiftsConnectionBatchTeamMap</code></li>\n  <li><code>Get-CsTeamsShiftsConnectionConnector</code></li>\n  <li><code>Get-CsTeamsShiftsConnectionOperation</code></li>\n  <li><code>Get-CsTeamsShiftsConnectionSyncResult</code></li>\n  <li><code>Get-CsTeamsShiftsConnectionErrorReport</code>, <code>Remove-CsTeamsShiftsConnectionErrorReport</code></li>\n  <li><code>Get-CsTeamsShiftsConnectionWfmTeam</code></li>\n  <li><code>Get-CsTeamsShiftsConnectionWfmUser</code></li>\n  <li><code>Test-CsTeamsShiftsConnectionValidate</code></li>\n</ul>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n\n<p>This change takes effect with the release of <b>Microsoft Teams PowerShell Module 7.9.0</b>. Organizations should review dependencies before upgrading to this version or any later version.</p>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p>Who is affected:</p>\n\n<ul>\n  <li>Microsoft Teams administrators.</li>\n  <li>Organizations using Teams Shifts connector scenarios managed through PowerShell automation.</li>\n</ul>\n\n<p>Platforms/Services:</p>\n\n<ul>\n  <li>Microsoft Teams</li>\n  <li>Microsoft Teams PowerShell Module</li>\n  <li>Teams Shifts connectors</li>\n</ul>\n\n<p>What will happen:</p>\n\n<ul>\n  <li>The Teams Shifts Connection cmdlets listed above are no longer supported in Microsoft Teams PowerShell Module 7.9.0 and later.</li>\n  <li>Existing scripts, automation workflows, runbooks, and operational procedures that depend on these cmdlets may stop functioning as expected after an upgrade.</li>\n  <li>Organizations that do not use these cmdlets are not impacted by this change.</li>\n</ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n\n<ul>\n  <li>Review existing PowerShell scripts, automation workflows, runbooks, and operational procedures for dependencies on Teams Shifts Connection cmdlets.</li>\n  <li>Remove or update affected dependencies before upgrading to Microsoft Teams PowerShell Module 7.9.0 or later.</li>\n  <li>Validate administrative and operational processes that previously relied on these cmdlets.</li>\n  <li>If your organization does not use these cmdlets, no action is required.</li>\n</ul>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft is retiring Teams Shifts Connection cmdlets in Microsoft Teams PowerShell Module 7.9.0. Organizations using these cmdlets must update or remove dependencies before upgrading, as scripts relying on them will stop working. Those not using these cmdlets are unaffected."
+      }
+    ],
+    "EndDateTime": "2026-10-26T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454390",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-08-14T00:04:30.223Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-14T00:04:15Z",
+    "Tags": [
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Retiring Teams Shifts Connection cmdlets from Teams PowerShell Module",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b>What and Why:</b></p>\n<p>Copilot Analytics Labs is a new self-service hub designed to help organizations accelerate Copilot and agent analytics. The hub provides ready-to-use templates, sample code, prompts, research, and guidance to help analytics leaders, program managers, and data scientists measure adoption, usage, business impact, and return on investment (ROI) for AI initiatives.</p>\n<p>Learn more at <a href=\"https://microsoft.github.io/CopilotAnalyticsLabs/\" target=\"_blank\" rel=\"noopener noreferrer\">Copilot Analytics Labs</a>.</p>\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li><b>General Availability (Worldwide):</b> Rollout begins in early August 2026.</li>\n<li><b>Expected completion:</b> Mid-August 2026.</li>\n</ul>\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:</b> </p><ul><li>Analytics leaders, Copilot adoption managers, program managers, data scientists, and teams responsible for measuring Copilot adoption and business impact.</li></ul>\n<p><b>Platforms and services:</b> </p><ul><li>Copilot Analytics and Viva Insights.</li></ul>\n<p>Copilot Analytics Labs provides experimental, ready-made resources that organizations can adapt to their analytics and reporting needs. Resources are organized into three areas:</p>\n<ul>\n<li><b>Build:</b> Access templates, sample code, prompts, and analytics assets for Python, R, and Power BI that teams can connect to organizational data. Initial resources include:\n<ul>\n<li><i>All-in-One Dashboard</i> for measuring adoption, usage, impact, and ROI.</li>\n<li><i>Cowork Value Estimator</i>.</li>\n</ul>\n</li>\n<li><b>Learn:</b> Explore playbooks, research, demonstrations, and guidance based on customer deployments and analytics scenarios.</li>\n<li><b>Explore:</b> Preview newly released resources and upcoming additions to Copilot Analytics Labs.</li>\n</ul>\n<p>Copilot Analytics Labs is an experimental, self-service resource hub. This release does not change existing Copilot Analytics or Viva Insights features and experiences. It does not require administrative configuration or deployment changes.</p>\n<p>Users can access Copilot Analytics Labs from the <b>Resources</b> section.</p>\n<p><b><b>Action Required/Recommendations:</b></b></p>\n<p>No action is required.</p>\n<p>Consider sharing this announcement with:</p>\n<ul>\n<li>Analytics leaders</li>\n<li>Copilot adoption managers</li>\n<li>Program managers</li>\n<li>Data science teams</li>\n<li>Teams responsible for measuring Copilot adoption and business impact</li>\n</ul>\n<p>Encourage these teams to explore the available templates, playbooks, and analytics assets and adapt them to meet your organization's requirements.</p>\n<p><b><b>Compliance Considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Copilot Analytics Labs is a self-service hub launching worldwide in August 2026, offering templates, code, prompts, and guidance to help analytics teams measure Copilot adoption, usage, impact, and ROI. It requires no admin changes and supports Copilot Analytics and Viva Insights users. No action needed."
+      }
+    ],
+    "EndDateTime": "2026-10-26T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454388",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-14T00:03:32.28Z",
+    "Services": [
+      "Microsoft Viva"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-14T00:03:14Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Copilot Analytics Labs under Resources section",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b>What and why:</b></p>\n\n<p>We're introducing the third-generation Microsoft 365 sharing experience to make collaboration simpler, smarter, and more secure by default. At the center of this update is a new <b>hero link</b>—a single sharing link that controls access to a file or folder.</p>\n\n<p>Users will see one consistent sharing experience whether they copy a link, share through email, or use the browser URL. The hero link consolidates sharing controls into a single link that can be updated after it has been shared, reducing the need to create and resend new links when access requirements change.</p>\n\n<p><b>Rollout schedule:</b></p>\n\n<ul>\n<li><b>General Availability (Worldwide):</b> Rolling out late August 2026 through late October 2026</li>\n<li><b>GCC:</b> Rolling out late August 2026 through late October 2026</li>\n<li><b>GCC High:</b> Rolling out late August 2026 through late October 2026</li>\n<li><b>DoD:</b> Rolling out late August 2026 through late October 2026</li>\n</ul>\n\n<p><b>Impact on your organization:</b></p>\n\n<p><b>Who is affected:</b> All users who share or manage files and folders in Microsoft 365.</p>\n\n<p><b>Platforms and services:</b> SharePoint, OneDrive, and Microsoft 365 file-sharing experiences.</p>\n\n<p><b>What will happen:</b></p>\n\n<ul>\n<li>Every file and folder will have a single primary sharing link, called the <b>hero link</b>, displayed in the sharing dialog.</li>\n<li>The hero link settings determine who can access the item beyond people who are explicitly granted access.</li>\n<li>Adding people directly to a file or folder remains unchanged and continues to be the simplest way to share content.</li>\n<li>By default, the hero link is set to <b>Only people added to the file</b>, meaning the link itself does not grant access to anyone.</li>\n<li>Users can broaden access to people in the organization with the link or, where permitted by organizational policy, to anyone with the link.</li>\n<li>Users can choose whether recipients can view, edit, or view without downloading, depending on available permissions.</li>\n<li>Changing the audience for the hero link updates the existing link rather than creating a new one.</li>\n<li>If recipients cannot open a previously shared file, the sender can expand access on the same hero link without redistributing a new URL.</li>\n<li>Existing sharing links will continue to function and will appear under <b>Other links</b> in the sharing dialog.</li>\n<li>Effective access remains the most permissive combination of direct permissions, inherited permissions, group-based permissions, and link-based permissions.</li><li>Users will see a tutorial experience upon opening the new share dialog for the first time.</li>\n</ul>\n\n<p><b>Action required/Recommendations:</b></p>\n\n<p>No action is required before rollout.</p>\n\n<p>Organizations should consider the following preparation activities:</p>\n\n<ul>\n<li>Review internal sharing guidance and end-user documentation to reflect the new single-link sharing model.</li>\n<li>Communicate the updated sharing experience to users who regularly collaborate across teams and organizations.</li>\n<li>Evaluate site-level default sharing settings where different sharing behaviors are required.</li>\n</ul>\n\n<p><b>Admin controls</b></p>\n\n<ul>\n<li>Administrators can configure the default audience for the hero link at the SharePoint site collection or OneDrive level by using the <b>DefaultMainLinkScope</b> parameter in SharePoint PowerShell.</li>\n<li>Supported values are:\n<ul>\n<li><b>OnlyPeopleAdded</b> (default)</li>\n<li><b>Organization</b></li></ul></li>\n<li>There is currently no tenant-wide equivalent setting for the hero link audience.</li>\n<li><b>DefaultMainLinkScope</b> controls only the default audience and does not prevent users from broadening access when allowed by policy.</li>\n<li>Hero links start with view permissions by default.</li>\n<li>Existing default sharing link settings and link expiration policies continue to apply to legacy links and do not govern hero links.</li>\n</ul>\n\n<p><b>Compliance considerations:</b></p>\n\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "492622"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft 365 introduces a single \"hero link\" for file and folder sharing, simplifying access control and allowing link updates without resending. Rolling out globally from August to October 2026, it affects SharePoint, OneDrive, and Microsoft 365 users, with admin controls for default link audiences and no compliance issues identified."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Android, Desktop, iOS, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2026-12-28T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454378",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-14T00:03:06.787Z",
+    "Services": [
+      "Microsoft 365 suite",
+      "SharePoint Online",
+      "Microsoft OneDrive",
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-13T23:37:59Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft 365: The Next Generation of File & Folder Sharing",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b>What and Why:</b></p>\n<p>Copilot Analytics Labs is a new self-service hub designed to help organizations accelerate Copilot and agent analytics. The hub provides ready-to-use templates, sample code, prompts, research, and guidance to help analytics leaders, program managers, and data scientists measure adoption, usage, business impact, and return on investment (ROI) for AI initiatives.</p>\n<p>Learn more at <a href=\"https://microsoft.github.io/CopilotAnalyticsLabs/\" target=\"_blank\" rel=\"noopener noreferrer\">Copilot Analytics Labs</a>.</p>\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li><b>General Availability (Worldwide):</b> Rollout begins in early August 2026.</li>\n<li><b>Expected completion:</b> Mid-August 2026.</li>\n</ul>\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:</b> </p><ul><li>Analytics leaders, Copilot adoption managers, program managers, data scientists, and teams responsible for measuring Copilot adoption and business impact.</li></ul>\n<p><b>Platforms and services:</b> </p><ul><li>Copilot Analytics and Viva Insights.</li></ul>\n<p>Copilot Analytics Labs provides experimental, ready-made resources that organizations can adapt to their analytics and reporting needs. Resources are organized into three areas:</p>\n<ul>\n<li><b>Build:</b> Access templates, sample code, prompts, and analytics assets for Python, R, and Power BI that teams can connect to organizational data. Initial resources include:\n<ul>\n<li><i>All-in-One Dashboard</i> for measuring adoption, usage, impact, and ROI.</li>\n<li><i>Cowork Value Estimator</i>.</li>\n</ul>\n</li>\n<li><b>Learn:</b> Explore playbooks, research, demonstrations, and guidance based on customer deployments and analytics scenarios.</li>\n<li><b>Explore:</b> Preview newly released resources and upcoming additions to Copilot Analytics Labs.</li>\n</ul>\n<p>Copilot Analytics Labs is an experimental, self-service resource hub. This release does not change existing Copilot Analytics or Viva Insights features and experiences. It does not require administrative configuration or deployment changes.</p>\n<p>Users can access Copilot Analytics Labs from the <b>Resources</b> section.</p>\n<p><b><b>Action Required/Recommendations:</b></b></p>\n<p>No action is required.</p>\n<p>Consider sharing this announcement with:</p>\n<ul>\n<li>Analytics leaders</li>\n<li>Copilot adoption managers</li>\n<li>Program managers</li>\n<li>Data science teams</li>\n<li>Teams responsible for measuring Copilot adoption and business impact</li>\n</ul>\n<p>Encourage these teams to explore the available templates, playbooks, and analytics assets and adapt them to meet your organization's requirements.</p>\n<p><b><b>Compliance Considerations:</b></b></p>\n<p>No compliance considerations identified, review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Copilot Analytics Labs is a self-service hub launching worldwide in August 2026, offering templates, code, prompts, and guidance to help analytics leaders and teams measure Copilot adoption, usage, impact, and ROI. It requires no admin changes and supports Copilot Analytics and Viva Insights users."
+      }
+    ],
+    "EndDateTime": "2026-10-26T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454387",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-14T00:02:05.453Z",
+    "Services": [
+      "Microsoft Viva"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-14T00:01:52Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Copilot Analytics Labs under Resources section",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and why</b></b></p><p>Microsoft is retiring support for Microsoft Loop components in OneNote for the web. After this change, users will no longer be able to insert Loop components while using OneNote for the web.</p><p>To support a smooth transition, existing Loop components on OneNote pages will not be removed and no data will be lost. Existing Loop components will be replaced with links that open the corresponding Loop pages, allowing users to continue accessing and editing their content. The full Loop component experience will continue to be available in the OneNote desktop app for Windows.</p><p>This change is intended to streamline the OneNote for the web experience while preserving access to existing Loop content.</p><p><b><b>Rollout schedule</b></b></p><ul><li>Beginning in <b>mid-September 2026</b> and expected to complete in <b>mid-September 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Users who access OneNote for the web and use Loop components.</li><li>Users who have existing Loop components embedded in OneNote for the web.</li></ul><p><i>Platforms and services</i></p><ul><li>OneNote for the web</li><li>Microsoft Loop</li><li>OneNote desktop app for Windows</li></ul><p><i>What will happen</i></p><ul><li>Users will no longer be able to insert Loop components in OneNote for the web.</li><li>Existing Loop components in OneNote for the web will be replaced with links to the corresponding Loop pages.</li><li>Users can continue to access and edit their existing content through those links.</li><li>The ability to work with Loop components will continue to be available in the OneNote desktop app for Windows.</li><li>No customer data will be lost as part of this retirement.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>No admin action is required.</p><p>We recommend that administrators:</p><ul><li>Inform users who work with Loop components in OneNote for the web about this change.</li><li>Update internal documentation or training materials that reference inserting Loop components in OneNote for the web.</li><li>Encourage users who need the full Loop component experience to use the OneNote desktop app for Windows.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft is retiring Loop components in OneNote for the web by mid-September 2026. Users can no longer insert Loop components there, but existing ones will become links to Loop pages. Full Loop functionality remains in the OneNote desktop app for Windows. No data will be lost; no admin action is needed."
+      }
+    ],
+    "EndDateTime": "2026-10-16T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454385",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-08-14T00:01:05.53Z",
+    "Services": [
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-14T00:00:42Z",
     "Tags": [
       "User impact",
       "Admin impact",
       "Retirement"
     ],
-    "Title": "Plan for Change: Intune moving to support macOS 15 and higher later this year",
+    "Title": "Microsoft OneNote: Retirement of Loop components in OneNote for the web",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b>What and Why:</b></p><p>To support upcoming Microsoft Defender infrastructure changes, organizations must ensure devices are updated to Microsoft Defender for Endpoint for Android version <strong>1.0.9107.0101</strong> or later. Devices running older app versions may experience disruption to mobile threat protection capabilities after the infrastructure update, and administrators should communicate the update requirement to affected users.</p><p><b>Rollout Schedule:</b></p><p>Worldwide, GCC, GCC-High, DoD: We will begin rolling out on early August 2026 and expect to complete by mid-September 2026.</p><p><b>Impact on your organization:</b></p><p>As part of an infrastructure update expected by mid-September 2026, devices running older versions of the Microsoft Defender for Endpoint Android app may experience disruption to mobile threat protection capabilities if they are not updated to a supported version.</p><p><b>Action Required/Recommendations:</b></p><p>To avoid potential service disruption following the infrastructure update, administrators should:</p><ul><li>\nVerify that managed devices are running a supported version of Microsoft Defender for Endpoint.</li><li>\nUpdate devices running older app versions to the latest available release:</li><li>\nAndroid: Version 1.0.9107.0101 or later</li><li>\nCommunicate this requirement to users who manage application updates themselves.</li></ul><p>\nNo additional configuration changes are required. Updating to a supported version of Microsoft Defender for Endpoint is sufficient to maintain access to protection capabilities following the infrastructure update.</p>",
+      "ContentType": "html"
+    },
+    "Category": "preventOrFixIssue",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Update Microsoft Defender for Endpoint Android to version 1.0.9107.0101 or later by mid-September 2026 to avoid disruption in mobile threat protection due to infrastructure changes. Administrators should verify and update devices and inform users managing their own updates. No other configuration changes are needed."
+      }
+    ],
+    "EndDateTime": "2026-10-26T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454382",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-13T23:59:49.647Z",
+    "Services": [
+      "Microsoft Defender XDR"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-13T23:59:42Z",
+    "Tags": [
+      "Admin impact"
+    ],
+    "Title": "Action required: Update Microsoft Defender for Endpoint Android App",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and why</b></b></p><p>Microsoft is bringing content from AI Skills Navigator into Learning Agent. This update enables users to discover curated AI learning resources through natural language conversations without needing to search separate learning catalogs.</p><p>Users can ask Learning Agent what they want to learn and receive recommendations that may include Microsoft Learn courses, videos, AI-guided skilling sessions, credentials, and content from their organization's learning catalog. This helps learners find relevant AI and Copilot training resources directly within their flow of work and provides a single place to discover AI and Copilot learning content relevant to their goals and roles.</p><p>Users can explore content from AI Skills Navigator through Learning Agent with prompts such as:</p><ul><li>What videos should I watch to learn more about prompt engineering?</li><li>What courses should I take to learn more about Microsoft Copilot?</li></ul><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):&nbsp;</b>Beginning in <b>mid-August 2026</b> and expected to complete in <b>late August 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using Microsoft Viva Learning with Learning Agent enabled</li><li>Users with access to Learning Agent</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Viva Learning</li><li>Learning Agent</li><li>AI Skills Navigator</li></ul><p><i>What will happen</i></p><p>Learning Agent will surface curated content from AI Skills Navigator alongside your organization's learning content.</p><p>Users will be able to discover:</p><ul><li>Microsoft Learn courses</li><li>Curated training videos</li><li>AI-guided skilling sessions</li><li>Microsoft credentials and Applied Skills</li></ul><p>AI Skills Navigator content will be <b>available by default</b> within the Learning Agent experience.</p><p><b><b>Action required and recommendations</b></b></p><p>No action is required.</p><p>We recommend informing knowledge administrators and support staff about this new content source so they can answer user questions and help promote learning opportunities within your organization.</p><p><b>Learn more</b></p><ul><li><a href=\"https://support.microsoft.com/viva/learning/learning-agent-ai-skills-navigator\" target=\"_blank\">AI Skills Navigator (preview) | Microsoft Support</a><b></b></li><li><a href=\"https://learn.microsoft.com/viva/learning/manage-ai-skills-navigator?branch=main&amp;branchFallbackFrom\" target=\"_blank\">Manage AI Skills Navigator | Viva Learning | Microsoft Viva | Microsoft Learn</a><b></b></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does this change introduce or significantly modify AI, machine learning, or agent capabilities that interact with or provide access to customer data?</td><td>Yes. This update expands the capabilities of Learning Agent by enabling it to surface content from AI Skills Navigator through the conversational learning experience. Users can interact with Learning Agent using natural language prompts to discover learning resources.</td></tr><tr><td>Does this change provide end users with a new way to interact with generative AI?</td><td>Yes. Users can discover courses, videos, skilling sessions, and credentials by asking Learning Agent questions in natural language, creating a new AI-assisted learning experience within Microsoft Viva Learning.</td></tr><tr><td>Does this change include an admin control?</td><td>Yes. Access is governed through Learning Agent availability. AI Skills Navigator content is available only to users who have access to Learning Agent and an eligible Microsoft 365 license.</td></tr></tbody></table><p></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Viva Learning integrates AI Skills Navigator content into Learning Agent, enabling users to find curated AI and Copilot training via natural language queries. Available worldwide from mid-August 2026, it offers courses, videos, and credentials by default, requiring no action but recommending admin awareness."
+      }
+    ],
+    "EndDateTime": "2026-10-01T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454381",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-13T23:59:24.717Z",
+    "Services": [
+      "Microsoft Viva"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-13T23:59:18Z",
+    "Tags": [
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Viva Learning: AI Skills Navigator content available in Learning Agent",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p>\n<p>Beginning September 14, 2026, the <b>=COPILOT</b> function in Microsoft Excel will no longer be available. This function is currently offered as a preview feature through the Insider and Frontier programs.</p>\n<p>Customers can continue using Copilot in Excel through the Copilot side pane, which provides many of the same AI-powered capabilities, including summarizing text, classifying data, generating content, and retrieving information from the web. This change helps streamline the Copilot experience within Excel while continuing to provide AI assistance through a supported interface.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>September 14, 2026: The <b>=COPILOT</b> function will be retired and will no longer be available in Excel.</li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b> <ul><li>Users participating in the Excel Insider and Frontier preview programs who currently use the <b>=COPILOT</b> function.</li></ul></li>\n<li><b>Platforms/Services:</b> <ul><li>Microsoft Excel, Copilot in Excel.</li></ul></li>\n<li><b>What will happen:</b>\n  <ul>\n    <li>The <b>=COPILOT</b> worksheet function will be removed from Excel.</li>\n    <li>Users will no longer be able to create new formulas using the <b>=COPILOT</b> function after September 14, 2026.</li>\n    <li>Copilot functionality will continue to be available through the Copilot side pane.</li>\n    <li>Users can continue performing common AI-assisted tasks, including text summarization, data classification, content generation, and web-based information lookups using the Copilot side pane.</li>\n  </ul>\n</li>\n</ul>\n\n<p><b><b>Action Required/Recommendations:</b></b></p>\n<p>No admin action is required.</p>\n<ul>\n<li>Review any internal training, documentation, or guidance that references the <b>=COPILOT</b> function.</li>\n<li>Inform affected users about the retirement and direct them to use the Copilot side pane for AI-assisted tasks in Excel.</li>\n<li>Evaluate existing workflows that depend on the <b>=COPILOT</b> function and transition users to supported Copilot experiences where appropriate.</li>\n</ul>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "The =COPILOT function in Excel will be retired on September 14, 2026. Users can continue AI-assisted tasks via the Copilot side pane. No admin action is needed, but users should be informed and workflows updated accordingly."
+      }
+    ],
+    "EndDateTime": "2026-11-12T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454373",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-13T23:34:48.163Z",
+    "Services": [
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-13T23:34:35Z",
+    "Tags": [
+      "User impact",
+      "Retirement"
+    ],
+    "Title": "Frontier =COPILOT function in Excel will no longer be available",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>As mentioned in MC1403401, we expect iOS 27 and iPadOS 27 to be released by Apple later this year. Microsoft Intune, including the Intune Company Portal and Intune app protection policies (APP, also known as MAM), will require iOS/iPadOS 18 and higher shortly after the iOS/iPadOS 27 release.</p><p><b>How this will affect your organization:</b></p><p>If you are managing iOS/iPadOS devices, you might have devices that will not be able to upgrade to the minimum supported version (iOS 18/iPadOS 18). Provided that Microsoft 365 mobile apps are supported on iOS 18/iPadOS 18 and higher, this may not affect you; you have likely already upgraded your OS or devices.</p><p>Refer to the following Apple documentation for devices to check which devices support iOS 18 or iPadOS 18 (if applicable):</p><ul><li><a href=\"https://support.apple.com/guide/iphone/iphone-models-compatible-with-ios-18-iphe3fa5df43/18.0/ios/18.0\" target=\"_blank\">Supported iPhone models</a></li><li><a href=\"https://support.apple.com/guide/ipad/ipad-models-compatible-with-ipados-18-ipad213a25b2/18.0/ipados/18.0\" target=\"_blank\">Supported iPad models</a></li></ul><p>For instructions on how to check in the Microsoft Intune admin center which devices or users may be affected, read below.&nbsp;</p><p><b>Note:</b> Userless iOS and iPadOS devices enrolled through Automated Device Enrollment (ADE) have a slightly nuanced support statement due to their shared usage. The minimum supported OS version will change to iOS 18/iPadOS 18 while the allowed OS version will change to iOS 16/iPadOS 16 and later. For more details, see <a href=\"https://aka.ms/ADE_userless_support\" target=\"_blank\">https://aka.ms/ADE_userless_support</a>.</p><p><b>What you need to do to prepare:</b></p><p>Check your Intune reporting to see what devices or users may be affected. For devices with mobile device management (MDM) go to <b>Devices </b>&gt; <b>All devices</b> and filter by OS. For devices with app protection policies go to <b>Apps </b>&gt; <b>Monitor </b>&gt; <b>App protection status</b> and use the <i>Platform </i>and <i>Platform version</i> columns to filter.</p><p>To manage the supported OS version in your organization, you can use Microsoft Intune controls for both MDM and APP. For more information, please review: <a href=\"https://learn.microsoft.com/intune/intune-service/fundamentals/manage-os-versions\" target=\"_blank\">Manage operating system versions with Intune - Microsoft Intune | Microsoft Learn</a>.</p><p><br></p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Intune will require iOS/iPadOS 18 or higher after Apple releases iOS/iPadOS 27 later this year. Organizations should check device compatibility and Intune reports to identify affected devices. Userless devices via Automated Device Enrollment have specific OS version requirements. Use Intune controls to manage OS versions."
+      }
+    ],
+    "EndDateTime": "2026-10-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454371",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-08-13T23:34:15.393Z",
+    "Services": [
+      "Microsoft Intune"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-13T23:33:53Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Plan for Change: Intune moving to support iOS/iPadOS 18 and higher later this year",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -48,11 +444,11 @@
     },
     "Category": "stayInformed",
     "Details": [],
-    "EndDateTime": "2026-09-13T22:52:00Z",
+    "EndDateTime": "2026-11-30T22:52:00Z",
     "HasAttachments": false,
     "Id": "MC1454352",
     "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-08-13T23:22:31.203Z",
+    "LastModifiedDateTime": "2026-08-13T23:34:14.23Z",
     "Services": [
       "Dynamics 365 Apps"
     ],
@@ -62,6 +458,45 @@
       "New feature"
     ],
     "Title": "Dynamics 365 Customer Service - Validate knowledge and process adherence with evaluations",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>As mentioned in MC1403402, we expect macOS Golden Gate 27 to be released by Apple later this year. Microsoft Intune, the Company Portal app and the Intune MDM agent will be moving to support macOS 15 (Sequoia) and later. Since the Company Portal app for iOS and macOS are a unified app, this change will occur shortly after the release of macOS 27. This does not affect existing enrolled devices.</p><p><b>How this will affect your organization:</b></p><p>This will only affect you if you currently manage, or plan to manage macOS devices with Intune. This may not impact you because your users have likely already upgraded their macOS devices. Refer to <a href=\"https://support.apple.com/120282\" target=\"_blank\">macOS Sequoia is compatible with these computers – Apple Support</a> for a list of devices that are supported.</p><p><b>Note:</b> Devices that are currently enrolled on macOS 14.x or below will continue to remain enrolled even when those versions are no longer supported. New devices will be unable to enroll if they are running macOS 14.x or below.</p><p>Enrolled macOS devices without user affinity, either through Automated Device Enrollment (ADE) without user affinity or Direct Enrollment, have a slightly nuanced support statement due to their shared usage. For more details, see <a href=\"https://aka.ms/Intune/macOS/ADE-DE-support\" target=\"_blank\">https://aka.ms/Intune/macOS/ADE-DE-support</a>.</p><p><b>What you need to do to prepare:</b></p><p>Check your Intune reporting to see which devices or users may be affected. Go to <b>Devices </b>&gt; <b>All devices</b> and filter by macOS. You can add in additional columns to help identify who in your organization has devices running macOS 14.x or below. Request that your users upgrade their devices to a supported OS version before this change.&nbsp;</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Intune will support macOS 15 and later after macOS Golden Gate 27 release this year. Existing devices on macOS 14.x or below remain enrolled but new enrollments on these versions won't be allowed. Organizations should identify and upgrade affected macOS devices in Intune before the change."
+      }
+    ],
+    "EndDateTime": "2026-10-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1454370",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-08-13T23:34:01.003Z",
+    "Services": [
+      "Microsoft Intune"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-13T23:33:12Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Plan for Change: Intune moving to support macOS 15 and higher later this year",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -1258,7 +1693,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351203Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351204Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351205Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351206Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351207Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925039Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925041Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925042Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925045Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925046Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -1310,7 +1745,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352074Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352075Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352076Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925828Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925829Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1218712\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.392583Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -1408,7 +1843,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350184Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350186Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350187Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924166Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924168Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1045221\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924169Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2762,7 +3197,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1442614\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352348Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1442614\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352349Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1442614\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926078Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1442614\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926079Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -3716,7 +4151,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352386Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352387Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352388Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926112Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926113Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926114Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -3863,7 +4298,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351503Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351504Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351505Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925313Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925314Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC688109\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925315Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -4032,7 +4467,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.735062Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350621Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350622Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924513Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924514Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924515Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -4556,7 +4991,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351959Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.735196Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351961Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925726Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925727Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925728Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -4779,7 +5214,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1446797\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352686Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1446797\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352687Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1446797\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926386Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1446797\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926387Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -5554,7 +5989,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350566Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350567Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350568Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924464Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924466Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1326502\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924467Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -5690,7 +6125,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.734993Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7349933Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7349934Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3923817Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.392382Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3923821Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Platforms",
@@ -5737,7 +6172,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.735279Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352791Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352792Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352793Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352794Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926481Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926482Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926484Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926485Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926487Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Platforms",
@@ -5784,7 +6219,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352557Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352559Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352559Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926267Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926268Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926269Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Platforms",
@@ -5874,7 +6309,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443511\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.735184Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443511\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351842Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443511\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.392562Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443511\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925621Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Platforms",
@@ -6457,7 +6892,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1442609\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351626Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1442609\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351627Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1442609\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351628Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1442609\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925424Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1442609\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925425Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1442609\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925426Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -7300,7 +7735,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352994Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352995Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352996Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926662Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926664Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1396359\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926665Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8372,101 +8807,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated July 20, 2026: We have updated the timeline. Thank you for your patience. </p><p><strong><b>Introduction</b> </strong></p><p>Microsoft Teams will introduce the ability for users to test their microphone and speaker before joining a meeting. This improvement helps users confirm that they have selected the correct audio devices, reducing audio issues and helping meetings start on time with fewer disruptions.</p><p>This message is associated with <strong>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=560074#Roadmap\" rel=\"noopener noreferrer\" target=\"_blank\">560074</a></strong>.</p><p><strong><b>When this will happen</b></strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Targeted Release: </strong>Rollout will begin in<strong> early May 2026 </strong>and is expected to complete by<strong> mid-May 2026</strong>.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>General Availability (Worldwide)</strong>: Rollout will begin in <strong>mid-May 2026</strong> and is expected to complete by<strong> late June 2026 </strong>(previously late May).</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>General Availability (GCC, GCC High, and DoD):</strong> Rollout will begin in <strong>late June 2026</strong> (previously mid-May) and is expected to complete by <strong>early August 2026</strong> (previously mid-July).</li></ol><p><strong><b>How this affects your organization</b></strong></p><p><em>Who is affected</em></p><p>All Microsoft Teams users across Microsoft 365 tenants, including Commercial, GCC, GCC High, and DoD environments.</p><p><em>What will happen</em></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Before joining a meeting, users will see a <strong>Test mic and speaker option </strong>on the<em> pre‑join screen:</em></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><em> </em><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/418485c6-c7ec-445e-ad71-8f06aa37564c/ef675f655c88e1dedf3a809e641b6971b46eefb5.png\" alt=\"user settings\"></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Users will be able to record and play back a short audio clip to confirm that their microphone and speaker work correctly: </li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/2f987d34-baa2-4956-87c1-e7d4883028a0/3d7980bbb88bcf9153edccc93b63df02e53d4112.png\" alt=\"user settings\"></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>The feature will be <strong>enabled by default </strong>and won’t require admin configuration.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>This change does not modify meeting audio settings or policies. </li></ol><p><strong><b>What you can do to prepare</b></strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Admins don’t need to take any action.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Consider updating internal documentation or notifying helpdesk staff about the new pre‑join audio experience.</li></ol><p><strong><b>Compliance considerations</b></strong></p><p>Microsoft identified no compliance considerations. Review this change as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "560074"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will add a default feature allowing users to test their microphone and speaker on the pre-join screen before meetings, reducing audio issues. Rollout begins May 2026, completing by August 2026 across all environments. No admin action is required, but internal updates are recommended."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac"
-      }
-    ],
-    "EndDateTime": "2026-09-14T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1288530",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-07-21T18:37:11.643Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-22T22:33:40Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: Test microphone and speaker before joining a meeting",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><br></p><p>Updated July 20, 2026: We have updated the content and timeline. Thank you for your patience. </p><p><strong><b>Introduction</b></strong></p><p>Microsoft Teams is enhancing media quality for <strong>Direct Guest Join (DGJ) </strong>to improve cross‑platform meeting experiences. These updates deliver higher video fidelity and more reliable performance when users join Teams meetings from Zoom, Google Meet, or Cisco devices.</p><p><br></p><p><br></p><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=558922\" rel=\"noopener noreferrer\" target=\"_blank\">558922</a>.</p><p><strong><b>When this will happen:</b></strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><br></li></ol><p>General Availability (Worldwide): Rollout will begin in<strong> mid‑May 2026</strong> and is expected to complete by <strong>early August 2026</strong> (previously mid-July).</p><p>*Simulcast for Zoom is pending bug fixes for rollout.</p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><br></li></ol><p><strong><b>How this affects your organization:</b></strong></p><p><strong>Who is affected:</strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Organizations hosting Microsoft Teams meetings with participants joining via <strong>Direct Guest Join</strong> from <strong>Zoom, Google Meet, or Cisco devices</strong>.</li></ol><p><strong>What will happen:</strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Meetings joined through Direct Guest Join will support<strong> up to 16 participant videos</strong> in a <strong>4×4 video grid</strong>.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Simulcast streaming</strong> will improve video quality and reliability across heterogeneous meeting platforms.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>The enhancement is <strong>enabled by default</strong>.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>No changes are required to existing Teams policies or meeting workflows.</li></ol><p><strong><b>What you can do to prepare:</b></strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>No admin action is required.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Inform users about upcoming improvements to cross‑platform meeting quality.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Update internal documentation or helpdesk guidance if applicable.</li></ol><p><strong><b>Compliance considerations:</b></strong></p><p>No compliance considerations identified; review as appropriate for your organization.</p><p><br></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "558922"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will enhance Direct Guest Join media quality, supporting up to 16 videos in a 4×4 grid and improved simulcast streaming for Zoom, Google Meet, and Cisco devices. Rollout starts mid-May 2026, completes by early August, enabled by default with no admin action needed."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "TeamsAndSurfaceDevices"
-      }
-    ],
-    "EndDateTime": "2026-09-14T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1268925",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-07-21T18:35:27.817Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-02T20:58:31Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Microsoft Teams: Enhanced media quality for Direct Guest Join",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated July 20, 2026: We have updated the timeline. Thank you for your patience. </p><p><strong><b>Introduction</b></strong></p><p>We’re introducing <strong>endpoint Data Loss Prevention (DLP) events</strong> as a <strong>queryable data source</strong> in <em>Data Security Investigations (DSI) in Microsoft Purview</em>. With this update, administrators can build endpoint DLP queries directly in DSI using filters such as date range, and DSI will automatically pull files associated with those events into the investigation for analysis. This integration helps security teams examine endpoint DLP activity at scale, reducing time and effort spent triaging individual alerts and improving the ability to identify patterns and potential data exfiltration scenarios.</p><p>This message is associated with <strong>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=558547\" rel=\"noopener noreferrer\" target=\"_blank\">558547</a></strong>.</p><p><strong><b>When this will happen</b></strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>Public Preview:</strong> Rollout begins in <strong>early June 2026</strong> (previously late April) and completes in<strong> late June 2026 </strong>(previously early June).</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong>General Availability (Worldwide): </strong>Rollout begins in<strong> late August 2026 </strong>(previously late July)<strong> </strong>and completes in <strong>late August 2026</strong> (previously late July).</li></ol><p><strong><b>How this will affect your organization</b></strong></p><p><em>Who is affected</em></p><p>Admins and security investigators using<strong> Data Security Investigations (DSI) </strong>and<strong> endpoint Data Loss Prevention (DLP)</strong> in the <em>Microsoft Purview compliance portal</em>.</p><p><em>What will happen</em></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>A<strong> new Endpoint DLP tab</strong> will appear in the <em>DSI search experience</em>, alongside the existing Query Builder and Audit tabs.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Admins and investigators can query endpoint DLP events using date range filters (additional filters coming soon).</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Files associated with matching endpoint DLP events will be automatically added to the investigation scope for analysis using DSI’s AI‑powered tools.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>This feature will appear automatically for eligible tenants when rollout completes. No admin action is required to enable it.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>There is no user impact.</li></ol><p><strong><b>What you can do to prepare</b></strong></p><p>No action is required. Optionally, you may:</p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Review how endpoint DLP query capabilities work within DSI.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Update internal documentation for alert triage and investigation workflows, if applicable.</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Inform security teams and endpoint DLP administrators about this new capability.</li></ol><p><strong>Learn more: </strong></p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://learn.microsoft.com/purview/data-security-investigations\" rel=\"noopener noreferrer\" target=\"_blank\">Learn about Data Security Investigations | Microsoft Purview | Microsoft Learn</a></li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span><a href=\"https://learn.microsoft.com/purview/endpoint-dlp-learn-about\" rel=\"noopener noreferrer\" target=\"_blank\">Learn about Endpoint data loss prevention | Microsoft Purview | Microsoft Learn</a></li></ol><p><strong><b>Compliance considerations</b></strong></p><table><tbody><tr><td data-row=\"row-mruz9lpa-79\"><strong>Question</strong></td><td data-row=\"row-mruz9lpa-79\"><strong>Answer</strong></td></tr><tr><td data-row=\"row-mruz9lpa-80\"><strong>Does the change alter how existing customer data is processed, stored, or accessed?</strong></td><td data-row=\"row-mruz9lpa-80\"><strong>Yes. </strong>Endpoint DLP event data becomes queryable in DSI, and associated files are automatically collected into investigations for analysis.</td></tr><tr><td data-row=\"row-mruz9lpa-81\"><strong>Does the change introduce or significantly modify AI/ML capabilities that interact with customer data?</strong></td><td data-row=\"row-mruz9lpa-81\"><strong>Yes. </strong>DSI’s existing AI‑assisted investigation tools will now analyze files gathered through endpoint DLP queries.</td></tr><tr><td data-row=\"row-mruz9lpa-82\"><strong>Does the change modify how admins can monitor, report on, or demonstrate compliance activities?</strong></td><td data-row=\"row-mruz9lpa-82\"><strong>Yes. </strong>Admins gain new ways to surface, query, and analyze endpoint DLP signals within DSI.</td></tr></tbody></table><p><br></p>",
       "ContentType": "html"
     },
@@ -9032,7 +9372,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352885Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352886Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352887Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926567Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926568Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926569Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -10422,7 +10762,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352022Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352023Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352024Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925782Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925784Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925785Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -10882,7 +11222,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350426Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350427Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350429Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924336Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924337Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324282\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924338Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -11029,7 +11369,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1227087\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351349Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1227087\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.735135Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1227087\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925177Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1227087\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925178Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12332,7 +12672,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.735069Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350692Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350692Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350693Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350695Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924581Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924582Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924583Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924584Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924585Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12584,6 +12924,101 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p>Updated July 7, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and Why:</b></b></p><p><b>Microsoft\nPurview Endpoint Data Loss Prevention (DLP)</b> is introducing the ability to\nprotect sensitive files even when they reside in commonly excluded Windows\nfolders such as <b>AppData</b> directories and temporary folders. Previously, files\nstored in these excluded paths were not subjected to Endpoint DLP policy\nenforcement. With this update, policy checks will apply during key egress\nactions, including copying, printing, saving to network shares, and uploading to\ncloud services, helping reduce the risk of sensitive data leaving your\norganization from these user-writable locations.&nbsp;</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=562992\" target=\"_blank\">562992</a>.</p>\n<p><b><b>Rollout Schedule:</b></b></p><p>General Availability (Worldwide): We will begin rolling out in <b>mid-September 2026</b> (previously&nbsp;early July)&nbsp;and expect to complete by <b>end of September 2026</b> (previously&nbsp;early July).</p><p><b><b>How this will affect your organization:</b></b></p><p><b>Who is affected: </b>Admins and users in organizations that use <b>Microsoft Purview Endpoint Data Loss Prevention (DLP) </b>on Windows devices</p><p><b>Platforms:</b></p><ul><li>Microsoft Purview compliance portal</li><li>Windows endpoints supported by Microsoft Purview Endpoint DLP</li><li>Microsoft Defender anti-malware <b>client version 4.18.26051 or later</b> required</li></ul><p><b>What will happen:</b></p><p>With this update, admins can extend\nEndpoint DLP protection to files stored in excluded Windows folders (for\nexample, <code>%AppData%</code> and temporary directories) during egress activities.&nbsp;</p><ul><li> Users in <b>audit mode</b> can continue their actions, which will\nbe logged for review.&nbsp;</li><li>Users in <b>block mode</b> will be prevented from performing\nrestricted actions (for example, copying to removable media, uploading to cloud\nservices, or printing)&nbsp;</li><li>If both audit and block policies apply to a user, <b>block takes\nprecedence&nbsp;</b></li></ul><p>This change improves protection coverage by\naddressing scenarios where sensitive data in excluded paths may have previously\ngone unmonitored.&nbsp;</p><p>Screenshot: <i style=\"\">Endpoint DLP settings for excluded Windows folders and file egress activities:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/d3f572a4-d077-41c6-bcaf-0a0006fe3aeb\" style=\"width: 400px;\" alt=\"user settings\"></p><p><b><b>Action Required / Recommendations:</b></b></p><ul><li>Before enabling this feature, you must first deploy anti-malware <b>Client\nversion 4.18.26051 or later</b> &nbsp;</li><li><b>Review excluded folder paths:</b> Identify which excluded paths (such as <b>AppData</b> and temporary directories)\ncontain or could contain sensitive files and should be added to the protected\nexclusion paths list. &nbsp;</li><li><b>Stage your rollout</b>: Start with an audit-mode pilot to assess impact before enabling\nenforcement.&nbsp;</li><li><b>Update DLP policies:</b>&nbsp;Extend existing Endpoint DLP policies to cover protected excluded folders where applicable.</li><li><b>Educate users and support teams:</b>&nbsp;Inform them of expected behavior changes, including potentially blocked actions such as copy, print, or upload operations.</li></ul><p><b><b>Compliance considerations:</b></b></p><table>\n  <tbody><tr>\n    <th>Compliance consideration</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>Admin control</td><td>Admins must review excluded Windows folder paths and update Endpoint DLP policies to enable protection for files stored in excluded folders.</td>\n  </tr>\n  <tr>\n    <td>User impact</td>\n    <td>Users may experience blocked actions such as copying to removable media, printing, saving to network shares, or uploading to cloud services when interacting with sensitive files stored in protected excluded folders.</td>\n  </tr>\n  <tr>\n    <td>Policy changes</td>\n    <td>Organizations may need to extend existing Endpoint DLP policies to include protected excluded folders.</td>\n  </tr>\n  <tr>\n    <td>User training</td>\n    <td>Organizations should educate users and support teams about new enforcement behavior and potential blocked actions.</td>\n  </tr>\n  <tr>\n    <td>Monitoring/Auditing</td>\n    <td>Audit mode logging will capture user actions involving sensitive files in protected excluded paths for review and analysis.</td>\n  </tr>\n  <tr>\n    <td>Prerequisite dependency</td>\n    <td>Devices must run anti-malware client version 4.18.26051 or later before enabling this feature.</td>\n  </tr>\n  <tr>\n    <td>Security/Compliance impact</td>\n    <td>This update expands Endpoint DLP protection coverage to previously excluded Windows folder locations, helping reduce the risk of sensitive data exfiltration.</td>\n  </tr>\n  <tr>\n    <td>Rollout risk assessment</td>\n    <td>Organizations may want to pilot the feature in audit mode before enabling enforcement to assess operational impact.</td>\n  </tr>\n</tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "562992"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Endpoint DLP will protect sensitive files in previously excluded Windows folders like AppData during egress actions starting mid-September 2026. Admins must update anti-malware, review excluded paths, extend policies, and educate users. Audit mode logs actions; block mode enforces restrictions."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-10-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1384420",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-07-07T18:06:00.09Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-06-08T22:18:40Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Endpoint Data Loss Prevention - Ability to protect files stored in the excluded folders in Windows",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated July 7, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and Why:</b></b></p>\n<p>\nMicrosoft Purview Endpoint <b>Data Loss Prevention (DLP)</b> is improving how file extension conditions are configured to help ensure policies are accurate, reliable, and efficient. By limiting file extension selection to supported, scannable file types, this update reduces misconfiguration risk and improves enforcement consistency across endpoints while maintaining existing protection coverage.\n</p>\n<p>\nThis change aligns Endpoint DLP configuration with supported enforcement capabilities and helps admins create policies that behave as expected.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=562993\" target=\"_blank\">562993</a>.</p><p>\n</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<p>\nGeneral Availability (Worldwide): We will begin rolling out in <b>mid-September 2026</b> (previously&nbsp;early July)&nbsp;and expect to complete by<b>&nbsp;end of September 2026 </b>(previously late July).\n</p>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Microsoft 365 administrators managing Microsoft Purview Endpoint DLP device policies.</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n  <li>Microsoft Purview</li>\n  <li>Endpoint Data Loss Prevention</li>\n  <li>Supported Windows endpoints</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Endpoint DLP now includes a pre‑curated list of supported file extensions for the <b>File extension</b> condition.</li>\n  <li>Only file types that are supported and can be scanned appear in the picker.</li>\n  <li>Free‑form text entry for file extensions is no longer available.</li>\n  <li>Existing policies continue to enforce as they do today unless edited.</li>\n  <li>If an edited policy contains unsupported file extensions, those entries must be removed before the policy can be saved.</li>\n  <li>To maintain coverage for unsupported or non‑scannable file types, use the <b>Apply restrictions to only unsupported file extensions</b> feature. Learn more: <a href=\"https://learn.microsoft.com/purview/dlp-create-policy-sharing-set-unsupported-files#help-protect-against-sharing-of-a-defined-set-of-unsupported-files\" target=\"_blank\">Help protect against sharing of a defined set of unsupported files</a>.&nbsp;</li><li>Your overall protection posture does not change with this update.</li>\n\n\n<p>Screenshot 1: <i>Add file extension options:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/32666774-fffa-492f-ac9a-6af9e8c8b7c2\" style=\"width: 400px;\" alt=\"user settings\"></p><p>Screenshot 2: <i>Unsupported file extension warning in Microsoft Purview policy settings:</i></p><p></p>\n<p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/9880465a-72ad-46a6-866a-0d809e640cb6/8e643567e5c8c0ac0e080239c2a6f077456c015e.png\" style=\"width: 400px;\" alt=\"user settings\"></p></ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n<ul>\n  <li><b>No action required</b> if you are not modifying existing policies.</li>\n  <li>If you plan to edit or create a policy:\n    <ul>\n      <li>Review your current file extension list.</li>\n      <li>Keep supported file extensions.</li>\n      <li>Remove unsupported file extensions and use<b> Apply restrictions to only unsupported file extensions feature</b> instead.</li><li>Use the curated list when adding new supported file types.</li>\n    </ul>\n  </li>\n</ul>\n\n<p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/endpoint-dlp-learn-about\" target=\"_blank\">Learn about Endpoint data loss prevention | Microsoft Learn</a>&nbsp;(will be updated before rollout)</li><li><a href=\"https://learn.microsoft.com/purview/dlp-policy-reference#conditions-supported-for-endpoints\" target=\"_blank\">Conditions supported for Endpoints | Microsoft Learn</a>&nbsp;(will be updated before rollout)</li></ul><p><b><b>Compliance considerations:</b></b></p>\n<p>\nNo compliance considerations identified, review as appropriate for your organization.\n</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "562993"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Purview Endpoint DLP now uses a pre-curated list of supported, scannable file extensions for policy configuration, improving accuracy and enforcement consistency. Free-form entry is removed; unsupported extensions must be managed via a specific feature. Rollout begins mid-September 2026, with no change to existing protections unless policies are edited."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Web"
+      }
+    ],
+    "EndDateTime": "2026-10-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1384415",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-07-07T18:03:34.58Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-06-08T22:16:03Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Endpoint Data Loss Prevention now supports a pre‑curated file extension list",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated July 7, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and Why:</b></b></p>\n<p>Admins can now scope which users and groups have their activities audited when Just-in-time protection is enabled in Microsoft Purview Endpoint Data Loss Prevention.</p><p>Previously, when Just-in-time protection was turned on, user activities were logged automatically for users who were not targeted by policies. With this update, audit logging must be explicitly configured so that only users or groups included in the audit scope have their activities logged. This change gives organizations greater control over audit signal collection and helps reduce unnecessary audit noise.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=562991\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">562991</a>.</p><p>\n</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<p><b>Global:</b> We will begin rolling out in <b>mid-September 2026</b> (previously&nbsp;early July)&nbsp;and expect to complete by <b>end of September 2026</b> (previously&nbsp;early July).</p>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:</b> Admins managing Microsoft Purview Endpoint Data Loss Prevention and Just-in-time protection settings.</p>\n<p><b>Platforms/Services:</b> </p><ul><li>Microsoft Purview</li><li>Endpoint Data Loss Prevention</li><li>Activity explorer.</li></ul>\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Just-in-time audit behavior is now managed through the <b>Audit covered user activities</b> setting under <b>Settings &gt; Data loss prevention &gt; Just-in-time protection</b>. Under the Devices tab, turn on <b>Audit covered user activities</b>.</li><p>Screenshot: <i>Just-in-time protection settings with Audit covered user activities turned on:</i></p><p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/fd44ee1e-99b6-4c35-81f9-ce80ef41dde5\" style=\"width: 400px;\" alt=\"user settings\"></p>\n  <li>Users included in audit scope will not see enforcement actions, and their activities will be recorded in Activity explorer.</li>\n  <li>Users included in block scope will be prevented from completing actions while files are evaluated for sensitive information. Their activities are recorded in Activity explorer.</li><li>Users not included in audit or block scope will not have activities covered by Just-in-time protection recorded.</li><li>Audited activities include printing, transfers to removable media or network shares, copying or moving files using Remote Desktop Protocol or an unapproved Bluetooth app, and uploading files to a restricted cloud service domain.</li>\n</ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n<ul>\n  <li>Deploy anti-malware client version <b>4.18.26060 or later </b>before enabling this feature.</li>\n  <li>Review your existing Just-in-time configuration to identify users currently generating audit events.</li>\n  <li>Explicitly add all users or groups that should continue generating Just-in-time audit events to the audit scope.</li>\n  <li>Validate your configuration to ensure expected activities appear in Activity explorer.</li>\n</ul>\n<p><b>Learn more:</b> <a href=\"https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit\" target=\"_blank\">Get started with Microsoft Purview Data Loss Prevention just-in-time protection | Microsoft Learn</a></p>\n\n<p><b><b>Compliance considerations:</b></b></p>\n\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\" width=\"100%\">\n  <tbody><tr>\n    <th align=\"left\">Compliance area</th>\n    <th align=\"left\">Impact</th>\n  </tr>\n  <tr>\n    <td>Audit logging capabilities</td>\n    <td><b></b> Audit logging behavior changes from automatic to explicitly scoped, affecting which user activities are recorded for Just-in-time protection.</td>\n  </tr>\n  <tr>\n    <td>Admin compliance monitoring and reporting</td>\n    <td><b></b> Admins must configure audit scope to maintain expected visibility of user activity in Activity explorer.</td>\n  </tr>\n  <tr>\n    <td>Purview reporting and compliance workflows</td>\n    <td><b></b> The change alters how Just-in-time audit data is collected and reviewed for compliance and investigation workflows.</td>\n  </tr>\n  <tr>\n    <td>Admin controls and group-based configuration</td>\n    <td><b></b> The feature introduces additional admin configuration controls for scoping audit behavior, which may be applied using user or group selection.</td>\n  </tr>\n</tbody></table>",
       "ContentType": "html"
     },
@@ -12770,7 +13205,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350911Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350913Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350913Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924769Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.392477Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924771Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12821,7 +13256,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351096Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351098Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351099Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924932Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924935Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318125\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924938Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12872,7 +13307,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351557Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351558Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351559Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925365Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925366Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318249\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925367Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12923,7 +13358,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351434Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351436Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351437Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925256Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925258Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1316228\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925259Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -12974,7 +13409,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1279071\",\"Platform\":\"IOS\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351786Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1279071\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351787Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1279071\",\"Platform\":\"IOS\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-14T01:38:02.392557Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1279071\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925571Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -13565,7 +14000,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"IOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350296Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350298Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"IOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924219Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924221Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -13949,7 +14384,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352207Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352208Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352209Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925945Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925947Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1319213\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925948Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -14049,7 +14484,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352456Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352457Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352457Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926174Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926175Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926176Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -14101,7 +14536,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352279Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.735228Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352281Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926011Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926012Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926012Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -14153,7 +14588,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350352Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350353Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350354Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.392427Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924272Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1405501\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924273Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -14708,7 +15143,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1402306\",\"Platform\":\"IOS\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-08-13T23:36:39.73513Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":\"StandardRelease\"},{\"RoadmapId\":0,\"McPostId\":\"MC1402306\",\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351301Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":\"StandardRelease\"}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1402306\",\"Platform\":\"IOS\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925137Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":\"StandardRelease\"},{\"RoadmapId\":0,\"McPostId\":\"MC1402306\",\"Platform\":\"All\",\"Status\":\"InRollout\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925138Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":\"StandardRelease\"}]}"
       },
       {
         "Name": "Summary",
@@ -15079,7 +15514,7 @@
     "Details": [
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350481Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350482Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350484Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7350484Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924382Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924384Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"Web\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924385Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1325422\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924386Z\",\"LatestRing\":\"DeferredRelease\",\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -15430,7 +15865,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351679Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.735168Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351681Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351682Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351683Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925473Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925474Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925475Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925476Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1395010\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925476Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17901,7 +18336,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351153Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351154Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924987Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924988Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -18229,7 +18664,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351395Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351396Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925222Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925224Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -18281,7 +18716,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351014Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Linux\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351015Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351016Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351018Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924857Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Linux\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924858Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3924859Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-14T01:38:02.392486Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -18333,7 +18768,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1324279\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352953Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324279\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352954Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1324279\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926628Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324279\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926629Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -18701,7 +19136,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351878Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351879Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.735188Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7351881Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925653Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925654Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925655Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925656Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -19845,7 +20280,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.735214Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352141Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352142Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352143Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925887Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925888Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3925889Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.392589Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -21155,98 +21590,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352736Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352737Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352738Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will introduce a \"Who has control of production tools\" option for town halls, letting organizers assign who can manage the screen, start, and end the event. Rolling out May to August 2025, this feature restricts control to designated users and is available without a Teams Premium license."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac"
-      }
-    ],
-    "EndDateTime": "2026-09-14T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1058258",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-08-08T19:22:03.1Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-04-18T23:52:41Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Microsoft Teams: Specify who can manage the screen in town halls",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><p><b>Introduction</b>\n</p><p>Organizations undergoing rebranding, mergers, acquisitions, divestitures, or tenant consolidations often need their SharePoint domain name in URLs to reflect their new identity. The <i>SharePoint Online (SPO) Tenant Rename</i> feature enables this change. We are announcing <b>General Availability (GA) of Advanced Tenant Rename</b> for tenants with up to 500K SharePoint sites, expanding support beyond the previous 100K site limit.</p>\n\n<p><b>When this will happen</b></p><p><b>General Availability (Worldwide):</b> We began rolling out in mid-August 2025 and expect to complete by early September 2025.</p><p>This feature will be generally available worldwide starting <b>September 1, 2025</b>.</p>\n\n<p><b>How this affects your organization</b>\n</p><p>This update allows rename support for tenants with up to 500K total SharePoint sites. It maintains high reliability across rename operations and ensures business-as-usual continuity during and after the rename. It is compatible with top Microsoft 365 partner scenarios such as Microsoft Teams and PowerApps.</p><p>Key capabilities include:</p><ul><li>Rename support for tenants with up to 500K total sites.</li><li>High reliability maintained across rename operations.</li><li>Business-as-usual (BAU) continuity ensured during and after rename.</li><li>Compatibility with top Microsoft 365 partner scenarios (Teams, PowerApps, etc.).</li><li>Enhanced telemetry to monitor rename operations and identify issues quickly.</li></ul><p>Please note the following limitations for this release:</p><ul><li>Tenant rename for vanity domains is not supported.</li><li>Tenant rename for Multi-Geo customers is not supported.</li><li>Tenant rename for customers with more than 500K sites is not supported.</li>\n</ul>\n\n<p><b>What you can do to prepare</b>\n</p><p>Admins should:\n</p><ul>\n<li>Confirm their tenant’s total site count using the SharePoint admin center (SPAC) or PowerShell before scheduling.</li>\n<li>Review unsupported features or limitations (such as Hub site limitations, vanity domains, or third-party integrations).</li>\n<li>Communicate any impact to site owners based on public documentation.</li>\n<li>Validate custom scripts, PowerShell automations, and integrations that rely on the old domain name.</li>\n</ul>\nLearn more:&nbsp;<a href=\"https://learn.microsoft.com/sharepoint/change-your-sharepoint-domain-name\">Change your SharePoint domains | SharePoint in Microsoft 365 | SharePoint | Microsoft Learn</a><p></p></p><p><b>Compliance considerations</b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "SharePoint Online Tenant Rename is now generally available for tenants with up to 500K sites, allowing domain name changes during rebranding or mergers. It ensures high reliability, business continuity, and compatibility with Microsoft 365 apps, but excludes vanity domains, Multi-Geo, and tenants over 500K sites."
-      }
-    ],
-    "EndDateTime": "2026-08-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1146820",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-09-02T23:21:41.753Z",
-    "Services": [
-      "SharePoint Online",
-      "Microsoft OneDrive"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-09-02T23:21:30Z",
-    "Tags": [
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft SharePoint Online: Tenant rename General Availability (GA) for tenants with up to 500K sites",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated August 8, 2025: We have updated the timeline. Thank you for your patience.</p><p>Coming soon for Microsoft Teams: A new town hall meeting option called <i>Who has control of production tools</i> allows organizers to designate who can manage the screen during the event. Assigned individuals will be able to start the event, control what attendees see, and end the event, for a smoother, more organized experience.\n</p><p>This message applies to Teams for Windows desktop, Teams for Mac desktop, and Teams for the web.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=487432\" target=\"_blank\">487432</a>.\n</p><p><b>When this will happen:</b>\n</p><p>Targeted Release: We will begin rolling out mid-May 2025 and expect to complete by late May 2025.\n</p><p>General Availability (Worldwide): We will begin rolling out late July 2025 and expect to complete by early August 2025.</p><p><b>How this will affect your organization:</b>\n</p><p>Before this rollout, organizers, co-organizers, and presenters can bring participants on or off screen and start or end the event. After this rollout, only assigned users will have the ability to perform these actions. Organizers, co-organizers, or presenters who are not assigned can still join the event and present but will be restricted from managing the screen or starting and ending the event. Presenters who are unassigned will not be able to manage assigned users with the options <i>Make an attendee</i> or <i>Remove from meeting</i>. A clapperboard icon will appear next to the names of participants who have been granted these permissions during the event.\n</p><p>In Town hall meeting options, event organizers can designate which roles have control over production tools at <i>Details &gt; Production tools:</i></p><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/20e0a2ba-7a22-447e-aceb-2c314b46255d/2f5264684c5416e9abb843909b7d7e8f0f6371c2.jpg\" style=\"width: 25%;\"><br></p><p><i>Who has control of production tools</i> will have three options:\n</p><ol><li><i>Organizers, co-organizers and presenters:</i> This is the default.</li><li><i>Organizers and co-organizers</i></li><li><i>Specific people</i></li></ol><p>This meeting option is only available for town halls and does not require a Teams Premium license. We recommend the organizer set this option before the event starts.\n</p><p><i>Limitations</i>\n</p><ul><li><i>Who has control of production tools</i> is not available for meetings or webinars.\n</li><li>Users joining through older Teams versions will continue to see the existing behavior, where all organizers, co-organizers, and presenters have the ability to manage the screen.\n</li></ul><p>\n</p><p>Any new events created or updated after late May 2025 will receive the new <i>Who has control of production tools</i> meeting option by default.\n</p><p>This feature will be available by default for meeting organizers to configure.\n\n</p><p><b>What you need to do to prepare:</b>\n</p><p>This rollout will happen automatically by the specified date with no admin action required before the rollout. You may want to notify your users about this change and update any relevant documentation.\n</p><p>Before rollout, we will update this post with revised documentation.<br>Additional resources: <a href=\"https://support.microsoft.com/en-us/office/control-town-hall-production-tools-in-microsoft-teams-8a19026b-43d1-45e3-b306-35610d83e5f1?preview=true\" target=\"_blank\">Control town hall production tools in Microsoft Teams - Microsoft Support</a></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "487432"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352736Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352737Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-13T23:36:39.7352738Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926434Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926435Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1058258\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-14T01:38:02.3926436Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
