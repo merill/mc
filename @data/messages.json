@@ -13261,45 +13261,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated July 7, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p>\n<p>\nTo improve endpoint performance and focus on higher-value network telemetry, Microsoft is removing\n<b>SMB signature inspection events</b> from Advanced Hunting in Microsoft Defender for Endpoint.\nThis change reflects observed low customer value for SMB signature data on endpoints and our continued\ninvestment in more advanced SMB visibility through <b>Zeek-based network capabilities</b>.&nbsp;</p>\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  </ul><p>The rollout to Worldwide, GCC, GCC High, and DoD will begin on <b>July 13, 2026</b>, and will complete shortly thereafter across all tenants.</p>\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li>Security administrators and analysts using <b>Microsoft Defender for Endpoint Advanced Hunting</b></li>\n  <li>Organizations with <b>custom detection rules, hunting queries, scheduled queries, or automated workflows</b> that reference SMB signature inspection events</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Events with <code>ActionType = “NetworkSignatureInspected”</code><b></b> and <code>SignatureName = “SMB_Client”</code><b></b> will no longer be generated.</li>\n  <li>Queries, detections, or workflows that rely on these events will stop returning results after the rollout.</li>\n  <li>Other network signature inspection events remain unchanged.</li>\n  <li>The change is <b>on by default</b> and does not require tenant configuration.</li>\n</ul>\n\n<p><b><b>What you can do to prepare:</b></b></p><p>To continue identifying SMB traffic in Advanced Hunting, we recommend filtering on <b>port 445</b>, the standard port used by SMB, in the <code>DeviceNetworkEvents</code> table, which remains fully supported.</p>\n<ul>\n  <li>Review custom detection rules, saved hunting queries, scheduled queries, and automated workflows for references to <code>SMB_Client</code><b></b>.</li>\n  <li>Update affected queries to identify SMB traffic using port-based filtering.</li>\n  <li>Validate updated queries return the expected results before <b>July 1, 2026</b>.</li>\n</ul>\n\n<p><b>Query update example</b></p>\n\n<p><b>Replace:</b></p>\n<pre><code>\nDeviceNetworkEvents\n| where ActionType == \"NetworkSignatureInspected\"\n| extend SignatureName = tostring(parse_json(AdditionalFields).SignatureName)\n| where SignatureName == \"SMB_Client\"\n</code></pre>\n\n<p><b>With:</b></p>\n<pre><code>\nDeviceNetworkEvents\n| where RemotePort == 445 or LocalPort == 445\n</code></pre>\n\n<p>\nFor questions or feedback regarding this change, contact <b>Microsoft Support</b> or your\n<b>Microsoft account representative</b>.\n</p>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<ul>\n  <li><b>Admin monitoring and reporting:</b>&nbsp;The removal of SMB signature inspection events changes available Advanced Hunting telemetry and may affect how administrators monitor or investigate SMB activity.</li>\n</ul>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting July 13, 2026, Microsoft Defender for Endpoint will remove SMB signature inspection events from Advanced Hunting to improve performance. Queries using these events will stop working; users should update them to filter SMB traffic by port 445 in DeviceNetworkEvents before July 1, 2026."
-      }
-    ],
-    "EndDateTime": "2026-08-17T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1330888",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-07-07T17:56:10Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-06-01T23:24:13Z",
-    "Tags": [
-      "Updated message",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Upcoming change to Microsoft Defender for Endpoint Advanced Hunting: removal of SMB signature data",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated July 7, 2026: We have updated the timeline. Thank you for your patience.</p><p><b><b>Introduction</b></b></p>\n<p>We’re enhancing <b>Microsoft Purview Content Explorer </b>with new summary metrics to improve visibility into scanning and classification activities. These updates will help admins identify unscanned files and monitor classification trends, enabling better data governance and informed decisions.</p><p>This message is associated with Roadmap ID&nbsp;<a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=526796\" target=\"_blank\">526796</a>.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n<li><b style=\"\">Public Preview:</b>&nbsp;We will begin rolling out late July 2026 (previously mid-July) and expect to complete by early October 2026 (previously early August).&nbsp;</li>\n<li><b style=\"\">General Availability (Worldwide):</b>&nbsp;We will begin rolling out early November 2026 (previously mid-August) and expect to complete by late November 2026 (previously late August).&nbsp;</li>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<ul>\n<li><b>Who is affected:</b> Admins managing <b>Microsoft Purview Information Protection</b> and using <b>Content Explorer</b>.</li>\n<li><b>What will happen:</b>\n<ul>\n<li>A new <b>Unscanned Files Summary</b> will display the count and percentage of files not scanned for classification.</li>\n<li><b>Classification History Insights</b> will show trends and details of classification changes over time.</li>\n<li>These metrics will appear in <b>Content Explorer</b> alongside existing <b>Sensitive Information Types (SITs)</b> and labels.</li><li>Admins can explore the new metrics to identify gaps and use on-demand classification capabilities to retrigger scans if needed.</li>\n<li>No changes to existing policies or configurations; the feature is enabled by default.<p><img src=\"https://cxcs.microsoft.net/file/ccp/en-us/6fca886b-7dca-418c-a7c9-aeeee7493d47\" style=\"width: 400px;\" alt=\"user settings\"></p></li></ul></li></ul><p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n<li>No action is required. </li><li>These metrics will automatically appear in <b>Content Explorer.</b></li></ul><ul>\n</ul><p><b><b>Compliance considerations:</b></b></p>\n\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n<tbody><tr>\n<th>Question</th>\n<th>Explanation</th>\n</tr>\n<tr>\n<td>Does the change alter how existing customer data is processed, stored, or accessed (e.g., documents, emails, chats, etc.)?</td>\n<td>The feature accesses existing classification metadata to display trends and scanning status in <b>Content Explorer</b>.</td>\n</tr>\n</tbody></table>",
       "ContentType": "html"
     },
@@ -13861,46 +13822,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Teams: Organization evaluation score for apps and agents",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>What and Why:</b></b></p>\n<p>Microsoft is expanding <b>Catalog Management in SharePoint Advanced Managemen</b>t to help organizations classify and organize SharePoint sites by department, team, business unit, or other custom taxonomies. This release introduces new ways to create and manage catalog categories using CSV uploads, SharePoint site properties, and Microsoft Entra ID extension attributes. These capabilities improve governance, content discovery, reporting, and future administration scenarios.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n<li>General Availability (Worldwide): Began in <b>June 2026</b>; expected to complete by<b> mid-July 2026</b></li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>SharePoint administrators</li>\n<li>Microsoft 365 administrators</li>\n<li>Organizations using SharePoint Advanced Management</li>\n<li>Governance and information architecture teams</li>\n</ul>\n\n<p><b>Platforms/Services:</b></p>\n<ul>\n<li>SharePoint Online</li>\n<li>SharePoint Advanced Management</li>\n<li>Microsoft 365 Admin Center (future integrations)</li>\n<li>SharePoint Admin Center</li>\n<li>Microsoft Entra ID</li>\n</ul>\n\n<p><b>What will happen:</b></p>\n<ul>\n<li>Administrators can bulk-create catalog categories from CSV uploads.</li>\n<li>Administrators can organize sites using SharePoint site bag properties.</li>\n<li>Category visibility can be targeted using Microsoft Entra ID extension attributes.</li>\n<li>Organizations can create department, team, or business-based site taxonomies.</li><li>Future integrations that will use Catalog groups include:<ul><li>Allowing organizations to define governance boundaries and include them in various SharePoint Advanced Management features&nbsp;</li><li>Pay-as-you-go storage management capabilities that will use Catalog groupings for departmental billing scenarios.</li></ul></li><li>No user workflow changes are introduced by this release.</li>\n<li>No migration activities are required.</li></ul><ul>\n</ul>\n\n<p><b><b>Action Required/Recommendations:</b></b></p>\n<p>No action is required.</p>\n<ul>\n</ul><p>Recommended preparation activities:</p><ul>\n<li>Review your current SharePoint information architecture and determine whether departmental or organizational taxonomies would provide governance benefits.</li><li>Identify existing SharePoint site properties that could be used for categorization.</li><li>Review available Microsoft Entra ID extension attributes that may support category visibility targeting.</li><li>Communicate upcoming capabilities to SharePoint governance and administration teams.</li></ul>\n\n<p><b>Learn more:&nbsp;</b><a href=\"https://learn.microsoft.com/SharePoint/catalog-management\" target=\"_blank\">Catalog management in SharePoint Advanced Management - SharePoint in Microsoft 365 | Microsoft Learn</a></p><p><b><b>Compliance Considerations:</b></b></p>\n<table border=\"1\">\n<tbody><tr>\n<th>Area</th>\n<th>Explanation</th>\n</tr>\n<tr>\n<td>Administrative reporting and governance</td>\n<td>Catalog categories provide new ways to organize sites and support governance-related reporting and management activities.</td>\n</tr>\n<tr>\n<td>Admin controls and Entra targeting</td>\n<td>Administrators can manage Catalog categories and use Microsoft Entra ID extension attributes to scope visibility.</td>\n</tr>\n</tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "SharePoint Advanced Management now allows creating custom site groups via CSV uploads, site properties, and Microsoft Entra ID attributes to improve governance and reporting. Rolling out worldwide June–July 2026, it affects SharePoint and Microsoft 365 admins with no required user changes or migrations."
-      }
-    ],
-    "EndDateTime": "2026-08-17T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1413301",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-07-03T02:05:16.35Z",
-    "Services": [
-      "Microsoft 365 suite",
-      "SharePoint Online",
-      "Microsoft OneDrive"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-07-03T02:05:11Z",
-    "Tags": [
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "New in Catalog Management: Create custom group of sites",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -15750,45 +15671,6 @@
       "User impact"
     ],
     "Title": "Scoped SharePoint search in Teams (SharePoint app, also called Viva Connections)",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated June 19, 2026: We’ve published new information and guidance about the unification of Semi-Annual Enterprise Channel and Monthly Enterprise Channel for Microsoft 365 Apps. For more information, see Upcoming channel unification: <a href=\"https://learn.microsoft.com/microsoft-365-apps/updates/unified-update-channels\" target=\"_blank\">Semi-Annual Enterprise Channel to Monthly Enterprise Channel - Microsoft 365 Apps | Microsoft Learn</a></p><p><b><b>Introduction</b></b></p>\n<p>Beginning in July 2026, Microsoft will unify the <b>Semi-Annual Enterprise Channel (SAEC)</b> and <b>Monthly Enterprise Channel (MEC)</b> into a single enterprise-focused update channel for Microsoft 365 Apps. This change is designed to simplify update management while continuing to provide a predictable, enterprise-ready servicing experience.\n</p><p>Over time, SAEC and MEC have both served customers who want an enterprise-focused experience with timely updates. Unifying these channels reduces complexity and overlap, helping organizations adopt new capabilities, security updates, and quality improvements more quickly. This unified approach also supports more consistent update expectations across devices and user groups, while maintaining Microsoft’s commitment to quality, manageability, and predictable servicing.</p>\n\n<p><b><b>When this will happen:</b></b></p>\n<ul>\n  </ul><p>General Availability (Worldwide, GCC, GCC High, and DoD): These changes will go into effect on <b>July 14, 2026</b>, with the Patch Tuesday update release.</p><ul>\n</ul>\n\n<p><b><b>How this affects your organization:</b></b></p>\n<p><b>Who is affected:</b></p>\n<ul>\n  <li><b>Microsoft 365 administrators </b>managing update channels for Microsoft 365 Apps\n</li><li>Organizations currently using the <b>Semi-Annual Enterprise Channel (SAEC) \n</b></li><li>There is no change or impact for devices on other channels such as <b>Monthly Enterprise Channel (MEC)</b>, <b>Current Channel (CC),</b> or associated preview channels</li>\n</ul>\n\n<p><b>What will happen:</b></p><ul><li>Devices currently configured for SAEC will receive the same feature and security updates as published to MEC.</li><li>Existing update policies and configurations will continue to be respected.</li><li>There is no change to Microsoft’s commitment to predictable servicing, quality, and enterprise manageability.</li><li>Users are not expected to experience workflow changes as a result of this update.</li></ul>\n\n<p><b><b>What you can do to prepare:</b></b></p>\n<ul>\n  <li><b>No action is required.</b>&nbsp;If your organization currently uses SAEC, updates will continue to be published on a monthly basis.</li>\n  </ul><p><b>Optional:</b> </p><ul><li>Validate your servicing workflows. Confirm that your pilot, broad deployment, and rollback processes continue to meet your organization’s requirements.</li>\n</ul>\n<p><b>Learn more: </b></p><ul><li><a href=\"https://learn.microsoft.com/microsoft-365-apps/updates/overview-update-channels\" target=\"_blank\">Overview of update channels for Microsoft 365 Apps | Microsoft Learn</a>&nbsp;</li><li>\nAs we get closer to rollout, we will share additional details about how this change will appear in admin experiences and documentation.</li></ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>Microsoft 365 Apps update channel selection remains an admin-managed configuration. This change simplifies channel options by unifying feature updates published to SAEC and MEC. (<b>Note: </b>Entra ID group-based control is not introduced by this change; scoping depends on how you deploy policy today, such as Intune group assignments.)</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Starting July 14, 2026, Microsoft will unify the Semi-Annual Enterprise Channel (SAEC) and Monthly Enterprise Channel (MEC) for Microsoft 365 Apps into a single enterprise update channel, simplifying update management without changing existing policies or user workflows. No action is required."
-      }
-    ],
-    "EndDateTime": "2026-08-17T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1274325",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-06-19T21:39:04.95Z",
-    "Services": [
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-04-08T16:33:04Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "Admin impact"
-    ],
-    "Title": "Upcoming change: Microsoft 365 Apps SAEC and MEC will unify",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -18103,45 +17985,6 @@
     "AdditionalProperties": {}
   },
   {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>What and why</b></b></p><p>We will retire the ability to add notes directly to support tickets from the Microsoft 365 admin center Need Help experience.</p><p>This change aligns support communication to channels that provide reliable and consistent engagement. Customers will continue to communicate with Microsoft Support through supported channels, including:</p><ul><li>Email communication with the support engineer</li><li>Phone callbacks</li><li>Other support experiences</li></ul><p><b><b>Rollout schedule</b></b></p><p style=\"\">The “Add Note” option will be retired starting in <b>early July&nbsp;2026 </b>and will be fully removed by <b>mid-July&nbsp;2026</b> across Worldwide, GCC, GCC High, and DoD.</p><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Admins who manage or update Microsoft support tickets in the <i>Microsoft 365 admin center</i></li></ul><p><i>Platforms/services</i></p><ul><li>Microsoft 365 admin center\n</li></ul><p><i>What will happen</i></p><ul><li>The “Add Note” option in support tickets will be removed.\n</li><li>The option may appear disabled before it is removed.</li><li>Communication with support will continue through existing channels, including email and phone.\n</li></ul><p><b><b>Action required / recommendations</b></b></p><ul><li>No action is required.</li><li>Inform admins that updates to support tickets should be completed using supported channels:<ul><li>Reply to the email thread associated with the support request.</li><li>Engage through phone when contacted by Microsoft support.</li></ul></li><li>Update internal documentation if needed.</li></ul><p><u>Additional information</u></p><p>This change only affects how updates are added to existing support tickets. Ticket creation and resolution workflows are not impacted.\n</p><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.\n</p>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The \"Add Note\" option in Microsoft 365 admin center support tickets will be retired by mid-July 2026. Communication will continue via email and phone. No action is required, but admins should use supported channels for updates and update internal documentation if needed. Ticket creation and resolution remain unchanged."
-      }
-    ],
-    "EndDateTime": "2026-08-17T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1338811",
-    "IsMajorChange": true,
-    "LastModifiedDateTime": "2026-06-03T22:39:56.19Z",
-    "Services": [
-      "Microsoft 365 suite"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-06-03T22:39:19Z",
-    "Tags": [
-      "User impact",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Microsoft 365 admin center: Retirement of “Add Note” option in support tickets",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
     "ActionRequiredByDateTime": "2026-05-26T07:00:00Z",
     "Attachments": null,
     "AttachmentsArchive": null,
@@ -18552,108 +18395,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Teams: Recently used emojis sync across devices",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated May 28, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>Introduction</b></b></p><p>To help organizations respond more quickly to external security threats, Microsoft Teams will allow users to<b> report suspicious external users directly from Teams</b>. These reports will surface in the<i> Teams admin center</i>, giving admins greater visibility into potentially risky interactions and enabling faster investigation and response. This enhancement will build on existing reporting capabilities and will use user signals as an additional layer of protection against phishing, impersonation, and social engineering attacks.</p><p>This message is associated with <b>Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=560547\" target=\"_blank\">560547</a></b>.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Targeted Release: </b>We will begin rolling out in<b>&nbsp;mid-June 2026 </b>(previously early June)<b>&nbsp;</b>and expect to complete by <b>late June 2026</b> (previously&nbsp;early June).</li><li><b>General Availability (Worldwide): </b>We will begin rolling out in <b>late June 2026</b> (previously&nbsp;mid-June)<b>&nbsp;</b>and expect to complete by<b>&nbsp;early July 2026&nbsp;</b>(previously late June).</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><ul><li>All Microsoft 365 tenants using Microsoft Teams</li><li>Users who<b> interact with external users</b> in <i>Teams</i></li><li>Admins managing <b>Teams security and reporting</b> in the<i> Teams admin center</i></li></ul><p><i>What will happen</i></p><ul><li>Users will be able to report suspicious external users directly in<i> Teams</i>, in addition to blocking them:&nbsp;<p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/612be9d3-a00b-4b04-b88e-ba3bb3562e2f/469f51e14ae0d399ad9b7849290fa86efb6908c1.png\" style=\"width: 400px;\" alt=\"user settings\"></p></li><li>Reporting will be available during first time external chat requests and from an external user profile card.</li><li>Reporting will be supported across Teams experiences including chats, meetings, channels, and search results.</li><li>When a user is reported, the submission will appear in the <i>Teams admin center</i> under<b style=\"font-style: italic;\"> Protection reports &gt; User reported security submission report</b><p><img src=\"https://cxcs.microsoft.net/static/public/messagecenter/neutral/14745d08-a774-4e0f-bd07-5b093ce0f3bc/a3ce72933fd59438a18d724e9f5dabe11c42e0a9.png\" style=\"width: 400px;\" alt=\"user settings\"></p></li><li>Admins will be able to review reported users and investigate potential phishing, impersonation, or other suspicious activity.</li><li>Additional metadata will be available through report export to support investigation and response workflows.</li><li>This feature will be <b>enabled by default</b> and will respect existing Teams messaging policies.</li></ul><p><b><b>What you can do to prepare</b></b></p><p>No action will be required if you want to keep user reporting enabled.</p><p>Admins may choose to take the following actions:</p><ul><li>Review current Teams messaging policies and confirm that the <i><b>Report a security concern </b></i>setting<b> remains enabled</b>.</li><li>Familiarize security and helpdesk teams with the <b>User reported security submission report</b> in the <i>Teams admin center</i>.</li><li>Update internal security guidance or user education materials, if applicable.</li><li>If a malicious external user is identified through these reports, block that user at the tenant level using <i><b>External access </b></i>settings to prevent further communication attempts.</li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change store new customer data, and if so, where?</td><td>Yes. Reports submitted by users about external users will be processed and made available to admins for review and investigation, extending existing reporting workflows.</td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed?</td><td>Yes. User generated reports about external users are processed and made available to admins for review and investigation, extending existing reporting workflows.</td></tr><tr><td>Does the change provide a new way of communicating between users, tenants, or subscriptions?</td><td>Yes. Users will be able to submit reports about external users, which will be communicated to tenant admins through the Teams admin center reporting experience.</td></tr><tr><td>Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td>Yes. Admins will gain access to a new User reported security submission report in the <i>Teams admin center</i>, which will enhance monitoring and investigation capabilities related to external security threats.</td></tr><tr><td>Does the change include an admin control?</td><td>Yes. The feature will be governed by the existing Report a security concern setting in <i>Teams messaging policies </i>and can be enabled or disabled by admins.</td></tr></tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "560547"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-17T06:45:07.4703169Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Linux\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-17T06:45:07.470317Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-17T06:45:07.4703171Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1309744\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-08-17T06:45:07.4703172Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will enable users to report suspicious external users directly, with reports visible to admins in the Teams admin center for faster security response. This feature, rolling out mid to late June 2026, is enabled by default and supports investigation of phishing and impersonation risks."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Android, Desktop, iOS, Mac"
-      }
-    ],
-    "EndDateTime": "2026-08-17T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1309744",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-28T20:05:26.067Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-13T23:08:57Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: Report external users for security concerns",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>What and Why:</b></b></p>\n<p>Microsoft Teams events will support custom user templates, allowing organizers to save an event configuration and reuse it when creating future events. This reduces repeated setup and helps ensure consistent event configuration and branding across events created in your organization.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=561915\" target=\"_blank\">561915</a>.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n<ul>\n  <li>Targeted Release (Worldwide): We will begin rolling out in <b>early June 2026</b> and expect to complete by <b>late June 2026</b>.</li>\n  <li>General Availability (Worldwide): We will begin rolling out in <b>late June 2026</b> and expect to complete by <b>mid-July 2026</b>.</li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n<p><b>Who is affected:&nbsp;</b>Users who organize and schedule Microsoft Teams events</p>\n\n<p><b>Platforms/Services: </b>Microsoft Teams (events scheduling experience)&nbsp;</p>\n\n<p><b>What will happen:</b></p>\n<ul>\n  <li>Organizers can save an existing Teams event as a reusable template.</li>\n  <li>Templates can include event details, participants, branding, and configuration settings.</li>\n  <li>Saved templates can be reused and edited for future events.</li>\n  <li>New events can be created from a predefined configuration.</li>\n  <li><b>No admin configuration</b> is required.</li>\n</ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n<ul>\n  <li>No action is required.</li>\n  <li>Consider informing Teams event organizers about this capability.</li>\n</ul>\n\n<p><b><b>Compliance considerations:</b></b></p>\n<p>Event templates store copies of existing event configuration data for reuse within the tenant.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "561915"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1324279\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-17T06:45:07.4704785Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1324279\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-08-17T06:45:07.4704786Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
-      },
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Teams will allow event organizers to save and reuse custom event templates, including details, participants, branding, and settings, starting June 2026. This feature requires no admin setup and helps ensure consistent event configurations across the organization. No user action is needed."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop"
-      }
-    ],
-    "EndDateTime": "2026-08-17T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1324279",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-05-27T22:42:17.993Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-05-27T22:42:10Z",
-    "Tags": [
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Save your event as template to reuse event configurations",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -20823,45 +20564,6 @@
       "User impact"
     ],
     "Title": "Workspaces in Edge: Upcoming migration to improved architecture",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Starting in July 2026, the<b> Insert Data from Image</b> feature will no longer be available in Microsoft Excel on Windows devices using the Semi-Annual Enterprise Channel.\n</p><p>We’ll remove the feature beginning with Version 2602, scheduled for release in July 2026. It won’t be included in future Semi-Annual releases. The feature will continue to work in Semi-Annual Version 2508 until September 2026.\n</p><p>We’re developing an enhanced version of this feature that integrates with Copilot chat for Current Channel and Monthly Enterprise Channel users. Copilot chat is not currently available for Semi-Annual Enterprise Channel users. We’ll notify users when the new version becomes available.</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><div>\n</div>",
-      "ContentType": "html"
-    },
-    "Category": "planForChange",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "The Insert Data from Image feature in Excel for Windows Semi-Annual Enterprise Channel will retire in July 2026 with Version 2602. It remains until September 2026 in Version 2508. An enhanced version with Copilot chat is being developed for other channels."
-      }
-    ],
-    "EndDateTime": "2026-08-17T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1191944",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-12-03T22:50:29.4Z",
-    "Services": [
-      "Microsoft 365 suite"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-12-03T22:50:20Z",
-    "Tags": [
-      "User impact",
-      "Admin impact",
-      "Retirement"
-    ],
-    "Title": "Microsoft Excel: Insert Data from Image retires starting July 2026",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
