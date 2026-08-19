@@ -1,0 +1,47 @@
+{
+  "id": "MC1457838",
+  "versions": [
+    {
+      "capturedAt": "2026-08-19T22:24:08.72Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>Microsoft is introducing two new OneDrive policies for file-level exclusions on Windows and macOS.</p><p>Today, commercial users can view file exclusions configured by their organization, but they cannot add or remove exclusions. After this rollout, users will be able to manage their own file-level exclusions by default. This self-service capability applies only to user-managed exclusions. Users will not be able to remove exclusions configured by administrators through Group Policy or other policy management methods.</p><p>To help organizations maintain control over this experience, Microsoft is introducing the following policies:</p><ul><li><code>DisableChangesToODIgnoreList</code>: Prevents users from managing file-level exclusions and hides the self-service experience.</li><li><code>DisableDefaultODIgnoreList</code>: Disables Microsoft's built-in default file exclusion list when organizations require excluded file types to sync.</li></ul><p>Additionally, beginning October 5, 2026, Microsoft will add the <b>.db-wal</b> file type to the default OneDrive exclusion list. <b>.db-wal</b> files are temporary database files that can change frequently and are generally useful only with their associated database. Excluding new <b>.db-wal</b> files reduces unnecessary sync activity and avoids uploading transient application data.</p><p>Folder-level self-service exclusion controls are not included in this release and will be communicated separately.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):&nbsp;</b>Beginning in <b>early August 2026</b> and expected to complete in <b>early September 2026</b></li><li><b>Additional change:</b> On <b>October 5, 2026</b>, <b>.db-wal</b> files will be added to OneDrive's default exclusion list.</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Commercial Microsoft 365 organizations using OneDrive for Windows or macOS</li><li>OneDrive administrators</li><li>OneDrive users</li></ul><p><i>Platforms and services</i></p><ul><li>OneDrive for Windows</li><li>OneDrive for macOS</li></ul><p><i>What will happen</i></p><p>Users will be able to add and remove their own file-level exclusions by default.</p><ul><li>Users will not be able to remove exclusions configured by administrators through Group Policy or other policy management methods.</li><li>Organizations that want to maintain the current organization-managed experience can enable <code>DisableChangesToODIgnoreList</code>.</li><li>Starting October 5, 2026, newly created <b>.db-wal</b> files will be excluded from OneDrive sync by default.</li><li>Existing <b>.db-wal</b> files that already sync to OneDrive will not be affected.</li><li>Organizations that require new <b>.db-wal</b> files to sync can enable <code>DisableDefaultODIgnoreList</code>.</li><li>Folder-level self-service exclusion controls are not part of this release.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>Review whether your organization wants users to manage their own file-level exclusions.</p><p>Recommended actions:</p><ul><li>Evaluate whether the default self-service experience aligns with your organization's file sync and governance requirements.</li><li>Enable <code>DisableChangesToODIgnoreList</code> before rollout if you want to preserve the current administrator-managed experience.</li><li>Review workloads and applications that store <b>.db-wal</b> files in OneDrive-synced locations.</li><li>Enable <code>DisableDefaultODIgnoreList</code> <b>before October 5, 2026</b>, if your organization requires new <b>.db-wal</b> files to sync.</li><li>Test both policies with a pilot group before broad deployment.</li><li>Update user and help desk documentation if you plan to allow self-service file-level exclusions.</li></ul><p><b>Learn more</b></p><ul><li>(Update expected later in launch.)<b>&nbsp;</b><a href=\"https://learn.microsoft.com/sharepoint/use-group-policy\" target=\"_blank\">IT Admins - Use OneDrive policies to control sync settings | SharePoint in Microsoft 365 | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does this change include an admin control?</td><td>Yes. Administrators can use the DisableChangesToODIgnoreList policy to disable user self-service file exclusions and can use the DisableDefaultODIgnoreList policy to override Microsoft's default file exclusion list.</td></tr><tr><td>Can users enable or disable functionality themselves?</td><td>Yes. By default, users will be able to add or remove their own file-level exclusions unless administrators enable the DisableChangesToODIgnoreList policy.</td></tr><tr><td>Does this change affect data storage behavior?</td><td>Yes. New .db-wal files will remain on the local device and will not be uploaded to OneDrive by default unless administrators disable the default exclusion list.</td></tr></tbody></table><p><b></b></p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft is introducing new OneDrive policies allowing users to manage their own file-level exclusions by default, while admins can restrict this via policies. From October 5, 2026, .db-wal files will be excluded from sync by default. Folder-level exclusions are not included in this update."
+          }
+        ],
+        "EndDateTime": "2026-10-04T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1457838",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-08-19T22:24:08.72Z",
+        "Services": [
+          "Microsoft OneDrive"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-08-19T22:23:55Z",
+        "Tags": [
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft OneDrive: New policies to control file exclusions",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
