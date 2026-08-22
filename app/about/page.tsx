@@ -125,6 +125,18 @@ export default function AboutPage() {
             </h2>
             <ul>
               <li>
+                Table columns are now sortable. Click ID, Title, or Last
+                updated to sort, and click again to reverse it. While
+                searching, sorting applies to every match rather than only the
+                results already loaded.
+              </li>
+              <li>
+                Fixed the default ordering of the archive. Expired posts were
+                listed after every active and Roadmap post instead of being
+                merged into the date order, so the browse view now shows all
+                posts newest first.
+              </li>
+              <li>
                 Search results now favour recent posts. Among matches of
                 comparable relevance the newest one ranks first, which suits
                 change alerts, while a decisively better match still wins
