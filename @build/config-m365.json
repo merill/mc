@@ -1,4 +1,19 @@
 {
-    "tenantId": "0817c655-a853-4d8f-9723-3a333b5b9235",
-    "clientId": "778fad36-e4c1-4d40-a58e-9b5b64179d41"
+    "tenants": [
+        {
+            "name": "primary",
+            "tenantId": "0817c655-a853-4d8f-9723-3a333b5b9235",
+            "clientId": "778fad36-e4c1-4d40-a58e-9b5b64179d41",
+            "auth": "clientSecret",
+            "required": true
+        },
+        {
+            "name": "federated",
+            "tenantId": "${GRAPH_FEDERATED_TENANT_ID}",
+            "clientId": "${GRAPH_FEDERATED_CLIENT_ID}",
+            "auth": "federatedIdentity",
+            "audience": "api://AzureADTokenExchange",
+            "required": false
+        }
+    ]
 }

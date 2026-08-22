@@ -64,9 +64,10 @@ export default function AboutPage() {
           </CardHeader>
           <CardContent className="readable-card-content">
             <p>
-              A scheduled job reads Message Center posts from a Microsoft 365
-              test tenant through Microsoft Graph, saves each post for history,
-              and publishes a searchable static site.
+              A scheduled job reads Message Center posts from the Microsoft 365
+              test tenants through Microsoft Graph, merges what each tenant can
+              see, saves each post for history, and publishes a searchable
+              static site.
             </p>
             <p>
               The site also imports Microsoft 365 Roadmap RSS items, generates
@@ -118,6 +119,20 @@ export default function AboutPage() {
           <CardTitle>Release notes</CardTitle>
         </CardHeader>
         <CardContent className="readable-card-content space-y-5">
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
+              August 22, 2026
+            </h2>
+            <ul>
+              <li>
+                The archive now collects Message Center posts from more than one
+                source tenant and merges them, so posts and details that are
+                only visible to a tenant with different licensing are included.
+                When the same post comes from several tenants, the most recently
+                updated and most detailed copy is kept.
+              </li>
+            </ul>
+          </div>
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
               August 3, 2026
