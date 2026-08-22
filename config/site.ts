@@ -33,8 +33,8 @@ export const siteConfig = {
       href: "https://maester.dev",
     },
     {
-      title: "Yako",
-      href: "https://getyako.com",
+      title: "Maester.Cloud",
+      href: "https://maester.cloud",
     },
   ],
   links: {

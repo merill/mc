@@ -1,7 +1,13 @@
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
-import { Inbox, Milestone } from "lucide-react"
+import { ColumnDef, SortDirection } from "@tanstack/react-table"
+import {
+  ArrowDown,
+  ArrowUp,
+  ChevronsUpDown,
+  Inbox,
+  Milestone,
+} from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import {
@@ -15,7 +21,10 @@ export type MessageView = {
   id: string
   title: string
   service: string[] | undefined
+  // Display string ("Aug 21, 2026"). `date` carries the ISO form because
+  // sorting the display string would order it alphabetically.
   lastUpdated: string | undefined
+  date: string | undefined
   isMajor: boolean
   isArchived: boolean
   source: "messageCenter" | "roadmap"
@@ -25,12 +34,73 @@ export type MessageView = {
   excerpt?: string
 }
 
+// Zero-pads the numeric part of an id so MC713893 sorts below MC1000182.
+// scripts/build-search-index.mjs emits the same key for Pagefind, so sorting
+// by ID means the same thing whether the table is browsing or searching.
+export function idSortKey(id: string): string {
+  const match = /^([A-Za-z]*)(\d+)$/.exec(id ?? "")
+
+  return match ? `${match[1]}${match[2].padStart(10, "0")}` : id ?? ""
+}
+
+function SortIcon({ direction }: { direction: SortDirection | false }) {
+  const Icon =
+    direction === "asc"
+      ? ArrowUp
+      : direction === "desc"
+      ? ArrowDown
+      : ChevronsUpDown
+
+  return (
+    <Icon
+      size={14}
+      className={direction ? "text-foreground" : "text-muted-foreground/50"}
+      aria-hidden="true"
+    />
+  )
+}
+
+function SortableHeader({
+  column,
+  label,
+  className,
+}: {
+  column: {
+    getIsSorted: () => SortDirection | false
+    toggleSorting: (desc?: boolean) => void
+  }
+  label: string
+  className?: string
+}) {
+  const sorted = column.getIsSorted()
+
+  return (
+    <button
+      type="button"
+      // Dates read newest-first and text reads A-Z, so an unsorted column
+      // starts in whichever direction people expect from that kind of value.
+      onClick={() =>
+        column.toggleSorting(
+          sorted ? sorted === "asc" : label === "Last updated"
+        )
+      }
+      className={`-mx-2 inline-flex items-center gap-1.5 rounded-sm px-2 py-1 hover:text-foreground ${
+        className ?? ""
+      }`}
+      aria-label={`Sort by ${label}`}
+    >
+      <span className="text-nowrap">{label}</span>
+      <SortIcon direction={sorted} />
+    </button>
+  )
+}
+
 export const columns: ColumnDef<MessageView>[] = [
   {
     accessorKey: "id",
-    header: ({ column }) => {
-      return <div>ID</div>
-    },
+    sortingFn: (a, b) =>
+      idSortKey(a.original.id).localeCompare(idSortKey(b.original.id)),
+    header: ({ column }) => <SortableHeader column={column} label="ID" />,
     cell: ({ row }) => {
       const SourceIcon = row.original.source === "roadmap" ? Milestone : Inbox
 
@@ -77,9 +147,7 @@ export const columns: ColumnDef<MessageView>[] = [
   },
   {
     accessorKey: "title",
-    header: ({ column }) => {
-      return <div>Title</div>
-    },
+    header: ({ column }) => <SortableHeader column={column} label="Title" />,
     cell: ({ row }) => {
       return (
         <div className="w-full min-w-0">
@@ -114,10 +182,11 @@ export const columns: ColumnDef<MessageView>[] = [
     },
   },
   {
-    accessorKey: "lastUpdated",
-    header: ({ column }) => {
-      return <div className="text-nowrap">Last updated</div>
-    },
+    id: "lastUpdated",
+    accessorFn: (row) => row.date ?? "",
+    header: ({ column }) => (
+      <SortableHeader column={column} label="Last updated" />
+    ),
     cell: ({ row }) => {
       return (
         <span className="text-nowrap text-foreground/75">

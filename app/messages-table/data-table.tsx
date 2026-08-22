@@ -27,6 +27,7 @@ import {
   searchMessages,
   type PagefindResult,
   type SearchHit,
+  type SearchSortKey,
 } from "@/lib/search"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -41,6 +42,15 @@ import {
 import type { MessageView } from "@/app/messages-table/columns"
 
 type SourceFilter = "all" | "messageCenter" | "roadmap"
+
+// Browsing shows newest first. Without this the expired posts, which arrive
+// after the first render, would simply pile up underneath everything else.
+const defaultBrowseSorting: SortingState = [{ id: "lastUpdated", desc: true }]
+const searchSortKeys: Record<string, SearchSortKey> = {
+  id: "id",
+  title: "title",
+  lastUpdated: "date",
+}
 
 const rowBatchSize = 200
 const searchBatchSize = 25
@@ -67,6 +77,7 @@ function toArchivedMessageView(item: MessageArchive): MessageView {
           month: "short",
         })} ${date.getDate()}, ${date.getFullYear()}`
       : undefined,
+    date: date ? date.toISOString().slice(0, 10) : undefined,
     isMajor: item.IsMajorChange ?? false,
     isArchived: true,
     source: "messageCenter",
@@ -137,6 +148,19 @@ export function DataTable<TData, TValue>({
     })
   }, [allData, selectedServices, sourceFilter])
   const isSearchActive = query.trim().length > 0
+  // An empty `sorting` means "the default for this mode": relevance while
+  // searching, newest-first while browsing.
+  const effectiveSorting = React.useMemo(
+    () =>
+      sorting.length ? sorting : isSearchActive ? [] : defaultBrowseSorting,
+    [isSearchActive, sorting]
+  )
+  const searchSort = React.useMemo(() => {
+    const column = sorting[0]
+    const key = column && searchSortKeys[column.id]
+
+    return key ? { key, descending: column.desc } : undefined
+  }, [sorting])
   const fallbackResults = React.useMemo(() => {
     if (!isSearchActive || !isSearchUnavailable) return []
 
@@ -224,6 +248,7 @@ export function DataTable<TData, TValue>({
     searchMessages(trimmed, {
       source: sourceFilter,
       services: selectedServices,
+      sort: searchSort,
     })
       .then(async (results) => {
         if (request !== searchRequestRef.current) return
@@ -251,7 +276,7 @@ export function DataTable<TData, TValue>({
         setIsSearchUnavailable(true)
         setIsSearchLoading(false)
       })
-  }, [query, selectedServices, sourceFilter])
+  }, [query, searchSort, selectedServices, sourceFilter])
 
   const toggleService = (service: string) => {
     setSelectedServices((current) =>
@@ -281,18 +306,21 @@ export function DataTable<TData, TValue>({
     searchHits,
   ])
 
+  const usesPagefind = isSearchActive && !isSearchUnavailable
   const table = useReactTable({
     data: tableData,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    // While searching, Pagefind has already ordered the full match set —
+    // re-sorting here would only reorder the rows fetched so far.
+    manualSorting: usesPagefind,
     state: {
-      sorting,
+      sorting: effectiveSorting,
     },
   })
   const rows = table.getRowModel().rows
-  const usesPagefind = isSearchActive && !isSearchUnavailable
   const visibleRows = usesPagefind ? rows : rows.slice(0, visibleRowCount)
   const hasMoreRows = usesPagefind
     ? searchHits.length < searchTotal

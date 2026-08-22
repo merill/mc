@@ -82,6 +82,18 @@ function displayDate(value) {
   return `${month} ${date.getUTCDate()}, ${date.getUTCFullYear()}`
 }
 
+// Pagefind sorts its keys as strings, so an id only sorts numerically if the
+// digits are zero-padded first: MC713893 has to become MC0000713893 to fall
+// below MC1000182. The table applies the same rule client-side so browse and
+// search agree on what "sort by ID" means.
+function idSortKey(id) {
+  const match = String(id || "").match(/^([A-Za-z]*)(\d+)$/)
+
+  if (!match) return String(id || "")
+
+  return `${match[1]}${match[2].padStart(10, "0")}`
+}
+
 function slugify(value) {
   return String(value || "")
     .toLowerCase()
@@ -145,7 +157,13 @@ function buildRecord(message, { source, isArchived }) {
       major: [message.IsMajorChange ? "yes" : "no"],
       year: [day ? day.slice(0, 4) : "unknown"],
     },
-    sort: { date: day },
+    // Sort keys let the browser sort a whole result set inside the index,
+    // rather than only the handful of results already fetched.
+    sort: {
+      date: day,
+      id: idSortKey(id),
+      title: String(message.Title || "").toLowerCase(),
+    },
   }
 }
 

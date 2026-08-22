@@ -11,9 +11,15 @@ export interface SearchHit extends MessageView {
   excerpt: string
 }
 
+export type SearchSortKey = "id" | "title" | "date"
+
 export interface SearchOptions {
   source?: "all" | "messageCenter" | "roadmap"
   services?: string[]
+  // Omit to rank by relevance (recency-weighted). Naming a column sorts the
+  // whole match set inside the index instead, so the ordering holds for
+  // results that have not been fetched yet.
+  sort?: { key: SearchSortKey; descending: boolean }
 }
 
 interface PagefindMeta {
@@ -111,6 +117,15 @@ export async function searchMessages(
     ? { filters }
     : {}
 
+  if (options.sort) {
+    const response = await pagefind.search(query, {
+      ...searchOptions,
+      sort: { [options.sort.key]: options.sort.descending ? "desc" : "asc" },
+    })
+
+    return response.results ?? []
+  }
+
   // Two passes over the same match set: one by relevance, one by date. The
   // date pass is only used for its ordering, which avoids pulling a fragment
   // per result just to read a date off it.
@@ -191,6 +206,7 @@ function toHit(data: PagefindData): SearchHit {
     title: meta.title || "Untitled",
     service: meta.services ? meta.services.split("|").filter(Boolean) : [],
     lastUpdated: meta.lastUpdated || undefined,
+    date: meta.date || undefined,
     isMajor: meta.isMajor === "true",
     isArchived: meta.isArchived === "true",
     source,
