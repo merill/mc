@@ -38,6 +38,7 @@ export const siteConfig = {
     },
   ],
   links: {
+    rss: "/rss.xml",
     twitter: "https://twitter.com/merill",
     github: "https://github.com/merill/mc",
   },

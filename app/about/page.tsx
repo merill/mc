@@ -125,6 +125,17 @@ export default function AboutPage() {
             </h2>
             <ul>
               <li>
+                Search results now favour recent posts. Among matches of
+                comparable relevance the newest one ranks first, which suits
+                change alerts, while a decisively better match still wins
+                however old it is.
+              </li>
+              <li>
+                Added an RSS link to the site header so the existing feed of
+                the latest 500 Message Center and Roadmap posts is easier to
+                find.
+              </li>
+              <li>
                 Replaced the ID and title filters with full-text search across
                 every post, including the full body text of expired posts.
                 Search runs entirely in the browser against a pre-built
