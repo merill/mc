@@ -1,6 +1,6 @@
 # Microsoft 365 Message Center Archive
 
-This site is a simple archive of the Microsoft 365 Message Center and Microsoft 365 Roadmap. It is updated daily and provides a simple way to search and view posts.
+This site is a simple archive of the Microsoft 365 Message Center and Microsoft 365 Roadmap. Message Center and Roadmap data is refreshed hourly and the site is rebuilt every four hours, providing a simple way to search and view posts.
 
 I created this site so I can link to it from my weekly newsletter [Entra.News](https://entra.news) so folks could ready the message center post without having to log into the admin center.
 

@@ -136,6 +136,11 @@ export default function AboutPage() {
                 Entra Message Center posts. The archive, RSS feed, and index
                 files are unchanged.
               </li>
+              <li>
+                The site now rebuilds every four hours instead of twice a day,
+                so new and updated posts appear here sooner after Microsoft
+                publishes them.
+              </li>
             </ul>
           </div>
           <div>
