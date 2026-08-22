@@ -5,17 +5,29 @@ import React from "react"
 import Link from "next/link"
 import {
   ColumnDef,
-  ColumnFiltersState,
   SortingState,
   flexRender,
   getCoreRowModel,
-  getFilteredRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { Check, ChevronDown, Inbox, Milestone, X } from "lucide-react"
+import {
+  Check,
+  ChevronDown,
+  Inbox,
+  Loader2,
+  Milestone,
+  Search,
+  X,
+} from "lucide-react"
 
 import type { MessageArchive } from "@/types/message"
+import {
+  loadSearchHits,
+  searchMessages,
+  type PagefindResult,
+  type SearchHit,
+} from "@/lib/search"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -31,6 +43,8 @@ import type { MessageView } from "@/app/messages-table/columns"
 type SourceFilter = "all" | "messageCenter" | "roadmap"
 
 const rowBatchSize = 200
+const searchBatchSize = 25
+const searchDebounceMs = 250
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -84,16 +98,24 @@ export function DataTable<TData, TValue>({
 
   const [allData, setAllData] = React.useState<TData[]>(data)
   const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
   const [sourceFilter, setSourceFilter] = React.useState<SourceFilter>("all")
   const [selectedServices, setSelectedServices] = React.useState<string[]>([])
   const [serviceSearch, setServiceSearch] = React.useState("")
   const [isServiceFilterOpen, setIsServiceFilterOpen] = React.useState(false)
   const [visibleRowCount, setVisibleRowCount] = React.useState(rowBatchSize)
+  const [searchTerm, setSearchTerm] = React.useState("")
+  const [query, setQuery] = React.useState("")
+  const [searchHits, setSearchHits] = React.useState<SearchHit[]>([])
+  const [searchTotal, setSearchTotal] = React.useState(0)
+  const [isSearchLoading, setIsSearchLoading] = React.useState(false)
+  // Set when the Pagefind index cannot be loaded (e.g. `next dev` without a
+  // prior index build). Search then degrades to a substring match.
+  const [isSearchUnavailable, setIsSearchUnavailable] = React.useState(false)
   const serviceFilterRef = React.useRef<HTMLDivElement>(null)
   const loadMoreRef = React.useRef<HTMLDivElement>(null)
+  const searchResultsRef = React.useRef<PagefindResult[]>([])
+  const searchRequestRef = React.useRef(0)
+  const isLoadingMoreRef = React.useRef(false)
   const filteredServices = React.useMemo(() => {
     const search = serviceSearch.trim().toLowerCase()
 
@@ -114,6 +136,21 @@ export function DataTable<TData, TValue>({
       return sourceMatches && serviceMatches
     })
   }, [allData, selectedServices, sourceFilter])
+  const isSearchActive = query.trim().length > 0
+  const fallbackResults = React.useMemo(() => {
+    if (!isSearchActive || !isSearchUnavailable) return []
+
+    const needle = query.trim().toLowerCase()
+
+    return filteredData.filter((item) => {
+      const row = item as { id?: string; title?: string }
+
+      return (
+        row.id?.toLowerCase().includes(needle) ||
+        row.title?.toLowerCase().includes(needle)
+      )
+    })
+  }, [filteredData, isSearchActive, isSearchUnavailable, query])
 
   React.useEffect(() => {
     setAllData(data)
@@ -163,6 +200,59 @@ export function DataTable<TData, TValue>({
     return () => document.removeEventListener("mousedown", handlePointerDown)
   }, [])
 
+  // Debounce keystrokes so a query only reaches Pagefind once typing pauses.
+  React.useEffect(() => {
+    const timer = setTimeout(() => setQuery(searchTerm), searchDebounceMs)
+
+    return () => clearTimeout(timer)
+  }, [searchTerm])
+
+  React.useEffect(() => {
+    const trimmed = query.trim()
+    const request = ++searchRequestRef.current
+
+    if (!trimmed) {
+      searchResultsRef.current = []
+      setSearchHits([])
+      setSearchTotal(0)
+      setIsSearchLoading(false)
+      return
+    }
+
+    setIsSearchLoading(true)
+
+    searchMessages(trimmed, {
+      source: sourceFilter,
+      services: selectedServices,
+    })
+      .then(async (results) => {
+        if (request !== searchRequestRef.current) return
+
+        searchResultsRef.current = results
+        const hits = await loadSearchHits(results, 0, searchBatchSize)
+
+        if (request !== searchRequestRef.current) return
+
+        setIsSearchUnavailable(false)
+        setSearchTotal(results.length)
+        setSearchHits(hits)
+        setIsSearchLoading(false)
+      })
+      .catch((error) => {
+        if (request !== searchRequestRef.current) return
+
+        console.error(
+          "Search index unavailable, falling back to title match",
+          error
+        )
+        searchResultsRef.current = []
+        setSearchHits([])
+        setSearchTotal(0)
+        setIsSearchUnavailable(true)
+        setIsSearchLoading(false)
+      })
+  }, [query, selectedServices, sourceFilter])
+
   const toggleService = (service: string) => {
     setSelectedServices((current) =>
       current.includes(service)
@@ -178,22 +268,66 @@ export function DataTable<TData, TValue>({
       ? selectedServices[0]
       : `${selectedServices.length} services`
 
+  const tableData = React.useMemo(() => {
+    if (!isSearchActive) return filteredData
+    if (isSearchUnavailable) return fallbackResults
+
+    return searchHits as unknown as TData[]
+  }, [
+    fallbackResults,
+    filteredData,
+    isSearchActive,
+    isSearchUnavailable,
+    searchHits,
+  ])
+
   const table = useReactTable({
-    data: filteredData,
+    data: tableData,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
-      columnFilters,
     },
   })
   const rows = table.getRowModel().rows
-  const visibleRows = rows.slice(0, visibleRowCount)
-  const hasMoreRows = visibleRowCount < rows.length
+  const usesPagefind = isSearchActive && !isSearchUnavailable
+  const visibleRows = usesPagefind ? rows : rows.slice(0, visibleRowCount)
+  const hasMoreRows = usesPagefind
+    ? searchHits.length < searchTotal
+    : visibleRowCount < rows.length
+  const totalRowCount = usesPagefind ? searchTotal : rows.length
+
+  const loadMoreRows = React.useCallback(async () => {
+    if (!usesPagefind) {
+      setVisibleRowCount((current) =>
+        Math.min(current + rowBatchSize, rows.length)
+      )
+      return
+    }
+
+    if (isLoadingMoreRef.current) return
+
+    isLoadingMoreRef.current = true
+    const request = searchRequestRef.current
+
+    try {
+      const nextHits = await loadSearchHits(
+        searchResultsRef.current,
+        searchHits.length,
+        searchBatchSize
+      )
+
+      if (request !== searchRequestRef.current) return
+
+      setSearchHits((current) => [...current, ...nextHits])
+    } catch (error) {
+      console.error("Unable to load more search results", error)
+    } finally {
+      isLoadingMoreRef.current = false
+    }
+  }, [rows.length, searchHits.length, usesPagefind])
 
   React.useEffect(() => {
     setVisibleRowCount(rowBatchSize)
@@ -208,9 +342,7 @@ export function DataTable<TData, TValue>({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisibleRowCount((current) =>
-            Math.min(current + rowBatchSize, rows.length)
-          )
+          void loadMoreRows()
         }
       },
       { rootMargin: "800px 0px" }
@@ -219,7 +351,19 @@ export function DataTable<TData, TValue>({
     observer.observe(loadMoreNode)
 
     return () => observer.disconnect()
-  }, [hasMoreRows, rows.length])
+  }, [hasMoreRows, loadMoreRows])
+
+  const resultSummary = () => {
+    if (isSearchActive && isSearchLoading && !visibleRows.length) {
+      return "Searching…"
+    }
+
+    if (!visibleRows.length) return ""
+
+    return hasMoreRows
+      ? `Showing ${visibleRows.length} of ${totalRowCount} results`
+      : `Showing all ${totalRowCount} results`
+  }
 
   return (
     <div>
@@ -255,21 +399,38 @@ export function DataTable<TData, TValue>({
             Microsoft 365 Roadmap
           </Button>
         </div>
-        <div className="grid gap-3 sm:grid-cols-[10rem_minmax(12rem,20rem)_minmax(12rem,18rem)] lg:flex lg:items-center">
-          <Input
-            placeholder="Filter by ID..."
-            value={(table.getColumn("id")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("id")?.setFilterValue(event.target.value)
-            }
-          />
-          <Input
-            placeholder="Filter by Title..."
-            value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("title")?.setFilterValue(event.target.value)
-            }
-          />
+        <div className="grid gap-3 sm:grid-cols-[minmax(14rem,1fr)_minmax(12rem,18rem)] lg:flex lg:flex-1 lg:items-center">
+          <div className="relative w-full lg:flex-1">
+            <Search
+              size={16}
+              className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+            />
+            <Input
+              placeholder="Search ID, title, or message text..."
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              className="pl-9 pr-9"
+              aria-label="Search messages"
+            />
+            {isSearchActive && isSearchLoading ? (
+              <Loader2
+                size={16}
+                className="absolute right-3 top-1/2 -translate-y-1/2 animate-spin text-muted-foreground"
+                aria-hidden="true"
+              />
+            ) : (
+              searchTerm && (
+                <button
+                  type="button"
+                  aria-label="Clear search"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  onClick={() => setSearchTerm("")}
+                >
+                  <X size={16} />
+                </button>
+              )
+            )}
+          </div>
           <div ref={serviceFilterRef} className="relative w-full sm:w-72">
             <Button
               type="button"
@@ -347,6 +508,12 @@ export function DataTable<TData, TValue>({
           </div>
         </div>
       </div>
+      {isSearchActive && isSearchUnavailable && (
+        <div className="mb-3 rounded-md border border-dashed px-3 py-2 text-sm text-muted-foreground">
+          Full-text search is unavailable right now, so results are limited to
+          ID and title matches.
+        </div>
+      )}
       <div className="rounded-md border text-[15px] leading-6">
         <Table className="table-fixed md:table-auto">
           <TableHeader>
@@ -378,7 +545,7 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {rows.length ? (
+            {visibleRows.length ? (
               visibleRows.map((row) => (
                 <TableRow
                   key={row.id}
@@ -418,21 +585,23 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  {isSearchActive && isSearchLoading
+                    ? "Searching…"
+                    : isSearchActive
+                    ? "No messages match this search."
+                    : "No results."}
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
       </div>
-      {rows.length > 0 && (
+      {visibleRows.length > 0 && (
         <div
           ref={loadMoreRef}
           className="py-4 text-center text-sm text-muted-foreground"
         >
-          {hasMoreRows
-            ? `Showing ${visibleRows.length} of ${rows.length} results`
-            : `Showing all ${rows.length} results`}
+          {resultSummary()}
         </div>
       )}
     </div>

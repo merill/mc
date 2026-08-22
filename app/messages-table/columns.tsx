@@ -20,6 +20,9 @@ export type MessageView = {
   isArchived: boolean
   source: "messageCenter" | "roadmap"
   sourceLabel: string
+  // Present only for search results: a Pagefind excerpt with <mark> around
+  // the matched terms.
+  excerpt?: string
 }
 
 export const columns: ColumnDef<MessageView>[] = [
@@ -79,8 +82,16 @@ export const columns: ColumnDef<MessageView>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className="w-full whitespace-normal break-words leading-7 text-foreground/90">
-          {row.original.title}
+        <div className="w-full min-w-0">
+          <div className="whitespace-normal break-words leading-7 text-foreground/90">
+            {row.original.title}
+          </div>
+          {row.original.excerpt && (
+            <p
+              className="search-excerpt mt-1 whitespace-normal break-words text-sm leading-6 text-muted-foreground"
+              dangerouslySetInnerHTML={{ __html: row.original.excerpt }}
+            />
+          )}
         </div>
       )
     },

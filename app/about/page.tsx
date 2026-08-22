@@ -125,6 +125,14 @@ export default function AboutPage() {
             </h2>
             <ul>
               <li>
+                Replaced the ID and title filters with full-text search across
+                every post, including the full body text of expired posts.
+                Search runs entirely in the browser against a pre-built
+                Pagefind index, ranks results by relevance, highlights the
+                matched words in context, and still honours the source and
+                service filters.
+              </li>
+              <li>
                 The archive now collects Message Center posts from more than one
                 source tenant and merges them, so posts and details that are
                 only visible to a tenant with different licensing are included.
