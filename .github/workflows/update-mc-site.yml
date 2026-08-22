@@ -10,9 +10,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  # Run twice a day (6.00am and 8.00pm)
+  # Rebuild every four hours so new Message Center posts reach the site within
+  # hours instead of waiting for a twice-daily build. Runs at half past the hour
+  # so the hourly data refresh has already committed.
   schedule:
-    - cron:  '0 6,18 * * *'
+    - cron:  '30 */4 * * *'
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:

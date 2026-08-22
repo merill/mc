@@ -131,6 +131,16 @@ export default function AboutPage() {
                 When the same post comes from several tenants, the most recently
                 updated and most detailed copy is kept.
               </li>
+              <li>
+                Retired the Discord notifications for newly discovered Microsoft
+                Entra Message Center posts. The archive, RSS feed, and index
+                files are unchanged.
+              </li>
+              <li>
+                The site now rebuilds every four hours instead of twice a day,
+                so new and updated posts appear here sooner after Microsoft
+                publishes them.
+              </li>
             </ul>
           </div>
           <div>
