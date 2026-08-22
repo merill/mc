@@ -27,6 +27,23 @@ export function SiteHeader() {
               ))}
             </div>
             <div className="flex items-center space-x-1">
+              {/* A plain anchor, not next/link: rss.xml is a static file in
+                  public/, not a route the client router can navigate to. */}
+              <a
+                href={siteConfig.links.rss}
+                type="application/rss+xml"
+                title="Subscribe to the RSS feed"
+              >
+                <div
+                  className={buttonVariants({
+                    size: "icon",
+                    variant: "ghost",
+                  })}
+                >
+                  <Icons.rss className="h-5 w-5" />
+                  <span className="sr-only">RSS feed</span>
+                </div>
+              </a>
               <Link
                 href={siteConfig.links.github}
                 target="_blank"

@@ -36,7 +36,13 @@ interface PagefindData {
 
 export interface PagefindResult {
   id: string
+  score: number
   data: () => Promise<PagefindData>
+}
+
+interface PagefindSearchOptions {
+  filters?: Record<string, string[]>
+  sort?: Record<string, "asc" | "desc">
 }
 
 interface PagefindModule {
@@ -44,9 +50,21 @@ interface PagefindModule {
   options: (options: Record<string, unknown>) => Promise<void>
   search: (
     query: string,
-    options?: { filters?: Record<string, string[]> }
+    options?: PagefindSearchOptions
   ) => Promise<{ results: PagefindResult[] }>
 }
+
+// How much a post's recency can lift its relevance score. The newest match in
+// a result set is scored `1 + RECENCY_WEIGHT` times its relevance, the oldest
+// gets no lift, and everything in between scales linearly by its position in
+// the date order.
+//
+// Message Center relevance scores sit in tight clusters — adjacent hits are
+// routinely within a percent of each other — so a 20% spread reliably sorts a
+// tied cluster newest-first, which is what matters for change alerts. It is
+// still small enough that a decisively better match (Pagefind scores those
+// 2-3x higher) stays on top however old it is.
+const RECENCY_WEIGHT = 0.2
 
 let pagefindPromise: Promise<PagefindModule> | null = null
 
@@ -89,12 +107,58 @@ export async function searchMessages(
     filters.service = options.services
   }
 
-  const response = await pagefind.search(
-    query,
-    Object.keys(filters).length ? { filters } : undefined
+  const searchOptions: PagefindSearchOptions = Object.keys(filters).length
+    ? { filters }
+    : {}
+
+  // Two passes over the same match set: one by relevance, one by date. The
+  // date pass is only used for its ordering, which avoids pulling a fragment
+  // per result just to read a date off it.
+  const [byRelevance, byDate] = await Promise.all([
+    pagefind.search(query, searchOptions),
+    pagefind
+      .search(query, { ...searchOptions, sort: { date: "desc" } })
+      .catch(() => null),
+  ])
+
+  const results = byRelevance.results ?? []
+
+  return applyRecencyWeighting(results, byDate?.results ?? [])
+}
+
+// Re-rank relevance-ordered results so newer posts win among comparable
+// matches. `byDate` is the same set ordered newest-first; a post's position in
+// it stands in for its age, which keeps the weighting relative to the result
+// set rather than to a fixed date (a query about an old change still ranks its
+// most recent posts first).
+function applyRecencyWeighting(
+  byRelevance: PagefindResult[],
+  byDate: PagefindResult[]
+): PagefindResult[] {
+  if (byRelevance.length < 2 || byDate.length < 2) return byRelevance
+
+  const oldestPosition = byDate.length - 1
+  const datePositions = new Map(
+    byDate.map((result, index) => [result.id, index])
   )
 
-  return response.results ?? []
+  return byRelevance
+    .map((result, index) => {
+      // Anything the date pass did not return is treated as oldest, so a
+      // missing date can only cost a post its lift, never invent one.
+      const position = datePositions.get(result.id) ?? oldestPosition
+      const recency = 1 - position / oldestPosition
+
+      return {
+        result,
+        // Relevance order breaks ties, so equally recent hits keep Pagefind's
+        // ordering rather than shuffling between searches.
+        index,
+        score: result.score * (1 + RECENCY_WEIGHT * recency),
+      }
+    })
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .map((entry) => entry.result)
 }
 
 const escapeHtml = (value: string) =>
