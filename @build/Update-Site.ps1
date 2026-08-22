@@ -6,27 +6,65 @@
 #
 # Use -RoadmapOnly to refresh only the Roadmap RSS feed during local development.
 
-param($GraphSecret, [switch]$RoadmapOnly)
+param($GraphSecret, [switch]$RoadmapOnly, [int]$NewPostMaxAgeDays = 14)
 . "$PSScriptRoot/Entra-MessageFilter.ps1"
+. "$PSScriptRoot/Graph-Tenants.ps1"
 
-function Connect-MicrosoftGraph(){
-    $m365Config = Get-Content ./@build/config-m365.json | ConvertFrom-Json
-
-    $secret = $GraphSecret
-    if([string]::IsNullOrEmpty($GraphSecret)){ # If we are running in Github get the secret from the parameter
-        Write-Host "-GraphSecret not supplied"
-        $secret = Get-Content ./@build/secrets-m365.json | ConvertFrom-Json
+function Get-DefaultGraphSecret() {
+    if(-not [string]::IsNullOrEmpty($GraphSecret)){
+        return $GraphSecret
     }
 
-    [securestring]$secSecret = ConvertTo-SecureString $secret -AsPlainText -Force
-    [pscredential]$cred = New-Object System.Management.Automation.PSCredential ($m365Config.clientId, $secSecret)
-    Write-Host "Connecting to Microsoft Graph"
-    Connect-MgGraph -TenantId $m365Config.tenantId -Credential $cred -NoWelcome
+    Write-Host "-GraphSecret not supplied"
+    if(Test-Path ./@build/secrets-m365.json){ # Local development fallback
+        return (Get-Content ./@build/secrets-m365.json | ConvertFrom-Json)
+    }
+
+    return $null
 }
 function Get-M365MessageCenterItems() {
     Write-Host "Getting Message Center items"
     $mc = Get-MgServiceAnnouncementMessage -Top 999  -Sort "LastModifiedDateTime desc" -All
     return $mc
+}
+function Get-AllTenantMessageCenterItems() {
+    # Message Center posts are tenant specific, so the archive is built from the
+    # union of every configured tenant. Each tenant contributes the posts the
+    # others cannot see, and the newest (or most detailed) copy of a shared post wins.
+    $tenants = Get-M365TenantConfig -ConfigPath ./@build/config-m365.json -DefaultClientSecret (Get-DefaultGraphSecret)
+    $merged = [ordered]@{}
+    $connectedTenants = 0
+
+    foreach($tenant in $tenants){
+        if(-not $tenant.IsConfigured){
+            $message = "Skipping tenant '$($tenant.Name)' because $($tenant.SkipReason)"
+            if($tenant.Required){ throw $message }
+            Write-Warning $message
+            continue
+        }
+
+        try {
+            Connect-M365Tenant $tenant
+            $items = @(Get-M365MessageCenterItems)
+            $summary = Add-M365MessageCenterItems -Map $merged -Items $items -TenantName $tenant.Name
+            $connectedTenants++
+            Write-Host "Tenant '$($tenant.Name)' returned $($items.Count) items ($($summary.Added) new, $($summary.Replaced) updated, $($summary.Ignored) already current)"
+        }
+        catch {
+            $message = "Tenant '$($tenant.Name)' could not be refreshed: $($_.Exception.Message)"
+            if($tenant.Required){ throw $message }
+            Write-Warning $message
+        }
+        finally {
+            Disconnect-M365Tenant
+        }
+    }
+
+    if($connectedTenants -eq 0){
+        throw "No Microsoft Graph tenant could be refreshed."
+    }
+
+    return @(Get-SortedMessageCenterItems -Map $merged)
 }
 function Get-RoadmapRssItems() {
     Write-Host "Getting Microsoft 365 Roadmap RSS items"
@@ -243,8 +281,7 @@ if ($hasPreviousMessageSnapshot) {
 }
 
 if(-not $RoadmapOnly){
-    Connect-MicrosoftGraph
-    $msgItems = Get-M365MessageCenterItems
+    $msgItems = Get-AllTenantMessageCenterItems
 
     Write-Host "Updating Message Center data with $($msgItems.Count) items"
     foreach($msg in $msgItems){
@@ -259,10 +296,13 @@ if(-not $RoadmapOnly){
     # Only queue genuinely new Message Center posts whose service/product or
     # title contains the standalone word "Entra" (case-insensitive).
     # An empty previous snapshot establishes a baseline instead of backfilling every post.
+    # Posts that a newly added tenant makes visible for the first time are only
+    # announced when they were published within the last $NewPostMaxAgeDays days.
     $newEntraMessages = if ($hasPreviousMessageSnapshot) {
         @($msgItems | Where-Object {
             ($previousMessageIds -notcontains $_.Id) -and
-            (Test-IsEntraMessageCenterItem $_)
+            (Test-IsEntraMessageCenterItem $_) -and
+            (Test-IsRecentMessageCenterItem $_ -MaxAgeDays $NewPostMaxAgeDays)
         })
     }
     else {
