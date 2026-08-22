@@ -1,0 +1,41 @@
+{
+  "id": "MC1307636",
+  "versions": [
+    {
+      "capturedAt": "2026-05-11T17:05:11.723Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<div>A new guide is here to help you troubleshoot connection issues&nbsp;with the Windows Update service. Some of these issues have to do with the embedded network security design. The key is in the configuration of your network endpoints for firewalls and proxies.&nbsp;&nbsp;</div><div>&nbsp;</div><div><b>When will this happen:</b>&nbsp;</div><div>While the solution&nbsp;isn’t&nbsp;new, new guidance is now published to help with ongoing troubleshooting.&nbsp;</div><div>&nbsp;</div><div><b>How this will affect your organization:</b>&nbsp;</div><div>By design,&nbsp;Windows Update&nbsp;doesn’t&nbsp;trust servers that&nbsp;don’t&nbsp;have TLS certificates issued by an actual Windows Update trust anchor. Your firewalls and proxies might block access to the trustworthy and necessary Windows Update service if your configuration is either intercepting TLS connections or&nbsp;isn’t&nbsp;passing TLS requests through for the necessary DNS subdomains. The new guide helps you&nbsp;diagnose and&nbsp;fix&nbsp;related&nbsp;issues.&nbsp;</div><div><br></div><div><b>What you need to do to prepare:</b>&nbsp;</div><div>Diagnose connection issues&nbsp;by checking&nbsp;the&nbsp;<a href=\"https://learn.microsoft.com/powershell/module/windowsupdate/get-windowsupdatelog?view=windowsserver2025-ps\" rel=\"noopener noreferrer\" target=\"_blank\">Windows Update audit log</a>.&nbsp;<a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/configuring-firewall-and-proxies-for-smooth-windows-updates/4517913\" rel=\"noopener noreferrer\" target=\"_blank\">The article</a>&nbsp;lists&nbsp;the recommended PowerShell command and four error codes&nbsp;that can confirm the issue.&nbsp;&nbsp;</div><div>To remedy the situation, trust all the DNS hosts and subdomains related to wildcard FQDN for the connection to work properly.&nbsp;For example, a recommended DNS host name&nbsp;<b>*.update.microsoft.com&nbsp;</b>represents&nbsp;all&nbsp;the following hosts and subdomains:&nbsp;</div><ul><li><b>update.microsoft.com</b>&nbsp;</li><li>sls.<b>update.microsoft.com</b>&nbsp;</li><li>tas02.sls.<b>update.microsoft.com</b>&nbsp;</li></ul><div><br></div><div>Update your proxy and&nbsp;firewall&nbsp;configurations if any of these subdomains are missing.&nbsp;If your&nbsp;devices connect to an IT-managed Windows Server Update Services (WSUS)&nbsp;server, these exceptions&nbsp;aren’t&nbsp;necessary.&nbsp;</div><div>&nbsp;</div><div><b>Additional&nbsp;information:</b>&nbsp;</div><ul><li><a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/configuring-firewall-and-proxies-for-smooth-windows-updates/4517913\" rel=\"noopener noreferrer\" target=\"_blank\">Configuring&nbsp;firewall&nbsp;and proxies for smooth Windows updates</a></li><li><a href=\"https://learn.microsoft.com/windows/deployment/update/windows-update-security\" rel=\"noopener noreferrer\" target=\"_blank\">Windows Update security</a>&nbsp;</li><li><a href=\"https://learn.microsoft.com/windows-server/security/tls/transport-layer-security-protocol\" rel=\"noopener noreferrer\" target=\"_blank\">Transport Layer Security protocol</a>&nbsp;</li><li><a href=\"https://learn.microsoft.com/windows/privacy/manage-windows-11-endpoints\" rel=\"noopener noreferrer\" target=\"_blank\">Connection endpoints for Windows 11 Enterprise</a>&nbsp;</li><li><a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/scan-changes-and-certificates-add-security-for-windows-devices-using-wsus-for-up/2053668\" rel=\"noopener noreferrer\" target=\"_blank\">Scan changes and certificates add security for Windows devices using WSUS for updates</a>&nbsp;</li></ul>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [],
+        "EndDateTime": "2027-05-11T17:05:10.06Z",
+        "HasAttachments": false,
+        "Id": "MC1307636",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-05-11T17:05:11.723Z",
+        "Services": [
+          "Windows"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-05-11T17:05:10.063Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Configuring firewall and proxies for smooth Windows updates",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

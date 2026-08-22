@@ -1,0 +1,32 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<div><b>What and why</b></div><div>Windows updates released in July 2026 introduce the enforcement phase of protections designed to address a Kerberos information disclosure vulnerability (<a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-20833\" rel=\"noopener noreferrer\" target=\"_blank\">CVE‑2026‑20833</a>). This phase completes the transition away from RC4-based Kerberos tickets by removing Audit mode and leaving Enforcement mode as the only supported behavior for Kerberos RC4 usage on Windows domain controllers.</div><div><br></div><div>With the July 2026 security update installed, domain controllers enforce updated behavior for service account ticket issuance. RC4-based Kerberos tickets are restricted under this enforcement model, and AES-based encryption is expected for supported configurations. This change helps reduce reliance on legacy encryption methods and aligns Kerberos authentication with current security standards.</div><div><br></div><div><b>Rollout schedule</b></div><div>This change is effective beginning with the July 2026 security update.</div><div><br></div><div><b>Impact on your organization</b></div><div>Organizational environments that still depend on RC4-based Kerberos service tickets might experience authentication failures when requesting service tickets after installing the July 2026 security update.</div><div><br></div><div>Applications, services, or devices that rely on legacy encryption configurations or explicitly defined RC4 usage are most likely to be affected. Environments previously operating in Audit mode no longer have the ability to revert to that mode once enforcement is in place.</div><div><br></div><div>Workloads that previously completed Kerberos authentication without updated encryption configurations might no longer function as expected.</div><div><br></div><div><b>Action required/recommendations</b></div><ul><li>Confirm that all service accounts and dependent applications support AES-based Kerberos encryption.</li><li>Review and remediate any remaining RC4 dependencies identified during prior audit phases.</li><li>Monitor the System event log for Kerberos-related events to identify authentication failures or misconfigured accounts.</li><li>Validate interoperability with non-Windows Kerberos implementations and services.</li><li>Review <a href=\"https://support.microsoft.com/topic/how-to-manage-kerberos-kdc-usage-of-rc4-for-service-account-ticket-issuance-changes-related-to-cve-2026-20833-1ebcda33-720a-4da8-93c1-b0496e1910dc\" rel=\"noopener noreferrer\" target=\"_blank\">How to manage Kerberos KDC usage of RC4 for service account ticket issuance changes related to CVE‑2026‑20833</a>.</li></ul><div><br></div><div>Audit mode and the RC4DefaultDisablementPhase rollback setting are removed beginning with the July 2026 security update. If RC4 must be retained for specific services, explicit configuration is still possible, but it leaves those scenarios vulnerable to <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-20833\" rel=\"noopener noreferrer\" target=\"_blank\">CVE‑2026‑20833</a> and should be used only as a temporary measure.</div><div><br></div><div><b>Compliance considerations</b></div><div>No compliance considerations are identified. Review as appropriate for your organization.</div>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [],
+  "EndDateTime": "2027-07-14T17:12:08.363Z",
+  "HasAttachments": false,
+  "Id": "MC1427604",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2026-07-14T17:12:12.853Z",
+  "Services": [
+    "Windows"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-07-14T17:12:08.363Z",
+  "Tags": [
+    "Admin impact"
+  ],
+  "Title": "Enforcement phase for Kerberos RC4 protections begins with the July 2026 Windows security update",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}

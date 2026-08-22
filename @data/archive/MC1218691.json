@@ -1,0 +1,32 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<div>Windows updates released on and after January 13, 2026, introduce the first phase of protections addressing a Kerberos information disclosure vulnerability (<a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-20833\" rel=\"noopener noreferrer\" target=\"_blank\">CVE‑2026‑20833</a>). These updates introduce new auditing and optional registry controls that devices can use to begin reducing reliance on RC4 encryption. They also help prepare domain controllers for a future shift to AES‑SHA1 as the default Kerberos encryption method for accounts without explicit encryption settings. The initial deployment phase focuses on <a href=\"https://support.microsoft.com/topic/1ebcda33-720a-4da8-93c1-b0496e1910dc#ID0EDDBL\" rel=\"noopener noreferrer\" target=\"_blank\">identifying misconfigurations or dependencies</a> before the second deployment phase begins in April 2026.</div><div><br></div><div><b>When this will happen:</b></div><div>The <a href=\"https://support.microsoft.com/topic/1ebcda33-720a-4da8-93c1-b0496e1910dc#ID0EDFBN\" rel=\"noopener noreferrer\" target=\"_blank\">initial deployment phase</a> starts January 13, 2026, and introduces new Kerberos audit events that help identify any remaining RC4 dependencies across your environment. This phase also adds the temporary RC4DefaultDisablementPhase registry value, which organizations can use to optionally enable the upcoming behavior changes early; however, this key will no longer be read after Audit mode is removed in July 2026. Together, these updates provide early diagnostics to help assess readiness before the <a href=\"https://support.microsoft.com/topic/1ebcda33-720a-4da8-93c1-b0496e1910dc#ID0EDDBN\" rel=\"noopener noreferrer\" target=\"_blank\">second deployment phase</a> in April 2026, when the default domain controller behavior for Kerberos encryption will change to use AES‑SHA1 only for accounts without explicit encryption settings. Starting in April 2026, Enforcement mode will be enabled on all Windows domain controllers by default, and in July 2026 Audit mode will be removed, leaving Enforcement mode as the only option.</div><div><br></div><div><b>How this will affect your organization:</b></div><div>Domain controllers will begin logging new Kerberos audit events, KDCSVC (ID 201–209), that highlight where devices or service accounts still rely on RC4 encryption. Certain RC4‑dependent configurations will appear in the new Kerberos audit events, highlighting scenarios that will become incompatible once enforcement begins. These events provide early visibility into configurations that may fail as <a href=\"https://support.microsoft.com/topic/1ebcda33-720a-4da8-93c1-b0496e1910dc#ID0EDBBN\" rel=\"noopener noreferrer\" target=\"_blank\">Enforcement mode</a> is enabled by default starting in April 2026 and Audit mode is removed in July 2026.</div><div><br></div><div>As the deployment phases progress, beginning with the April 2026 Windows security update, Kerberos operations will shift to using AES‑SHA1 by default for accounts without explicit encryption settings. Environments that do not address RC4 dependencies may experience authentication issues as Enforcement mode is enabled by default starting in April 2026 and Audit mode is removed in July 2026. Organizations with secure configurations or without RC4 usage should see minimal impact aside from routine audit visibility during the transition period.</div><div><br></div><div><b>What you need to do to prepare:</b></div><div>Begin by installing Windows updates released on or after January 13, 2026, on all Active Directory domain controllers. After updating, monitor the System event logs for the new Kerberos audit events that indicate whether any devices or service accounts still rely on RC4-based encryption. If no events appear, you can proactively move your domain controllers to Enforcement&nbsp;mode&nbsp;by&nbsp;using the&nbsp;<a href=\"https://support.microsoft.com/topic/how-to-manage-kerberos-kdc-usage-of-rc4-for-service-account-ticket-issuance-changes-related-to-cve-2026-20833-1ebcda33-720a-4da8-93c1-b0496e1910dc#bkmk_registry_settings\" rel=\"noopener noreferrer\" target=\"_blank\">Registry settings</a>. If events do appear, you will need to <a href=\"https://learn.microsoft.com/windows-server/security/kerberos/detect-remediate-rc4-kerberos\" rel=\"noopener noreferrer\" target=\"_blank\">address or explicitly configure any remaining RC4 dependencies</a> before enforcement takes effect.</div><div><br></div><div><b>Additional&nbsp;information:&nbsp;</b></div><ul><li>Read the full hardening guidance:&nbsp;<a href=\"https://support.microsoft.com/topic/1ebcda33-720a-4da8-93c1-b0496e1910dc\" rel=\"noopener noreferrer\" target=\"_blank\">How to manage Kerberos KDC usage of RC4 for service account ticket issuance changes related to CVE-2026-20833</a>.</li><li>Learn about RC4 usage in Windows and its risks: <a href=\"https://learn.microsoft.com/windows-server/security/kerberos/detect-remediate-rc4-kerberos\" rel=\"noopener noreferrer\" target=\"_blank\">Detect and remediate RC4 usage in Kerberos</a>.</li><li>Learn more about the related vulnerability: <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-20833\" rel=\"noopener noreferrer\" target=\"_blank\">CVE-2026-20833</a>.</li></ul>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [],
+  "EndDateTime": "2027-01-16T20:05:33.177Z",
+  "HasAttachments": false,
+  "Id": "MC1218691",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-01-16T20:05:34.623Z",
+  "Services": [
+    "Windows"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-01-16T20:05:33.24Z",
+  "Tags": [
+    "Admin impact"
+  ],
+  "Title": "Initial deployment phase for Kerberos RC4 hardening begins with the January 2026 Windows security update",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}

@@ -1,0 +1,41 @@
+{
+  "id": "MC1217584",
+  "versions": [
+    {
+      "capturedAt": "2026-01-13T23:29:19.01Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<div>Prepare for a two-phase hardening change related to <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-0386\" rel=\"noopener noreferrer\" target=\"_blank\">CVE-2026-0386</a>. The Unattend.xml file that underlies the hands-free deployment feature of Windows Deployment Services (WDS) poses a vulnerability when it’s transmitted over an unauthenticated RPC channel. Starting with the January 2026 security update, you can explicitly disable it with the help of new Event Log alerts and registry key options. In April 2026, hands-free deployment will be disabled by default. After that date, it will no longer work unless explicitly overridden with registry settings.</div><div>&nbsp;</div><div><b>When will this happen:</b></div><ul><li>January 2026 security update: Phase 1 of hardening begins. Hands-free deployment continues to be supported and can be explicitly disabled to enhance security. Use the new Event Log alerts and registry key options.</li><li>April 2026 security update: Phase 2 of hardening follows. Hands-free deployment will be disabled by default but can be re-enabled, if necessary, with an understanding of the associated security risks.</li></ul><div>&nbsp;</div><div><b>How this will affect your organization:</b></div><div>These hardening measures are meant to enhance security. If no action is taken (no registry key added) between January-April 2026, hands-free deployment will be blocked after the April 2026 security update.</div><div>&nbsp;</div><div><b>What you need to do to prepare:</b></div><div>Apply the Windows update released on or after January 13, 2026 to enable the mitigation and ensure that devices are secure. When ready to disable hands-free deployment, apply the following registry setting:</div><ul><li>Registry location: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WdsServer\\Providers\\WdsImgSrv\\Unattend</li><li>DWORD name: AllowHandsFreeFunctionality</li><li>Value data: 00000000</li></ul><div><b>&nbsp;</b></div><div><b>Additional information:</b></div><ul><li>Read the full hardening guidance: <a href=\"https://support.microsoft.com/topic/windows-deployment-services-wds-hands-free-deployment-hardening-guidance-related-to-cve-2026-0386-0daa3a3c-f3cd-4291-9147-a459c290c462\" rel=\"noopener noreferrer\" target=\"_blank\">Windows Deployment Services (WDS) Hands-Free Deployment Hardening Guidance related to CVE-2026-0386.</a></li><li>Learn more about the related vulnerability: <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-0386\" rel=\"noopener noreferrer\" target=\"_blank\">CVE-2026-0386</a>.</li><li>See deployment alternatives: <a href=\"https://learn.microsoft.com/windows/deployment/wds-boot-support\" rel=\"noopener noreferrer\" target=\"_blank\">Windows Deployment Services (WDS) boot.wim support</a>.</li><li>Explore cloud-based solutions: <a href=\"https://learn.microsoft.com/autopilot/\" rel=\"noopener noreferrer\" target=\"_blank\">Windows Autopilot and Windows Autopilot device preparation documentation</a>.</li></ul>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [],
+        "EndDateTime": "2027-01-13T23:29:17.687Z",
+        "HasAttachments": false,
+        "Id": "MC1217584",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-01-13T23:29:19.01Z",
+        "Services": [
+          "Windows"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-01-13T23:29:17.763Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Windows Deployment Services (WDS): Hands-free deployment hardening (Phase 1)",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

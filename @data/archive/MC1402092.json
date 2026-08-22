@@ -1,0 +1,32 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<div><b>What and why</b></div><div>Point-in-time restore is a built-in Windows recovery feature. It lets users roll a PC back to a previous state in minutes, from the Windows Recovery Environment (WinRE). Restore points are stored locally. They include:&nbsp;</div><ul><li>Windows OS&nbsp;</li><li>Installed applications&nbsp;</li><li>System and app configurations&nbsp;</li><li>Settings&nbsp;</li><li>Local user files on the OS volume&nbsp;</li></ul><div><br></div><div>The feature helps organizations reduce downtime and recover from issues without a full reset, reimage, or rebuild. Relevant issues include problematic updates, driver issues, misconfigurations, or app installations.&nbsp;</div><div>&nbsp;</div><div><b>Rollout schedule</b></div><ul><li>Starting with the June 2026 Windows non-security update, Point-in-time restore is generally available for supported Windows 11 devices.&nbsp;</li><li>On managed devices, the feature is off by default until Windows 11, version 26H2. However, you can enable it via policy today.&nbsp;</li></ul><div>&nbsp;</div><div><b>Impact on your organization</b>&nbsp;</div><ul><li>Once enabled, Windows captures local restore points on a configurable schedule.&nbsp;</li><li>By default:&nbsp;</li><li class=\"ql-indent-1\">Restore points are captured daily.&nbsp;</li><li class=\"ql-indent-1\">Restore points remain available for up to 72 hours.&nbsp;</li><li class=\"ql-indent-1\">Restore points use up to 2% of disk space. Restore points use reserved storage to reduce impact on storage space.&nbsp;&nbsp;</li><li>Restore points are not pre-allocated. They might be removed earlier under storage pressure.&nbsp;</li><li>Volumes outside of Windows OS location aren’t affected.&nbsp;</li><li>You or any user can initiate restoration locally from WinRE with the required BitLocker recovery key.&nbsp;</li><li>Microsoft Intune doesn’t yet support remote restore initiation.&nbsp;</li><li>You can configure the feature using the <a href=\"https://aka.ms/PITRCSPDoc\" rel=\"noopener noreferrer\" target=\"_blank\">Point-in-time restore CSP</a>, via OMA-URI policy.&nbsp;</li></ul><div>&nbsp;</div><div><b>Action required/recommendations</b>&nbsp;</div><div>Review your managed Windows device population and decide where to enable point-in-time restore. Managed devices won’t begin taking restore points unless you enable the feature before Windows 11, version 26H2.&nbsp;</div><div>Recommended actions:&nbsp;</div><ol><li>Enable point-in-time restore for targeted managed device groups using the associated CSP.&nbsp;</li><li>Configure settings such as restore point frequency, retention, and maximum disk usage.&nbsp;</li><li>Ensure that devices have enough free space for restore points and the restore process.&nbsp;</li><li>Ensure that users and helpdesk teams can access required BitLocker recovery keys.&nbsp;</li><li>Update recovery playbooks, so support teams know when to use point-in-time restore before reset or reimage workflows.&nbsp;&nbsp;</li><li>Communicate that restore reverts the OS volume to its state at the time of the restore point, including local user files. Reinforce storing user data in OneDrive or another cloud-backed location.&nbsp;</li></ol><div>&nbsp;</div><div><b>Compliance considerations</b>&nbsp;</div><div>Organizations should review whether restoring data to an earlier state affects:&nbsp;</div><ul><li>Retention requirements&nbsp;</li><li>Audit workflows&nbsp;</li><li>Endpoint compliance&nbsp;</li><li>Security monitoring&nbsp;</li></ul><div><br></div><div>After restoration, validate that required security tools, management agents, compliance policies, and configuration baselines are present and functioning as expected.&nbsp;</div><div>&nbsp;</div><div><b>Additional information</b></div><ul><li><a href=\"https://learn.microsoft.com/windows/configuration/quick-machine-recovery/point-in-time-restore\" rel=\"noopener noreferrer\" target=\"_blank\">Point-in-time restore for Windows</a></li><li><a href=\"https://learn.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service\" rel=\"noopener noreferrer\" target=\"_blank\">Volume Shadow Copy Service (VSS)</a></li></ul>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [],
+  "EndDateTime": "2027-06-23T17:01:04.593Z",
+  "HasAttachments": false,
+  "Id": "MC1402092",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-06-23T17:01:09.703Z",
+  "Services": [
+    "Windows"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-06-23T17:01:04.593Z",
+  "Tags": [
+    "Admin impact"
+  ],
+  "Title": "Point-in-time restore for Windows is generally available",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}

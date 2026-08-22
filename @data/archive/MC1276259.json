@@ -1,0 +1,32 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<div>As announced in January 2026, the <a href=\"https://learn.microsoft.com/windows-hardware/manufacture/desktop/update-windows-settings-and-scripts-create-your-own-answer-file-sxs\" rel=\"noopener noreferrer\" target=\"_blank\">unattend.xml</a> file used in hands‑free deployment poses a vulnerability when transmitted over an unauthenticated RPC channel. Beginning with the April 2026 security update, the <a href=\"https://support.microsoft.com/topic/windows-deployment-services-wds-hands-free-deployment-hardening-guidance-related-to-cve-2026-0386-0daa3a3c-f3cd-4291-9147-a459c290c462\" rel=\"noopener noreferrer\" target=\"_blank\">second phase of hardening</a> for <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-0386\" rel=\"noopener noreferrer\" target=\"_blank\">CVE-2026-0386</a> is now in effect. These changes make hands‑free deployment <b>disabled by default</b> to enforce secure behavior. After this update, hands‑free deployment no longer works unless explicitly overridden with registry settings.</div><div><br></div><div><b>When will this happen:</b></div><div>Starting with the April 2026 security update, Windows Deployment Services (WDS) enforces secure‑by‑default behavior by automatically disabling hands‑free deployment.</div><div><br></div><div><b>How this will affect your organization:</b></div><div>After installing the April 2026 security update, hands‑free deployment is blocked to prevent unauthenticated access to unattend.xml, enforcing the hardening requirements for <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-0386\" rel=\"noopener noreferrer\" target=\"_blank\">CVE-2026-0386</a>. Any workflows that rely on unattend.xml‑based deployment will no longer function unless overridden with registry settings.</div><div><br></div><div><b>What you need to do to prepare:</b></div><div>Organizations that still require hands‑free deployment after installing the April 2026 security update must explicitly override the secure default by setting the <em>AllowHandsFreeFunctionality</em> registry value to <b>1</b>, which keeps unattend.xml‑based deployments operational but reintroduces the security risks associated with <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-0386\" rel=\"noopener noreferrer\" target=\"_blank\">CVE-2026-0386</a>. When this override is used, devices will log diagnostic messages indicating that they are operating in an insecure mode. Because this configuration is not recommended for long‑term use, IT admins should plan to migrate to alternate deployment solutions and return to secure‑by‑default behavior.</div><div><br></div><div><b>Additional information:</b></div><ul><li>Read the full hardening guidance:&nbsp;<a href=\"https://support.microsoft.com/topic/windows-deployment-services-wds-hands-free-deployment-hardening-guidance-related-to-cve-2026-0386-0daa3a3c-f3cd-4291-9147-a459c290c462\" rel=\"noopener noreferrer\" target=\"_blank\">Windows Deployment Services (WDS) Hands-Free Deployment Hardening Guidance related to CVE-2026-0386.</a></li><li>Learn more about the related vulnerability:&nbsp;<a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-0386\" rel=\"noopener noreferrer\" target=\"_blank\">CVE-2026-0386</a>.</li><li>See deployment alternatives:&nbsp;<a href=\"https://learn.microsoft.com/windows/deployment/wds-boot-support\" rel=\"noopener noreferrer\" target=\"_blank\">Windows Deployment Services (WDS) boot.wim support</a>.</li><li>Explore cloud-based solutions:&nbsp;<a href=\"https://learn.microsoft.com/autopilot/\" rel=\"noopener noreferrer\" target=\"_blank\">Windows Autopilot and Windows Autopilot device preparation documentation</a>.</li></ul>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [],
+  "EndDateTime": "2027-04-10T17:12:59.223Z",
+  "HasAttachments": false,
+  "Id": "MC1276259",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2026-04-10T17:13:01.053Z",
+  "Services": [
+    "Windows"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-04-10T17:12:59.223Z",
+  "Tags": [
+    "Admin impact"
+  ],
+  "Title": "Windows Deployment Services (WDS): Hands-free deployment hardening (Phase 2)",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}

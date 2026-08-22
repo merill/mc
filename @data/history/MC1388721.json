@@ -1,0 +1,41 @@
+{
+  "id": "MC1388721",
+  "versions": [
+    {
+      "capturedAt": "2026-06-12T16:56:13.177Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<div><b>What and Why</b></div><div>Windows updates released in July 2026 will complete the <a href=\"https://support.microsoft.com/topic/1ebcda33-720a-4da8-93c1-b0496e1910dc#ID0EDBBP\" rel=\"noopener noreferrer\" target=\"_blank\">final deployment phase</a> of protections for a Kerberos information disclosure vulnerability (<a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-20833\" rel=\"noopener noreferrer\" target=\"_blank\">CVE‑2026‑20833</a>). Beginning with this phase, Audit mode is removed, leaving Enforcement mode as the only available option for Kerberos RC4 usage on Windows domain controllers. Environments with remaining RC4 dependencies might experience authentication issues unless those dependencies are remediated or explicitly configured before the July 2026 Windows security update is installed.</div><div><br></div><div><b>Rollout Schedule</b></div><ul><li>April 2026 - Enforcement Phase with manual rollback: With installation of the April 2026 Windows security update, default Kerberos behavior changes so domain controllers use AES‑SHA1-only encryption for accounts without <a href=\"https://learn.microsoft.com/troubleshoot/windows-server/windows-security/kerberos-protocol-registry-kdc-configuration-keys\" rel=\"noopener noreferrer\" target=\"_blank\">explicit encryption type</a> settings, and Enforcement mode is enabled by default on Windows domain controllers. Audit mode remains available as a manual rollback option until July 2026.</li><li>July 2026 – Enforcement Phase: With installation of the July 2026 Windows security update, Audit mode is removed, and Enforcement mode becomes the only available behavior for supported Windows domain controllers.</li></ul><div><br></div><div><b>Impact on Your Organization</b></div><div>With installation of the July 2026 Windows security update, Windows domain controllers will no longer support Audit mode rollback behavior for Kerberos RC4 hardening. Environments with service accounts, applications, appliances, or devices that still rely on RC4-based Kerberos tickets may experience authentication failures unless those dependencies have been remediated or explicitly configured to support continued RC4 usage where required.</div><div><br></div><div>Devices using non-Windows Kerberos implementations might also require additional interoperability testing to ensure continued authentication functionality after the July 2026 Enforcement phase begins.</div><div><br></div><div>Azure Files note: For devices using Azure Files SMB with Active Directory-based authentication, address any RC4 dependencies before installation of the July 2026 Windows security update to reduce the risk of access disruption once Audit mode is removed. Follow the steps in the <a href=\"https://aka.ms/rc4azurefiles\" rel=\"noopener noreferrer\" target=\"_blank\">official documentation</a> to help maintain uninterrupted access to Azure Files and dependent workloads such as Azure Virtual Desktop.</div><div><br></div><div><b>Action Required/Recommendations</b></div><div>Continue monitoring the System event log for Kerberos-related events indicating RC4 dependencies or insecure encryption configurations. If event log data shows RC4 reliance, remediate by moving to AES‑based encryption or explicitly configuring the account’s <b>msds-SupportedEncryptionTypes</b> attribute where RC4 is still required.</div><div><br></div><div>Before deploying the July 2026 Windows security update, validate that service accounts, applications, and non-Windows Kerberos implementations can successfully authenticate without requiring RC4-based Kerberos authentication.</div><div><br></div><div><b>Compliance Considerations</b></div><div>Audit events related to this change are only generated when Active Directory is unable to issue AES‑SHA1 service tickets or session keys. The absence of audit events does not guarantee that all non-Windows devices will successfully accept Kerberos authentication after the July 2026 Enforcement phase begins. Validate interoperability through testing before broadly deploying the July 2026 Windows security update.</div>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [],
+        "EndDateTime": "2027-06-12T16:56:07.943Z",
+        "HasAttachments": false,
+        "Id": "MC1388721",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-06-12T16:56:13.177Z",
+        "Services": [
+          "Windows"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-06-12T16:56:07.943Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "30-Day Reminder: Final deployment phase for Kerberos RC4 hardening begins with the July 2026 Windows security update",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

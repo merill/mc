@@ -1,0 +1,41 @@
+{
+  "id": "MC1275343",
+  "versions": [
+    {
+      "capturedAt": "2026-04-09T17:01:43.883Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<div>Administrative actions are undergoing hardening changes that might require operational change to support your organization’s security posture.&nbsp;With the&nbsp;August 2025 Windows&nbsp;non-security update,&nbsp;devices&nbsp;were&nbsp;hardened&nbsp;against&nbsp;unauthorized&nbsp;attempts to bypass loopback detection.&nbsp;However, if&nbsp;you’ve&nbsp;cloned machines without&nbsp;Sysprep, you might see Kerberos and NTLM authentication failures. This&nbsp;is by design.&nbsp;The recommended solution is to rebuild affected devices using supported imaging methods.&nbsp;A&nbsp;temporary workaround is also available.&nbsp;</div><div>&nbsp;</div><div><b>When will this happen:</b></div><ul><li><b>September&nbsp;2025 and later</b>: Windows&nbsp;security&nbsp;updates include hardening changes that strengthen the trust boundary between identity, authentication, and User Account Control (UAC).</li><li><b>April&nbsp;2026 and later</b>: Windows&nbsp;security&nbsp;updates include a temporary workaround&nbsp;for machines cloned without&nbsp;Sysprep. This&nbsp;registry-based compatibility&nbsp;option&nbsp;isn’t&nbsp;recommended. It reduces security protections introduced by recent updates.</li><li><b>End of 2027</b>: The temporary workaround expires.&nbsp;</li></ul><div>&nbsp;</div><div><b>How this will affect your organization:</b></div><div>This affects your organization if:&nbsp;</div><ul><li>You manage devices on Windows 11, version 24H2 and later or Windows Server 2025.</li><li>You installed the August 2025 non-security update or September 2025 security update (or later) on these devices.</li><li>You notice Kerberos or NTLM authentication failures. These failures surface as LsaSrv&nbsp;Event ID 6167 in the System event log&nbsp;of the target machine.</li></ul><div>You need to&nbsp;adjust your strategy to clone Windows images.</div><div>&nbsp;</div><div><b>What you need to do to prepare:</b></div><div>Take the following actions:&nbsp;</div><ul><li>Stop any automation that clones&nbsp;devices without Sysprep. If not addressed, devices end up with duplicate security IDs (SIDs).</li><li>Rebuild all devices with duplicate SIDs from scratch, then run Sysprep. It's&nbsp;not sufficient to unjoin devices and run Sysprep.&nbsp;</li><li>If needed for transition only,&nbsp;temporarily roll back the hardening change with a registry-based&nbsp;option.&nbsp;Please contact <a href=\"https://support.serviceshub.microsoft.com/supportforbusiness/manage\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft Commercial Customer Service and Support (CSS)</a>&nbsp;to get information about this registry value.&nbsp;</li></ul><div><br></div><div>For details and instructions, review <a href=\"https://aka.ms/HardeningAdministrativeActions\" rel=\"noopener noreferrer\" target=\"_blank\">Hardening administrative actions: What IT pros need to know</a>.&nbsp;</div><div>&nbsp;</div><div><b>Additional&nbsp;information:</b></div><ul><li><a href=\"https://aka.ms/HardeningAdministrativeActions\" rel=\"noopener noreferrer\" target=\"_blank\">Hardening administrative actions: What IT pros need to know</a></li><li><a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsupport.microsoft.com%2Fen-us%2Ftopic%2Fkerberos-and-ntlm-authentication-failures-due-to-duplicate-sids-76f7394d-c460-4882-9ed1-d27e0960f949&amp;data=05%7C02%7Cv-chwri%40microsoft.com%7C262dfcfe135044b8e22808de95b19740%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C639112790492731585%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=MPEt6BdhXgrT5NZoD8e3%2BdPhdg6ihJAhOHtxiFRvUJ8%3D&amp;reserved=0\" rel=\"noopener noreferrer\" target=\"_blank\">KB5070568</a>: <a href=\"https://support.microsoft.com/topic/kerberos-and-ntlm-authentication-failures-due-to-duplicate-sids-76f7394d-c460-4882-9ed1-d27e0960f949\" rel=\"noopener noreferrer\" target=\"_blank\">Kerberos and NTLM authentication failures due to duplicate SIDs</a></li><li><a href=\"https://support.microsoft.com/topic/strengthening-administrator-protection-and-kerberos-authentication-f67abf78-41c5-4a89-a2da-a7b2fe280270\" rel=\"noopener noreferrer\" target=\"_blank\">KB5068222: Strengthening administrator protection and Kerberos authentication</a></li><li><a href=\"https://learn.microsoft.com/troubleshoot/windows-server/setup-upgrade-and-drivers/windows-installations-disk-duplication\" rel=\"noopener noreferrer\" target=\"_blank\">The Microsoft policy for disk duplication of Windows installations</a></li><li><a href=\"https://learn.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation?view=windows-11\" rel=\"noopener noreferrer\" target=\"_blank\">Sysprep</a></li></ul>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [],
+        "EndDateTime": "2027-04-09T17:01:38.62Z",
+        "HasAttachments": false,
+        "Id": "MC1275343",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-04-09T17:01:43.883Z",
+        "Services": [
+          "Windows"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-04-09T17:01:38.62Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Hardening administrative actions: Windows imaging, cloning, and auth workflows",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

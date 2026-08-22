@@ -1,0 +1,41 @@
+{
+  "id": "MC1150625",
+  "versions": [
+    {
+      "capturedAt": "2025-09-09T21:19:19.987Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<div>Important hardening changes are here. Starting with the September 2025 security update, WSUS running on Windows Server 2025 is removing dependencies on old code that’s no longer supported. This means that Windows operating systems (OS) that reached the end of their lifecycle will no longer qualify to receive extended security updates (ESU), unless you take additional action. Short-term and long-term next steps are available for Windows Server 2012 and Windows Server 2012 R2 that still need to receive ESUs.&nbsp;</div><div>&nbsp;</div><div><b>When will this happen:</b>&nbsp;</div><div>September 9, 2025&nbsp;</div><div>&nbsp;</div><div><b>How this will affect your organization:</b>&nbsp;</div><div>Removing certain binaries from WSUS helps ensure the integrity and security of our software supply chain. This specifically applies to dependencies on components that no longer meet our compliance and security standards.&nbsp;</div><div>&nbsp;</div><div>The security benefit of removing these binaries from Windows Server 2025 comes with a potential change for you if you’re using ESU updates for Windows Server 2012. You’ll need to take additional action to resume servicing to these devices.&nbsp;</div><div>&nbsp;</div><div><b>Important</b>: If WSUS is part of a <a href=\"https://learn.microsoft.com/de-de/security-updates/windowsupdateservices/18127542\" rel=\"noopener noreferrer\" target=\"_blank\">hierarchical deployment</a> (such as connected downstream and upstream servers), there is no impact to your environment. Synchronization and update distribution will continue to function as expected.&nbsp;</div><div>&nbsp;</div><div><b>What you need to do to prepare:</b>&nbsp;</div><div>Consider the following temporary steps to restore service for ESU updates on Windows Server 2012:&nbsp;</div><ol><li>Choose an older supported version of WSUS. For example, Windows Server 2025 on the August 2025 security update or earlier, or Windows Server 2022.&nbsp;</li><li>Locate the “SelfUpdate” folder on this version of WSUS at <b>%systemdrive%\\Program Files\\Update Services</b>.&nbsp;</li><li>Copy the \"SelfUpdate\" folder and its contents from the chosen older version of WSUS.&nbsp;</li><li>Place it under the WSUS install path on Windows Server 2025 updated with the security update released in or after September 2025.&nbsp;</li><li>Add this folder as virtual directory under WSUS website in Internet Information Services (IIS).&nbsp;</li></ol><div><br></div><div>After completing these steps, service will resume. To be secure in the longer term, we recommend upgrading the legacy OS versions and upgrading to Windows Server 2025.&nbsp;</div><div>&nbsp;</div><div><b>Additional information:</b>&nbsp;</div><ul><li>Read the official information in <a href=\"https://support.microsoft.com/topic/hardening-changes-for-windows-server-update-services-in-windows-server-2025-170eba05-0532-4793-a9c7-0857a62df52f\" rel=\"noopener noreferrer\" target=\"_blank\">Hardening changes for Windows Server Update Services in Windows Server 2025</a>.&nbsp;</li><li>Consult the <a href=\"https://learn.microsoft.com/lifecycle/products/?terms=windows\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft Lifecycle Policy search tool</a> and <a href=\"https://learn.microsoft.com/lifecycle/faq/windows#windows-8-1\" rel=\"noopener noreferrer\" target=\"_blank\">Lifecycle FAQ - Windows</a> for your Windows versions.&nbsp;&nbsp;</li><li>Read <a href=\"https://learn.microsoft.com/de-de/security-updates/windowsupdateservices/18127542\" rel=\"noopener noreferrer\" target=\"_blank\">Set Up a Hierarchy of WSUS Servers</a> for a scenario that’s not impacted.&nbsp;</li></ul>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [],
+        "EndDateTime": "2026-09-09T21:19:19.117Z",
+        "HasAttachments": false,
+        "Id": "MC1150625",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2025-09-09T21:19:19.987Z",
+        "Services": [
+          "Windows"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2025-09-09T21:19:19.163Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Hardening changes for Windows Server Update Services in Windows Server 2025",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
