@@ -4,21 +4,109 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p><b><b>What and why</b></b></p><p>Microsoft Teams is introducing a new meeting protection policy that allows administrators to automatically block identified external meeting bots from joining Teams meetings.</p><p>Today, Teams can identify meeting bots and provide visibility to organizers and administrators. With this update, organizations can strengthen meeting security by configuring Teams policies to automatically block detected external meeting bots from joining meetings. This gives administrators additional control over how identified bots are handled and can help reduce organizational risk.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Targeted Release:</b> Beginning in <b>early August 2026</b> and expected to complete by <b>late August 2026</b></li><li><b>General Availability (Worldwide, GCC):</b> Beginning in <b>late August 2026</b> and expected to complete by <b>late September 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Teams administrators who manage meeting policies and security controls.</li><li>Meeting organizers and participants in organizations that choose to enable this policy.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Teams</li><li>Teams admin center</li><li>Teams meeting policies</li></ul><p><i>What will happen</i></p><p>A new policy option will be added to the existing <b>Manage bots</b> meeting protection settings in the Teams admin center.</p><p>Administrators will be able to configure Teams meeting policies to automatically block identified external meeting bots from joining meetings.</p><p>When the setting is enabled:</p><ul><li>Identified external meeting bots will be prevented from joining meetings governed by the assigned policy.</li><li>Existing bot detection and visibility experiences for organizers and administrators will continue to be available.</li><li>The policy can be assigned to specific users or groups through existing Teams meeting policy management.</li></ul><p>Organizations that do not enable this setting will continue to use the current bot detection experience with no change to meeting participation behavior.</p><p><b>Default state: Off. </b>No changes occur unless an administrator enables the policy.</p><p><b><b>Action required and recommendations</b></b></p><p>No action is required unless you plan to use this capability.</p><p>If you intend to enable automatic blocking of identified external meeting bots, we recommend that you:</p><ul><li>Review your organization's use of meeting bots and automated meeting applications.</li><li>Evaluate the feature with a pilot group before broader deployment.</li><li>Review existing Teams meeting policies and determine which users or groups should receive the policy.</li><li>Update internal documentation and help desk guidance as appropriate.</li><li>Communicate the change to meeting organizers and users who rely on automated meeting bots in their workflows.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "Content": "<p>Updated August 24, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and Why</b></b></p><p>As announced in the <a href=\"https://learn.microsoft.com/entra/fundamentals/whats-new#general-availability---system-preferred-authentication-expanded-to-first-factor-in-microsoft-entra-id\" target=\"_blank\">What's New (June Edition)</a>, we have been rolling out first-factor system-preferred authentication in the Microsoft-managed state.</p><p><b>System-preferred authentication</b> in <i>Microsoft Entra ID</i> now applies to both first-factor and second-factor authentication when the setting is in the <b>Microsoft managed</b> state.</p><p>The system evaluates which credentials are registered for the user and selects the highest-ranked method for each authentication step, prompting the user to sign in with the most secure available method.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Beginning <b>late June 2026</b> and expected to complete by <b>late September 2026</b> (previously&nbsp;late July)</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations whose system-preferred authentication setting is in the <b>Microsoft managed</b> state.</li><li>If your setting is in the <b>Enabled</b> or <b>Disabled</b> state, first-factor sign-in behavior remains unchanged and there is no impact from this update.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Entra ID</li><li>System-preferred authentication</li><li>User sign-in experiences</li></ul><p><i>What will happen</i></p><ul><li>For tenants in the <b>Microsoft managed</b> state, the system applies credential ranking to both first-factor and second-factor authentication.</li><li>When a user signs in, the authentication process checks which authentication methods are registered and prompts the user with the most secure method according to the system-defined order.</li><li>The method order is dynamic and can update when users register more secure authentication methods, such as a passkey, or as Microsoft updates credential rankings based on evolving security guidance. For example, if a user has both a password and a passkey registered, Microsoft Entra may prompt the user to use the passkey at their next first-factor sign-in instead of the password.</li><li>To sign in using a different option, users can always cancel and choose another available sign-in method.</li></ul><p style=\"margin-left: 25px;\">Behavior by setting state:</p><ul><li><b>Microsoft managed:</b> The system applies credential ranking to both first-factor and second-factor authentication.</li><li><b>Enabled:</b> Credential ranking applies only to second-factor authentication. First-factor sign-in behavior remains unchanged.</li><li><b>Disabled:</b> System-preferred authentication is not applied.</li></ul><p style=\"margin-left: 25px;\"><b>Note</b>: This prompt does not mean the user is being asked to complete multifactor authentication (MFA) when MFA is not required. With this update, Microsoft Entra can prompt users to use their most secure available credential at first-factor sign-in instead of defaulting to a password. Some methods, such as passkeys, certificate-based authentication, or Microsoft Authenticator, can satisfy first-factor sign-in requirements and may also satisfy MFA requirements when MFA is required. The goal is to use the strongest available credential consistently, not to add an extra MFA prompt.</p><p><b><b>What you need to do to prepare:</b>&nbsp;</b></p><p>Review whether you want system-preferred authentication to apply to first-factor authentication in your tenant:&nbsp;</p><ul><li>If you want the credential ranking applied to<b> both</b> <b>first-factor and second-factor authentication</b>, leave the setting in the <b>Microsoft managed </b>state. <b>No action is required. </b></li><li>If you do not want system-preferred authentication to apply to first-factor authentication, change the setting from <b>Microsoft managed</b> to <b>Enabled</b>. The Enabled state applies system-preferred logic only to second-factor authentication and leaves first-factor sign-in behavior unchanged.</li><li>Consider notifying users that they may be prompted with a different, more secure sign-in method at first-factor sign-in and remind them that they can always cancel and choose another available sign-in method.</li><li>Update internal sign-in documentation and support guidance accordingly.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/entra/fundamentals/whats-new#general-availability---system-preferred-authentication-expanded-to-first-factor-in-microsoft-entra-id\" target=\"_blank\">General Availability - System-preferred authentication expanded to first-factor in Microsoft Entra ID - What's New (June 2026 Microsoft Entra Blog) | Microsoft Entra releases and announcements | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/concept-system-preferred-authentication\" target=\"_blank\">System-preferred authentication | Authentication | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
     "Category": "stayInformed",
     "Details": [
       {
         "Name": "Summary",
+        "Value": "Microsoft Entra now applies system-preferred authentication to first-factor sign-ins for tenants in the Microsoft managed state, selecting the most secure registered method. Rollout is from late June to late September 2026. Tenants can keep or change this setting and should update user guidance accordingly."
+      }
+    ],
+    "EndDateTime": "2026-10-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1411574",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-24T16:51:38.09Z",
+    "Services": [
+      "Microsoft Entra"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-07-01T18:32:23Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Entra: System-preferred authentication now applies to first-factor authentication",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated August 24, 2026: We have updated the timeline. Thank you for your patience.&nbsp;&nbsp;</p><p><b><b>What and Why</b></b></p><p>Microsoft is expanding the availability of the <b>Legal agent in Microsoft 365 Copilot in Word</b> to Frontier users<b> worldwide</b> in Public Preview. </p><p>The Legal agent was previously released in Frontier preview for users located in the United States only. This update expands access globally, enabling more organizations to benefit from this capability.</p><p>The Legal agent is a <b>vertical-specific Microsoft 365 Copilot experience designed for legal professionals</b>, built directly into Word. It helps legal teams review and negotiate contracts by identifying risks, comparing clauses to internal playbooks, and proposing edits using Word’s native tracked changes.</p><p>This update helps reduce manual review time while keeping legal professionals fully in control of document workflows.</p><p><b><b>Rollout Schedule</b></b></p><ul><li><b>Frontier Preview: </b>Available starting in mid-June 2026<b>.</b></li><li><b>General Availability: </b>Available starting early October 2026 (previously early September).</li></ul><p><b><b>Impact on Your Organization</b>&nbsp;</b></p><p><i>Who is affected</i></p><ul><li>Organizations enrolled in the Microsoft 365 Copilot Frontier program</li><li>Users with Microsoft 365 Copilot licenses, particularly legal professionals (for example, in-house counsel, contract managers, legal ops)</li></ul><p>Organizations not enrolled in the Frontier program are <b>not impacted</b>.</p><p><i>Platforms/Services</i></p><ul><li>Microsoft Word (Copilot) – desktop</li><li>Microsoft 365 Copilot (Frontier)</li></ul><p><i>What will happen</i></p><ul><li>A new <b>Legal agent </b>will be available in <i>Copilot Chat in Word</i> via the “+” (plus) menu.</li><li>Users can:<ul><li>Review contracts to identify risks and non-standard clauses</li><li>Generate redlines using <b>Word tracked changes</b></li><li>Compare clauses against internal legal playbooks</li><li>Analyze document sections for compliance with internal standards</li><li>Receive responses grounded in document content with citations</li></ul></li><li>The feature is <b>enabled by default</b> for tenants enrolled in <i>Frontier</i>.</li><li>No separate installation is required.</li><li>The feature is available immediately after users update to a supported version of Word.</li><li>Availability depends on:</li><ul><li>Frontier program enrollment</li><li>Microsoft 365 Copilot licensing</li></ul><li>There is <b>no dedicated admin or user toggle</b> to disable this feature</li><li>Access is controlled through Frontier enrollment and Copilot license assignment.</li></ul><p><b><b>Action Required / Recommendations</b></b></p><p>No action is required if you do not plan to use this feature.</p><p>If you plan to use this feature:</p><ul><li>Enroll your tenant in the <a href=\"https://www.microsoft.com/microsoft-365-copilot/frontier-program\" target=\"_blank\">Frontier Public Preview program</a>.</li><li>Ensure <b>Microsoft 365 Copilot licenses</b> are assigned to eligible users.</li><li>Review internal legal workflows that may benefit from:<ul><li>Contract analysis</li><li>Playbook-based reviews</li><li>AI-assisted redlining</li></ul></li><li>Communicate this capability to legal teams.</li><li>Update internal documentation or helpdesk guidance if applicable.</li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed (such as documents, emails, chats, etc.)? If so, how and to what extent?</td><td>Yes. The Legal agent processes existing document content in Word to analyze contracts, compare clauses to internal playbooks, and generate suggested edits.</td></tr><tr><td>Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data? If so, summarize the changes.</td><td>Yes. The change introduces a new Legal agent within Microsoft 365 Copilot that uses AI to interact with and analyze customer document data.</td></tr><tr><td>Does the change provide end users any new way of interacting with generative AI? If so, how?</td><td>Yes. The change provides a new interaction surface through the Legal agent in Copilot Chat in Word, enabling users to generate and review contract insights using AI.</td></tr></tbody></table><p>For more information visit <a href=\"https://support.microsoft.com/en-us/office/get-started-with-the-legal-agent-frontier-c72cc686-552b-45d4-9e46-d731f9d57052\" target=\"_blank\">Get Started with Legal agent in Word</a>&nbsp;and<a href=\"https://support.microsoft.com/en-us/office/legal-agent-transparency-documentation-2d5b3219-1ac9-42cf-ac04-47f0b1ebfa71?preview=true\" target=\"_blank\"> Transparency Documentation&nbsp;</a></p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft 365 Copilot’s Legal agent in Word is now in Public Preview worldwide for Frontier users, expanding from the US. It helps legal professionals review contracts, identify risks, compare clauses, and generate edits using AI. Available mid-June 2026, with general availability in October 2026."
+      }
+    ],
+    "EndDateTime": "2026-11-16T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1388706",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-08-24T16:47:44.603Z",
+    "Services": [
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-06-12T16:20:41Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft 365 Copilot: Legal agent available in Frontier worldwide",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and why</b></b></p><p>Microsoft Teams is introducing a new meeting protection policy that allows administrators to automatically block identified external meeting bots from joining Teams meetings.</p><p>Today, Teams can identify meeting bots and provide visibility to organizers and administrators. With this update, organizations can strengthen meeting security by configuring Teams policies to automatically block detected external meeting bots from joining meetings. This gives administrators additional control over how identified bots are handled and can help reduce organizational risk.</p><p>This message is associated with Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=566201\" target=\"_blank\">566201</a>.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Targeted Release:</b> Beginning in <b>early August 2026</b> and expected to complete by <b>late August 2026</b></li><li><b>General Availability (Worldwide, GCC):</b> Beginning in <b>late August 2026</b> and expected to complete by <b>late September 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Teams administrators who manage meeting policies and security controls.</li><li>Meeting organizers and participants in organizations that choose to enable this policy.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Teams</li><li>Teams admin center</li><li>Teams meeting policies</li></ul><p><i>What will happen</i></p><p>A new policy option will be added to the existing <b>Manage bots</b> meeting protection settings in the Teams admin center.</p><p>Administrators will be able to configure Teams meeting policies to automatically block identified external meeting bots from joining meetings.</p><p>When the setting is enabled:</p><ul><li>Identified external meeting bots will be prevented from joining meetings governed by the assigned policy.</li><li>Existing bot detection and visibility experiences for organizers and administrators will continue to be available.</li><li>The policy can be assigned to specific users or groups through existing Teams meeting policy management.</li></ul><p>Organizations that do not enable this setting will continue to use the current bot detection experience with no change to meeting participation behavior.</p><p><b>Default state: Off. </b>No changes occur unless an administrator enables the policy.</p><p><b><b>Action required and recommendations</b></b></p><p>No action is required unless you plan to use this capability.</p><p>If you intend to enable automatic blocking of identified external meeting bots, we recommend that you:</p><ul><li>Review your organization's use of meeting bots and automated meeting applications.</li><li>Evaluate the feature with a pilot group before broader deployment.</li><li>Review existing Teams meeting policies and determine which users or groups should receive the policy.</li><li>Update internal documentation and help desk guidance as appropriate.</li><li>Communicate the change to meeting organizers and users who rely on automated meeting bots in their workflows.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "566201"
+      },
+      {
+        "Name": "Summary",
         "Value": "Microsoft Teams will introduce a policy allowing admins to automatically block identified external meeting bots from joining meetings, enhancing security. This feature, off by default, will roll out from August to September 2026. Admins can assign the policy to users or groups and should review bot usage before enabling it."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Android, Desktop, iOS, Mac, Web"
       }
     ],
     "EndDateTime": "2026-10-30T07:00:00Z",
     "HasAttachments": false,
     "Id": "MC1459141",
     "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-08-24T16:27:49.077Z",
+    "LastModifiedDateTime": "2026-08-24T16:30:10.807Z",
     "Services": [
       "Microsoft Teams"
     ],
@@ -71,44 +159,6 @@
       "Deferred feature"
     ],
     "Title": "Microsoft 365 Copilot app update: Simpler Copilot access",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>What and why:</b></b></p>\n\n<p>We are introducing <b>Communicator</b>, a new Microsoft Teams app that enables designated communicators to create, publish, and manage organizational announcements and operational communications at scale. Communicator is designed for scenarios such as organizational announcements, training updates, compliance notifications, safety alerts, store and field operations updates, and other action-oriented communications.</p>\n\n<p>With Communicator, organizations can deliver targeted communications directly in Microsoft Teams, request acknowledgments or required actions, and monitor message delivery and acknowledgment status through built-in reporting capabilities.</p>\n\n<p><b><b>Rollout schedule:</b></b></p>\n<ul>\n<li><b>Public Preview (Worldwide):</b> Rollout begins mid-August 2026 and is expected to complete by mid-January 2027.</li>\n<li><b>General Availability (Worldwide):</b> Rollout begins mid-August 2026 and is expected to complete by late January 2027.</li>\n</ul>\n\n<p><b><b>Impact on your organization:</b></b></p>\n\n<p><b>Who is affected:</b></p>\n<ul>\n<li>Microsoft Teams administrators.</li>\n<li>Users designated to create and send organizational communications.</li>\n<li>Users and Teams channels that receive organizational communications.</li>\n</ul>\n\n<p><b>Platforms:</b></p>\n<ul>\n<li>Microsoft Teams</li>\n</ul>\n\n<p>After rollout, designated communicators will be able to:</p>\n<ul>\n<li>Create and publish targeted announcements to individuals and Teams channels.</li>\n<li>Deliver operational communications directly within Microsoft Teams.</li>\n<li>Include required actions and acknowledgment workflows in communications.</li>\n<li>Track delivery status and message acknowledgments through built-in reporting capabilities.</li>\n</ul>\n\n<p>Recipients will receive announcements and operational communications directly within Teams.</p>\n\n<p><b><b>Action required / Recommendations:</b></b></p>\n\n<p>To prepare for this rollout, we recommend that administrators:</p>\n\n<ul>\n<li>Install and make the <b>Communicator</b> app available to users who will create and send announcements.</li>\n<li>Ensure the <b>Communicator Bot</b> is installed and available for users and Teams channels that will receive communications.</li>\n<li>Review Teams app permission policies, app setup policies, and app availability settings to ensure the appropriate users have access to the correct Communicator experiences.</li>\n<li>Update internal documentation and training materials for users responsible for organizational communications.</li>\n</ul>\n\n<p>Additional documentation will be provided before General Availability.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Communicator, a new Microsoft Teams app for creating and managing targeted organizational announcements with acknowledgment tracking, enters Public Preview from mid-August 2026 to mid-January 2027. Administrators should prepare by installing the app and bot, adjusting policies, and updating training materials."
-      }
-    ],
-    "EndDateTime": "2027-03-22T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1459143",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-08-21T22:43:35.337Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-08-21T22:42:48Z",
-    "Tags": [
-      "New feature",
-      "User impact"
-    ],
-    "Title": "Communicator app enters Public Preview",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -4417,46 +4467,6 @@
       "Admin impact"
     ],
     "Title": "90-Day Reminder: Windows 11, version 23H2 Enterprise and Education editions reach end of updates on November 10, 2026",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated August 12, 2026: We have updated the timeline. Thank you for your patience.&nbsp;&nbsp;</p><p><b><b>What and Why</b></b></p><p>Microsoft is expanding the availability of the <b>Legal agent in Microsoft 365 Copilot in Word</b> to Frontier users<b> worldwide</b> in Public Preview. </p><p>The Legal agent was previously released in Frontier preview for users located in the United States only. This update expands access globally, enabling more organizations to benefit from this capability.</p><p>The Legal agent is a <b>vertical-specific Microsoft 365 Copilot experience designed for legal professionals</b>, built directly into Word. It helps legal teams review and negotiate contracts by identifying risks, comparing clauses to internal playbooks, and proposing edits using Word’s native tracked changes.</p><p>This update helps reduce manual review time while keeping legal professionals fully in control of document workflows.</p><p><b><b>Rollout Schedule</b></b></p><ul><li><b>Frontier Preview: </b>Available starting in mid-June 2026<b>.</b></li><li><b>General Availability: </b>Available starting early September 2026 (previously mid-August).</li></ul><p><b><b>Impact on Your Organization</b>&nbsp;</b></p><p><i>Who is affected</i></p><ul><li>Organizations enrolled in the Microsoft 365 Copilot Frontier program</li><li>Users with Microsoft 365 Copilot licenses, particularly legal professionals (for example, in-house counsel, contract managers, legal ops)</li></ul><p>Organizations not enrolled in the Frontier program are <b>not impacted</b>.</p><p><i>Platforms/Services</i></p><ul><li>Microsoft Word (Copilot) – desktop</li><li>Microsoft 365 Copilot (Frontier)</li></ul><p><i>What will happen</i></p><ul><li>A new <b>Legal agent </b>will be available in <i>Copilot Chat in Word</i> via the “+” (plus) menu.</li><li>Users can:<ul><li>Review contracts to identify risks and non-standard clauses</li><li>Generate redlines using <b>Word tracked changes</b></li><li>Compare clauses against internal legal playbooks</li><li>Analyze document sections for compliance with internal standards</li><li>Receive responses grounded in document content with citations</li></ul></li><li>The feature is <b>enabled by default</b> for tenants enrolled in <i>Frontier</i>.</li><li>No separate installation is required.</li><li>The feature is available immediately after users update to a supported version of Word.</li><li>Availability depends on:</li><ul><li>Frontier program enrollment</li><li>Microsoft 365 Copilot licensing</li></ul><li>There is <b>no dedicated admin or user toggle</b> to disable this feature</li><li>Access is controlled through Frontier enrollment and Copilot license assignment.</li></ul><p><b><b>Action Required / Recommendations</b></b></p><p>No action is required if you do not plan to use this feature.</p><p>If you plan to use this feature:</p><ul><li>Enroll your tenant in the <a href=\"https://www.microsoft.com/microsoft-365-copilot/frontier-program\" target=\"_blank\">Frontier Public Preview program</a>.</li><li>Ensure <b>Microsoft 365 Copilot licenses</b> are assigned to eligible users.</li><li>Review internal legal workflows that may benefit from:<ul><li>Contract analysis</li><li>Playbook-based reviews</li><li>AI-assisted redlining</li></ul></li><li>Communicate this capability to legal teams.</li><li>Update internal documentation or helpdesk guidance if applicable.</li></ul><p><b><b>Compliance considerations</b></b></p><table class=\"table table-bordered\"><tbody><tr><td><b>Question</b></td><td><b>Answer</b></td></tr><tr><td>Does the change alter how existing customer data is processed, stored, or accessed (such as documents, emails, chats, etc.)? If so, how and to what extent?</td><td>Yes. The Legal agent processes existing document content in Word to analyze contracts, compare clauses to internal playbooks, and generate suggested edits.</td></tr><tr><td>Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data? If so, summarize the changes.</td><td>Yes. The change introduces a new Legal agent within Microsoft 365 Copilot that uses AI to interact with and analyze customer document data.</td></tr><tr><td>Does the change provide end users any new way of interacting with generative AI? If so, how?</td><td>Yes. The change provides a new interaction surface through the Legal agent in Copilot Chat in Word, enabling users to generate and review contract insights using AI.</td></tr></tbody></table><p>For more information visit <a href=\"https://support.microsoft.com/en-us/office/get-started-with-the-legal-agent-frontier-c72cc686-552b-45d4-9e46-d731f9d57052\" target=\"_blank\">Get Started with Legal agent in Word</a>&nbsp;and<a href=\"https://support.microsoft.com/en-us/office/legal-agent-transparency-documentation-2d5b3219-1ac9-42cf-ac04-47f0b1ebfa71?preview=true\" target=\"_blank\"> Transparency Documentation&nbsp;</a></p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft 365 Copilot's Legal agent in Word is now in Public Preview worldwide for Frontier users, expanding from the U.S. It helps legal professionals review contracts, identify risks, and generate edits using AI. Available mid-June 2026, with general availability in early September 2026."
-      }
-    ],
-    "EndDateTime": "2026-10-12T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1388706",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-08-12T21:06:02.383Z",
-    "Services": [
-      "Microsoft 365 apps"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-06-12T16:20:41Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft 365 Copilot: Legal agent available in Frontier worldwide",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -14980,46 +14990,6 @@
       "New feature"
     ],
     "Title": "Dynamics 365 Customer Service - WEM in M365 Copilot for CSRs and Supervisors",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated July 9, 2026: We have updated this post as a reminder. Thank you for your patience.&nbsp;</p><p><b><b>What and Why</b></b></p><p>As announced in the <a href=\"https://learn.microsoft.com/entra/fundamentals/whats-new#general-availability---system-preferred-authentication-expanded-to-first-factor-in-microsoft-entra-id\" target=\"_blank\">What's New (June Edition)</a>, we have been rolling out first-factor system-preferred authentication in the Microsoft-managed state.</p><p><b>System-preferred authentication</b> in <i>Microsoft Entra ID</i> now applies to both first-factor and second-factor authentication when the setting is in the <b>Microsoft managed</b> state.</p><p>The system evaluates which credentials are registered for the user and selects the highest-ranked method for each authentication step, prompting the user to sign in with the most secure available method.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Beginning <b>late June 2026</b> and expected to complete by <b>late July 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations whose system-preferred authentication setting is in the <b>Microsoft managed</b> state.</li><li>If your setting is in the <b>Enabled</b> or <b>Disabled</b> state, first-factor sign-in behavior remains unchanged and there is no impact from this update.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Entra ID</li><li>System-preferred authentication</li><li>User sign-in experiences</li></ul><p><i>What will happen</i></p><ul><li>For tenants in the <b>Microsoft managed</b> state, the system applies credential ranking to both first-factor and second-factor authentication.</li><li>When a user signs in, the authentication process checks which authentication methods are registered and prompts the user with the most secure method according to the system-defined order.</li><li>The method order is dynamic and can update when users register more secure authentication methods, such as a passkey, or as Microsoft updates credential rankings based on evolving security guidance. For example, if a user has both a password and a passkey registered, Microsoft Entra may prompt the user to use the passkey at their next first-factor sign-in instead of the password.</li><li>To sign in using a different option, users can always cancel and choose another available sign-in method.</li></ul><p style=\"margin-left: 25px;\">Behavior by setting state:</p><ul><li><b>Microsoft managed:</b> The system applies credential ranking to both first-factor and second-factor authentication.</li><li><b>Enabled:</b> Credential ranking applies only to second-factor authentication. First-factor sign-in behavior remains unchanged.</li><li><b>Disabled:</b> System-preferred authentication is not applied.</li></ul><p style=\"margin-left: 25px;\"><b>Note</b>: This prompt does not mean the user is being asked to complete multifactor authentication (MFA) when MFA is not required. With this update, Microsoft Entra can prompt users to use their most secure available credential at first-factor sign-in instead of defaulting to a password. Some methods, such as passkeys, certificate-based authentication, or Microsoft Authenticator, can satisfy first-factor sign-in requirements and may also satisfy MFA requirements when MFA is required. The goal is to use the strongest available credential consistently, not to add an extra MFA prompt.</p><p><b><b>What you need to do to prepare:</b>&nbsp;</b></p><p>Review whether you want system-preferred authentication to apply to first-factor authentication in your tenant:&nbsp;</p><ul><li>If you want the credential ranking applied to<b> both</b> <b>first-factor and second-factor authentication</b>, leave the setting in the <b>Microsoft managed </b>state. <b>No action is required. </b></li><li>If you do not want system-preferred authentication to apply to first-factor authentication, change the setting from <b>Microsoft managed</b> to <b>Enabled</b>. The Enabled state applies system-preferred logic only to second-factor authentication and leaves first-factor sign-in behavior unchanged.</li><li>Consider notifying users that they may be prompted with a different, more secure sign-in method at first-factor sign-in and remind them that they can always cancel and choose another available sign-in method.</li><li>Update internal sign-in documentation and support guidance accordingly.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/entra/fundamentals/whats-new#general-availability---system-preferred-authentication-expanded-to-first-factor-in-microsoft-entra-id\" target=\"_blank\">General Availability - System-preferred authentication expanded to first-factor in Microsoft Entra ID - What's New (June 2026 Microsoft Entra Blog) | Microsoft Entra releases and announcements | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/concept-system-preferred-authentication\" target=\"_blank\">System-preferred authentication | Authentication | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Entra now applies system-preferred authentication to first-factor sign-in for tenants in the Microsoft managed state, selecting the most secure registered method. Rollout starts late June 2026. Tenants can keep or change this setting and should update user guidance accordingly."
-      }
-    ],
-    "EndDateTime": "2026-08-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1411574",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-07-09T18:20:59.34Z",
-    "Services": [
-      "Microsoft Entra"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-07-01T18:32:23Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Entra: System-preferred authentication now applies to first-factor authentication",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
