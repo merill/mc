@@ -417,6 +417,13 @@ export default function AboutPage() {
                 people who ask to be credited are named; everyone else is
                 counted anonymously.
               </li>
+              <li>
+                New and updated posts now reach the site soon after they are
+                fetched instead of waiting for the next scheduled site build.
+                Each data refresh that finds new posts starts a site build right
+                away, and refreshes also check that the live site is not
+                serving stale data.
+              </li>
             </ul>
           </div>
           <div>
