@@ -54,7 +54,12 @@ jobs:
       - name: Update repo
         id: commit
         run: |
-          if [[ `git status --porcelain` ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            # PR runs validate the refresh on a detached merge commit; there is
+            # no branch to push to, so publishing data is a main-only concern.
+            echo "PR validation run; skipping commit"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          elif [[ `git status --porcelain` ]]; then
             # Changes
             echo "Updating repo"
             git config --global user.name 'Merill Fernando'
