@@ -1,0 +1,32 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<div><b>What and why</b></div><div>By design, Windows Update doesn't trust servers that don't have TLS certificates issued by an actual Windows Update trust anchor. We published guidance in May 2026 to help you diagnose and fix connection issues that result from this design.</div><div><br></div><div><b>Rollout schedule</b></div><ul><li>This guidance was published in May to help with ongoing troubleshooting.</li><li>Connection issues might be ongoing until you apply the existing solution.</li></ul><div><br></div><div><b>Impact on your organization</b></div><div>Your firewalls and proxies might block access to the trustworthy and necessary Windows Update service if your configuration is either intercepting TLS connections or isn't passing TLS requests through for the necessary DNS subdomains. The published guide helps you diagnose and fix related issues.</div><div><br></div><div><b>Action required/recommendations</b></div><div>Diagnose connection issues by checking the <a href=\"https://learn.microsoft.com/powershell/module/windowsupdate/get-windowsupdatelog?view=windowsserver2025-ps\" rel=\"noopener noreferrer\" target=\"_blank\">Windows Update audit log</a>. <a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/configuring-firewall-and-proxies-for-smooth-windows-updates/4517913\" rel=\"noopener noreferrer\" target=\"_blank\">Our detailed guidance</a> lists the recommended PowerShell command and four error codes that can confirm the issue.</div><div><br></div><div>To remedy the situation, trust all the DNS hosts and subdomains related to wildcard FQDN for the connection to work properly. For example, a recommended DNS host name *.update.microsoft.com represents all the following hosts and subdomains:</div><ul><li>update.microsoft.com</li><li>sls.update.microsoft.com</li><li>tas02.sls.update.microsoft.com</li></ul><div><br></div><div>Update your proxy and firewall configurations if any of these subdomains are missing. If your devices connect to an IT-managed Windows Server Update Services (WSUS) server, these exceptions aren't necessary.</div><div><br></div><div><b>Compliance considerations</b></div><div>Devices that cannot reach the <a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/configuring-firewall-and-proxies-for-smooth-windows-updates/4517913\" rel=\"noopener noreferrer\" target=\"_blank\"><u>Windows Update</u></a> service will stop receiving security updates.</div><div><br></div><div><b>Additional information</b></div><ul><li><a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/configuring-firewall-and-proxies-for-smooth-windows-updates/4517913\" rel=\"noopener noreferrer\" target=\"_blank\">Configuring firewall and proxies for smooth Windows updates</a></li><li><a href=\"https://learn.microsoft.com/windows/deployment/update/windows-update-security\" rel=\"noopener noreferrer\" target=\"_blank\">Windows Update security</a></li><li><a href=\"https://learn.microsoft.com/windows-server/security/tls/transport-layer-security-protocol\" rel=\"noopener noreferrer\" target=\"_blank\">Transport Layer Security protocol</a></li><li><a href=\"https://learn.microsoft.com/windows/privacy/manage-windows-11-endpoints\" rel=\"noopener noreferrer\" target=\"_blank\">Connection endpoints for Windows 11 Enterprise</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/scan-changes-and-certificates-add-security-for-windows-devices-using-wsus-for-up/2053668\" rel=\"noopener noreferrer\" target=\"_blank\">Scan changes and certificates add security for Windows devices using WSUS for updates</a></li></ul>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [],
+  "EndDateTime": "2027-08-31T17:10:02.317Z",
+  "HasAttachments": false,
+  "Id": "MC1465017",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-08-31T17:10:04.533Z",
+  "Services": [
+    "Windows"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-08-31T17:10:02.317Z",
+  "Tags": [
+    "Admin impact"
+  ],
+  "Title": "Reminder: Configure firewall and proxies for smooth Windows updates",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
