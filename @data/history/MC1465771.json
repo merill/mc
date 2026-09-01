@@ -1,0 +1,48 @@
+{
+  "id": "MC1465771",
+  "versions": [
+    {
+      "capturedAt": "2026-09-01T22:23:32.917Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why:</b></b></p>\n\n<p>Microsoft Defender XDR is introducing a new built-in alert tuning rule that sets Microsoft Purview Data Loss Prevention (DLP) alerts as behaviors. This change is designed to reduce alert volume in Microsoft Defender XDR while preserving DLP investigation data in Advanced Hunting and the Microsoft Purview portal.</p>\n\n<p>Administrators can disable the rule if they prefer DLP events to continue generating standard alerts and appearing in the incident queues in Microsoft Defender XDR portal.</p>\n\n<p><b><b>Rollout Schedule:</b></b></p>\n\n<ul>\n<li>The alert tuning rule is available for review today in Microsoft Defender XDR.</li>\n<li>The rule will be enabled by default beginning October 12, 2026.</li>\n</ul>\n\n<p><b><b>Impact on Your Organization:</b></b></p>\n\n<p><b>Who is affected:</b> </p><ul><li>Security administrators and analysts who use Microsoft Defender XDR and Microsoft Purview DLP.</li></ul>\n\n<p><b>Services affected:</b> </p><ul><li>Microsoft Defender XDR, Microsoft Purview Data Loss Prevention (DLP), Advanced Hunting.</li></ul>\n\n<p>After the change takes effect:</p>\n\n<ul>\n<li>DLP alerts will no longer appear in the Microsoft Defender XDR incident queue by default.</li>\n<li>DLP signals will remain available for investigation through the <b>BehaviorInfo</b> and <b>BehaviorEntities</b> tables in Advanced Hunting.</li>\n<li>DLP alerts will continue to be available in the Microsoft Purview portal.</li>\n<li>This change is controlled by the built-in alert tuning rule: <b>Set-As-Behavior - Data Loss Prevention (DLP) Alerts</b>.</li>\n</ul>\n\n<p><b><b>Action Required / Recommendations:</b></b></p>\n\n<p>No action is required if you want to use the new default experience.</p>\n\n<p>If your organization relies on DLP alerts appearing in the Microsoft Defender XDR incident queue, disable the rule before October 12, 2026, to keep the current experience. The rule can also be disabled at any time after it takes effect.</p><p>To continue receiving DLP alerts in the Microsoft Defender XDR incident queue:</p>\n\n<ol>\n<li>Go to <b>Settings &gt;&nbsp;Microsoft Defender XDR &gt; Alert tuning</b>.</li>\n<li>Locate the rule <b>Set-As-Behavior - Data Loss Prevention (DLP) Alerts</b>.</li>\n<li>Disable the rule.</li></ol><p><b>Additional Considerations</b></p>\n\n<p>Organizations that use Microsoft Defender XDR incidents and alerts as part of their Security Operations Center (SOC) processes should evaluate any downstream integrations, automation, reporting, monitoring, and alert triage workflows that depend on DLP alerts being present in the Defender XDR incident queue.</p><p>If your organization accesses DLP alerts programmatically through Graph Alerts V2, note that once the rule takes effect, the data will instead be available through the Microsoft Graph security runHuntingQuery API.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Defender XDR will set Microsoft Purview DLP alerts as behaviors by default starting October 12, 2026, reducing alert volume while keeping DLP data accessible in Advanced Hunting and Purview. Administrators can disable this rule to retain DLP alerts in the Defender XDR incident queue."
+          }
+        ],
+        "EndDateTime": "2026-12-21T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1465771",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-09-01T22:23:32.917Z",
+        "Services": [
+          "Microsoft Defender XDR",
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-09-01T22:23:21Z",
+        "Tags": [
+          "New feature",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Defender XDR: DLP alerts will be set as behaviors by default",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
