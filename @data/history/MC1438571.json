@@ -131,6 +131,50 @@
         "Source": "messageCenter",
         "AdditionalProperties": {}
       }
+    },
+    {
+      "capturedAt": "2026-09-03T17:55:12.457Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated September 3, 2026: We have updated the timeline. Thank you for your patience.</p><p><b>What and Why:</b></p><p>To help people discover and understand organizational information more easily, Microsoft is changing the default visibility of 11 existing profile card properties in Microsoft 365 profile cards. Today, these properties can be populated from Microsoft Entra ID and other supported external data sources such as People Graph Connectors and Microsoft 365 Organizational Data, but they are disabled by default and require administrators to manually enable them. You can find more on the existing profile card property management <a href=\"https://learn.microsoft.com/en-us/microsoft-365/admin/manage/customize-profile-cards?view=o365-worldwide\" target=\"_blank\">here</a>. </p><p>With this update, these properties will be displayed by default when populated with data. This helps organizations surface relevant employee information more consistently while reducing administrative effort for commonly used profile attributes. Organizations retain administrative controls to manage visibility according to their business, privacy, and compliance requirements.</p><p>The following properties are included in this update: </p><ol><li>Division </li><li>Role </li><li>Employee number</li><li>Employee type</li><li>Cost center</li><li>User principal name (UPN)</li><li>Alias</li><li>Fax</li><li>Street address</li><li>State</li><li>Postal code</li></ol><p><b>Rollout Schedule:</b></p><p>General Availability (Worldwide): We will begin rollout in late September 2026 (previously late August) and expect to complete by late September 2026 (previously late August).</p><p><b>Impact to your organization:</b></p><p><b>Who is affected </b></p><ol><li>Global Administrators and People Administrators responsible for profile card management. </li><li>Organizations with users whose profile data includes one or more of the affected properties. </li></ol><p><b>Platforms/Services </b></p><ol><li>Microsoft 365 Profile Cards </li><li>Microsoft Entra ID </li><li>Microsoft 365 Organizational Data </li><li>Microsoft Entra People Graph Connectors </li><li>Microsoft Graph profile card management APIs </li><li>Microsoft 365 admin center </li></ol><p><b>What will happen </b></p><ol><li>The 11 listed properties will automatically appear on profile cards when the corresponding attributes contain data.  </li><li>The change is enabled by default. </li><li>Attributes sourced from Microsoft Entra ID, Microsoft 365 Organizational Data, and Microsoft Entra People Graph Connectors follow the same visibility behavior. </li><li>No changes are made to underlying attribute values or source systems. </li><li>No changes are required from end users. </li><li>Tenants that have never configured profile card settings will automatically receive the new default visibility behavior.  </li><li>Only properties with populated values will appear on profile cards. </li></ol><p><b>Action Required/Recommendations:</b></p><p>If your organization does not want specific properties displayed on profile cards, action is recommended before September 24, 2026. </p><p><b>Review current profile card configuration </b></p><p>Use Microsoft Graph to review existing profile card property settings:</p><p><code>HTTP</p><div class=\"ql-code-block\" data-language=\"plain\">GET&nbsp; https://graph.microsoft.com/v1.0/admin/people/profileCardProperties&nbsp;</code></p><p><b>Hide properties before rollout </b></p><p>To prevent a property from being displayed, configure the property as hidden using Microsoft Graph. </p><p>Example: Hide Employee Number </p><p><code>HTTP </p><p></p><p>POST</p><p>https://graph.microsoft.com/v1.0/admin/people/profileCardProperties&nbsp;</p><p>Content-Type: application/json&nbsp;</p><p>{&nbsp;</p><p>\"directoryPropertyName\": \"EmployeeId\",&nbsp;</p><p>&nbsp;\"isVisible\": false&nbsp;&nbsp;</p><p>}&nbsp;</code></p><p>For each property, you can use the property mappings below:</p><table><tbody><tr><td><b>Profile card label </b></td><td><b>directoryPropertyName </b></td></tr><tr><td>Division </td><td>Division </td></tr><tr><td>Role </td><td>Role </td></tr><tr><td>Employee number </td><td>EmployeeId </td></tr><tr><td>Employee type </td><td>EmployeeType </td></tr><tr><td>Cost center </td><td>CostCenter </td></tr><tr><td>User principal name (UPN) </td><td>UserPrincipalName </td></tr><tr><td>Alias </td><td>Alias </td></tr><tr><td>Fax </td><td>Fax </td></tr><tr><td>Street address </td><td>StreetAddress </td></tr><tr><td>State </td><td>StateOrProvince </td></tr><tr><td>Postal code </td><td>PostalCode </td></tr></tbody></table><p><b>Important:</b> Each property requires a separate Microsoft Graph API call. Bulk enable or bulk disable operations are not currently supported.</p><p> You can find more on using Microsoft Graph APIs for showing and hiding profile card attributes <a href=\"https://learn.microsoft.com/en-us/graph/add-properties-profilecard\" target=\"_blank\">here</a>.  </p><p><b>Recommended Administrator Actions </b></p><ol><li>Verify your current profile card configuration using Microsoft Graph and review which of the affected properties contain data in your tenant. </li><li>Use Microsoft Graph Profile Card APIs to hide any properties that should remain unavailable to users before rollout begins on September 24, 2026. </li><li>Communicate the upcoming change to help desk and support teams. </li></ol><p>After rollout, administrators can continue managing profile card visibility through <b>Microsoft 365 admin center &gt; People settings &gt; Profile cards</b>. Changes made can take up to <b>24 hours</b> to be reflected on profile cards across Microsoft 365 experiences.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft 365 will change the default visibility of 11 profile card properties to show by default when populated, starting late September 2026. Administrators can review and hide specific properties using Microsoft Graph APIs before rollout. Visibility remains manageable via admin center post-rollout."
+          }
+        ],
+        "EndDateTime": "2026-10-26T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1438571",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-09-03T17:55:12.457Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-07-24T21:56:36Z",
+        "Tags": [
+          "Updated message",
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Default visibility of additional profile card properties in Microsoft 365 profile cards",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
     }
   ]
 }
