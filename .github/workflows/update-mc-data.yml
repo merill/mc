@@ -11,22 +11,33 @@ on:
       - '@data/**'
   pull_request:
     branches: [ "main" ]
-  # Refresh data hourly
+  # Refresh data hourly. Runs at :17 rather than :00 because GitHub's
+  # best-effort scheduler sheds load at the top of the hour first, so an
+  # off-peak minute is less likely to be delayed or dropped.
   schedule:
-    - cron:  '0 * * * *'
-    
+    - cron:  '17 * * * *'
+
   # Allows to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
   id-token: write
   contents: write
-  
+  # Needed to dispatch the site build after pushing new data.
+  actions: write
+
+# Serialize refreshes so a delayed scheduled run can't race a later one and
+# fail its push; queued runs coalesce while one is in progress.
+concurrency:
+  group: "data-refresh"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
-    steps:          
+    steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Get Message Center and Roadmap data
@@ -41,15 +52,65 @@ jobs:
         shell: pwsh
         
       - name: Update repo
+        id: commit
         run: |
-          if [[ `git status --porcelain` ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            # PR runs validate the refresh on a detached merge commit; there is
+            # no branch to push to, so publishing data is a main-only concern.
+            echo "PR validation run; skipping commit"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          elif [[ `git status --porcelain` ]]; then
             # Changes
             echo "Updating repo"
             git config --global user.name 'Merill Fernando'
             git config --global user.email 'merill@users.noreply.github.com'
             git add -A && git commit -m "Daily automation"
             git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
           else
             # No changes
             echo "No changes"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # The push above can never start the site build by itself: commits made
+      # with the workflow's GITHUB_TOKEN do not fire push-triggered workflows
+      # (GitHub's recursion guard). workflow_dispatch is the documented
+      # exception, so kick the build explicitly instead of waiting up to four
+      # hours for the site workflow's fallback cron.
+      - name: Rebuild site with new data
+        if: github.ref == 'refs/heads/main' && steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run update-mc-site.yml --ref main
+
+      # Self-healing fallback: if a rebuild was missed (dropped cron slot,
+      # failed dispatch, failed build or deploy), this hourly run notices the
+      # live site serving older data than the repo and dispatches a rebuild.
+      # Skipped when this run just pushed (the step above already dispatched)
+      # and when a build is already queued or running.
+      - name: Rebuild site if live site is stale
+        if: github.ref == 'refs/heads/main' && steps.commit.outputs.pushed == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          repo_max=$(jq -r '[.[].LastModifiedDateTime // empty] | max // empty' '@data/messages-index.json')
+          live_max=$(curl -sf --max-time 30 https://mc.merill.net/messages-index.json | jq -r '[.[].LastModifiedDateTime // empty] | max // empty' || true)
+          echo "repo: ${repo_max:-none} live: ${live_max:-unreachable}"
+          if [ -z "$repo_max" ] || [ -z "$live_max" ]; then
+            echo "Skipping freshness check (index missing or live site unreachable)."
+            exit 0
+          fi
+          if [[ "$repo_max" > "$live_max" ]]; then
+            active=$(gh run list --workflow update-mc-site.yml --status in_progress --json databaseId --jq length)
+            queued=$(gh run list --workflow update-mc-site.yml --status queued --json databaseId --jq length)
+            if [ "$active" = "0" ] && [ "$queued" = "0" ]; then
+              echo "Live site is stale; dispatching a rebuild."
+              gh workflow run update-mc-site.yml --ref main
+              echo "Live site was stale (site $live_max, repo $repo_max); rebuild dispatched." >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "A site build is already queued or running; not dispatching another."
+            fi
+          else
+            echo "Live site is up to date."
           fi
