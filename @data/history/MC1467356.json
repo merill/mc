@@ -1,0 +1,48 @@
+{
+  "id": "MC1467356",
+  "versions": [
+    {
+      "capturedAt": "2026-09-04T22:42:23.89Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b>What and why:</b></p><p>Microsoft Edge is retiring support for Manifest V2 (MV2) browser extensions and is moving fully to Manifest V3 (MV3). MV2 will no longer run in Microsoft Edge after enterprise deprecation completes. Enterprise deprecation is currently planned for early 2027.</p><p>This change delivers customer value by pinging performance and security improvements. MV3 enforces stricter permissions, blocks remotely hosted code, and reduces the attack surface associated with legacy MV2 extensions.</p><p>To minimize disruption on the customers, better MV3 replacements are available on Edge Add-ons store.</p><p><b>Rollout schedule:</b></p><p>Worldwide, GCC, GCC High, DoD: We will begin rolling out on early January 2027 and expect to complete by late April 2027.</p><p><b>Impact on your organization:</b></p><p><b> Who is affected</b> </p><ol><li>All tenants and users of Microsoft Edge (consumer and enterprise) who have Manifest V2 extensions installed.</li><li>Enterprise administrators who deploy or allow-list MV2 extensions via Microsoft Edge policies (for example, ExtensionInstallForcelist, ExtensionInstallAllowlist, or ExtensionManifestV2Availability).</li><li>Extension developers who publish MV2 extensions to Microsoft Edge Add-ons through Microsoft Partner Center.</li><li>Managed devices are unaffected during the consumer rollout. A policy ExtensionManifestV2Availability will be provided to continue maintaining MV2 support. Managed devices are affected once enterprise deprecation begins.</li></ol><p><b> Platforms / Services</b> </p><ol><li>Microsoft Edge (desktop) on Windows, macOS, and Linux — all channels: Canary, Dev, Beta, and Stable.</li><li>Microsoft Edge Add-ons store — MV2 extension discovery, install, and updates.</li><li>Microsoft Partner Center — Microsoft Edge Add-ons extension submissions and updates.</li><li>Microsoft Edge policies — the ExtensionManifestV2Availability policy is removed at enterprise deprecation.</li></ol><p><b> What will happen</b> </p><ol><li>MV2 extensions will begin showing deprecation warnings on the Manage Extensions page (edge://extensions) and on Microsoft Edge Add-ons product detail pages. MV2 extensions will no longer appear in Add-ons search.</li><li>MV2 extensions will be disabled by default for consumer users; users will initially be able to re-enable them, and this option will phase out over time.</li><li>New installs of MV2 extensions from Microsoft Edge Add-ons will be blocked.</li><li>After enterprise deprecation, the ExtensionManifestV2Availability policy will be removed and MV2 extensions will stop working on all devices, including managed devices with the policy previously set.</li><li>Existing MV2 configurations relying on the ExtensionManifestV2Availability policy will no longer take effect after enterprise deprecation.</li><li>Microsoft Partner Center will stop accepting updates to MV2 extensions; updates that migrate an extension from MV2 to MV3 will still be accepted.</li><li>No new extensions can be published as MV2 on Microsoft Edge Add-ons (already in effect since July 2022).</li></ol><p><b>Action required / Recommendations:</b></p><p><b> Migration steps (a replacement exists — Manifest V3)</b> </p><ol><li>Inventory MV2 extensions in your environment using Microsoft Edge management reporting or the Edge management service.</li><li>Identify which MV2 extensions have an MV3 version on Microsoft Edge Add-ons and plan the update through your normal deployment process.</li><li>For internal (line-of-business) MV2 extensions, migrate them to Manifest V3 using the Microsoft Edge migration guide and resubmit through Microsoft Partner Center.</li><li>Update ExtensionInstallForcelist and ExtensionInstallAllowlist entries to reference the MV3 versions of the extensions you deploy.</li><li>Configure ExtensionManifestV2Availability intentionally: keep MV2 available for your users during the consumer rollout only if needed, and plan to remove the dependency before enterprise deprecation.</li></ol><p><b> Deadline </b> </p><ol><li>All migration off MV2 must be complete before the enterprise GA. After that date, MV2 extensions will not function in Microsoft Edge, and the ExtensionManifestV2Availability policy will be removed.</li></ol><p><b> Communication guidance</b> </p><ol><li>Notify affected end users in advance, especially where an MV2 extension will not have a direct MV3 replacement.</li><li>Update internal documentation and knowledge base articles that reference MV2 extensions or the ExtensionManifestV2Availability policy.</li><li>Inform your helpdesk about the change so they can support users whose extensions are disabled or replaced, and share the MV3 alternatives being recommended.</li><li>Engage extension vendors (third-party and internal) to confirm their MV3 timeline and align it to your enterprise deadline.</li></ol>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Edge will retire Manifest V2 (MV2) extensions by early 2027, fully switching to Manifest V3 (MV3) for improved security and performance. MV2 extensions will be disabled, blocked from new installs, and policies supporting MV2 removed. Enterprises must migrate to MV3 before the deprecation deadline."
+          }
+        ],
+        "EndDateTime": "2027-06-28T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1467356",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-09-04T22:42:23.89Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-09-04T22:41:09Z",
+        "Tags": [
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Deprecation for Manifest V2 (MV2) browser extensions support in Microsoft Edge",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
