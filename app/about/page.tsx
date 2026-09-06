@@ -121,6 +121,20 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              August 27, 2026
+            </h2>
+            <ul>
+              <li>
+                New and updated posts now reach the site within minutes instead
+                of hours. The hourly data refresh kicks off a site build as soon
+                as it lands new data and also checks that the live site is not
+                serving stale data, rather than relying only on a rebuild
+                scheduled every four hours.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               August 22, 2026
             </h2>
             <ul>

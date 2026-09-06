@@ -10,9 +10,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  # Rebuild every four hours so new Message Center posts reach the site within
-  # hours instead of waiting for a twice-daily build. Runs at half past the hour
-  # so the hourly data refresh has already committed.
+  # Fallback rebuild every four hours. The primary trigger is the data
+  # workflow, which dispatches a build whenever it pushes new data (its pushes
+  # cannot fire the `push` trigger above because GITHUB_TOKEN commits never
+  # start workflows) and whenever it finds the live site serving stale data.
+  # This cron only covers the case where that dispatch chain breaks. Runs at
+  # half past the hour, an off-peak minute for GitHub's best-effort scheduler.
   schedule:
     - cron:  '30 */4 * * *'
 
@@ -32,6 +35,9 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    # A hung build would otherwise hold the "pages" concurrency group for the
+    # six-hour default, blocking every queued deployment behind it.
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -86,6 +92,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: build
     steps:
       - name: Deploy to GitHub Pages
