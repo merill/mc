@@ -1,0 +1,39 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and why</b></b></p><p>Following earlier announcements regarding passkey registration campaigns and targeting logic (MC1279092 and MC1440968), we're continuing to refine how Microsoft Entra identifies and guides eligible users toward passkey registration. These changes help increase adoption of phishing-resistant authentication while maintaining alignment with administrator-configured passkey policies. </p><p>We're introducing enhancements to the Microsoft Entra registration campaign to help organizations increase passkey registration and adoption.</p><p>With this change, users who are eligible to register a passkey will receive an optimized registration experience. We're also expanding the Microsoft managed registration campaign experience so that users assigned to qualifying passkey profiles can be automatically prompted to register a passkey.</p><p>These updates help organizations accelerate adoption of phishing-resistant authentication while continuing to honor configured passkey policies and administrative controls.</p><p>A passkey profile qualifies when it meets one of the following criteria:</p><table><tbody><tr><td data-row=\"row-z5th\"><b>Passkey profile configuration</b></td><td data-row=\"row-z5th\"><b>Qualification criteria</b></td></tr><tr><td data-row=\"row-ppea\">Unrestricted</td><td data-row=\"row-ppea\">No passkey profile restrictions are configured.</td></tr><tr><td data-row=\"row-k4i9\">Synced-only</td><td data-row=\"row-k4i9\">Only synced passkeys are allowed and no key restrictions are configured.</td></tr><tr><td data-row=\"row-be7x\">Device-bound-only</td><td data-row=\"row-be7x\">Only device-bound passkeys are allowed and no key restrictions are configured.</td></tr><tr><td data-row=\"row-lcy0\">AAGUID-restricted</td><td data-row=\"row-lcy0\">The allow list contains at least one AAGUID for iCloud Keychain, Google Password Manager (GPM), Microsoft Authenticator passkey, or Microsoft Entra passkey on Windows.</td></tr><tr><td data-row=\"row-ceno\">Device-bound with attestation enforced</td><td data-row=\"row-ceno\">The profile qualifies regardless of key restrictions. Key restrictions are not evaluated.</td></tr></tbody></table><p><b><b>Rollout schedule</b></b></p><ol><li><b>General Availability (Worldwide, GCC):</b> Beginning in <b>early September 2026</b> and expected to complete by mid-September 2026</li></ol><p><b><b>Impact on your organization</b></b></p><p>Who is affected</p><ol><li>Administrators who manage Microsoft Entra registration campaigns and passkey authentication method policies</li><li>Users who are in scope for a registration campaign and are permitted to register passkeys</li></ol><p><em>Platforms and services</em></p><ol><li>Microsoft Entra registration campaign</li><li>Microsoft Entra authentication methods policy</li><li>Passkey registration experience</li></ol><p><em>What will happen</em></p><ol><li>Eligible users will receive an optimized passkey registration experience.</li><li>When a registration campaign is in the <b>Microsoft managed</b> state, Microsoft will evaluate each in-scope user's passkey profile at sign-in.</li><li>Users assigned to at least one qualifying passkey profile may be prompted to register a passkey.</li><li>When a registration campaign is in the <b>Enabled</b> state, qualifying profile checks do not apply. All in-scope users who are allowed to register passkeys may be prompted to register a passkey.</li><li>Existing registration campaign scope and authentication method policies continue to determine which users are eligible to register passkeys.</li></ol><p><b><em>Note:</em></b><em> If your registration campaign is in the </em><b><em>Microsoft managed</em></b><em> state and in-scope users meet one or more of the </em><b><em>new qualifying passkey profile criteria</em></b><em>, Microsoft managed logic may automatically update campaign targeting to include passkeys. As a result, eligible users may begin receiving passkey registration prompts after rollout.</em></p><p><b><b>Action required and recommendations</b></b></p><p>Review your registration campaign configuration before rollout.</p><p>Recommended actions:</p><ol><li>Review users and groups that are currently in scope for your registration campaign.</li><li>Review passkey profiles assigned to in-scope users.</li><li>Determine whether in-scope users are assigned to qualifying passkey profiles.</li><li>If you do not want Microsoft managed dynamic targeting, change the registration campaign state and directly configure targeted authentication methods.</li><li>Verify that intended users are enabled for passkeys through your authentication methods policy.</li></ol><p><b>Learn more</b></p><ol><li>Configure the Microsoft Entra registration campaign - <a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-enable-authenticator-passkey\" target=\"_blank\">Enable and support passkeys in Authenticator for Microsoft Entra ID - Microsoft Entra ID | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign\" target=\"_blank\">Run a Registration Campaign to Set Up a Passkey or Microsoft Authenticator - Microsoft Entra ID | Microsoft Learn</a></li></ol><p><b><b>Compliance considerations</b></b></p><ol><li>The registration campaign does not override configured passkey authentication method policies.</li><li>Users can only be prompted to register passkeys permitted by their assigned passkey profiles.</li><li>In the <b>Microsoft managed</b> state, Microsoft uses dynamic logic to determine passkey targeting and may automatically update targeted authentication methods.</li><li>Administrators retain control over registration campaign scope, registration campaign state, and authentication method policies.</li></ol>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Entra is enhancing passkey registration campaigns to optimize user experience and increase phishing-resistant authentication adoption. Eligible users will be automatically prompted based on qualifying passkey profiles. Rollout begins early September 2026. Administrators should review campaign configurations and user assignments before rollout."
+    }
+  ],
+  "EndDateTime": "2026-10-18T07:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1469555",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-09-09T00:44:03.433Z",
+  "Services": [
+    "Microsoft Entra"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-09-09T00:42:31Z",
+  "Tags": [
+    "Feature update",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Entra: Optimized passkey registration campaign experience",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}

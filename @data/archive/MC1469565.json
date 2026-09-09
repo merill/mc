@@ -1,0 +1,47 @@
+{
+  "ActionRequiredByDateTime": "2026-10-01T07:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and why</b></b></p><p>As part of the retirement of Exchange Web Services (EWS) in <em>Exchange Online</em>, Microsoft is expanding support for archive mailbox scenarios through Microsoft Graph APIs.</p><p>Organizations that currently use EWS to access archive mailbox data should begin migrating to Microsoft Graph APIs before EWS is disabled. Microsoft Graph now provides API support for importing and exporting mailbox data and for managing archive mailbox folders, including support for auto-expanding archives.</p><p>This change helps ensure continued access to archive mailbox data after EWS is retired and provides a supported path forward for compliance, data lifecycle management, eDiscovery, backup, and related archive mailbox solutions.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Beginning in <b>late October 2026</b> and expected to complete by <b>early November 2026</b></li><li><b>Important:</b> Exchange Web Services (EWS) in Exchange Online will begin to be disabled globally in <b>October 2026</b> and is expected to be fully disabled by <b>April 2027</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><em>Who is affected</em></p><p>Organizations that use applications, scripts, or third-party solutions that rely on EWS to access archive mailbox content.</p><p>Examples include:</p><ul><li>eDiscovery solutions</li><li>Compliance and records management workflows</li><li>Data lifecycle management solutions</li><li>Backup and export tools</li><li>Custom applications that access archive mailboxes</li></ul><p><em>Platforms and services</em></p><ul><li>Microsoft Purview</li><li>Exchange Online</li><li>Microsoft Graph</li></ul><p><em>What will happen</em></p><ul><li>Applications and scripts that continue to use EWS for archive mailbox operations will stop functioning after EWS is disabled.</li><li>Organizations using auto-expanding archive mailboxes must update applications to support Microsoft Graph archive mailbox behaviors.</li><li>Microsoft Graph APIs support archive mailbox scenarios through:<ul><li>Mailbox import and export APIs</li><li>MailboxFolder APIs for folder management operations</li></ul></li><li>Applications may need to handle redirect responses when archive content resides in auxiliary archive mailboxes.</li></ul><p><b><b>Action required and recommendations</b></b></p><p><b>Action required: Yes</b></p><p>Before October 2026, we recommend that administrators and developers:</p><ul><li>Identify applications and scripts that use EWS to access archive mailboxes.<ul><li>Review <a href=\"https://learn.microsoft.com/microsoft-365/admin/activity-reports/ews-usage\" rel=\"noopener noreferrer\" target=\"_blank\">EWS Usage Reports: https://learn.microsoft.com/microsoft-365/admin/activity-reports/ews-usage</a></li></ul></li><li>Review Microsoft Graph archive mailbox guidance.<ul><li>Review <a href=\"https://learn.microsoft.com/graph/handle-archive-mailbox-redirects\" rel=\"noopener noreferrer\" target=\"_blank\">Archive mailbox redirects: https://learn.microsoft.com/graph/handle-archive-mailbox-redirects</a></li></ul></li><li>Update applications to use Microsoft Graph APIs for archive mailbox operations.<ul><li>Review <a href=\"https://learn.microsoft.com/graph/mailbox-import-export-concept-overview\" rel=\"noopener noreferrer\" target=\"_blank\">Mailbox import and export overview: https://learn.microsoft.com/graph/mailbox-import-export-concept-overview</a></li></ul></li><li>Use available migration resources to assess and update existing code.<ul><li><a href=\"https://aka.ms/ewsTools\" rel=\"noopener noreferrer\" target=\"_blank\">EWS Analyzer and migration tools: https://aka.ms/ewsTools</a></li><li><a href=\"https://aka.ms/ewsToolsAITutorial\" rel=\"noopener noreferrer\" target=\"_blank\">AI-assisted migration tutorial: https://aka.ms/ewsToolsAITutorial</a></li><li><a href=\"https://aka.ms/ews2graphMap\" rel=\"noopener noreferrer\" target=\"_blank\">EWS-to-Microsoft Graph API mappings: https://aka.ms/ews2graphMap</a></li></ul></li><li>Contact third-party vendors to confirm their plans and timelines for migrating from EWS to Microsoft Graph.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/deprecation-of-ews-exchange-online\" rel=\"noopener noreferrer\" target=\"_blank\">Deprecation of EWS in Exchange Online</a></li><li><a href=\"https://aka.ms/ewsTools\" rel=\"noopener noreferrer\" target=\"_blank\">EWS migration tools</a></li><li><a href=\"https://learn.microsoft.com/graph/migrate-exchange-web-services-api-mapping\" rel=\"noopener noreferrer\" target=\"_blank\">Exchange Web Services (EWS) to Microsoft Graph API mappings</a></li><li><a href=\"https://learn.microsoft.com/graph/handle-archive-mailbox-redirects\" rel=\"noopener noreferrer\" target=\"_blank\">Handle archive mailbox redirects in Microsoft Graph</a></li><li><a href=\"Overview of the mailbox ihttps://learn.microsoft.com/graph/mailbox-import-export-concept-overview\" rel=\"noopener noreferrer\" target=\"_blank\">Overview of the mailbox import and export APIs in Microsoft Graph https://learn.microsoft.com/graph/mailbox-import-export-concept-overview</a></li><li><a href=\"https://github.com/OfficeDev/ews-migration-analyzer/tree/main/src/Ews.Sample.Migration\" rel=\"noopener noreferrer\" target=\"_blank\">Tutorial - Migrating from EWS to Microsoft Graph API with GitHub Copilot</a></li></ul><p><b><b>Compliance considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-rvtz\">Question</td><td data-row=\"row-rvtz\">Answer</td></tr><tr><td data-row=\"row-s5ep\">Does this change modify, interrupt, or disable Purview-related capabilities, including retention, eDiscovery, export, or data lifecycle management workflows?</td><td data-row=\"row-s5ep\"><b>Yes.</b> Organizations using EWS-based integrations for eDiscovery, compliance exports, retention-related processes, or data lifecycle management that access archive mailboxes must migrate to Microsoft Graph APIs before EWS is disabled.</td></tr><tr><td data-row=\"row-gj4x\">Does this change alter how users or applications access, export, or manage Microsoft 365 data?</td><td data-row=\"row-gj4x\"><b>Yes.</b> Applications that access or export archive mailbox data through EWS must be updated to use Microsoft Graph APIs to maintain functionality after EWS retirement.</td></tr><tr><td data-row=\"row-kok3\">Does this change add or affect third-party integrations?</td><td data-row=\"row-kok3\"><b>Yes.</b> Third-party applications and services that use EWS to access archive mailbox content may require vendor-provided updates or migration to Microsoft Graph APIs.</td></tr><tr><td data-row=\"row-odik\">Does this change affect how organizations demonstrate or maintain compliance processes?</td><td data-row=\"row-odik\"><b>Yes.</b> Organizations that rely on EWS-based compliance, auditing, export, or records management workflows for archive mailbox data should review and update their integrations to ensure continuity of compliance operations.</td></tr></tbody></table>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "RoadmapIds",
+      "Value": "567313"
+    },
+    {
+      "Name": "Summary",
+      "Value": "Microsoft is retiring Exchange Web Services (EWS) in Exchange Online by April 2027 and expanding Microsoft Graph API support for archive mailboxes. Organizations must migrate applications from EWS to Microsoft Graph APIs by October 2026 to maintain archive mailbox access, compliance, eDiscovery, and data lifecycle management."
+    },
+    {
+      "Name": "Platforms",
+      "Value": "Web"
+    }
+  ],
+  "EndDateTime": "2026-12-01T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1469565",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2026-09-09T00:56:42.983Z",
+  "Services": [
+    "Microsoft Purview"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-09-09T00:56:12Z",
+  "Tags": [
+    "User impact",
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Microsoft Purview | Data Lifecycle Management - Graph API Support for archive mailboxes",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
