@@ -42,6 +42,49 @@
         "Source": "messageCenter",
         "AdditionalProperties": {}
       }
+    },
+    {
+      "capturedAt": "2026-09-11T16:25:56.603Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated September 11, 2026: We have updated the timeline. Thank you for your patience. </p><p><b><b>What and why</b></b></p><p>As part of the final phase of Exchange Web Services (EWS) retirement, Microsoft is updating how the <b>EWSAllowedAppIDs</b> setting is applied in <em>Exchange Online</em>. This change is designed to help organizations identify and manage applications that still require EWS access while reducing the risk of unexpected service disruption.</p><p>Organizations that continue to use EWS should review and maintain their own <b>EWSAllowedAppIDs</b> list. If a tenant administrator has already configured this list, Microsoft will not overwrite or modify it.</p><p>Beginning on <b>October 1, 2026</b>, Microsoft will start enabling this updated behavior by cloud as part of the EWS retirement rollout.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Worldwide, GCC, GCC High, DoD:</b> Beginning in <b>early October 2026</b> and expected to complete by <b>late April 2027</b></li></ul><p>The updated behavior will apply when the rollout reaches your cloud.</p><p><b><b>Impact on your organization</b></b></p><p><em>Who is affected</em></p><ul><li>Organizations that continue to use Exchange Web Services (EWS)</li><li>Exchange Online administrators responsible for managing EWS access</li><li>Tenants with EWSEnabled set to True or Null</li></ul><p><em>Platforms and services</em></p><ul><li>Exchange Online</li><li>Exchange Web Services (EWS)</li></ul><p><em>What will happen</em></p><p>After the updated behavior is enabled in a cloud:</p><ul><li>EWS will require a configured <b>EWSAllowedAppIDs</b> list when <b>EWSEnabled</b> is set to <b>True</b>.</li><li>Before enabling the change, Microsoft will ensure that tenants with <b>EWSEnabled </b>already set to <b>True</b> have an <b>EWSAllowedAppIDs</b> list.</li><li>If a customer-managed list does not exist, Microsoft will generate a list based on EWS application usage observed during the previous 60 days to help reduce the risk of service interruption.</li><li>Microsoft-generated lists may omit applications that run infrequently and may include applications that no longer require EWS access.</li><li>If <b>EWSEnabled</b> remains <b>Null</b>, Microsoft will populate <b>EWSAllowedAppIDs</b> only when a customer-managed list does not already exist. This will occur shortly before Microsoft updates <b>EWSEnabled</b> to False as part of the retirement rollout.</li><li>Microsoft will not modify an <b>EWSAllowedAppIDs</b> list that has already been configured by a tenant administrator.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>If your organization still relies on EWS, we recommend taking the following actions as soon as possible:</p><ul><li>Review EWS usage from the previous 60 days and identify all applications that require continued EWS access, including applications with infrequent usage patterns.</li><li>Configure and validate your <b>EWSAllowedAppIDs</b> list before the rollout reaches your cloud.</li><li>Ensure <b>EWSEnabled</b> is set to True if continued EWS access is required.</li><li>Keep the <b>EWSAllowedAppIDs</b> list current as applications are added, removed, or migrated away from EWS.</li><li>Plan for up to a 24-hour propagation delay after changes are made to the <b>EWSAllowedAppIDs</b> list.</li></ul><p>Microsoft's safeguard helps reduce the risk of service disruption but does not replace customer review and validation of <b>EWSAllowedAppIDs</b>.</p><p>We also recommend continuing plans to migrate applications from EWS to Microsoft Graph before EWS retirement is completed.</p><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/deprecation-of-ews-exchange-online\" rel=\"noopener noreferrer\" target=\"_blank\">Deprecation of Exchange Web Services in Exchange Online | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "preventOrFixIssue",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft is updating how EWSAllowedAppIDs is applied in Exchange Online as part of EWS retirement starting October 1, 2026. Organizations using EWS must review and configure their EWSAllowedAppIDs list to avoid service disruption. Microsoft may generate a list if none exists but won’t overwrite tenant-configured lists."
+          }
+        ],
+        "EndDateTime": "2027-06-04T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1469960",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-09-11T16:25:56.603Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-09-09T22:30:08Z",
+        "Tags": [
+          "Updated message",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Exchange Online: Review and configure EWSAllowedAppIDs before Exchange Web Services access changes",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
     }
   ]
 }
