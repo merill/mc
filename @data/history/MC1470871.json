@@ -1,0 +1,47 @@
+{
+  "id": "MC1470871",
+  "versions": [
+    {
+      "capturedAt": "2026-09-11T23:08:45.347Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>We are correcting the behavior of the Microsoft Graph delegated and app-only permission <b>User.ReadBasic.All</b>. This permission is intended to provide access only to a limited set of basic user profile properties. However, it currently also allows access to user app role assignments and license details.</p><p>To address a security vulnerability, we are removing access to user app role assignments and license details from <b>User.ReadBasic.All</b> and aligning the permission with its intended scope. This is not a breaking change for applications that use <b>User.ReadBasic.All </b>only for its intended purpose of accessing basic user profile information.</p><p>Applications that rely on this unintended access should be updated with the appropriate least-privileged permissions before rollout is complete.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Beginning in <b>mid-September 2026</b> and expected to complete by <b>late September 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><em>Who is affected</em></p><p>Organizations are affected if their applications use the Microsoft Graph delegated or app-only permission <b>User.ReadBasic.All</b> to read:</p><ul><li>User app role assignments</li><li>User license details</li></ul><p>Developers, application owners, and administrators responsible for managing application permissions in <em>Microsoft Entra ID</em> should review this change.</p><p><em>Platforms and services</em></p><ul><li>Microsoft Graph</li><li>Microsoft Entra ID</li><li>Applications using Microsoft Graph permissions</li></ul><p><em>What will happen</em></p><ul><li>Applications granted only <b>User.ReadBasic.All</b> will no longer be able to read user app role assignments or user license details.</li><li>Applications that access only basic user properties, such as display name, email address, and department, will continue to function without changes.</li><li>Affected applications may experience failures or permission-related errors after the change is applied.</li><li>Users may experience application disruptions if an application has only <b>User.ReadBasic.All</b> but attempts to access user app role assignments or license details.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>Action is required if you have applications that use <b>User.ReadBasic.All</b> to access user app role assignments or license details.</p><p>Recommended actions:</p><ul><li>Review applications granted <b>User.ReadBasic.All </b>in the <em>Microsoft Entra admin center</em> under <b><em>Enterprise applications &gt; Permissions</em></b> or in your internal application catalog.</li><li>Identify applications that use this permission to read user app role assignments or user license details.</li><li>Update affected applications to use the appropriate least-privileged permissions:<ul><li>To read user app role assignments: <b>User.Read.All</b></li><li>To read user license details: <b>LicenseAssignment.Read.All</b></li><li>To read both: <b>User.Read.All</b></li></ul></li><li>Obtain administrator consent for the new permissions, update application configurations, redeploy affected applications, and test impacted scenarios.</li><li>Notify developers and application owners of the upcoming permission changes and rollout schedule.</li><li>Monitor application logs and Microsoft Graph API responses for permission-related errors after rollout.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "preventOrFixIssue",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "User.ReadBasic.All will no longer provide access to user app role assignments and license details starting mid-September 2026 to fix a security issue. Applications needing this data must switch to User.Read.All or LicenseAssignment.Read.All permissions and update accordingly to avoid disruptions."
+          }
+        ],
+        "EndDateTime": "2026-10-30T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1470871",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-09-11T23:08:45.347Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-09-11T23:08:21Z",
+        "Tags": [
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Graph: User.ReadBasic.All will no longer allow reading user app role assignments and license details",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
