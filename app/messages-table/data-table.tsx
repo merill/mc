@@ -2,7 +2,7 @@
 
 import "./table.css"
 import React from "react"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import {
   ColumnDef,
   SortingState,
@@ -39,7 +39,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import type { MessageView } from "@/app/messages-table/columns"
+import { messageHref, type MessageView } from "@/app/messages-table/columns"
 
 type SourceFilter = "all" | "messageCenter" | "roadmap"
 
@@ -97,7 +97,8 @@ export function DataTable<TData, TValue>({
     }
 
     if (columnId === "id") {
-      return "w-[7.5rem]"
+      // Wide enough on phones for the icon, a 7-digit ID and the major dot.
+      return "w-[8.75rem]"
     }
 
     if (columnId === "title") {
@@ -107,6 +108,7 @@ export function DataTable<TData, TValue>({
     return ""
   }
 
+  const router = useRouter()
   const [allData, setAllData] = React.useState<TData[]>(data)
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [sourceFilter, setSourceFilter] = React.useState<SourceFilter>("all")
@@ -305,6 +307,30 @@ export function DataTable<TData, TValue>({
     isSearchUnavailable,
     searchHits,
   ])
+
+  // The whole row opens the message. This used to be an invisible link
+  // stretched over each row with `tr { position: relative }`, but Safari does
+  // not treat table rows as containing blocks, so every overlay covered the
+  // whole table and taps always opened the last loaded row.
+  const openMessage = (
+    event: React.MouseEvent<HTMLTableRowElement>,
+    id: string
+  ) => {
+    // The ID and title are real links and handle their own clicks.
+    if ((event.target as HTMLElement).closest("a")) return
+    // Only left and middle clicks navigate.
+    if (event.button !== 0 && event.button !== 1) return
+    // Selecting text in a row should not navigate away.
+    if (window.getSelection()?.toString()) return
+
+    const href = messageHref(id)
+
+    if (event.button === 1 || event.metaKey || event.ctrlKey) {
+      window.open(href, "_blank", "noopener")
+    } else {
+      router.push(href)
+    }
+  }
 
   const usesPagefind = isSearchActive && !isSearchUnavailable
   const table = useReactTable({
@@ -564,11 +590,6 @@ export function DataTable<TData, TValue>({
                     </TableHead>
                   )
                 })}
-                <TableHead
-                  key="url"
-                  aria-label="Detail Page Link"
-                  className="hidden p-0 md:table-cell"
-                ></TableHead>
               </TableRow>
             ))}
           </TableHeader>
@@ -578,6 +599,10 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  // cursor-pointer also makes iOS Safari deliver taps on the row.
+                  className="cursor-pointer"
+                  onClick={(event) => openMessage(event, row.getValue("id"))}
+                  onAuxClick={(event) => openMessage(event, row.getValue("id"))}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
@@ -590,21 +615,8 @@ export function DataTable<TData, TValue>({
                         cell.column.columnDef.cell,
                         cell.getContext()
                       )}
-                      {cell.column.id === "id" && (
-                        <Link
-                          className="row-link md:hidden"
-                          href={`/message/${row.getValue("id")}`}
-                          aria-label={`Open ${row.getValue("id")}`}
-                        />
-                      )}
                     </TableCell>
                   ))}
-                  <TableCell className="hidden p-0 md:table-cell">
-                    <Link
-                      className="row-link"
-                      href={`/message/${row.getValue("id")}`}
-                    ></Link>
-                  </TableCell>
                 </TableRow>
               ))
             ) : (

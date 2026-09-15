@@ -162,7 +162,7 @@ function ConvertTo-RssText([string]$value) {
 function New-RssItem($item) {
     $source = if ($item.Source -eq "roadmap") { "Microsoft 365 Roadmap" } else { "Message Center" }
     $url = "https://mc.merill.net/message/$($item.Id)"
-    $lastModified = if ($item.LastModifiedDateTime) { [datetimeoffset]::Parse([string]$item.LastModifiedDateTime) } else { [datetimeoffset]::Parse([string]$item.StartDateTime) }
+    $lastModified = Get-M365MessageTimestamp $item
     $summary = Get-MessageSummaryText $item
     $services = @($item.Services | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
     $categories = @($source) + $services
@@ -370,17 +370,22 @@ Get-ChildItem -Path "$($dataPath)/archive" -Filter "*.json" |
         $messageIndexRecords.Add((New-MessageIndexRecord $item))
     }
 
-$sortedMessageIndexRecords = $messageIndexRecords.ToArray() | Sort-Object -Property @{ Expression = { [string]$_.LastModifiedDateTime }; Descending = $true }
+$sortedMessageIndexRecords = $messageIndexRecords.ToArray() | Sort-Object -Property @{ Expression = { Get-M365MessageTimestamp $_ }; Descending = $true }
 ConvertTo-Json -InputObject $sortedMessageIndexRecords -Depth 6 -Compress | Set-Content -Path ($dataPath + "/messages-index.json")
 Copy-Item -Path ($dataPath + "/messages-index.json") -Destination "./public/messages-index.json" -Force
 Write-Host "Wrote $($sortedMessageIndexRecords.Count) records to messages-index.json"
 
 Write-Host "Building rss.xml with latest 500 active Message Center and Roadmap records"
+# Sort on the parsed timestamp, not its string form. Message Center records are
+# read back through ConvertFrom-Json, which turns dates into [datetime] values
+# that stringify as "09/14/2026 23:28:24", while Roadmap records keep ISO 8601
+# strings. Comparing the strings ranked every Roadmap item above every Message
+# Center post, so Roadmap filled all 500 slots.
 $rssItems = @($activeMessages + $roadmapItems) |
-    Sort-Object -Property @{ Expression = { [string]$_.LastModifiedDateTime }; Descending = $true } |
+    Sort-Object -Property @{ Expression = { Get-M365MessageTimestamp $_ }; Descending = $true } |
     Select-Object -First 500
 $rssPubDate = if ($rssItems.Count -gt 0) {
-    ([datetimeoffset]::Parse([string]$rssItems[0].LastModifiedDateTime)).UtcDateTime.ToString("r")
+    (Get-M365MessageTimestamp $rssItems[0]).UtcDateTime.ToString("r")
 }
 else {
     (Get-Date).ToUniversalTime().ToString("r")
