@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { ColumnDef, SortDirection } from "@tanstack/react-table"
 import {
   ArrowDown,
@@ -32,6 +33,10 @@ export type MessageView = {
   // Present only for search results: a Pagefind excerpt with <mark> around
   // the matched terms.
   excerpt?: string
+}
+
+export function messageHref(id: string): string {
+  return `/message/${id}`
 }
 
 // Zero-pads the numeric part of an id so MC713893 sorts below MC1000182.
@@ -105,21 +110,45 @@ export const columns: ColumnDef<MessageView>[] = [
       const SourceIcon = row.original.source === "roadmap" ? Milestone : Inbox
 
       return (
-        <div className="flex items-center gap-2">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <span className="inline-flex text-muted-foreground">
-                  <SourceIcon size={16} aria-label={row.original.sourceLabel} />
-                </span>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{row.original.sourceLabel}</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <span className="text-nowrap font-medium text-foreground/85">
-            {row.original.id}
+        // The Expired badge wraps below the ID when the column is narrow
+        // instead of spilling into the title column.
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          {/* h-7 matches the title's leading-7 so the ID lines up with the
+              first line of the title. */}
+          <span className="inline-flex h-7 items-center gap-2 whitespace-nowrap">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="inline-flex text-muted-foreground">
+                    <SourceIcon
+                      size={16}
+                      aria-label={row.original.sourceLabel}
+                    />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{row.original.sourceLabel}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <Link
+              href={messageHref(row.original.id)}
+              className="font-medium text-foreground/85 hover:underline"
+            >
+              {row.original.id}
+            </Link>
+            {row.original.isMajor && (
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <span className="flex h-2 w-2 rounded-full bg-red-600" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Major change</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            )}
           </span>
           {row.original.isArchived && (
             <Badge
@@ -128,18 +157,6 @@ export const columns: ColumnDef<MessageView>[] = [
             >
               Expired
             </Badge>
-          )}
-          {row.original.isMajor && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <span className="flex h-2 w-2 rounded-full bg-red-600" />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Major change</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
           )}
         </div>
       )
@@ -151,9 +168,12 @@ export const columns: ColumnDef<MessageView>[] = [
     cell: ({ row }) => {
       return (
         <div className="w-full min-w-0">
-          <div className="whitespace-normal break-words leading-7 text-foreground/90">
+          <Link
+            href={messageHref(row.original.id)}
+            className="block whitespace-normal break-words leading-7 text-foreground/90 hover:underline"
+          >
             {row.original.title}
-          </div>
+          </Link>
           {row.original.excerpt && (
             <p
               className="search-excerpt mt-1 whitespace-normal break-words text-sm leading-6 text-muted-foreground"
@@ -171,7 +191,7 @@ export const columns: ColumnDef<MessageView>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className="space-y-0.5 text-center">
+        <div className="space-y-0.5 text-center leading-7">
           {row.original.service?.map((service) => (
             <Badge key={service} variant="secondary" className="text-nowrap">
               {service}
@@ -189,7 +209,7 @@ export const columns: ColumnDef<MessageView>[] = [
     ),
     cell: ({ row }) => {
       return (
-        <span className="text-nowrap text-foreground/75">
+        <span className="text-nowrap leading-7 text-foreground/75">
           {row.original.lastUpdated}
         </span>
       )

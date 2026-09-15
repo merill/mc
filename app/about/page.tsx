@@ -121,6 +121,24 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              September 15, 2026
+            </h2>
+            <ul>
+              <li>
+                Fixed the RSS feed so it includes Message Center posts again.
+                Roadmap posts were always ranked ahead of Message Center posts
+                and filled every slot, so the feed now lists the latest 500
+                posts from both sources newest first.
+              </li>
+              <li>
+                Fixed opening posts from the archive table in Safari on Mac,
+                iPad, and iPhone. Selecting any row opened the same unrelated
+                post; each row now opens its own post.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               August 22, 2026
             </h2>
             <ul>
