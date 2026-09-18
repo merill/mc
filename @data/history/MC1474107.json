@@ -1,0 +1,56 @@
+{
+  "id": "MC1474107",
+  "versions": [
+    {
+      "capturedAt": "2026-09-18T15:17:50.717Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>We are updating archive file classification behavior for Microsoft Purview Endpoint Data Loss Prevention (DLP) on Windows endpoints to align with classification behavior across Microsoft cloud workloads. This change improves consistency in classification results, reduces event-reporting noise, and enhances performance when processing archive files.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=570965\" rel=\"noopener noreferrer\" target=\"_blank\">570965</a>.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Public Preview:</b> Beginning in <b>late September 2026</b> and expected to complete in <b>mid-October 2026</b></li><li><b>General Availability (Worldwide):</b> Beginning in <b>late October 2026</b> and expected to complete in <b>early November 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><em>Who is affected</em></p><ul><li>Organizations using Microsoft Purview Endpoint DLP on Windows endpoints with archive file classification enabled</li></ul><p><em>Platforms and services</em></p><ul><li>Microsoft Purview</li><li>Endpoint Data Loss Prevention (DLP)</li><li>Windows endpoints</li></ul><p><em>What will happen</em></p><ul><li>Archive files such as .zip and .rar files will be classified directly.</li><li>Classification of archive files will occur as a single, atomic operation.</li><li>Individual files contained within an archive will no longer generate separate classification events.</li><li>Only the outer archive file will be reported in Endpoint DLP events.</li><li>Context-based and sensitivity label-based policy evaluation will continue to apply to content within archive files.</li><li>Existing DLP policy behavior for evaluating content within archive files is unchanged.</li><li>No administrator configuration changes are required.</li><li>No user action is required.</li></ul><p><b><b>Action required and recommendations</b></b></p><p><b>No action is required.</b></p><p>We recommend that administrators:</p><ul><li>Review internal documentation that describes archive file classification behavior.</li><li>Update operational and monitoring procedures if they reference individual event generation for files contained within archives.</li><li>Inform compliance and security teams that Endpoint DLP reporting will show events for the outer archive file instead of individual files within the archive.</li></ul><p><b><b>Compliance considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-xqk1\">Question</td><td data-row=\"row-xqk1\">Answer</td></tr><tr><td data-row=\"row-pc2x\">Does the change alter how existing customer data is processed, stored, or accessed?</td><td data-row=\"row-pc2x\">Archive files will be classified as a single atomic object and reported as the outer archive file rather than generating separate events for files within the archive.</td></tr><tr><td data-row=\"row-453o\">Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td data-row=\"row-453o\">Yes. Administrators will see reporting and event-generation changes. Individual files inside archives will no longer generate separate events, and reporting will be associated with the outer archive file.</td></tr></tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "570965"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Purview Endpoint DLP on Windows will classify archive files (.zip, .rar) as single atomic objects, reporting only the outer archive in events. This change, rolling out from September to November 2026, improves consistency and performance without requiring user or admin action."
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": "2026-12-07T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1474107",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-09-18T15:17:50.717Z",
+        "Services": [
+          "Microsoft Purview"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-09-18T15:16:29Z",
+        "Tags": [
+          "Feature update",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Purview: Archive file classification behavior change for Endpoint Data Loss Prevention on Windows endpoints",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
