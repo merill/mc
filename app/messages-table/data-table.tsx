@@ -23,6 +23,11 @@ import {
 
 import type { MessageArchive } from "@/types/message"
 import {
+  getArchiveFilterUrl,
+  readArchiveFilters,
+  type ArchiveFilters,
+} from "@/lib/archive-filters"
+import {
   loadSearchHits,
   searchMessages,
   type PagefindResult,
@@ -40,8 +45,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { messageHref, type MessageView } from "@/app/messages-table/columns"
-
-type SourceFilter = "all" | "messageCenter" | "roadmap"
 
 // Browsing shows newest first. Without this the expired posts, which arrive
 // after the first render, would simply pile up underneath everything else.
@@ -111,12 +114,13 @@ export function DataTable<TData, TValue>({
   const router = useRouter()
   const [allData, setAllData] = React.useState<TData[]>(data)
   const [sorting, setSorting] = React.useState<SortingState>([])
-  const [sourceFilter, setSourceFilter] = React.useState<SourceFilter>("all")
-  const [selectedServices, setSelectedServices] = React.useState<string[]>([])
+  const [filters, setFilters] = React.useState(() =>
+    readArchiveFilters(new URLSearchParams())
+  )
+  const { sourceFilter, selectedServices, searchTerm } = filters
   const [serviceSearch, setServiceSearch] = React.useState("")
   const [isServiceFilterOpen, setIsServiceFilterOpen] = React.useState(false)
   const [visibleRowCount, setVisibleRowCount] = React.useState(rowBatchSize)
-  const [searchTerm, setSearchTerm] = React.useState("")
   const [query, setQuery] = React.useState("")
   const [searchHits, setSearchHits] = React.useState<SearchHit[]>([])
   const [searchTotal, setSearchTotal] = React.useState(0)
@@ -181,6 +185,26 @@ export function DataTable<TData, TValue>({
   React.useEffect(() => {
     setAllData(data)
   }, [data])
+
+  React.useEffect(() => {
+    const restoreFilters = () =>
+      setFilters(readArchiveFilters(new URLSearchParams(window.location.search)))
+
+    // Read after hydration so bookmarked URLs also work with the static export.
+    restoreFilters()
+    window.addEventListener("popstate", restoreFilters)
+
+    return () => window.removeEventListener("popstate", restoreFilters)
+  }, [])
+
+  const updateFilters = (updates: Partial<ArchiveFilters>) => {
+    const nextFilters = { ...filters, ...updates }
+    const url = getArchiveFilterUrl(new URL(window.location.href), nextFilters)
+
+    // Keep Next's history state and avoid a navigation for each keystroke.
+    window.history.replaceState(window.history.state, "", url)
+    setFilters(nextFilters)
+  }
 
   React.useEffect(() => {
     if (!archiveUrl) return
@@ -281,11 +305,11 @@ export function DataTable<TData, TValue>({
   }, [query, searchSort, selectedServices, sourceFilter])
 
   const toggleService = (service: string) => {
-    setSelectedServices((current) =>
-      current.includes(service)
-        ? current.filter((item) => item !== service)
-        : [...current, service].sort((a, b) => a.localeCompare(b))
-    )
+    updateFilters({
+      selectedServices: selectedServices.includes(service)
+        ? selectedServices.filter((item) => item !== service)
+        : [...selectedServices, service].sort((a, b) => a.localeCompare(b)),
+    })
   }
 
   const selectedServiceLabel =
@@ -428,7 +452,7 @@ export function DataTable<TData, TValue>({
             variant={sourceFilter === "all" ? "default" : "outline"}
             size="sm"
             className="gap-2"
-            onClick={() => setSourceFilter("all")}
+            onClick={() => updateFilters({ sourceFilter: "all" })}
           >
             All
           </Button>
@@ -437,7 +461,7 @@ export function DataTable<TData, TValue>({
             variant={sourceFilter === "messageCenter" ? "default" : "outline"}
             size="sm"
             className="gap-2"
-            onClick={() => setSourceFilter("messageCenter")}
+            onClick={() => updateFilters({ sourceFilter: "messageCenter" })}
           >
             <Inbox size={15} />
             Message Center
@@ -447,7 +471,7 @@ export function DataTable<TData, TValue>({
             variant={sourceFilter === "roadmap" ? "default" : "outline"}
             size="sm"
             className="gap-2"
-            onClick={() => setSourceFilter("roadmap")}
+            onClick={() => updateFilters({ sourceFilter: "roadmap" })}
           >
             <Milestone size={15} />
             Microsoft 365 Roadmap
@@ -462,7 +486,9 @@ export function DataTable<TData, TValue>({
             <Input
               placeholder="Search ID, title, or message text..."
               value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
+              onChange={(event) =>
+                updateFilters({ searchTerm: event.target.value })
+              }
               className="pl-9 pr-9"
               aria-label="Search messages"
             />
@@ -478,7 +504,7 @@ export function DataTable<TData, TValue>({
                   type="button"
                   aria-label="Clear search"
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                  onClick={() => setSearchTerm("")}
+                  onClick={() => updateFilters({ searchTerm: "" })}
                 >
                   <X size={16} />
                 </button>
@@ -517,7 +543,7 @@ export function DataTable<TData, TValue>({
                     <button
                       type="button"
                       className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground"
-                      onClick={() => setSelectedServices([])}
+                      onClick={() => updateFilters({ selectedServices: [] })}
                     >
                       <X size={13} />
                       Clear

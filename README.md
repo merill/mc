@@ -9,6 +9,22 @@ I created this site so I can link to it from my weekly newsletter [Entra.News](h
 > * Not all posts are visible to all tenants.
 > * This archive is built from a small number of source tenants (for example a Microsoft 365 E5 tenant). Your tenant may have different features and updates. 
 
+## Bookmark filtered news
+
+Choose services, a source, or a search term on the home page, then bookmark or
+share the current URL. Opening it restores those filters. For example,
+[Microsoft Purview news](https://mc.merill.net/?service=Microsoft+Purview).
+
+URLs use one `service` parameter per selected service, `source=messageCenter` or
+`source=roadmap` for the source, and `q` for search text. Clearing a filter removes
+its parameter without affecting the other filters.
+
+Run `npm run test:filters` to check filter URL handling. The suite loads the
+current service catalog and checks that selecting every service plus the longest
+source value fits a 2,000-character absolute URL budget. This is a conservative
+compatibility target, not a universal browser limit or a selection cap. Search
+text and unrelated URL parameters add to that length.
+
 ## Feedback
 
 If you have any feedback or suggestions, please feel free to reach out to me on Twitter [@merill](https://twitter.com/merill) or [LinkedIn](https://linkedin.com/in/merill).
