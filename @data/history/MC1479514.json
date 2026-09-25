@@ -1,0 +1,47 @@
+{
+  "id": "MC1479514",
+  "versions": [
+    {
+      "capturedAt": "2026-09-25T21:39:40.287Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>We are updating Microsoft Teams file sharing in external (federated) chats by changing the default setting from Disabled to Enabled. Today, admins must explicitly enable file sharing in external chats before users can attach files when collaborating with people outside their organization.</p><p>This update simplifies cross-organization collaboration by allowing users to attach files directly in external (federated) chats and automatically applying the required permissions to shared files. Together, these changes remove both the tenant configuration step and the manual permission assignment step that can slow cross-organization collaboration. Existing OneDrive, SharePoint, and security controls continue to govern access.&nbsp;</p><p>Admins retain full control and can disable file sharing or automatic permission assignment at any time using PowerShell.</p><p><b><b>Rollout schedule</b></b></p><ul><li>T<b>argeted Release:</b> Beginning in <b>late</b> <b>October 2026</b> and expected to complete by <b>late November 2026</b></li><li><b>General Availability (Worldwide, GCC, GCC High, DoD):</b> Beginning in <b>late October 2026</b> and expected to complete by <b>late November 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using Microsoft Teams external access (federation)</li><li>Organizations that previously disabled file sharing in external chats</li><li>Users participating in external 1:1 chats, external group chats, and meeting chats</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Teams</li><li>External (federated) 1:1 chats</li><li>External (federated) group chats</li><li>Meeting chats</li><li>Teams desktop app</li><li>Teams web app</li></ul><p><i>What will happen</i></p><ul><li>File sharing in external chats will be enabled by default for all Microsoft 365 tenants.</li><li>This change applies even if your organization previously configured the setting as Disabled.</li><li>Organizations that want file sharing in external chats to remain disabled must reapply the disabled setting after rollout.</li><li>Users will see the Attach file (paperclip) option in external (federated) chats. Previously, users could only paste existing links in external chats.</li><li>Users can share files by attaching a file or dragging and dropping a file into the compose box.</li><li>Teams will automatically grant the required permissions to participants in the external chat when a file is uploaded, so users do not need to manually update sharing permissions.</li><li>Senders can review, modify, or remove sharing permissions before sending a file.</li><li>Senders can continue to modify or revoke access after a file has been shared.</li><li>Automatic permission assignment applies only to files uploaded through the attach or drag-and-drop experience.</li><li>Pasted file links retain their existing permissions and are not automatically shared.</li><li>Files uploaded to external chats are stored in the sender's OneDrive and display an External label.</li><li>Existing OneDrive and SharePoint sharing controls continue to govern access.</li><li>Existing sensitivity labels, domain restrictions, and security protections continue to apply.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>Action is required only if your organization wants file sharing in external chats to remain disabled.</p><p>After rollout reaches your tenant, reapply the following Teams PowerShell setting:</p><p class=\"ql-indent-1\"><code>Set-CsTeamsFilesPolicy -Identity Global -FileSharingInChatsWithExternalUsers Disabled</code></p><p>Verify the setting:</p><p class=\"ql-indent-1\"><code>Get-CsTeamsFilesPolicy | Select Identity, FileSharingInChatsWithExternalUsers</code></p><p>Recommended actions:</p><ul><li>Review your SharePoint, OneDrive, and Microsoft Entra external sharing configuration because these settings continue to govern what external recipients can access.</li><li>Consider enabling Microsoft Entra B2B for SharePoint and OneDrive external sharing to help external recipients authenticate and access shared files.</li><li>Inform helpdesk and support teams about this change.</li><li>Update user training and internal documentation as needed.</li><li>Communicate to users that:<ul><li>They can attach files directly in chats with people outside the organization.</li><li>Files attached through the file upload experience are automatically shared with participants in the chat unless permissions are modified.</li><li>Pasted file links retain their existing permissions.</li><li>Files uploaded to external chats are stored in the sender's OneDrive and display an External label.</li></ul></li></ul><p>Optional configuration:</p><p>To disable automatic permission assignment while continuing to allow file attachments in external chats:</p><p class=\"ql-indent-1\"><code>Set-CsTeamsMessagingPolicy -Identity Global -AutoShareFilesInExternalChats Disabled</code></p><p>If automatic permission assignment is disabled, users may need to manually grant access to shared files before external recipients can open them.</p><p>Allow several hours for policy changes to propagate before users see the updated experience.</p><p><b>Learn more:</b></p><ul><li><a href=\"https://learn.microsoft.com/microsoftteams/share-files-loop-in-external-chats\" rel=\"noopener noreferrer\" target=\"_blank\">Share files and Loop in external chats - Microsoft Teams | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-44py\">Question</td><td data-row=\"row-44py\">Answer</td></tr><tr><td data-row=\"row-tjci\">Does the change alter how existing customer data is processed, stored, or accessed?</td><td data-row=\"row-tjci\">Yes. Uploaded files can automatically receive permissions for participants in external chats. Existing OneDrive and SharePoint controls continue to govern access.</td></tr><tr><td data-row=\"row-077d\">Does the change provide a new way of communicating between users, tenants, or subscriptions?</td><td data-row=\"row-077d\">Yes. Users can attach and share files directly in external (federated) chats by default.</td></tr><tr><td data-row=\"row-7qvz\">Does the change include an admin control, and can it be controlled through Entra ID group membership?</td><td data-row=\"row-7qvz\">Yes. Admins can enable or disable file sharing in external chats and automatic permission assignment through Teams PowerShell policies.</td></tr></tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Teams will enable file sharing by default in external (federated) chats starting late October 2026, simplifying cross-organization collaboration by removing manual permission steps. Admins can disable this via PowerShell. Files are stored in the sender’s OneDrive with existing security controls applied."
+          }
+        ],
+        "EndDateTime": "2026-12-23T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1479514",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-09-25T21:39:40.287Z",
+        "Services": [
+          "Microsoft Teams"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-09-25T21:39:18Z",
+        "Tags": [
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Teams: File sharing enabled by default in external (federated) chats",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
