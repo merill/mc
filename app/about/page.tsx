@@ -121,6 +121,18 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              September 21, 2026
+            </h2>
+            <ul>
+              <li>
+                Home page filters are now bookmarkable and shareable. Service
+                selections, source, and search text are saved in the URL and
+                restored when you open the link.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               September 15, 2026
             </h2>
             <ul>
