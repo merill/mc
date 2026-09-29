@@ -1,0 +1,40 @@
+{
+  "ActionRequiredByDateTime": "2026-10-19T07:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and why</b></b></p><p>As part of Microsoft's Secure Future Initiative, we are strengthening the security of the Microsoft Entra ID sign-in experience by introducing additional Content Security Policy (CSP) protections. This change helps protect users from threats such as cross-site scripting (XSS) by allowing only trusted Microsoft-hosted scripts to run during authentication and blocking unauthorized or externally injected code.</p><p>This post is a reminder of our previous announcement (MC1191924), which communicated this upcoming security change and the actions organizations may need to take before rollout.&nbsp;</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Beginning in <b>mid-October 2026</b> and expected to complete by <b>late October 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations whose users authenticate through Microsoft Entra ID sign-in pages hosted on login.microsoftonline.com</li><li>Organizations using browser extensions, monitoring tools, customization tools, or other solutions that inject scripts into the sign-in experience</li><li>Microsoft Entra External ID tenants are not affected</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Entra ID</li><li>Web-based authentication experiences using login.microsoftonline.com</li><li>Browser-based sign-in experiences across supported browsers</li></ul><p><i>What will happen</i></p><ul><li>A new Content Security Policy (CSP) header will be added to Microsoft Entra ID sign-in pages.</li><li>Scripts will be permitted only from trusted Microsoft content delivery network (CDN) domains.</li><li>Inline script execution will be restricted to trusted Microsoft-authorized sources.</li><li>Browser extensions and tools that inject scripts into Microsoft Entra ID sign-in pages may stop functioning.</li><li>Users will continue to be able to sign in even if unsupported script injection tools no longer function.</li><li>This change is enabled by default as part of the service update and does not require tenant configuration.</li><li>Microsoft Authentication Library (MSAL) and API-based authentication flows are not affected because CSP enforcement applies only to browser-based sign-in experiences using login.microsoftonline.com.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>If your organization does not use tools or extensions that inject code into Microsoft Entra ID sign-in pages, no action is required.</p><p>If your organization uses tools that inject code into the sign-in experience:</p><ul><li>Review the CSP guidance and assess whether any tools, browser extensions, or custom solutions rely on script injection.</li><li>Test affected authentication workflows ahead of rollout.</li><li>Replace or update any solutions that depend on script injection into Microsoft Entra sign-in pages.</li><li>Communicate potential impacts to help desk and identity administration teams.</li><li>Update internal documentation if it references affected authentication customizations.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/entra/identity-platform/content-security-policy\" target=\"_blank\">Content Security Policy (CSP) rollout in Microsoft Entra ID - Microsoft identity platform | Microsoft Learn</a></li><li><a href=\"https://content-security-policy.com/script-src/\" target=\"_blank\">CSP ⟶ script-src Guide</a></li><li><a href=\"https://content-security-policy.com/nonce/\" target=\"_blank\">CSP Nonce ⟶ Script &amp; Style Attribute</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/microsoft-entra-blog/enhance-protection-of-microsoft-entra-id-authentication-by-blocking-external-scr/4435200\" target=\"_blank\">Enhance protection of Microsoft Entra ID authentication by blocking external script injection | Microsoft Community Hub</a></li><li><a href=\"https://www.microsoft.com/trust-center/security/secure-future-initiative?msockid=22346ecb805f631739b27a6e81726266\" target=\"_blank\">Secure Future Initiative – Secure by Design | Microsoft</a></li><li><a href=\"https://www.microsoft.com/msrc/blog/2025/09/why-xss-still-matters-msrcs-perspective-on-a-25-year-old-threat\" target=\"_blank\">why-xss-still-matters-msrcs-perspective-on-a-25-year-old-threat</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Entra ID will enhance sign-in security by enforcing a Content Security Policy blocking external script injection starting mid-October 2026. Only trusted Microsoft scripts will run, affecting organizations using script-injecting tools on login.microsoftonline.com. No action needed if such tools aren't used."
+    }
+  ],
+  "EndDateTime": "2026-12-16T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1481309",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-09-28T23:44:16.92Z",
+  "Services": [
+    "Microsoft Entra",
+    "Microsoft 365 suite"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-09-28T23:43:47Z",
+  "Tags": [
+    "Feature update",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Entra ID: Enhance protection of the authentication experience by blocking external script injection",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
