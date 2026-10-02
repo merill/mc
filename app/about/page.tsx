@@ -2,6 +2,8 @@ import { Metadata } from "next"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
+import { getAdminConsentUrl, getOwnAppMailto } from "@/lib/tenant-contribution"
+import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = {
@@ -27,7 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
+const contribution = siteConfig.tenantContribution
+const [githubOwner, githubRepo] = contribution.githubRepository.split("/")
+
 export default function AboutPage() {
+  const consentUrl = getAdminConsentUrl()
+  const ownAppMailto = getOwnAppMailto()
+
   return (
     <section className="page-shell">
       <div className="page-intro">
@@ -78,20 +86,214 @@ export default function AboutPage() {
         </Card>
       </div>
 
-      <Card>
+      <Card id="contribute" className="scroll-mt-20">
         <CardHeader>
           <CardTitle>Help improve tenant coverage</CardTitle>
         </CardHeader>
         <CardContent className="readable-card-content">
           <p>
             Some entries may be missing, especially posts shown only to EDU,
-            government, or tenants with additional products and licenses.
-            I&apos;m always eager to connect with folks who can help make the
-            archive more complete.
+            government, or tenants with additional products and licenses. If you
+            manage a tenant (a dev or test tenant is ideal), you can let the
+            archive read its Message Center. It takes about five minutes and
+            there is no password, secret, or certificate to create or share.
+          </p>
+          <p>The access is deliberately narrow:</p>
+          <ul>
+            <li>
+              The only permission is the Microsoft Graph application permission{" "}
+              <code>ServiceMessage.Read.All</code> (Read service messages). It
+              cannot read users, groups, mail, files, sign-ins, or any other
+              data, and it cannot change anything in your tenant.
+            </li>
+            <li>
+              The app signs in with workload identity federation: Microsoft
+              Entra only issues a token to the scheduled GitHub Actions workflow
+              on the <code>{contribution.githubBranch}</code> branch of{" "}
+              <Link
+                className="readable-link"
+                href={`https://github.com/${contribution.githubRepository}`}
+              >
+                {contribution.githubRepository}
+              </Link>
+              . No credential exists that could leak.
+            </li>
+            <li>
+              You can remove access at any time by deleting the enterprise
+              application in your tenant.
+            </li>
+          </ul>
+
+          <h2 className="pt-2 text-xl font-semibold text-foreground">
+            Option 1: one-click admin consent (recommended)
+          </h2>
+          <p>
+            You need a Global Administrator or Privileged Role Administrator
+            account, because only those roles can consent to a Microsoft Graph
+            application permission.
+          </p>
+          <ol>
+            <li>
+              Select <strong>Grant read-only access</strong> below and sign in
+              with your admin account.
+              {consentUrl ? (
+                <span className="mt-3 block">
+                  <a
+                    className={buttonVariants()}
+                    href={consentUrl}
+                    rel="nofollow"
+                  >
+                    Grant read-only access
+                  </a>
+                </span>
+              ) : (
+                <span className="mt-1 block text-sm text-muted-foreground">
+                  The one-click consent link is not available yet. Use option 2
+                  or email me and I will send you the link.
+                </span>
+              )}
+            </li>
+            <li>
+              Check that the prompt names the{" "}
+              <strong>{contribution.appName}</strong> app and lists only{" "}
+              <strong>Read service messages</strong> as the permission it
+              requests, then select <strong>Accept</strong>. This adds a{" "}
+              {contribution.appName} enterprise application to your tenant.
+            </li>
+            <li>
+              Microsoft returns you to this site, which shows your tenant ID and
+              a pre-filled email. Select <strong>Send the email</strong>. Only
+              the tenant ID is needed; the tenant type and whether to credit you
+              are optional.
+            </li>
+            <li>
+              I confirm the app can read your Message Center, add your tenant to
+              the private list, and reply when it is live. New posts show up
+              within a few hours of the next refresh.
+            </li>
+          </ol>
+
+          <h2 className="pt-2 text-xl font-semibold text-foreground">
+            Option 2: use your own app registration
+          </h2>
+          <p>
+            Use this if your organization does not allow apps registered in
+            other tenants. You own the app and its federated credential, and can
+            remove either at any time. You need an Application Administrator to
+            create the app, and a Global Administrator or Privileged Role
+            Administrator to grant consent.
+          </p>
+          <ol>
+            <li>
+              In the{" "}
+              <Link
+                className="readable-link"
+                href="https://entra.microsoft.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade"
+              >
+                Microsoft Entra admin center
+              </Link>
+              , go to <strong>Entra ID</strong> &gt;{" "}
+              <strong>App registrations</strong> &gt;{" "}
+              <strong>New registration</strong>. Enter the name{" "}
+              <code>{contribution.appName}</code>, choose{" "}
+              <strong>Accounts in this organizational directory only</strong>,
+              leave the redirect URI empty, and select <strong>Register</strong>
+              .
+            </li>
+            <li>
+              Open <strong>API permissions</strong>. Remove the default{" "}
+              <code>User.Read</code> permission, then select{" "}
+              <strong>Add a permission</strong> &gt;{" "}
+              <strong>Microsoft Graph</strong> &gt;{" "}
+              <strong>Application permissions</strong>, tick{" "}
+              <code>ServiceMessage.Read.All</code>, and select{" "}
+              <strong>Add permissions</strong>. Select{" "}
+              <strong>Grant admin consent</strong> and confirm.
+            </li>
+            <li>
+              Open <strong>Certificates &amp; secrets</strong> &gt;{" "}
+              <strong>Federated credentials</strong> &gt;{" "}
+              <strong>Add credential</strong> and enter:
+              <ul className="mt-2">
+                <li>
+                  Federated credential scenario:{" "}
+                  <strong>GitHub Actions deploying Azure resources</strong>
+                </li>
+                <li>
+                  Organization: <code>{githubOwner}</code>
+                </li>
+                <li>
+                  Repository: <code>{githubRepo}</code>
+                </li>
+                <li>
+                  Entity type: <strong>Branch</strong>, GitHub branch name:{" "}
+                  <code>{contribution.githubBranch}</code>
+                </li>
+                <li>
+                  Name: <code>mc-archive</code>, and leave the audience as{" "}
+                  <code>api://AzureADTokenExchange</code>
+                </li>
+              </ul>
+              The subject identifier must read{" "}
+              <code className="break-all">
+                repo:{contribution.githubRepository}:ref:refs/heads/
+                {contribution.githubBranch}
+              </code>
+              . Do not create a client secret or certificate.
+            </li>
+            <li>
+              From the app&apos;s <strong>Overview</strong>, copy the{" "}
+              <strong>Directory (tenant) ID</strong> and{" "}
+              <strong>Application (client) ID</strong> into{" "}
+              <a className="readable-link" href={ownAppMailto}>
+                this pre-filled email
+              </a>{" "}
+              and send it. I verify the connection and reply when it is live.
+            </li>
+          </ol>
+
+          <h2 className="pt-2 text-xl font-semibold text-foreground">
+            Your privacy
+          </h2>
+          <ul>
+            <li>
+              Your email address and tenant ID are kept in a private repository
+              that only I can read, and are never published.
+            </li>
+            <li>
+              The public workflow receives tenant IDs from an encrypted GitHub
+              Actions secret, masks them in its logs, and reduces sign-in errors
+              to error codes so logs never reveal which organizations
+              contribute.
+            </li>
+            <li>
+              The archive does not record which tenant a post came from, and you
+              are only credited if you ask to be.
+            </li>
+            <li>
+              I will never ask you for a password, client secret, or
+              certificate. If anyone does in the archive&apos;s name, it is not
+              me.
+            </li>
+          </ul>
+
+          <h2 className="pt-2 text-xl font-semibold text-foreground">
+            Removing access
+          </h2>
+          <p>
+            In the Microsoft Entra admin center, go to <strong>Entra ID</strong>{" "}
+            &gt; <strong>Enterprise applications</strong>, open{" "}
+            <strong>{contribution.appName}</strong>, and select{" "}
+            <strong>Properties</strong> &gt; <strong>Delete</strong> (for option
+            2, delete the app registration). Access stops as soon as the
+            existing token expires, within an hour. Email{" "}
+            <a className="readable-link" href={`mailto:${contribution.email}`}>
+              {contribution.email}
+            </a>{" "}
+            if you would also like your details removed from my list.
           </p>
           <p>
-            If you have a test tenant and can create a read-only service
-            principal for Message Center access, please reach out through{" "}
+            Questions first? Reach out through{" "}
             <Link
               className="readable-link"
               href="https://linkedin.com/in/merill"
@@ -121,6 +323,20 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 2, 2026
+            </h2>
+            <ul>
+              <li>
+                Added step-by-step instructions for contributing a tenant to the
+                archive, either with one-click admin consent to a read-only app
+                or with your own app registration. Both use workload identity
+                federation, so there is no secret to share, and contributing
+                tenants are kept private.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               September 15, 2026
             </h2>
             <ul>
@@ -143,10 +359,10 @@ export default function AboutPage() {
             </h2>
             <ul>
               <li>
-                Table columns are now sortable. Click ID, Title, or Last
-                updated to sort, and click again to reverse it. While
-                searching, sorting applies to every match rather than only the
-                results already loaded.
+                Table columns are now sortable. Click ID, Title, or Last updated
+                to sort, and click again to reverse it. While searching, sorting
+                applies to every match rather than only the results already
+                loaded.
               </li>
               <li>
                 Fixed the default ordering of the archive. Expired posts were
@@ -161,17 +377,15 @@ export default function AboutPage() {
                 however old it is.
               </li>
               <li>
-                Added an RSS link to the site header so the existing feed of
-                the latest 500 Message Center and Roadmap posts is easier to
-                find.
+                Added an RSS link to the site header so the existing feed of the
+                latest 500 Message Center and Roadmap posts is easier to find.
               </li>
               <li>
                 Replaced the ID and title filters with full-text search across
                 every post, including the full body text of expired posts.
-                Search runs entirely in the browser against a pre-built
-                Pagefind index, ranks results by relevance, highlights the
-                matched words in context, and still honours the source and
-                service filters.
+                Search runs entirely in the browser against a pre-built Pagefind
+                index, ranks results by relevance, highlights the matched words
+                in context, and still honours the source and service filters.
               </li>
               <li>
                 The archive now collects Message Center posts from more than one
@@ -213,10 +427,9 @@ export default function AboutPage() {
                 addition to the post body.
               </li>
               <li>
-                Added a metadata cards panel to version comparison and
-                snapshot pages so changes to fields like tags, severity,
-                status, and release phase are visible at a glance alongside
-                the body diff.
+                Added a metadata cards panel to version comparison and snapshot
+                pages so changes to fields like tags, severity, status, and
+                release phase are visible at a glance alongside the body diff.
               </li>
               <li>
                 Smooth-scroll when jumping to in-page sections like Version
@@ -226,9 +439,9 @@ export default function AboutPage() {
               <li>
                 Reworked the Version history card so the two most common
                 comparisons &mdash; latest vs previous and latest vs original
-                &mdash; are one-click primary buttons at the top, with a
-                summary line showing how many times the post has been updated
-                since its original publish date.
+                &mdash; are one-click primary buttons at the top, with a summary
+                line showing how many times the post has been updated since its
+                original publish date.
               </li>
             </ul>
           </div>
@@ -244,16 +457,15 @@ export default function AboutPage() {
               </li>
               <li>
                 Added per-message version history with a timeline of prior
-                versions, dedicated snapshot pages for each version, and
-                inline visual diffs (additions in green, deletions in red)
-                comparing any two versions of a Message Center or Roadmap
-                post.
+                versions, dedicated snapshot pages for each version, and inline
+                visual diffs (additions in green, deletions in red) comparing
+                any two versions of a Message Center or Roadmap post.
               </li>
               <li>
-                Linked plain-text references between Message Center posts
-                inside body content, added a Related posts panel showing
-                References and Referenced by, and exposed those edges in
-                messages-index.json for AI and search consumers.
+                Linked plain-text references between Message Center posts inside
+                body content, added a Related posts panel showing References and
+                Referenced by, and exposed those edges in messages-index.json
+                for AI and search consumers.
               </li>
             </ul>
           </div>

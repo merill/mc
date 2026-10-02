@@ -37,6 +37,16 @@ export const siteConfig = {
       href: "https://maester.cloud",
     },
   ],
+  tenantContribution: {
+    // Application (client) ID of the multi-tenant contributor app, supplied at
+    // build time from the GRAPH_CONTRIBUTOR_CLIENT_ID repository variable.
+    clientId: process.env.NEXT_PUBLIC_CONTRIBUTOR_CLIENT_ID?.trim() ?? "",
+    appName: "Message Center Archive",
+    email: "merill@merill.net",
+    redirectUri: "https://mc.merill.net/connect",
+    githubRepository: "merill/mc",
+    githubBranch: "main",
+  },
   links: {
     rss: "/rss.xml",
     twitter: "https://twitter.com/merill",

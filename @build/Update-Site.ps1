@@ -51,7 +51,7 @@ function Get-AllTenantMessageCenterItems() {
             Write-Host "Tenant '$($tenant.Name)' returned $($items.Count) items ($($summary.Added) new, $($summary.Replaced) updated, $($summary.Ignored) already current)"
         }
         catch {
-            $message = "Tenant '$($tenant.Name)' could not be refreshed: $($_.Exception.Message)"
+            $message = "Tenant '$($tenant.Name)' could not be refreshed: $(Get-M365SafeErrorMessage -Tenant $tenant -ErrorRecord $_)"
             if($tenant.Required){ throw $message }
             Write-Warning $message
         }
