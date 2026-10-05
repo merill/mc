@@ -219,6 +219,50 @@
         "Source": "messageCenter",
         "AdditionalProperties": {}
       }
+    },
+    {
+      "capturedAt": "2026-10-05T16:40:22.323Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-10-01T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated October 5, 2026: Gov rollout of this feature is paused at this time. We will communicate via Message center when we are ready to proceed. We apologize for any inconvenience.</p><p><b>What and Why:</b></p><p>Exchange Web Services (EWS) deprecation begins <b>October 1, 2026</b>. Cross-tenant collaboration features — Free/Busy, MailTips, and Calendar Sharing — currently rely on EWS.</p><p>Cross-tenant Free/Busy, MailTips will be available by <b>September 2026 </b>and Calendar Sharing will be available by <b>mid-October 2026</b> via Microsoft 365 Cross-Tenant Access Policy, which replaces EWS-based cross-tenant collaboration.</p><p><b>Rollout Schedule:</b></p><ul><li>Worldwide: We will begin rolling out in August 2026 and expect to complete by <b>September 15, 2026</b> for Free/Busy, Mailtips and <b>October 15, 2026</b> for Calendar Sharing.</li><li>GCC, GCC High, DoD: We will communicate via Message center when we are ready to proceed.</li></ul><p><b>Impact on your organization:</b></p><p>Sharing Free/Busy, Calendars, and MailTips (e.g., out of office message) with another Microsoft 365 organization via Organization Relationship or Sharing Policy relies on Exchange Web Services (EWS), which is being deprecated. To preserve these cross-tenant collaboration scenarios, you will need to start migrating to Microsoft 365 Cross Tenant Access Policy.</p><p>Your tenant is affected if it uses any of the following Exchange Online configurations:</p><ul><li><b>Organization Relationships</b> — sharing Free/Busy or MailTips with other Microsoft 365 tenants&nbsp;</li><li><b>Sharing Policies</b> — sharing calendars externally, either via invitations sent to recipients in other Microsoft 365 organizations or calendars published for anonymous access via an internet URL</li></ul><p>Run these commands in Exchange Online PowerShell to check if your tenant is affected:&nbsp;</p><ul><li><ul><li><code>Get-OrganizationRelationship | Format-List Name, DomainNames, Enabled, FreeBusyAccessEnabled, FreeBusyAccessLevel, FreeBusyAccessScope, MailTipsAccessEnabled, MailTipsAccessLevel, MailTipsAccessScope</code>If results show (1) Enabled: True, and (2) either FreeBusyAccessEnabled: True or MailtipsAccessEnabled: True, and (3) the external organization is hosted in Microsoft 365, your tenant is affected and in scope to migrate. Else, no action is needed.&nbsp;</li><li><code>Get-SharingPolicy | Format-List Name, Domains, Enabled, Default</code>If results show (1) Enabled: True, and (2) the Domains property contains at least one rule with a CalendarSharingFreeBusy access level (Simple, Detail, or Reviewer), and (3) the targeted external organization is hosted in Microsoft 365, and (4) the policy is assigned to one or more mailboxes, your tenant is affected and in scope to migrate. Else, no action is needed.</li><li>Note: rules that begin with Anonymous: represent calendar publishing to anonymous internet recipients via a published URL - these also appear in this output.</li></ul></li></ul><p><i><u>What happens if I do nothing:</u></i></p><p>Starting October 1, 2026, Exchange Web Services (EWS) will be gradually disabled in line with previous communications linked to this message. As this rollout reaches your tenant, cross-tenant Free/Busy, MailTips, and Calendar Sharing that rely on EWS will be affected — recipients in partner organizations may no longer see Free/Busy, MailTips, or shared calendars from your tenant.&nbsp;</p><p>If your organization <b>is not ready to migrate</b>, you can retain EWS access by following the guidance of the latest blog we published: <a href=\"https://techcommunity.microsoft.com/blog/exchange/exchange-online-ews-your-time-is-almost-up/4492361\" rel=\"noopener noreferrer\" target=\"_blank\">ExchangeOnline EWS, Your Time is Almost Up</a> (<b><i>EWSEnabled</i></b><i> set to </i><b><i>True</i></b>) while you prepare and execute the migration steps attached to this message. EWS access through this extension will remain available until the final EWS shutdown on April 1, 2027.&nbsp;</p><p><b>Action Required/Recommendations:</b></p><ul><li><b>Follow this Message center post</b> for updates to the rollout schedule. To avoid impact, <b>plan to migrate after the rollout reaches your tenant and before EWS deprecation</b>.</li><li><b>Review the migration guide linked below</b> for step-by-step instructions to understand your current configurations, set up new Microsoft 365 Cross Tenant Access Policies, validate the new configurations, and remove unused configurations.&nbsp;</li><li><b>Check the blog post linked below</b> for additional information and answers to frequently asked questions.&nbsp;</li><li><b>Hybrid and on-premises scenarios are not in scope</b>. This update applies to fully cloud-hosted (Exchange Online ↔ Exchange Online) cross-tenant and cross-cloud configurations only. For organizations running on-premises Exchange and Exchange Online in a Hybrid Deployment, migrate to <a href=\"https://learn.microsoft.com/exchange/hybrid-deployment/deploy-dedicated-hybrid-app\" rel=\"noopener noreferrer\" target=\"_blank\">Dedicated Hybrid App</a>. For organizations hosted in Exchange Online sharing with another organization running Exchange on-premises, kindly monitor future Message Center posts for guidance on migration paths as they become available.&nbsp;</li></ul><p><b>Additional information:</b></p><ul><li><b>Migration guide:</b> <a href=\"https://learn.microsoft.com/exchange/sharing/migrate-to-m365-xtap\" rel=\"noopener noreferrer\" target=\"_blank\">Migrating to Microsoft 365 Cross-Tenant Access Policy for sharing Free/Busy, Calendars, and MailTips</a>.</li><li><a href=\"https://learn.microsoft.com/graph/api/resources/m365-cross-tenant-access-policy-overview?view=graph-rest-1.0\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft 365 Cross-Tenant Access Policy Microsoft Graph API Overview</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/exchange/exchange-online-ews-your-time-is-almost-up/4492361\" rel=\"noopener noreferrer\" target=\"_blank\">Exchange Online EWS, Your Time is Almost Up</a></li><li><a href=\"https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/deprecation-of-ews-exchange-online\" rel=\"noopener noreferrer\" target=\"_blank\">Deprecation of EWS in Exchange Online&nbsp;</a></li><li><a href=\"https://www.microsoft.com/en-us/security/blog/2025/07/08/enhancing-microsoft-365-security-by-eliminating-high-privilege-access/\" rel=\"noopener noreferrer\" target=\"_blank\">Enhancing Microsoft 365 security by eliminating high-privilege access</a>&nbsp;</li><li><b>Blog Post:</b> <a href=\"https://techcommunity.microsoft.com/blog/exchange/cross-tenant-freebusy-mailtips-and-calendar-sharing-are-moving-to-cross-tenant-a/4545169\" rel=\"noopener noreferrer\" target=\"_blank\">Cross-tenant Free/Busy, MailTips, and Calendar Sharing are moving to Cross-Tenant Access Policy</a></li></ul>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Exchange Web Services (EWS) deprecation starts October 1, 2026, affecting cross-tenant Free/Busy, MailTips, and Calendar Sharing. Migration to Microsoft 365 Cross-Tenant Access Policy is required by mid-October 2026 to avoid service disruption. Gov rollout is paused; updates will be shared via Message center."
+          }
+        ],
+        "EndDateTime": "2026-12-28T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1446796",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-10-05T16:40:22.323Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-08-03T22:18:34Z",
+        "Tags": [
+          "Updated message",
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Migrate Free/Busy, MailTips, and Calendar Sharing before EWS deprecation",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
     }
   ]
 }
