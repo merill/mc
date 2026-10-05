@@ -1,0 +1,48 @@
+{
+  "id": "MC1485116",
+  "versions": [
+    {
+      "capturedAt": "2026-10-01T22:54:34.76Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>As previously communicated in <i>MC1466860</i> and <i>MC1447678</i>, Microsoft is continuing the retirement of Exchange Web Services (EWS) in Exchange Online.</p><p>Beginning October 10, 2026, setting EWSEnabled=True will no longer be sufficient to allow EWS access for affected Worldwide tenants. Organizations that require EWS must configure EWSAllowedAppIDs to specify which applications are permitted to access EWS.</p><p>This change is part of the final phase of EWS retirement and is intended to help organizations identify EWS dependencies, reduce service disruption, and support migration planning.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Worldwide, GCC, GCC High, DoD:</b> Beginning in <b>early October 2026</b> and expected to complete by <b>early July 2027</b></li></ul><p><b>Key milestones for Worldwide tenants with EWSEnabled=True and no configured EWSAllowedAppIDs list:</b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-muq1rbu2-4\"><b>Date</b></td><td data-row=\"row-muq1rbu2-4\"><b>Milestone</b></td></tr><tr><td data-row=\"row-muq1rbu2-5\">October 2, 2026</td><td data-row=\"row-muq1rbu2-5\">Microsoft identifies affected Worldwide tenants. After this date, tenants that enable EWS must configure EWSAllowedAppIDs themselves.</td></tr><tr><td data-row=\"row-muq1rbu2-6\">October 8-9, 2026</td><td data-row=\"row-muq1rbu2-6\">Microsoft creates and populates EWSAllowedAppIDs for qualifying Worldwide tenants based on EWS activity observed during the previous 60 days.</td></tr><tr><td data-row=\"row-muq1rbu2-7\">October 10, 2026</td><td data-row=\"row-muq1rbu2-7\">EWSAllowedAPPIDs becomes required when EWSEnabled=True. Applications note included in the allow list may lose access to EWS.</td></tr></tbody></table><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Exchange Online administrators</li><li>Organizations that continue to use applications or services that depend on EWS</li><li>Tenants with <b>EWSEnabled=True</b></li></ul><p><i>Platforms and services</i></p><ul><li>Exchange Online</li><li>Exchange Web Services (EWS)</li></ul><p><i>What will happen</i></p><ul><li>Beginning October 10, 2026, affected Worldwide tenants with EWSEnabled=True must have a configured EWSAllowedAppIDs allow list. Applications not included in the allow list may lose access to EWS.</li><li>For identified Worldwide tenants with EWSEnabled=True and no configured EWSAllowedAppIDs list on October 3 2026, Microsoft creates and populates an allow list using EWS activity observed during the previous 60 days. Infrequently used applications may not be identified.</li><li>Cross-tenant organization relationships are not affected by the EWSAllowedAppIDs requirement.</li><li>Organizations remain responsible for reviewing, validating, and maintaining EWSAllowedAppIDs.</li><li>EWSAllowedAppIDs is a replacement list. Ensure all required AppIDs are included whenever the configuration is updated.</li><li>Microsoft applications and scenarios that may generate EWS traffic include Outlook for Windows, Classic Outlook for Mac, Excel Power Query, Power BI, and Exchange Server hybrid scenarios.</li><li>Outlook for Windows customers should be on August 2026 build 16.0.20430.20092 or later. If EWS-related issues continue after disabling EWS, the cause may be customer-forced configuration. Test whether blocking EWS for the Office client AppID is possible without impact.</li><li>New Outlook for Mac is not affected. If your organization continues to use Classic Outlook for Mac, ensure the Microsoft Office AppID is included in EWSAllowedAppIDs.</li><li>Tenants with EWSEnabled not configured (Null) remain subject to Microsoft's phased EWS retirement process and will have EWS disabled as part of that rollout.</li><li>Organizations with EWSEnabled=True and a configured EWSAllowedAppIDs allow list will not have their EWSEnabled setting modified by Microsoft before April 2027.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>If your organization relies on EWS:</p><ul><li>Review EWS usage reports and identify applications and services that require continued EWS access.</li><li>Configure and validate an EWSAllowedAppIDs allow list before October 10, 2026.</li><li>Include Microsoft first-party applications that continue to rely on EWS if they appear in your usage reporting.</li><li>Ensure all required AppIDs are included whenever EWSAllowedAppIDs is updated.</li><li>Keep the allow list current as applications are added, removed, or migrated away from EWS.</li><li>Enable EWS only when required for approved applications.</li><li>Continue planning migration from EWS to Microsoft Graph where possible.</li></ul><p>To verify the configured allow list: <code>Get-OrganizationConfig -RetrieveEwsOperationAccessPolicy | Format-List EwsAllowedAppIDs</code></p><p>Allow up to 24 hours for EWSAllowedAppIDs changes to take effect and approximately one hour for EWSEnabled changes.</p><p><b><i>Important:</i></b><i> EWSAllowList is unrelated to EWS retirement and does not replace EWSAllowedAppIDs.</i></p><p><b>Learn more</b></p><ul><li><a href=\"https://techcommunity.microsoft.com/blog/exchange/exchange-online-ews-your-time-is-almost-up/4492361\" rel=\"noopener noreferrer\" target=\"_blank\">Exchange Online EWS, Your Time is Almost Up | Microsoft Community Hub</a></li><li><a href=\"https://support.microsoft.com/support/known-issues/how-to-revert-the-outlook-desktop-webview-based-room-finder-to-the-legacy-room-finder\" rel=\"noopener noreferrer\" target=\"_blank\">How to revert the Outlook Desktop WebView based Room Finder to the legacy Room Finder | Microsoft Support</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/exchange/impact-of-exchange-online-ews-deprecation-on-hybrid-rich-coexistence-and-cross-o/4561161\" rel=\"noopener noreferrer\" target=\"_blank\">Impact of Exchange Online EWS Deprecation on Hybrid Rich Coexistence and Cross-org Sharing | Microsoft Community Hub</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/exchange/notes-from-the-field-testing-ewsallowedappids-safely/4548568\" rel=\"noopener noreferrer\" target=\"_blank\">Notes from the field: testing EWSAllowedAppIDs safely | Microsoft Community Hub</a></li></ul><p><b><b>Compliance considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-muq0zcka-3\">Question</td><td data-row=\"row-muq0zcka-3\">Answer</td></tr><tr><td data-row=\"row-muq0zcka-4\">Does this change include an admin control?</td><td data-row=\"row-muq0zcka-4\">Yes. EWSAllowedAppIDs introduces a tenant-level administrative control that allows Exchange Online administrators to explicitly define which applications are permitted to access EWS.</td></tr><tr><td data-row=\"row-muq0zcka-5\">Does this change alter how existing customer data is accessed?</td><td data-row=\"row-muq0zcka-5\">Yes. The change modifies how applications are authorized to access Exchange Online data through EWS by requiring administrators to explicitly allow approved application IDs as retirement enforcement begins.</td></tr><tr><td data-row=\"row-muq0zcka-6\">Does this change alter how admins monitor, manage, or demonstrate compliance-related activities?</td><td data-row=\"row-muq0zcka-6\">Yes. Administrators must identify EWS dependencies, configure and maintain an EWSAllowedAppIDs allow list, and validate application access as part of preparing for EWS retirement.</td></tr></tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Starting October 10, 2026, Exchange Online tenants must configure EWSAllowedAppIDs to allow Exchange Web Services (EWS) access; EWSEnabled=True alone will no longer suffice. Microsoft will auto-populate allow lists for some tenants, but organizations must review, maintain, and migrate from EWS to Microsoft Graph."
+          }
+        ],
+        "EndDateTime": "2027-09-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1485116",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-10-01T22:54:34.76Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-10-01T22:54:22Z",
+        "Tags": [
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Microsoft Exchange Online: Exchange Web Services (EWS) enforcement update for EWSAllowedAppIDs",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

@@ -39,6 +39,10 @@ jobs:
           # Leave the variables unset to keep the refresh on the primary tenant only.
           GRAPH_FEDERATED_TENANT_ID: ${{ vars.GRAPH_FEDERATED_TENANT_ID }}
           GRAPH_FEDERATED_CLIENT_ID: ${{ vars.GRAPH_FEDERATED_CLIENT_ID }}
+          # Community contributed tenants that consented to the multi-tenant app.
+          # The tenant list is a secret so contributors stay private; it is only
+          # passed on main branch runs, which the federated credential trusts.
+          GRAPH_CONTRIBUTOR_TENANTS: ${{ github.event_name != 'pull_request' && secrets.GRAPH_CONTRIBUTOR_TENANTS || '' }}
         run: |
           ./@build/Update-Site.ps1 -GraphSecret ${{ secrets.GRAPH_SECRET }}
         shell: pwsh

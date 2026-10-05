@@ -1,0 +1,39 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and Why:</b></b></p><p>We are introducing a new Microsoft Purview Data Loss Prevention (DLP) capability that allows administrators to configure the destination URL for the <b>Learn about access restrictions</b> link displayed in <i>Microsoft 365 Copilot data access messages</i>. This enhancement enables organizations to direct users to internal compliance guidance, data governance resources, or support content that is specific to their organization, while maintaining a consistent and localized user experience. This supports enterprise-ready AI by helping organizations provide policy-specific guidance when DLP policies restrict Copilot access to content.</p><p>Today, when a Microsoft Purview DLP policy prevents Microsoft 365 Copilot from grounding on, processing, or returning content, users receive a message explaining that the content was restricted by an organizational policy, together with a <b>Learn about access restrictions</b> link to Microsoft's public DLP documentation. With this update, organizations can direct that link to a compliance URL of their own, such as an internal data-handling policy page, data governance portal, or help desk request form, so users are connected to guidance that is specific to their organization.</p><p>The message wording and the link label remain standardized, Microsoft-controlled, and localized. Only the destination of the link changes. Administrator-authored message text is not part of this release.</p><p><b><b>Rollout Schedule:</b></b></p><ul><li><b>General Availability (Worldwide):</b> Beginning in <b>late September 2026</b> and expected to complete by <b>late September 2026</b></li><li><b>General Availability (GCC, GCC High, DoD):</b> Beginning in <b>late September 2026</b> and expected to complete by <b>mid-October 2026</b></li></ul><p><b><b>Impact on Your Organization:</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using Microsoft Purview DLP policies that apply to Microsoft 365 Copilot</li><li>Microsoft Purview administrators who manage DLP policies</li><li>Users who encounter DLP-enforced access restrictions in supported Microsoft 365 Copilot experiences</li></ul><p><i>Platforms/Services</i></p><p>Microsoft 365 Copilot</p><ul><li>copilot.microsoft.com</li><li>Microsoft365.com</li><li>Teams (Copilot app)</li><li>Copilot mobile app</li><li>Copilot Search</li><li>Copilot Pages</li></ul><p>Microsoft Teams</p><ul><li>Copilot in Chat (1:1 and group)</li><li>Copilot in Meetings (live)</li><li>Meeting Recap (post-meeting)</li><li>Copilot in Channels</li><li>Copilot in Calls</li></ul><p>Outlook on the web</p><ul><li>Web Copilot pane (chat)</li></ul><p>Microsoft Edge</p><ul><li>Copilot sidebar (any webpage)</li><li>Edge web-mode chat</li></ul><p><i>What will happen</i></p><ul><li>Administrators can configure a compliance URL on supported Microsoft Purview DLP rules.</li><li>If a DLP rule with a configured compliance URL blocks a Copilot interaction, the <b>Learn about access restrictions</b> link opens the configured organizational URL.</li><li>If no compliance URL is configured, the link continues to open Microsoft's existing public DLP documentation.</li><li>Organizations that do not configure a compliance URL will experience no change in behavior.</li><li>When multiple DLP rules or policies match the same Copilot interaction, Microsoft Purview selects a single winning policy tip using policy priority and the most restrictive action.</li><li>Only the compliance URL from the winning rule is displayed to the user. URLs from non-winning rules are not shown.</li><li>This setting applies only to Microsoft Purview DLP restrictions.</li><li>Organization-specific link resolution for other access control technologies is not included in this release.</li><li>Message wording and link labels remain Microsoft-controlled and localized.</li><li>Administrator-authored message text is not included in this release.</li><li>Existing DLP enforcement behavior is unchanged.</li><li>The feature is not enabled automatically. Administrators must configure a compliance URL on a DLP rule for users to see an organization-specific destination.</li></ul><p><i>Image 1 - User experience showing a Microsoft 365 Copilot data access message with the </i><b><i>Learn about access restrictions</i></b><i> link:</i></p><p><img src=\"\nhttps://support.microsoft.com/en-us/customercomms/media/messagecenter/2026/09/21963-1.png\" width=\"400\"></p><p><i>Image 2 - Microsoft Purview DLP rule configuration showing the compliance URL setting under </i><b><i>User notifications</i></b><i>:</i></p><p><img src=\"\nhttps://support.microsoft.com/en-us/customercomms/media/messagecenter/2026/09/21963-2.png\" width=\"400\"></p><p><b><b>Action Required / Recommendations:</b></b></p><p>No action is required if you want users to continue using the default Microsoft documentation link.</p><p>To direct users to organization-specific guidance:</p><ul><li>Identify Microsoft Purview DLP policies that apply to the Microsoft 365 Copilot location.</li><li>In the Microsoft Purview portal, edit the appropriate DLP rule.</li><li>Expand <b>User notifications</b>.</li><li>Turn on <b>Policy tips</b>.</li><li>Select <b>Provide a compliance URL for the end user to learn more about your organization's policies</b>.</li><li>Enter the URL you want users to open.</li></ul><p>We also recommend that you:</p><ul><li>Verify that the configured URL is accessible to all users targeted by the DLP policy. Microsoft Purview validates the format of the URL, but it does not test whether the destination is reachable.</li><li>Test the destination URL before deployment.</li><li>Review DLP policy priority settings because only the winning rule's compliance URL is displayed when multiple rules match.</li><li>Update internal help desk documentation, FAQs, and governance resources if users will be redirected to internal guidance.</li><li>Communicate the change to compliance, governance, and support teams.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about\" target=\"_blank\">Microsoft Purview DLP for Microsoft 365 Copilot and Copilot Chat | Microsoft Learn</a></li></ul><p><b><b>Compliance Considerations</b></b></p><table><tbody><tr><td>Question</td><td>Answer</td></tr><tr><td>Does the change include an admin control, and can it be controlled through Entra ID group membership?</td><td>The feature includes an administrator-configurable compliance URL setting on individual Microsoft Purview DLP rules.</td></tr></tbody></table>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Purview DLP now lets admins configure the destination URL for the \"Learn about access restrictions\" link in Microsoft 365 Copilot data access messages. This directs users to organization-specific compliance guidance instead of Microsoft's public documentation. The feature rolls out worldwide in late September 2026 and requires admin configuration."
+    }
+  ],
+  "EndDateTime": "2026-11-16T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1478467",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-09-24T15:56:21.983Z",
+  "Services": [
+    "Microsoft Purview"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-09-24T15:54:19Z",
+  "Tags": [
+    "Feature update",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Purview | Data Loss Prevention: Admin-configurable compliance URL in M365 Copilot data access messages",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}

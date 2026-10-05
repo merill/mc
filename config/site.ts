@@ -37,6 +37,16 @@ export const siteConfig = {
       href: "https://maester.cloud",
     },
   ],
+  tenantContribution: {
+    // Application (client) ID of the multi-tenant contributor app. It is not a
+    // secret: it appears in the admin consent link and on the consent prompt.
+    clientId: "158ad002-7467-454f-ba15-229a0b719811",
+    appName: "Message Center Archive - Reader",
+    email: "merill@merill.net",
+    redirectUri: "https://mc.merill.net/connect",
+    githubRepository: "merill/mc",
+    githubBranch: "main",
+  },
   links: {
     rss: "/rss.xml",
     twitter: "https://twitter.com/merill",

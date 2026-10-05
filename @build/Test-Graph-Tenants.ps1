@@ -74,6 +74,53 @@ try {
     $secretEnvTenant = @(Get-M365TenantConfig -ConfigPath $tempConfig -DefaultClientSecret 'secret-1')
     Assert-Equal 'secret-2' $secretEnvTenant[0].ClientSecret 'secretEnv overrides the default secret'
 
+    # Private contributor tenants expanded from a JSON list
+    $contributorConfig = @'
+{
+    "tenants": [
+        { "name": "primary", "tenantId": "tenant-1", "clientId": "client-1", "auth": "clientSecret", "required": true },
+        { "name": "contributor", "tenantListEnv": "TEST_MC_CONTRIBUTORS", "clientId": "${TEST_MC_CLIENT_ID}", "auth": "federatedIdentity", "private": true }
+    ]
+}
+'@
+
+    Set-TestConfig $contributorConfig
+    $env:TEST_MC_CONTRIBUTORS = $null
+    $noContributors = @(Get-M365TenantConfig -ConfigPath $tempConfig -DefaultClientSecret 'secret-1')
+    Assert-Equal 1 $noContributors.Count 'an unset contributor list adds no tenants'
+
+    $env:TEST_MC_CLIENT_ID = 'shared-app'
+    $env:TEST_MC_CONTRIBUTORS = '[ "tenant-a", { "label": "edu1", "tenantId": "tenant-b" }, { "label": "Contoso Ltd", "tenantId": "tenant-c", "clientId": "own-app" }, { "label": "x" } ]'
+    $contributors = @(Get-M365TenantConfig -ConfigPath $tempConfig -DefaultClientSecret 'secret-1')
+    Assert-Equal 5 $contributors.Count 'each contributor becomes its own tenant'
+    Assert-Equal 'contributor-01' $contributors[1].Name 'a bare tenant id gets a numbered label'
+    Assert-Equal 'tenant-a' $contributors[1].TenantId 'a bare tenant id is read'
+    Assert-Equal 'shared-app' $contributors[1].ClientId 'contributors default to the shared multi-tenant app'
+    Assert-Equal 'contributor-edu1' $contributors[2].Name 'an anonymous label is kept'
+    Assert-Equal 'contributor-03' $contributors[3].Name 'a label that could identify an organization is replaced'
+    Assert-Equal 'own-app' $contributors[3].ClientId 'a contributor can bring their own app'
+    Assert-Equal 'federatedIdentity' $contributors[3].Auth 'contributors use federated identity'
+    Assert-Equal $true $contributors[3].Private 'contributors are private'
+    Assert-Equal $false $contributors[3].Required 'contributors are never required'
+    Assert-Equal $false $contributors[0].Private 'the primary tenant is not private'
+    Assert-Equal $false $contributors[4].IsConfigured 'a contributor without a tenant id is skipped'
+
+    $env:TEST_MC_CONTRIBUTORS = '{ not json'
+    $badList = @(Get-M365TenantConfig -ConfigPath $tempConfig -DefaultClientSecret 'secret-1')
+    Assert-Equal 2 $badList.Count 'an invalid contributor list is reported once'
+    Assert-Equal $false $badList[1].IsConfigured 'an invalid contributor list is skipped'
+    Assert-Equal 'TEST_MC_CONTRIBUTORS is not valid JSON' $badList[1].SkipReason 'an invalid list does not echo its contents'
+    Assert-Equal $false $badList[1].Required 'an invalid contributor list never fails the refresh'
+
+    # Error messages for private tenants are reduced to error codes
+    $signInError = "AADSTS7000229: The client application is missing service principal in the tenant 'Contoso'. AADSTS7000229 again."
+    $privateTenant = [pscustomobject]@{ Name = 'contributor-01'; Private = $true }
+    $publicTenant = [pscustomobject]@{ Name = 'primary'; Private = $false }
+    $safe = Get-M365SafeErrorMessage -Tenant $privateTenant -ErrorRecord $signInError
+    Assert-Equal 'AADSTS7000229 (details hidden for contributor tenants)' $safe 'private tenant errors keep only the codes'
+    Assert-Equal 'request failed (details hidden for contributor tenants)' (Get-M365SafeErrorMessage -Tenant $privateTenant -ErrorRecord 'Contoso is offline') 'private tenant errors without a code are generic'
+    Assert-Equal $signInError (Get-M365SafeErrorMessage -Tenant $publicTenant -ErrorRecord $signInError) 'public tenant errors are unchanged'
+
     # Merging tenants
     $newer = [pscustomobject]@{ Id = 'MC100'; LastModifiedDateTime = '2026-08-02T00:00:00Z'; Body = [pscustomobject]@{ Content = 'short'; Markdown = '' } }
     $older = [pscustomobject]@{ Id = 'MC100'; LastModifiedDateTime = '2026-08-01T00:00:00Z'; Body = [pscustomobject]@{ Content = 'a much longer body from the other tenant'; Markdown = '' } }
@@ -106,6 +153,7 @@ finally {
     $env:TEST_MC_TENANT_ID = $null
     $env:TEST_MC_CLIENT_ID = $null
     $env:TEST_MC_SECRET = $null
+    $env:TEST_MC_CONTRIBUTORS = $null
 }
 
 if ($failures -gt 0) {
