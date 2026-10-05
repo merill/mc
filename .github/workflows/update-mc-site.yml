@@ -74,10 +74,6 @@ jobs:
       - name: Build search index
         run: node scripts/build-search-index.mjs
       - name: Build with Next.js
-        env:
-          # Shows the one-click admin consent button on the About page once the
-          # multi-tenant contributor app exists. Unset hides the button.
-          NEXT_PUBLIC_CONTRIBUTOR_CLIENT_ID: ${{ vars.GRAPH_CONTRIBUTOR_CLIENT_ID }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

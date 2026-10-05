@@ -65,11 +65,11 @@ Then set the repository Actions **variables** (not secrets) `GRAPH_FEDERATED_TEN
 
 Community members can contribute their tenant from the [About page](https://mc.merill.net/about#contribute) without sharing a secret:
 
-* **One-click consent (recommended).** A multi-tenant `Message Center Archive` app registered in the home tenant holds the only permission, `ServiceMessage.Read.All`, and a federated credential for `repo:merill/mc:ref:refs/heads/main`. A contributor's admin consents through the About page button, lands on `/connect`, and emails the tenant ID shown there. The refresh then requests a token for that tenant with the same GitHub OIDC assertion.
+* **One-click consent (recommended).** A multi-tenant `Message Center Archive - Reader` app registered in the home tenant holds the only permission, `ServiceMessage.Read.All`, and a federated credential for `repo:merill/mc:ref:refs/heads/main`. A contributor's admin consents through the About page button, lands on `/connect`, and emails the tenant ID shown there. The refresh then requests a token for that tenant with the same GitHub OIDC assertion.
 * **Own app registration.** A contributor registers a single-tenant app with the same permission and federated credential, and emails its tenant and client IDs.
 
 Contributor tenants are tracked in the private `merill/mc-tenants` repository, which verifies each tenant and writes the anonymous list to the `GRAPH_CONTRIBUTOR_TENANTS` Actions **secret**: a JSON array such as `[{"label":"c01","tenantId":"..."},{"label":"c02","tenantId":"...","clientId":"..."}]` (plain tenant ID strings also work). Labels appear in public logs, so they must be short anonymous tokens; anything else is replaced with a number. The secret is only passed on non pull request runs, which are the runs the federated credential trusts.
 
-Set the repository **variable** `GRAPH_CONTRIBUTOR_CLIENT_ID` to the multi-tenant app's client ID. The data refresh uses it for every contributor without their own `clientId`, and the site build uses it to show the consent button, which stays hidden while the variable is unset. The app also needs the Web redirect URI `https://mc.merill.net/connect`.
+The multi-tenant app's client ID (`158ad002-7467-454f-ba15-229a0b719811`) is not a secret, so it is set directly in `@build/config-m365.json` (used for every contributor without their own `clientId`) and in `config/site.ts` (the consent button). The app needs the Web redirect URI `https://mc.merill.net/connect`.
 
 Run `npm run test:tenants` to exercise the tenant configuration and merge logic locally; it needs no network access or credentials.

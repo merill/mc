@@ -38,10 +38,10 @@ export const siteConfig = {
     },
   ],
   tenantContribution: {
-    // Application (client) ID of the multi-tenant contributor app, supplied at
-    // build time from the GRAPH_CONTRIBUTOR_CLIENT_ID repository variable.
-    clientId: process.env.NEXT_PUBLIC_CONTRIBUTOR_CLIENT_ID?.trim() ?? "",
-    appName: "Message Center Archive",
+    // Application (client) ID of the multi-tenant contributor app. It is not a
+    // secret: it appears in the admin consent link and on the consent prompt.
+    clientId: "158ad002-7467-454f-ba15-229a0b719811",
+    appName: "Message Center Archive - Reader",
     email: "merill@merill.net",
     redirectUri: "https://mc.merill.net/connect",
     githubRepository: "merill/mc",
