@@ -6,14 +6,18 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import {
   consentEmailSubject,
+  directoryTypeOptions,
   emptyContributionDetails,
   getConsentEmailBody,
   getConsentMailto,
   isHttpsUrl,
   isTenantId,
-  tenantTypeOptions,
+  maxTenantTypeLength,
+  maxTenantTypes,
+  tenantTypeSuggestions,
   type ContributionDetails,
 } from "@/lib/tenant-contribution"
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -122,15 +126,6 @@ function ContributionEmail({ tenantId }: { tenantId: string }) {
     setCopied(false)
   }
 
-  const toggleTenantType = (type: string, checked: boolean) =>
-    update({
-      tenantTypes: checked
-        ? tenantTypeOptions.filter(
-            (option) => option === type || details.tenantTypes.includes(option)
-          )
-        : details.tenantTypes.filter((option) => option !== type),
-    })
-
   const emailBody = getConsentEmailBody(tenantId, details)
   const email = siteConfig.tenantContribution.email
   const creditUrl = details.creditUrl.trim()
@@ -164,26 +159,38 @@ function ContributionEmail({ tenantId }: { tenantId: string }) {
           onSubmit={(event) => event.preventDefault()}
         >
           <fieldset className="space-y-3">
-            <legend className={labelClass}>Tenant type</legend>
-            <div className="grid gap-2 sm:grid-cols-2">
-              {tenantTypeOptions.map((type) => (
+            <legend className={labelClass}>Directory type</legend>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {directoryTypeOptions.map((option) => (
                 <label
-                  key={type}
-                  className="flex items-center gap-3 text-sm text-foreground/85"
+                  key={option.value}
+                  className="flex cursor-pointer items-start gap-3 rounded-md border p-3 text-sm has-[:checked]:border-primary has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring"
                 >
                   <input
-                    type="checkbox"
-                    className={checkboxClass}
-                    checked={details.tenantTypes.includes(type)}
-                    onChange={(event) =>
-                      toggleTenantType(type, event.target.checked)
-                    }
+                    type="radio"
+                    name="contribution-directory"
+                    className="mt-1 h-4 w-4 shrink-0 accent-primary focus-visible:outline-none"
+                    value={option.value}
+                    checked={details.directory === option.value}
+                    onChange={() => update({ directory: option.value })}
                   />
-                  {type}
+                  <span>
+                    <span className="block font-medium text-foreground">
+                      {option.label}
+                    </span>
+                    <span className="block text-muted-foreground">
+                      {option.description}
+                    </span>
+                  </span>
                 </label>
               ))}
             </div>
           </fieldset>
+
+          <TenantTypePicker
+            value={details.tenantTypes}
+            onChange={(tenantTypes) => update({ tenantTypes })}
+          />
 
           <div className="space-y-2">
             <label className={labelClass} htmlFor="contribution-products">
@@ -296,5 +303,119 @@ function ContributionEmail({ tenantId }: { tenantId: string }) {
         </p>
       </CardContent>
     </Card>
+  )
+}
+
+function TenantTypePicker({
+  value,
+  onChange,
+}: {
+  value: string[]
+  onChange: (value: string[]) => void
+}) {
+  const [draft, setDraft] = React.useState("")
+  const inputId = "contribution-tenant-type"
+  const hintId = "contribution-tenant-type-hint"
+
+  const has = (type: string) =>
+    value.some((item) => item.toLowerCase() === type.toLowerCase())
+  const full = value.length >= maxTenantTypes
+  const custom = value.filter(
+    (item) =>
+      !tenantTypeSuggestions.some(
+        (suggestion) => suggestion.toLowerCase() === item.toLowerCase()
+      )
+  )
+
+  const add = (raw: string) => {
+    const type = raw.replace(/\s+/g, " ").trim().slice(0, maxTenantTypeLength)
+    if (type && !has(type) && !full) onChange([...value, type])
+    setDraft("")
+  }
+
+  const remove = (type: string) =>
+    onChange(value.filter((item) => item.toLowerCase() !== type.toLowerCase()))
+
+  const toggle = (type: string) => (has(type) ? remove(type) : add(type))
+
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter" || event.key === ",") {
+      event.preventDefault()
+      add(draft)
+    } else if (event.key === "Backspace" && !draft && custom.length > 0) {
+      remove(custom[custom.length - 1])
+    }
+  }
+
+  return (
+    <div className="space-y-3">
+      <label className={labelClass} htmlFor={inputId}>
+        Tenant type
+      </label>
+      <p id={hintId} className="text-sm text-muted-foreground">
+        Pick any that apply or type your own. Leave empty for a standard
+        commercial tenant.
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {tenantTypeSuggestions.map((type) => {
+          const selected = has(type)
+          return (
+            <button
+              key={type}
+              type="button"
+              aria-pressed={selected}
+              disabled={!selected && full}
+              onClick={() => toggle(type)}
+              className={cn(
+                "rounded-full border px-3 py-1 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50",
+                selected
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-input text-foreground/85 hover:bg-accent"
+              )}
+            >
+              {selected ? "✓ " : "+ "}
+              {type}
+            </button>
+          )
+        })}
+        {custom.map((type) => (
+          <span
+            key={type}
+            className="inline-flex items-center gap-1 rounded-full border border-primary bg-primary py-1 pl-3 pr-1 text-sm text-primary-foreground"
+          >
+            {type}
+            <button
+              type="button"
+              onClick={() => remove(type)}
+              aria-label={`Remove ${type}`}
+              className="rounded-full px-1.5 leading-none hover:bg-primary-foreground/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              ×
+            </button>
+          </span>
+        ))}
+      </div>
+      <div className="flex gap-2">
+        <Input
+          id={inputId}
+          aria-describedby={hintId}
+          placeholder="Another type, for example Frontline or Microsoft 365 Business"
+          value={draft}
+          maxLength={maxTenantTypeLength}
+          disabled={full}
+          onChange={(event) => setDraft(event.target.value)}
+          onKeyDown={onKeyDown}
+          onBlur={() => add(draft)}
+        />
+        <Button
+          type="button"
+          variant="outline"
+          disabled={full || !draft.trim()}
+          onClick={() => add(draft)}
+        >
+          Add
+        </Button>
+      </div>
+    </div>
   )
 }

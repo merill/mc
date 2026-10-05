@@ -406,6 +406,13 @@ export default function AboutPage() {
                 credited) and see the exact email before sending or copying it.
               </li>
               <li>
+                The contribution form asks whether the tenant is an Entra ID
+                workforce tenant or an Entra External ID tenant, and offers
+                common tenant types such as EDU, GCC, Nonprofit, and Developer
+                Program sandboxes as quick picks alongside a field for typing
+                any other type.
+              </li>
+              <li>
                 Added a thank-you list of tenant contributors to this page. Only
                 people who ask to be credited are named; everyone else is
                 counted anonymously.
@@ -414,6 +421,13 @@ export default function AboutPage() {
                 Home page filters are now bookmarkable and shareable. Service
                 selections, source, and search text are saved in the URL and
                 restored when you open the link.
+              </li>
+              <li>
+                New and updated posts now reach the site soon after they are
+                fetched instead of waiting for the next scheduled site build.
+                Each data refresh that finds new posts starts a site build right
+                away, and refreshes also check that the live site is not
+                serving stale data.
               </li>
             </ul>
           </div>
