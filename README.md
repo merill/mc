@@ -47,6 +47,8 @@ Each entry supports:
 | `secretEnv` | For `clientSecret` tenants, the environment variable holding the secret. Defaults to the `-GraphSecret` parameter. |
 | `audience` | Federated credential audience. Defaults to `api://AzureADTokenExchange`. |
 | `required` | `true` fails the run when the tenant cannot be refreshed; `false` logs a warning and continues. The first tenant defaults to required. |
+| `tenantListEnv` | Expands the entry into one tenant per item of a JSON list held in this environment variable (see contributor tenants below). |
+| `private` | `true` masks the tenant and client IDs in workflow logs and reduces sign-in errors to AADSTS codes, so logs never identify the organization. Always on for `tenantListEnv` tenants. |
 
 A tenant whose IDs or secret are missing is skipped with a warning rather than failing the run, so the refresh keeps working before a new tenant is fully wired up.
 
@@ -58,5 +60,16 @@ The second tenant authenticates with workload identity federation, so there is n
 2. Add a federated credential of type *GitHub Actions deploying Azure resources* with issuer `https://token.actions.githubusercontent.com`, organization `merill`, repository `mc`, entity *Branch*, branch `main`, and audience `api://AzureADTokenExchange`. Add a second credential for the *Pull request* entity if the workflow should also authenticate on pull request runs.
 
 Then set the repository Actions **variables** (not secrets) `GRAPH_FEDERATED_TENANT_ID` and `GRAPH_FEDERATED_CLIENT_ID` to that tenant's directory and application IDs. The hourly workflow already requests an OIDC token through `permissions: id-token: write` and exchanges it for a Microsoft Graph token. Leaving the variables unset keeps the refresh on the primary tenant only.
+
+### Contributor tenants
+
+Community members can contribute their tenant from the [About page](https://mc.merill.net/about#contribute) without sharing a secret:
+
+* **One-click consent (recommended).** A multi-tenant `Message Center Archive - Reader` app registered in the home tenant holds the only permission, `ServiceMessage.Read.All`, and a federated credential for `repo:merill/mc:ref:refs/heads/main`. A contributor's admin consents through the About page button, lands on `/connect`, and emails the tenant ID shown there. The refresh then requests a token for that tenant with the same GitHub OIDC assertion.
+* **Own app registration.** A contributor registers a single-tenant app with the same permission and federated credential, and emails its tenant and client IDs.
+
+Contributor tenants are tracked in the private `merill/mc-tenants` repository, which verifies each tenant and writes the anonymous list to the `GRAPH_CONTRIBUTOR_TENANTS` Actions **secret**: a JSON array such as `[{"label":"c01","tenantId":"..."},{"label":"c02","tenantId":"...","clientId":"..."}]` (plain tenant ID strings also work). Labels appear in public logs, so they must be short anonymous tokens; anything else is replaced with a number. The secret is only passed on non pull request runs, which are the runs the federated credential trusts.
+
+The multi-tenant app's client ID (`158ad002-7467-454f-ba15-229a0b719811`) is not a secret, so it is set directly in `@build/config-m365.json` (used for every contributor without their own `clientId`) and in `config/site.ts` (the consent button). The app needs the Web redirect URI `https://mc.merill.net/connect`.
 
 Run `npm run test:tenants` to exercise the tenant configuration and merge logic locally; it needs no network access or credentials.
