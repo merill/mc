@@ -418,6 +418,11 @@ export default function AboutPage() {
                 counted anonymously.
               </li>
               <li>
+                Home page filters are now bookmarkable and shareable. Service
+                selections, source, and search text are saved in the URL and
+                restored when you open the link.
+              </li>
+              <li>
                 New and updated posts now reach the site soon after they are
                 fetched instead of waiting for the next scheduled site build.
                 Each data refresh that finds new posts starts a site build right
