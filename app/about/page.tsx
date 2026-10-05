@@ -406,6 +406,13 @@ export default function AboutPage() {
                 credited) and see the exact email before sending or copying it.
               </li>
               <li>
+                The contribution form asks whether the tenant is an Entra ID
+                workforce tenant or an Entra External ID tenant, and offers
+                common tenant types such as EDU, GCC, Nonprofit, and Developer
+                Program sandboxes as quick picks alongside a field for typing
+                any other type.
+              </li>
+              <li>
                 Added a thank-you list of tenant contributors to this page. Only
                 people who ask to be credited are named; everyone else is
                 counted anonymously.
