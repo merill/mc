@@ -1,0 +1,48 @@
+{
+  "id": "MC1488834",
+  "versions": [
+    {
+      "capturedAt": "2026-10-05T22:38:31.18Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-11-03T08:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>As previously announced in <i>MC1448379</i> (August 5, 2026), the public preview of the MemberOf rule operator in Microsoft Entra ID is ending. Organizations using MemberOf in dynamic membership groups, dynamic administrative units (AUs), or entitlement management auto-assignment policies must replace these configurations by November 3, 2026.</p><p>Microsoft continues to improve the scale and reliability of dynamic membership processing. During the preview, Microsoft observed that use of MemberOf can affect dynamic membership processing across a tenant, even when only a single MemberOf rule is present. Because of this limitation, the preview functionality is being retired and is not recommended for production use.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Retirement date (Worldwide)</b>: November 3, 2026</li><li>Action required by: November 3, 2026</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using the MemberOf rule operator in:</li><li>Dynamic membership groups</li><li>Dynamic administrative units (AUs)</li><li>Entitlement management auto-assignment policies</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Entra ID</li><li>Microsoft Entra Groups</li><li>Microsoft Entra Administrative Units</li><li>Microsoft Entra Entitlement Management</li><li>Group-based licensing</li><li>Conditional Access configurations that rely on dynamic group membership</li></ul><p><i>What will happen</i></p><p>Beginning November 3, 2026:</p><ul><li>Dynamic groups using MemberOf will stop processing membership changes.</li><li>Dynamic administrative units using MemberOf will stop updating membership and administrative scope.</li><li>Entitlement management auto-assignment policies using MemberOf will stop processing assignment updates.</li><li>Existing membership and assignment data will remain in their last known state.</li><li>New users may not receive required access or licenses.</li><li>Former users may retain access or licenses that should have been removed.</li><li>Conditional Access policies may rely on outdated group membership.</li><li>Teams, SharePoint, and other applications that depend on dynamic group membership may receive outdated membership information.</li><li>Group-based licensing assignments may no longer reflect current user eligibility.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>Complete the following actions <b>before November 3, 2026</b>.</p><p>Dynamic membership groups:</p><ul><li>Export dynamic membership groups from the Microsoft Entra admin center and identify rules containing MemberOf.</li><li>Replace MemberOf with supported rule operators where possible.</li><li>Convert groups to assigned membership if a supported dynamic rule alternative is not available.</li><li>Validate membership results after making changes.</li><li>Remove groups that are no longer required.</li></ul><p>Dynamic administrative units:</p><ul><li>Use Microsoft Graph PowerShell to identify dynamic administrative units that use MemberOf rules.</li><li>Replace MemberOf-based rules with supported rule operators where possible.</li><li>Convert administrative units to assigned membership if necessary.</li><li>Validate both membership and administrative scope after making changes.</li><li>Remove administrative units that are no longer required.</li></ul><p>Entitlement Management auto-assignment policies:</p><ul><li>Use Microsoft Graph PowerShell to identify auto-assignment policies that use MemberOf.</li><li>Replace MemberOf-based policies with supported operators where possible.</li><li>Plan an alternate assignment approach if no equivalent rule is available.</li><li>Validate access package assignments after making changes.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-auto-assignment-policy\" rel=\"noopener noreferrer\" target=\"_blank\">Configure an automatic assignment policy for an access package in entitlement management | Microsoft Entra ID Governance | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/users/groups-dynamic-rule-member-of\" rel=\"noopener noreferrer\" target=\"_blank\">Configure dynamic membership groups with the memberOf attribute in the Entra admin center | Users | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/users/groups-dynamic-rule-more-efficient\" rel=\"noopener noreferrer\" target=\"_blank\">Create simpler, more efficient rules for dynamic membership groups in Microsoft Entra ID | Users | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-dynamic?tabs=admin-center\" rel=\"noopener noreferrer\" target=\"_blank\">Manage users or devices for an administrative unit with rules for dynamic membership groups | Role-based access control | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-da88\">Question</td><td data-row=\"row-da88\">Answer</td></tr><tr><td data-row=\"row-tj8b\">Does the change alter how existing customer data is processed, stored, or accessed (for example, documents, emails, chats, identities, or group memberships)?</td><td data-row=\"row-tj8b\"><b>Yes.</b> After November 3, 2026, configurations that use the MemberOf rule operator will stop updating membership and assignment information. Existing membership and assignment data will remain in its last known state, which may result in outdated access, licensing assignments, Conditional Access targeting, administrative scope, and entitlement assignments.</td></tr><tr><td data-row=\"row-w68p\">Does the change modify, interrupt, or disable Conditional Access policies?</td><td data-row=\"row-w68p\"><b>Yes.</b> Conditional Access policies that rely on dynamic groups using the MemberOf rule operator may no longer receive updated group membership information after retirement. Organizations should review and update affected configurations before November 3, 2026.</td></tr></tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Entra ID will retire the MemberOf rule operator by November 3, 2026. Organizations must replace MemberOf in dynamic groups, administrative units, and entitlement policies to avoid outdated memberships, access, and licensing issues. After this date, MemberOf-based updates will stop, impacting Conditional Access and related services."
+          }
+        ],
+        "EndDateTime": "2027-01-27T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1488834",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-10-05T22:38:31.18Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-10-05T22:38:16Z",
+        "Tags": [
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Microsoft Entra ID: Final reminder to replace MemberOf rule operator configurations by November 3, 2026",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
