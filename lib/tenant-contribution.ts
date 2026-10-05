@@ -147,7 +147,12 @@ Credit me on the site (optional, your name and an https link, or leave blank to 
   )
 }
 
-export type ContributorCredit = { name: string; url?: string }
+// url links the name; links are any further https links shown beside it.
+export type ContributorCredit = { name: string; url?: string; links?: string[] }
+
+export function getLinkLabel(url: string): string {
+  return new URL(url).hostname.replace(/^www\./, "")
+}
 
 export type ContributorCredits = {
   tenants: number
@@ -177,6 +182,10 @@ export function getContributorCredits(): ContributorCredits {
           typeof credit.url === "string" && isHttpsUrl(credit.url)
             ? credit.url
             : undefined,
+        links: (Array.isArray(credit.links) ? credit.links : []).filter(
+          (link: unknown): link is string =>
+            typeof link === "string" && isHttpsUrl(link)
+        ),
       }))
     const tenants = Number.isInteger(parsed?.tenants)
       ? Math.max(parsed.tenants, credits.length)
