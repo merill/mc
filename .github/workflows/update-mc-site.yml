@@ -74,6 +74,10 @@ jobs:
       - name: Build search index
         run: node scripts/build-search-index.mjs
       - name: Build with Next.js
+        env:
+          # Contributor thank-you list on the About page, written by the private
+          # mc-tenants sync. Holds only names people asked to show, and a count.
+          NEXT_PUBLIC_CONTRIBUTOR_CREDITS: ${{ vars.CONTRIBUTOR_CREDITS }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

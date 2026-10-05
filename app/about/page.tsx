@@ -1,8 +1,13 @@
+import * as React from "react"
 import { Metadata } from "next"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
-import { getAdminConsentUrl, getOwnAppMailto } from "@/lib/tenant-contribution"
+import {
+  getAdminConsentUrl,
+  getContributorCredits,
+  getOwnAppMailto,
+} from "@/lib/tenant-contribution"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -35,6 +40,8 @@ const [githubOwner, githubRepo] = contribution.githubRepository.split("/")
 export default function AboutPage() {
   const consentUrl = getAdminConsentUrl()
   const ownAppMailto = getOwnAppMailto()
+  const { tenants: contributedTenants, credits } = getContributorCredits()
+  const anonymousTenants = contributedTenants - credits.length
 
   return (
     <section className="page-shell">
@@ -124,13 +131,71 @@ export default function AboutPage() {
             </li>
           </ul>
 
+          {contributedTenants > 0 ? (
+            <>
+              <h2
+                id="contributors"
+                className="scroll-mt-20 pt-2 text-xl font-semibold text-foreground"
+              >
+                Thank you, contributors
+              </h2>
+              <p>
+                {credits.length > 0 ? (
+                  <>
+                    Thanks to{" "}
+                    {credits.map((credit, index) => (
+                      <React.Fragment key={`${credit.name}-${index}`}>
+                        {index > 0
+                          ? index === credits.length - 1 &&
+                            anonymousTenants === 0
+                            ? " and "
+                            : ", "
+                          : null}
+                        {credit.url ? (
+                          <a
+                            className="readable-link"
+                            href={credit.url}
+                            rel="nofollow noopener noreferrer"
+                            target="_blank"
+                          >
+                            {credit.name}
+                          </a>
+                        ) : (
+                          <strong>{credit.name}</strong>
+                        )}
+                      </React.Fragment>
+                    ))}
+                    {anonymousTenants > 0
+                      ? `, and ${anonymousTenants} ${
+                          anonymousTenants === 1
+                            ? "person who prefers"
+                            : "people who prefer"
+                        } to stay anonymous,`
+                      : null}{" "}
+                    for sharing their tenant&apos;s Message Center with the
+                    archive.
+                  </>
+                ) : (
+                  <>
+                    {contributedTenants}{" "}
+                    {contributedTenants === 1 ? "tenant is" : "tenants are"}{" "}
+                    shared with the archive by people who prefer to stay
+                    anonymous. Thank you!
+                  </>
+                )}
+              </p>
+            </>
+          ) : null}
+
           <h2 className="pt-2 text-xl font-semibold text-foreground">
             Option 1: one-click admin consent (recommended)
           </h2>
           <p>
             You need a Global Administrator or Privileged Role Administrator
             account, because only those roles can consent to a Microsoft Graph
-            application permission.
+            application permission. This works for tenants in the commercial
+            cloud, including GCC; GCC High, DoD, and other sovereign clouds are
+            not supported.
           </p>
           <ol>
             <li>
@@ -161,10 +226,11 @@ export default function AboutPage() {
               {contribution.appName} enterprise application to your tenant.
             </li>
             <li>
-              Microsoft returns you to this site, which shows your tenant ID and
-              a pre-filled email. Select <strong>Send the email</strong>. Only
-              the tenant ID is needed; the tenant type and whether to credit you
-              are optional.
+              Microsoft returns you to this site, which shows your tenant ID.
+              Add any optional details (tenant type, notable licenses, and
+              whether you would like to be credited), check the email it
+              prepares, and select <strong>Send the email</strong> or copy it
+              and email it to me.
             </li>
             <li>
               I confirm the app can read your Message Center, add your tenant to
@@ -268,7 +334,15 @@ export default function AboutPage() {
             </li>
             <li>
               The archive does not record which tenant a post came from, and you
-              are only credited if you ask to be.
+              are only{" "}
+              {contributedTenants > 0 ? (
+                <Link className="readable-link" href="#contributors">
+                  credited
+                </Link>
+              ) : (
+                "credited"
+              )}{" "}
+              if you ask to be. Otherwise your tenant is only counted.
             </li>
             <li>
               I will never ask you for a password, client secret, or
@@ -321,6 +395,23 @@ export default function AboutPage() {
           <CardTitle>Release notes</CardTitle>
         </CardHeader>
         <CardContent className="readable-card-content space-y-5">
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 5, 2026
+            </h2>
+            <ul>
+              <li>
+                After granting consent, contributors now fill in a short
+                optional form (tenant type, notable licenses, and whether to be
+                credited) and see the exact email before sending or copying it.
+              </li>
+              <li>
+                Added a thank-you list of tenant contributors to this page. Only
+                people who ask to be credited are named; everyone else is
+                counted anonymously.
+              </li>
+            </ul>
+          </div>
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
               October 2, 2026
