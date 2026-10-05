@@ -36,6 +36,42 @@
         "Source": "messageCenter",
         "AdditionalProperties": {}
       }
+    },
+    {
+      "capturedAt": "2026-10-05T15:20:39.833Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "Beginning November 9, 2026, we are introducing staged storage validation for supported Dynamics 365 applications. The change gives administrators clearer visibility into storage use, advance notice of potential restrictions, and several ways to remain within capacity, including removing unneeded data, adding capacity, or enabling pay-as-you-go for sandbox environments.<br><br> \n\nWhen a tenant exceeds its entitled Database, File, or Log capacity, environment creation, copy, restore, and recover operations will be restricted immediately. If the overage remains unresolved, sandbox environments that do not have pay-as-you-go billing enabled will enter Administration mode after 30 days of remaining over capacity, allowing access only to administrators. After 60 days, those sandbox environments will be disabled, preventing access for all users.  Production environments are not subject to these restrictions and will remain accessible. However, environment creation, copy, restore, and recover operations will still be blocked while the tenant remains over capacity.<br><br> \n\nDeployment Timeline:<ul> \n\n<li><b>Rollout begins</b>: November 9, 2026</li> \n\n<li><b>Rollout completion</b>: December 4, 2026</li> \n\n</ul> \n\n<b>How does this affect me?</b><br> \n\nThe Dataverse storage validation applies only to <b>Dataverse-only</b> tenants without Dynamics 365 Finance and Operations environment(s) or consumption. The products in-scope of storage validation include:<ul> \n\n<li>Microsoft Dynamics 365 Sales</li> \n\n<li>Microsoft Dynamics 365 Customer Service</li> \n\n<li>Microsoft Dynamics 365 Field Service</li> \n\n<li>Microsoft Dynamics 365 Customer Insights</li> \n\n<li>Microsoft Dynamics 365 Customer Voice</li> \n\n<li>Microsoft Dynamics 365 Contact Center</li> \n\n<li>Microsoft Dynamics 365 Project Operations (Dataverse deployments)</li> \n\n</ul>  \n\nIf your tenant exceeds its entitled storage capacity, the following lifecycle applies:<br><br> \n\n<style>  \n\n    table, td, tr, th {border: 1px solid #243a5e; border-collapse: collapse;} \n\n    th {text-align: center; background-color: #243a5e; color: #fff;} \n\n    </style> \n\n<table> \n\n    <tr> \n\n        <th><b>Stage</b></th> \n\n        <th><b>Timing</b></th> \n\n<th><b>Impact</b></th> \n\n    </tr> \n\n    <tr> \n\n<td>1.\tRestricted</td> \n\n<td>When the tenant first exceeds its entitled storage capacity, known as time zero (T0)</td> \n\n<td>Environment creation, copy, restore, and recover operations are blocked</td> \n\n    </tr> \n\n    <tr> \n\n        <td>2.\tAdministration mode</td> \n\n        <td>30 days after the tenant first exceeds capacity - T0</td> \n\n<td>Only administrators can sign in to *affected sandbox environments. All other users are blocked from accessing the environment.</td> \n\n    </tr> \n\n<tr> \n\n        <td>3.\tDisabled</td> \n\n        <td>After 60 unresolved days from T0</td> \n\n<td>All users, including administrators, are blocked from *affected sandbox environments; the environment data is retained and remains available for recovery after remediation</td> \n\n    </tr> \n\n</table><br> \n\nSandbox environments with active pay-as-you-go billing do not progress through the storage overage lifecycle. Other *affected sandbox environments in the tenant may still be affected with restrictions.<br><br> \n\nWe will provide notifications that include the tenant's current storage status, the date it first exceeded capacity, its current lifecycle stage, upcoming restrictions, and recommended remediation actions.<br><br> \n\nRestrictions are removed after the tenant has returned below 100% of its entitled storage capacity. Sandbox environments with active pay-as-you-go billing are excluded from the lifecycle even if the tenant remains over storage capacity. Processing time may vary depending on the remediation method used.<br><br>  \n\n<b>What action do I need to take?</b><br> \n\nReview your environment(s) and perform the following actions before <b>November 9, 2026</b>:<ul> \n\n<li>Review Database, File, and Log capacity in the <a href=\"https://aka.ms/ADO17859\"target=\"_blank\"></a>Power Platform admin center</a>.</li>  \n\n<li>Remove or archive data that is no longer needed.</li> \n\n<li>Establish <a href=\"https://aka.ms/ADO17859-1\"target=\"_blank\">data governance policies</a> in your environment to help prevent future storage overages.</li> \n\n<li><a href=\"https://aka.ms/ADO17859-2\"target=\"_blank\"></a>Purchase additional capacity</a> or <a href=\"https://aka.ms/ADO17859-3\"target=\"_blank\">configure pay-as-you-go</a>.</li>  \n\n<li>Inform administrators, makers, and users about the potential restrictions.</li> \n\n<li>Review your release activities that depend on sandbox availability, and plan accordingly.</li> \n\n</ul>  \n\nFor additional information, please visit the following articles:<ul> \n\n<li><a href=\"https://aka.ms/ADO17859-4\"target=\"_blank\">What happens when my organization exceeds storage capacity?</a></li> \n\n<li><a href=\"https://aka.ms/ADO17859-11\"target=\"_blank\">Dataverse capacity-based storage details</a></li> \n\n<li><a href=\"https://aka.ms/ADO17859-5\"target=\"_blank\">Manage data with Dataverse governance policies</a></li> \n\n<li><a href=\"https://aka.ms/ADO17859-6\"target=\"_blank\">Free up storage space</a></li> \n\n<li><a href=\"https://aka.ms/ADO17859-7\"target=\"_blank\">Add more Dataverse capacity</a></li> \n\n<li><a href=\"https://aka.ms/ADO17859-8\"target=\"_blank\">Configure pay-as-you-go in your environment</a></li> \n\n<li><a href=\"https://aka.ms/ADO17859-9\"target=\"_blank\">What environments consume tenant capacity</a></li> \n\n<li><a href=\"https://aka.ms/ADO17859-10\"target=\"_blank\">Power Platform licensing guidance</a></li> \n\n</ul> \n\n<b>*Affected environments</b>: Sandbox environments that do not have pay-as-you-go enabled. Any references to affected environments in this message apply exclusively to those sandbox environments.",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [],
+        "EndDateTime": "2027-12-31T16:28:00Z",
+        "HasAttachments": false,
+        "Id": "MC1483519",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-10-05T15:20:39.833Z",
+        "Services": [
+          "Dynamics 365 Apps"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-09-30T16:28:38Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Dynamics 365 and Power Platform– Information about storage validation for Dataverse-only tenants",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
     }
   ]
 }
