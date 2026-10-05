@@ -70,6 +70,8 @@ Community members can contribute their tenant from the [About page](https://mc.m
 
 Contributor tenants are tracked in the private `merill/mc-tenants` repository, which verifies each tenant and writes the anonymous list to the `GRAPH_CONTRIBUTOR_TENANTS` Actions **secret**: a JSON array such as `[{"label":"c01","tenantId":"..."},{"label":"c02","tenantId":"...","clientId":"..."}]` (plain tenant ID strings also work). Labels appear in public logs, so they must be short anonymous tokens; anything else is replaced with a number. The secret is only passed on non pull request runs, which are the runs the federated credential trusts.
 
+The same sync writes the repository **variable** `CONTRIBUTOR_CREDITS`, for example `{"tenants":3,"credits":[{"name":"Jane Doe","url":"https://..."}]}`. It holds only the names (and optional https links) of contributors who asked to be credited, plus a count of all verified tenants. The site build reads it to show the thank-you list on the About page; the list is hidden while the variable is unset.
+
 The multi-tenant app's client ID (`158ad002-7467-454f-ba15-229a0b719811`) is not a secret, so it is set directly in `@build/config-m365.json` (used for every contributor without their own `clientId`) and in `config/site.ts` (the consent button). The app needs the Web redirect URI `https://mc.merill.net/connect`.
 
 Run `npm run test:tenants` to exercise the tenant configuration and merge logic locally; it needs no network access or credentials.

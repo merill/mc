@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 
+import { siteConfig } from "@/config/site"
 import { ConsentResult } from "@/components/consent-result"
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default function ConnectPage() {
         <h1 className="page-title">Contribute your tenant</h1>
         <p className="page-description">
           Microsoft sends you here after you review the admin consent prompt for
-          the Message Center Archive app.
+          the {siteConfig.tenantContribution.appName} app.
         </p>
       </div>
       <ConsentResult />
