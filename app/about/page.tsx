@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site"
 import {
   getAdminConsentUrl,
   getContributorCredits,
+  getLinkLabel,
   getOwnAppMailto,
 } from "@/lib/tenant-contribution"
 import { buttonVariants } from "@/components/ui/button"
@@ -163,6 +164,25 @@ export default function AboutPage() {
                         ) : (
                           <strong>{credit.name}</strong>
                         )}
+                        {credit.links?.length ? (
+                          <>
+                            {" ("}
+                            {credit.links.map((link, linkIndex) => (
+                              <React.Fragment key={link}>
+                                {linkIndex > 0 ? ", " : null}
+                                <a
+                                  className="readable-link"
+                                  href={link}
+                                  rel="nofollow noopener noreferrer"
+                                  target="_blank"
+                                >
+                                  {getLinkLabel(link)}
+                                </a>
+                              </React.Fragment>
+                            ))}
+                            {")"}
+                          </>
+                        ) : null}
                       </React.Fragment>
                     ))}
                     {anonymousTenants > 0
@@ -307,10 +327,9 @@ export default function AboutPage() {
                   </code>
                 </li>
               </ul>
-              The repository uses GitHub&apos;s immutable subject format, so
-              the default <code>repo:{contribution.githubRepository}</code>{" "}
-              subject will not match. Do not create a client secret or
-              certificate.
+              The repository uses GitHub&apos;s immutable subject format, so the
+              default <code>repo:{contribution.githubRepository}</code> subject
+              will not match. Do not create a client secret or certificate.
             </li>
             <li>
               From the app&apos;s <strong>Overview</strong>, copy the{" "}
@@ -408,8 +427,12 @@ export default function AboutPage() {
               <li>
                 Fixed the instructions for contributing a tenant with your own
                 app registration. The federated credential now uses the subject
-                identifier GitHub actually sends for this repository, so
-                sign-in no longer fails with AADSTS700213.
+                identifier GitHub actually sends for this repository, so sign-in
+                no longer fails with AADSTS700213.
+              </li>
+              <li>
+                Contributors in the thank-you list can now share more than one
+                link, such as a LinkedIn profile and a company site.
               </li>
             </ul>
           </div>
@@ -444,8 +467,8 @@ export default function AboutPage() {
                 New and updated posts now reach the site soon after they are
                 fetched instead of waiting for the next scheduled site build.
                 Each data refresh that finds new posts starts a site build right
-                away, and refreshes also check that the live site is not
-                serving stale data.
+                away, and refreshes also check that the live site is not serving
+                stale data.
               </li>
             </ul>
           </div>
