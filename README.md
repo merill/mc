@@ -20,10 +20,10 @@ URLs use one `service` parameter per selected service, `source=messageCenter` or
 its parameter without affecting the other filters.
 
 Run `npm run test:filters` to check filter URL handling. The suite loads the
-current service catalog and checks that selecting every service plus the longest
-source value fits a 2,000-character absolute URL budget. This is a conservative
-compatibility target, not a universal browser limit or a selection cap. Search
-text and unrelated URL parameters add to that length.
+current service catalog, checks that selecting every service round-trips through
+the URL, and reports the resulting URL length against a conservative
+2,000-character compatibility budget. The budget is a warning, not a failure,
+because the catalog grows with each data refresh.
 
 ## Feedback
 
