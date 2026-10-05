@@ -299,13 +299,18 @@ export default function AboutPage() {
                   Name: <code>mc-archive</code>, and leave the audience as{" "}
                   <code>api://AzureADTokenExchange</code>
                 </li>
+                <li>
+                  Next to <strong>Subject identifier</strong>, select{" "}
+                  <strong>Edit (optional)</strong> and replace it with{" "}
+                  <code className="break-all">
+                    {contribution.githubOidcSubject}
+                  </code>
+                </li>
               </ul>
-              The subject identifier must read{" "}
-              <code className="break-all">
-                repo:{contribution.githubRepository}:ref:refs/heads/
-                {contribution.githubBranch}
-              </code>
-              . Do not create a client secret or certificate.
+              The repository uses GitHub&apos;s immutable subject format, so
+              the default <code>repo:{contribution.githubRepository}</code>{" "}
+              subject will not match. Do not create a client secret or
+              certificate.
             </li>
             <li>
               From the app&apos;s <strong>Overview</strong>, copy the{" "}
@@ -395,6 +400,19 @@ export default function AboutPage() {
           <CardTitle>Release notes</CardTitle>
         </CardHeader>
         <CardContent className="readable-card-content space-y-5">
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 6, 2026
+            </h2>
+            <ul>
+              <li>
+                Fixed the instructions for contributing a tenant with your own
+                app registration. The federated credential now uses the subject
+                identifier GitHub actually sends for this repository, so
+                sign-in no longer fails with AADSTS700213.
+              </li>
+            </ul>
+          </div>
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
               October 5, 2026

@@ -46,6 +46,9 @@ export const siteConfig = {
     redirectUri: "https://mc.merill.net/connect",
     githubRepository: "merill/mc",
     githubBranch: "main",
+    // merill/mc uses GitHub's immutable OIDC subject, which names the owner and
+    // repository with their numeric IDs, so federated credentials must too.
+    githubOidcSubject: "repo:merill@1288081/mc@761074595:ref:refs/heads/main",
   },
   links: {
     rss: "/rss.xml",
