@@ -31,16 +31,39 @@ function mailto(subject: string, body: string): string {
   )}&body=${encodeURIComponent(body)}`
 }
 
-export const tenantTypeOptions = [
-  "Production",
-  "Dev / test",
+// Every tenant is one of these. External ID tenants serve customer-facing apps
+// and see a different set of Message Center posts.
+export const directoryTypeOptions = [
+  {
+    value: "Entra ID (workforce tenant)",
+    label: "Entra ID",
+    description: "Workforce tenant for employees. Most tenants are this type.",
+  },
+  {
+    value: "Entra External ID (external tenant)",
+    label: "Entra External ID",
+    description: "External tenant for customer-facing apps.",
+  },
+] as const
+
+// Common kinds of tenant on top of the directory type. Contributors can pick
+// several and type their own. Standard commercial tenants need none of these.
+export const tenantTypeSuggestions = [
   "Education (EDU)",
   "Government (GCC)",
   "Nonprofit",
-  "Entra External ID",
+  "Developer Program sandbox",
+  "Partner demo tenant (CDX)",
+  "Trial",
+  "Targeted release",
+  "Multi-Geo",
 ] as const
 
+export const maxTenantTypes = 12
+export const maxTenantTypeLength = 40
+
 export type ContributionDetails = {
+  directory: string
   tenantTypes: string[]
   products: string
   credit: boolean
@@ -49,6 +72,7 @@ export type ContributionDetails = {
 }
 
 export const emptyContributionDetails: ContributionDetails = {
+  directory: directoryTypeOptions[0].value,
   tenantTypes: [],
   products: "",
   credit: false,
@@ -76,7 +100,8 @@ function describeCredit(details: ContributionDetails): string {
 }
 
 function describeDetails(details: ContributionDetails): string {
-  return `Tenant type: ${details.tenantTypes.join(", ") || "Not specified"}
+  return `Directory type: ${details.directory}
+Tenant type: ${details.tenantTypes.join(", ") || "Standard commercial"}
 Notable licenses or products: ${details.products.trim() || "Not specified"}
 Credit me on the site: ${describeCredit(details)}`
 }
@@ -115,7 +140,8 @@ I registered my own app with a federated credential for ${contribution.githubRep
 
 Directory (tenant) ID:
 Application (client) ID:
-Tenant type (optional, e.g. dev/test, EDU, GCC):
+Directory type (Entra ID workforce tenant or Entra External ID external tenant):
+Tenant type (optional, e.g. EDU, GCC, Nonprofit, Developer Program sandbox):
 Notable licenses or products (optional):
 Credit me on the site (optional, your name and an https link, or leave blank to stay anonymous):`
   )
