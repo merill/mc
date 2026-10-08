@@ -1,0 +1,48 @@
+{
+  "id": "MC1490911",
+  "versions": [
+    {
+      "capturedAt": "2026-10-07T22:37:22.4Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and Why:</b></b></p><p>Microsoft Edge is retiring its legacy direct-WAM sign-in implementation on Windows starting with Microsoft Edge version 157, completing the consolidation onto the OneAuth authentication library.</p><p>This change standardizes authentication flows across Microsoft 365 client applications, simplifies platform supportability, eliminates dual-stack authentication code paths, and provides improved diagnostic and recovery mechanisms. Windows Web Account Manager (WAM) itself is not being deprecated; OneAuth continues to use Windows WAM.</p><p><b><b>Rollout Schedule:</b></b></p><p>General Availability (Worldwide, GCC): Rollout begins in early November 2026 and is expected to complete in early November 2026.</p><p><b><b>Impact on Your Organization:</b></b></p><p><b>Who is affected:</b></p><ul><li>Organizations using Microsoft Edge on Windows.</li><li>Users with Edge profiles that have not yet automatically migrated to OneAuth.</li><li>Organizations that explicitly disabled OneAuth WAM using <code>--disable-features=msOneAuthWAM</code>.</li></ul><p><b>Platforms/Services:</b></p><ul><li>Microsoft Edge on Windows</li><li>Browser sign-in, identity, token fetch, Single Sign-On, and account synchronization experiences</li></ul><p><b>What will happen:</b></p><ul><li>Starting with Microsoft Edge version 157, all remaining profiles will transition directly to OneAuth authentication.</li><li>The fallback legacy WAM path will default off under all circumstances.</li><li>Most users will transition transparently.</li><li>In rare cases, users may need to sign in to Microsoft Edge again.</li></ul><p><b><b>Action Required/Recommendations:</b></b></p><p>We recommend that admins identify unmigrated profiles and test the transition before Microsoft Edge version 157 reaches their environment.</p><ul><li>Navigate to <code>edge://signin-internals</code> in Microsoft Edge.</li><li>Under <b>Edge Auth Library Information</b> &gt; <b>Library</b>, confirm whether the profile shows <b>OneAuth</b> or <b>WAM</b>.</li><li>If <b>OneAuth</b> is displayed, the profile is already using the modern path and no action is required.</li><li>If <b>WAM</b> is displayed, the profile is still using the legacy path.</li></ul><p>On pilot test devices running Microsoft Edge version 155 or later, admins can test the transition before version 157 by launching Edge with this force flag:</p><p><code>msedge.exe --enable-features=msForceOneAuthWAM</code></p><p>Verify that <code>edge://signin-internals</code> reflects OneAuth, and confirm that browser sign-in, Single Sign-On, and account synchronization work as expected.</p><p>Inform support teams that a small number of users might see a sign-in action on the profile menu after updating to Edge version 157. If users experience sign-in issues, collect OneAuth logs with:</p><p><code>msedge.exe --enable-features=msForceOneAuthWAM --enable-logging -v=1 --oneauth-log-level=5</code></p><p>Default log location: <code>%LOCALAPPDATA%\\Microsoft\\Edge\\User Data\\chrome_debug.log</code></p><p><b><b>Compliance considerations:</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-muyoqbzf-1\">Does the change include an admin control, and can it be controlled through Entra ID group membership?</td><td data-row=\"row-muyoqbzf-1\">Admins can validate and manage the transition through Microsoft Edge configuration and feature flags. Review your Microsoft Edge deployment and policy management practices for group-based rollout controls.</td></tr></tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Edge on Windows will retire its legacy direct-WAM sign-in in version 157, fully adopting the OneAuth library to standardize authentication. Rollout starts and completes in November 2026. Admins should identify unmigrated profiles, test transitions, and prepare for possible user sign-in prompts."
+          }
+        ],
+        "EndDateTime": "2027-01-06T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1490911",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-10-07T22:37:22.4Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-10-07T22:36:53Z",
+        "Tags": [
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Microsoft Edge: Retiring legacy sign-in implementation on Windows",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
