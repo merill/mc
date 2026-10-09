@@ -4,6 +4,369 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
+      "Content": "<p><b><b>What and Why:</b></b></p><p>Microsoft is rolling out new capabilities in Audio Overview to make it easier to navigate longer content, support enterprise information protection, and create audio overviews from more types of content.</p><p><b>Episodes</b></p><p>For longer and more content-rich notebooks, Audio Overview can organize the discussion into topic-based episodes. This makes it easier for users to navigate the audio and focus on different parts of the content.</p><p><b>Sensitivity labels when saving to OneDrive</b></p><p>Audio Overviews now support Microsoft Purview sensitivity labels when saved to OneDrive. If the source content includes sensitivity labels, the saved Audio Overview inherits the most restrictive label from its sources. Sensitivity labels apply to the saved file in OneDrive. Audio Overviews within the notebook are not yet sensitivity labeled.</p><p><b>More supported content types</b></p><p>Audio Overview can now understand and ground its discussion in additional types of content added to a notebook, including:</p><ul><li>OneNote pages</li><li>Loop pages</li><li>Plain text (.txt) files</li><li>Emails</li><li>Teams meetings</li><li>Teams chats</li></ul><p><b><b>Rollout Schedule:</b></b></p><p>General Availability (Worldwide): We will begin rolling out in late October 2026 and expect to complete by late November 2026.</p><p><b><b>Impact on Your Organization:</b></b></p><p><b>Who is affected:</b></p><ul><li>Users who create and consume Audio Overviews.</li><li>Organizations that use Audio Overview with Microsoft 365 content stored or saved in OneDrive.</li></ul><p><b>Platforms/Services:</b></p><ul><li>Microsoft 365 Copilot</li><li>Audio Overview</li><li>OneDrive</li><li>Microsoft Purview sensitivity labels</li></ul><p><b>What will happen:</b></p><ul><li>Users can navigate longer Audio Overviews through topic-based episodes.</li><li>Users can create Audio Overviews grounded in additional content types, including OneNote pages, Loop pages, .txt files, emails, Teams meetings, and Teams chats.</li><li>Audio Overviews saved to OneDrive from labeled source content will inherit the most restrictive sensitivity label from the sources.</li><li>This release does not introduce sensitivity labeling for Audio Overviews while they remain within the notebook.</li></ul><p><b><b>Action Required/Recommendations:</b></b></p><p>No admin action is required to prepare for this update. These Audio Overview improvements will roll out automatically to eligible users.</p><p>For sensitivity labels, when an Audio Overview is saved to OneDrive from labeled source content, the saved file will automatically inherit the most restrictive sensitivity label from its sources. No additional configuration is required as part of this feature rollout.</p><p><b><b>Compliance considerations:</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td>Does the change introduce or significantly modify AI/ML or agent capabilities that interact with or provide access to customer data?</td><td>Yes. Audio Overview uses AI capabilities to generate audio grounded in Microsoft 365 content, including additional supported content types.</td></tr><tr><td>Does the change provide end users any new way of interacting with generative AI?</td><td>Yes. Users can create and navigate Audio Overviews from more supported Microsoft 365 content sources.</td></tr><tr><td>Does the change modify, interrupt, or disable Purview capabilities such as Information Protection labels?</td><td>Yes. Audio Overviews saved to OneDrive from labeled source content inherit the most restrictive sensitivity label from the sources.</td></tr></tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft is enhancing Audio Overview with topic-based episodes for easier navigation, support for sensitivity labels when saving to OneDrive, and expanded content types including OneNote, Loop pages, emails, and Teams chats. The update rolls out worldwide from late October to November 2026 with no admin action needed."
+      }
+    ],
+    "EndDateTime": "2026-12-30T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1492959",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-10-09T20:43:58.203Z",
+    "Services": [
+      "Microsoft 365 suite",
+      "Microsoft 365 apps"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-10-09T20:43:49Z",
+    "Tags": [
+      "New feature",
+      "User impact"
+    ],
+    "Title": "Audio Overview Updates",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": "2027-04-01T07:00:00Z",
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and why</b></b></p><p>Microsoft is retiring pre-authenticated URLs, also known as tempauth URLs, from SharePoint Online and OneDrive. Beginning April 1, 2027, selected Microsoft Graph file APIs will no longer return URLs that contain embedded authentication information and will no longer issue HTTP 302 redirects to those URLs.</p><p>To help organizations prepare, new SharePoint Online tenant controls are coming soon in a future release of Microsoft SharePoint Online PowerShell. These controls will allow administrators to enable updated Microsoft Graph URL behavior for specific applications before the retirement date. This gives organizations time to validate application compatibility, improve security posture, and transition to standard Microsoft Entra ID authentication before the change takes effect.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Service change (Worldwide, GCC, GCC High, DoD):</b> Beginning in <b>early April 2027</b> and expected to complete in <b>late April 2027</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Administrators responsible for Microsoft Graph, SharePoint Online, OneDrive, application integrations, and tenant security</li><li>Owners of third-party applications, line-of-business applications, custom applications, and automation solutions that use affected Microsoft Graph file APIs</li><li>Organizations using applications that follow redirects or rely on URLs containing embedded authentication information</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Graph</li><li>SharePoint Online</li><li>OneDrive</li><li>Microsoft Entra ID</li><li>Third-party and custom applications that consume Microsoft Graph file APIs</li></ul><p><i>What will happen</i></p><p>Applications using affected Microsoft Graph APIs may currently receive:</p><ul><li>SharePoint Online download, upload, monitor, preview, version, or similar URLs that contain temporary authentication information.</li><li>Media service URLs that contain temporary authentication information.</li><li>HTTP 302 redirects to URLs containing embedded authentication information.</li></ul><p>After the change:</p><ul><li>Applications configured to use supported Microsoft Graph URL alternatives will receive Microsoft Graph URLs and continue authenticating with Microsoft Graph access tokens.</li><li>APIs that currently return HTTP 302 redirects to temporary authentication URLs will instead return content directly.</li><li>SharePoint Online URLs returned by affected APIs will no longer contain embedded temporary authentication information.</li><li>Applications accessing SharePoint Online URLs directly will need a valid Microsoft Entra ID access token for the SharePoint Online resource.</li><li>Requests made directly to SharePoint APIs rather than through Microsoft Graph are not affected by the tenant control setting.</li><li>Applications that store, inspect, or redeem URLs containing embedded authentication tokens may stop functioning if not updated before April 1, 2027.</li><li>The change is not enabled by default through tenant controls. Administrators must choose which application IDs participate in testing and validation.</li></ul><p>Affected API families include:</p><ul><li>File download and content APIs</li><li>createUploadSession APIs</li><li>Copy APIs and long-running action monitors</li><li>Preview APIs</li><li>Thumbnail APIs</li><li>Version APIs</li><li>Format conversion APIs</li></ul><p><b><b>Action required and recommendations</b></b></p><p>Administrators should begin validation before April 1, 2027.</p><p>Recommended actions:</p><ul><li>Identify applications that obtain file, version, thumbnail, preview, upload-session, or copy-operation URLs through Microsoft Graph.</li><li>Review whether applications inspect, store, or redeem URLs containing embedded authentication information.</li><li>Verify that applications can process direct content responses instead of relying on HTTP 302 redirects.</li><li>Confirm applications can obtain and send the appropriate Microsoft Entra ID access token when calling Microsoft Graph or SharePoint Online endpoints.</li><li>Enable the new tenant setting for a limited set of application IDs and validate application behavior.</li><li>Monitor application errors, authentication failures, and sign-in activity during testing.</li><li>Expand the configuration to additional applications after successful validation.</li><li>Contact application vendors and internal application owners to confirm support plans and timelines for affected applications.</li><li>Communicate this upcoming change to development and application support teams.</li></ul><p>No action is required if:</p><ul><li>Your organization does not use the affected APIs.</li><li>Applications already use direct Microsoft Graph content endpoints and standard Microsoft Entra ID authentication.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/clear-spotenantpreauthsettings?view=sharepoint-ps\" rel=\"noopener noreferrer\" target=\"_blank\">Clear-SPOTenantPreAuthSettings (Microsoft.Online.SharePoint.PowerShell) | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/get-spotenantpreauthsettings?view=sharepoint-ps\" rel=\"noopener noreferrer\" target=\"_blank\">Get-SPOTenantPreAuthSettings (Microsoft.Online.SharePoint.PowerShell) | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/powershell/sharepoint/sharepoint-online/connect-sharepoint-online\" rel=\"noopener noreferrer\" target=\"_blank\">Get started with the SharePoint Online Management Shell | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity-platform/v2-protocols\" rel=\"noopener noreferrer\" target=\"_blank\">OAuth 2.0 and OpenID Connect protocols - Microsoft identity platform | Microsoft Learn</a></li><li><a href=\"https://devblogs.microsoft.com/microsoft365dev/pre-authenticated-tempauth-urls-are-retiring-move-to-microsoft-entra-id-tokens-before-april-1-2027/\" rel=\"noopener noreferrer\" target=\"_blank\">Pre-authenticated (tempauth) URLs are retiring: move to Microsoft Entra ID tokens before April 1, 2027 - Microsoft 365 Developer Blog</a></li></ul><p><b><b>Compliance considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-421u\"><b>Question</b></td><td data-row=\"row-421u\"><b>Answer</b></td></tr><tr><td data-row=\"row-k9pm\">Does the change include an admin control, and can it be controlled through Entra ID group membership?</td><td data-row=\"row-k9pm\">Yes. New SharePoint Online tenant controls are being introduced to allow administrators to opt specific application IDs into the updated authentication behavior before the retirement date. Customers should review documentation to determine available scoping and configuration options. Regarding controlled by EntraID Group membership, I do not think that applies. These are SharePoint Online PowerShell cmdlets.</td></tr></tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft will retire pre-authenticated (tempauth) URLs in SharePoint Online and OneDrive by April 1, 2027. New tenant controls will allow admins to test updated Microsoft Graph URL behavior using Microsoft Entra ID authentication. Apps must stop relying on embedded auth URLs and HTTP 302 redirects. Validation before the deadline is recommended."
+      }
+    ],
+    "EndDateTime": "2027-05-30T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1492958",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-10-09T20:43:28.147Z",
+    "Services": [
+      "SharePoint Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-10-09T20:43:19Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Microsoft Graph: New tenant controls for retirement of non-standard file API tokens",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and why</b></b></p><p>We are introducing Custom Fields in Microsoft Planner, enabling users to tailor plans to match the way their teams work. Users can add Text, Number, Date, Yes/No, and Choice fields to capture information that matters to their workflows and manage that information across Board, Grid, and Task details.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Rollout begins in late October 2026 and is expected to complete by early November 2026.</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Users with a Planner Premium P1, P3, or P5 license</li><li>Users with a Microsoft 365 license</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Planner</li></ul><p><i>What will happen</i></p><ul><li>Users with a Planner Premium P1, P3, or P5 license will be able to create, edit, and manage Custom Fields and their values.</li><li>Users with a Microsoft 365 license can view Custom Fields and values as read-only and export them but cannot create or edit them.</li><li>Users can add up to 10 custom fields with 255 characters each to tasks in a plan for information beyond Planner's built-in fields. Available types are Text, Number, Date, Yes/No, and Choice, and field names can be up to 255 characters.</li><li>Choice fields are single-select and can contain 2 to 25 colored options.</li><li>Field values can be viewed and updated across Board, Grid, and Task details and used for sorting, filtering, grouping, and bulk editing.</li><li>This feature is <b>optional</b>. Existing plans are not affected unless users add Custom Fields.</li><li>Existing compliance capabilities cover custom field data, including Unified Audit Log, eDiscovery, Microsoft Information Protection through inherited plan-level labels, and Data Lifecycle Management.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>No tenant-level configuration or admin setup is required to enable Custom Fields. We recommend that you:</p><ul><li>Ensure users who need to create or edit Custom Fields have a Planner Premium P1, P3, or P5 license. Microsoft 365 users will have read-only access.</li><li>Inform users about the supported field types, the limit of 10 fields per plan, and that Choice fields are single-select with 2 to 25 options.</li><li>Advise users that deleting a custom field or choice option is <i>permanent </i>and cannot be undone, and that deleting a choice option clears affected values.</li><li>Remind users to follow your organization's data-handling policies. Custom field data is included in audit, eDiscovery, Microsoft Information Protection, and data lifecycle processes.</li></ul><p><b><b>Learn more</b></b></p><p>We will update this post with new documentation.</p><p><b><b>Compliance considerations</b></b></p><p><i>Does the change store new customer data?</i></p><ul><li><b>Yes.</b> Custom field names and values that users create on tasks (up to 10 fields per plan) are stored as part of plan/task data.</li></ul><p><i>Does the change alter how existing customer data is processed, stored, or accessed (e.g., documents, emails, chats, etc.)?&nbsp;</i></p><ul><li><b style=\"color: black;\">No.</b><span style=\"color: black;\"> Existing task and plan data is unchanged. Custom fields are additive metadata on tasks.</span></li></ul><p><i>Does the change modify, interrupt, or disable any of the following Microsoft Purview capabilities?</i></p><ul><li>Data Loss Prevention (DLP) policies or enforcement<ul><li><b>No.</b></li></ul></li><li>Information Protection labels or sensitive information types<ul><li><b>No.</b></li></ul></li><li>Conditional Access policies<ul><li><b>No.</b></li></ul></li><li>Audit logging capabilities<ul><li><b>No.</b> Custom field edits are logged in Task History and flow to the Unified Audit Log.</li></ul></li><li>eDiscovery or Content Search<ul><li><b>No.</b></li></ul></li><li>Encryption methods or key management<ul><li><b>No.</b> Data uses existing service encryption.</li></ul></li><li>Retention policies, holds, or deletion workflows<ul><li><b>No.</b> Custom field data follows the existing task/plan lifecycle (deleted when the task/plan is deleted).</li></ul></li></ul><p><i>Does the change alter how admins can monitor, report on, or demonstrate compliance activities (e.g., Purview or admin reporting)?</i></p><ul><li><b>No.</b> Existing Purview and admin reporting continue to work; custom field activity appears in audit logs like other task edits.</li></ul><p><i>Does the change modify how users can access, export, delete, or correct their personal data within Microsoft 365 services (GDPR Data Subject Rights)?</i></p><ul><li><b>No.</b> Users can view, edit, and export custom field values (Export to Excel), and the data is deleted along with the task or plan it belongs to.</li></ul>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "566867"
+      },
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Planner introduces Local Custom Fields, allowing users with Planner Premium licenses to add up to 10 customizable fields (Text, Number, Date, Yes/No, Choice) to tasks for tailored workflows. Microsoft 365 users have read-only access. The rollout begins late October 2026, with no admin setup required. Custom fields integrate with existing compliance and audit features."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2026-12-11T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1492955",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-10-09T20:41:36.833Z",
+    "Services": [
+      "Planner"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-10-09T20:41:20Z",
+    "Tags": [
+      "New feature",
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Planner: Introducing Local Custom Fields",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p><b><b>What and why</b></b></p><p>We are retiring Themes by Copilot in Microsoft Outlook. Themes by Copilot currently allows users with a Copilot license to create and apply a Copilot-generated theme in Settings. As part of this change, Themes by Copilot will be removed from Settings, and users will no longer be able to select or return to a Theme by Copilot after changing to a different theme.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Retirement begins in mid-October 2026 and is expected to complete by late October 2026.</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Users with a Copilot license.</li></ul><p><i>Platforms and services</i></p><ul><li>New Outlook for Windows</li><li>Outlook for Android</li><li>Outlook for iOS</li><li>Outlook for Mac</li><li>Outlook on the web</li></ul><p><i>What will happen</i></p><ul><li>Themes by Copilot will be removed from Settings. Users who are currently using a Theme by Copilot will retain their current theme until they change it.</li><li>Themes by Copilot configured to automatically refresh will remain applied but will stop refreshing. Users will retain the current theme imagery until they change their theme.</li><li>Users can change from their existing Theme by Copilot to a non-Copilot theme but cannot return to a Theme by Copilot after doing so.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>No action is required.</p>",
+      "ContentType": "html"
+    },
+    "Category": "planForChange",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Themes by Copilot in Microsoft Outlook will be retired worldwide from mid- to late October 2026. Users with a Copilot license will lose the ability to select or revert to these themes, though current themes remain until changed. No action is required."
+      }
+    ],
+    "EndDateTime": "2026-11-27T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1492954",
+    "IsMajorChange": true,
+    "LastModifiedDateTime": "2026-10-09T20:40:31.907Z",
+    "Services": [
+      "Exchange Online"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-10-09T20:39:56Z",
+    "Tags": [
+      "User impact",
+      "Admin impact",
+      "Retirement"
+    ],
+    "Title": "Microsoft Outlook: Themes by Copilot retirement",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated October 9, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and why</b></b></p><p>We're improving the PowerPoint Live presenting experience in Microsoft Teams by introducing a new light mode option. With this update, presenters can choose from light, dark, classic, or high contrast modes while presenting. This enhancement provides greater flexibility, accessibility, and personalization, allowing presenters to use the display mode that best matches their preferences and working environment.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=567469\" rel=\"noopener noreferrer\" target=\"_blank\">567469</a>.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Targeted release: </b>Beginning in <b>early September 2026</b> and expected to complete by <b>late October 2026</b> (previously early September)</li><li><b>General Availability (Worldwide, GCC, GCC High, DoD):</b> Beginning in <b>early September 2026</b> and expected to complete by <b>late November 2026</b> (previously late October)</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Users who present PowerPoint content using PowerPoint Live in Microsoft Teams.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Teams</li><li>PowerPoint Live</li></ul><p>What will happen</p><p>Presenters will be able to select from the following display modes when using PowerPoint Live:</p><ul><li>Light mode</li><li>Dark mode</li><li>Classic mode</li><li>High contrast mode</li></ul><p>Users can choose the mode that best aligns with their preferences and accessibility needs.</p><p>This change enhances the presenting experience and does not alter presentation content or attendee viewing experiences.</p><p><b><b>Action required and recommendations</b></b></p><p>No admin action is required.</p><p>Consider informing users who regularly present in Teams meetings about the new display mode options.</p><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "RoadmapIds",
+        "Value": "567469"
+      },
+      {
+        "Name": "Summary",
+        "Value": "PowerPoint Live in Microsoft Teams will add a light mode option for presenters, alongside dark, classic, and high contrast modes. This update, rolling out from September to November 2026, enhances flexibility and accessibility without affecting presentation content or attendee views. No admin action is needed."
+      },
+      {
+        "Name": "Platforms",
+        "Value": "Desktop, Mac, Web"
+      }
+    ],
+    "EndDateTime": "2026-12-31T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1462473",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-10-09T19:24:44.493Z",
+    "Services": [
+      "Microsoft Teams"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-08-26T22:37:06Z",
+    "Tags": [
+      "Updated message",
+      "Feature update",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Teams: PowerPoint Live introduces light mode for presenters",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<div>On November 10, 2026, Windows 11, version 23H2 <a href=\"https://learn.microsoft.com/lifecycle/products/windows-11-enterprise-and-education\" rel=\"noopener noreferrer\" target=\"_blank\">Enterprise and Education editions</a> will reach end of updates. The November 2026 Windows security update will be the last update available for these editions. After this date, devices running these editions will no longer receive monthly security updates containing protections from the latest security threats. We recommend updating eligible devices running Windows 11, version 23H2 to a supported version of Windows 11.</div><div><br></div><div>If you have an eligible device, you can check if an update to a supported version of Windows is available by selecting <b>Settings &gt; Windows Update </b>and selecting <a href=\"https://support.microsoft.com/windows/update-windows-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a\" rel=\"noopener noreferrer\" target=\"_blank\"><b>Check for updates</b></a>. If your device is ready for the update, you’ll see the option to <b>Download and install.</b></div><div><br></div><div>For more information about product lifecycle dates, see <a href=\"https://learn.microsoft.com/windows/release-health/windows11-release-information\" rel=\"noopener noreferrer\" target=\"_blank\">Windows 11 release information</a> and <a href=\"https://learn.microsoft.com/lifecycle/faq/windows\" rel=\"noopener noreferrer\" target=\"_blank\">Lifecycle FAQ - Windows</a>.</div>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [],
+    "EndDateTime": "2027-10-09T17:07:34.47Z",
+    "HasAttachments": false,
+    "Id": "MC1492825",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-10-09T17:07:35.43Z",
+    "Services": [
+      "Windows"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-10-09T17:07:34.473Z",
+    "Tags": [
+      "Admin impact"
+    ],
+    "Title": "30-Day Reminder: Windows 11, version 23H2 Enterprise and Education editions reach end of updates on November 10, 2026",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated October 9, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and Why:</b></b></p><p>Microsoft Defender for Office 365 is introducing new email submissions data in Advanced Hunting in Microsoft Defender. The new submissions tables provide security operations teams with greater visibility into email submission activity and results, enabling analysts to query submission activity alongside other Defender data and build hunting and detection workflows tailored to their organization.</p><p><b><b>Rollout Schedule:</b></b></p><p>Public Preview (Worldwide): We will begin rolling out in early October 2026 and expect to complete by early October 2026.</p><p>General Availability (Worldwide): We will begin rolling out late October 2026 (previously early October) and expect to complete by mid-November 2026 (previously early October).</p><p><b><b>Impact on Your Organization:</b></b></p><p><b>Who is affected:</b></p><p>- Security operations teams that use Advanced Hunting in Microsoft Defender.</p><p>- Admins and analysts who investigate email submissions and submission results.</p><p><b>Platforms/Services:</b></p><p>- Microsoft Defender for Office 365</p><p>- Microsoft Defender XDR</p><p>- Advanced Hunting</p><p><b>What will happen:</b></p><p>- Two new Advanced Hunting tables will be available: SubmissionEvents and SubmissionResults.</p><p>- SubmissionEvents provides information about email submission events.</p><p>- SubmissionResults provides information about the results associated with those submissions.</p><p>- Security teams can query submission information directly and correlate it with other Microsoft Defender XDR data.</p><p>- The tables can be used with Advanced Hunting custom detections, allowing organizations to create detections based on submission activity that is important to their SOC workflows.</p><p><b><b>Action Required/Recommendations:</b></b></p><p>No immediate action is required. Additional documentation for the new tables will be provided as part of the release.</p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Defender for Office 365 is adding two new Advanced Hunting tables, SubmissionEvents and SubmissionResults, to enhance email submission visibility and detection workflows. Public Preview starts early October 2026; General Availability begins late October 2026. No immediate action or compliance concerns are required."
+      }
+    ],
+    "EndDateTime": "2026-12-28T07:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1484009",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-10-09T16:53:18.203Z",
+    "Services": [
+      "Microsoft Defender XDR"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-09-30T22:58:35Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Defender for Office 365: New email submissions data in Advanced Hunting",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated October 9, 2026: We have updated the content. Thank you for your patience.&nbsp;</p><p><b><b>What and Why</b></b></p><p>We're introducing a new Microsoft Entra capability that Allow password change after secure sign-in directly from My Sign-Ins using an existing strong credential, such as a passkey, FIDO2 security key, or Windows Hello for Business. Users can complete this action even if they don't know their current password and without using self-service password reset (SSPR) or contacting the helpdesk.</p><p>Many organizations are adopting allowed password changes after secure sign-ins but still maintain passwords for legacy applications and services. This update helps reduce password-related support requests and removes a common barrier to adoption. The feature is disabled by default and requires administrator enablement before users can access it.</p><p><b><b>Rollout Schedule</b></b></p><ul><li><b>General Availability (Worldwide and GCC): </b>Beginning <b>end of October 2026</b> (previously mid-October) and expected to complete by <b>end of November 2026</b> (previously late October)</li></ul><p><b><b>Impact on Your Organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft Entra administrators who manage password change settings</li><li>Users who have a registered allowed password change after secure sign-in<span style=\"color: black;\"> method</span> (passkey, FIDO2 security key, or Windows Hello for Business) and also maintain a password</li><li>Organizations that choose to enable the feature</li></ul><p><i>Platforms/Services</i></p><ul><li>Microsoft Entra</li><li>My Sign-Ins (mysignins.microsoft.com)</li></ul><p><i>What will happen</i></p><ul><li>Because this feature is off by default, there is no change to your users' experience unless you turn it on.&nbsp;</li><li>After the feature is enabled, eligible users will see a new <b>Change password option</b> in <i>My Sign-Ins</i>.</li><li>Users can authenticate set a new password without knowing their existing password.</li><li>Users are not required to enroll in or use SSPR to complete this action.</li><li>Administrators can choose to enable or disable the capability through Microsoft Entra management interfaces available at release.</li><li>Authentication continues to require a strong<span style=\"color: black;\"> password change method</span>, such as a passkey, FIDO2 security key, or Windows Hello for Business.</li><li>The setting is tenant-wide: you can turn it on for your entire tenant or leave it off for everyone. There is no per-user or per-group scoping.&nbsp;</li></ul><p><b><b>Action Required/Recommendations</b></b></p><p>No action is required.</p><p>If your organization plans to support allowed password changes after secure sign-in:</p><ul><li>Review your password management and allowed password changes after secure sign-in strategy.</li><li>Evaluate whether enabling this capability aligns with your organization's security and support requirements.</li><li>Communicate the new self-service capability to helpdesk and support teams.</li><li>Update internal user guidance and documentation as needed.</li><li>If your organization chooses to offer allowed password changes after secure sign-in, enable the feature through the Microsoft Entra admin experience or supported APIs when it becomes available in October 2026.</li></ul><p><b>Learn more&nbsp;</b></p><ul><li>Microsoft Learn documentation will be available when the feature releases in October.&nbsp;</li></ul><p><b><b>Compliance Considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-muyniobb-18\">Question</td><td data-row=\"row-muyniobb-18\">Answer</td></tr><tr><td data-row=\"row-muyniobb-19\">Does the change include an admin control?</td><td data-row=\"row-muyniobb-19\">Yes. The feature is disabled by default and requires explicit administrator enablement.</td></tr><tr><td data-row=\"row-muyniobb-20\">Does the change modify how users can access or correct their personal data?</td><td data-row=\"row-muyniobb-20\">Yes. Users gain a new self-service method to update their password using an existing allowed password change after secure sign-in.</td></tr></tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft Entra will enable users to change passwords after secure sign-in using strong credentials (passkey, FIDO2, Windows Hello) without knowing the current password or using SSPR. This feature, disabled by default, requires admin activation and will roll out globally from October to November 2026."
+      }
+    ],
+    "EndDateTime": "2026-12-31T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1437671",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-10-09T16:43:01.717Z",
+    "Services": [
+      "Microsoft Entra"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-07-23T22:39:23Z",
+    "Tags": [
+      "Updated message",
+      "New feature",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Entra: Authenticated password change in My Sign-Ins",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
+      "Content": "<p>Updated October 9, 2026: We have decided not to move forward with this change at this time. We apologize for any inconvenience.&nbsp;&nbsp;</p><p><b><b>What and why</b></b></p><p>We are extending existing Microsoft Entra Administrative Units (AUs) support in Microsoft Purview Data Loss Prevention (DLP) to DLP policies that apply to Microsoft Copilot and Copilot Chat. This enhancement allows organizations that use Administrative Units to delegate management of supported Copilot DLP policies while maintaining regional, departmental, or regulatory boundaries.</p><p>This update builds on existing Microsoft Purview role-based access control (RBAC) and Administrative Unit capabilities and does not introduce a new administrative model.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Public Preview:</b> We have decided not to move forward with this change at this time.</li><li><b>Worldwide, GCC, GCC High, DoD:</b> We have decided not to move forward with this change at this time.</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using Microsoft Entra Administrative Units and Microsoft Purview Data Loss Prevention for Microsoft Copilot and Copilot Chat</li><li>Administrators responsible for managing Microsoft Purview DLP policies for Microsoft Copilot and Copilot Chat</li><li>Organizations that do not use Administrative Units do not need to change their existing Copilot DLP policies</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Purview Data Loss Prevention</li><li>Microsoft Copilot</li><li>Microsoft Copilot Chat</li><li>Microsoft Entra ID Administrative Units</li></ul><p><i>What will happen</i></p><ul><li>Administrators scoped to an Administrative Unit will be able to create, view, edit, and delete supported Copilot DLP policies within their assigned Administrative Unit.</li><li>Administrative Unit scoped administrators will not be able to modify tenant-wide policies.</li><li>Administrative Unit scoped administrators will not be able to manage policies assigned to other Administrative Units.</li><li>Existing Microsoft Purview role-based access control permissions continue to apply.</li><li>Tenant-wide Copilot DLP policies will continue to function as they do today.</li><li>End users will not experience a new workflow.</li><li>Copilot interactions will continue to be evaluated against applicable tenant-wide and Administrative Unit scoped DLP policies.</li><li>Administrative Unit boundaries are determined by the user initiating the Copilot interaction, not by the owner or storage location of referenced content.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>No action is required.</p><p>If your organization plans to use Administrative Units for Copilot DLP policy management, we recommend the following:</p><ul><li>Review your Microsoft Entra Administrative Unit structure and membership assignments.</li><li>Review Microsoft Purview role group assignments and ensure administrators are assigned only to the Administrative Units they manage.</li><li>Review existing tenant-wide Copilot DLP policies before creating Administrative Unit scoped policies.</li><li>When creating a new DLP policy, select the appropriate Administrative Unit and configure the Microsoft Copilot policy location for eligible users or groups within that Administrative Unit.</li></ul><p>Licensing requirements for Microsoft Purview DLP and Microsoft Copilot continue to apply.</p><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/purview-admin-units\" rel=\"noopener noreferrer\" target=\"_blank\">Administrative units in Microsoft Purview | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft Purview DLP for Microsoft 365 Copilot and Copilot Chat | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-pj0n\">Question</td><td data-row=\"row-pj0n\">Answer</td></tr><tr><td data-row=\"row-hhgo\">Does the change modify DLP policies or enforcement?</td><td data-row=\"row-hhgo\">Yes. Administrative Unit scoped administrators gain delegated management capabilities for supported Copilot DLP policies within their assigned Administrative Units. DLP enforcement functionality remains unchanged.</td></tr></tbody></table>",
+      "ContentType": "html"
+    },
+    "Category": "stayInformed",
+    "Details": [
+      {
+        "Name": "Summary",
+        "Value": "Microsoft has decided not to proceed with extending Microsoft Entra Administrative Units support to Microsoft Purview DLP policies for Microsoft Copilot. No changes will occur, and no action is required. Existing DLP policies and enforcement remain unchanged."
+      }
+    ],
+    "EndDateTime": "2026-10-16T08:00:00Z",
+    "HasAttachments": false,
+    "Id": "MC1486284",
+    "IsMajorChange": false,
+    "LastModifiedDateTime": "2026-10-09T16:25:29.86Z",
+    "Services": [
+      "Microsoft Purview"
+    ],
+    "Severity": "normal",
+    "StartDateTime": "2026-10-02T22:17:22Z",
+    "Tags": [
+      "Updated message",
+      "User impact",
+      "Admin impact"
+    ],
+    "Title": "Microsoft Purview | Data Loss Prevention: Administrative Units support for DLP policies for Microsoft Copilot",
+    "ViewPoint": {
+      "IsArchived": null,
+      "IsFavorited": null,
+      "IsRead": null
+    },
+    "Source": "messageCenter",
+    "AdditionalProperties": {}
+  },
+  {
+    "ActionRequiredByDateTime": null,
+    "Attachments": null,
+    "AttachmentsArchive": null,
+    "Body": {
       "Content": "<p>Updated October 8, 2026: After additional consideration we have decided not to proceed with this change. You can safely disregard this message. We apologize for any inconvenience this may have caused.</p>\n<p><b><b>What and why</b></b></p><p>To provide a more consistent and streamlined Microsoft 365 Copilot experience in Microsoft Teams, we are simplifying how users access Copilot in <i>Teams</i>.</p><p>Today, users can access Copilot either from the Teams chat list or from the Copilot app in the <i>Teams app bar</i>. Beginning in October 2026, we will remove the Copilot entry point from the Teams chat list and direct users to access Copilot through the Copilot app. The Copilot app provides access to the full set of Copilot capabilities, while the chat list entry point provides a more limited experience.</p><p>This change creates a single, consistent access point for Copilot in Teams, helping users discover and return to Copilot more easily while reducing interface clutter. To help users transition, a coachmark will direct users from the chat list entry point to the Copilot app before the chat list entry point is removed.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Copilot chat list entry point removal (Worldwide, GCC):</b> Cancelled</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations whose users access Microsoft 365 Copilot in Microsoft Teams</li><li>Users of Microsoft Teams desktop and web applications who currently access Copilot from the Teams chat list.</li><li>Mobile users are not affected.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Teams desktop</li><li>Microsoft Teams web</li></ul><p><i>What will happen</i></p><ul><li>The Copilot entry point in the Teams chat list will be removed.&nbsp;</li><li>Prior to the mid-October removal, users who access Copilot from the chat list will see a coachmark directing them to the Copilot app.</li><li>The Copilot app in the Teams app bar will remain available and unchanged.</li><li>If the Copilot app has been unpinned from the Teams app bar, users will be directed to the app overflow menu where they can locate the Copilot app.</li><li>Existing Copilot conversations, notifications, supported deep links, and session continuity will continue to work.</li><li>No user conversations, prompts, chat history, or Copilot data will be removed.</li><li>Mobile experiences are unchanged.</li><li>This change is enabled by Microsoft and does not require tenant configuration.</li></ul><p>Before:</p><p>&nbsp;<img src=\"\nhttps://support.microsoft.com/en-us/customercomms/media/messagecenter/2026/09/21928-1.png\" width=\"400\"></p><p></p><p></p><p>After:</p><p>&nbsp;<img src=\"\nhttps://support.microsoft.com/en-us/customercomms/media/messagecenter/2026/09/21928-2.png\" width=\"400\"></p><p><b><b>Action required and recommendations</b></b></p><p>No action is required.</p><p>We recommend that administrators:</p><ul><li>Inform users that Copilot in <i>Teams</i> will be accessed through the Copilot app in the <i>Teams app bar</i> going forward.</li><li>Update internal training materials, screenshots, adoption content, and support documentation that reference the Copilot chat list entry point.</li><li>Notify help desk and support teams before rollout.</li><li>Review Teams app setup policies and consider pinning the Copilot app for users if it is not already pinned.</li><li>Monitor user feedback after rollout and direct users to the Copilot app if they are looking for the retired chat list entry point.</li></ul><p>Learn more</p><ul><li><a href=\"https://learn.microsoft.com/microsoft-365/copilot/pin-copilot-chat-navbar#pin-copilot-chat-in-microsoft-teams-through-the-teams-admin-center\" target=\"_blank\">Pin Microsoft Copilot Chat in the Microsoft 365 apps | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
       "ContentType": "html"
     },
@@ -1191,46 +1554,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated October 7, 2026: We have updated the timeline and content. Thank you for your patience.&nbsp;</p><p><b><b>What and Why</b></b></p><p>We're introducing a new Microsoft Entra capability that allows a<span style=\"color: black;\">uthenticated password changes</span> directly from My Sign-Ins using an existing strong credential, such as a passkey, FIDO2 security key, or Windows Hello for Business. Users can complete this action even if they don't know their current password and without using self-service password reset (SSPR) or contacting the helpdesk.</p><p>Many organizations are adopting a<span style=\"color: black;\">uthenticated password change</span> but still maintain passwords for legacy applications and services. This update helps reduce password-related support requests and removes a common barrier to adoption. The feature is disabled by default and requires administrator enablement before users can access it.</p><p><b><b>Rollout Schedule</b></b></p><ul><li><b>General Availability (Worldwide and GCC): </b>Beginning in <b>mid-October 2026</b> and expected to complete by <b>late October 2026</b></li></ul><p><b><b>Impact on Your Organization</b></b></p><p><i>Who is affected</i></p><ul><li>Microsoft Entra administrators who manage password change settings</li><li>Users who have a registered a<span style=\"color: black;\">uthenticated password change method</span> (passkey, FIDO2 security key, or Windows Hello for Business) and also maintain a password</li><li>Organizations that choose to enable the feature</li></ul><p><i>Platforms/Services</i></p><ul><li>Microsoft Entra</li><li>My Sign-Ins (mysignins.microsoft.com)</li></ul><p><i>What will happen</i></p><ul><li>Because this feature is off by default, there is no change to your users' experience unless you turn it on.&nbsp;</li><li>After the feature is enabled, eligible users will see a new <b>Change password option</b> in <i>My Sign-Ins</i>.</li><li>Users can authenticate set a new password without knowing their existing password.</li><li>Users are not required to enroll in or use SSPR to complete this action.</li><li>Administrators can choose to enable or disable the capability through Microsoft Entra management interfaces available at release.</li><li>Authentication continues to require a strong<span style=\"color: black;\"> password change method</span>, such as a passkey, FIDO2 security key, or Windows Hello for Business.</li><li>The setting is tenant-wide: you can turn it on for your entire tenant or leave it off for everyone. There is no per-user or per-group scoping.&nbsp;</li></ul><p><b><b>Action Required/Recommendations</b></b></p><p>No action is required.</p><p>If your organization plans to support a<span style=\"color: black;\">uthenticated password change</span>:</p><ul><li>Review your password management and a<span style=\"color: black;\">uthenticated password change</span> strategy.</li><li>Evaluate whether enabling this capability aligns with your organization's security and support requirements.</li><li>Communicate the new self-service capability to helpdesk and support teams.</li><li>Update internal user guidance and documentation as needed.</li><li>If your organization chooses to offer a<span style=\"color: black;\">uthenticated password changes</span>, enable the feature through the Microsoft Entra admin experience or supported APIs when it becomes available in October 2026.</li></ul><p><b>Learn more&nbsp;</b></p><ul><li>Microsoft Learn documentation will be available when the feature releases in October.&nbsp;</li></ul><p><b><b>Compliance Considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-muyniobb-18\">Question</td><td data-row=\"row-muyniobb-18\">Answer</td></tr><tr><td data-row=\"row-muyniobb-19\">Does the change include an admin control?</td><td data-row=\"row-muyniobb-19\">Yes. The feature is disabled by default and requires explicit administrator enablement.</td></tr><tr><td data-row=\"row-muyniobb-20\">Does the change modify how users can access or correct their personal data?</td><td data-row=\"row-muyniobb-20\">Yes. Users gain a new self-service method to update their password using an existing a<span style=\"color: black;\">uthenticated password change</span>.</td></tr></tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Entra will enable authenticated password changes in My Sign-Ins starting mid-October 2026. Users with strong credentials (passkey, FIDO2 key, Windows Hello) can reset passwords without knowing the current one or using SSPR. The feature is off by default and requires admin activation tenant-wide."
-      }
-    ],
-    "EndDateTime": "2026-11-30T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1437671",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-10-07T22:09:11.71Z",
-    "Services": [
-      "Microsoft Entra"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-07-23T22:39:23Z",
-    "Tags": [
-      "Updated message",
-      "New feature",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Entra: Authenticated password change in My Sign-Ins",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<div><b>What and why:</b></div><div>A time zone change affects Windows devices in Manitoba, with Windows releasing a fix in October 2026. Manitoba is permanently moving to UTC-5 and will not set its clocks back on November 1, 2026. Microsoft recommends a temporary workaround for devices that can't be updated in time. For the workaround steps and full guidance, visit the <a href=\"https://techcommunity.microsoft.com/category/windows/blog/dstblog\" rel=\"noopener noreferrer\" target=\"_blank\">Daylight Saving Time &amp; Time Zone Blog</a>.</div><div><br></div><div><b>Rollout schedule:</b></div><ul><li>October 2026 – The Manitoba time zone will be included with the October 2026 Windows security update for all supported versions of Windows, including Windows Server.</li><li>November 1, 2026 – The Manitoba time zone&nbsp;transition takes effect.</li></ul><div><br></div><div><b>Impact on your organization:</b></div><div>In Manitoba, existing time zones remain correct until November 1, 2026; after that date, devices will show an incorrect time until the update is installed. The update adds a new time zone, (UTC-05:00) Manitoba. Devices that set their time zone automatically will select the new time zone on their own; on other devices, users must select it manually.</div><div><br></div><div><b>Action required/recommendations:</b></div><div>Install the update on affected devices in Manitoba before November 1, 2026. If you can't install it in time, read and follow the interim guidance, listed in Additional information.</div><div><br></div><div><b>Compliance considerations:</b></div><div>No compliance considerations are identified. Review as appropriate for your organization.</div><div><br></div><div><b>Additional information:</b></div><ul><li><a href=\"https://techcommunity.microsoft.com/category/windows/blog/dstblog\" rel=\"noopener noreferrer\" target=\"_blank\">Daylight Saving Time &amp; Time Zone Blog</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/dstblog/interim-guidance-for-manitoba-permanent-dst-2026/4562488\" rel=\"noopener noreferrer\" target=\"_blank\">Interim guidance for Manitoba permanent DST 2026</a></li><li><a href=\"https://techcommunity.microsoft.com/t5/windows-it-pro-blog/how-windows-manages-time-zone-changes/ba-p/3852632\" rel=\"noopener noreferrer\" target=\"_blank\">How Windows manages time zone changes</a></li><li><a href=\"https://learn.microsoft.com/troubleshoot/windows-client/system-management-components/daylight-saving-time-help-support\" rel=\"noopener noreferrer\" target=\"_blank\">Daylight saving time help and support</a></li></ul>",
       "ContentType": "html"
     },
@@ -1626,45 +1949,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Create: Improved sharing controls for Brand Kits",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p>Updated October 6, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and why</b></b></p><p>We are extending existing Microsoft Entra Administrative Units (AUs) support in Microsoft Purview Data Loss Prevention (DLP) to DLP policies that apply to Microsoft Copilot and Copilot Chat. This enhancement allows organizations that use Administrative Units to delegate management of supported Copilot DLP policies while maintaining regional, departmental, or regulatory boundaries.</p><p>This update builds on existing Microsoft Purview role-based access control (RBAC) and Administrative Unit capabilities and does not introduce a new administrative model.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Public Preview:</b> Begins late October, 2026.</li><li><b>Worldwide, GCC, GCC High, DoD:</b> Beginning in <b>late November 2026</b> (previously late October) and expected to complete by <b>early December 2026</b> (previously early November)</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using Microsoft Entra Administrative Units and Microsoft Purview Data Loss Prevention for Microsoft Copilot and Copilot Chat</li><li>Administrators responsible for managing Microsoft Purview DLP policies for Microsoft Copilot and Copilot Chat</li><li>Organizations that do not use Administrative Units do not need to change their existing Copilot DLP policies</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Purview Data Loss Prevention</li><li>Microsoft Copilot</li><li>Microsoft Copilot Chat</li><li>Microsoft Entra ID Administrative Units</li></ul><p><i>What will happen</i></p><ul><li>Administrators scoped to an Administrative Unit will be able to create, view, edit, and delete supported Copilot DLP policies within their assigned Administrative Unit.</li><li>Administrative Unit scoped administrators will not be able to modify tenant-wide policies.</li><li>Administrative Unit scoped administrators will not be able to manage policies assigned to other Administrative Units.</li><li>Existing Microsoft Purview role-based access control permissions continue to apply.</li><li>Tenant-wide Copilot DLP policies will continue to function as they do today.</li><li>End users will not experience a new workflow.</li><li>Copilot interactions will continue to be evaluated against applicable tenant-wide and Administrative Unit scoped DLP policies.</li><li>Administrative Unit boundaries are determined by the user initiating the Copilot interaction, not by the owner or storage location of referenced content.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>No action is required.</p><p>If your organization plans to use Administrative Units for Copilot DLP policy management, we recommend the following:</p><ul><li>Review your Microsoft Entra Administrative Unit structure and membership assignments.</li><li>Review Microsoft Purview role group assignments and ensure administrators are assigned only to the Administrative Units they manage.</li><li>Review existing tenant-wide Copilot DLP policies before creating Administrative Unit scoped policies.</li><li>When creating a new DLP policy, select the appropriate Administrative Unit and configure the Microsoft Copilot policy location for eligible users or groups within that Administrative Unit.</li></ul><p>Licensing requirements for Microsoft Purview DLP and Microsoft Copilot continue to apply.</p><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/purview-admin-units\" rel=\"noopener noreferrer\" target=\"_blank\">Administrative units in Microsoft Purview | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft Purview DLP for Microsoft 365 Copilot and Copilot Chat | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-pj0n\">Question</td><td data-row=\"row-pj0n\">Answer</td></tr><tr><td data-row=\"row-hhgo\">Does the change modify DLP policies or enforcement?</td><td data-row=\"row-hhgo\">Yes. Administrative Unit scoped administrators gain delegated management capabilities for supported Copilot DLP policies within their assigned Administrative Units. DLP enforcement functionality remains unchanged.</td></tr></tbody></table>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Purview extends Microsoft Entra Administrative Units support to Data Loss Prevention (DLP) policies for Microsoft Copilot and Copilot Chat. Starting late 2026, admins scoped to AUs can manage Copilot DLP policies within their units, maintaining existing role-based access controls and tenant-wide policy enforcement. No action required."
-      }
-    ],
-    "EndDateTime": "2027-01-11T08:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1486284",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-10-06T22:15:48.49Z",
-    "Services": [
-      "Microsoft Purview"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-10-02T22:17:22Z",
-    "Tags": [
-      "Updated message",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Purview | Data Loss Prevention: Administrative Units support for DLP policies for Microsoft Copilot",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -2173,7 +2457,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1484013\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433737Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1484013\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433738Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1484013\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433739Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1484013\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.043374Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1484013\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891506Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1484013\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891508Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1484013\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891509Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1484013\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.589151Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2225,7 +2509,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433335Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433336Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433336Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433338Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.043334Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433342Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891093Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891094Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891096Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891097Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891098Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1470410\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891099Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2782,54 +3066,6 @@
     "Attachments": null,
     "AttachmentsArchive": null,
     "Body": {
-      "Content": "<p>Updated October 5, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and why</b></b></p><p>We're improving the PowerPoint Live presenting experience in Microsoft Teams by introducing a new light mode option. With this update, presenters can choose from light, dark, classic, or high contrast modes while presenting. This enhancement provides greater flexibility, accessibility, and personalization, allowing presenters to use the display mode that best matches their preferences and working environment.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=567469\" rel=\"noopener noreferrer\" target=\"_blank\">567469</a>.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Targeted release: </b>Beginning in <b>early September 2026</b> and expected to complete by <b>late October 2026</b> (previously early September)</li><li><b>General Availability (Worldwide, GCC, GCC High, DoD):</b> Beginning in <b>early September 2026</b> and expected to complete by <b>late October 2026</b> (previously late-September)</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Users who present PowerPoint content using PowerPoint Live in Microsoft Teams.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Teams</li><li>PowerPoint Live</li></ul><p>What will happen</p><p>Presenters will be able to select from the following display modes when using PowerPoint Live:</p><ul><li>Light mode</li><li>Dark mode</li><li>Classic mode</li><li>High contrast mode</li></ul><p>Users can choose the mode that best aligns with their preferences and accessibility needs.</p><p>This change enhances the presenting experience and does not alter presentation content or attendee viewing experiences.</p><p><b><b>Action required and recommendations</b></b></p><p>No admin action is required.</p><p>Consider informing users who regularly present in Teams meetings about the new display mode options.</p><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "RoadmapIds",
-        "Value": "567469"
-      },
-      {
-        "Name": "Summary",
-        "Value": "PowerPoint Live in Microsoft Teams will add a light mode option for presenters, alongside dark, classic, and high contrast modes. This update, rolling out from early September to late October 2026, enhances flexibility and accessibility without affecting presentation content or attendee views. No admin action needed."
-      },
-      {
-        "Name": "Platforms",
-        "Value": "Desktop, Mac, Web"
-      }
-    ],
-    "EndDateTime": "2026-11-30T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1462473",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-10-05T22:05:50.787Z",
-    "Services": [
-      "Microsoft Teams"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-08-26T22:37:06Z",
-    "Tags": [
-      "Updated message",
-      "Feature update",
-      "User impact",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Teams: PowerPoint Live introduces light mode for presenters",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
       "Content": "<p>Updated October 5, 2026: We have updated the timeline. Thank you for your patience.</p><p><b><b>What and why</b></b></p><p>We're introducing a modernized Gallery view experience for Microsoft Teams Rooms on Android. This update aligns the experience more closely with Teams Rooms on Windows by improving participant visibility, creating more consistent layouts, and providing additional meeting display controls for users and administrators.</p><p>This message is associated with Microsoft 365 Roadmap ID <a href=\"https://www.microsoft.com/microsoft-365/roadmap?filters=&amp;searchterms=567468\" rel=\"noopener noreferrer\" target=\"_blank\">567468</a>.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide, GCC):</b> Beginning in <b>mid-August 2026</b> and is expected to complete by <b>late October 2026 </b>(previously mid-August)</li><li><b>General Availability (GCC High and DoD):</b> Beginning in <b>early September 2026 </b>and expected to complete in <b>late October 2026 </b>(previously late September)</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using Microsoft Teams Rooms on Android devices.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Teams</li><li>Teams Rooms on Android</li></ul><p><i>What will happen</i></p><p>Today, Teams Rooms on Android devices may display participants using a mix of aspect ratios and provide a different gallery experience than Teams Rooms on Windows.</p><p>After this rollout:</p><ul><li>Gallery view will prioritize video participants on the meeting stage by default:&nbsp;</li><li><img src=\"https://support.microsoft.com/en-us/customercomms/media/messagecenter/2026/08/21389-1.png\"></li><li>Participant tiles will be displayed using more consistent aspect ratios, including 16:9, 4:3, and 1:1 layouts.</li><li>Audio participants will be deprioritized when video participant prioritization is enabled, helping display more video participants on screen.</li><li>Meeting participants will be able to:<ul><li><img src=\"https://support.microsoft.com/en-us/customercomms/media/messagecenter/2026/08/21389-2.png\">Hide the room self-preview video for a meeting.</li><li>Display audio and video participants equally instead of prioritizing video participants.</li></ul></li><li>Gallery updates will be more stable, with reduced tile movement when active speakers are promoted to the meeting stage.</li><li>Admin controls will be available through device settings and the Pro Management portal.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>No action is required before the rollout.</p><p>Administrators can configure the default Gallery view behavior through local device settings and the Teams Rooms Pro Management portal.</p><p>Communicate these visual changes to Teams Rooms users if your organization provides end-user training or adoption materials.</p><p><b>Learn more</b></p><ul><li><a href=\"https://support.microsoft.com/teams/calls-devices/microsoft-teams-rooms-android\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft Teams Rooms (Android) | Microsoft Support</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified.</p>",
       "ContentType": "html"
     },
@@ -2841,7 +3077,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1446797\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434546Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1446797\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434548Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1446797\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892328Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1446797\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892329Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -2893,7 +3129,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"IOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432452Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432454Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"IOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890314Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1404321\",\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890316Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -3600,7 +3836,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1485056\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434111Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1485056\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434112Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1485056\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434112Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1485056\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434113Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1485056\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891835Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1485056\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891837Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1485056\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891838Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1485056\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891839Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -3983,44 +4219,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Teams: Hide organizer names in calendar view on Teams Panels",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<p><b><b>What and Why:</b></b></p><p>Microsoft Defender for Office 365 is introducing new email submissions data in Advanced Hunting in Microsoft Defender. The new submissions tables provide security operations teams with greater visibility into email submission activity and results, enabling analysts to query submission activity alongside other Defender data and build hunting and detection workflows tailored to their organization.</p><p><b><b>Rollout Schedule:</b></b></p><p>Public Preview (Worldwide): We will begin rolling out in early October 2026 and expect to complete by early October 2026.</p><p>General Availability (Worldwide): We will begin rolling out in early October 2026 and expect to complete by early October 2026.</p><p><b><b>Impact on Your Organization:</b></b></p><p><b>Who is affected:</b></p><p>- Security operations teams that use Advanced Hunting in Microsoft Defender.</p><p>- Admins and analysts who investigate email submissions and submission results.</p><p><b>Platforms/Services:</b></p><p>- Microsoft Defender for Office 365</p><p>- Microsoft Defender XDR</p><p>- Advanced Hunting</p><p><b>What will happen:</b></p><p>- Two new Advanced Hunting tables will be available: SubmissionEvents and SubmissionResults.</p><p>- SubmissionEvents provides information about email submission events.</p><p>- SubmissionResults provides information about the results associated with those submissions.</p><p>- Security teams can query submission information directly and correlate it with other Microsoft Defender XDR data.</p><p>- The tables can be used with Advanced Hunting custom detections, allowing organizations to create detections based on submission activity that is important to their SOC workflows.</p><p><b><b>Action Required/Recommendations:</b></b></p><p>No immediate action is required. Additional documentation for the new tables will be provided as part of the release.</p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [
-      {
-        "Name": "Summary",
-        "Value": "Microsoft Defender for Office 365 will add two new Advanced Hunting tables, SubmissionEvents and SubmissionResults, providing security teams enhanced visibility into email submissions. Rolling out worldwide in early October 2026, these tables enable tailored detection workflows without requiring immediate action or compliance changes."
-      }
-    ],
-    "EndDateTime": "2026-10-31T07:00:00Z",
-    "HasAttachments": false,
-    "Id": "MC1484009",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2026-09-30T22:58:43.303Z",
-    "Services": [
-      "Microsoft Defender XDR"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2026-09-30T22:58:35Z",
-    "Tags": [
-      "New feature",
-      "Admin impact"
-    ],
-    "Title": "Microsoft Defender for Office 365: New email submissions data in Advanced Hunting",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
@@ -4868,7 +5066,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1465768\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433208Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1465768\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433209Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1465768\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433211Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1465768\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890962Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1465768\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890963Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1465768\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890964Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6358,7 +6556,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1442614\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434013Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1442614\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434015Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1442614\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891733Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1442614\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891735Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -6905,7 +7103,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434691Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434692Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434693Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892458Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892459Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419798\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.589246Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -7895,7 +8093,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432512Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432513Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432514Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890375Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890377Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1447682\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890378Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -7947,7 +8145,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432022Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.043203Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432031Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5889993Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5889995Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443520\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5889996Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -7999,7 +8197,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433608Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433609Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.043361Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891375Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891376Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1429012\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891377Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8146,7 +8344,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434293Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434294Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434295Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892036Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892037Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1317836\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892038Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8245,7 +8443,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1323270\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433282Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1323270\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433283Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1323270\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433284Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1323270\",\"Platform\":\"Desktop\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891035Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1323270\",\"Platform\":\"Mac\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891038Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1323270\",\"Platform\":\"All\",\"Status\":\"Launched\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891039Z\",\"LatestRing\":\"StandardRelease\",\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8296,7 +8494,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432946Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432947Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.043295Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432952Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432955Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890704Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890706Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890707Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890708Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1251206\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890709Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8428,7 +8626,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434047Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434048Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434049Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891785Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891786Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1261595\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891787Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -8479,7 +8677,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433047Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.043305Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890804Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1256307\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890806Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -9291,10 +9489,6 @@
       {
         "Name": "RoadmapIds",
         "Value": "570646"
-      },
-      {
-        "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1473153\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433814Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1473153\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433815Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1473153\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433816Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -10998,7 +11192,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434424Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434425Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434426Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892182Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892183Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443517\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892184Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -13243,7 +13437,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434595Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434596Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434597Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434599Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434601Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892366Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892367Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892368Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892369Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1443518\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.589237Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -14017,7 +14211,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1467357\",\"Platform\":\"IOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434389Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1467357\",\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434391Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1467357\",\"Platform\":\"IOS\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892145Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1467357\",\"Platform\":\"All\",\"Status\":\"Scheduled\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5892146Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -14554,7 +14748,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1466307\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433088Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466307\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433091Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466307\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433093Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1466307\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890843Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466307\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890844Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466307\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890846Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -14684,7 +14878,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434187Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434188Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.043419Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434193Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434195Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0434197Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891917Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891918Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891919Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891919Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.589192Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1466296\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891922Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -15578,7 +15772,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433544Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433545Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433546Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891311Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891313Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1330891\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891313Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -15809,7 +16003,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432839Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432841Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432843Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890602Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890603Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1318124\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890604Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -17805,7 +17999,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:46.1967561Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:46.1967578Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:46.1967579Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:46.1967581Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:46.1967582Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:46.1967585Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:49.4730745Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:49.4730746Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:49.4730747Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:49.4730748Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:49.4730749Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1239927\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:49.473075Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -20115,7 +20309,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1454114\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433928Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1454114\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433929Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1454114\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.043393Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1454114\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433931Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1454114\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433932Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1454114\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891653Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1454114\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891655Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1454114\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891655Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1454114\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891656Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1454114\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891657Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -23184,7 +23378,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432565Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432567Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432568Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.043257Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432571Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Android\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.589043Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890432Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"IOS\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890433Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890434Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1419802\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890435Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -23672,7 +23866,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433879Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.043388Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433881Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.589159Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891591Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1219793\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891591Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -24676,7 +24870,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432894Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0432895Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890657Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1289725\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5890658Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -24943,7 +25137,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433479Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433481Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433483Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433484Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891243Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891244Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891245Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1183611\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891246Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -26501,7 +26695,7 @@
       },
       {
         "Name": "FeatureStatusJson",
-        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433674Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433675Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433677Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T16:10:29.0433678Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
+        "Value": "{\"0\":[{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Desktop\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891439Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Linux\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891441Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"Mac\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891441Z\",\"LatestRing\":null,\"TenantRolloutRing\":null},{\"RoadmapId\":0,\"McPostId\":\"MC1253752\",\"Platform\":\"All\",\"Status\":\"FeatureRolloutStatusNotSupported\",\"LastUpdateTime\":\"2026-10-09T20:52:30.5891442Z\",\"LatestRing\":null,\"TenantRolloutRing\":null}]}"
       },
       {
         "Name": "Summary",
@@ -29889,38 +30083,6 @@
       "Admin impact"
     ],
     "Title": "Microsoft Power Platform: AI Builder capacity packs end of sale and transition to Copilot Studio credits",
-    "ViewPoint": {
-      "IsArchived": null,
-      "IsFavorited": null,
-      "IsRead": null
-    },
-    "Source": "messageCenter",
-    "AdditionalProperties": {}
-  },
-  {
-    "ActionRequiredByDateTime": null,
-    "Attachments": null,
-    "AttachmentsArchive": null,
-    "Body": {
-      "Content": "<div>If you are an IT admin with questions about managing and updating Windows, we want to help. Every third Thursday of the month, we host a live chat-based event on the Tech Community called Windows Office Hours. Members of the Windows, Microsoft&nbsp;Intune, Windows Autopilot, Windows Autopatch, and Windows 365 engineering teams will be standing by to answer your questions. We also have experts from FastTrack, the Customer Acceleration Team, and Microsoft public sector teams.&nbsp;</div><div><br></div><div>Want to attend the October 16 session of Office Hours?&nbsp;<a href=\"https://techcommunity.microsoft.com/t5/s/gxcuf89792/attachments/gxcuf89792/WindowsEvents/6057/1/Windows-Office-Hours-October-16-2025.ics\" rel=\"noopener noreferrer\" target=\"_blank\">Add it to your calendar</a> and select Attend on the <a href=\"https://techcommunity.microsoft.com/event/windowsevents/windows-office-hours-october-16-2025/4426492\" rel=\"noopener noreferrer\" target=\"_blank\">event page</a> to let us know you’re coming.&nbsp;There is no video or live meeting component. Simply visit the event page, log in to the Tech Community, and leave your questions in the Comments section. You can also bookmark&nbsp;<a href=\"https://aka.ms/Windows/OfficeHours\" rel=\"noopener noreferrer\" target=\"_blank\">https://aka.ms/Windows/OfficeHours</a>&nbsp;for upcoming dates (and the ability to add this event to your calendar). We look forward to helping you.</div>",
-      "ContentType": "html"
-    },
-    "Category": "stayInformed",
-    "Details": [],
-    "EndDateTime": "2026-10-09T16:59:21.11Z",
-    "HasAttachments": false,
-    "Id": "MC1168906",
-    "IsMajorChange": false,
-    "LastModifiedDateTime": "2025-10-09T16:59:22.39Z",
-    "Services": [
-      "Windows"
-    ],
-    "Severity": "normal",
-    "StartDateTime": "2025-10-09T16:59:21.297Z",
-    "Tags": [
-      "Admin impact"
-    ],
-    "Title": "Windows Office Hours: October 16, 2025",
     "ViewPoint": {
       "IsArchived": null,
       "IsFavorited": null,
