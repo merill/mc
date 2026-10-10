@@ -11,6 +11,10 @@ export type Reaction = "up" | "down"
 export type ZapMine = {
   reaction: Reaction | null
   commentVotes: Record<string, Reaction>
+  /** Comments the visitor flagged. Absent until zap.ms reports it. */
+  flagged?: number[]
+  /** Their own comments zap.ms still lets them delete. */
+  deletable?: number[]
 }
 
 type View = { thread: ZapDiscussion; mine: ZapMine }
@@ -57,6 +61,31 @@ export function withCommentUpvote(view: View, commentId: number): View {
       ),
     },
     mine: { ...view.mine, commentVotes },
+  }
+}
+
+/** The view after flagging a comment. */
+export function withFlag(view: View, commentId: number): View {
+  const flagged = view.mine.flagged ?? []
+  if (flagged.includes(commentId)) return view
+  return { ...view, mine: { ...view.mine, flagged: [...flagged, commentId] } }
+}
+
+/** The view after deleting your own comment: zap.ms shows it as removed. */
+export function withDeleted(view: View, commentId: number): View {
+  return {
+    thread: {
+      ...view.thread,
+      comments: view.thread.comments.map((comment) =>
+        comment.id === commentId
+          ? { ...comment, author: null, badges: [], html: "<p>[removed]</p>" }
+          : comment
+      ),
+    },
+    mine: {
+      ...view.mine,
+      deletable: (view.mine.deletable ?? []).filter((id) => id !== commentId),
+    },
   }
 }
 

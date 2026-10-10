@@ -435,6 +435,10 @@ export default function AboutPage() {
                 until you post or discard it.
               </li>
               <li>
+                You can flag a comment for the moderators, and delete your own
+                comment for ten minutes after posting it.
+              </li>
+              <li>
                 Long service names on a post, such as Microsoft Copilot
                 (Microsoft 365), now wrap inside their card instead of being cut
                 off.

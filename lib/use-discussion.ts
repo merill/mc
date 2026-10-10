@@ -9,6 +9,8 @@ import {
   readRecent,
   saveRecent,
   withCommentUpvote,
+  withDeleted,
+  withFlag,
   withPendingComment,
   withReaction,
   type Reaction,
@@ -171,6 +173,26 @@ class Store {
     )
   }
 
+  flag(commentId: number) {
+    const view = this.view()
+    return this.write(
+      "POST",
+      `/comments/${commentId}/flag`,
+      {},
+      view ? withFlag(view, commentId) : null
+    )
+  }
+
+  remove(commentId: number) {
+    const view = this.view()
+    return this.write(
+      "DELETE",
+      `/comments/${commentId}`,
+      {},
+      view ? withDeleted(view, commentId) : null
+    )
+  }
+
   comment(text: string, parentId: number | null, author: string) {
     const view = this.view()
     return this.write(
@@ -188,7 +210,7 @@ class Store {
    * only the newest one decides what is on screen when the answers come in.
    */
   private async write(
-    method: "PUT" | "POST",
+    method: "PUT" | "POST" | "DELETE",
     path: string,
     body: unknown,
     optimistic: View | null
@@ -336,6 +358,8 @@ export function useDiscussion(id: string) {
           session.status === "signed-in" ? session.username : ""
         ),
       upvote: (commentId: number) => current.upvote(commentId),
+      flag: (commentId: number) => current.flag(commentId),
+      remove: (commentId: number) => current.remove(commentId),
       signOut: async () => {
         await call("POST", "/auth/signout", {})
         stores.forEach((store) => store.forget())
