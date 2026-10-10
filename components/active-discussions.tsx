@@ -7,6 +7,7 @@ import { siteConfig } from "@/config/site"
 import { useZap } from "@/lib/use-zap"
 import { cn } from "@/lib/utils"
 import { ZapActiveItem, avatarColor, timeAgo, zapLinks } from "@/lib/zap"
+import { overlayRecent } from "@/lib/zap-local"
 
 const VISIBLE_ON_PHONES = 5
 
@@ -19,7 +20,8 @@ export default function ActiveDiscussions() {
   const state = useZap<{ items: ZapActiveItem[] }>("/mc/active")
   if (state.status !== "ready" || state.data.items.length === 0) return null
 
-  const items = state.data.items
+  // Counts from the shared list can trail this visitor's own like or comment.
+  const items = overlayRecent(state.data.items, localStorage, Date.now())
   const links = zapLinks(siteConfig.zap.url, "")
   const first = items.slice(0, VISIBLE_ON_PHONES)
   const rest = items.slice(VISIBLE_ON_PHONES)

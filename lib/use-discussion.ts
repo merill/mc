@@ -4,6 +4,18 @@ import * as React from "react"
 
 import { siteConfig } from "@/config/site"
 import type { ZapDiscussion } from "@/lib/zap"
+import {
+  clearRecent,
+  readRecent,
+  saveRecent,
+  withCommentUpvote,
+  withPendingComment,
+  withReaction,
+  type Reaction,
+  type ZapMine,
+} from "@/lib/zap-local"
+
+export type { Reaction, ZapMine }
 
 /**
  * One post's discussion plus the visitor's part in it.
@@ -12,20 +24,19 @@ import type { ZapDiscussion } from "@/lib/zap"
  * commenting go to `/zap/*` on this site's own address, which zap.ms answers
  * (see zap's docs/architecture.md). When that path is not there, for example
  * in local development, `session` is "off" and callers fall back to links.
+ *
+ * A like, upvote or comment shows at once and is sent in the background; if
+ * zap.ms refuses it the page goes back to what zap.ms last confirmed. That
+ * confirmed view is also remembered for a few minutes (`zap-local.ts`), since
+ * the public API's shared copy of a thread can lag behind the visitor's own
+ * action.
  */
-
-export type Reaction = "up" | "down"
 
 export type ZapSession =
   | { status: "checking" }
   | { status: "off" }
   | { status: "signed-out" }
   | { status: "signed-in"; username: string }
-
-export type ZapMine = {
-  reaction: Reaction | null
-  commentVotes: Record<string, Reaction>
-}
 
 export type DiscussionState = {
   thread:
@@ -40,6 +51,7 @@ export type DiscussionState = {
 
 type Pending = { id: string; react?: Reaction }
 type WriteResult = { thread: ZapDiscussion | null; mine: ZapMine }
+type View = { thread: ZapDiscussion; mine: ZapMine }
 
 const EMBED = "/zap"
 const PENDING_KEY = "zap-pending"
@@ -76,17 +88,41 @@ class Store {
     this.listeners.forEach((listener) => listener())
   }
 
+  /** What zap.ms last confirmed, to fall back to when a write fails. */
+  private confirmed: View | null = null
+  private latestWrite = 0
+
+  private view(): View | null {
+    const { thread, mine } = this.state
+    return thread.status === "ready" ? { thread: thread.data, mine } : null
+  }
+
+  private show(view: View) {
+    this.set({
+      thread: { status: "ready", data: view.thread },
+      mine: view.mine,
+    })
+  }
+
   private start() {
     if (this.started) return
     this.started = true
 
+    // Their own recent action first, so it is there before the network is.
+    const recent = readRecent(localStorage, this.id, Date.now())
+    if (recent) {
+      this.confirmed = recent
+      this.show(recent)
+    }
+
     fetch(`${siteConfig.zap.url}/api/v1/mc/${this.id}`, { credentials: "omit" })
       .then((response) => (response.ok ? response.json() : Promise.reject()))
       .then((data: ZapDiscussion) => {
-        // A write may have answered first with something newer.
-        if (this.state.thread.status === "loading") {
-          this.set({ thread: { status: "ready", data } })
-        }
+        // The shared copy may predate what this visitor just did, so it never
+        // replaces a view zap.ms confirmed to them directly.
+        if (this.confirmed) return
+        this.confirmed = { thread: data, mine: this.state.mine }
+        this.set({ thread: { status: "ready", data } })
       })
       .catch(() => {
         if (this.state.thread.status === "loading") {
@@ -101,39 +137,101 @@ class Store {
   private async signedIn() {
     if (session.status !== "signed-in") return
     const mine = await call<ZapMine>("GET", `/api/v1/mc/${this.id}/me`)
-    if (mine.ok) this.set({ mine: mine.data })
+    if (mine.ok && this.latestWrite === 0) {
+      this.set({ mine: mine.data })
+      if (this.confirmed)
+        this.confirmed = { ...this.confirmed, mine: mine.data }
+    }
 
     const pending = takePending()
     if (pending?.id === this.id && pending.react) {
-      await this.write("PUT", "/reaction", { dir: pending.react })
+      if (this.state.mine.reaction !== pending.react) this.react(pending.react)
     }
   }
 
-  async write(method: "PUT" | "POST", path: string, body: unknown) {
+  react(dir: Reaction) {
+    const view = this.view()
+    const next = view ? withReaction(view, dir) : null
+    // Without a thread to work from, ask for the reaction outright.
+    return this.write(
+      "PUT",
+      "/reaction",
+      { dir: next ? next.mine.reaction : dir },
+      next
+    )
+  }
+
+  upvote(commentId: number) {
+    const view = this.view()
+    return this.write(
+      "POST",
+      `/comments/${commentId}/vote`,
+      { dir: "up" },
+      view ? withCommentUpvote(view, commentId) : null
+    )
+  }
+
+  comment(text: string, parentId: number | null, author: string) {
+    const view = this.view()
+    return this.write(
+      "POST",
+      "/comments",
+      { text, parentId },
+      view
+        ? withPendingComment(view, { text, parentId, author }, Date.now())
+        : null
+    )
+  }
+
+  /**
+   * Shows `optimistic` at once and sends the write. Presses can overlap, so
+   * only the newest one decides what is on screen when the answers come in.
+   */
+  private async write(
+    method: "PUT" | "POST",
+    path: string,
+    body: unknown,
+    optimistic: View | null
+  ) {
+    const mine = ++this.latestWrite
     this.set({ busy: true, error: null })
+    if (optimistic) this.show(optimistic)
+
     const result = await call<WriteResult>(
       method,
       `/api/v1/mc/${this.id}${path}`,
       body
     )
-    if (result.ok) {
-      const { thread, mine } = result.data
-      this.set({
-        busy: false,
-        mine,
-        thread: thread ? { status: "ready", data: thread } : this.state.thread,
-      })
+    const isLatest = mine === this.latestWrite
+
+    if (result.ok && result.data.thread) {
+      this.confirmed = { thread: result.data.thread, mine: result.data.mine }
+      saveRecent(localStorage, this.confirmed, Date.now())
+      if (isLatest) {
+        this.show(this.confirmed)
+        this.set({ busy: false })
+      }
       return true
     }
-    if (result.status === 401) setSession({ status: "signed-out" })
-    this.set({
-      busy: false,
-      error:
-        result.status === 401
+
+    const expired = !result.ok && result.status === 401
+    if (expired) setSession({ status: "signed-out" })
+    if (isLatest) {
+      if (this.confirmed) this.show(this.confirmed)
+      this.set({
+        busy: false,
+        error: expired
           ? "Your sign-in has expired. Sign in again to continue."
-          : result.message ?? GENERIC_ERROR,
-    })
+          : (!result.ok && result.message) || GENERIC_ERROR,
+      })
+    }
     return false
+  }
+
+  forget() {
+    clearRecent(localStorage, this.id)
+    this.set({ mine: NO_VOTES })
+    if (this.confirmed) this.confirmed = { ...this.confirmed, mine: NO_VOTES }
   }
 }
 
@@ -229,16 +327,18 @@ export function useDiscussion(id: string) {
       /** Pressing the reaction you already gave takes it back. */
       react: (dir: Reaction) => {
         if (session.status !== "signed-in") return signIn({ id, react: dir })
-        const next = current.state.mine.reaction === dir ? null : dir
-        return current.write("PUT", "/reaction", { dir: next })
+        return current.react(dir)
       },
       comment: (text: string, parentId: number | null) =>
-        current.write("POST", "/comments", { text, parentId }),
-      upvote: (commentId: number) =>
-        current.write("POST", `/comments/${commentId}/vote`, { dir: "up" }),
+        current.comment(
+          text,
+          parentId,
+          session.status === "signed-in" ? session.username : ""
+        ),
+      upvote: (commentId: number) => current.upvote(commentId),
       signOut: async () => {
         await call("POST", "/auth/signout", {})
-        current.set({ mine: NO_VOTES })
+        stores.forEach((store) => store.forget())
         setSession({ status: "signed-out" })
       },
     }),

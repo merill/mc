@@ -14,6 +14,8 @@ export type ZapComment = {
   score: number
   html: string
   url: string
+  /** Set by this site on a comment zap.ms has not confirmed yet. */
+  pending?: boolean
 }
 
 export type ZapDiscussion = {

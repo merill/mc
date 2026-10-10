@@ -115,3 +115,83 @@ test("builds zap.ms links", () => {
   assert.equal(links.reply(42), "https://zap.ms/mc/MC1474104?reply=42")
   assert.equal(links.user("a b"), "https://zap.ms/user/a%20b")
 })
+
+const local = await loadTypeScriptModule("../lib/zap-local.ts")
+
+function memoryStore() {
+  const items = new Map()
+  return {
+    getItem: (key) => items.get(key) ?? null,
+    setItem: (key, value) => items.set(key, value),
+    removeItem: (key) => items.delete(key),
+    size: () => items.size
+  }
+}
+
+const localComment = (id, parentId, depth) => ({
+  id, parentId, depth, author: "ann", badges: [], createdAt: "2026-10-11T00:00:00Z", score: 1, html: "<p>x</p>", url: ""
+})
+const localView = (overrides = {}) => ({
+  thread: { id: "MC1", url: "", up: 3, down: 1, commentCount: 0, truncated: false, comments: [], ...overrides },
+  mine: { reaction: null, commentVotes: {} }
+})
+
+test("a like shows at once, switches sides and can be taken back", () => {
+  const liked = local.withReaction(localView(), "up")
+  assert.deepEqual([liked.thread.up, liked.thread.down, liked.mine.reaction], [4, 1, "up"])
+  const disliked = local.withReaction(liked, "down")
+  assert.deepEqual([disliked.thread.up, disliked.thread.down, disliked.mine.reaction], [3, 2, "down"])
+  const cleared = local.withReaction(disliked, "down")
+  assert.deepEqual([cleared.thread.up, cleared.thread.down, cleared.mine.reaction], [3, 1, null])
+})
+
+test("a comment upvote shows at once and can be taken back", () => {
+  const start = localView({ comments: [localComment(7, null, 0)] })
+  const voted = local.withCommentUpvote(start, 7)
+  assert.equal(voted.thread.comments[0].score, 2)
+  assert.deepEqual(voted.mine.commentVotes, { 7: "up" })
+  const back = local.withCommentUpvote(voted, 7)
+  assert.equal(back.thread.comments[0].score, 1)
+  assert.deepEqual(back.mine.commentVotes, {})
+})
+
+test("a pending reply sits under its parent, after the replies already there", () => {
+  const start = localView({ commentCount: 3, comments: [localComment(1, null, 0), localComment(2, 1, 1), localComment(3, null, 0)] })
+  const replied = local.withPendingComment(start, { text: "hi", parentId: 1, author: "bob" }, 1000)
+  assert.deepEqual(replied.thread.comments.map((c) => c.id), [1, 2, -1000, 3])
+  assert.equal(replied.thread.comments[2].depth, 1)
+  assert.equal(replied.thread.comments[2].pending, true)
+  assert.equal(replied.thread.commentCount, 4)
+  const top = local.withPendingComment(start, { text: "hi", parentId: null, author: "bob" }, 1000)
+  assert.deepEqual(top.thread.comments.map((c) => c.id), [1, 2, 3, -1000])
+})
+
+test("typed text is shown as text, never as markup", () => {
+  assert.equal(local.plainTextHtml("a <b>&\nb\n\nc"), "<p>a &lt;b&gt;&amp;<br>b</p>\n<p>c</p>")
+})
+
+test("a confirmed view is remembered for five minutes and laid over lists", () => {
+  const store = memoryStore()
+  const confirmed = local.withReaction(localView({ commentCount: 2 }), "up")
+  local.saveRecent(store, confirmed, 1000)
+  assert.deepEqual(local.readRecent(store, "MC1", 2000), confirmed)
+  const list = [{ id: "MC1", up: 3, down: 1, commentCount: 1 }, { id: "MC2", up: 9, down: 0, commentCount: 5 }]
+  assert.deepEqual(local.overlayRecent(list, store, 2000), [
+    { id: "MC1", up: 4, down: 1, commentCount: 2 },
+    { id: "MC2", up: 9, down: 0, commentCount: 5 }
+  ])
+  assert.equal(local.readRecent(store, "MC1", 1000 + local.RECENT_TTL_MS + 1), null)
+  assert.equal(store.size(), 0)
+})
+
+test("a draft is kept per box, expires after a week and goes when emptied", () => {
+  const store = memoryStore()
+  const key = local.draftKey("MC1", null)
+  assert.notEqual(key, local.draftKey("MC1", 5))
+  local.saveDraft(store, key, "half a thought", 1000)
+  assert.equal(local.readDraft(store, key, 2000), "half a thought")
+  assert.equal(local.readDraft(store, key, 1000 + local.DRAFT_TTL_MS + 1), "")
+  local.saveDraft(store, key, "again", 1000)
+  local.saveDraft(store, key, "   ", 1001)
+  assert.equal(store.size(), 0)
+})

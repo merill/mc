@@ -429,6 +429,11 @@ export default function AboutPage() {
                 leaving this site. The first time, you sign in with a zap.ms
                 account and come straight back to the post you were reading.
               </li>
+              <li>
+                Likes and comments now show the moment you press the button,
+                and a comment you are still writing is kept in your browser
+                until you post or discard it.
+              </li>
             </ul>
           </div>
           <div>
