@@ -1,3 +1,5 @@
+import ActiveDiscussions from "@/components/active-discussions"
+
 import MessagesTable2 from "./messages-table/messages-table"
 
 export default function IndexPage() {
@@ -13,6 +15,8 @@ export default function IndexPage() {
           tenant&apos;s Message Center as the source of truth.
         </p>
       </div>
+
+      <ActiveDiscussions />
 
       <div className="min-w-0">
         <MessagesTable2 />
