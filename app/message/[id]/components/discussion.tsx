@@ -1,7 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { ArrowDown, ArrowRight, MessageSquare } from "lucide-react"
+import {
+  ArrowDown,
+  ArrowRight,
+  MessageSquare,
+  ThumbsDown,
+  ThumbsUp,
+} from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { useDiscussion } from "@/lib/use-discussion"
@@ -40,10 +46,16 @@ export function DiscussionSummary({ id }: { id: string }) {
     "h-8 gap-1.5 tabular-nums"
   )
   const reactions = [
-    { dir: "up", icon: "👍", name: "Like", count: data?.up, href: links.like },
+    {
+      dir: "up",
+      Icon: ThumbsUp,
+      name: "Like",
+      count: data?.up,
+      href: links.like,
+    },
     {
       dir: "down",
-      icon: "👎",
+      Icon: ThumbsDown,
       name: "Dislike",
       count: data?.down,
       href: links.dislike,
@@ -60,7 +72,10 @@ export function DiscussionSummary({ id }: { id: string }) {
             : `${reaction.name}. ${reaction.count} so far`
         const content = (
           <>
-            {reaction.icon}{" "}
+            <reaction.Icon
+              className={cn("size-4", mine && "fill-current")}
+              aria-hidden="true"
+            />
             <Count state={state.status} value={reaction.count} />
           </>
         )
@@ -70,7 +85,8 @@ export function DiscussionSummary({ id }: { id: string }) {
             type="button"
             className={cn(
               pill,
-              mine && "border-primary bg-accent text-foreground"
+              mine &&
+                "border-transparent bg-primary text-primary-foreground hover:bg-primary/85 hover:text-primary-foreground"
             )}
             aria-pressed={mine}
             aria-label={label}

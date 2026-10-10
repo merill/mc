@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { useZap } from "@/lib/use-zap"
@@ -90,10 +90,24 @@ function Row({ item, className }: { item: ZapActiveItem; className?: string }) {
           </span>
         </p>
         <p className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs tabular-nums text-muted-foreground">
-          <span aria-label={`${item.up} likes`}>👍 {item.up}</span>
-          <span aria-label={`${item.down} dislikes`}>👎 {item.down}</span>
-          <span aria-label={`${item.commentCount} comments`}>
-            💬 {item.commentCount}
+          <span
+            className="inline-flex items-center gap-1"
+            aria-label={`${item.up} likes`}
+          >
+            <ThumbsUp className="size-3.5" aria-hidden="true" /> {item.up}
+          </span>
+          <span
+            className="inline-flex items-center gap-1"
+            aria-label={`${item.down} dislikes`}
+          >
+            <ThumbsDown className="size-3.5" aria-hidden="true" /> {item.down}
+          </span>
+          <span
+            className="inline-flex items-center gap-1"
+            aria-label={`${item.commentCount} comments`}
+          >
+            <MessageSquare className="size-3.5" aria-hidden="true" />{" "}
+            {item.commentCount}
           </span>
           {item.lastCommenter && (
             <span className="inline-flex items-center gap-1">
