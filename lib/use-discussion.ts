@@ -257,9 +257,40 @@ class Store {
   }
 }
 
+const sessionListeners = new Set<() => void>()
+
 function setSession(next: ZapSession) {
   session = next
   stores.forEach((store) => store.set({ session }))
+  sessionListeners.forEach((listener) => listener())
+}
+
+async function signOut() {
+  await call("POST", "/auth/signout", {})
+  stores.forEach((store) => store.forget())
+  setSession({ status: "signed-out" })
+}
+
+const subscribeSession = (listener: () => void) => {
+  sessionListeners.add(listener)
+  void loadSession()
+  return () => sessionListeners.delete(listener)
+}
+const checking: ZapSession = { status: "checking" }
+
+/** Who is signed in, for parts of the page outside a discussion. */
+export function useZapSession() {
+  const current = React.useSyncExternalStore(
+    subscribeSession,
+    () => session,
+    () => checking
+  )
+  return {
+    session: current,
+    /** Comes back to the page they are on, not to a discussion. */
+    signIn: () => signIn(null),
+    signOut,
+  }
 }
 
 function loadSession(): Promise<void> {
@@ -317,14 +348,20 @@ function takePending(): Pending | null {
   }
 }
 
-/** Goes to zap.ms to sign in and comes back to this post's discussion. */
-function signIn(pending: Pending) {
-  try {
-    sessionStorage.setItem(PENDING_KEY, JSON.stringify(pending))
-  } catch {
-    // Without storage they sign in and press the button again.
+/**
+ * Goes to zap.ms to sign in and comes back: to this post's discussion when
+ * something there was pressed, otherwise to wherever they were.
+ */
+function signIn(pending: Pending | null) {
+  if (pending) {
+    try {
+      sessionStorage.setItem(PENDING_KEY, JSON.stringify(pending))
+    } catch {
+      // Without storage they sign in and press the button again.
+    }
   }
-  const here = `${window.location.pathname}${window.location.search}#discussion`
+  const { pathname, search, hash } = window.location
+  const here = `${pathname}${search}${pending ? "#discussion" : hash}`
   window.location.assign(
     `${EMBED}/auth/start?returnTo=${encodeURIComponent(here)}`
   )
@@ -360,11 +397,7 @@ export function useDiscussion(id: string) {
       upvote: (commentId: number) => current.upvote(commentId),
       flag: (commentId: number) => current.flag(commentId),
       remove: (commentId: number) => current.remove(commentId),
-      signOut: async () => {
-        await call("POST", "/auth/signout", {})
-        stores.forEach((store) => store.forget())
-        setSession({ status: "signed-out" })
-      },
+      signOut,
     }),
     [current, id]
   )

@@ -439,6 +439,11 @@ export default function AboutPage() {
                 comment for ten minutes after posting it.
               </li>
               <li>
+                The top of every page now has a Sign in button, and shows who
+                you are once signed in. The RSS, GitHub and Twitter links have
+                moved to the bottom of the page.
+              </li>
+              <li>
                 Long service names on a post, such as Microsoft Copilot
                 (Microsoft 365), now wrap inside their card instead of being cut
                 off.
