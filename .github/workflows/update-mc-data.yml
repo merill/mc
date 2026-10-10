@@ -46,6 +46,11 @@ jobs:
           # Pull request runs are checks only. Their Discord state is never
           # committed, so posting from them would repeat on the next refresh.
           DISCORD_ENABLED: ${{ github.event_name == 'pull_request' && 'false' || 'true' }}
+          # Discussion service ingest. Like Discord, pull request runs send
+          # nothing: the token is only passed on main branch runs. Leave the
+          # variable unset to switch publishing off.
+          ZAP_INGEST_URL: ${{ vars.ZAP_INGEST_URL }}
+          ZAP_INGEST_TOKEN: ${{ github.event_name != 'pull_request' && secrets.ZAP_INGEST_TOKEN || '' }}
           # Second tenant, authenticated with a federated identity credential (no secret).
           # Leave the variables unset to keep the refresh on the primary tenant only.
           GRAPH_FEDERATED_TENANT_ID: ${{ vars.GRAPH_FEDERATED_TENANT_ID }}

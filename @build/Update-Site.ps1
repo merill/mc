@@ -421,4 +421,7 @@ if ($LASTEXITCODE -ne 0) {
     Write-Warning "Discord publisher did not complete successfully; queued messages remain in @data/discord-state.json"
 }
 
+Write-Host "Publishing changed index records to the discussion service"
+node ./scripts/publish-zap.mjs
+
 Write-Host "Completed updating"
