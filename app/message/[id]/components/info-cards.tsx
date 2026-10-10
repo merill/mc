@@ -165,7 +165,7 @@ export default function InfoCards(props: {
         <div className="space-y-0.5">
           {msg?.Services?.map((service) => (
             <Badge key={service}>
-              <div className="text-nowrap">{service}</div>
+              <div className="text-balance break-words">{service}</div>
             </Badge>
           ))}
         </div>
@@ -183,7 +183,7 @@ export default function InfoCards(props: {
         <div className="space-y-0.5">
           {status.split(",").map((value) => (
             <Badge key={value.trim()} variant="secondary">
-              <div className="text-nowrap">{value.trim()}</div>
+              <div className="text-balance break-words">{value.trim()}</div>
             </Badge>
           ))}
         </div>
@@ -201,7 +201,7 @@ export default function InfoCards(props: {
         <div className="space-y-0.5">
           {releasePhase.split(",").map((value) => (
             <Badge key={value.trim()} variant="outline">
-              <div className="text-nowrap">{value.trim()}</div>
+              <div className="text-balance break-words">{value.trim()}</div>
             </Badge>
           ))}
         </div>
@@ -241,12 +241,12 @@ export default function InfoCards(props: {
         <div className="space-y-0.5">
           {msg?.IsMajorChange && (
             <Badge variant="destructive">
-              <div className="text-nowrap">Major change</div>
+              <div className="text-balance break-words">Major change</div>
             </Badge>
           )}
           {msg?.Tags?.map((tag) => (
             <Badge key={tag} variant="secondary">
-              <div className="text-nowrap">{tag}</div>
+              <div className="text-balance break-words">{tag}</div>
             </Badge>
           ))}
         </div>
@@ -324,7 +324,7 @@ export default function InfoCards(props: {
         <div className="space-y-0.5">
           {platforms.split(",").map((platform) => (
             <Badge key={platform.trim()} variant="secondary">
-              <div className="text-nowrap">{platform}</div>
+              <div className="text-balance break-words">{platform}</div>
             </Badge>
           ))}
         </div>
@@ -342,7 +342,7 @@ export default function InfoCards(props: {
         <div className="space-y-0.5">
           {clouds.split(",").map((cloud) => (
             <Badge key={cloud.trim()} variant="secondary">
-              <div className="text-nowrap">{cloud.trim()}</div>
+              <div className="text-balance break-words">{cloud.trim()}</div>
             </Badge>
           ))}
         </div>

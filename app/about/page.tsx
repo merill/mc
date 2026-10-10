@@ -434,6 +434,11 @@ export default function AboutPage() {
                 and a comment you are still writing is kept in your browser
                 until you post or discard it.
               </li>
+              <li>
+                Long service names on a post, such as Microsoft Copilot
+                (Microsoft 365), now wrap inside their card instead of being cut
+                off.
+              </li>
             </ul>
           </div>
           <div>
