@@ -1,0 +1,643 @@
+<!doctype html>
+<!--
+  Design notes: zap.ms /mc/MC1474104 discussion page (mockup 3 of 3)
+  ===================================================================
+  Base CSS is zap's src/views/static.ts copied verbatim; everything after the
+  "mc additions" marker is new. Markup follows layout.tsx / stories.tsx / avatar.tsx
+  (topbar, .story grid, .comment with margin-left = depth * 24px, .comment-votes right
+  aligned, monogram avatars using zap's real palette + username hash). People and comments
+  are fictional; the post is real (MC1474104).
+
+  Choices
+  - Story header for an mc story: "Message Center" section-pill + "MC1474104 - Title" as
+    the titleline; a pill row for service, "major change" (danger colours), and tags;
+    subtext "published Sep 18, 2026 · act by Feb 1, 2027 · 9 comments · 53 points ·
+    save"; Summary as story-text; then "Read on mc.merill.net ↗" and "Open in Message
+    Center ↗".
+  - Reaction bar: two bordered buttons "👍 Like 47" / "👎 Dislike 6" under the summary,
+    with a thin split meter and "89% positive". The user's current reaction gets the
+    accent outline. The 44px left score column keeps its place for alignment but shows
+    points (likes + dislikes, design 3.5 ranking) with no arrow.
+  - Comments are unchanged zap comments, plus author badges (.badge-mvp /
+    .badge-microsoft already exist in static.ts). One reply box is open to show what
+    ?reply=4841 lands on.
+  - Mobile topbar: zap's .topnav has flex:1, which overrides width:100% at <=640px, so
+    the nav squeezes beside the account link today. The mockup adds flex-basis:100%
+    (worth fixing in static.ts).
+  - Proposed nav item "message center" (/s/message-center), highlighted.
+  - State 2 (further down): signed-in user returning with ?react=up sees a confirm panel
+    with one "Confirm 👍" button (POST + CSRF in production; no vote on GET).
+  - In this static mockup every control is an <a> to the zap URL patterns from design
+    3.4; in production reactions, votes and comments stay POST forms with _csrf, exactly
+    like VoteControl / CommentVoteControl today.
+
+  Open questions for the owner
+  1. Should /s/message-center list rows use a stacked 👍/👎 in the 44px score column,
+     or keep a single points number and leave reactions to the item page?
+  2. Should dislikes require a minimum karma like comment downvotes (karma >= 10)?
+  3. Show the reaction meter, or only raw counts (meter may read as a poll result)?
+  4. Should the confirm panel auto-scroll the comment form into view if the user arrived
+     via #comment-form instead?
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>zap.ms MC Discussion</title>
+<style>
+/* Professional dense community styling. */
+:root {
+  --bg: #f5f7f9;
+  --surface: #fff;
+  --surface-soft: #eef3f8;
+  --line: #d7dee8;
+  --fg: #18212f;
+  --muted: #667085;
+  --accent: #2563eb;
+  --accent-strong: #174ea6;
+  --link: #172033;
+  --link-visited: #5b6472;
+  --pill-bg: #e9f1ff;
+  --pill-fg: #174ea6;
+  --danger-bg: #fff1f1;
+  --danger-border: #d92d20;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+a { color: var(--link); text-decoration: none; }
+a:visited { color: var(--link-visited); }
+a:hover { text-decoration: underline; }
+
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  margin-right: 4px;
+  text-decoration: none;
+}
+.logo-box {
+  background: var(--accent);
+  color: #fff;
+  font-weight: bold;
+  padding: 1px 7px;
+  border-radius: 4px;
+}
+.logo-text { color: var(--fg); font-weight: 700; }
+
+.topnav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 260px;
+}
+.topnav a, .topnav .sep { color: var(--muted); font-size: 13px; }
+.topnav a:hover { color: var(--accent-strong); }
+.topnav .sep { color: #c2c8d0; }
+
+.submit-cta {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.submit-cta:visited { color: #fff; }
+.submit-cta:hover {
+  background: var(--accent-strong);
+  text-decoration: none;
+}
+
+.account { color: var(--muted); font-size: 13px; }
+.account a { color: var(--fg); }
+.account-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.linklike {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.content {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 18px 14px;
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  margin-top: 32px;
+}
+
+.empty p { max-width: 65ch; }
+
+/* Profile page */
+.proftab { border-collapse: collapse; }
+.proftab td { padding: 2px 6px; vertical-align: top; }
+.proftab td.label { color: #555; }
+.proftab td.help small { color: var(--muted); }
+.about-display {
+  white-space: pre-wrap;
+  font-family: inherit;
+  background: none;
+  margin: 0;
+}
+.profile-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+.profile-heading h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.avatar {
+  --avatar-bg: var(--muted);
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--avatar-bg);
+  color: #fff;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
+}
+.avatar-xs {
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+}
+.avatar-sm {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+.user-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1;
+  vertical-align: middle;
+}
+.user-link a {
+  color: var(--muted);
+  line-height: 1;
+}
+
+input[type="text"], input[type="number"], textarea, select {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fff;
+}
+
+input[name="title"], input[name="url"], textarea {
+  width: min(100%, 640px);
+}
+
+button {
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.error {
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  padding: 8px 10px;
+  color: #912018;
+  max-width: 60ch;
+  border-radius: 5px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 8pt;
+  padding: 0 4px;
+  margin-left: 4px;
+  background: var(--pill-bg);
+  color: #333;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.badge-mvp        { background: #b31b1b; color: #fff; }
+.badge-mvp-rd     { background: #6b0f0f; color: #fff; }
+.badge-microsoft  { background: #0078d4; color: #fff; }
+.badge-admin      { background: #000;    color: #fff; }
+.badge-mod        { background: #555;    color: #fff; }
+
+/* Stories */
+.story-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.story-row {
+  border-bottom: 1px solid var(--line);
+}
+.story-row:last-child {
+  border-bottom: 0;
+}
+.story {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 10px;
+  padding: 10px 12px;
+}
+.story-score {
+  color: var(--muted);
+  text-align: center;
+  padding-top: 2px;
+}
+.score-count {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 2px;
+}
+.story-main {
+  min-width: 0;
+}
+.titleline {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.vote-form {
+  display: block;
+  margin: 0;
+}
+.inline-form {
+  display: inline;
+  margin: 0;
+}
+.subtle-link {
+  color: var(--muted);
+  font-size: 12px;
+  text-decoration: none;
+}
+.subtle-link:hover {
+  text-decoration: underline;
+}
+.votearrow {
+  display: inline-block;
+  width: 24px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1;
+}
+button.votearrow:hover {
+  color: var(--accent-strong);
+  border-color: #b9c7dc;
+  text-decoration: none;
+}
+.muted-vote {
+  opacity: 0.35;
+  background: transparent;
+}
+.sitebit, .subtext, .form-help {
+  color: var(--muted);
+  font-size: 12px;
+}
+.subtext a { color: var(--muted); }
+.sitebit {
+  font-weight: 400;
+}
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--pill-bg);
+  color: var(--pill-fg);
+  border: 1px solid #cfe0ff;
+  border-radius: 999px;
+  padding: 1px 7px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.section-pill:visited { color: var(--pill-fg); }
+.section-pill:hover {
+  text-decoration: none;
+  border-color: #9ec0ff;
+}
+.story-preview {
+  color: #3f4a59;
+  font-size: 13px;
+  margin-top: 4px;
+  max-width: 78ch;
+}
+.comment-link {
+  font-weight: 600;
+}
+.story-text, .comment-text {
+  margin: 10px 0;
+  max-width: 72ch;
+  white-space: pre-wrap;
+}
+.comment-form {
+  margin: 18px 0;
+}
+.comment {
+  margin-top: 14px;
+  padding-top: 4px;
+}
+.comment-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  max-width: 72ch;
+}
+.comment-votes {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
+.comment-vote-form {
+  display: inline;
+  margin: 0;
+}
+.comment-vote {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1;
+}
+button.comment-vote:hover {
+  color: var(--accent-strong);
+  border-color: #b9c7dc;
+}
+.thread-row {
+  margin-bottom: 18px;
+}
+.reply-details {
+  margin-top: 3px;
+}
+.reply-details summary {
+  color: var(--muted);
+  cursor: pointer;
+  display: inline;
+  font-size: 12px;
+}
+.inline-reply-form {
+  margin-top: 6px;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  .topbar { align-items: flex-start; }
+  .topnav { order: 3; width: 100%; min-width: 0; overflow-x: auto; }
+  .content { padding: 12px 8px; }
+  .story { grid-template-columns: 36px minmax(0, 1fr); padding: 10px 9px; }
+  .titleline { font-size: 14px; }
+  .comment-meta { max-width: 100%; }
+}
+
+/* ---------- mc additions ---------- */
+.topnav a{white-space:nowrap}
+.topnav a.active{color:var(--accent-strong);font-weight:600}
+.mc-story{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.mc-story .story{padding:12px 12px 4px}
+.pts{display:block;font-size:15px;font-weight:700;color:var(--fg);line-height:1.1;margin-top:4px}
+.pts-l{font-size:11px;color:var(--muted)}
+.mc-title{color:var(--fg)}
+.mc-title .mcid{font-variant-numeric:tabular-nums}
+.pill-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.tag-pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--surface-soft);color:#3f4a59;border-radius:999px;padding:0 7px;font-size:11.5px}
+.tag-pill.major{background:var(--danger-bg);border-color:#f3b4ae;color:#912018;font-weight:600}
+.mc-summary{margin:10px 0 8px;max-width:78ch;font-size:14px;color:#2a3442}
+.mc-summary b{font-weight:600;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:2px}
+.mc-links{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;margin:4px 0 2px}
+.mc-links a{color:var(--accent-strong);font-weight:600}
+.react-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 12px;padding:10px 0 12px 54px;border-top:1px solid var(--line)}
+.react-btn{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px;border:1px solid var(--line);border-radius:5px;background:var(--surface);color:var(--fg);font-size:13px;font-weight:600}
+.react-btn:visited{color:var(--fg)}
+.react-btn:hover{border-color:#9ec0ff;background:var(--pill-bg);text-decoration:none}
+.react-btn .n{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:700}
+.react-btn.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--pill-bg)}
+.meter{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.meter i{display:block;width:72px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--accent) 0 89%,#e3a29c 89% 100%)}
+.cmt-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:20px 0 0}
+.cmt-head h2{font-size:15px;margin:0}
+.comment-form textarea{display:block;width:100%;max-width:640px}
+.form-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:6px}
+.btn-plain{display:inline-block;padding:4px 12px;border:1px solid #b9c7dc;border-radius:5px;background:var(--surface-soft);color:var(--fg);font-size:13px;font-weight:600}
+.btn-plain:visited{color:var(--fg)}
+.btn-plain:hover{background:var(--pill-bg);text-decoration:none}
+a.comment-vote{color:var(--muted);text-decoration:none}
+a.comment-vote:hover{color:var(--accent-strong);border-color:#b9c7dc}
+a.comment-vote.on{color:var(--accent-strong);border-color:#9ec0ff;background:var(--pill-bg)}
+.comment .badge{margin-left:0}
+.comment-meta .ts a{color:var(--muted)}
+.comment-text{white-space:normal}
+.comment-text code{font-size:12.5px;background:var(--surface-soft);padding:0 3px;border-radius:3px}
+.reply-details[open] summary{color:var(--accent-strong)}
+.inline-reply-form textarea{width:min(100%,560px)}
+.via{font-size:11px;color:var(--muted);font-style:italic}
+.mock-label{display:flex;align-items:center;gap:10px;margin:40px 0 14px;font:600 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed}
+.mock-label::after{content:"";flex:1;border-top:1px dashed #a78bfa}
+.confirm{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 12px 12px 66px;padding:10px 12px;background:var(--pill-bg);border:1px solid #cfe0ff;border-radius:6px}
+.confirm p{margin:0;flex:1 1 260px;font-size:13px}
+.confirm-btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;border-radius:5px;padding:6px 14px;font-weight:700;font-size:14px}
+.confirm-btn:visited{color:#fff}
+.confirm-btn:hover{background:var(--accent-strong);text-decoration:none}
+.cancel{font-size:13px;color:var(--muted)}
+@media (max-width:640px){.topnav{flex-basis:100%}.react-bar{padding-left:0}.confirm{margin:0 9px 10px}.mc-story .story{padding:10px 9px 4px}.react-bar{margin:0 9px}.pts{font-size:14px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="https://zap.ms/"><span class="logo-box">zap</span><span class="logo-text">.ms</span></a>
+  <nav class="topnav">
+    <a href="https://zap.ms/">front</a><span class="sep">|</span>
+    <a href="https://zap.ms/active">active</a><span class="sep">|</span>
+    <a href="https://zap.ms/newest">new</a><span class="sep">|</span>
+    <a href="https://zap.ms/best">best</a><span class="sep">|</span>
+    <a class="active" href="https://zap.ms/s/message-center">message center</a><span class="sep">|</span>
+    <a href="https://zap.ms/s/m365">m365</a><span class="sep">|</span>
+    <a href="https://zap.ms/s/azure">azure</a><span class="sep">|</span>
+    <a href="https://zap.ms/s/security">security</a><span class="sep">|</span>
+    <a href="https://zap.ms/s/dev">dev</a><span class="sep">|</span>
+    <a href="https://zap.ms/s/ai">ai</a>
+  </nav>
+  <a class="submit-cta" href="https://zap.ms/submit">submit</a>
+  <div class="account"><a class="account-user" href="https://zap.ms/user/pkiplumber"><span class="avatar avatar-xs" style="--avatar-bg:#0369a1" aria-hidden="true">P</span><span>pkiplumber</span></a> | <a href="https://zap.ms/auth/logout">logout</a></div>
+</header>
+
+<main class="content">
+  <div class="item-page">
+    <section class="mc-story">
+      <div class="story">
+        <div class="story-score"><span class="pts">53</span><span class="pts-l">points</span></div>
+        <div class="story-main">
+          <div class="titleline">
+            <a class="section-pill" href="https://zap.ms/s/message-center">Message Center</a>
+            <span class="mc-title"><span class="mcid">MC1474104</span> - Microsoft Entra ID: Follow-up on SMS first-factor sign-in retirement and upcoming changes</span>
+          </div>
+          <div class="pill-row">
+            <span class="tag-pill major">major change</span>
+            <a class="tag-pill" href="https://zap.ms/s/message-center?service=Microsoft%20Entra">Microsoft Entra</a>
+            <span class="tag-pill">Retirement</span><span class="tag-pill">User impact</span><span class="tag-pill">Admin impact</span>
+          </div>
+          <div class="subtext" style="margin-top:6px">published Sep 18, 2026 · act by <b>Feb 1, 2027</b> · <a class="comment-link" href="#comments">9 comments</a> · 53 points · <a class="subtle-link" href="https://zap.ms/favorite?mc=MC1474104">save</a></div>
+          <div class="mc-summary"><b>Summary</b>Microsoft is retiring SMS first-factor sign-in for Microsoft Entra ID workforce tenants worldwide starting February 1, 2027, to enhance security. Organizations must identify affected users, migrate them to phishing-resistant methods like passkeys, and update policies to avoid sign-in disruptions and comply with new requirements.</div>
+          <div class="mc-links">
+            <a href="https://mc.merill.net/message/MC1474104">Read on mc.merill.net ↗</a>
+            <a href="https://admin.microsoft.com/#/MessageCenter/:/messages/MC1474104" rel="noopener">Open in Message Center ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="react-bar" aria-label="reactions">
+        <a class="react-btn" href="https://zap.ms/mc/MC1474104?react=up" title="like">👍 Like <span class="n">47</span></a>
+        <a class="react-btn" href="https://zap.ms/mc/MC1474104?react=down" title="dislike">👎 Dislike <span class="n">6</span></a>
+        <span class="meter"><i aria-hidden="true"></i>89% positive</span>
+      </div>
+    </section>
+
+    <form class="comment-form" id="comment-form" onsubmit="return false">
+      <textarea name="text" rows="5" placeholder="How does this change land in your tenant? Dates, impact, workarounds…" aria-label="comment"></textarea>
+      <div class="form-row"><a class="btn-plain" href="https://zap.ms/mc/MC1474104#comment-form">add comment</a><span class="form-help">Plain text; blank line for a new paragraph. Be kind, be specific.</span></div>
+    </form>
+
+    <div class="cmt-head" id="comments"><h2>9 comments</h2><span class="subtext">sorted by thread · <a href="https://zap.ms/mc/MC1474104?sort=new">newest</a></span></div>
+    <div class="comments">
+      <div id="comment-4812" class="comment" style="margin-left:0">
+        <div class="comment-meta subtext"><span class="ts"><span class="user-link"><span class="avatar avatar-xs" style="--avatar-bg:#be123c">T</span><a href="https://zap.ms/user/tenantwrangler">tenantwrangler</a></span> <span class="badge badge-mvp">MVP</span> <a href="https://zap.ms/mc/MC1474104#comment-4812">3 days ago</a> | score 14</span><span class="comment-votes"><a class="comment-vote on" href="https://zap.ms/vote?comment=4812&amp;dir=1" title="upvote">▲</a><a class="comment-vote" href="https://zap.ms/vote?comment=4812&amp;dir=-1" title="downvote">▼</a></span></div>
+        <div class="comment-text">Fastest way to find who is affected: the Authentication methods activity report filtered on SMS sign-in, cross-checked with <code>userRegistrationDetails</code> in Graph. In our 40k-seat tenant it was about 600 frontline workers, almost all on shared Android devices.</div>
+        <details class="reply-details"><summary>reply</summary></details>
+      </div>
+      <div id="comment-4815" class="comment" style="margin-left:24px">
+        <div class="comment-meta subtext"><span class="ts"><span class="user-link"><span class="avatar avatar-xs" style="--avatar-bg:#4d7c0f">H</span><a href="https://zap.ms/user/helpdesk_hal">helpdesk_hal</a></span> <a href="https://zap.ms/mc/MC1474104#comment-4815">3 days ago</a> | score 6</span><span class="comment-votes"><a class="comment-vote" href="https://zap.ms/vote?comment=4815&amp;dir=1">▲</a><a class="comment-vote" href="https://zap.ms/vote?comment=4815&amp;dir=-1">▼</a></span></div>
+        <div class="comment-text">Same pattern here, frontline staff with no corporate phone. Did you move them to Authenticator phone sign-in or straight to passkeys on the shared devices?</div>
+        <details class="reply-details"><summary>reply</summary></details>
+      </div>
+      <div id="comment-4819" class="comment" style="margin-left:48px">
+        <div class="comment-meta subtext"><span class="ts"><span class="user-link"><span class="avatar avatar-xs" style="--avatar-bg:#be123c">T</span><a href="https://zap.ms/user/tenantwrangler">tenantwrangler</a></span> <span class="badge badge-mvp">MVP</span> <a href="https://zap.ms/mc/MC1474104#comment-4819">2 days ago</a> | score 8</span><span class="comment-votes"><a class="comment-vote" href="https://zap.ms/vote?comment=4819&amp;dir=1">▲</a><a class="comment-vote" href="https://zap.ms/vote?comment=4819&amp;dir=-1">▼</a></span></div>
+        <div class="comment-text">FIDO2 security keys for the shared kiosks, Authenticator for everyone with their own phone. A Temporary Access Pass made the bootstrap painless; budget a week for the key logistics.</div>
+        <details class="reply-details"><summary>reply</summary></details>
+      </div>
+      <div id="comment-4821" class="comment" style="margin-left:0">
+        <div class="comment-meta subtext"><span class="ts"><span class="user-link"><span class="avatar avatar-xs" style="--avatar-bg:#0f766e">E</span><a href="https://zap.ms/user/entra_pm_lena">entra_pm_lena</a></span> <span class="badge badge-microsoft">Microsoft</span> <a href="https://zap.ms/mc/MC1474104#comment-4821">2 days ago</a> | score 21</span><span class="comment-votes"><a class="comment-vote on" href="https://zap.ms/vote?comment=4821&amp;dir=1">▲</a><a class="comment-vote" href="https://zap.ms/vote?comment=4821&amp;dir=-1">▼</a></span></div>
+        <div class="comment-text">To clarify the scope: this post covers SMS as a <em>first</em> factor (SignInNoPassword) only. SMS as a second factor for MFA is a separate track, see <a href="https://zap.ms/mc/MC1426371">MC1426371</a>. B2C and External ID customer tenants are not in scope.</div>
+        <details class="reply-details"><summary>reply</summary></details>
+      </div>
+      <div id="comment-4824" class="comment" style="margin-left:24px">
+        <div class="comment-meta subtext"><span class="ts"><span class="user-link"><span class="avatar avatar-xs" style="--avatar-bg:#4d7c0f">C</span><a href="https://zap.ms/user/condaccess_kim">condaccess_kim</a></span> <a href="https://zap.ms/mc/MC1474104#comment-4824">2 days ago</a> | score 5</span><span class="comment-votes"><a class="comment-vote" href="https://zap.ms/vote?comment=4824&amp;dir=1">▲</a><a class="comment-vote" href="https://zap.ms/vote?comment=4824&amp;dir=-1">▼</a></span></div>
+        <div class="comment-text">Thanks, that was literally the first question from our CISO. Worth getting that sentence into the Message Center post itself.</div>
+        <details class="reply-details"><summary>reply</summary></details>
+      </div>
+      <div id="comment-4830" class="comment" style="margin-left:0">
+        <div class="comment-meta subtext"><span class="ts"><span class="user-link"><span class="avatar avatar-xs" style="--avatar-bg:#be123c">M</span><a href="https://zap.ms/user/mfa_marta">mfa_marta</a></span> <span class="badge badge-mvp">MVP</span> <a href="https://zap.ms/mc/MC1474104#comment-4830">1 day ago</a> | score 9</span><span class="comment-votes"><a class="comment-vote" href="https://zap.ms/vote?comment=4830&amp;dir=1">▲</a><a class="comment-vote" href="https://zap.ms/vote?comment=4830&amp;dir=-1">▼</a></span></div>
+        <div class="comment-text">Heads up for GCC tenants: the date is February 1, 2027 for worldwide <em>and</em> GCC. We had assumed GCC would lag as usual and nearly pushed this to Q2.</div>
+        <details class="reply-details"><summary>reply</summary></details>
+      </div>
+      <div id="comment-4833" class="comment" style="margin-left:24px">
+        <div class="comment-meta subtext"><span class="ts"><span class="user-link"><span class="avatar avatar-xs" style="--avatar-bg:#0369a1">O</span><a href="https://zap.ms/user/ops-ravi">ops-ravi</a></span> <a href="https://zap.ms/mc/MC1474104#comment-4833">20 hours ago</a> | score 3</span><span class="comment-votes"><a class="comment-vote" href="https://zap.ms/vote?comment=4833&amp;dir=1">▲</a><a class="comment-vote" href="https://zap.ms/vote?comment=4833&amp;dir=-1">▼</a></span></div>
+        <div class="comment-text">Same assumption here. The act-by date in our tenant's Message Center also shows Feb 1, so no grace period.</div>
+        <details class="reply-details"><summary>reply</summary></details>
+      </div>
+      <div id="comment-4841" class="comment" style="margin-left:0">
+        <div class="comment-meta subtext"><span class="ts"><span class="user-link"><span class="avatar avatar-xs" style="--avatar-bg:#9333ea">B</span><a href="https://zap.ms/user/bluecollar_admin">bluecollar_admin</a></span> <a href="https://zap.ms/mc/MC1474104#comment-4841">9 hours ago</a> | score 4</span><span class="comment-votes"><a class="comment-vote" href="https://zap.ms/vote?comment=4841&amp;dir=1">▲</a><a class="comment-vote" href="https://zap.ms/vote?comment=4841&amp;dir=-1">▼</a></span></div>
+        <div class="comment-text">Will the Authentication methods policy warn before the SMS sign-in toggle disappears? We have a runbook that flips it per group and I don't want it failing silently in February.</div>
+        <details class="reply-details" open><summary>reply</summary> <span class="via">(opened because the URL had ?reply=4841)</span>
+          <form class="inline-reply-form" onsubmit="return false"><textarea name="text" rows="4" aria-label="reply"></textarea><br><a class="btn-plain" href="https://zap.ms/mc/MC1474104?reply=4841">reply</a></form>
+        </details>
+      </div>
+      <div id="comment-4846" class="comment" style="margin-left:24px">
+        <div class="comment-meta subtext"><span class="ts"><span class="user-link"><span class="avatar avatar-xs" style="--avatar-bg:#0f766e">E</span><a href="https://zap.ms/user/entra_pm_lena">entra_pm_lena</a></span> <span class="badge badge-microsoft">Microsoft</span> <a href="https://zap.ms/mc/MC1474104#comment-4846">5 hours ago</a> | score 7</span><span class="comment-votes"><a class="comment-vote" href="https://zap.ms/vote?comment=4846&amp;dir=1">▲</a><a class="comment-vote" href="https://zap.ms/vote?comment=4846&amp;dir=-1">▼</a></span></div>
+        <div class="comment-text">Existing configurations stop being honored on the date and the setting is then removed from the admin experience, so update the runbook now. Users with another registered method keep signing in; SMS-only users are blocked.</div>
+        <details class="reply-details"><summary>reply</summary></details>
+      </div>
+    </div>
+
+    <!-- ===================== State 2 ===================== -->
+    <p class="mock-label">State 2 · returned from login with ?react=up</p>
+    <section class="mc-story">
+      <div class="story">
+        <div class="story-score"><span class="pts">53</span><span class="pts-l">points</span></div>
+        <div class="story-main">
+          <div class="titleline"><a class="section-pill" href="https://zap.ms/s/message-center">Message Center</a><span class="mc-title"><span class="mcid">MC1474104</span> - Microsoft Entra ID: Follow-up on SMS first-factor sign-in retirement and upcoming changes</span></div>
+          <div class="subtext" style="margin-top:6px">published Sep 18, 2026 · act by <b>Feb 1, 2027</b> · <a class="comment-link" href="#comments">9 comments</a> · 53 points</div>
+        </div>
+      </div>
+      <div class="confirm" role="status">
+        <p>Signed in as <b>pkiplumber</b>. You were about to like this change.</p>
+        <a class="confirm-btn" href="https://zap.ms/mc/MC1474104?react=up">Confirm 👍</a>
+        <a class="cancel" href="https://zap.ms/mc/MC1474104">cancel</a>
+      </div>
+      <div class="react-bar" aria-label="reactions">
+        <a class="react-btn on" href="https://zap.ms/mc/MC1474104?react=up">👍 Like <span class="n">47</span></a>
+        <a class="react-btn" href="https://zap.ms/mc/MC1474104?react=down">👎 Dislike <span class="n">6</span></a>
+        <span class="meter"><i aria-hidden="true"></i>89% positive</span>
+      </div>
+    </section>
+    <p class="form-help" style="margin-top:8px">Like is pre-highlighted but not counted until Confirm is pressed (POST with _csrf). Cancel drops the query string. Comments render below as above.</p>
+  </div>
+</main>
+<footer class="footer"><a href="https://zap.ms/about">about</a> | <a href="https://zap.ms/guidelines">guidelines</a> | <a href="https://zap.ms/api/v1/openapi.json">api</a></footer>
+</body>
+</html>
