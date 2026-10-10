@@ -26,8 +26,8 @@ export function SiteHeader() {
               ))}
             </div>
             <div className="flex items-center gap-1">
-              <AccountMenu />
               <ThemeToggle />
+              <AccountMenu />
             </div>
           </nav>
         </div>
