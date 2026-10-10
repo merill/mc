@@ -189,22 +189,6 @@ export function DiscussionThread({ id }: { id: string }) {
             Sign in to comment
           </button>
         )}
-        {session.status === "signed-in" && (
-          <p className="text-sm text-muted-foreground">
-            Signed in as{" "}
-            <span className="font-medium text-foreground">
-              {session.username}
-            </span>{" "}
-            ·{" "}
-            <button
-              type="button"
-              className="readable-link"
-              onClick={discussion.signOut}
-            >
-              Sign out
-            </button>
-          </p>
-        )}
       </CardHeader>
 
       {session.status === "signed-in" && (
@@ -253,11 +237,9 @@ export function DiscussionThread({ id }: { id: string }) {
       )}
 
       <p className="flex flex-wrap justify-between gap-x-4 gap-y-1 border-t bg-muted/50 px-6 py-3.5 text-sm text-muted-foreground">
-        <span>
-          {session.status === "off"
-            ? "Discussion hosted on zap.ms · sign in there to reply"
-            : "Discussion powered by zap.ms · you sign in with a zap.ms account"}
-        </span>
+        {session.status === "off" && (
+          <span>Discussion hosted on zap.ms · sign in there to reply</span>
+        )}
         <a className="readable-link" href={links.section}>
           All Message Center discussions
         </a>
