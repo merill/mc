@@ -26,7 +26,8 @@ const commentLabel = (count: number) =>
 
 /**
  * Compact row under the Summary: like and dislike counts, the comment count
- * and a jump to the thread further down. Every control is a link to zap.ms.
+ * and a jump to the thread further down. Like and dislike are forms posted to
+ * zap.ms, which records the choice once the visitor is signed in there.
  */
 export function DiscussionSummary({ id }: { id: string }) {
   const state = useDiscussion(id)
@@ -39,28 +40,34 @@ export function DiscussionSummary({ id }: { id: string }) {
 
   return (
     <div className="flex w-full flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
-      <a
-        className={pill}
-        href={links.like}
-        title="Like on zap.ms"
-        aria-label={
-          data ? `${data.up} likes. Like on zap.ms` : "Like on zap.ms"
-        }
-      >
-        👍 <Count state={state.status} value={data?.up} />
-      </a>
-      <a
-        className={pill}
-        href={links.dislike}
-        title="Dislike on zap.ms"
-        aria-label={
-          data
-            ? `${data.down} dislikes. Dislike on zap.ms`
-            : "Dislike on zap.ms"
-        }
-      >
-        👎 <Count state={state.status} value={data?.down} />
-      </a>
+      <form method="post" action={links.react} className="contents">
+        <input type="hidden" name="dir" value="up" />
+        <button
+          type="submit"
+          className={pill}
+          title="Like on zap.ms"
+          aria-label={
+            data ? `${data.up} likes. Like on zap.ms` : "Like on zap.ms"
+          }
+        >
+          👍 <Count state={state.status} value={data?.up} />
+        </button>
+      </form>
+      <form method="post" action={links.react} className="contents">
+        <input type="hidden" name="dir" value="down" />
+        <button
+          type="submit"
+          className={pill}
+          title="Dislike on zap.ms"
+          aria-label={
+            data
+              ? `${data.down} dislikes. Dislike on zap.ms`
+              : "Dislike on zap.ms"
+          }
+        >
+          👎 <Count state={state.status} value={data?.down} />
+        </button>
+      </form>
       <a
         className="inline-flex items-center gap-1.5 font-medium text-foreground underline-offset-4 hover:underline"
         href="#discussion"
