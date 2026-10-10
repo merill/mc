@@ -1,7 +1,7 @@
 /**
- * Helpers for showing zap.ms discussions. The site only reads: every like,
- * dislike, reply and comment is a link to zap.ms. Kept free of imports so the
- * node test runner can load it directly.
+ * Helpers for showing zap.ms discussions: types, links to zap.ms and the
+ * comment sanitiser. Signing in and writing live in `use-discussion.ts`. Kept
+ * free of imports so the node test runner can load it directly.
  */
 
 export type ZapComment = {
