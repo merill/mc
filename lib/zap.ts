@@ -1,7 +1,7 @@
 /**
- * Helpers for showing zap.ms discussions. The site only reads: every like,
- * dislike, reply and comment is a link to zap.ms. Kept free of imports so the
- * node test runner can load it directly.
+ * Helpers for showing zap.ms discussions. The site only reads: a like or a
+ * dislike is a form posted to zap.ms, and every reply and comment is a link
+ * there. Kept free of imports so the node test runner can load it directly.
  */
 
 export type ZapComment = {
@@ -44,8 +44,9 @@ export function zapLinks(base: string, id: string) {
   const post = `${base}/mc/${id}`
   return {
     post,
-    like: `${post}?react=up`,
-    dislike: `${post}?react=down`,
+    // Where the like and dislike forms post their `dir` (up or down). zap.ms
+    // keeps the choice through sign-in, so the visitor presses only once.
+    react: `${post}/intent`,
     comment: `${post}#comment-form`,
     reply: (commentId: number) => `${post}?reply=${commentId}`,
     user: (username: string) => `${base}/user/${encodeURIComponent(username)}`,

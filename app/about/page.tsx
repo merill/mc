@@ -432,6 +432,10 @@ export default function AboutPage() {
                 admins, and each button takes you there.
               </li>
               <li>
+                Like and dislike take one press. Your choice is kept while you
+                sign in to zap.ms and is recorded without asking you again.
+              </li>
+              <li>
                 The home page shows the posts being discussed right now, when
                 there are any.
               </li>

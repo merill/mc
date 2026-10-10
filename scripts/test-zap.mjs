@@ -109,8 +109,7 @@ test("formats ages", () => {
 
 test("builds zap.ms links", () => {
   const links = zapLinks("https://zap.ms", "MC1474104")
-  assert.equal(links.like, "https://zap.ms/mc/MC1474104?react=up")
-  assert.equal(links.dislike, "https://zap.ms/mc/MC1474104?react=down")
+  assert.equal(links.react, "https://zap.ms/mc/MC1474104/intent")
   assert.equal(links.comment, "https://zap.ms/mc/MC1474104#comment-form")
   assert.equal(links.reply(42), "https://zap.ms/mc/MC1474104?reply=42")
   assert.equal(links.user("a b"), "https://zap.ms/user/a%20b")
