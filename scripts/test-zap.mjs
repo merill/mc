@@ -195,3 +195,15 @@ test("a draft is kept per box, expires after a week and goes when emptied", () =
   local.saveDraft(store, key, "   ", 1001)
   assert.equal(store.size(), 0)
 })
+
+test("flagging marks the comment once; deleting shows it as removed", () => {
+  const start = localView({ comments: [localComment(7, null, 0)] })
+  const flagged = local.withFlag(local.withFlag(start, 7), 7)
+  assert.deepEqual(flagged.mine.flagged, [7])
+
+  const mine = { ...start, mine: { ...start.mine, deletable: [7, 9] } }
+  const deleted = local.withDeleted(mine, 7)
+  assert.equal(deleted.thread.comments[0].html, "<p>[removed]</p>")
+  assert.equal(deleted.thread.comments[0].author, null)
+  assert.deepEqual(deleted.mine.deletable, [9])
+})

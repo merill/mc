@@ -382,6 +382,21 @@ function Comment({
   const { comment, replies } = node
   const { session } = discussion
   const [replying, setReplying] = React.useState(false)
+  const [confirmingDelete, setConfirmingDelete] = React.useState(false)
+  const signedIn = session.status === "signed-in" && !comment.pending
+  const isMine =
+    session.status === "signed-in" && comment.author === session.username
+  const canDelete =
+    signedIn && isMine && (discussion.mine.deletable ?? []).includes(comment.id)
+  // Offered only once zap.ms reports flags, and never on your own comment.
+  const flagged = (discussion.mine.flagged ?? []).includes(comment.id)
+  const canFlag =
+    signedIn &&
+    !isMine &&
+    comment.author !== null &&
+    discussion.mine.flagged !== undefined
+  const quiet =
+    "rounded px-1 font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
   const upvoted = discussion.mine.commentVotes[comment.id] === "up"
   const links = zapLinks(siteConfig.zap.url, postId)
   const name = comment.author ?? "removed"
@@ -485,6 +500,53 @@ function Comment({
               reply
             </button>
           )}
+          {canFlag &&
+            (flagged ? (
+              <span className="px-1 text-muted-foreground">flagged</span>
+            ) : (
+              <button
+                type="button"
+                className={quiet}
+                aria-label={`Flag ${name}'s comment for the moderators`}
+                onClick={() => discussion.flag(comment.id)}
+              >
+                flag
+              </button>
+            ))}
+          {canDelete &&
+            (confirmingDelete ? (
+              <span className="inline-flex items-center gap-1">
+                <button
+                  type="button"
+                  className={cn(
+                    quiet,
+                    "text-destructive hover:text-destructive"
+                  )}
+                  onClick={() => {
+                    setConfirmingDelete(false)
+                    discussion.remove(comment.id)
+                  }}
+                >
+                  delete it
+                </button>
+                <button
+                  type="button"
+                  className={quiet}
+                  onClick={() => setConfirmingDelete(false)}
+                >
+                  keep
+                </button>
+              </span>
+            ) : (
+              <button
+                type="button"
+                className={quiet}
+                aria-label="Delete your comment"
+                onClick={() => setConfirmingDelete(true)}
+              >
+                delete
+              </button>
+            ))}
         </div>
         <div
           className="zap-comment"
