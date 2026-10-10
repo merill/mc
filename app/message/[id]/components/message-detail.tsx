@@ -6,6 +6,10 @@ import {
   linkifyMcIds,
 } from "@/lib/messages"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  DiscussionSummary,
+  DiscussionThread,
+} from "@/app/message/[id]/components/discussion"
 import InfoCards, {
   ExpiredBanner,
 } from "@/app/message/[id]/components/info-cards"
@@ -46,6 +50,8 @@ export default function MessageDetail(props: { id: string }) {
         </Card>
       )}
 
+      <DiscussionSummary id={props.id} />
+
       <InfoCards id={props.id} layout="grid" showHistoryLink />
 
       <Card className="w-full overflow-hidden rounded-[0.5rem] border bg-background shadow-sm md:shadow-sm">
@@ -56,6 +62,8 @@ export default function MessageDetail(props: { id: string }) {
           <MessageContent html={linkedBody} />
         </CardContent>
       </Card>
+
+      <DiscussionThread id={props.id} />
 
       <RelatedMessages id={props.id} />
       <section id="version-history" className="w-full scroll-mt-24">

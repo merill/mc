@@ -421,6 +421,24 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 10, 2026
+            </h2>
+            <ul>
+              <li>
+                Every Message Center and Roadmap post now has a Discussion
+                section. You can see how many people liked or disliked a change
+                and read what other admins are saying about it. Likes, dislikes
+                and comments are made on zap.ms, a community site for Microsoft
+                admins, and each button takes you there.
+              </li>
+              <li>
+                The home page shows the posts being discussed right now, when
+                there are any.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               October 6, 2026
             </h2>
             <ul>
