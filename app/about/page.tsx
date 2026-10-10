@@ -421,6 +421,23 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 11, 2026
+            </h2>
+            <ul>
+              <li>
+                You can now like, dislike, comment and reply on a post without
+                leaving this site. The first time, you sign in with a zap.ms
+                account and come straight back to the post you were reading.
+              </li>
+              <li>
+                Likes and comments now show the moment you press the button,
+                and a comment you are still writing is kept in your browser
+                until you post or discard it.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               October 10, 2026
             </h2>
             <ul>
