@@ -1,12 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { useZap } from "@/lib/use-zap"
 import { cn } from "@/lib/utils"
 import { ZapActiveItem, avatarColor, timeAgo, zapLinks } from "@/lib/zap"
+import { overlayRecent } from "@/lib/zap-local"
 
 const VISIBLE_ON_PHONES = 5
 
@@ -19,7 +20,8 @@ export default function ActiveDiscussions() {
   const state = useZap<{ items: ZapActiveItem[] }>("/mc/active")
   if (state.status !== "ready" || state.data.items.length === 0) return null
 
-  const items = state.data.items
+  // Counts from the shared list can trail this visitor's own like or comment.
+  const items = overlayRecent(state.data.items, localStorage, Date.now())
   const links = zapLinks(siteConfig.zap.url, "")
   const first = items.slice(0, VISIBLE_ON_PHONES)
   const rest = items.slice(VISIBLE_ON_PHONES)
@@ -88,10 +90,24 @@ function Row({ item, className }: { item: ZapActiveItem; className?: string }) {
           </span>
         </p>
         <p className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs tabular-nums text-muted-foreground">
-          <span aria-label={`${item.up} likes`}>👍 {item.up}</span>
-          <span aria-label={`${item.down} dislikes`}>👎 {item.down}</span>
-          <span aria-label={`${item.commentCount} comments`}>
-            💬 {item.commentCount}
+          <span
+            className="inline-flex items-center gap-1"
+            aria-label={`${item.up} likes`}
+          >
+            <ThumbsUp className="size-3.5" aria-hidden="true" /> {item.up}
+          </span>
+          <span
+            className="inline-flex items-center gap-1"
+            aria-label={`${item.down} dislikes`}
+          >
+            <ThumbsDown className="size-3.5" aria-hidden="true" /> {item.down}
+          </span>
+          <span
+            className="inline-flex items-center gap-1"
+            aria-label={`${item.commentCount} comments`}
+          >
+            <MessageSquare className="size-3.5" aria-hidden="true" />{" "}
+            {item.commentCount}
           </span>
           {item.lastCommenter && (
             <span className="inline-flex items-center gap-1">

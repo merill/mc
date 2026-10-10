@@ -1,7 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { ArrowDown, ArrowRight, MessageSquare } from "lucide-react"
+import {
+  ArrowDown,
+  ArrowRight,
+  MessageSquare,
+  ThumbsDown,
+  ThumbsUp,
+} from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { useDiscussion } from "@/lib/use-discussion"
@@ -15,12 +21,11 @@ import {
   timeAgo,
   zapLinks,
 } from "@/lib/zap"
+import { draftKey, readDraft, saveDraft } from "@/lib/zap-local"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 
 type Discussion = ReturnType<typeof useDiscussion>
-
-const DRAFT_PREFIX = "zap-draft:"
 
 const commentLabel = (count: number) =>
   `${count} comment${count === 1 ? "" : "s"}`
@@ -41,10 +46,16 @@ export function DiscussionSummary({ id }: { id: string }) {
     "h-8 gap-1.5 tabular-nums"
   )
   const reactions = [
-    { dir: "up", icon: "👍", name: "Like", count: data?.up, href: links.like },
+    {
+      dir: "up",
+      Icon: ThumbsUp,
+      name: "Like",
+      count: data?.up,
+      href: links.like,
+    },
     {
       dir: "down",
-      icon: "👎",
+      Icon: ThumbsDown,
       name: "Dislike",
       count: data?.down,
       href: links.dislike,
@@ -61,7 +72,10 @@ export function DiscussionSummary({ id }: { id: string }) {
             : `${reaction.name}. ${reaction.count} so far`
         const content = (
           <>
-            {reaction.icon}{" "}
+            <reaction.Icon
+              className={cn("size-4", mine && "fill-current")}
+              aria-hidden="true"
+            />
             <Count state={state.status} value={reaction.count} />
           </>
         )
@@ -71,7 +85,8 @@ export function DiscussionSummary({ id }: { id: string }) {
             type="button"
             className={cn(
               pill,
-              mine && "border-primary bg-accent text-foreground"
+              mine &&
+                "border-transparent bg-primary text-primary-foreground hover:bg-primary/85 hover:text-primary-foreground"
             )}
             aria-pressed={mine}
             aria-label={label}
@@ -80,9 +95,7 @@ export function DiscussionSummary({ id }: { id: string }) {
                 ? `Remove your ${reaction.name.toLowerCase()}`
                 : reaction.name
             }
-            disabled={
-              discussion.busy || discussion.session.status === "checking"
-            }
+            disabled={discussion.session.status === "checking"}
             onClick={() => discussion.react(reaction.dir)}
           >
             {content}
@@ -254,8 +267,9 @@ export function DiscussionThread({ id }: { id: string }) {
 }
 
 /**
- * A comment or reply box. What is typed is kept for the tab, so a draft
- * survives a reload or a sign-in that ran out part-way.
+ * A comment or reply box. What is typed is saved in the browser as it is
+ * typed, so it survives a reload, a closed tab or a crash, and is removed
+ * once zap.ms has the comment or the visitor discards it.
  */
 function CommentForm(props: {
   discussion: Discussion
@@ -265,33 +279,41 @@ function CommentForm(props: {
   onDone?: () => void
 }) {
   const { discussion, parentId } = props
-  const draftKey = `${DRAFT_PREFIX}${props.postId}:${parentId ?? "new"}`
+  const key = draftKey(props.postId, parentId)
   const [text, setText] = React.useState("")
+  const [restored, setRestored] = React.useState(false)
   const fieldId = React.useId()
 
   React.useEffect(() => {
-    try {
-      setText(sessionStorage.getItem(draftKey) ?? "")
-    } catch {
-      // No storage: the box starts empty.
-    }
-  }, [draftKey])
+    const saved = readDraft(localStorage, key, Date.now())
+    setText(saved)
+    setRestored(saved !== "")
+  }, [key])
 
   const update = (value: string) => {
     setText(value)
-    try {
-      sessionStorage.setItem(draftKey, value)
-    } catch {
-      // The draft is simply not kept.
-    }
+    saveDraft(localStorage, key, value, Date.now())
+  }
+
+  const discard = () => {
+    update("")
+    setRestored(false)
+    props.onDone?.()
   }
 
   const submit = async (event: React.FormEvent) => {
     event.preventDefault()
-    if (!text.trim()) return
-    if (await discussion.comment(text, parentId)) {
-      update("")
+    const sent = text
+    if (!sent.trim()) return
+    // The comment shows in the thread at once, so the box empties now. The
+    // saved copy stays until zap.ms confirms, and comes back if it does not.
+    setText("")
+    setRestored(false)
+    if (await discussion.comment(sent, parentId)) {
+      saveDraft(localStorage, key, "", Date.now())
       props.onDone?.()
+    } else {
+      setText(sent)
     }
   }
 
@@ -314,7 +336,7 @@ function CommentForm(props: {
         <button
           type="submit"
           className={buttonVariants({ size: "sm" })}
-          disabled={discussion.busy || !text.trim()}
+          disabled={!text.trim()}
         >
           {parentId === null ? "Post comment" : "Post reply"}
         </button>
@@ -322,7 +344,7 @@ function CommentForm(props: {
           <button
             type="button"
             className={buttonVariants({ variant: "ghost", size: "sm" })}
-            onClick={props.onDone}
+            onClick={discard}
           >
             Cancel
           </button>
@@ -330,6 +352,14 @@ function CommentForm(props: {
         <span className="text-xs text-muted-foreground">
           Markdown works here.
         </span>
+        {restored && (
+          <span className="text-xs text-muted-foreground">
+            Draft restored ·{" "}
+            <button type="button" className="readable-link" onClick={discard}>
+              Discard
+            </button>
+          </span>
+        )}
       </div>
       {discussion.error && (
         <p role="alert" className="text-sm text-destructive">
@@ -361,7 +391,10 @@ function Comment({
   )
 
   return (
-    <article id={`comment-${comment.id}`} className="flex scroll-mt-24 gap-3">
+    <article
+      id={`comment-${comment.id}`}
+      className={cn("flex scroll-mt-24 gap-3", comment.pending && "opacity-70")}
+    >
       <span
         className="mt-0.5 flex size-7 shrink-0 select-none items-center justify-center rounded-full text-xs font-semibold uppercase text-white"
         style={{ backgroundColor: avatarColor(name) }}
@@ -392,13 +425,20 @@ function Comment({
               {BADGE_LABELS[badge] ?? badge}
             </span>
           ))}
-          <a
-            className="text-muted-foreground underline-offset-4 hover:underline"
-            href={comment.url}
-          >
-            {timeAgo(comment.createdAt)}
-          </a>
-          {session.status === "signed-in" && comment.author ? (
+          {comment.pending ? (
+            <span className="text-muted-foreground" role="status">
+              Posting…
+            </span>
+          ) : (
+            <a
+              className="text-muted-foreground underline-offset-4 hover:underline"
+              href={comment.url}
+            >
+              {timeAgo(comment.createdAt)}
+            </a>
+          )}
+          {comment.pending ? null : session.status === "signed-in" &&
+            comment.author ? (
             <button
               type="button"
               className={cn(
@@ -409,7 +449,6 @@ function Comment({
               )}
               aria-pressed={upvoted}
               aria-label={`Upvote ${name}'s comment. Score ${comment.score}`}
-              disabled={discussion.busy}
               onClick={() => discussion.upvote(comment.id)}
             >
               ▲ {comment.score}
@@ -422,7 +461,7 @@ function Comment({
               ▲ {comment.score}
             </span>
           )}
-          {session.status === "off" ? (
+          {comment.pending ? null : session.status === "off" ? (
             <a
               className="ml-auto rounded px-1 font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
               href={links.reply(comment.id)}
