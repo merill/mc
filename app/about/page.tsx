@@ -461,6 +461,10 @@ export default function AboutPage() {
                 well.
               </li>
               <li>
+                The bottom of every page now links to the privacy policy and
+                terms of use, which cover this site and zap.ms.
+              </li>
+              <li>
                 Long service names on a post, such as Microsoft Copilot
                 (Microsoft 365), now wrap inside their card instead of being cut
                 off.

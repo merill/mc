@@ -9,7 +9,21 @@ const link =
 export function SiteFooter() {
   return (
     <footer className="border-t">
-      <div className="container flex flex-wrap items-center justify-end gap-x-6 gap-y-3 py-6 text-sm text-muted-foreground">
+      <div className="container flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-6 text-sm text-muted-foreground">
+        <nav
+          aria-label="Policies"
+          className="flex flex-wrap items-center gap-x-5 gap-y-2"
+        >
+          <a href={`${siteConfig.zap.url}/privacy`} className={link}>
+            Privacy
+          </a>
+          <a href={`${siteConfig.zap.url}/terms`} className={link}>
+            Terms
+          </a>
+          <a href={`${siteConfig.zap.url}/guidelines`} className={link}>
+            Community guidelines
+          </a>
+        </nav>
         <nav
           aria-label="Follow and source"
           className="flex flex-wrap items-center gap-x-5 gap-y-2"
