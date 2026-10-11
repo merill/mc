@@ -7,9 +7,15 @@ import {
   ArrowUp,
   ChevronsUpDown,
   Inbox,
+  MessageSquare,
   Milestone,
+  ThumbsDown,
+  ThumbsUp,
 } from "lucide-react"
 
+import { siteConfig } from "@/config/site"
+import { useZapCount } from "@/lib/use-zap-counts"
+import { zapLinks } from "@/lib/zap"
 import { Badge } from "@/components/ui/badge"
 import {
   Tooltip,
@@ -46,6 +52,40 @@ export function idSortKey(id: string): string {
   const match = /^([A-Za-z]*)(\d+)$/.exec(id ?? "")
 
   return match ? `${match[1]}${match[2].padStart(10, "0")}` : id ?? ""
+}
+
+const plural = (count: number, word: string) =>
+  `${count} ${word}${count === 1 ? "" : "s"}`
+
+/**
+ * A post's likes, dislikes and comments from zap.ms, linking to its
+ * discussion. Renders nothing for a post nobody has reacted to.
+ */
+function RowDiscussion({ id }: { id: string }) {
+  const counts = useZapCount(id)
+  if (!counts) return null
+
+  const parts = [
+    { Icon: ThumbsUp, count: counts.up, word: "like" },
+    { Icon: ThumbsDown, count: counts.down, word: "dislike" },
+    { Icon: MessageSquare, count: counts.commentCount, word: "comment" },
+  ].filter((part) => part.count > 0)
+
+  return (
+    <Link
+      href={zapLinks(siteConfig.zap.url, id).local}
+      className="mt-1 inline-flex items-center gap-x-3 rounded text-xs tabular-nums text-muted-foreground hover:text-foreground"
+      aria-label={`${parts
+        .map((part) => plural(part.count, part.word))
+        .join(", ")}. Read the discussion`}
+    >
+      {parts.map(({ Icon, count, word }) => (
+        <span key={word} className="inline-flex items-center gap-1">
+          <Icon className="size-3.5" aria-hidden="true" /> {count}
+        </span>
+      ))}
+    </Link>
+  )
 }
 
 function SortIcon({ direction }: { direction: SortDirection | false }) {
@@ -180,6 +220,7 @@ export const columns: ColumnDef<MessageView>[] = [
               dangerouslySetInnerHTML={{ __html: row.original.excerpt }}
             />
           )}
+          <RowDiscussion id={row.original.id} />
         </div>
       )
     },

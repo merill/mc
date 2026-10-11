@@ -42,6 +42,20 @@ export type ZapActiveItem = {
   lastCommenterAvatar?: string | null
 }
 
+/** What a list shows for one post. */
+export type ZapCounts = { up: number; down: number; commentCount: number }
+
+/** The most posts zap.ms counts in one request. */
+export const COUNTS_BATCH = 200
+
+/**
+ * The API path for the counts of `ids`. Sorted, so everyone looking at the
+ * same posts asks for the same address and zap.ms answers from one stored copy.
+ */
+export function countsPath(ids: string[]): string {
+  return `/mc/counts?ids=${Array.from(new Set(ids)).sort().join(",")}`
+}
+
 export type ZapThreadNode = { comment: ZapComment; replies: ZapThreadNode[] }
 
 /** Every place a visitor can go on zap.ms for one post. */
@@ -49,6 +63,8 @@ export function zapLinks(base: string, id: string) {
   const post = `${base}/mc/${id}`
   return {
     post,
+    /** The discussion on this site's own page for the post. */
+    local: `/message/${id}#discussion`,
     like: `${post}?react=up`,
     dislike: `${post}?react=down`,
     comment: `${post}#comment-form`,

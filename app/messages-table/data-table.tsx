@@ -34,6 +34,7 @@ import {
   type SearchHit,
   type SearchSortKey,
 } from "@/lib/search"
+import { useZapCounts } from "@/lib/use-zap-counts"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -113,6 +114,8 @@ export function DataTable<TData, TValue>({
 
   const router = useRouter()
   const [allData, setAllData] = React.useState<TData[]>(data)
+  // True once the expired posts have arrived, or turned out not to be coming.
+  const [isArchiveSettled, setIsArchiveSettled] = React.useState(!archiveUrl)
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [filters, setFilters] = React.useState(() =>
     readArchiveFilters(new URLSearchParams())
@@ -232,6 +235,7 @@ export function DataTable<TData, TValue>({
       .catch(() => {
         // Archive rows are optional; active messages and roadmap still render if fetch fails.
       })
+      .finally(() => isMounted && setIsArchiveSettled(true))
 
     return () => {
       isMounted = false
@@ -376,6 +380,13 @@ export function DataTable<TData, TValue>({
     ? searchHits.length < searchTotal
     : visibleRowCount < rows.length
   const totalRowCount = usesPagefind ? searchTotal : rows.length
+  // Reactions and comment counts, for the rows on screen only. Expired posts
+  // reorder the first rows when they arrive, so the request waits for them.
+  useZapCounts(
+    isArchiveSettled
+      ? visibleRows.map((row) => String(row.getValue("id")))
+      : []
+  )
 
   const loadMoreRows = React.useCallback(async () => {
     if (!usesPagefind) {
