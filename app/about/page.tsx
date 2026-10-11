@@ -436,13 +436,32 @@ export default function AboutPage() {
               </li>
               <li>
                 Comments now show each person&apos;s zap.ms profile photo, and
-                once you are signed in your own photo appears at the top of the
-                Discussion section in place of your username.
+                once you are signed in the top of the page shows your photo
+                instead of your username.
+              </li>
+              <li>
+                You can flag a comment for the moderators, and delete your own
+                comment for ten minutes after posting it.
+              </li>
+              <li>
+                The top of every page now has a Sign in button, and shows who
+                you are once signed in. The RSS, GitHub and Twitter links have
+                moved to the bottom of the page.
+              </li>
+              <li>
+                Comment and reply boxes now link to the community guidelines.
+                We keep discussions friendly: assume the other person means
+                well.
               </li>
               <li>
                 Long service names on a post, such as Microsoft Copilot
                 (Microsoft 365), now wrap inside their card instead of being cut
                 off.
+              </li>
+              <li>
+                If you have a Microsoft badge on zap.ms, a notice at the top of
+                the page now tells you when it is time to confirm your Microsoft
+                email again, with a link to do it.
               </li>
             </ul>
           </div>

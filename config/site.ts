@@ -29,10 +29,6 @@ export const siteConfig = {
       href: "https://entra.news",
     },
     {
-      title: "Maester",
-      href: "https://maester.dev",
-    },
-    {
       title: "Maester.Cloud",
       href: "https://maester.cloud",
     },

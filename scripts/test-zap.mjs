@@ -202,3 +202,45 @@ test("a draft is kept per box, expires after a week and goes when emptied", () =
   local.saveDraft(store, key, "   ", 1001)
   assert.equal(store.size(), 0)
 })
+
+test("flagging marks the comment once; deleting shows it as removed", () => {
+  const start = localView({ comments: [localComment(7, null, 0)] })
+  const flagged = local.withFlag(local.withFlag(start, 7), 7)
+  assert.deepEqual(flagged.mine.flagged, [7])
+
+  const mine = { ...start, mine: { ...start.mine, deletable: [7, 9] } }
+  const deleted = local.withDeleted(mine, 7)
+  assert.equal(deleted.thread.comments[0].html, "<p>[removed]</p>")
+  assert.equal(deleted.thread.comments[0].author, null)
+  assert.deepEqual(deleted.mine.deletable, [9])
+})
+
+const { readBadgeNotice, badgeNoticeText } = await loadTypeScriptModule("../lib/zap.ts")
+const notice = (over = {}) => ({ kind: "microsoft", state: "renew", deadline: 1799496000, verifyUrl: "https://zap.ms/settings/verify", ...over })
+
+test("reads a badge notice, and nothing from an answer it cannot show", () => {
+  assert.deepEqual(readBadgeNotice(notice()), notice())
+  assert.deepEqual(readBadgeNotice(notice({ state: "removed" })), notice({ state: "removed" }))
+  for (const raw of [
+    undefined,
+    null,
+    "renew",
+    notice({ kind: "mvp" }),
+    notice({ state: "expired" }),
+    notice({ deadline: "1799496000" }),
+    notice({ verifyUrl: "javascript:alert(1)" }),
+    notice({ verifyUrl: undefined })
+  ]) {
+    assert.equal(readBadgeNotice(raw), null, JSON.stringify(raw))
+  }
+})
+
+test("words the badge notice with the date in the visitor's locale", () => {
+  // Midday UTC, so the day is the same in every time zone the tests run in.
+  assert.equal(badgeNoticeText(notice(), "en-US"), "Confirm your Microsoft email by January 9, 2027 to keep your Microsoft badge.")
+  assert.equal(badgeNoticeText(notice(), "en-GB"), "Confirm your Microsoft email by 9 January 2027 to keep your Microsoft badge.")
+  assert.equal(
+    badgeNoticeText(notice({ state: "removed" }), "en-US"),
+    "Your Microsoft badge was removed because your Microsoft email was not confirmed again."
+  )
+})

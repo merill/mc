@@ -1,8 +1,7 @@
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
+import { AccountMenu } from "@/components/account-menu"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
@@ -26,55 +25,9 @@ export function SiteHeader() {
                 </Link>
               ))}
             </div>
-            <div className="flex items-center space-x-1">
-              {/* A plain anchor, not next/link: rss.xml is a static file in
-                  public/, not a route the client router can navigate to. */}
-              <a
-                href={siteConfig.links.rss}
-                type="application/rss+xml"
-                title="Subscribe to the RSS feed"
-              >
-                <div
-                  className={buttonVariants({
-                    size: "icon",
-                    variant: "ghost",
-                  })}
-                >
-                  <Icons.rss className="h-5 w-5" />
-                  <span className="sr-only">RSS feed</span>
-                </div>
-              </a>
-              <Link
-                href={siteConfig.links.github}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div
-                  className={buttonVariants({
-                    size: "icon",
-                    variant: "ghost",
-                  })}
-                >
-                  <Icons.gitHub className="h-5 w-5" />
-                  <span className="sr-only">GitHub</span>
-                </div>
-              </Link>
-              <Link
-                href={siteConfig.links.twitter}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div
-                  className={buttonVariants({
-                    size: "icon",
-                    variant: "ghost",
-                  })}
-                >
-                  <Icons.twitter className="h-5 w-5 fill-current" />
-                  <span className="sr-only">Twitter</span>
-                </div>
-              </Link>
+            <div className="flex items-center gap-1">
               <ThemeToggle />
+              <AccountMenu />
             </div>
           </nav>
         </div>

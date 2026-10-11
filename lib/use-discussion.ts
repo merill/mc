@@ -3,12 +3,18 @@
 import * as React from "react"
 
 import { siteConfig } from "@/config/site"
-import type { ZapDiscussion } from "@/lib/zap"
+import {
+  readBadgeNotice,
+  type ZapBadgeNotice,
+  type ZapDiscussion,
+} from "@/lib/zap"
 import {
   clearRecent,
   readRecent,
   saveRecent,
   withCommentUpvote,
+  withDeleted,
+  withFlag,
   withPendingComment,
   withReaction,
   type Reaction,
@@ -36,7 +42,14 @@ export type ZapSession =
   | { status: "checking" }
   | { status: "off" }
   | { status: "signed-out" }
-  | { status: "signed-in"; username: string; avatar: string | null }
+  | {
+      status: "signed-in"
+      username: string
+      /** Their photo on zap.ms, when they have one. */
+      avatar: string | null
+      /** Set while their Microsoft badge needs renewing or has been removed. */
+      badgeNotice: ZapBadgeNotice | null
+    }
 
 export type DiscussionState = {
   thread:
@@ -171,6 +184,26 @@ class Store {
     )
   }
 
+  flag(commentId: number) {
+    const view = this.view()
+    return this.write(
+      "POST",
+      `/comments/${commentId}/flag`,
+      {},
+      view ? withFlag(view, commentId) : null
+    )
+  }
+
+  remove(commentId: number) {
+    const view = this.view()
+    return this.write(
+      "DELETE",
+      `/comments/${commentId}`,
+      {},
+      view ? withDeleted(view, commentId) : null
+    )
+  }
+
   comment(
     text: string,
     parentId: number | null,
@@ -201,7 +234,7 @@ class Store {
    * only the newest one decides what is on screen when the answers come in.
    */
   private async write(
-    method: "PUT" | "POST",
+    method: "PUT" | "POST" | "DELETE",
     path: string,
     body: unknown,
     optimistic: View | null
@@ -248,14 +281,61 @@ class Store {
   }
 }
 
+const sessionListeners = new Set<() => void>()
+
 function setSession(next: ZapSession) {
   session = next
   stores.forEach((store) => store.set({ session }))
+  sessionListeners.forEach((listener) => listener())
+}
+
+/**
+ * Hides the notice that their badge was removed. zap.ms remembers it, so the
+ * notice goes from zap.ms too; if zap.ms refuses, it comes back.
+ */
+async function dismissBadgeNotice() {
+  if (session.status !== "signed-in" || !session.badgeNotice) return
+  const { badgeNotice } = session
+  setSession({ ...session, badgeNotice: null })
+  const result = await call("POST", "/api/v1/me/badge-notice/dismiss")
+  if (result.ok) return
+  if (result.status === 401) return setSession({ status: "signed-out" })
+  if (session.status === "signed-in") setSession({ ...session, badgeNotice })
+}
+
+async function signOut() {
+  await call("POST", "/auth/signout", {})
+  stores.forEach((store) => store.forget())
+  setSession({ status: "signed-out" })
+}
+
+const subscribeSession = (listener: () => void) => {
+  sessionListeners.add(listener)
+  void loadSession()
+  return () => sessionListeners.delete(listener)
+}
+const checking: ZapSession = { status: "checking" }
+
+/** Who is signed in, for parts of the page outside a discussion. */
+export function useZapSession() {
+  const current = React.useSyncExternalStore(
+    subscribeSession,
+    () => session,
+    () => checking
+  )
+  return {
+    session: current,
+    /** Comes back to the page they are on, not to a discussion. */
+    signIn: () => signIn(null),
+    signOut,
+    dismissBadgeNotice,
+  }
 }
 
 function loadSession(): Promise<void> {
   sessionRequest ??= call<{
     user: { username: string | null; avatar?: string | null } | null
+    badgeNotice?: unknown
   }>("GET", "/api/v1/me").then((result) => {
     if (!result.ok) return setSession({ status: "off" })
     const username = result.data.user?.username
@@ -265,6 +345,7 @@ function loadSession(): Promise<void> {
             status: "signed-in",
             username,
             avatar: result.data.user?.avatar ?? null,
+            badgeNotice: readBadgeNotice(result.data.badgeNotice),
           }
         : { status: "signed-out" }
     )
@@ -288,6 +369,8 @@ async function call<T>(
       headers: body === undefined ? {} : { "content-type": "application/json" },
       body: body === undefined ? undefined : JSON.stringify(body),
     })
+    // zap.ms answers some writes with no body at all.
+    if (response.status === 204) return { ok: true, data: undefined as T }
     // Without zap's route this path is the site's own 404 page, not JSON.
     const isJson = response.headers
       .get("content-type")
@@ -313,14 +396,20 @@ function takePending(): Pending | null {
   }
 }
 
-/** Goes to zap.ms to sign in and comes back to this post's discussion. */
-function signIn(pending: Pending) {
-  try {
-    sessionStorage.setItem(PENDING_KEY, JSON.stringify(pending))
-  } catch {
-    // Without storage they sign in and press the button again.
+/**
+ * Goes to zap.ms to sign in and comes back: to this post's discussion when
+ * something there was pressed, otherwise to wherever they were.
+ */
+function signIn(pending: Pending | null) {
+  if (pending) {
+    try {
+      sessionStorage.setItem(PENDING_KEY, JSON.stringify(pending))
+    } catch {
+      // Without storage they sign in and press the button again.
+    }
   }
-  const here = `${window.location.pathname}${window.location.search}#discussion`
+  const { pathname, search, hash } = window.location
+  const here = `${pathname}${search}${pending ? "#discussion" : hash}`
   window.location.assign(
     `${EMBED}/auth/start?returnTo=${encodeURIComponent(here)}`
   )
@@ -356,11 +445,9 @@ export function useDiscussion(id: string) {
             : { username: "", avatar: null }
         ),
       upvote: (commentId: number) => current.upvote(commentId),
-      signOut: async () => {
-        await call("POST", "/auth/signout", {})
-        stores.forEach((store) => store.forget())
-        setSession({ status: "signed-out" })
-      },
+      flag: (commentId: number) => current.flag(commentId),
+      remove: (commentId: number) => current.remove(commentId),
+      signOut,
     }),
     [current, id]
   )

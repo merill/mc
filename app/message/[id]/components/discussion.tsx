@@ -189,29 +189,6 @@ export function DiscussionThread({ id }: { id: string }) {
             Sign in to comment
           </button>
         )}
-        {session.status === "signed-in" && (
-          <p className="flex items-center gap-2 text-sm text-muted-foreground">
-            <a
-              className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              href={links.user(session.username)}
-              title={`Signed in as ${session.username}`}
-              aria-label={`Signed in as ${session.username}. Your profile on zap.ms`}
-            >
-              <ZapAvatar
-                username={session.username}
-                src={session.avatar}
-                className="size-8 text-sm"
-              />
-            </a>
-            <button
-              type="button"
-              className="readable-link"
-              onClick={discussion.signOut}
-            >
-              Sign out
-            </button>
-          </p>
-        )}
       </CardHeader>
 
       {session.status === "signed-in" && (
@@ -260,11 +237,9 @@ export function DiscussionThread({ id }: { id: string }) {
       )}
 
       <p className="flex flex-wrap justify-between gap-x-4 gap-y-1 border-t bg-muted/50 px-6 py-3.5 text-sm text-muted-foreground">
-        <span>
-          {session.status === "off"
-            ? "Discussion hosted on zap.ms · sign in there to reply"
-            : "Discussion powered by zap.ms · you sign in with a zap.ms account"}
-        </span>
+        {session.status === "off" && (
+          <span>Discussion hosted on zap.ms · sign in there to reply</span>
+        )}
         <a className="readable-link" href={links.section}>
           All Message Center discussions
         </a>
@@ -368,6 +343,20 @@ function CommentForm(props: {
           </span>
         )}
       </div>
+      <p className="text-xs text-muted-foreground">
+        <span className="font-medium text-foreground">
+          We keep it friendly here.
+        </span>{" "}
+        Assume the other person means well.{" "}
+        <a
+          className="readable-link"
+          href={`${siteConfig.zap.url}/guidelines`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Community guidelines
+        </a>
+      </p>
       {discussion.error && (
         <p role="alert" className="text-sm text-destructive">
           {discussion.error}
@@ -389,6 +378,21 @@ function Comment({
   const { comment, replies } = node
   const { session } = discussion
   const [replying, setReplying] = React.useState(false)
+  const [confirmingDelete, setConfirmingDelete] = React.useState(false)
+  const signedIn = session.status === "signed-in" && !comment.pending
+  const isMine =
+    session.status === "signed-in" && comment.author === session.username
+  const canDelete =
+    signedIn && isMine && (discussion.mine.deletable ?? []).includes(comment.id)
+  // Offered only once zap.ms reports flags, and never on your own comment.
+  const flagged = (discussion.mine.flagged ?? []).includes(comment.id)
+  const canFlag =
+    signedIn &&
+    !isMine &&
+    comment.author !== null &&
+    discussion.mine.flagged !== undefined
+  const quiet =
+    "rounded px-1 font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
   const upvoted = discussion.mine.commentVotes[comment.id] === "up"
   const links = zapLinks(siteConfig.zap.url, postId)
   const name = comment.author ?? "removed"
@@ -490,6 +494,53 @@ function Comment({
               reply
             </button>
           )}
+          {canFlag &&
+            (flagged ? (
+              <span className="px-1 text-muted-foreground">flagged</span>
+            ) : (
+              <button
+                type="button"
+                className={quiet}
+                aria-label={`Flag ${name}'s comment for the moderators`}
+                onClick={() => discussion.flag(comment.id)}
+              >
+                flag
+              </button>
+            ))}
+          {canDelete &&
+            (confirmingDelete ? (
+              <span className="inline-flex items-center gap-1">
+                <button
+                  type="button"
+                  className={cn(
+                    quiet,
+                    "text-destructive hover:text-destructive"
+                  )}
+                  onClick={() => {
+                    setConfirmingDelete(false)
+                    discussion.remove(comment.id)
+                  }}
+                >
+                  delete it
+                </button>
+                <button
+                  type="button"
+                  className={quiet}
+                  onClick={() => setConfirmingDelete(false)}
+                >
+                  keep
+                </button>
+              </span>
+            ) : (
+              <button
+                type="button"
+                className={quiet}
+                aria-label="Delete your comment"
+                onClick={() => setConfirmingDelete(true)}
+              >
+                delete
+              </button>
+            ))}
         </div>
         <div
           className="zap-comment"
