@@ -444,6 +444,11 @@ export default function AboutPage() {
                 moved to the bottom of the page.
               </li>
               <li>
+                Comment and reply boxes now link to the community guidelines.
+                We keep discussions friendly: assume the other person means
+                well.
+              </li>
+              <li>
                 Long service names on a post, such as Microsoft Copilot
                 (Microsoft 365), now wrap inside their card instead of being cut
                 off.

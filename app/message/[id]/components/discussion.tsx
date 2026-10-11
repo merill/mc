@@ -343,6 +343,20 @@ function CommentForm(props: {
           </span>
         )}
       </div>
+      <p className="text-xs text-muted-foreground">
+        <span className="font-medium text-foreground">
+          We keep it friendly here.
+        </span>{" "}
+        Assume the other person means well.{" "}
+        <a
+          className="readable-link"
+          href={`${siteConfig.zap.url}/guidelines`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Community guidelines
+        </a>
+      </p>
       {discussion.error && (
         <p role="alert" className="text-sm text-destructive">
           {discussion.error}
