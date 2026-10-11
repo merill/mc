@@ -453,6 +453,11 @@ export default function AboutPage() {
                 (Microsoft 365), now wrap inside their card instead of being cut
                 off.
               </li>
+              <li>
+                If you have a Microsoft badge on zap.ms, a notice at the top of
+                the page now tells you when it is time to confirm your Microsoft
+                email again, with a link to do it.
+              </li>
             </ul>
           </div>
           <div>

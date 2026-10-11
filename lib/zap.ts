@@ -180,3 +180,42 @@ export const BADGE_LABELS: Record<string, string> = {
   mvp: "MVP",
   "mvp-rd": "MVP RD",
 }
+
+/** What zap.ms tells a signed-in member about their Microsoft badge. */
+export type ZapBadgeNotice = {
+  kind: "microsoft"
+  /** `renew`: still shown, goes on `deadline`. `removed`: went on `deadline`. */
+  state: "renew" | "removed"
+  /** Unix seconds. */
+  deadline: number
+  verifyUrl: string
+}
+
+/** The notice from zap.ms's answer, or null for anything this site cannot show. */
+export function readBadgeNotice(raw: unknown): ZapBadgeNotice | null {
+  if (!raw || typeof raw !== "object") return null
+  const { kind, state, deadline, verifyUrl } = raw as Record<string, unknown>
+  if (kind !== "microsoft") return null
+  if (state !== "renew" && state !== "removed") return null
+  if (typeof deadline !== "number" || !Number.isFinite(deadline)) return null
+  if (typeof verifyUrl !== "string" || !/^https?:\/\//.test(verifyUrl)) {
+    return null
+  }
+  return { kind, state, deadline, verifyUrl }
+}
+
+/** The banner's sentence, with the date as the visitor's own locale writes it. */
+export function badgeNoticeText(
+  notice: ZapBadgeNotice,
+  locale?: string
+): string {
+  if (notice.state === "removed") {
+    return "Your Microsoft badge was removed because your Microsoft email was not confirmed again."
+  }
+  const date = new Date(notice.deadline * 1000).toLocaleDateString(locale, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+  return `Confirm your Microsoft email by ${date} to keep your Microsoft badge.`
+}
