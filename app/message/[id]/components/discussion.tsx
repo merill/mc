@@ -159,6 +159,14 @@ export function DiscussionThread({ id }: { id: string }) {
     [data]
   )
 
+  // Opening a link to #discussion in a new tab: the page above is still
+  // filling in when the browser makes its own jump, so make it again here,
+  // and once more when the thread has arrived.
+  React.useEffect(() => {
+    if (window.location.hash !== "#discussion") return
+    document.getElementById("discussion")?.scrollIntoView()
+  }, [state.status])
+
   return (
     <Card
       id="discussion"

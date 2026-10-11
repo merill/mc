@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { ArrowRight, MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
@@ -80,8 +81,9 @@ export default function ActiveDiscussions() {
 function Row({ item, className }: { item: ZapActiveItem; className?: string }) {
   return (
     <li className={className}>
-      <a
-        href={item.url}
+      {/* Reading stays on this site: the post's page, at its discussion. */}
+      <Link
+        href={zapLinks(siteConfig.zap.url, item.id).local}
         className="group flex h-full flex-col gap-1 border-b px-4 py-3 hover:bg-muted/40 sm:px-5"
       >
         <p className="line-clamp-2 text-sm leading-5">
@@ -122,7 +124,7 @@ function Row({ item, className }: { item: ZapActiveItem; className?: string }) {
           )}
           <span>{timeAgo(item.lastActivityAt)}</span>
         </p>
-      </a>
+      </Link>
     </li>
   )
 }

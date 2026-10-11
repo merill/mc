@@ -12,7 +12,7 @@ async function loadTypeScriptModule(relativePath) {
   return import(`data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`)
 }
 
-const { sanitizeCommentHtml, buildThread, avatarColor, avatarSrc, timeAgo, zapLinks } = await loadTypeScriptModule("../lib/zap.ts")
+const { sanitizeCommentHtml, buildThread, avatarColor, avatarSrc, timeAgo, zapLinks, countsPath } = await loadTypeScriptModule("../lib/zap.ts")
 
 const LINK = 'rel="ugc nofollow noopener noreferrer" target="_blank"'
 
@@ -177,18 +177,33 @@ test("typed text is shown as text, never as markup", () => {
   assert.equal(local.plainTextHtml("a <b>&\nb\n\nc"), "<p>a &lt;b&gt;&amp;<br>b</p>\n<p>c</p>")
 })
 
-test("a confirmed view is remembered for five minutes and laid over lists", () => {
+test("a confirmed view is remembered for five minutes, and for ten by lists", () => {
   const store = memoryStore()
   const confirmed = local.withReaction(localView({ commentCount: 2 }), "up")
   local.saveRecent(store, confirmed, 1000)
   assert.deepEqual(local.readRecent(store, "MC1", 2000), confirmed)
   const list = [{ id: "MC1", up: 3, down: 1, commentCount: 1 }, { id: "MC2", up: 9, down: 0, commentCount: 5 }]
-  assert.deepEqual(local.overlayRecent(list, store, 2000), [
+  const overlaid = [
     { id: "MC1", up: 4, down: 1, commentCount: 2 },
     { id: "MC2", up: 9, down: 0, commentCount: 5 }
-  ])
-  assert.equal(local.readRecent(store, "MC1", 1000 + local.RECENT_TTL_MS + 1), null)
+  ]
+  assert.deepEqual(local.overlayRecent(list, store, 2000), overlaid)
+
+  // Past five minutes the thread is read fresh, while lists still trail.
+  const later = 1000 + local.RECENT_TTL_MS + 1
+  assert.equal(local.readRecent(store, "MC1", later), null)
+  assert.deepEqual(local.recentCounts(store, "MC1", later), { up: 4, down: 1, commentCount: 2 })
+  assert.deepEqual(local.overlayRecent(list, store, later), overlaid)
+  assert.equal(local.recentCounts(store, "MC2", later), null)
+
+  const expired = 1000 + local.COUNTS_TTL_MS + 1
+  assert.deepEqual(local.overlayRecent(list, store, expired), list)
   assert.equal(store.size(), 0)
+})
+
+test("the same posts in any order ask zap.ms for one address", () => {
+  assert.equal(countsPath(["MC200", "RM3", "MC100", "MC200"]), "/mc/counts?ids=MC100,MC200,RM3")
+  assert.equal(zapLinks("https://zap.ms", "MC1").local, "/message/MC1#discussion")
 })
 
 test("a draft is kept per box, expires after a week and goes when emptied", () => {

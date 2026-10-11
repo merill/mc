@@ -4,7 +4,7 @@
  * shared copies of the thread catch up, and keep an unsent comment safe.
  * Kept free of runtime imports so the node test runner can load it directly.
  */
-import type { ZapActiveItem, ZapComment, ZapDiscussion } from "./zap"
+import type { ZapComment, ZapCounts, ZapDiscussion } from "./zap"
 
 export type Reaction = "up" | "down"
 
@@ -20,8 +20,10 @@ export type ZapMine = {
 type View = { thread: ZapDiscussion; mine: ZapMine }
 type Store = Pick<Storage, "getItem" | "setItem" | "removeItem">
 
-// zap.ms's shared copies are at most five minutes old.
+// zap.ms's shared copy of a thread is at most five minutes old.
 export const RECENT_TTL_MS = 5 * 60 * 1000
+// Its counts for lists are at most ten, so lists look back that far.
+export const COUNTS_TTL_MS = 10 * 60 * 1000
 export const DRAFT_TTL_MS = 7 * 24 * 60 * 60 * 1000
 
 const RECENT_PREFIX = "zap-recent:"
@@ -153,14 +155,21 @@ export function saveRecent(store: Store, view: View, now: number): void {
   write(store, RECENT_PREFIX + view.thread.id, { at: now, ...view })
 }
 
-/** The remembered view of a post, or null once it is too old to trust. */
-export function readRecent(store: Store, id: string, now: number): View | null {
+/**
+ * The remembered view of a post, or null once it is older than `maxAge`. It
+ * stays in the store for as long as lists can still use it.
+ */
+export function readRecent(
+  store: Store,
+  id: string,
+  now: number,
+  maxAge = RECENT_TTL_MS
+): View | null {
   const saved = read<View & { at: number }>(store, RECENT_PREFIX + id)
   if (!saved) return null
-  if (now - saved.at > RECENT_TTL_MS) {
-    store.removeItem(RECENT_PREFIX + id)
-    return null
-  }
+  const age = now - saved.at
+  if (age > COUNTS_TTL_MS) store.removeItem(RECENT_PREFIX + id)
+  if (age > maxAge) return null
   return { thread: saved.thread, mine: saved.mine }
 }
 
@@ -168,17 +177,27 @@ export function clearRecent(store: Store, id: string): void {
   store.removeItem(RECENT_PREFIX + id)
 }
 
+/** A post's counts as the visitor's own recent action left them, if any. */
+export function recentCounts(
+  store: Store,
+  id: string,
+  now: number
+): ZapCounts | null {
+  const recent = readRecent(store, id, now, COUNTS_TTL_MS)
+  if (!recent) return null
+  const { up, down, commentCount } = recent.thread
+  return { up, down, commentCount }
+}
+
 /** A list from zap.ms with the visitor's own recent changes laid over it. */
-export function overlayRecent(
-  items: ZapActiveItem[],
+export function overlayRecent<T extends ZapCounts & { id: string }>(
+  items: T[],
   store: Store,
   now: number
-): ZapActiveItem[] {
+): T[] {
   return items.map((item) => {
-    const recent = readRecent(store, item.id, now)
-    if (!recent) return item
-    const { up, down, commentCount } = recent.thread
-    return { ...item, up, down, commentCount }
+    const recent = recentCounts(store, item.id, now)
+    return recent ? { ...item, ...recent } : item
   })
 }
 
