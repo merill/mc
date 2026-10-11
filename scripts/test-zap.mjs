@@ -12,7 +12,7 @@ async function loadTypeScriptModule(relativePath) {
   return import(`data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`)
 }
 
-const { sanitizeCommentHtml, buildThread, avatarColor, timeAgo, zapLinks } = await loadTypeScriptModule("../lib/zap.ts")
+const { sanitizeCommentHtml, buildThread, avatarColor, avatarSrc, timeAgo, zapLinks } = await loadTypeScriptModule("../lib/zap.ts")
 
 const LINK = 'rel="ugc nofollow noopener noreferrer" target="_blank"'
 
@@ -98,6 +98,13 @@ test("avatar colours match zap.ms", () => {
   assert.match(avatarColor(""), /^#[0-9a-f]{6}$/)
 })
 
+test("only a plain https address is used as a photo", () => {
+  assert.equal(avatarSrc("https://img.zap.ms/a/abc.webp"), "https://img.zap.ms/a/abc.webp")
+  for (const bad of [null, undefined, "", "/avatar/a/abc.webp", "http://img.zap.ms/a.webp", "javascript:alert(1)", 'https://x/" onerror="y']) {
+    assert.equal(avatarSrc(bad), null)
+  }
+})
+
 test("formats ages", () => {
   const now = Date.parse("2026-10-10T12:00:00Z")
   assert.equal(timeAgo("2026-10-10T11:59:30Z", now), "just now")
@@ -162,7 +169,7 @@ test("a pending reply sits under its parent, after the replies already there", (
   assert.equal(replied.thread.comments[2].depth, 1)
   assert.equal(replied.thread.comments[2].pending, true)
   assert.equal(replied.thread.commentCount, 4)
-  const top = local.withPendingComment(start, { text: "hi", parentId: null, author: "bob" }, 1000)
+  const top = local.withPendingComment(start, { text: "hi", parentId: null, author: "bob", authorAvatar: "https://img.zap.ms/a/bob.webp" }, 1000)
   assert.deepEqual(top.thread.comments.map((c) => c.id), [1, 2, 3, -1000])
 })
 

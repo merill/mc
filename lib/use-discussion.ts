@@ -45,6 +45,8 @@ export type ZapSession =
   | {
       status: "signed-in"
       username: string
+      /** Their photo on zap.ms, when they have one. */
+      avatar: string | null
       /** Set while their Microsoft badge needs renewing or has been removed. */
       badgeNotice: ZapBadgeNotice | null
     }
@@ -202,14 +204,27 @@ class Store {
     )
   }
 
-  comment(text: string, parentId: number | null, author: string) {
+  comment(
+    text: string,
+    parentId: number | null,
+    author: { username: string; avatar: string | null }
+  ) {
     const view = this.view()
     return this.write(
       "POST",
       "/comments",
       { text, parentId },
       view
-        ? withPendingComment(view, { text, parentId, author }, Date.now())
+        ? withPendingComment(
+            view,
+            {
+              text,
+              parentId,
+              author: author.username,
+              authorAvatar: author.avatar,
+            },
+            Date.now()
+          )
         : null
     )
   }
@@ -319,7 +334,7 @@ export function useZapSession() {
 
 function loadSession(): Promise<void> {
   sessionRequest ??= call<{
-    user: { username: string | null } | null
+    user: { username: string | null; avatar?: string | null } | null
     badgeNotice?: unknown
   }>("GET", "/api/v1/me").then((result) => {
     if (!result.ok) return setSession({ status: "off" })
@@ -329,6 +344,7 @@ function loadSession(): Promise<void> {
         ? {
             status: "signed-in",
             username,
+            avatar: result.data.user?.avatar ?? null,
             badgeNotice: readBadgeNotice(result.data.badgeNotice),
           }
         : { status: "signed-out" }
@@ -424,7 +440,9 @@ export function useDiscussion(id: string) {
         current.comment(
           text,
           parentId,
-          session.status === "signed-in" ? session.username : ""
+          session.status === "signed-in"
+            ? session
+            : { username: "", avatar: null }
         ),
       upvote: (commentId: number) => current.upvote(commentId),
       flag: (commentId: number) => current.flag(commentId),

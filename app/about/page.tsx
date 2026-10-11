@@ -435,6 +435,11 @@ export default function AboutPage() {
                 until you post or discard it.
               </li>
               <li>
+                Comments now show each person&apos;s zap.ms profile photo, and
+                once you are signed in the top of the page shows your photo
+                instead of your username.
+              </li>
+              <li>
                 You can flag a comment for the moderators, and delete your own
                 comment for ten minutes after posting it.
               </li>

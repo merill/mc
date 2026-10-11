@@ -6,8 +6,9 @@ import { ArrowRight, MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react"
 import { siteConfig } from "@/config/site"
 import { useZap } from "@/lib/use-zap"
 import { cn } from "@/lib/utils"
-import { ZapActiveItem, avatarColor, timeAgo, zapLinks } from "@/lib/zap"
+import { ZapActiveItem, timeAgo, zapLinks } from "@/lib/zap"
 import { overlayRecent } from "@/lib/zap-local"
+import { ZapAvatar } from "@/components/zap-avatar"
 
 const VISIBLE_ON_PHONES = 5
 
@@ -111,13 +112,11 @@ function Row({ item, className }: { item: ZapActiveItem; className?: string }) {
           </span>
           {item.lastCommenter && (
             <span className="inline-flex items-center gap-1">
-              <span
-                className="flex size-4 items-center justify-center rounded-full text-[9px] font-semibold uppercase text-white"
-                style={{ backgroundColor: avatarColor(item.lastCommenter) }}
-                aria-hidden="true"
-              >
-                {item.lastCommenter.slice(0, 1)}
-              </span>
+              <ZapAvatar
+                username={item.lastCommenter}
+                src={item.lastCommenterAvatar}
+                className="size-4 text-[9px]"
+              />
               {item.lastCommenter}
             </span>
           )}

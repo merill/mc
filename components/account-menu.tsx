@@ -5,11 +5,13 @@ import * as React from "react"
 import { siteConfig } from "@/config/site"
 import { useZapSession } from "@/lib/use-discussion"
 import { cn } from "@/lib/utils"
-import { avatarColor, zapLinks } from "@/lib/zap"
+import { zapLinks } from "@/lib/zap"
 import { buttonVariants } from "@/components/ui/button"
+import { ZapAvatar } from "@/components/zap-avatar"
 
 /**
- * The header's sign-in button, or the signed-in person with a small menu.
+ * The header's sign-in button, or the signed-in person's photo with a small
+ * menu.
  * Renders nothing until zap.ms has answered, and nothing at all where its
  * /zap path is missing (local development), so the header never jumps to a
  * button that cannot work.
@@ -62,18 +64,16 @@ export function AccountMenu() {
       <summary
         className={cn(
           buttonVariants({ variant: "ghost", size: "sm" }),
-          "cursor-pointer list-none gap-2 px-2 [&::-webkit-details-marker]:hidden"
+          "cursor-pointer list-none rounded-full px-1 [&::-webkit-details-marker]:hidden"
         )}
         aria-label={`Signed in as ${username}. Account menu`}
+        title={username}
       >
-        <span
-          className="flex size-6 shrink-0 select-none items-center justify-center rounded-full text-xs font-semibold uppercase text-white"
-          style={{ backgroundColor: avatarColor(username) }}
-          aria-hidden="true"
-        >
-          {username.slice(0, 1)}
-        </span>
-        <span className="hidden max-w-32 truncate sm:inline">{username}</span>
+        <ZapAvatar
+          username={username}
+          src={session.avatar}
+          className="size-7 text-xs"
+        />
       </summary>
       <div className="absolute right-0 z-50 mt-1 w-48 rounded-md border bg-popover p-1 text-popover-foreground shadow-md">
         <p className="truncate px-2 py-1.5 text-xs text-muted-foreground">

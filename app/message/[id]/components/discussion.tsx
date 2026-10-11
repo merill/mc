@@ -15,7 +15,6 @@ import { cn } from "@/lib/utils"
 import {
   BADGE_LABELS,
   ZapThreadNode,
-  avatarColor,
   buildThread,
   sanitizeCommentHtml,
   timeAgo,
@@ -24,6 +23,7 @@ import {
 import { draftKey, readDraft, saveDraft } from "@/lib/zap-local"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
+import { ZapAvatar } from "@/components/zap-avatar"
 
 type Discussion = ReturnType<typeof useDiscussion>
 
@@ -406,13 +406,11 @@ function Comment({
       id={`comment-${comment.id}`}
       className={cn("flex scroll-mt-24 gap-3", comment.pending && "opacity-70")}
     >
-      <span
-        className="mt-0.5 flex size-7 shrink-0 select-none items-center justify-center rounded-full text-xs font-semibold uppercase text-white"
-        style={{ backgroundColor: avatarColor(name) }}
-        aria-hidden="true"
-      >
-        {name.slice(0, 1)}
-      </span>
+      <ZapAvatar
+        username={name}
+        src={comment.author ? comment.authorAvatar : null}
+        className="mt-0.5 size-7 text-xs"
+      />
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm leading-7">
           {comment.author ? (
