@@ -5,6 +5,7 @@ import {
   ArrowDown,
   ArrowRight,
   MessageSquare,
+  Reply,
   ThumbsDown,
   ThumbsUp,
 } from "lucide-react"
@@ -41,6 +42,8 @@ export function DiscussionSummary({ id }: { id: string }) {
   const links = zapLinks(siteConfig.zap.url, id)
   const data = state.status === "ready" ? state.data : null
   const inline = discussion.session.status !== "off"
+  // The reaction just pressed on, while its pop plays (`vote-pop` in globals.css).
+  const [popped, setPopped] = React.useState<"up" | "down" | null>(null)
   const pill = cn(
     buttonVariants({ variant: "outline", size: "sm" }),
     "h-8 gap-1.5 tabular-nums"
@@ -73,7 +76,10 @@ export function DiscussionSummary({ id }: { id: string }) {
         const content = (
           <>
             <reaction.Icon
-              className={cn("size-4", mine && "fill-current")}
+              className={cn(
+                "size-4",
+                mine && "fill-current text-blue-600 dark:text-blue-400"
+              )}
               aria-hidden="true"
             />
             <Count state={state.status} value={reaction.count} />
@@ -85,9 +91,11 @@ export function DiscussionSummary({ id }: { id: string }) {
             type="button"
             className={cn(
               pill,
-              mine &&
-                "border-transparent bg-primary text-primary-foreground hover:bg-primary/85 hover:text-primary-foreground"
+              mine && "font-semibold text-foreground",
+              popped === reaction.dir && "vote-pop"
             )}
+            data-vote-dir={reaction.dir}
+            onAnimationEnd={() => setPopped(null)}
             aria-pressed={mine}
             aria-label={label}
             title={
@@ -96,7 +104,11 @@ export function DiscussionSummary({ id }: { id: string }) {
                 : reaction.name
             }
             disabled={discussion.session.status === "checking"}
-            onClick={() => discussion.react(reaction.dir)}
+            onClick={() => {
+              // Only a reaction going on pops; taking one back is quiet.
+              setPopped(mine ? null : reaction.dir)
+              discussion.react(reaction.dir)
+            }}
           >
             {content}
           </button>
@@ -401,6 +413,10 @@ function Comment({
     discussion.mine.flagged !== undefined
   const quiet =
     "rounded px-1 font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
+  const replyButton = cn(
+    buttonVariants({ variant: "outline", size: "sm" }),
+    "h-7 gap-1.5 px-2.5 text-xs text-muted-foreground"
+  )
   const upvoted = discussion.mine.commentVotes[comment.id] === "up"
   const links = zapLinks(siteConfig.zap.url, postId)
   const name = comment.author ?? "removed"
@@ -478,77 +494,6 @@ function Comment({
               ▲ {comment.score}
             </span>
           )}
-          {comment.pending ? null : session.status === "off" ? (
-            <a
-              className="ml-auto rounded px-1 font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
-              href={links.reply(comment.id)}
-              aria-label={`Reply to ${name} on zap.ms`}
-            >
-              reply →
-            </a>
-          ) : (
-            <button
-              type="button"
-              className="ml-auto rounded px-1 font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
-              aria-expanded={replying}
-              aria-label={`Reply to ${name}`}
-              disabled={session.status === "checking"}
-              onClick={() =>
-                session.status === "signed-in"
-                  ? setReplying((open) => !open)
-                  : discussion.signIn()
-              }
-            >
-              reply
-            </button>
-          )}
-          {canFlag &&
-            (flagged ? (
-              <span className="px-1 text-muted-foreground">flagged</span>
-            ) : (
-              <button
-                type="button"
-                className={quiet}
-                aria-label={`Flag ${name}'s comment for the moderators`}
-                onClick={() => discussion.flag(comment.id)}
-              >
-                flag
-              </button>
-            ))}
-          {canDelete &&
-            (confirmingDelete ? (
-              <span className="inline-flex items-center gap-1">
-                <button
-                  type="button"
-                  className={cn(
-                    quiet,
-                    "text-destructive hover:text-destructive"
-                  )}
-                  onClick={() => {
-                    setConfirmingDelete(false)
-                    discussion.remove(comment.id)
-                  }}
-                >
-                  delete it
-                </button>
-                <button
-                  type="button"
-                  className={quiet}
-                  onClick={() => setConfirmingDelete(false)}
-                >
-                  keep
-                </button>
-              </span>
-            ) : (
-              <button
-                type="button"
-                className={quiet}
-                aria-label="Delete your comment"
-                onClick={() => setConfirmingDelete(true)}
-              >
-                delete
-              </button>
-            ))}
         </div>
         <div
           className="zap-comment"
@@ -556,6 +501,83 @@ function Comment({
           // rebuilds it so nothing outside that set can reach the page.
           dangerouslySetInnerHTML={{ __html: html }}
         />
+        {!comment.pending && (
+          <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+            {session.status === "off" ? (
+              <a
+                className={replyButton}
+                href={links.reply(comment.id)}
+                aria-label={`Reply to ${name} on zap.ms`}
+              >
+                <Reply className="size-3.5" aria-hidden="true" />
+                Reply on zap.ms
+              </a>
+            ) : (
+              <button
+                type="button"
+                className={replyButton}
+                aria-expanded={replying}
+                aria-label={`Reply to ${name}`}
+                disabled={session.status === "checking"}
+                onClick={() =>
+                  session.status === "signed-in"
+                    ? setReplying((open) => !open)
+                    : discussion.signIn()
+                }
+              >
+                <Reply className="size-3.5" aria-hidden="true" />
+                Reply
+              </button>
+            )}
+            {canFlag &&
+              (flagged ? (
+                <span className="px-1 text-muted-foreground">flagged</span>
+              ) : (
+                <button
+                  type="button"
+                  className={quiet}
+                  aria-label={`Flag ${name}'s comment for the moderators`}
+                  onClick={() => discussion.flag(comment.id)}
+                >
+                  flag
+                </button>
+              ))}
+            {canDelete &&
+              (confirmingDelete ? (
+                <span className="inline-flex items-center gap-1">
+                  <button
+                    type="button"
+                    className={cn(
+                      quiet,
+                      "text-destructive hover:text-destructive"
+                    )}
+                    onClick={() => {
+                      setConfirmingDelete(false)
+                      discussion.remove(comment.id)
+                    }}
+                  >
+                    delete it
+                  </button>
+                  <button
+                    type="button"
+                    className={quiet}
+                    onClick={() => setConfirmingDelete(false)}
+                  >
+                    keep
+                  </button>
+                </span>
+              ) : (
+                <button
+                  type="button"
+                  className={quiet}
+                  aria-label="Delete your comment"
+                  onClick={() => setConfirmingDelete(true)}
+                >
+                  delete
+                </button>
+              ))}
+          </div>
+        )}
         {replying && (
           <div className="mt-3">
             <CommentForm

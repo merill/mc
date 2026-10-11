@@ -267,3 +267,53 @@
   animation: pulse-highlight 1.4s ease-out;
   border-radius: 0.5rem;
 }
+
+/*
+ * The pop when a like or dislike lands (the `vote-pop` class in
+ * discussion.tsx): the icon swells and tips like a thumb going up, then
+ * settles, while a ring spreads from the button and fades. A dislike tips the
+ * other way. zap.ms plays the same animation on its own buttons; keep the two
+ * in step (zap: src/styles/app.css).
+ */
+@keyframes vote-pop {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+  35% {
+    transform: scale(1.7) rotate(var(--vote-tilt)) translateY(-2px);
+  }
+  60% {
+    transform: scale(0.88) rotate(calc(var(--vote-tilt) * -0.3));
+  }
+  80% {
+    transform: scale(1.1) rotate(0);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes vote-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(37 99 235 / 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 0.75rem transparent;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .vote-pop {
+    --vote-tilt: -18deg;
+    animation: vote-ring 0.5s ease-out;
+  }
+
+  .vote-pop[data-vote-dir="down"] {
+    --vote-tilt: 18deg;
+  }
+
+  .vote-pop svg {
+    animation: vote-pop 0.5s cubic-bezier(0.3, 0.7, 0.4, 1);
+    transform-origin: 50% 70%;
+  }
+}
