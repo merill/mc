@@ -9,6 +9,8 @@ export type ZapComment = {
   parentId: number | null
   depth: number
   author: string | null
+  /** The author's photo on zap.ms, when they have one. */
+  authorAvatar?: string | null
   badges: string[]
   createdAt: string
   score: number
@@ -37,6 +39,7 @@ export type ZapActiveItem = {
   commentCount: number
   lastActivityAt: string
   lastCommenter: string | null
+  lastCommenterAvatar?: string | null
 }
 
 export type ZapThreadNode = { comment: ZapComment; replies: ZapThreadNode[] }
@@ -160,6 +163,14 @@ export function avatarColor(username: string): string {
     hash = (hash * 31 + char.charCodeAt(0)) >>> 0
   }
   return AVATAR_COLORS[hash % AVATAR_COLORS.length]
+}
+
+/**
+ * A member's photo address as zap.ms gave it, or null when there is none or
+ * it is not a plain https address. The monogram shows in its place.
+ */
+export function avatarSrc(url: string | null | undefined): string | null {
+  return url && /^https:\/\/[^\s"'<>]+$/.test(url) ? url : null
 }
 
 export function timeAgo(iso: string, now = Date.now()): string {

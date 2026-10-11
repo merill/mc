@@ -435,6 +435,11 @@ export default function AboutPage() {
                 until you post or discard it.
               </li>
               <li>
+                Comments now show each person&apos;s zap.ms profile photo, and
+                once you are signed in your own photo appears at the top of the
+                Discussion section in place of your username.
+              </li>
+              <li>
                 Long service names on a post, such as Microsoft Copilot
                 (Microsoft 365), now wrap inside their card instead of being cut
                 off.

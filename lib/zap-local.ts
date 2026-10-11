@@ -63,7 +63,12 @@ export function withCommentUpvote(view: View, commentId: number): View {
 /** The view with a comment that is still on its way to zap.ms. */
 export function withPendingComment(
   view: View,
-  draft: { text: string; parentId: number | null; author: string },
+  draft: {
+    text: string
+    parentId: number | null
+    author: string
+    authorAvatar?: string | null
+  },
   now: number
 ): View {
   const comments = view.thread.comments
@@ -75,6 +80,7 @@ export function withPendingComment(
     parentId: parent ? parent.id : null,
     depth: parent ? parent.depth + 1 : 0,
     author: draft.author,
+    authorAvatar: draft.authorAvatar ?? null,
     badges: [],
     createdAt: new Date(now).toISOString(),
     score: 1,
