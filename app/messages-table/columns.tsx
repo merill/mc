@@ -72,7 +72,9 @@ function RowDiscussion({ id }: { id: string }) {
   ].filter((part) => part.count > 0)
 
   return (
-    <Link
+    // A plain link: next/link can fall back to a full page load that drops
+    // the #discussion it was given.
+    <a
       href={zapLinks(siteConfig.zap.url, id).local}
       className="mt-1 inline-flex items-center gap-x-3 rounded text-xs tabular-nums text-muted-foreground hover:text-foreground"
       aria-label={`${parts
@@ -84,7 +86,7 @@ function RowDiscussion({ id }: { id: string }) {
           <Icon className="size-3.5" aria-hidden="true" /> {count}
         </span>
       ))}
-    </Link>
+    </a>
   )
 }
 
