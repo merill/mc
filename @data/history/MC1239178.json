@@ -1,0 +1,46 @@
+{
+  "id": "MC1239178",
+  "versions": [
+    {
+      "capturedAt": "2026-02-26T00:23:47.987Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>As previously communicated in Message Center post MC101711, Exchange Online introduced a tenantlevel outbound email protection called the Tenant External Recipient Rate Limit (TERRL) to reduce misuse and abuse of the service and help ensure availability for all customers. \n</p><p>We temporarily postponed enforcement of this limit for tenants with more than 500 purchased email licenses. We’re now resuming the rollout and will begin enabling enforcement for these tenants in the coming weeks. \n</p><p>The TERRL limits the number of external recipients a tenant can send email to in a rolling 24hour period. If the limit is exceeded, additional messages sent to external recipients will be blocked until usage falls back below the quota. \n</p><p>A tenant’s daily quota is calculated based on the number of purchased email licenses using the following formula: \n</p><p>500 × (Purchased Email Licenses^0.7) + 9500 \n</p><p><b>When will this happen:</b></p><p>Enforcement for tenants with more than 500 email licenses will be enabled gradually in a staged rollout beginning mid-March 2026.&nbsp;&nbsp;</p><p> \n</p><table border=\"1\" cellpadding=\"6\" cellspacing=\"0\">\n  <thead>\n    <tr>\n      <th align=\"left\">Start Date</th>\n      <th align=\"left\">Number of Email Licenses</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>11-Mar</td>\n      <td>501–800</td>\n    </tr>\n    <tr>\n      <td>18-Mar</td>\n      <td>801–1,000</td>\n    </tr>\n    <tr>\n      <td>25-Mar</td>\n      <td>1,001–1,500</td>\n    </tr>\n    <tr>\n      <td>1-Apr</td>\n      <td>1,501–3,000</td>\n    </tr>\n    <tr>\n      <td>8-Apr</td>\n      <td>3,001–10,000</td>\n    </tr>\n    <tr>\n      <td>15-Apr</td>\n      <td>10,001+</td>\n    </tr>\n  </tbody>\n</table>\n<p></p><p><b>How this will affect your organization:</b></p><p>Once enforcement is enabled for your tenant: \n</p><ul><li>If your tenant exceeds its daily outbound external recipient limit, further messages to external recipients will be blocked until the rolling 24hour volume drops below the quota. \n</li><li>Senders will receive the following NonDelivery Report (NDR):<ul><li>550 5.7.233 – Your message can’t be sent because your tenant exceeded its daily limit for sending email to external recipients (tenant external recipient rate limit).</li></ul></li></ul><p>Internal mail and mail sent to internal recipients are not affected. \n</p><p><b>How to prepare:</b></p><p>To help you plan and monitor usage, Exchange Online provides a dedicated report in the Exchange admin center: \n</p><p><b>EAC &gt; Reports &gt; Mail flow &gt; Tenant Outbound External Recipients Rate \n</b></p><p>This report shows: \n</p><ul><li>Your tenant’s daily external recipient quota \n</li><li>Current usage and percentage of quota consumed \n</li><li>Any recipients blocked due to exceeding the limit \n</li><li>Whether enforcement is currently enabled for your tenant \n</li></ul><p>If your outbound volume is well below your quota, <b>no action is required</b>. \n</p><p>If your tenant regularly sends high-volume email to external recipients (for example, notifications or transactional messages), consider using and alternative bulk or high-volume email service that doesn't route messages through your Exchange Online tenant.  \n</p><p>For more information about the Tenant External Recipient Rate feature and report please see this blog post:&nbsp;<a href=\"https://techcommunity.microsoft.com/blog/exchange/introducing-exchange-online-tenant-outbound-email-limits/4372797\" target=\"_blank\" style=\"background-color: rgb(255, 255, 255); font-family: sans-serif; font-weight: 400;\">Introducing Exchange Online Tenant Outbound Email Limits</a>&nbsp;&nbsp;</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Exchange Online will resume enforcing tenant-level outbound email limits (TERRL) for tenants with over 500 licenses starting mid-March 2026, blocking external emails if limits are exceeded. Quotas depend on license count. A report in the Exchange admin center helps monitor usage. High-volume senders should consider alternative services."
+          }
+        ],
+        "EndDateTime": "2026-12-31T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1239178",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-02-26T00:23:47.987Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-02-26T00:23:01Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Resuming rollout of Exchange Online tenant outbound email limits for tenants with more than 500 email licenses",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

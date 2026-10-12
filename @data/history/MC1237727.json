@@ -1,0 +1,48 @@
+{
+  "id": "MC1237727",
+  "versions": [
+    {
+      "capturedAt": "2026-02-23T23:48:24.347Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-09-29T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p><p>As previously announced&nbsp;<a href=\"https://learn.microsoft.com/entra/fundamentals/whats-new#general-availability---dedicated-new-1st-party-resource-application-to-enable-ad-to-microsoft-entra-id-sync-using-microsoft-entra-connect-sync-or-cloud-sync\" target=\"_blank\">i</a>n <i>MC1160190</i>, we will retire Microsoft Entra Connect Sync versions earlier than <b>2.5.79.0</b> on September 30, 2026.<b> </b>This retirement aligns with ongoing security and reliability improvements, including a May 2025 back-end service hardening update that requires customers to run supported versions to maintain synchronization continuity.</p><p><b><b>When this will happen</b></b></p><p>This change will take effect on<b> September 30, 2026</b>.</p><p><b><b>How this affects your organization</b></b></p><p><b>Our service telemetry indicates your tenant may be using a version of Microsoft Entra Connect Sync that will be affected by this back-end service change.</b></p><p><i>Who is affected</i></p><ul><li>Organizations running<b> Microsoft Entra Connect Sync versions earlier than 2.5.79.0</b>.</li></ul><p>What will happen</p><ul><li>This is a <b>breaking change</b>: tenants running <b>versions earlier than <a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/reference-connect-version-history#25790\" target=\"_blank\">2.5.79.0</a> </b>will no longer be able to run synchronization services after September 30, 2026.</li><li>After this date, <b>synchronization services on unsupported versions will stop working</b> until your organization upgrades.</li><li>Versions older than Microsoft Entra Connect V2 remain retired, and<b> in‑place upgrades from DirSync or Azure AD Sync are not supported</b>; these require a <b>swing migration</b>.</li><li>The Connect Sync installer is only available through the <a href=\"https://entra.microsoft.com/#view/Microsoft_AAD_Connect_Provisioning/AADConnectMenuBlade/~/GetStarted\" target=\"_blank\">Microsoft Entra admin center</a>.</li><li>Supported Connect Sync versions and tenants using Microsoft Entra Cloud Sync are not affected.</li></ul><p><b><b>What you can do to prepare</b></b></p><p><b>Upgrade to maintain synchronization</b></p><ul><li>Upgrade to <b>version 2.5.79.0 or later</b> before September 30, 2026.</li><li>Verify minimum requirements:<ul><li><b><a href=\"https://dotnet.microsoft.com/download/dotnet-framework/net472#:~:text=Downloads%20for%20building%20and%20running%20applications%20with%20.NET%20Framework%204.7.2\" target=\"_blank\">.NET Framework 4.7.2</a></b><b></b></li><li><b><a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/reference-connect-tls-enforcement\" target=\"_blank\">TLS 1.2</a></b></li></ul></li></ul><p><b>Select the appropriate upgrade method</b></p><ul><li><b>Auto‑upgrade</b> (where supported). If your environment is eligible and you prefer this option, <a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-install-automatic-upgrade\" target=\"_blank\">ensure that auto-upgrade is enabled</a>.</li><li><b>Automatic upgrade</b>&nbsp;for express installations</li><li><b>In‑place upgrade</b>&nbsp;for single-server environments with fewer than ~100k objects</li><li><b>Swing migration (recommended) </b>for older 1.x deployments, servers not updated in 12–18 months, OS upgrades, or any scenario involving DirSync or Azure AD Sync</li></ul><p><b>Decommission old servers</b></p><ul><li>Fully remove old Connect Sync servers to prevent outdated “rogue” servers from overwriting directory data.</li></ul><p><b>Evaluate Microsoft Entra Cloud Sync (optional)</b></p><p>If you prefer a cloud-managed synchronization approach,&nbsp;<a href=\"https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/what-is-cloud-sync\" target=\"_blank\">Microsoft Entra Cloud Sync</a>:</p><ul><li>Uses lightweight provisioning agents with cloud-managed configuration.</li><li>Supports multi‑forest and disconnected‑forest AD environments.</li><li>Supports multiple active agents for high availability.</li><li>Does <b>not </b>change or override your existing authentication method (PHS, PTA, federation). Cloud Sync provides synchronization only, not authentication.</li></ul><p>Use the <b>supported sync scenarios evaluation tool </b>to determine if Cloud Sync meets your organization’s provisioning needs.</p><p><b>Prepare internal teams</b></p><ul><li>Notify identity administrators and helpdesk teams about the retirement and required upgrade.</li><li>Update internal documentation and operational runbooks.</li><li>Review the Microsoft Entra Connect Sync<b> release version history</b> to confirm the latest supported version.</li></ul><p><b>Documentation and resources:</b></p><ul><li><a href=\"https://dotnet.microsoft.com/download/dotnet-framework/net472#:~:text=Downloads%20for%20building%20and%20running%20applications%20with%20.NET%20Framework%204.7.2\" target=\"_blank\">Download .NET Framework 4.7.2 | .NET Framework | Microsoft</a></li><li><a href=\"https://learn.microsoft.com/entra/fundamentals/whats-new#general-availability---dedicated-new-1st-party-resource-application-to-enable-ad-to-microsoft-entra-id-sync-using-microsoft-entra-connect-sync-or-cloud-sync\" target=\"_blank\">General Availability - Dedicated new 1st party resource application to enable AD to Microsoft Entra ID sync using Microsoft Entra Connect Sync or Cloud Sync | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/harden-update-ad-fs-pingfederate\" target=\"_blank\">Hardening update to Microsoft Entra Connect Sync | Hybrid | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-install-automatic-upgrade\" target=\"_blank\">Microsoft Entra Connect: Automatic upgrade | Hybrid | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-upgrade-previous-version\" target=\"_blank\">Microsoft Entra Connect: Upgrade from a previous version to the latest | Hybrid | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/reference-connect-version-history#25790\" target=\"_blank\">Microsoft Entra Connect: Version release history | Hybrid | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/reference-connect-tls-enforcement\" target=\"_blank\">TLS 1.2 enforcement for Microsoft Entra Connect | Hybrid | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/what-is-cloud-sync\" target=\"_blank\">What is Microsoft Entra Cloud Sync? | Hybrid | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>\n<p></p><p>\n</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Entra Connect Sync versions earlier than 2.5.79.0 will be retired on September 30, 2026, stopping synchronization for unsupported versions. Organizations must upgrade to version 2.5.79.0 or later before this date to maintain sync, with various upgrade methods and an option to use Microsoft Entra Cloud Sync."
+          }
+        ],
+        "EndDateTime": "2026-10-30T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1237727",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-02-23T23:48:24.347Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-02-23T23:48:03Z",
+        "Tags": [
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Microsoft Entra: Retiring Microsoft Entra Connect Sync versions earlier than 2.5.79.0 on September 30, 2026",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

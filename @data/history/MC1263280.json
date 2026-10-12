@@ -1,0 +1,48 @@
+{
+  "id": "MC1263280",
+  "versions": [
+    {
+      "capturedAt": "2026-03-27T19:44:53.543Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-06-30T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>Introduction</b></b></p><p>Microsoft is <b>strengthening security</b> in <i>Microsoft Entra Connect Sync</i> to prevent user account takeover through hard match abuse. These updates improve the integrity of identity mapping between on-premises Active Directory and Microsoft Entra ID and expand audit visibility for administrators.</p><p><b><b>When this will happen</b></b></p><ul><li><b>Enforcement </b>of this change will begin on<b> July 1, 2026.</b></li><li><b>General Availability (Worldwide, DoD, GCC, GCC High): </b>Rollout begins in<b> early July 2026 </b>and completes by<b> late September 2026</b>.</li></ul><p><b><b>How this affects your organization</b></b></p><p><i>Who is affected</i></p><p style=\"margin-left: 25px;\">Organizations that use <b>Microsoft Entra Connect Sync</b> to synchronize user identities from on-premises Active Directory to Microsoft Entra ID</p><p><i>What will happen</i></p><p><b>How hard match works:</b></p><p>When Microsoft Entra Connect adds new objects from Active Directory, it compares the object’s <b><a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-install-existing-tenant?source=recommendations#hard-match-vs-soft-match\" target=\"_blank\">sourceAnchor </a></b><a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-install-existing-tenant?source=recommendations#hard-match-vs-soft-match\" target=\"_blank\">value with the </a><b><a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-install-existing-tenant?source=recommendations#hard-match-vs-soft-match\" target=\"_blank\">OnPremisesImmutableId</a> </b>of an existing cloud-managed user. If these values match, a <b>hard match</b> occurs and the cloud object is taken over by Microsoft Entra Connect Sync.</p><p><b>Security hardening changes:</b></p><ul><li>Microsoft Entra will block Entra Connect from updating <b>OnPremisesObjectIdentifier</b> once it has been mapped to a synced user object.</li><li>This prevents unauthorized remapping of an existing cloud user to a different on‑premises identity.</li><li>Blocked operations will return:</li></ul><p style=\"margin-left: 75px;\">“<i>Hard match operation blocked due to security hardening. Review OnPremisesObjectIdentifier mapping.</i>”</p><ul><li>Audit logs will now include changes to:<ul><li><b>OnPremisesObjectIdentifier</b></li><li><b>DirSyncEnabled</b></li></ul></li><li>A <b>new Microsoft Graph API</b> will support controlled recovery scenarios that require legitimate remapping.</li><li>No changes occur to user experience unless a remapping attempt is blocked.</li></ul><p><b><b>What you can do to prepare</b></b></p><ul><li>Review updated Entra Connect security hardening guidance.</li><li>Use audit logs to identify users where<b> OnPremisesObjectIdentifier </b>has recently changed and remediate before enforcement.</li><li>Test the new Microsoft Graph API–based recovery flow for legitimate remapping scenarios.</li><li>Update internal operations documentation and notify identity management teams.</li></ul><p><b>Learn more:&nbsp;</b></p><ul><li><a href=\"https://learn.microsoft.com/entra/fundamentals/whats-new#general-availability---microsoft-entra-connect-security-hardening-to-prevent-user-account-takeover\" target=\"_blank\">General Availability - Microsoft Entra Connect security hardening to prevent user account takeover - Microsoft Entra releases and announcements | Fundamentals | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/hybrid/connect/how-to-connect-install-existing-tenant?source=recommendations#hard-match-vs-soft-match\" target=\"_blank\">Hard-match vs soft-match - Microsoft Entra Connect: When you have an existing tenant | Hybrid | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/monitoring-health/reference-audit-activities\" target=\"_blank\">Microsoft Entra audit log categories and activities | Monitoring and health | Microsoft Entra ID | Microsoft Entra | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Entra Connect Sync will enforce security hardening from July 1, 2026, blocking updates to OnPremisesObjectIdentifier to prevent unauthorized user remapping. Audit logs will track changes, and a new Graph API will support legitimate remapping. Organizations should review guidance, audit logs, and update processes accordingly."
+          }
+        ],
+        "EndDateTime": "2026-11-01T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1263280",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-03-27T19:44:53.543Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-03-27T19:42:11Z",
+        "Tags": [
+          "New feature",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Entra: Security hardening to prevent user account takeover in Microsoft Entra Connect Sync",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

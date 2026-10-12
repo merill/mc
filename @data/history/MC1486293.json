@@ -1,0 +1,48 @@
+{
+  "id": "MC1486293",
+  "versions": [
+    {
+      "capturedAt": "2026-10-02T22:23:27.98Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>We are updating the Microsoft Defender unified role-based access control (Unified RBAC) permission mapping for Microsoft Defender for Office 365 (Email &amp; Collaboration). Currently, the Microsoft Entra Security Operator role includes the <i>Authorization and settings\\Security settings</i> permission through the default Unified RBAC mapping. As a result, users assigned this role can view and manage email threat policies and the Tenant Allow/Block List.</p><p>To align access with documented Microsoft Defender for Office 365 role expectations and least-privilege principles, we are updating the default mapping so that <i>Authorization and settings\\Security settings (All permissions)</i> is no longer included by default for the Microsoft Entra Security Operator role mapping for the Microsoft Defender for Office 365 workload. After this change, organizations that have Unified RBAC enabled and rely only on the Microsoft Entra Security Operator role for this access will need to manually assign the appropriate permissions or assign a role that includes those permissions.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide, GCC, GCC High, DoD):</b> Rollout begins in early November 2026 and is expected to complete by early December 2026.</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li><span style=\"color: rgb(31, 35, 40);\">Organizations where both of the following conditions apply:</span><ol><li><span style=\"color: rgb(31, 35, 40);\">Microsoft Defender XDR Unified RBAC is enabled, or will be enabled, for Microsoft Defender for Office 365 (Email &amp; Collaboration).</span></li><li><span style=\"color: rgb(31, 35, 40);\">Users assigned the Microsoft Entra Security Operator role.</span></li></ol></li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Defender for Office 365 (Email &amp; Collaboration)</li><li>Microsoft Defender XDR Unified RBAC</li><li>Microsoft Entra ID</li></ul><p><i>What will happen</i></p><ul><li>The default Unified RBAC mapping for the Microsoft Entra Security Operator role will be updated to align with its documented Microsoft Defender for Office 365 scope and least-privilege principles.</li><li>When Unified RBAC is enabled for Microsoft Defender for Office 365, by default, the Security Operator role will no longer provide access to view, create, edit, or delete email threat policies, including anti-spam, anti-phishing, anti-malware, Safe Links, Safe Attachments, and preset security policies. The role will also no longer provide access to view, add, edit, or remove Tenant Allow/Block List entries.</li><li>This change applies only to Microsoft Defender for Office 365 when Unified RBAC is enabled. Tenants that have not enabled Unified RBAC are not affected.</li><li>Organizations that want operators to retain access can manually assign the appropriate Unified RBAC permissions, including Core security settings and Detection tuning, or assign a role that already includes those permissions, such as Security Administrator.</li><li>Other role mappings and existing Exchange Online PowerShell authorization are unchanged.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>We recommend that you:</p><ul><li>Review users who are assigned the Microsoft Entra Security Operator role and determine whether they rely on that role to view or manage email threat policies or the Tenant Allow/Block List.</li><li>If continued access is required, assign an appropriate role or grant the required Unified RBAC permissions, including Core security settings and Detection tuning.</li><li>Update internal operational procedures, runbooks, and access-control documentation as needed.</li><li>Communicate this change to security operations teams and help desk staff.</li></ul><p><b><b>Learn more</b></b></p><ul><li><a href=\"https://learn.microsoft.com/defender-xdr/activate-defender-rbac\" rel=\"noopener noreferrer\" target=\"_blank\">Activate Microsoft Defender unified role-based access control (URBAC) - Microsoft Defender XDR | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/defender-xdr/create-custom-rbac-roles\" rel=\"noopener noreferrer\" target=\"_blank\">Create custom roles with Microsoft Defender unified role-based access control (RBAC) - Microsoft Defender XDR | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/defender-xdr/compare-rbac-roles#microsoft-entra-global-roles-access\" rel=\"noopener noreferrer\" target=\"_blank\">Map Microsoft Defender unified role-based access control (RBAC) permissions - Microsoft Defender XDR | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/defender-xdr/custom-permissions-details\" rel=\"noopener noreferrer\" target=\"_blank\">Permissions in Microsoft Defender unified role-based access control (RBAC) - Microsoft Defender XDR | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft is updating Microsoft Defender for Office 365's Unified RBAC mapping for the Microsoft Entra Security Operator role, removing default access to email threat policies and Tenant Allow/Block List. This change starts November 2026 and requires manual permission assignment for continued access when Unified RBAC is enabled."
+          }
+        ],
+        "EndDateTime": "2027-01-08T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1486293",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-10-02T22:23:27.98Z",
+        "Services": [
+          "Microsoft Defender XDR"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-10-02T22:22:36Z",
+        "Tags": [
+          "Feature update",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Defender for Office 365: Changes to Unified RBAC permission mapping for Microsoft Entra Security Operator role",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
