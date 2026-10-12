@@ -4,74 +4,114 @@ import * as React from "react"
 import { ArrowRight, MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
+import { useZapSession } from "@/lib/use-discussion"
 import { useZap } from "@/lib/use-zap"
 import { cn } from "@/lib/utils"
 import { ZapActiveItem, timeAgo, zapLinks } from "@/lib/zap"
 import { overlayRecent } from "@/lib/zap-local"
+import { buttonVariants } from "@/components/ui/button"
 import { ZapAvatar } from "@/components/zap-avatar"
 
 const VISIBLE_ON_PHONES = 5
 
 /**
- * The Message Center posts people are discussing on zap.ms right now. Renders
- * nothing while loading, when zap.ms cannot be reached, or on a quiet day, so
- * the home page never shows an empty box.
+ * The invitation at the top of the home page to like and comment on posts,
+ * with the way to sign in, over the Message Center posts people are
+ * discussing on zap.ms right now. The invitation is always there; the list
+ * is left out while loading, when zap.ms cannot be reached, or on a quiet day.
  */
 export default function ActiveDiscussions() {
   const state = useZap<{ items: ZapActiveItem[] }>("/mc/active")
-  if (state.status !== "ready" || state.data.items.length === 0) return null
+  const { session, signIn } = useZapSession()
 
   // Counts from the shared list can trail this visitor's own like or comment.
-  const items = overlayRecent(state.data.items, localStorage, Date.now())
+  const items =
+    state.status === "ready"
+      ? overlayRecent(state.data.items, localStorage, Date.now())
+      : []
   const links = zapLinks(siteConfig.zap.url, "")
   const first = items.slice(0, VISIBLE_ON_PHONES)
   const rest = items.slice(VISIBLE_ON_PHONES)
+  const signedIn = session.status === "signed-in"
 
   return (
     <section
-      aria-labelledby="active-discussions-title"
+      aria-labelledby="join-in-title"
       className="min-w-0 overflow-hidden rounded-[0.5rem] border bg-background shadow-sm"
     >
-      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b px-4 py-3 sm:px-5">
-        <h2
-          id="active-discussions-title"
-          className="text-lg font-semibold tracking-tight"
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-3 bg-muted/40 px-4 py-4 sm:px-5">
+        <span
+          className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground"
+          aria-hidden="true"
         >
-          Active discussions
-          <span className="ml-2 text-sm font-normal text-muted-foreground">
-            on zap.ms
-          </span>
-        </h2>
-        <a
-          className="inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline"
-          href={links.section}
-        >
-          All Message Center discussions
-          <ArrowRight className="size-3.5" aria-hidden="true" />
-        </a>
+          <MessageSquare className="size-5" />
+        </span>
+        <div className="min-w-0 flex-1 basis-64">
+          <h2
+            id="join-in-title"
+            className="text-lg font-semibold tracking-tight"
+          >
+            Have questions or thoughts?
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            {signedIn
+              ? "Open any Message Center post to like it, comment or ask a question."
+              : "You can now like and comment on Message Center posts, and ask the community what a change means for you."}
+          </p>
+        </div>
+        {/* Only once zap.ms has said nobody is signed in, so the button never
+            flashes up for someone who is. */}
+        {session.status === "signed-out" && (
+          <button
+            type="button"
+            className={buttonVariants({ size: "sm" })}
+            onClick={signIn}
+          >
+            Sign in to get started
+          </button>
+        )}
       </div>
 
-      <ul className={cn("-mb-px grid", items.length > 1 && "lg:grid-cols-2")}>
-        {first.map((item) => (
-          <Row key={item.id} item={item} />
-        ))}
-        {/* Phones start with five; larger screens always show the rest. */}
-        {rest.map((item) => (
-          <Row key={item.id} item={item} className="hidden sm:block" />
-        ))}
-      </ul>
-      {rest.length > 0 && (
-        <details className="group border-t sm:hidden">
-          <summary className="cursor-pointer list-none px-4 py-2.5 text-sm font-medium text-muted-foreground [&::-webkit-details-marker]:hidden">
-            <span className="group-open:hidden">Show {rest.length} more</span>
-            <span className="hidden group-open:inline">Show fewer</span>
-          </summary>
-          <ul>
-            {rest.map((item) => (
+      {items.length > 0 && (
+        <>
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-y px-4 py-2.5 sm:px-5">
+            <h3 className="text-sm font-semibold">Active discussions</h3>
+            <a
+              className="inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline"
+              href={links.section}
+            >
+              All Message Center discussions
+              <ArrowRight className="size-3.5" aria-hidden="true" />
+            </a>
+          </div>
+
+          <ul
+            className={cn("-mb-px grid", items.length > 1 && "lg:grid-cols-2")}
+          >
+            {first.map((item) => (
               <Row key={item.id} item={item} />
             ))}
+            {/* Phones start with five; larger screens always show the rest. */}
+            {rest.map((item) => (
+              <Row key={item.id} item={item} className="hidden sm:block" />
+            ))}
           </ul>
-        </details>
+          {rest.length > 0 && (
+            <details className="group border-t sm:hidden">
+              <summary className="cursor-pointer list-none px-4 py-2.5 text-sm font-medium text-muted-foreground [&::-webkit-details-marker]:hidden">
+                <span className="group-open:hidden">
+                  Show {rest.length} more
+                </span>
+                <span className="hidden group-open:inline">Show fewer</span>
+              </summary>
+              <ul>
+                {rest.map((item) => (
+                  <Row key={item.id} item={item} />
+                ))}
+              </ul>
+            </details>
+          )}
+        </>
       )}
     </section>
   )

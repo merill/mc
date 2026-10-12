@@ -424,6 +424,18 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 13, 2026
+            </h2>
+            <ul>
+              <li>
+                The top of the home page now invites you to like and comment
+                on Message Center posts, with a button to sign in and get
+                started. Active discussions sit underneath it.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               October 12, 2026
             </h2>
             <ul>
