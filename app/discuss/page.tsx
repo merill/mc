@@ -4,8 +4,8 @@ import { Bell, MessageSquare, Reply, ThumbsUp } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ExampleDiscussion } from "@/components/example-discussion"
 
-import { ExampleDiscussion } from "./example-discussion"
 import { GetStarted } from "./get-started"
 
 const description =
