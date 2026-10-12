@@ -236,6 +236,16 @@ export const columns: ColumnDef<MessageView>[] = [
     },
   },
   {
+    id: "source",
+    accessorFn: (row) => row.sourceLabel,
+    header: () => <div className="text-nowrap">Source</div>,
+    cell: ({ row }) => (
+      <span className="text-nowrap leading-7 text-foreground/75">
+        {row.original.source === "roadmap" ? "Roadmap" : "Message Center"}
+      </span>
+    ),
+  },
+  {
     accessorKey: "service",
     header: ({ column }) => {
       return <div className="text-center">Service</div>

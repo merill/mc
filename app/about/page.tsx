@@ -424,6 +424,29 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 13, 2026
+            </h2>
+            <ul>
+              <li>
+                The list on the home page has View options: show major changes
+                only, hide expired posts, choose the sort order, and add or
+                remove the Source, Service and Last updated columns.
+              </li>
+              <li>
+                You can save what you have set up as a named view, such as
+                &quot;My products&quot;, and switch between views from the tabs
+                above the list. Saving needs a free zap.ms account, so your
+                views follow you to any browser; the list opens in the view you
+                used last.
+              </li>
+              <li>
+                The home page no longer repeats the site&apos;s name in large
+                type. One line says what the site is and links to this page.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               October 12, 2026
             </h2>
             <ul>
