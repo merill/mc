@@ -12,6 +12,8 @@
 
 $script:DefaultFederatedAudience = 'api://AzureADTokenExchange'
 $script:GraphScope = 'https://graph.microsoft.com/.default'
+# Kinds of tenant a config entry or contributor can declare with `type`.
+$script:KnownTenantTypes = @('edu')
 
 function Test-HasProperty {
     param($InputObject, [string]$Name)
@@ -55,12 +57,28 @@ function Register-M365LogMask {
     Write-Host "::add-mask::$($Value.Trim())"
 }
 
+function Resolve-M365TenantType {
+    <#
+        Normalizes a tenant's optional `type` to one of the known kinds of
+        tenant, or $null for a standard commercial tenant. The value ends up in
+        the public data as SeenOnlyIn, so anything unrecognized is dropped.
+    #>
+    param([string]$Value)
+
+    if ([string]::IsNullOrWhiteSpace($Value)) { return $null }
+
+    $type = $Value.Trim().ToLowerInvariant()
+    if ($script:KnownTenantTypes -contains $type) { return $type }
+    return $null
+}
+
 function Expand-M365TenantListEntries {
     <#
         Expands config entries that use `tenantListEnv` into one entry per
         tenant. The environment variable holds a JSON array of tenant IDs, or of
         objects with `tenantId`, an optional `clientId` (for a contributor who
-        registered their own app) and an optional anonymous `label`. Expanded
+        registered their own app), an optional anonymous `label` and an optional
+        `type` (such as `edu`). Expanded
         tenants are always optional and private. An unset list expands to
         nothing so the refresh works before any contributor is added.
     #>
@@ -111,6 +129,7 @@ function Expand-M365TenantListEntries {
                 if ((Test-HasProperty $item 'clientId') -and -not [string]::IsNullOrWhiteSpace($item.clientId)) {
                     $expanded['clientId'] = [string]$item.clientId
                 }
+                if (Test-HasProperty $item 'type') { $expanded['type'] = [string]$item.type }
                 $label = if (Test-HasProperty $item 'label') { [string]$item.label } else { $null }
             }
 
@@ -211,6 +230,7 @@ function Get-M365TenantConfig {
 
         $required = if (Test-HasProperty $entry 'required') { [bool]$entry.required } else { $index -eq 1 }
         $isPrivate = (Test-HasProperty $entry 'private') -and [bool]$entry.private
+        $type = if (Test-HasProperty $entry 'type') { Resolve-M365TenantType ([string]$entry.type) } else { $null }
 
         $audience = if ((Test-HasProperty $entry 'audience') -and -not [string]::IsNullOrWhiteSpace($entry.audience)) {
             [string]$entry.audience
@@ -263,6 +283,7 @@ function Get-M365TenantConfig {
             ClientSecret = $clientSecret
             Required     = $required
             Private      = $isPrivate
+            Type         = $type
             IsConfigured = ($null -eq $skipReason)
             SkipReason   = $skipReason
         })
@@ -392,11 +413,16 @@ function Add-M365MessageCenterItems {
         dictionary keyed by message ID). The newest copy of a post wins; when
         two tenants report the same LastModifiedDateTime the copy with the most
         content wins. Returns a small summary for logging.
+
+        When $Sources (a hashtable keyed by message ID) is supplied, it records
+        the kinds of tenant that returned each post, for Set-M365SeenOnlyIn.
     #>
     param(
         [Parameter(Mandatory = $true)]$Map,
         $Items,
-        [string]$TenantName
+        [string]$TenantName,
+        $Sources,
+        [string]$TenantType
     )
 
     $added = 0
@@ -406,6 +432,12 @@ function Add-M365MessageCenterItems {
     foreach ($item in @($Items)) {
         $id = [string]$item.Id
         if ([string]::IsNullOrWhiteSpace($id)) { continue }
+
+        if ($null -ne $Sources) {
+            # A standard commercial tenant is recorded as an empty type.
+            if (-not $Sources.ContainsKey($id)) { $Sources[$id] = @{} }
+            $Sources[$id][[string]$TenantType] = $true
+        }
 
         if (-not $Map.Contains($id)) {
             $Map[$id] = $item
@@ -436,6 +468,29 @@ function Add-M365MessageCenterItems {
         Replaced = $replaced
         Ignored  = $ignored
     }
+}
+
+function Set-M365SeenOnlyIn {
+    <#
+        Marks the posts that only one kind of tenant returned (for example only
+        education tenants) with a SeenOnlyIn property. Posts that a standard
+        tenant, or more than one kind of tenant, returned are left unmarked.
+    #>
+    param(
+        [Parameter(Mandatory = $true)]$Map,
+        [Parameter(Mandatory = $true)]$Sources
+    )
+
+    $marked = 0
+    foreach ($id in @($Map.Keys)) {
+        $types = @($Sources[$id].Keys)
+        if ($types.Count -ne 1 -or [string]::IsNullOrWhiteSpace($types[0])) { continue }
+
+        $Map[$id] | Add-Member -NotePropertyName SeenOnlyIn -NotePropertyValue ([string]$types[0]) -Force
+        $marked++
+    }
+
+    return $marked
 }
 
 function Get-SortedMessageCenterItems {

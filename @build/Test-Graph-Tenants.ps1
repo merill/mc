@@ -105,6 +105,14 @@ try {
     Assert-Equal $false $contributors[0].Private 'the primary tenant is not private'
     Assert-Equal $false $contributors[4].IsConfigured 'a contributor without a tenant id is skipped'
 
+    # Tenant types
+    $env:TEST_MC_CONTRIBUTORS = '[ { "label": "c01", "tenantId": "tenant-a", "type": "EDU" }, { "label": "c02", "tenantId": "tenant-b", "type": "Contoso University" }, "tenant-c" ]'
+    $typed = @(Get-M365TenantConfig -ConfigPath $tempConfig -DefaultClientSecret 'secret-1')
+    Assert-Equal 'edu' $typed[1].Type 'a known tenant type is normalized'
+    Assert-Equal $null $typed[2].Type 'an unknown tenant type is dropped'
+    Assert-Equal $null $typed[3].Type 'a tenant without a type is standard'
+    Assert-Equal $null $typed[0].Type 'the primary tenant is standard'
+
     $env:TEST_MC_CONTRIBUTORS = '{ not json'
     $badList = @(Get-M365TenantConfig -ConfigPath $tempConfig -DefaultClientSecret 'secret-1')
     Assert-Equal 2 $badList.Count 'an invalid contributor list is reported once'
@@ -143,6 +151,22 @@ try {
     Assert-Equal 3 $map.Count 'merged map holds the union of both tenants'
     Assert-Equal 'short' $map['MC100'].Body.Content 'newest copy wins'
     Assert-Equal 'plenty of extra detail for this post' $map['MC300'].Body.Content 'richest copy wins on equal timestamps'
+
+    # Posts only one kind of tenant can see
+    $shared = [pscustomobject]@{ Id = 'MC400'; LastModifiedDateTime = '2026-08-05T00:00:00Z' }
+    $sharedEdu = [pscustomobject]@{ Id = 'MC400'; LastModifiedDateTime = '2026-08-06T00:00:00Z' }
+    $eduOnly = [pscustomobject]@{ Id = 'MC500'; LastModifiedDateTime = '2026-08-05T00:00:00Z' }
+    $eduOnlyAgain = [pscustomobject]@{ Id = 'MC500'; LastModifiedDateTime = '2026-08-05T00:00:00Z' }
+
+    $typedMap = [ordered]@{}
+    $typedSources = @{}
+    $null = Add-M365MessageCenterItems -Map $typedMap -Items @($shared) -TenantName 'primary' -Sources $typedSources -TenantType $null
+    $null = Add-M365MessageCenterItems -Map $typedMap -Items @($sharedEdu, $eduOnly) -TenantName 'contributor-c01' -Sources $typedSources -TenantType 'edu'
+    $null = Add-M365MessageCenterItems -Map $typedMap -Items @($eduOnlyAgain) -TenantName 'contributor-c03' -Sources $typedSources -TenantType 'edu'
+
+    Assert-Equal 1 (Set-M365SeenOnlyIn -Map $typedMap -Sources $typedSources) 'one post is only seen in one kind of tenant'
+    Assert-Equal 'edu' $typedMap['MC500'].SeenOnlyIn 'a post only education tenants return is marked'
+    Assert-Equal $null $typedMap['MC400'].SeenOnlyIn 'a post a standard tenant also returns is not marked, even when the education copy wins'
 
     $sorted = @(Get-SortedMessageCenterItems -Map $map)
     Assert-Equal 'MC300' $sorted[0].Id 'merged items are sorted newest first'

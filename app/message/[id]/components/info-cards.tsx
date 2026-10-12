@@ -25,6 +25,7 @@ import {
   getMessageSource,
   hasMultipleVersions,
 } from "@/lib/messages"
+import { SeenOnlyInBadge } from "@/components/seen-only-in-badge"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
@@ -249,6 +250,7 @@ export default function InfoCards(props: {
               <div className="text-balance break-words">{tag}</div>
             </Badge>
           ))}
+          <SeenOnlyInBadge value={msg?.SeenOnlyIn} />
         </div>
       </CardContent>
     </Card>

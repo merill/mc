@@ -357,8 +357,11 @@ export default function AboutPage() {
               contribute.
             </li>
             <li>
-              The archive does not record which tenant a post came from, and you
-              are only{" "}
+              The archive does not record which tenant a post came from. If you
+              tell me your tenant is an education tenant, posts that only
+              education tenants received are labelled &quot;Seen in EDU
+              tenants&quot;, which never names or identifies a tenant. You are
+              only{" "}
               {contributedTenants > 0 ? (
                 <Link className="readable-link" href="#contributors">
                   credited
@@ -419,6 +422,19 @@ export default function AboutPage() {
           <CardTitle>Release notes</CardTitle>
         </CardHeader>
         <CardContent className="readable-card-content space-y-5">
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 12, 2026
+            </h2>
+            <ul>
+              <li>
+                Posts that only the education tenants contributing to the
+                archive received now carry a &quot;Seen in EDU tenants&quot;
+                label, shown as an EDU badge in the list and under Tag on the
+                post. Click the label to see what it means.
+              </li>
+            </ul>
+          </div>
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
               October 11, 2026

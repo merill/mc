@@ -23,6 +23,7 @@ function getData(): MessageView[] {
         date: toIsoDay(item.LastModifiedDateTime),
         isMajor: item.IsMajorChange ?? false,
         isArchived: false,
+        seenOnlyIn: item.SeenOnlyIn,
         source: getMessageSource(item),
         sourceLabel: getMessageSourceLabel(item)
     }));

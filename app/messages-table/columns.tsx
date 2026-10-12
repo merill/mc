@@ -16,6 +16,7 @@ import {
 import { siteConfig } from "@/config/site"
 import { useZapCount } from "@/lib/use-zap-counts"
 import { zapLinks } from "@/lib/zap"
+import { SeenOnlyInBadge } from "@/components/seen-only-in-badge"
 import { Badge } from "@/components/ui/badge"
 import {
   Tooltip,
@@ -34,6 +35,8 @@ export type MessageView = {
   date: string | undefined
   isMajor: boolean
   isArchived: boolean
+  // Kind of tenant (such as "edu") that alone returned the post, if any.
+  seenOnlyIn?: string
   source: "messageCenter" | "roadmap"
   sourceLabel: string
   // Present only for search results: a Pagefind excerpt with <mark> around
@@ -200,6 +203,11 @@ export const columns: ColumnDef<MessageView>[] = [
               Expired
             </Badge>
           )}
+          <SeenOnlyInBadge
+            value={row.original.seenOnlyIn}
+            compact
+            className="text-nowrap text-muted-foreground"
+          />
         </div>
       )
     },
