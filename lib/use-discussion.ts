@@ -5,6 +5,8 @@ import * as React from "react"
 import { siteConfig } from "@/config/site"
 import {
   readBadgeNotice,
+  readNotificationsUrl,
+  readUnread,
   type ZapBadgeNotice,
   type ZapDiscussion,
 } from "@/lib/zap"
@@ -49,6 +51,10 @@ export type ZapSession =
       avatar: string | null
       /** Set while their Microsoft badge needs renewing or has been removed. */
       badgeNotice: ZapBadgeNotice | null
+      /** Notifications they have not read, as of when the page loaded. */
+      unread: number
+      /** Their notifications page on zap.ms; null until zap.ms sends one. */
+      notificationsUrl: string | null
     }
 
 export type DiscussionState = {
@@ -336,6 +342,8 @@ function loadSession(): Promise<void> {
   sessionRequest ??= call<{
     user: { username: string | null; avatar?: string | null } | null
     badgeNotice?: unknown
+    unread?: unknown
+    notificationsUrl?: unknown
   }>("GET", "/api/v1/me").then((result) => {
     if (!result.ok) return setSession({ status: "off" })
     const username = result.data.user?.username
@@ -346,6 +354,11 @@ function loadSession(): Promise<void> {
             username,
             avatar: result.data.user?.avatar ?? null,
             badgeNotice: readBadgeNotice(result.data.badgeNotice),
+            unread: readUnread(result.data.unread),
+            notificationsUrl: readNotificationsUrl(
+              result.data.notificationsUrl,
+              process.env.NODE_ENV === "development"
+            ),
           }
         : { status: "signed-out" }
     )
