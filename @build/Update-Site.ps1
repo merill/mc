@@ -33,6 +33,7 @@ function Get-AllTenantMessageCenterItems() {
     # others cannot see, and the newest (or most detailed) copy of a shared post wins.
     $tenants = Get-M365TenantConfig -ConfigPath ./@build/config-m365.json -DefaultClientSecret (Get-DefaultGraphSecret)
     $merged = [ordered]@{}
+    $sources = @{}
     $connectedTenants = 0
 
     foreach($tenant in $tenants){
@@ -46,7 +47,7 @@ function Get-AllTenantMessageCenterItems() {
         try {
             Connect-M365Tenant $tenant
             $items = @(Get-M365MessageCenterItems)
-            $summary = Add-M365MessageCenterItems -Map $merged -Items $items -TenantName $tenant.Name
+            $summary = Add-M365MessageCenterItems -Map $merged -Items $items -TenantName $tenant.Name -Sources $sources -TenantType $tenant.Type
             $connectedTenants++
             Write-Host "Tenant '$($tenant.Name)' returned $($items.Count) items ($($summary.Added) new, $($summary.Replaced) updated, $($summary.Ignored) already current)"
         }
@@ -63,6 +64,9 @@ function Get-AllTenantMessageCenterItems() {
     if($connectedTenants -eq 0){
         throw "No Microsoft Graph tenant could be refreshed."
     }
+
+    $seenOnlyIn = Set-M365SeenOnlyIn -Map $merged -Sources $sources
+    Write-Host "$seenOnlyIn items were only seen in one kind of tenant"
 
     return @(Get-SortedMessageCenterItems -Map $merged)
 }
@@ -184,7 +188,7 @@ $categoryXml
 function New-MessageIndexRecord($item) {
     $source = if ($item.Source -eq "roadmap") { "roadmap" } else { "messageCenter" }
 
-    return [ordered]@{
+    $record = [ordered]@{
         Id = $item.Id
         Title = $item.Title
         Source = $source
@@ -198,6 +202,11 @@ function New-MessageIndexRecord($item) {
         Tags = @($item.Tags)
         Summary = Get-MessageSummaryText $item
     }
+
+    # Only present on posts that a single kind of tenant (such as EDU) returned.
+    if ($item.SeenOnlyIn) { $record['SeenOnlyIn'] = $item.SeenOnlyIn }
+
+    return $record
 }
 
 function ConvertTo-RoadmapMessage($item) {
@@ -337,6 +346,8 @@ $archiveRecords = @(Get-ChildItem -Path "$($dataPath)/archive" -Filter "*.json" 
         foreach ($field in $archiveFields) {
             $record[$field] = $item.$field
         }
+
+        if ($item.SeenOnlyIn) { $record['SeenOnlyIn'] = $item.SeenOnlyIn }
 
         $record
     } |

@@ -32,6 +32,7 @@ interface PagefindMeta {
   sourceLabel?: string
   isMajor?: string
   isArchived?: string
+  seenOnlyIn?: string
 }
 
 interface PagefindData {
@@ -209,6 +210,7 @@ function toHit(data: PagefindData): SearchHit {
     date: meta.date || undefined,
     isMajor: meta.isMajor === "true",
     isArchived: meta.isArchived === "true",
+    seenOnlyIn: meta.seenOnlyIn || undefined,
     source,
     sourceLabel:
       meta.sourceLabel ||

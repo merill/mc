@@ -84,6 +84,7 @@ function toArchivedMessageView(item: MessageArchive): MessageView {
     date: date ? date.toISOString().slice(0, 10) : undefined,
     isMajor: item.IsMajorChange ?? false,
     isArchived: true,
+    seenOnlyIn: item.SeenOnlyIn,
     source: "messageCenter",
     sourceLabel: "Message Center",
   }

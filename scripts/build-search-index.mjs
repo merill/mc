@@ -145,6 +145,7 @@ function buildRecord(message, { source, isArchived }) {
       sourceLabel: source === "roadmap" ? "Microsoft 365 Roadmap" : "Message Center",
       isMajor: message.IsMajorChange ? "true" : "",
       isArchived: isArchived ? "true" : "",
+      seenOnlyIn: scalar(message.SeenOnlyIn),
       category: scalar(message.Category),
       releasePhase,
       roadmapId: roadmapIds,

@@ -17,6 +17,8 @@ export interface Message {
     Tags?: string[];
     Title: string;
     ViewPoint?: ViewPoint;
+    // Set when only one kind of source tenant (such as "edu") returned the post.
+    SeenOnlyIn?: string;
     AdditionalProperties?: AdditionalProperties;
 }
 
@@ -115,6 +117,7 @@ export interface MessageArchive {
     LastModifiedDateTime?: string;
     IsMajorChange?: boolean;
     Category?: string;
+    SeenOnlyIn?: string;
 }
 
 export interface MessageVersion {
