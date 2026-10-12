@@ -1,11 +1,23 @@
 import * as React from "react"
 import { Metadata } from "next"
 import Link from "next/link"
+import {
+  Bookmark,
+  Cog,
+  History,
+  Lightbulb,
+  MessageSquare,
+  Reply,
+  ThumbsUp,
+  Users,
+  type LucideIcon,
+} from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { getContributorCredits } from "@/lib/tenant-contribution"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ExampleDiscussion } from "@/components/example-discussion"
 
 export const metadata: Metadata = {
   title: "About",
@@ -30,6 +42,41 @@ export const metadata: Metadata = {
   },
 }
 
+const CAN_DO: { icon: LucideIcon; title: string; text: string }[] = [
+  {
+    icon: ThumbsUp,
+    title: "Like or dislike a post",
+    text: "One press shows how a change is landing. The counts show on the post and in the list.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Comment",
+    text: "Say when it reached your tenant, what it did, and what you changed. Or ask what a line in the post means.",
+  },
+  {
+    icon: Reply,
+    title: "Reply and like comments",
+    text: "Answer someone directly, and like the comments that helped so the next reader finds them first.",
+  },
+  {
+    icon: Bookmark,
+    title: "Save views",
+    text: "Keep the list the way you want it, such as your own products with major changes only, and switch between views.",
+  },
+]
+
+/** A card's title with its icon in front. */
+function IconTitle(props: { icon: LucideIcon; children: React.ReactNode }) {
+  return (
+    <CardTitle className="flex items-center gap-2.5">
+      <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-muted">
+        <props.icon className="size-4" aria-hidden="true" />
+      </span>
+      {props.children}
+    </CardTitle>
+  )
+}
+
 export default function AboutPage() {
   const { tenants: contributedTenants } = getContributorCredits()
 
@@ -38,15 +85,19 @@ export default function AboutPage() {
       <div className="page-intro">
         <h1 className="page-title">About this archive</h1>
         <p className="page-description">
-          I&apos;m Merill Fernando. I build tools and write about Microsoft 365
-          and Microsoft Entra to help admins keep up with constant change.
+          I&apos;m{" "}
+          <a className="readable-link" href="https://merill.net/about">
+            Merill Fernando
+          </a>
+          . I build tools and write about Microsoft 365 and Microsoft Entra to
+          help admins keep up with constant change.
         </p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Why I built this</CardTitle>
+            <IconTitle icon={Lightbulb}>Why I built this</IconTitle>
           </CardHeader>
           <CardContent className="readable-card-content">
             <p>
@@ -65,7 +116,7 @@ export default function AboutPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>How it works</CardTitle>
+            <IconTitle icon={Cog}>How it works</IconTitle>
           </CardHeader>
           <CardContent className="readable-card-content">
             <p>
@@ -83,10 +134,10 @@ export default function AboutPage() {
         </Card>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
         <Card id="discuss" className="scroll-mt-20">
           <CardHeader>
-            <CardTitle>Like, comment and discuss</CardTitle>
+            <IconTitle icon={MessageSquare}>Like, comment and discuss</IconTitle>
           </CardHeader>
           <CardContent className="readable-card-content">
             <p>
@@ -94,21 +145,21 @@ export default function AboutPage() {
               in the tenant that got it a week before yours. So every Message
               Center and Roadmap post has a discussion on its page.
             </p>
-            <ul>
-              <li>
-                <strong>Like or dislike</strong> a post to show how a change is
-                landing.
-              </li>
-              <li>
-                <strong>Comment and reply</strong>: say when it reached your
-                tenant, what it did, and what you changed. Like the comments
-                that helped.
-              </li>
-              <li>
-                <strong>Save views</strong> of the list, such as your own
-                products with major changes only, and switch between them.
-              </li>
-            </ul>
+            <div className="grid gap-4 py-1">
+              {CAN_DO.map((item) => (
+                <div key={item.title} className="flex gap-3">
+                  <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-md border bg-muted/40">
+                    <item.icon className="size-4" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="font-semibold leading-6">{item.title}</p>
+                    <p className="text-[15px] leading-6 text-foreground/80">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
             <p>
               Discussions are hosted on{" "}
               <a className="readable-link" href={siteConfig.zap.url}>
@@ -121,40 +172,42 @@ export default function AboutPage() {
           </CardContent>
         </Card>
 
-        <Card id="contribute" className="scroll-mt-20">
-          <CardHeader>
-            <CardTitle>Help improve tenant coverage</CardTitle>
-          </CardHeader>
-          <CardContent className="readable-card-content">
-            <p>
-              Message Center posts differ by tenant, so some are only seen by
-              education, government or specially licensed tenants.{" "}
-              {contributedTenants > 0
-                ? `${contributedTenants} ${
-                    contributedTenants === 1 ? "tenant is" : "tenants are"
-                  } shared with the archive so far, including education tenants.`
-                : null}
-            </p>
-            <p>
-              If you manage a tenant, you can let the archive read its Message
-              Center. It is read-only, takes about five minutes, and there is no
-              password or secret to share.
-            </p>
-            <p>
-              <Link
-                className={buttonVariants({ variant: "outline" })}
-                href="/contribute"
-              >
-                Contribute your tenant
-              </Link>
-            </p>
-          </CardContent>
-        </Card>
+        <ExampleDiscussion />
       </div>
+
+      <Card id="contribute" className="scroll-mt-20">
+        <CardHeader>
+          <IconTitle icon={Users}>Help improve tenant coverage</IconTitle>
+        </CardHeader>
+        <CardContent className="readable-card-content">
+          <p>
+            Message Center posts differ by tenant, so some are only seen by
+            education, government or specially licensed tenants.{" "}
+            {contributedTenants > 0
+              ? `${contributedTenants} ${
+                  contributedTenants === 1 ? "tenant is" : "tenants are"
+                } shared with the archive so far, including education tenants.`
+              : null}
+          </p>
+          <p>
+            If you manage a tenant, you can let the archive read its Message
+            Center. It is read-only, takes about five minutes, and there is no
+            password or secret to share.
+          </p>
+          <p>
+            <Link
+              className={buttonVariants({ variant: "outline" })}
+              href="/contribute"
+            >
+              Contribute your tenant
+            </Link>
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Release notes</CardTitle>
+          <IconTitle icon={History}>Release notes</IconTitle>
         </CardHeader>
         <CardContent className="readable-card-content space-y-5">
           <div>
