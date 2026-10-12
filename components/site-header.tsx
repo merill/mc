@@ -3,6 +3,7 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { AccountMenu } from "@/components/account-menu"
 import { MainNav } from "@/components/main-nav"
+import { NotificationsBell } from "@/components/notifications-bell"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 export function SiteHeader() {
@@ -27,6 +28,7 @@ export function SiteHeader() {
             </div>
             <div className="flex items-center gap-1">
               <ThemeToggle />
+              <NotificationsBell />
               <AccountMenu />
             </div>
           </nav>

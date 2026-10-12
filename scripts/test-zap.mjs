@@ -162,6 +162,18 @@ test("a comment upvote shows at once and can be taken back", () => {
   assert.deepEqual(back.mine.commentVotes, {})
 })
 
+test("a comment like moves the like count too, when zap.ms sends one", () => {
+  const start = localView({ comments: [{ ...localComment(7, null, 0), score: -1, likes: 2 }] })
+  const liked = local.withCommentUpvote(start, 7)
+  assert.deepEqual([liked.thread.comments[0].score, liked.thread.comments[0].likes], [0, 3])
+  const back = local.withCommentUpvote(liked, 7)
+  assert.deepEqual([back.thread.comments[0].score, back.thread.comments[0].likes], [-1, 2])
+  // A count that is already 0 stays there, and a comment without one gains none.
+  const stale = { ...localView({ comments: [{ ...localComment(7, null, 0), likes: 0 }] }), mine: { reaction: null, commentVotes: { 7: "up" } } }
+  assert.equal(local.withCommentUpvote(stale, 7).thread.comments[0].likes, 0)
+  assert.equal("likes" in local.withCommentUpvote(localView({ comments: [localComment(7, null, 0)] }), 7).thread.comments[0], false)
+})
+
 test("a pending reply sits under its parent, after the replies already there", () => {
   const start = localView({ commentCount: 3, comments: [localComment(1, null, 0), localComment(2, 1, 1), localComment(3, null, 0)] })
   const replied = local.withPendingComment(start, { text: "hi", parentId: 1, author: "bob" }, 1000)
@@ -258,4 +270,39 @@ test("words the badge notice with the date in the visitor's locale", () => {
     badgeNoticeText(notice({ state: "removed" }), "en-US"),
     "Your Microsoft badge was removed because your Microsoft email was not confirmed again."
   )
+})
+
+const { commentLikes, readUnread, readNotificationsUrl, unreadBadge } = await loadTypeScriptModule("../lib/zap.ts")
+
+test("a comment shows its likes, or its score until zap.ms sends them", () => {
+  assert.equal(commentLikes({ score: -2, likes: 3 }), 3)
+  assert.equal(commentLikes({ score: 4, likes: 0 }), 0)
+  assert.equal(commentLikes({ score: 4 }), 4)
+  assert.equal(commentLikes({ score: -2 }), 0)
+})
+
+test("reads the unread count, and 0 from anything that is not one", () => {
+  assert.equal(readUnread(3), 3)
+  assert.equal(readUnread(0), 0)
+  for (const raw of [undefined, null, "3", -1, NaN, Infinity, {}]) {
+    assert.equal(readUnread(raw), 0, String(raw))
+  }
+})
+
+test("links only to an https notifications page, or to localhost in development", () => {
+  assert.equal(readNotificationsUrl("https://zap.ms/notifications"), "https://zap.ms/notifications")
+  assert.equal(readNotificationsUrl("http://localhost:8787/notifications", true), "http://localhost:8787/notifications")
+  assert.equal(readNotificationsUrl("http://localhost/notifications", true), "http://localhost/notifications")
+  for (const raw of [undefined, null, 7, "", "/notifications", "//zap.ms/notifications", "http://zap.ms/notifications", "javascript:alert(1)", " https://zap.ms"]) {
+    assert.equal(readNotificationsUrl(raw, true), null, String(raw))
+  }
+  assert.equal(readNotificationsUrl("http://localhost:8787/notifications"), null)
+  assert.equal(readNotificationsUrl("http://localhost.evil.example/notifications", true), null)
+  assert.equal(readNotificationsUrl("http://localhost@evil.example/", true), null)
+})
+
+test("the bell shows at most 9+ and says the real count aloud", () => {
+  assert.deepEqual(unreadBadge(0), { text: "0", label: "Notifications" })
+  assert.deepEqual(unreadBadge(9), { text: "9", label: "Notifications, 9 unread" })
+  assert.deepEqual(unreadBadge(12), { text: "9+", label: "Notifications, 12 unread" })
 })

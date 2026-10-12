@@ -47,7 +47,7 @@ export function withReaction(view: View, dir: Reaction): View {
   }
 }
 
-/** The view after pressing a comment's upvote; pressing again takes it back. */
+/** The view after pressing a comment's Like; pressing again takes it back. */
 export function withCommentUpvote(view: View, commentId: number): View {
   const had = view.mine.commentVotes[commentId] === "up"
   const commentVotes = { ...view.mine.commentVotes }
@@ -57,13 +57,20 @@ export function withCommentUpvote(view: View, commentId: number): View {
     thread: {
       ...view.thread,
       comments: view.thread.comments.map((comment) =>
-        comment.id === commentId
-          ? { ...comment, score: comment.score + (had ? -1 : 1) }
-          : comment
+        comment.id === commentId ? withLike(comment, had ? -1 : 1) : comment
       ),
     },
     mine: { ...view.mine, commentVotes },
   }
+}
+
+/** `likes` moves with `score` when zap.ms sent it, and never goes below 0. */
+function withLike(comment: ZapComment, change: 1 | -1): ZapComment {
+  const next = { ...comment, score: comment.score + change }
+  if (comment.likes !== undefined) {
+    next.likes = Math.max(0, comment.likes + change)
+  }
+  return next
 }
 
 /** The view after flagging a comment. */

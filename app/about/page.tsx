@@ -433,6 +433,13 @@ export default function AboutPage() {
                 label, shown as an EDU badge in the list and under Tag on the
                 post. Click the label to see what it means.
               </li>
+              <li>
+                Comments in a discussion now have a Like button with its count,
+                next to Reply, in place of the score beside the name. Report and
+                Delete moved into a &quot;…&quot; menu on each comment. When you
+                are signed in, a bell in the header links to your notifications
+                on zap.ms and shows how many are unread.
+              </li>
             </ul>
           </div>
           <div>

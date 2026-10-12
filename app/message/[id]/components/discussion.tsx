@@ -4,10 +4,13 @@ import * as React from "react"
 import {
   ArrowDown,
   ArrowRight,
+  Flag,
   MessageSquare,
+  MoreHorizontal,
   Reply,
   ThumbsDown,
   ThumbsUp,
+  Trash2,
 } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
@@ -17,6 +20,7 @@ import {
   BADGE_LABELS,
   ZapThreadNode,
   buildThread,
+  commentLikes,
   sanitizeCommentHtml,
   timeAgo,
   zapLinks,
@@ -24,6 +28,12 @@ import {
 import { draftKey, readDraft, saveDraft } from "@/lib/zap-local"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { ZapAvatar } from "@/components/zap-avatar"
 
 type Discussion = ReturnType<typeof useDiscussion>
@@ -404,7 +414,7 @@ function Comment({
     session.status === "signed-in" && comment.author === session.username
   const canDelete =
     signedIn && isMine && (discussion.mine.deletable ?? []).includes(comment.id)
-  // Offered only once zap.ms reports flags, and never on your own comment.
+  // Offered only once zap.ms reports them, and never on your own comment.
   const flagged = (discussion.mine.flagged ?? []).includes(comment.id)
   const canFlag =
     signedIn &&
@@ -417,7 +427,27 @@ function Comment({
     buttonVariants({ variant: "outline", size: "sm" }),
     "h-7 gap-1.5 px-2.5 text-xs text-muted-foreground"
   )
-  const upvoted = discussion.mine.commentVotes[comment.id] === "up"
+  const liked = discussion.mine.commentVotes[comment.id] === "up"
+  const likes = commentLikes(comment)
+  // While the pop plays on a like just given (`vote-pop` in globals.css).
+  const [popped, setPopped] = React.useState(false)
+  const keepButton = React.useRef<HTMLButtonElement>(null)
+  const deleteChosen = React.useRef(false)
+  // A smaller, quieter version of the post's Like pill.
+  const likePill =
+    "-ml-2 inline-flex h-7 items-center gap-1.5 rounded-md px-2 text-xs font-medium tabular-nums text-muted-foreground"
+  const likeContent = (
+    <>
+      <ThumbsUp
+        className={cn(
+          "size-3.5",
+          liked && "fill-current text-blue-600 dark:text-blue-400"
+        )}
+        aria-hidden="true"
+      />
+      <span>{likes}</span>
+    </>
+  )
   const links = zapLinks(siteConfig.zap.url, postId)
   const name = comment.author ?? "removed"
   const html = React.useMemo(
@@ -470,30 +500,6 @@ function Comment({
               {timeAgo(comment.createdAt)}
             </a>
           )}
-          {comment.pending ? null : session.status === "signed-in" &&
-            comment.author ? (
-            <button
-              type="button"
-              className={cn(
-                "rounded px-1 tabular-nums hover:bg-accent hover:text-foreground",
-                upvoted
-                  ? "font-semibold text-foreground"
-                  : "text-muted-foreground"
-              )}
-              aria-pressed={upvoted}
-              aria-label={`Upvote ${name}'s comment. Score ${comment.score}`}
-              onClick={() => discussion.upvote(comment.id)}
-            >
-              ▲ {comment.score}
-            </button>
-          ) : (
-            <span
-              className="tabular-nums text-muted-foreground"
-              title="Score on zap.ms"
-            >
-              ▲ {comment.score}
-            </span>
-          )}
         </div>
         <div
           className="zap-comment"
@@ -503,6 +509,41 @@ function Comment({
         />
         {!comment.pending && (
           <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+            {comment.author === null ? null : session.status === "off" ||
+              isMine ? (
+              // Nothing to press: zap.ms does not count a like on your own
+              // comment, and without its /zap path there is no way to send one.
+              <span className={likePill}>
+                {likeContent}
+                <span className="sr-only">
+                  {likes === 1 ? "like" : "likes"}
+                </span>
+              </span>
+            ) : (
+              <button
+                type="button"
+                className={cn(
+                  likePill,
+                  "transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+                  liked && "font-semibold text-foreground",
+                  popped && "vote-pop"
+                )}
+                data-vote-dir="up"
+                onAnimationEnd={() => setPopped(false)}
+                aria-pressed={liked}
+                aria-label={`Like ${name}'s comment. ${likes} so far`}
+                title={liked ? "Remove your like" : "Like"}
+                disabled={session.status === "checking"}
+                onClick={() => {
+                  if (session.status !== "signed-in") return discussion.signIn()
+                  // Only a like going on pops; taking one back is quiet.
+                  setPopped(!liked)
+                  discussion.upvote(comment.id)
+                }}
+              >
+                {likeContent}
+              </button>
+            )}
             {session.status === "off" ? (
               <a
                 className={replyButton}
@@ -529,53 +570,82 @@ function Comment({
                 Reply
               </button>
             )}
-            {canFlag &&
-              (flagged ? (
-                <span className="px-1 text-muted-foreground">flagged</span>
-              ) : (
+            {canDelete && confirmingDelete && (
+              <span
+                role="group"
+                aria-label="Delete your comment?"
+                className="inline-flex items-center gap-1"
+              >
                 <button
                   type="button"
-                  className={quiet}
-                  aria-label={`Flag ${name}'s comment for the moderators`}
-                  onClick={() => discussion.flag(comment.id)}
+                  className={cn(
+                    quiet,
+                    "text-destructive hover:text-destructive"
+                  )}
+                  onClick={() => {
+                    setConfirmingDelete(false)
+                    discussion.remove(comment.id)
+                  }}
                 >
-                  flag
+                  delete it
                 </button>
-              ))}
-            {canDelete &&
-              (confirmingDelete ? (
-                <span className="inline-flex items-center gap-1">
-                  <button
-                    type="button"
-                    className={cn(
-                      quiet,
-                      "text-destructive hover:text-destructive"
-                    )}
-                    onClick={() => {
-                      setConfirmingDelete(false)
-                      discussion.remove(comment.id)
-                    }}
-                  >
-                    delete it
-                  </button>
-                  <button
-                    type="button"
-                    className={quiet}
-                    onClick={() => setConfirmingDelete(false)}
-                  >
-                    keep
-                  </button>
-                </span>
-              ) : (
                 <button
+                  ref={keepButton}
                   type="button"
                   className={quiet}
-                  aria-label="Delete your comment"
-                  onClick={() => setConfirmingDelete(true)}
+                  onClick={() => setConfirmingDelete(false)}
                 >
-                  delete
+                  keep
                 </button>
-              ))}
+              </span>
+            )}
+            {(canFlag || canDelete) && (
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  className={cn(
+                    buttonVariants({ variant: "ghost", size: "sm" }),
+                    "size-7 px-0 text-muted-foreground"
+                  )}
+                  aria-label={`More actions for ${name}'s comment`}
+                  title="More"
+                >
+                  <MoreHorizontal className="size-4" aria-hidden="true" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="start"
+                  // Choosing Delete opens the question beside the button, so
+                  // the keyboard goes there instead of back to the button.
+                  onCloseAutoFocus={(event) => {
+                    if (!deleteChosen.current) return
+                    deleteChosen.current = false
+                    event.preventDefault()
+                    keepButton.current?.focus()
+                  }}
+                >
+                  {canFlag && (
+                    <DropdownMenuItem
+                      disabled={flagged}
+                      onSelect={() => discussion.flag(comment.id)}
+                    >
+                      <Flag aria-hidden="true" />
+                      {flagged ? "Reported" : "Report"}
+                    </DropdownMenuItem>
+                  )}
+                  {canDelete && (
+                    <DropdownMenuItem
+                      variant="destructive"
+                      onSelect={() => {
+                        deleteChosen.current = true
+                        setConfirmingDelete(true)
+                      }}
+                    >
+                      <Trash2 aria-hidden="true" />
+                      Delete
+                    </DropdownMenuItem>
+                  )}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </div>
         )}
         {replying && (

@@ -13,7 +13,10 @@ export type ZapComment = {
   authorAvatar?: string | null
   badges: string[]
   createdAt: string
+  /** Likes minus dislikes. */
   score: number
+  /** How many likes it has. Absent from a zap.ms that does not send it yet. */
+  likes?: number
   html: string
   url: string
   /** Set by this site on a comment zap.ms has not confirmed yet. */
@@ -54,6 +57,11 @@ export const COUNTS_BATCH = 200
  */
 export function countsPath(ids: string[]): string {
   return `/mc/counts?ids=${Array.from(new Set(ids)).sort().join(",")}`
+}
+
+/** The number beside a comment's Like button. */
+export function commentLikes(comment: Pick<ZapComment, "likes" | "score">) {
+  return comment.likes ?? Math.max(0, comment.score)
 }
 
 export type ZapThreadNode = { comment: ZapComment; replies: ZapThreadNode[] }
@@ -245,4 +253,30 @@ export function badgeNoticeText(
     year: "numeric",
   })
   return `Confirm your Microsoft email by ${date} to keep your Microsoft badge.`
+}
+
+/** How many notifications zap.ms says are unread; 0 for anything else. */
+export function readUnread(raw: unknown): number {
+  return typeof raw === "number" && Number.isFinite(raw) && raw >= 0
+    ? Math.floor(raw)
+    : 0
+}
+
+/**
+ * The address of the notifications page on zap.ms, or null when zap.ms did
+ * not send one this site can link to. `dev` also allows a zap.ms running on
+ * this computer.
+ */
+export function readNotificationsUrl(raw: unknown, dev = false): string | null {
+  if (typeof raw !== "string") return null
+  if (/^https:\/\//.test(raw)) return raw
+  return dev && /^http:\/\/localhost(?=[:/]|$)/.test(raw) ? raw : null
+}
+
+/** The bell's count as shown, and how a screen reader names the bell. */
+export function unreadBadge(unread: number) {
+  return {
+    text: unread > 9 ? "9+" : String(unread),
+    label: unread > 0 ? `Notifications, ${unread} unread` : "Notifications",
+  }
 }
