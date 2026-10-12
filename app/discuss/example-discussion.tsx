@@ -1,7 +1,46 @@
 import { MessageSquare, Reply, ThumbsDown, ThumbsUp } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { BADGE_LABELS, avatarColor } from "@/lib/zap"
+import { BADGE_LABELS } from "@/lib/zap"
+
+type Face = {
+  /** Behind the portrait. */
+  backdrop: string
+  skin: string
+  hair: string
+  shirt: string
+  style: "long" | "short" | "bob"
+  beard?: boolean
+  glasses?: boolean
+}
+
+// Drawn portraits for the invented people, standing in for the profile photos
+// real members bring from LinkedIn.
+const FACES: Record<string, Face> = {
+  "Priya Nair": {
+    backdrop: "#fde68a",
+    skin: "#c68863",
+    hair: "#2b1d16",
+    shirt: "#0f766e",
+    style: "long",
+  },
+  "Daniel Kowalski": {
+    backdrop: "#bfdbfe",
+    skin: "#f1c9a5",
+    hair: "#8a5a2b",
+    shirt: "#1e3a8a",
+    style: "short",
+    beard: true,
+    glasses: true,
+  },
+  "Maria Lindqvist": {
+    backdrop: "#fecdd3",
+    skin: "#f6d3b8",
+    hair: "#e3b655",
+    shirt: "#9f1239",
+    style: "bob",
+  },
+}
 
 type Example = {
   name: string
@@ -46,15 +85,6 @@ const THREAD: Example[] = [
     ],
   },
   {
-    name: "Sam Ortega",
-    badge: "microsoft",
-    when: "1 day ago",
-    text: [
-      "Thanks for the reports, they helped. The post now lists the dates for each cloud, and the documentation calls out the exclusion option.",
-    ],
-    likes: 14,
-  },
-  {
     name: "Maria Lindqvist",
     when: "5 hours ago",
     text: [
@@ -94,7 +124,7 @@ export function ExampleDiscussion() {
             <ThumbsDown className="size-4" />3
           </span>
           <span className="ml-1 inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-            <MessageSquare className="size-4" />5 comments
+            <MessageSquare className="size-4" />4 comments
           </span>
         </div>
       </div>
@@ -114,13 +144,7 @@ export function ExampleDiscussion() {
 function ExampleComment({ comment }: { comment: Example }) {
   return (
     <div className="flex gap-3">
-      <span
-        className="mt-0.5 flex size-7 shrink-0 select-none items-center justify-center rounded-full text-xs font-semibold uppercase text-white"
-        style={{ backgroundColor: avatarColor(comment.name) }}
-        aria-hidden="true"
-      >
-        {comment.name.slice(0, 1)}
-      </span>
+      <Portrait name={comment.name} />
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm leading-7">
           <span className="font-semibold">{comment.name}</span>
@@ -163,5 +187,69 @@ function ExampleComment({ comment }: { comment: Example }) {
         )}
       </div>
     </div>
+  )
+}
+
+const FRINGE =
+  "M12.5 16 Q12.5 7.5 20 7.5 Q27.5 7.5 27.5 16 Q24 11.5 20 11.5 Q16 11.5 12.5 16Z"
+
+/** A small drawn portrait in a circle, the size of a comment's photo. */
+function Portrait({ name }: { name: string }) {
+  const face = FACES[name]
+  if (!face) return null
+  const id = `portrait-${name.replace(/\W+/g, "-").toLowerCase()}`
+  return (
+    <svg
+      viewBox="0 0 40 40"
+      className="mt-0.5 size-8 shrink-0 rounded-full"
+      aria-hidden="true"
+    >
+      <clipPath id={id}>
+        <circle cx="20" cy="20" r="20" />
+      </clipPath>
+      <g clipPath={`url(#${id})`}>
+        <rect width="40" height="40" fill={face.backdrop} />
+        {face.style === "long" && (
+          <path
+            d="M10.5 17 Q10.5 6.5 20 6.5 Q29.5 6.5 29.5 17 L30.5 34 H9.5Z"
+            fill={face.hair}
+          />
+        )}
+        {face.style === "bob" && (
+          <path
+            d="M11 17 Q11 6.5 20 6.5 Q29 6.5 29 17 L29 25 H11Z"
+            fill={face.hair}
+          />
+        )}
+        <ellipse cx="20" cy="42" rx="15" ry="11" fill={face.shirt} />
+        <rect x="17" y="23" width="6" height="8" rx="2.5" fill={face.skin} />
+        <ellipse cx="20" cy="17.5" rx="7" ry="8" fill={face.skin} />
+        {face.beard && (
+          <path
+            d="M13.2 19 Q13.5 26.5 20 26.5 Q26.5 26.5 26.8 19 Q24.5 22.2 20 22.2 Q15.5 22.2 13.2 19Z"
+            fill={face.hair}
+          />
+        )}
+        <path d={FRINGE} fill={face.hair} />
+        <circle cx="17.1" cy="17.6" r="0.8" fill="#1f2937" />
+        <circle cx="22.9" cy="17.6" r="0.8" fill="#1f2937" />
+        {!face.beard && (
+          <path
+            d="M17.6 21 Q20 22.8 22.4 21"
+            fill="none"
+            stroke="#1f2937"
+            strokeWidth="0.8"
+            strokeLinecap="round"
+          />
+        )}
+        {face.glasses && (
+          <g fill="none" stroke="#1f2937" strokeWidth="0.8">
+            <circle cx="17.1" cy="17.6" r="2.4" />
+            <circle cx="22.9" cy="17.6" r="2.4" />
+            <path d="M19.5 17.6h1" />
+          </g>
+        )}
+      </g>
+    </svg>
   )
 }
