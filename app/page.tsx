@@ -6,11 +6,12 @@ import MessagesTable2 from "./messages-table/messages-table"
 
 export default function IndexPage() {
   return (
-    <section className="page-shell">
+    <section className="page-shell md:pt-8">
       {/* The header already carries the site's name, so the page says it only
           to search engines and screen readers, and keeps one quiet line on
           what the site is. */}
-      <div className="min-w-0">
+      {/* Pulled up against what follows: it is a caption, not a section. */}
+      <div className="-mb-5 min-w-0">
         <h1 className="sr-only">
           Microsoft 365 Message Center and Roadmap Archive
         </h1>
@@ -21,7 +22,7 @@ export default function IndexPage() {
             href="/about"
             className="font-medium text-foreground underline underline-offset-4 hover:text-foreground/75"
           >
-            About this archive
+            Learn why I built this
           </Link>
         </p>
       </div>

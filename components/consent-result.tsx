@@ -86,7 +86,7 @@ export function ConsentResult() {
             Granting an application permission for Microsoft Graph needs a
             Global Administrator or Privileged Role Administrator. If you
             cancelled the prompt, nothing was changed in your tenant. See the{" "}
-            <Link className="readable-link" href="/about#contribute">
+            <Link className="readable-link" href="/contribute">
               step-by-step guide
             </Link>{" "}
             to try again or to use your own app registration instead.
@@ -101,10 +101,10 @@ export function ConsentResult() {
       <CardContent className="readable-card-content pt-6">
         <p>
           No consent response was found. Follow the{" "}
-          <Link className="readable-link" href="/about#contribute">
+          <Link className="readable-link" href="/contribute">
             step-by-step guide
           </Link>{" "}
-          on the About page to contribute your tenant.
+          to contribute your tenant.
         </p>
       </CardContent>
     </Card>
