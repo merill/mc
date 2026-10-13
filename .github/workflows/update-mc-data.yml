@@ -67,8 +67,11 @@ jobs:
           # The tenant list is a secret so contributors stay private; it is only
           # passed on main branch runs, which the federated credential trusts.
           GRAPH_CONTRIBUTOR_TENANTS: ${{ github.event_name != 'pull_request' && secrets.GRAPH_CONTRIBUTOR_TENANTS || '' }}
+        # Pull request runs skip Message Center, so the check needs no tenant,
+        # does not depend on Microsoft Graph and is never passed the secret.
+        # The rest of the refresh runs on the posts already in the repo.
         run: |
-          ./@build/Update-Site.ps1 -GraphSecret ${{ secrets.GRAPH_SECRET }}
+          ./@build/Update-Site.ps1 ${{ github.event_name == 'pull_request' && '-RoadmapOnly' || format('-GraphSecret {0}', secrets.GRAPH_SECRET) }}
         shell: pwsh
         
       - name: Update repo
@@ -132,3 +135,29 @@ jobs:
           else
             echo "Live site is up to date."
           fi
+
+  # Pull requests also run the unit tests, which need nothing outside the repo.
+  # The refresh above only shows that the scripts still run end to end.
+  test:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # The major version the refresh scripts run on in the job above.
+          node-version: "22"
+          cache: npm
+      # Some of the tests load the site's TypeScript sources.
+      - name: Install dependencies
+        run: npm ci
+      - name: Test the refresh scripts and site logic
+        run: node --test scripts/test-*.mjs
+      - name: Test the Entra post filter
+        run: npm run test:entra-filter
+      - name: Test the tenant merge
+        run: npm run test:tenants
