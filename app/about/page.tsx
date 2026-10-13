@@ -240,6 +240,16 @@ export default function AboutPage() {
                 </Link>{" "}
                 page.
               </li>
+              <li>
+                A strip at the top of every page announces that you can like
+                and comment on Message Center posts. It opens a new{" "}
+                <Link className="readable-link" href="/discuss">
+                  Discuss
+                </Link>{" "}
+                page that explains what you can do, why it is here and how to
+                help, with an example discussion. Dismissing the strip is
+                remembered in your browser.
+              </li>
             </ul>
           </div>
           <div>

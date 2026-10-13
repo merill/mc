@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  const pages = ["about", "contribute"].map((path) => ({
+  const pages = ["about", "contribute", "discuss"].map((path) => ({
     url: `${siteConfig.url}/${path}`,
     changeFrequency: "monthly" as const,
     priority: 0.5,
