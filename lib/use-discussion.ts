@@ -55,6 +55,8 @@ export type ZapSession =
       unread: number
       /** Their notifications page on zap.ms; null until zap.ms sends one. */
       notificationsUrl: string | null
+      /** When their saved views last changed on zap.ms; 0 when they have none. */
+      viewsUpdatedAt: number
     }
 
 export type DiscussionState = {
@@ -344,6 +346,7 @@ function loadSession(): Promise<void> {
     badgeNotice?: unknown
     unread?: unknown
     notificationsUrl?: unknown
+    viewsUpdatedAt?: unknown
   }>("GET", "/api/v1/me").then((result) => {
     if (!result.ok) return setSession({ status: "off" })
     const username = result.data.user?.username
@@ -359,6 +362,10 @@ function loadSession(): Promise<void> {
               result.data.notificationsUrl,
               process.env.NODE_ENV === "development"
             ),
+            viewsUpdatedAt:
+              typeof result.data.viewsUpdatedAt === "number"
+                ? result.data.viewsUpdatedAt
+                : 0,
           }
         : { status: "signed-out" }
     )
@@ -366,11 +373,12 @@ function loadSession(): Promise<void> {
   return sessionRequest
 }
 
-type CallResult<T> =
+export type CallResult<T> =
   | { ok: true; data: T }
   | { ok: false; status: number; message?: string }
 
-async function call<T>(
+/** A request to zap.ms through this site's own `/zap` path. */
+export async function call<T>(
   method: string,
   path: string,
   body?: unknown

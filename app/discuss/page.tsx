@@ -169,7 +169,7 @@ export default function DiscussPage() {
               <li>
                 <strong>Add your tenant to the archive.</strong> Posts differ by
                 tenant;{" "}
-                <Link className="readable-link" href="/about#contribute">
+                <Link className="readable-link" href="/contribute">
                   contributing yours
                 </Link>{" "}
                 fills in the ones others never receive.

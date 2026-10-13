@@ -1,16 +1,23 @@
 import * as React from "react"
 import { Metadata } from "next"
 import Link from "next/link"
+import {
+  Bookmark,
+  Cog,
+  History,
+  Lightbulb,
+  MessageSquare,
+  Reply,
+  ThumbsUp,
+  Users,
+  type LucideIcon,
+} from "lucide-react"
 
 import { siteConfig } from "@/config/site"
-import {
-  getAdminConsentUrl,
-  getContributorCredits,
-  getLinkLabel,
-  getOwnAppMailto,
-} from "@/lib/tenant-contribution"
+import { getContributorCredits } from "@/lib/tenant-contribution"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ExampleDiscussion } from "@/components/example-discussion"
 
 export const metadata: Metadata = {
   title: "About",
@@ -35,29 +42,62 @@ export const metadata: Metadata = {
   },
 }
 
-const contribution = siteConfig.tenantContribution
-const [githubOwner, githubRepo] = contribution.githubRepository.split("/")
+const CAN_DO: { icon: LucideIcon; title: string; text: string }[] = [
+  {
+    icon: ThumbsUp,
+    title: "Like or dislike a post",
+    text: "One press shows how a change is landing. The counts show on the post and in the list.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Comment",
+    text: "Say when it reached your tenant, what it did, and what you changed. Or ask what a line in the post means.",
+  },
+  {
+    icon: Reply,
+    title: "Reply and like comments",
+    text: "Answer someone directly, and like the comments that helped so the next reader finds them first.",
+  },
+  {
+    icon: Bookmark,
+    title: "Save views",
+    text: "Keep the list the way you want it, such as your own products with major changes only, and switch between views.",
+  },
+]
+
+/** A card's title with its icon in front. */
+function IconTitle(props: { icon: LucideIcon; children: React.ReactNode }) {
+  return (
+    <CardTitle className="flex items-center gap-2.5">
+      <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-muted">
+        <props.icon className="size-4" aria-hidden="true" />
+      </span>
+      {props.children}
+    </CardTitle>
+  )
+}
 
 export default function AboutPage() {
-  const consentUrl = getAdminConsentUrl()
-  const ownAppMailto = getOwnAppMailto()
-  const { tenants: contributedTenants, credits } = getContributorCredits()
-  const anonymousTenants = contributedTenants - credits.length
+  const { tenants: contributedTenants } = getContributorCredits()
 
   return (
     <section className="page-shell">
       <div className="page-intro">
         <h1 className="page-title">About this archive</h1>
         <p className="page-description">
-          I&apos;m Merill Fernando. I build tools and write about Microsoft 365
-          and Microsoft Entra to help admins keep up with constant change.
+          I&apos;m{" "}
+          <a className="readable-link" href="https://merill.net/about">
+            Merill Fernando
+          </a>
+          . I build tools and write about Microsoft 365 and Microsoft Entra to
+          help admins keep up with constant change.
         </p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Why I built this</CardTitle>
+            <IconTitle icon={Lightbulb}>Why I built this</IconTitle>
           </CardHeader>
           <CardContent className="readable-card-content">
             <p>
@@ -76,7 +116,7 @@ export default function AboutPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>How it works</CardTitle>
+            <IconTitle icon={Cog}>How it works</IconTitle>
           </CardHeader>
           <CardContent className="readable-card-content">
             <p>
@@ -94,332 +134,81 @@ export default function AboutPage() {
         </Card>
       </div>
 
+      <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
+        <Card id="discuss" className="scroll-mt-20">
+          <CardHeader>
+            <IconTitle icon={MessageSquare}>Like, comment and discuss</IconTitle>
+          </CardHeader>
+          <CardContent className="readable-card-content">
+            <p>
+              A post tells you what is changing. It cannot tell you how it went
+              in the tenant that got it a week before yours. So every Message
+              Center and Roadmap post has a discussion on its page.
+            </p>
+            <div className="grid gap-4 py-1">
+              {CAN_DO.map((item) => (
+                <div key={item.title} className="flex gap-3">
+                  <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-md border bg-muted/40">
+                    <item.icon className="size-4" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="font-semibold leading-6">{item.title}</p>
+                    <p className="text-[15px] leading-6 text-foreground/80">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p>
+              Discussions are hosted on{" "}
+              <a className="readable-link" href={siteConfig.zap.url}>
+                zap.ms
+              </a>
+              , a community site I&apos;m building for people in the Microsoft
+              community, focused on tech and getting work done. You sign in
+              once, and stay on this site. An MVP or Microsoft badge next to a
+              name is verified.
+            </p>
+          </CardContent>
+        </Card>
+
+        <ExampleDiscussion />
+      </div>
+
       <Card id="contribute" className="scroll-mt-20">
         <CardHeader>
-          <CardTitle>Help improve tenant coverage</CardTitle>
+          <IconTitle icon={Users}>Help improve tenant coverage</IconTitle>
         </CardHeader>
         <CardContent className="readable-card-content">
           <p>
-            Some entries may be missing, especially posts shown only to EDU,
-            government, or tenants with additional products and licenses. If you
-            manage a tenant (a dev or test tenant is ideal), you can let the
-            archive read its Message Center. It takes about five minutes and
-            there is no password, secret, or certificate to create or share.
-          </p>
-          <p>The access is deliberately narrow:</p>
-          <ul>
-            <li>
-              The only permission is the Microsoft Graph application permission{" "}
-              <code>ServiceMessage.Read.All</code> (Read service messages). It
-              cannot read users, groups, mail, files, sign-ins, or any other
-              data, and it cannot change anything in your tenant.
-            </li>
-            <li>
-              The app signs in with workload identity federation: Microsoft
-              Entra only issues a token to the scheduled GitHub Actions workflow
-              on the <code>{contribution.githubBranch}</code> branch of{" "}
-              <Link
-                className="readable-link"
-                href={`https://github.com/${contribution.githubRepository}`}
-              >
-                {contribution.githubRepository}
-              </Link>
-              . No credential exists that could leak.
-            </li>
-            <li>
-              You can remove access at any time by deleting the enterprise
-              application in your tenant.
-            </li>
-          </ul>
-
-          {contributedTenants > 0 ? (
-            <>
-              <h2
-                id="contributors"
-                className="scroll-mt-20 pt-2 text-xl font-semibold text-foreground"
-              >
-                Thank you, contributors
-              </h2>
-              <p>
-                {credits.length > 0 ? (
-                  <>
-                    Thanks to{" "}
-                    {credits.map((credit, index) => (
-                      <React.Fragment key={`${credit.name}-${index}`}>
-                        {index > 0
-                          ? index === credits.length - 1 &&
-                            anonymousTenants === 0
-                            ? " and "
-                            : ", "
-                          : null}
-                        {credit.url ? (
-                          <a
-                            className="readable-link"
-                            href={credit.url}
-                            rel="nofollow noopener noreferrer"
-                            target="_blank"
-                          >
-                            {credit.name}
-                          </a>
-                        ) : (
-                          <strong>{credit.name}</strong>
-                        )}
-                        {credit.links?.length ? (
-                          <>
-                            {" ("}
-                            {credit.links.map((link, linkIndex) => (
-                              <React.Fragment key={link}>
-                                {linkIndex > 0 ? ", " : null}
-                                <a
-                                  className="readable-link"
-                                  href={link}
-                                  rel="nofollow noopener noreferrer"
-                                  target="_blank"
-                                >
-                                  {getLinkLabel(link)}
-                                </a>
-                              </React.Fragment>
-                            ))}
-                            {")"}
-                          </>
-                        ) : null}
-                      </React.Fragment>
-                    ))}
-                    {anonymousTenants > 0
-                      ? `, and ${anonymousTenants} ${
-                          anonymousTenants === 1
-                            ? "person who prefers"
-                            : "people who prefer"
-                        } to stay anonymous,`
-                      : null}{" "}
-                    for sharing their tenant&apos;s Message Center with the
-                    archive.
-                  </>
-                ) : (
-                  <>
-                    {contributedTenants}{" "}
-                    {contributedTenants === 1 ? "tenant is" : "tenants are"}{" "}
-                    shared with the archive by people who prefer to stay
-                    anonymous. Thank you!
-                  </>
-                )}
-              </p>
-            </>
-          ) : null}
-
-          <h2 className="pt-2 text-xl font-semibold text-foreground">
-            Option 1: one-click admin consent (recommended)
-          </h2>
-          <p>
-            You need a Global Administrator or Privileged Role Administrator
-            account, because only those roles can consent to a Microsoft Graph
-            application permission. This works for tenants in the commercial
-            cloud, including GCC; GCC High, DoD, and other sovereign clouds are
-            not supported.
-          </p>
-          <ol>
-            <li>
-              Select <strong>Grant read-only access</strong> below and sign in
-              with your admin account.
-              {consentUrl ? (
-                <span className="mt-3 block">
-                  <a
-                    className={buttonVariants()}
-                    href={consentUrl}
-                    rel="nofollow"
-                  >
-                    Grant read-only access
-                  </a>
-                </span>
-              ) : (
-                <span className="mt-1 block text-sm text-muted-foreground">
-                  The one-click consent link is not available yet. Use option 2
-                  or email me and I will send you the link.
-                </span>
-              )}
-            </li>
-            <li>
-              Check that the prompt names the{" "}
-              <strong>{contribution.appName}</strong> app and lists only{" "}
-              <strong>Read service messages</strong> as the permission it
-              requests, then select <strong>Accept</strong>. This adds a{" "}
-              {contribution.appName} enterprise application to your tenant.
-            </li>
-            <li>
-              Microsoft returns you to this site, which shows your tenant ID.
-              Add any optional details (tenant type, notable licenses, and
-              whether you would like to be credited), check the email it
-              prepares, and select <strong>Send the email</strong> or copy it
-              and email it to me.
-            </li>
-            <li>
-              I confirm the app can read your Message Center, add your tenant to
-              the private list, and reply when it is live. New posts show up
-              within a few hours of the next refresh.
-            </li>
-          </ol>
-
-          <h2 className="pt-2 text-xl font-semibold text-foreground">
-            Option 2: use your own app registration
-          </h2>
-          <p>
-            Use this if your organization does not allow apps registered in
-            other tenants. You own the app and its federated credential, and can
-            remove either at any time. You need an Application Administrator to
-            create the app, and a Global Administrator or Privileged Role
-            Administrator to grant consent.
-          </p>
-          <ol>
-            <li>
-              In the{" "}
-              <Link
-                className="readable-link"
-                href="https://entra.microsoft.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade"
-              >
-                Microsoft Entra admin center
-              </Link>
-              , go to <strong>Entra ID</strong> &gt;{" "}
-              <strong>App registrations</strong> &gt;{" "}
-              <strong>New registration</strong>. Enter the name{" "}
-              <code>{contribution.appName}</code>, choose{" "}
-              <strong>Accounts in this organizational directory only</strong>,
-              leave the redirect URI empty, and select <strong>Register</strong>
-              .
-            </li>
-            <li>
-              Open <strong>API permissions</strong>. Remove the default{" "}
-              <code>User.Read</code> permission, then select{" "}
-              <strong>Add a permission</strong> &gt;{" "}
-              <strong>Microsoft Graph</strong> &gt;{" "}
-              <strong>Application permissions</strong>, tick{" "}
-              <code>ServiceMessage.Read.All</code>, and select{" "}
-              <strong>Add permissions</strong>. Select{" "}
-              <strong>Grant admin consent</strong> and confirm.
-            </li>
-            <li>
-              Open <strong>Certificates &amp; secrets</strong> &gt;{" "}
-              <strong>Federated credentials</strong> &gt;{" "}
-              <strong>Add credential</strong> and enter:
-              <ul className="mt-2">
-                <li>
-                  Federated credential scenario:{" "}
-                  <strong>GitHub Actions deploying Azure resources</strong>
-                </li>
-                <li>
-                  Organization: <code>{githubOwner}</code>
-                </li>
-                <li>
-                  Repository: <code>{githubRepo}</code>
-                </li>
-                <li>
-                  Entity type: <strong>Branch</strong>, GitHub branch name:{" "}
-                  <code>{contribution.githubBranch}</code>
-                </li>
-                <li>
-                  Name: <code>mc-archive</code>, and leave the audience as{" "}
-                  <code>api://AzureADTokenExchange</code>
-                </li>
-                <li>
-                  Next to <strong>Subject identifier</strong>, select{" "}
-                  <strong>Edit (optional)</strong> and replace it with{" "}
-                  <code className="break-all">
-                    {contribution.githubOidcSubject}
-                  </code>
-                </li>
-              </ul>
-              The repository uses GitHub&apos;s immutable subject format, so the
-              default <code>repo:{contribution.githubRepository}</code> subject
-              will not match. Do not create a client secret or certificate.
-            </li>
-            <li>
-              From the app&apos;s <strong>Overview</strong>, copy the{" "}
-              <strong>Directory (tenant) ID</strong> and{" "}
-              <strong>Application (client) ID</strong> into{" "}
-              <a className="readable-link" href={ownAppMailto}>
-                this pre-filled email
-              </a>{" "}
-              and send it. I verify the connection and reply when it is live.
-            </li>
-          </ol>
-
-          <h2 className="pt-2 text-xl font-semibold text-foreground">
-            Your privacy
-          </h2>
-          <ul>
-            <li>
-              Your email address and tenant ID are kept in a private repository
-              that only I can read, and are never published.
-            </li>
-            <li>
-              The public workflow receives tenant IDs from an encrypted GitHub
-              Actions secret, masks them in its logs, and reduces sign-in errors
-              to error codes so logs never reveal which organizations
-              contribute.
-            </li>
-            <li>
-              The archive does not record which tenant a post came from. If you
-              tell me your tenant is an education tenant, posts that only
-              education tenants received are labelled &quot;Seen in EDU
-              tenants&quot;, which never names or identifies a tenant. You are
-              only{" "}
-              {contributedTenants > 0 ? (
-                <Link className="readable-link" href="#contributors">
-                  credited
-                </Link>
-              ) : (
-                "credited"
-              )}{" "}
-              if you ask to be. Otherwise your tenant is only counted.
-            </li>
-            <li>
-              I will never ask you for a password, client secret, or
-              certificate. If anyone does in the archive&apos;s name, it is not
-              me.
-            </li>
-          </ul>
-
-          <h2 className="pt-2 text-xl font-semibold text-foreground">
-            Removing access
-          </h2>
-          <p>
-            In the Microsoft Entra admin center, go to <strong>Entra ID</strong>{" "}
-            &gt; <strong>Enterprise applications</strong>, open{" "}
-            <strong>{contribution.appName}</strong>, and select{" "}
-            <strong>Properties</strong> &gt; <strong>Delete</strong> (for option
-            2, delete the app registration). Access stops as soon as the
-            existing token expires, within an hour. Email{" "}
-            <a className="readable-link" href={`mailto:${contribution.email}`}>
-              {contribution.email}
-            </a>{" "}
-            if you would also like your details removed from my list.
+            Message Center posts differ by tenant, so some are only seen by
+            education, government or specially licensed tenants.{" "}
+            {contributedTenants > 0
+              ? `${contributedTenants} ${
+                  contributedTenants === 1 ? "tenant is" : "tenants are"
+                } shared with the archive so far, including education tenants.`
+              : null}
           </p>
           <p>
-            Questions first? Reach out through{" "}
+            If you manage a tenant, you can let the archive read its Message
+            Center. It is read-only, takes about five minutes, and there is no
+            password or secret to share.
+          </p>
+          <p>
             <Link
-              className="readable-link"
-              href="https://linkedin.com/in/merill"
+              className={buttonVariants({ variant: "outline" })}
+              href="/contribute"
             >
-              LinkedIn
+              Contribute your tenant
             </Link>
-            ,{" "}
-            <Link className="readable-link" href="https://twitter.com/merill">
-              X
-            </Link>
-            , or{" "}
-            <Link
-              className="readable-link"
-              href="https://bsky.app/profile/merill.net"
-            >
-              Bluesky
-            </Link>
-            .
           </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Release notes</CardTitle>
+          <IconTitle icon={History}>Release notes</IconTitle>
         </CardHeader>
         <CardContent className="readable-card-content space-y-5">
           <div>
@@ -427,6 +216,30 @@ export default function AboutPage() {
               October 13, 2026
             </h2>
             <ul>
+              <li>
+                The list on the home page has View options: show major changes
+                only, hide expired posts, choose the sort order, and add or
+                remove the Source, Service and Last updated columns.
+              </li>
+              <li>
+                You can save what you have set up as a named view, such as
+                &quot;My products&quot;, and switch between views from the tabs
+                above the list. Saving needs a free zap.ms account, so your
+                views follow you to any browser; the list opens in the view you
+                used last.
+              </li>
+              <li>
+                The home page no longer repeats the site&apos;s name in large
+                type. One line says what the site is and links to this page.
+              </li>
+              <li>
+                This page now covers likes, comments and saved views. The
+                step-by-step guide to contributing a tenant moved to its own{" "}
+                <Link className="readable-link" href="/contribute">
+                  Contribute your tenant
+                </Link>{" "}
+                page.
+              </li>
               <li>
                 A strip at the top of every page announces that you can like
                 and comment on Message Center posts. It opens a new{" "}
