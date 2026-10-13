@@ -1,7 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { Check, MoreHorizontal, Plus, SlidersHorizontal } from "lucide-react"
+import {
+  Check,
+  MoreHorizontal,
+  Plus,
+  Save,
+  SlidersHorizontal,
+} from "lucide-react"
 
 import {
   clearPendingView,
@@ -291,9 +297,13 @@ export function ViewsBar({
             <Button
               type="button"
               size="sm"
-              className="h-8"
+              // Grey, not the solid fill: that marks the chosen source in the
+              // row below, and a save is something to press, not a setting.
+              variant="secondary"
+              className="h-8 gap-1.5"
               onClick={updateActive}
             >
+              <Save size={15} />
               Save changes
             </Button>
           )}
@@ -303,8 +313,9 @@ export function ViewsBar({
               <Button
                 type="button"
                 size="sm"
-                // Stands out once there is something worth keeping.
-                variant={changed && !active ? "default" : "outline"}
+                // Stands out once there is something worth keeping, in the
+                // same grey as Save changes.
+                variant={changed && !active ? "secondary" : "outline"}
                 className="h-8 gap-1.5"
                 aria-expanded={panel === "save"}
                 onClick={() => toggle("save")}

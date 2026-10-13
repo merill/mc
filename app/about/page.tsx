@@ -235,6 +235,14 @@ export default function AboutPage() {
                 history like every other post.
               </li>
               <li>
+                When a service filter or a View option leaves the list empty,
+                it now says &quot;Showing 0 of&quot; however many posts that
+                source has, names the filters to check, and offers a button to
+                clear them. Azure names its products differently from Microsoft
+                365 services, so a service picked for Message Center matches no
+                Azure update.
+              </li>
+              <li>
                 Version history opens on the post&apos;s own page instead of on
                 a page per version. Every post still lists its versions and
                 which fields changed in each. Opening a version, or comparing

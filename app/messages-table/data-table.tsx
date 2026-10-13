@@ -40,6 +40,7 @@ import { useZapCounts } from "@/lib/use-zap-counts"
 import {
   DEFAULT_VIEW,
   OPTIONAL_COLUMNS,
+  describeNarrowing,
   inView,
   type ViewSettings,
 } from "@/lib/views"
@@ -64,6 +65,14 @@ const searchSortKeys: Record<string, SearchSortKey> = {
   title: "title",
   lastUpdated: "date",
 }
+
+// How the empty list names the source it was asked for.
+const sourceNames = {
+  all: "",
+  messageCenter: "Message Center ",
+  roadmap: "Microsoft 365 Roadmap ",
+  azure: "Azure Updates ",
+} as const
 
 const rowBatchSize = 200
 const searchBatchSize = 25
@@ -367,6 +376,25 @@ export function DataTable<TData, TValue>({
       hideExpired: view.hideExpired,
       columns: view.columns,
     })
+  }
+
+  // Filters besides the source that are narrowing the list, how many posts
+  // the source has without them, and the way out when they leave nothing.
+  const narrowing = describeNarrowing(viewSettings)
+  const sourceTotal = React.useMemo(
+    () =>
+      allData.filter((item) =>
+        inView(item as MessageView, { ...DEFAULT_VIEW, source: sourceFilter })
+      ).length,
+    [allData, sourceFilter]
+  )
+  const clearNarrowing = () => {
+    updateFilters({ selectedServices: [] })
+    setViewExtras((extras) => ({
+      ...extras,
+      majorOnly: false,
+      hideExpired: false,
+    }))
   }
 
   const toggleService = (service: string) => {
@@ -744,11 +772,35 @@ export function DataTable<TData, TValue>({
                   colSpan={table.getVisibleLeafColumns().length}
                   className="h-24 text-center"
                 >
-                  {isSearchActive && isSearchLoading
-                    ? "Searching…"
-                    : isSearchActive
-                    ? "No messages match this search."
-                    : "No results."}
+                  {isSearchActive && isSearchLoading ? (
+                    "Searching…"
+                  ) : isSearchActive ? (
+                    "No messages match this search."
+                  ) : !isArchiveSettled ? (
+                    // Older posts are still on their way and may match.
+                    "Loading…"
+                  ) : narrowing.length > 0 && sourceTotal > 0 ? (
+                    <div className="flex flex-col items-center gap-2 py-4">
+                      <p className="font-medium text-foreground">
+                        Showing 0 of {sourceTotal} {sourceNames[sourceFilter]}
+                        posts
+                      </p>
+                      <p className="text-muted-foreground">
+                        Check your filters: {narrowing.join(", ")}.
+                      </p>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        className="mt-1"
+                        onClick={clearNarrowing}
+                      >
+                        Clear filters
+                      </Button>
+                    </div>
+                  ) : (
+                    "No results."
+                  )}
                 </TableCell>
               </TableRow>
             )}
