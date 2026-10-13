@@ -47,6 +47,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+        with:
+          # Refreshes run one at a time, so an earlier one may have pushed by
+          # the time a queued run starts. Take the branch as it is now rather
+          # than the commit that triggered the run, or this run's own push is
+          # rejected. Pull requests keep the default, their merge commit.
+          ref: ${{ github.event_name != 'pull_request' && github.ref_name || '' }}
       - name: Get Message Center, Roadmap and Azure data
         env:
           DISCORD_ENTRA_SCOUT_WEBHOOK_URL: ${{ secrets.DISCORD_ENTRA_SCOUT_WEBHOOK_URL }}

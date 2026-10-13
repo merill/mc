@@ -287,6 +287,12 @@ export default function AboutPage() {
                 help, with an example discussion. Dismissing the strip is
                 remembered in your browser.
               </li>
+              <li>
+                Posts no longer show as expired when one of the tenants
+                contributing to the archive cannot be reached. They stay as they
+                were until that tenant answers again or the post reaches its own
+                end date.
+              </li>
             </ul>
           </div>
           <div>
