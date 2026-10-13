@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-generally-available-sdk-type-bindings-in-azure-functions",
+  "Title": "Generally Available: SDK type bindings in Azure Functions",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2023-08-16T17:00:11.000Z",
+  "LastModifiedDateTime": "2023-08-16T17:00:11.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Functions"
+  ],
+  "Tags": [
+    "Features",
+    "SDK and Tools"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure Functions triggers and bindings enable function authors to easily integrate event and data sources. Today, function apps on the isolated worker model can leverage general availability support for an expanded range of types, such as those from the Azure SDK for .NET.</p>\r\n\r\n<p>Now, a .NET function in an isolated worker process could, for example, start with a <a href=\"https://learn.microsoft.com/en-us/dotnet/api/azure.storage.blobs.blobclient?view=azure-dotnet\" target=\"_blank\" rel=\"noopener\">BlobClient</a> passed into it. Using that type, the function can stream data incrementally and process larger blobs than it could before. Some workloads may see throughput improvements as well. Function authors should be aware that if a binding expression relies on trigger data, the trigger itself cannot be one of the newly supported types.</p>\r\n\r\n<p>Support covers the extensions for Blobs, Queues, Tables, Cosmos DB, Event Hubs, Event Grid, and Service Bus. Support for the Service Bus trigger does not yet cover message settlement scenarios, but this general availability update does enable use of `ServiceBusReceivedMessage`.</p>\r\n\r\n<p>You can learn more about this support from the <a href=\"https://learn.microsoft.com/azure/azure-functions/dotnet-isolated-process-guide#sdk-types\" target=\"_blank\" rel=\"noopener\">documentation</a>.</p>\r\n",
+    "Markdown": "Azure Functions triggers and bindings enable function authors to easily integrate event and data sources. Today, function apps on the isolated worker model can leverage general availability support for an expanded range of types, such as those from the Azure SDK for .NET.\n\nNow, a .NET function in an isolated worker process could, for example, start with a BlobClient passed into it. Using that type, the function can stream data incrementally and process larger blobs than it could before. Some workloads may see throughput improvements as well. Function authors should be aware that if a binding expression relies on trigger data, the trigger itself cannot be one of the newly supported types.\n\nSupport covers the extensions for Blobs, Queues, Tables, Cosmos DB, Event Hubs, Event Grid, and Service Bus. Support for the Service Bus trigger does not yet cover message settlement scenarios, but this general availability update does enable use of `ServiceBusReceivedMessage`.\n\nYou can learn more about this support from the documentation ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "generally-available-sdk-type-bindings-in-azure-functions"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=generally-available-sdk-type-bindings-in-azure-functions"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: August 2023"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Containers, Internet of Things"
+    }
+  ]
+}

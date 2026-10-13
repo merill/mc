@@ -1,0 +1,49 @@
+{
+  "Id": "AZ496287",
+  "Title": "Generally Available: Entra ID and RBAC support for GetAccountInfo and other supplemental APIs for Azure Storage",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2025-08-26T17:45:29.376Z",
+  "LastModifiedDateTime": "2025-08-26T17:45:29.376Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Blob Storage"
+  ],
+  "Tags": [
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<div><span><span>To align with security best practices, </span><span>Entra ID and RBAC support is now generally available for the following </span><span>APIs</span><span>&nbsp;for Azure Storage</span><span>:</span><span>&nbsp;</span></span></div><ul><li><p><span></span><a href=\"https://learn.microsoft.com/rest/api/storageservices/get-account-information?tabs=microsoft-entra-id#authorization\" target=\"_blank\" rel=\"noopener\"><span><span>Get Account Information</span></span></a></p></li><li><p><span></span><a href=\"https://learn.microsoft.com/rest/api/storageservices/get-container-acl?tabs=microsoft-entra-id#authorization\" target=\"_blank\" rel=\"noopener\"><span><span>Get Container ACL</span></span></a></p></li><li><p><span></span><a href=\"https://learn.microsoft.com/rest/api/storageservices/set-container-acl?tabs=microsoft-entra-id#authorization\" target=\"_blank\" rel=\"noopener\"><span><span>Set Container ACL</span></span></a></p></li><li><p><span></span><a href=\"https://learn.microsoft.com/rest/api/storageservices/get-queue-acl?tabs=microsoft-entra-id#authorization\" target=\"_blank\" rel=\"noopener\"><span><span>Get Queue ACL</span></span></a></p></li><li><p><span></span><a href=\"https://learn.microsoft.com/rest/api/storageservices/set-queue-acl?tabs=microsoft-entra-id#authorization\" target=\"_blank\" rel=\"noopener\"><span><span>Set Queue ACL</span></span></a></p></li><li><p><span></span><a href=\"https://learn.microsoft.com/rest/api/storageservices/get-table-acl?tabs=microsoft-entra-id#authorization\" target=\"_blank\" rel=\"noopener\"><span><span>Get Table ACL</span></span></a></p></li><li><p><span></span><a href=\"https://learn.microsoft.com/rest/api/storageservices/set-table-acl?tabs=microsoft-entra-id#authorization\" target=\"_blank\" rel=\"noopener\"><span><span>Set Table ACL</span></span></a></p></li></ul><div><p><span><span>&nbsp;</span></span></p></div><div><p><span><span>To learn more, refer </span><span>to</span><span>&nbsp;</span></span><a href=\"https://learn.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-blob-service-operations\" target=\"_blank\" rel=\"noopener\"><span><span>Authorize with Microsoft Entra ID (REST API) - Azure Storage | Microsoft Learn.</span></span></a></p></div><div><p><br></p></div><div><p><span><span>These APIs now support OAuth 2.0 based Authenticati</span><span>on via Entra I</span><span>D on storage. </span><span>A</span><span>s part of this </span><span>enhanc</span><span>eme</span><span>nt</span><span>&nbsp;the REST API responses for unauthorized access have been changed</span><span>.&nbsp;</span><span>&nbsp;</span><span>Previously, if</span><span>&nbsp;</span><span>you</span><span>&nbsp;tr</span><span>ie</span><span>d</span><span>&nbsp;</span><span>to</span><span>&nbsp;use the</span><span>se</span><span>&nbsp;APIs with OAuth, we </span><span>returned a </span><span>404 status</span><span>&nbsp;code</span><span>. Now, if </span><span>you</span><span>&nbsp;</span><span>use th</span><span>ese</span><span>&nbsp;APIs with</span><span>&nbsp;OAuth </span><span>but do not have</span><span>&nbsp;the</span><span>&nbsp;</span><span>right</span><span>&nbsp;</span><span>permission</span><span>s</span><span>&nbsp;(</span><span>e.g.</span><span>&nbsp;</span></span><span><span>GetAccountInformation</span><span>&nbsp;</span><span>requires</span><span>&nbsp;Azure RBAC action: </span><span>Microsoft.Storage</span><span>/</span><span>storageAccounts</span><span>/</span><span>blobServices</span><span>/</span><span>getInfo</span><span>/action)</span></span><span><span>,</span><span>&nbsp;we will return </span><span>a </span><span>403 status</span><span>&nbsp;code</span><span>&nbsp;(unauthorized access)</span><span>.</span><span>&nbsp;</span><span>If </span><span>you</span><span>&nbsp;</span><span>send</span><span>&nbsp;an</span><span>&nbsp;anonymous request </span><span>for </span></span><a href=\"https://learn.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#bearer-challenge\" target=\"_blank\" rel=\"noopener\"><span><span>bearer challenge</span></span></a><span><span>, </span><span>we will return </span><span>a </span><span>401 status</span><span>&nbsp;code</span><span>, which is the same behavior as with the other APIs</span><span>. </span><span>If you have taken a dependency on </span><span>the </span><span>404 </span><span>error</span><span>&nbsp;code for th</span><span>e</span><span>se operations</span><span>, </span><span>we recommend that you change your </span><span>application code </span><span>to support both 404 and 403 error codes</span><span>, since the SDKs will not automatically </span><span>make this change. </span><span>Note that t</span><span>he best practice </span><span>for checking unsupported APIs is not to take a dependency on error codes, but </span><span>to </span><span>refer to</span><span>&nbsp;</span></span><a href=\"https://learn.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory\" target=\"_blank\" rel=\"noopener\"><span><span>Authorize with Microsoft Entra ID (REST API) - Azure Storage | Microsoft Learn.</span></span></a> </p></div>",
+    "Markdown": "To align with security best practices, Entra ID and RBAC support is now generally available for the following APIs for Azure Storage :\n\nGet Account Information\n\nGet Container ACL\n\nSet Container ACL\n\nGet Queue ACL\n\nSet Queue ACL\n\nGet Table ACL\n\nSet Table ACL\n\nTo learn more, refer to Authorize with Microsoft Entra ID (REST API) - Azure Storage | Microsoft Learn.\n\nThese APIs now support OAuth 2.0 based Authenticati on via Entra I D on storage. A s part of this enhanc eme nt the REST API responses for unauthorized access have been changed . Previously, if you tr ie d to use the se APIs with OAuth, we returned a 404 status code . Now, if you use th ese APIs with OAuth but do not have the right permission s ( e.g. GetAccountInformation requires Azure RBAC action: Microsoft.Storage / storageAccounts / blobServices / getInfo /action) , we will return a 403 status code (unauthorized access) . If you send an anonymous request for bearer challenge , we will return a 401 status code , which is the same behavior as with the other APIs . If you have taken a dependency on the 404 error code for th e se operations , we recommend that you change your application code to support both 404 and 403 error codes , since the SDKs will not automatically make this change. Note that t he best practice for checking unsupported APIs is not to take a dependency on error codes, but to refer to Authorize with Microsoft Entra ID (REST API) - Azure Storage | Microsoft Learn."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "496287"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=496287"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: April 2025"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Storage"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-azure-api-management-update-january-2020",
+  "Title": "Azure API Management update—January 2020",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-01-23T18:00:14.000Z",
+  "LastModifiedDateTime": "2020-01-23T18:00:14.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "API Management"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>A regular Azure API Management service update was started on January 22, 2019, and included the following new features, bug fixes, and changes, along with other improvements. It may take over a week for your API Management service to receive the update.</p>\r\n\r\n<p><strong>New</strong></p>\r\n\r\n<ol>\r\n\t<li>You can now create Consumption tier API Management services in South Africa North Azure region.</li>\r\n\t<li>The rate-limit and rate-limit-by-key policies can now output the number of remaining calls and the retry-after period into response headers or policy expression variables, using the following new attributes: retry-after-header-name, remaining-calls-header-name, retry-after-variable-name, remaining-calls-variable-name. For example:<br>\r\n\t<br>\r\n\t<code>&lt;rate-limit-by-key calls=&quot;5&quot; renewal-period=&quot;30&quot; counter-key=&quot;test&quot;&nbsp; remaining-calls-variable-name=remainingCallsPerIp&quot;&quot;/&gt;</code><br>\r\n\t<code>&lt;rate-limit calls=&quot;20&quot; renewal-period=&quot;90&quot;&nbsp; remaining-calls-variable-name=&quot;remainingCallsPerSubscription&quot;/&gt;</code><br>\r\n\t<br>\r\n\t<code>&lt;choose&gt;</code><br>\r\n\t<code>&nbsp; &lt;when condition=&quot;@(((int)context.Variables[&quot;remainingCallsPerIp&quot;]) &gt;= 0)&quot;&gt;</code><br>\r\n\t<code>&nbsp;&nbsp;&nbsp; &lt;set-header name=&quot;x-remaining-calls&quot; exists-action=&quot;override&quot;&gt;</code><br>\r\n\t<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;value&gt;@(System.Math.Min(((int)context.Variables[&quot;remainingCallsPerIp&quot;]), ((int)context.Variables[&quot;remainingCallsPerSubscription&quot;])).ToString())&lt;/value&gt;</code><br>\r\n\t<code>&nbsp;&nbsp;&nbsp; &lt;/set-header&gt;</code><br>\r\n\t<code>&nbsp; &lt;/when&gt;</code><br>\r\n\t<code>&lt;/choose&gt;&nbsp;</code></li>\r\n</ol>\r\n\r\n<p>Documentation is coming soon.</p>\r\n\r\n<ol>\r\n\t<li>The authentication-certificate policy now supports certificates from a raw byte array. It accepts two new attributes: body (of type byte[]) and password (string). You can refer to an <a href=\"https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml\" target=\"_blank\" rel=\"noopener\">example of retrieving a certificate from Azure Key Vault and using it to authenticate a call with the backend</a>. Documentation is coming soon.</li>\r\n\t<li>You can now use a new JSON parsing API in policy expressions:<br>\r\n\t<code>context.Request.Body.AsJToken(bool preserveContent = false, JsonSerializerSettings settings = null), context.Request.Body.AsJObject(bool preserveContent = false, JsonSerializerSettings settings = null), context.Request.Body.AsJArray(bool preserveContent = false, JsonSerializerSettings settings = null).</code><br>\r\n\tThe same methods can be used on context.Response.</li>\r\n\t<li>New developer portal now supports the invitation flow for new users. A link in the email redirects to a form to setup user&rsquo;s password.</li>\r\n</ol>\r\n\r\n<p><strong>Fixed</strong></p>\r\n\r\n<ol>\r\n\t<li>Suspended Consumption tier services with invalid CNAME records (for example, custom hostname not pointing to the default API Management hostname or expired certificate) can now be activated after removing the invalid hostname configuration. Previously, such services couldn&rsquo;t be activated.</li>\r\n</ol>\r\n\r\n<p><strong>Changed</strong></p>\r\n\r\n<ol>\r\n\t<li>Developer portal now enforces HTTPs connection.</li>\r\n\t<li>Authentication delegation logic in the new portal has been migrated from the client side to the backend.</li>\r\n\t<li>The new developer portal endpoint has been optimized, reducing the loading times even by an order of magnitude.</li>\r\n\t<li>Average aggregation option for requests metrics&nbsp;in Azure Monitor is no longer available.</li>\r\n</ol>\r\n\r\n<p>New developer portal follows an independent release lifecycle and the <a href=\"https://aka.ms/apimdevportal/releases\" target=\"_blank\" rel=\"noopener\">per-release changelog is available on GitHub</a>. In particular, the latest release 2.2.0 contains changes necessary for extensibility of the portal with custom widgets. Refer to <a href=\"https://aka.ms/apimdevportal/extend\" target=\"_blank\" rel=\"noopener\">the project&rsquo;s wiki for more details</a>.</p>\r\n\r\n<p><a href=\"https://azure.microsoft.com/en-us/updates/azure-api-management-update-january-2020/\" target=\"_blank\" rel=\"noopener\">Learn more</a></p>\r\n",
+    "Markdown": "A regular Azure API Management service update was started on January 22, 2019, and included the following new features, bug fixes, and changes, along with other improvements. It may take over a week for your API Management service to receive the update.\n\nNew\n\nYou can now create Consumption tier API Management services in South Africa North Azure region.\n\nThe rate-limit and rate-limit-by-key policies can now output the number of remaining calls and the retry-after period into response headers or policy expression variables, using the following new attributes: retry-after-header-name, remaining-calls-header-name, retry-after-variable-name, remaining-calls-variable-name. For example:\n\n<rate-limit-by-key calls=\"5\" renewal-period=\"30\" counter-key=\"test\" remaining-calls-variable-name=remainingCallsPerIp\"\"/>\n\n<rate-limit calls=\"20\" renewal-period=\"90\" remaining-calls-variable-name=\"remainingCallsPerSubscription\"/>\n\n<choose>\n\n<when condition=\"@(((int)context.Variables[\"remainingCallsPerIp\"]) >= 0)\">\n\n<set-header name=\"x-remaining-calls\" exists-action=\"override\">\n\n<value>@(System.Math.Min(((int)context.Variables[\"remainingCallsPerIp\"]), ((int)context.Variables[\"remainingCallsPerSubscription\"])).ToString())</value>\n\n</set-header>\n\n</when>\n\n</choose>\n\nDocumentation is coming soon.\n\nThe authentication-certificate policy now supports certificates from a raw byte array. It accepts two new attributes: body (of type byte[]) and password (string). You can refer to an example of retrieving a certificate from Azure Key Vault and using it to authenticate a call with the backend . Documentation is coming soon.\n\nYou can now use a new JSON parsing API in policy expressions:\n\ncontext.Request.Body.AsJToken(bool preserveContent = false, JsonSerializerSettings settings = null), context.Request.Body.AsJObject(bool preserveContent = false, JsonSerializerSettings settings = null), context.Request.Body.AsJArray(bool preserveContent = false, JsonSerializerSettings settings = null).\n\nThe same methods can be used on context.Response.\n\nNew developer portal now supports the invitation flow for new users. A link in the email redirects to a form to setup user’s password.\n\nFixed\n\nSuspended Consumption tier services with invalid CNAME records (for example, custom hostname not pointing to the default API Management hostname or expired certificate) can now be activated after removing the invalid hostname configuration. Previously, such services couldn’t be activated.\n\nChanged\n\nDeveloper portal now enforces HTTPs connection.\n\nAuthentication delegation logic in the new portal has been migrated from the client side to the backend.\n\nThe new developer portal endpoint has been optimized, reducing the loading times even by an order of magnitude.\n\nAverage aggregation option for requests metrics in Azure Monitor is no longer available.\n\nNew developer portal follows an independent release lifecycle and the per-release changelog is available on GitHub . In particular, the latest release 2.2.0 contains changes necessary for extensibility of the portal with custom widgets. Refer to the project’s wiki for more details .\n\nLearn more"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-api-management-update-january-2020"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-api-management-update-january-2020"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: January 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Integration, Internet of Things, Mobile, Web"
+    }
+  ]
+}

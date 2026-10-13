@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-azure-network-watcher-network-security-group-flow-logs-blob-storage-path-update",
+  "Title": "Azure Network Watcher: Blob storage path update for NSG flow logs",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2017-07-15T00:00:01.000Z",
+  "LastModifiedDateTime": "2017-07-15T00:00:01.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Network Watcher"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>On <em>Monday, July 31,&nbsp;2017</em>, the <a href=\"https://azure.microsoft.com/en-us/services/network-watcher/\" target=\"_blank\" rel=\"noopener\">Azure Network Watcher</a> team will begin rolling out a change to the blob format used for saving Network Security Group (NSG) <a href=\"https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-overview\" target=\"_blank\" rel=\"noopener\">flow logs</a> to Azure Blob storage. This change is based on&nbsp;requests to increase the granularity for&nbsp;NSG flow logs.&nbsp;It does not affect the&nbsp;JSON schema for flow logs.</p>\r\n\r\n<p>The new path format will include the network interface MAC address in the blob path. Although the format of NSG flow logs will not change, blobs will&nbsp;then&nbsp;contain only NSG logs for the network interface referenced in the MAC address by path. This enables you to selectively sort, filter, and process flow logs by MAC address.</p>\r\n\r\n<p><strong>Current path format:</strong></p>\r\n\r\n<p>&ldquo;/insights-logsnetworksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RES OURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYG ROUPS/AUDITNSG/y={year}/m={month}/d={day}/h={hour}/m=00/PT1H.json&rdquo;</p>\r\n\r\n<p><strong>Sample of current path format:</strong></p>\r\n\r\n<p>&ldquo;/insights-logsnetworksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/00000000-0000-0000- 0000-000000000000/RESOURCEGROUPS/ContosoRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSEC URITYGROUPS/AUDITNSG/y=2017/m=07/d=12/h=02/m=00/PT1H.json&rdquo;</p>\r\n\r\n<p><strong>Updated path format:</strong></p>\r\n\r\n<p>&ldquo;/insights-logsnetworksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RES OURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYG ROUPS/AUDITNSG/y={year}/m={month}/d={day}/h={hour}/m=00/<strong>macAddress={macAddress}</strong>/PT1H.json&rdquo;</p>\r\n\r\n<p><strong>Sample of updated path format:</strong></p>\r\n\r\n<p>&ldquo;/insights-logsnetworksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/00000000-0000-0000- 0000- 000000000000/RESOURCEGROUPS/ContosoRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSEC URITYGROUPS/AUDITNSG/y=2017/m=07/d=31/h=02/m=00/<strong>macAddress=00125A011101</strong>/PT1H .json&rdquo;</p>\r\n\r\n<p>When this change takes effect, the NSGs that you have enabled for flow logs will begin writing flow logs by using the updated path format. This change will not&nbsp;affect your NSG flows being written to storage. Please ensure that any of your integrations or applications&nbsp;that use NSG flow logs comply with the updated blob path format. If you have any questions or concerns, contact <a href=\"mailto:AzureNetworkWatcher@microsoft.com\" target=\"_blank\" rel=\"noopener\">AzureNetworkWatcher@microsoft.com</a>.</p>\r\n",
+    "Markdown": "On Monday, July 31, 2017 , the Azure Network Watcher team will begin rolling out a change to the blob format used for saving Network Security Group (NSG) flow logs to Azure Blob storage. This change is based on requests to increase the granularity for NSG flow logs. It does not affect the JSON schema for flow logs.\n\nThe new path format will include the network interface MAC address in the blob path. Although the format of NSG flow logs will not change, blobs will then contain only NSG logs for the network interface referenced in the MAC address by path. This enables you to selectively sort, filter, and process flow logs by MAC address.\n\nCurrent path format:\n\n“/insights-logsnetworksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RES OURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYG ROUPS/AUDITNSG/y={year}/m={month}/d={day}/h={hour}/m=00/PT1H.json”\n\nSample of current path format:\n\n“/insights-logsnetworksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/00000000-0000-0000- 0000-000000000000/RESOURCEGROUPS/ContosoRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSEC URITYGROUPS/AUDITNSG/y=2017/m=07/d=12/h=02/m=00/PT1H.json”\n\nUpdated path format:\n\n“/insights-logsnetworksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RES OURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYG ROUPS/AUDITNSG/y={year}/m={month}/d={day}/h={hour}/m=00/ macAddress={macAddress} /PT1H.json”\n\nSample of updated path format:\n\n“/insights-logsnetworksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/00000000-0000-0000- 0000- 000000000000/RESOURCEGROUPS/ContosoRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSEC URITYGROUPS/AUDITNSG/y=2017/m=07/d=31/h=02/m=00/ macAddress=00125A011101 /PT1H .json”\n\nWhen this change takes effect, the NSGs that you have enabled for flow logs will begin writing flow logs by using the updated path format. This change will not affect your NSG flows being written to storage. Please ensure that any of your integrations or applications that use NSG flow logs comply with the updated blob path format. If you have any questions or concerns, contact AzureNetworkWatcher@microsoft.com ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-network-watcher-network-security-group-flow-logs-blob-storage-path-update"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-network-watcher-network-security-group-flow-logs-blob-storage-path-update"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: July 2017"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance, Networking"
+    }
+  ]
+}

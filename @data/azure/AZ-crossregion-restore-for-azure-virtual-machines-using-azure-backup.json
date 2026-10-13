@@ -1,0 +1,43 @@
+{
+  "Id": "AZ-crossregion-restore-for-azure-virtual-machines-using-azure-backup",
+  "Title": "Cross-region restore for Azure Virtual Machines using Azure Backup",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-04-29T16:00:05.000Z",
+  "LastModifiedDateTime": "2020-04-29T16:00:05.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p><strong>Cross-region restore for Azure Virtual Machines</strong> using Azure Backup is now available in preview.&nbsp;</p>\r\n\r\n<p>With the introduction of cross-region restore, you can now initiate restores in a secondary region <em>at will</em> to mitigate real downtime issues in a primary region for your environment. This makes the secondary region restores completely<em> customer controlled</em>. Azure Backup uses the backed-up data replicated to the secondary region for such restores.&nbsp;</p>\r\n\r\n<p>Azure Backup uses <a href=\"https://docs.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview\" target=\"_blank\" rel=\"noopener\">Recovery Services Vault</a> to hold backup data, offering both local and geo redundancy. To ensure <strong>high availability</strong> of backed-up data, Azure Backup defaults storage settings to geo redundancy. As a result of this, backed-up data in a primary region is geo replicated to an <a href=\"https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions#azure-regional-pairs\" target=\"_blank\" rel=\"noopener\">Azure-paired secondary region</a>. So when Azure has an outage in a primary region, the data replicated in a secondary region is available to restore in a secondary region <em>only</em>. Use the new cross-region restore feature to mitigate issues in the primary region.</p>\r\n\r\n<p>Take advantage of the secondary region data using this feature for these scenarios:</p>\r\n\r\n<ul>\r\n\t<li><strong>Full outage&mdash;</strong>Previously, if there was an Azure Primary region disaster, then you had to wait for Azure to declare an outageto access your secondary region data. Now, you can use the cross region restore feature to initiate restores in a secondary region even before Azure declares an outage,&nbsp; so now there&rsquo;s <strong>no wait time</strong> to recover data in a secondary region.</li>\r\n\t<li><strong>Partial outage&mdash;</strong> Previously, it wasn&rsquo;t possible to perform restores to either a primary or a secondary region during a partial outage. Now, use cross region restore to perform restore in a secondary region using a replica of backed-up data in the secondary region.</li>\r\n\t<li><strong>No outage</strong><em>&mdash;</em>Previously, there was no provision to conduct BCDR drills for audit or compliance purposes with the secondary region data. Now, use this new feature to perform restore of backed up data in a secondary region even without a full or partial outage in a primary region for BCDR drills.&nbsp;</li>\r\n</ul>\r\n\r\n<p>Azure Backup uses Storage account&rsquo;s <a href=\"https://docs.microsoft.com/en-us/archive/blogs/windowsazurestorage/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage#introducing-read-only-access-to-geo-redundant-storage-ra-grs\" target=\"_blank\" rel=\"noopener\"> read-only access to geo redundant Storage (RA-GRS) capability</a> to support restores from a secondary region. Note that due to a <a href=\"https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region\" target=\"_blank\" rel=\"noopener\">delay in storage replication</a> from primary to secondary regions, there will be a latency in the availability of backed-up data for restore in a secondary region.</p>\r\n\r\n<p><a href=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/bb28776f-d671-4a5a-94e0-884a4165aff7.jpg\" target=\"_blank\" rel=\"noopener\"><img alt=\"5ebad741-fe82-4bac-a7fb-85372bf8ad3a\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/1b3abcfb-ebfb-45da-a6d4-eede0f750abf.jpg\" title=\"5ebad741-fe82-4bac-a7fb-85372bf8ad3a\"></a></p>\r\n\r\n<p>Key features include:</p>\r\n\r\n<ul>\r\n\t<li>Self-service recoveries of secondary backed up data in secondary region.</li>\r\n\t<li>The ability to conduct BCDR drills for auditor compliance anytime.</li>\r\n\t<li>High availability of Backup data during the partial or full outages of an Azure region.</li>\r\n</ul>\r\n\r\n<p>With this preview, Azure Backup will support restoring Azure Virtual Machines as well as disks from a secondary region.</p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/backup/backup-create-rs-vault#set-cross-region-restore\" target=\"_blank\" rel=\"noopener\">Learn how to enable this feature</a></p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#cross-region-restore\" target=\"_blank\" rel=\"noopener\">Learn more and sign up for the preview</a></p>\r\n\r\n<p><a href=\"https://aka.ms/azure-backup-support-forum\" target=\"_blank\" rel=\"noopener\">Contact support</a></p>\r\n",
+    "Markdown": "Cross-region restore for Azure Virtual Machines using Azure Backup is now available in preview.\n\nWith the introduction of cross-region restore, you can now initiate restores in a secondary region at will to mitigate real downtime issues in a primary region for your environment. This makes the secondary region restores completely customer controlled . Azure Backup uses the backed-up data replicated to the secondary region for such restores.\n\nAzure Backup uses Recovery Services Vault to hold backup data, offering both local and geo redundancy. To ensure high availability of backed-up data, Azure Backup defaults storage settings to geo redundancy. As a result of this, backed-up data in a primary region is geo replicated to an Azure-paired secondary region . So when Azure has an outage in a primary region, the data replicated in a secondary region is available to restore in a secondary region only . Use the new cross-region restore feature to mitigate issues in the primary region.\n\nTake advantage of the secondary region data using this feature for these scenarios:\n\nFull outage— Previously, if there was an Azure Primary region disaster, then you had to wait for Azure to declare an outageto access your secondary region data. Now, you can use the cross region restore feature to initiate restores in a secondary region even before Azure declares an outage, so now there’s no wait time to recover data in a secondary region.\n\nPartial outage— Previously, it wasn’t possible to perform restores to either a primary or a secondary region during a partial outage. Now, use cross region restore to perform restore in a secondary region using a replica of backed-up data in the secondary region.\n\nNo outage — Previously, there was no provision to conduct BCDR drills for audit or compliance purposes with the secondary region data. Now, use this new feature to perform restore of backed up data in a secondary region even without a full or partial outage in a primary region for BCDR drills.\n\nAzure Backup uses Storage account’s read-only access to geo redundant Storage (RA-GRS) capability to support restores from a secondary region. Note that due to a delay in storage replication from primary to secondary regions, there will be a latency in the availability of backed-up data for restore in a secondary region.\n\nKey features include:\n\nSelf-service recoveries of secondary backed up data in secondary region.\n\nThe ability to conduct BCDR drills for auditor compliance anytime.\n\nHigh availability of Backup data during the partial or full outages of an Azure region.\n\nWith this preview, Azure Backup will support restoring Azure Virtual Machines as well as disks from a secondary region.\n\nLearn how to enable this feature\n\nLearn more and sign up for the preview\n\nContact support"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "crossregion-restore-for-azure-virtual-machines-using-azure-backup"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=crossregion-restore-for-azure-virtual-machines-using-azure-backup"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: April 2020"
+    }
+  ]
+}

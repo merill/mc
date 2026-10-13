@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-azure-api-management-update-jan-25",
+  "Title": "Azure API Management update January 25",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-01-26T01:31:22.000Z",
+  "LastModifiedDateTime": "2019-01-26T01:31:22.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "API Management"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>On January 25, we&nbsp;started a regular Azure API Management service update. It includes the following bug fixes, changes, and new features:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>We added <a href=\"https://tools.ietf.org/html/rfc7516\" target=\"_blank\" rel=\"noopener\">JWE</a> support to the&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/api-management/api-management-access-restriction-policies#ValidateJWT\" target=\"_blank\" rel=\"noopener\">validate-jwt</a> policy. We added a new <strong>decryption-keys</strong>&nbsp;element&nbsp;to the policy definition. (It must be placed between the <strong>issuer-signing-keys</strong>&nbsp;and <strong>audiences</strong>&nbsp;elements.) It can contain multiple <strong>key</strong>&nbsp;elements structured similarly to the <strong>issuer-signing-keys/key</strong> elements. Only&nbsp;JWTs with the&nbsp;<strong>alg</strong> property set to <strong>dir</strong>&nbsp;(symmetric keys) and the&nbsp;<strong>enc</strong>&nbsp;property set to <strong>A128CBC-HS256</strong>,&nbsp;<strong>A192CBC-HS384</strong>, or&nbsp;<strong>A256CBC-HS512</strong> are&nbsp;currently supported. Tokens that use other settings will fail validation with the&nbsp;&quot;TokenDecryptionFailed&quot; error reason.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>We now log nested exceptions&nbsp;to Azure Application Insights.&nbsp;For each exception, we&nbsp;tell you which policy produced it.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>From now on, all new revisions and versions will be created with a copy of their predecessors&#39; diagnostics settings.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>We provided a couple of additional email template parameters in the New Developer Account Confirmation email template to make it more flexible for customers who use delegation or have a custom portal.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>In accordance with the <a href=\"https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#schema-object\" target=\"_blank\" rel=\"noopener\">OpenAPI specification</a>, auto-generated request samples shown in the developer portal will no longer show read-only properties.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>We fixed a bug where we occasionally failed to add APIs and groups to a product when deploying from the configuration repository.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>We&#39;re upgrading the service to a&nbsp;more modern compute SKU, which is slightly roomier and faster than the one used before. As a result, you might see a slight uptick in available capacity.</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>We deploy updates gradually, and it usually takes a week or more for every active service instance to receive them.</p>\r\n",
+    "Markdown": "On January 25, we started a regular Azure API Management service update. It includes the following bug fixes, changes, and new features:\n\nWe added JWE support to the validate-jwt policy. We added a new decryption-keys element to the policy definition. (It must be placed between the issuer-signing-keys and audiences elements.) It can contain multiple key elements structured similarly to the issuer-signing-keys/key elements. Only JWTs with the alg property set to dir (symmetric keys) and the enc property set to A128CBC-HS256 , A192CBC-HS384 , or A256CBC-HS512 are currently supported. Tokens that use other settings will fail validation with the \"TokenDecryptionFailed\" error reason.\n\nWe now log nested exceptions to Azure Application Insights. For each exception, we tell you which policy produced it.\n\nFrom now on, all new revisions and versions will be created with a copy of their predecessors' diagnostics settings.\n\nWe provided a couple of additional email template parameters in the New Developer Account Confirmation email template to make it more flexible for customers who use delegation or have a custom portal.\n\nIn accordance with the OpenAPI specification , auto-generated request samples shown in the developer portal will no longer show read-only properties.\n\nWe fixed a bug where we occasionally failed to add APIs and groups to a product when deploying from the configuration repository.\n\nWe're upgrading the service to a more modern compute SKU, which is slightly roomier and faster than the one used before. As a result, you might see a slight uptick in available capacity.\n\nWe deploy updates gradually, and it usually takes a week or more for every active service instance to receive them."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-api-management-update-jan-25"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-api-management-update-jan-25"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: January 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Integration, Internet of Things, Mobile, Web"
+    }
+  ]
+}

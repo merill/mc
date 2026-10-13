@@ -1,0 +1,51 @@
+{
+  "Id": "AZ-improved-query-replica-synchronization-in-azure-analysis-services-is-in-preview",
+  "Title": "Improved query replica synchronization in Azure Analysis Services is in preview",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-01-18T18:00:00.000Z",
+  "LastModifiedDateTime": "2020-01-18T18:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Analysis Services"
+  ],
+  "Tags": [
+    "Features",
+    "Management",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>A new Azure Analysis Services setting (in preview) improves performance and consistency of query-replica synchronization in scale-out environments. <a href=\"https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-scale-out#how-it-works\" target=\"_blank\" rel=\"noopener\">Query scale-out</a> distributes client queries across one or more query replicas, reducing response times for high concurrency workloads. Query-replica synchronization replicates data to query-replica databases.</p>\r\n\r\n<p>By default, query replicas are re-hydrated in full (not incrementally), which happens in stages. They are detached and attached two at a time (assuming there are at least three replicas) to ensure that at least one replica is kept online for queries at any given time. Clients may need to reconnect to one of the online replicas while this process is taking place.</p>\r\n\r\n<p>With the new <strong>ReplicaSyncMode </strong>setting, it&rsquo;s now possible to specify query replica synchronization in parallel. The optimized query-replica synchronization also provides these benefits:</p>\r\n\r\n<ul>\r\n\t<li>All replicas are synchronized in parallel, significantly reducing synchronization time.</li>\r\n\t<li>Since all replicas are synchronized in parallel, data across replicas are more likely to be consistent during the synchronization process.</li>\r\n\t<li>Because databases are kept online on all replicas throughout the synchronization process, clients don&#39;t need to reconnect.</li>\r\n\t<li>The in-memory cache is updated incrementally with only the changed data, which can be much faster than fully rehydrating the model.</li>\r\n</ul>\r\n\r\n<p>As an example of the benefit of optimized synchronization, the product team conducted tests on a database roughly 84 GB in size on an S8v2 with 3 replicas. The sync took about 2 minutes for an incremental sync versus 5 minutes for a non-incremental sync. For the same database on an S8v2 with 7 replicas, while the time for an incremental sync remained unchanged, the time for a non-incremental sync jumped to 11 minutes.</p>\r\n\r\n<p>Possible values for<strong> ReplicaSyncMode </strong>are:</p>\r\n\r\n<ul>\r\n\t<li>1 (default): full replica database rehydration in stages.</li>\r\n\t<li>2: optimized synchronization in parallel.</li>\r\n</ul>\r\n\r\n<p><a href=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/a15fd0c2-ec85-44d5-a192-1128acaaee17.png\" target=\"_blank\" rel=\"noopener\"><img alt=\"FastReplicaSync (002)\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/f7c08704-5e02-4492-a1d7-2a2c7c890bf4.png\" title=\"FastReplicaSync (002)\"></a></p>\r\n\r\n<ul>\r\n</ul>\r\n\r\n<p>If you set <strong>ReplicaSyncMode=2</strong>, additional memory may be consumed by the query replicas, depending on how much of the cache needs to be updated. To keep the database online and available for queries, the operation can require up to double the memory on the replica, depending on how much of the data has changed. This is because both the old and new segments are kept in memory simultaneously. Replica nodes have the same memory allocation as the primary node. Since there&rsquo;s normally extra memory on the primary node for refresh operations, it&rsquo;s unlikely that the replicas would run out of memory. Additionally, a common scenario is that the database is incrementally updated on the primary node, so there shouldn&rsquo;t be a need for double the memory. If the sync operation encounters an &ldquo;out of memory&rdquo; error message, it will retry using the default technique (attach/detach two at a time).</p>\r\n\r\n<p>Learn more about <a href=\"https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-scale-out#how-it-works\" target=\"_blank\" rel=\"noopener\">query scale-out in Azure Analysis Services</a>.</p>\r\n",
+    "Markdown": "A new Azure Analysis Services setting (in preview) improves performance and consistency of query-replica synchronization in scale-out environments. Query scale-out distributes client queries across one or more query replicas, reducing response times for high concurrency workloads. Query-replica synchronization replicates data to query-replica databases.\n\nBy default, query replicas are re-hydrated in full (not incrementally), which happens in stages. They are detached and attached two at a time (assuming there are at least three replicas) to ensure that at least one replica is kept online for queries at any given time. Clients may need to reconnect to one of the online replicas while this process is taking place.\n\nWith the new ReplicaSyncMode setting, it’s now possible to specify query replica synchronization in parallel. The optimized query-replica synchronization also provides these benefits:\n\nAll replicas are synchronized in parallel, significantly reducing synchronization time.\n\nSince all replicas are synchronized in parallel, data across replicas are more likely to be consistent during the synchronization process.\n\nBecause databases are kept online on all replicas throughout the synchronization process, clients don't need to reconnect.\n\nThe in-memory cache is updated incrementally with only the changed data, which can be much faster than fully rehydrating the model.\n\nAs an example of the benefit of optimized synchronization, the product team conducted tests on a database roughly 84 GB in size on an S8v2 with 3 replicas. The sync took about 2 minutes for an incremental sync versus 5 minutes for a non-incremental sync. For the same database on an S8v2 with 7 replicas, while the time for an incremental sync remained unchanged, the time for a non-incremental sync jumped to 11 minutes.\n\nPossible values for ReplicaSyncMode are:\n\n1 (default): full replica database rehydration in stages.\n\n2: optimized synchronization in parallel.\n\nIf you set ReplicaSyncMode=2 , additional memory may be consumed by the query replicas, depending on how much of the cache needs to be updated. To keep the database online and available for queries, the operation can require up to double the memory on the replica, depending on how much of the data has changed. This is because both the old and new segments are kept in memory simultaneously. Replica nodes have the same memory allocation as the primary node. Since there’s normally extra memory on the primary node for refresh operations, it’s unlikely that the replicas would run out of memory. Additionally, a common scenario is that the database is incrementally updated on the primary node, so there shouldn’t be a need for double the memory. If the sync operation encounters an “out of memory” error message, it will retry using the default technique (attach/detach two at a time).\n\nLearn more about query scale-out in Azure Analysis Services ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "improved-query-replica-synchronization-in-azure-analysis-services-is-in-preview"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=improved-query-replica-synchronization-in-azure-analysis-services-is-in-preview"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: January 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

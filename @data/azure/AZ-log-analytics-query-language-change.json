@@ -1,0 +1,46 @@
+{
+  "Id": "AZ-log-analytics-query-language-change",
+  "Title": "Log Analytics query language recommendations for Summarize and Join operators",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2018-05-29T19:00:00.000Z",
+  "LastModifiedDateTime": "2018-05-29T19:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Monitor",
+    "Log Analytics"
+  ],
+  "Tags": [
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>This update describes Azure Log Analytics and Application Insights query language syntax recommendations for <strong>Summarize</strong> and <strong>Join</strong> operators.&nbsp;Existing syntax is still supported, but we strongly recommend that you modify your query syntax where applicable in saved searches and alerts, to avoid result ambiguity.</p>\r\n\r\n<p>For questions&nbsp;about these recommendations, <a href=\"mailto:lafeedback@microsoft.com\" target=\"_blank\" rel=\"noopener\">contact us</a>.</p>\r\n\r\n<h2>Hourly auto-binning in&nbsp;the Summarize operator</h2>\r\n\r\n<p>Currently, data aggregated by datetime key is automatically grouped into hourly bins. In this example, the <strong>TimeGenerated</strong> column used in the <strong>Summarize</strong> operator has been automatically rounded to hourly bins:</p>\r\n\r\n<blockquote>\r\n<p>SecurityEvent</p>\r\n\r\n<p>| where TimeGenerated &gt; ago(1d)</p>\r\n\r\n<p>| where EventID == 4625</p>\r\n\r\n<p>| summarize count() by TimeGenerated</p>\r\n</blockquote>\r\n\r\n<p>Here are the query results:</p>\r\n\r\n<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p><b>TimeGenerated [UTC]</b></p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p><b>count_</b></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>2018-02-04T<b>09:00:00.000</b></p>\r\n\r\n\t\t\t<p>2018-02-04T<b>10:00:00.000</b></p>\r\n\r\n\t\t\t<p>2018-02-04T<b>11:00:00.000</b></p>\r\n\r\n\t\t\t<p>2018-02-04T<b>12:00:00.000</b></p>\r\n\r\n\t\t\t<p>2018-02-04T<b>13:00:00.000</b></p>\r\n\r\n\t\t\t<p>2018-02-04T<b>14:00:00.000</b></p>\r\n\r\n\t\t\t<p>2018-02-04T<b>15:00:00.000</b></p>\r\n\r\n\t\t\t<p>2018-02-04T<b>16:00:00.000</b></p>\r\n\r\n\t\t\t<p>2018-02-04T<b>17:00:00.000</b></p>\r\n\r\n\t\t\t<p>2018-02-04T<b>18:00:00.000</b></p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>1,205</p>\r\n\r\n\t\t\t<p>1,268</p>\r\n\r\n\t\t\t<p>1,234</p>\r\n\r\n\t\t\t<p>1,173</p>\r\n\r\n\t\t\t<p>1,007</p>\r\n\r\n\t\t\t<p>1,042</p>\r\n\r\n\t\t\t<p>1,041</p>\r\n\r\n\t\t\t<p>1,049</p>\r\n\r\n\t\t\t<p>1,090</p>\r\n\r\n\t\t\t<p>1,113</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<p>Recommended actions:</p>\r\n\r\n<ul>\r\n\t<li>If you&#39;re not relying on the auto-binning feature, either in saved searches or in alerts (for example,&nbsp;summarize by <strong>TimeGenerated</strong>):\r\n\r\n\t<ul>\r\n\t\t<li>No action is required.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>If you&#39;re not aware of the auto-binning feature, your queries might return results with unintended hourly aggregation:\r\n\t<ul>\r\n\t\t<li>Verify&nbsp;whether you&#39;re using aggregating data by datetime key (for example, summarize by <strong>TimeGenerated</strong>). If so, correct the queries to use explicit binning&mdash;for example,&nbsp;summarize by <strong>bin(TimeGenerated, 1h)</strong>.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>If you&#39;re aware of the auto-binning feature and rely on it:\r\n\t<ul>\r\n\t\t<li>Correct the queries to use explicit binning&mdash;for example,&nbsp;summarize by <strong>bin(TimeGenerated, 1h)</strong>.</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<h2>Equality expressions in the Join operator</h2>\r\n\r\n<p>Currently, the language syntax allows the use of ambiguous equality expressions as <strong>Join</strong> attributes (for example, <strong>key1 == key2</strong>) that yield undesired results. We recommend that you change&nbsp;ambiguous equality expressions to avoid this behavior.</p>\r\n\r\n<p>Here&#39;s an example of an ambiguous <strong>Join</strong> expression (summing the daily session duration per computer):</p>\r\n\r\n<blockquote>\r\n<p>SecurityEvent</p>\r\n</blockquote>\r\n\r\n<blockquote>\r\n<p>| where EventID == 4624</p>\r\n\r\n<p>| join kind= inner (</p>\r\n\r\n<p>&nbsp;&nbsp;&nbsp; SecurityEvent</p>\r\n\r\n<p>&nbsp;&nbsp;&nbsp; | where EventID == 4634</p>\r\n\r\n<p>&nbsp;&nbsp;&nbsp; ) on<b> TargetLogonId == TargetLogonId</b></p>\r\n\r\n<p>| extend Duration = LogoffTime - LogonTime</p>\r\n\r\n<p>| summarize sum(Duration) by bin(LogonTime, 1d), Computer</p>\r\n</blockquote>\r\n\r\n<h3>&nbsp;</h3>\r\n\r\n<p>Recommended actions:</p>\r\n\r\n<ul>\r\n\t<li>If you don&rsquo;t use equality expressions in <strong>Join</strong> operators, either in saved searches or in alerts:\r\n\r\n\t<ul>\r\n\t\t<li>No action is required.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>If you use equality expressions in <strong>Join</strong> operators:\r\n\t<ul>\r\n\t\t<li>Correct the <a href=\"https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/join-operator\" target=\"_blank\" rel=\"noopener\">Join operator syntax</a>.</li>\r\n\t\t<li>Correct your queries. The column names should be qualified with the applicable owner table denoted by <code>$left</code> and <code>$right</code> notations. Examples:</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<blockquote>\r\n<p>| join &hellip; on $left.Col1 == $right.Col2</p>\r\n\r\n<p>| join &hellip; on X (equivalent to: | join &hellip; on $left.X == $right.X)</p>\r\n\r\n<p>&nbsp;</p>\r\n</blockquote>\r\n",
+    "Markdown": "This update describes Azure Log Analytics and Application Insights query language syntax recommendations for Summarize and Join operators. Existing syntax is still supported, but we strongly recommend that you modify your query syntax where applicable in saved searches and alerts, to avoid result ambiguity.\n\nFor questions about these recommendations, contact us .\n\nHourly auto-binning in the Summarize operator\n\nCurrently, data aggregated by datetime key is automatically grouped into hourly bins. In this example, the TimeGenerated column used in the Summarize operator has been automatically rounded to hourly bins:\n\nSecurityEvent\n\n| where TimeGenerated > ago(1d)\n\n| where EventID == 4625\n\n| summarize count() by TimeGenerated\n\nHere are the query results:\n\nTimeGenerated [UTC]\n\ncount_\n\n2018-02-04T 09:00:00.000\n\n2018-02-04T 10:00:00.000\n\n2018-02-04T 11:00:00.000\n\n2018-02-04T 12:00:00.000\n\n2018-02-04T 13:00:00.000\n\n2018-02-04T 14:00:00.000\n\n2018-02-04T 15:00:00.000\n\n2018-02-04T 16:00:00.000\n\n2018-02-04T 17:00:00.000\n\n2018-02-04T 18:00:00.000\n\n1,205\n\n1,268\n\n1,234\n\n1,173\n\n1,007\n\n1,042\n\n1,041\n\n1,049\n\n1,090\n\n1,113\n\nRecommended actions:\n\nIf you're not relying on the auto-binning feature, either in saved searches or in alerts (for example, summarize by TimeGenerated ):\n\nNo action is required.\n\nIf you're not aware of the auto-binning feature, your queries might return results with unintended hourly aggregation:\n\nVerify whether you're using aggregating data by datetime key (for example, summarize by TimeGenerated ). If so, correct the queries to use explicit binning—for example, summarize by bin(TimeGenerated, 1h) .\n\nIf you're aware of the auto-binning feature and rely on it:\n\nCorrect the queries to use explicit binning—for example, summarize by bin(TimeGenerated, 1h) .\n\nEquality expressions in the Join operator\n\nCurrently, the language syntax allows the use of ambiguous equality expressions as Join attributes (for example, key1 == key2 ) that yield undesired results. We recommend that you change ambiguous equality expressions to avoid this behavior.\n\nHere's an example of an ambiguous Join expression (summing the daily session duration per computer):\n\nSecurityEvent\n\n| where EventID == 4624\n\n| join kind= inner (\n\nSecurityEvent\n\n| where EventID == 4634\n\n) on TargetLogonId == TargetLogonId\n\n| extend Duration = LogoffTime - LogonTime\n\n| summarize sum(Duration) by bin(LogonTime, 1d), Computer\n\nRecommended actions:\n\nIf you don’t use equality expressions in Join operators, either in saved searches or in alerts:\n\nNo action is required.\n\nIf you use equality expressions in Join operators:\n\nCorrect the Join operator syntax .\n\nCorrect your queries. The column names should be qualified with the applicable owner table denoted by $left and $right notations. Examples:\n\n| join … on $left.Col1 == $right.Col2\n\n| join … on X (equivalent to: | join … on $left.X == $right.X)"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "log-analytics-query-language-change"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=log-analytics-query-language-change"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: May 2018"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "DevOps, Management and governance"
+    }
+  ]
+}

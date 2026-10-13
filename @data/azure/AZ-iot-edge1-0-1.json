@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-iot-edge1-0-1",
+  "Title": "Azure IoT Edge 1.0.1 release",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2018-08-22T00:30:50.000Z",
+  "LastModifiedDateTime": "2018-08-22T00:30:50.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure IoT Hub"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The 1.0.1 update of Azure IoT Edge includes the following improvements.</p>\r\n\r\n<p>Multiple bugs have been resolved in both Edge Hub and Edge Agent. (A full change list is in the <a href=\"https://github.com/Azure/azure-iotedge/releases/tag/1.0.1\" target=\"_blank\" rel=\"noopener\">release notes</a> on GitHub.) You must manually delete the container image for each component if you&#39;re already using Azure IoT Edge and want to receive the fixes.</p>\r\n\r\n<p>You can optimize Edge Hub memory usage&nbsp;by turning off protocol heads for any protocols not used by Edge modules in your solution. You can set the following environment variables on Edge Hub to enable/disable specific protocol heads. Note that there are two underscores in the environment variables.&nbsp;</p>\r\n\r\n<ul>\r\n <li>Key - &ldquo;amqpSettings__enabled&rdquo;, value &ndash; &ldquo;true/false&rdquo;</li>\r\n <li>Key - &ldquo;mqttSettings__enabled&rdquo;, value &ndash; &ldquo;true/false&rdquo;</li>\r\n <li>Key - &ldquo;httpSettings__enabled&rdquo;, value &ndash; &ldquo;true/false&rdquo;</li>\r\n</ul>\r\n\r\n<p>A bug that intermittently prevented C# modules from connecting to Edge Hub when using MQTT (GitHub issues: <a href=\"https://github.com/Azure/iotedge/issues/19#issuecomment-414027788\" target=\"_blank\" rel=\"noopener\">19</a>, <a href=\"https://github.com/Azure/azure-iot-sdk-csharp/issues/521#issuecomment-414027989\" target=\"_blank\" rel=\"noopener\">521</a>, <a href=\"https://github.com/Azure/azure-iot-sdk-csharp/issues/558#issuecomment-414027913\" target=\"_blank\" rel=\"noopener\">558</a>) was resolved. This issue was in DotNetty, a dependency of the C# Client SDK. DotNetty was fixed and integrated into the <a href=\"https://github.com/Azure/azure-iot-sdk-csharp/releases/tag/2018-8-17\" target=\"_blank\" rel=\"noopener\">C# Client SDK version 1.18.0</a>. Users must also update their modules to use the latest version of the C# Client SDK to fully resolve the issue. The Functions module used in the <a href=\"https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-function\" target=\"_blank\" rel=\"noopener\">Filter data with Azure functions</a> tutorial was updated to use the new version of the C# SDK. You must manually delete the container image for this component if you&#39;re already using it and want to receive the fix.</p>\r\n\r\n<p>An installation script for Windows was released. This makes the setup of IoT Edge on a Windows a&nbsp;more reliable process by reducing the number of steps a user takes to install the runtime. The script is included in the documentation for installing IoT Edge on Windows (<a href=\"https://docs.microsoft.com/en-us/azure/iot-edge/quickstart\" target=\"_blank\" rel=\"noopener\">Windows quickstart</a>, <a href=\"https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-windows-with-windows\" target=\"_blank\" rel=\"noopener\">Windows with Windows containers</a>, <a href=\"https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-windows-with-linux\" target=\"_blank\" rel=\"noopener\">Windows with Linux containers</a>).</p>\r\n\r\n<p>An <a href=\"https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-security-manager\" target=\"_blank\" rel=\"noopener\">article</a> that explains Security Manager was added to product documentation.</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "The 1.0.1 update of Azure IoT Edge includes the following improvements.\n\nMultiple bugs have been resolved in both Edge Hub and Edge Agent. (A full change list is in the release notes on GitHub.) You must manually delete the container image for each component if you're already using Azure IoT Edge and want to receive the fixes.\n\nYou can optimize Edge Hub memory usage by turning off protocol heads for any protocols not used by Edge modules in your solution. You can set the following environment variables on Edge Hub to enable/disable specific protocol heads. Note that there are two underscores in the environment variables.\n\nKey - “amqpSettings__enabled”, value – “true/false”\n\nKey - “mqttSettings__enabled”, value – “true/false”\n\nKey - “httpSettings__enabled”, value – “true/false”\n\nA bug that intermittently prevented C# modules from connecting to Edge Hub when using MQTT (GitHub issues: 19 , 521 , 558 ) was resolved. This issue was in DotNetty, a dependency of the C# Client SDK. DotNetty was fixed and integrated into the C# Client SDK version 1.18.0 . Users must also update their modules to use the latest version of the C# Client SDK to fully resolve the issue. The Functions module used in the Filter data with Azure functions tutorial was updated to use the new version of the C# SDK. You must manually delete the container image for this component if you're already using it and want to receive the fix.\n\nAn installation script for Windows was released. This makes the setup of IoT Edge on a Windows a more reliable process by reducing the number of steps a user takes to install the runtime. The script is included in the documentation for installing IoT Edge on Windows ( Windows quickstart , Windows with Windows containers , Windows with Linux containers ).\n\nAn article that explains Security Manager was added to product documentation."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "iot-edge1-0-1"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=iot-edge1-0-1"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: August 2018"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Internet of Things"
+    }
+  ]
+}

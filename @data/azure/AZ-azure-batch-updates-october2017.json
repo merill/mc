@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-azure-batch-updates-october2017",
+  "Title": "Azure Batch updates",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2017-10-13T21:00:34.000Z",
+  "LastModifiedDateTime": "2017-10-13T21:00:34.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Batch"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Since the previous update, we have added the following capabilities to Azure Batch:​</p>\r\n\r\n<ul>\r\n <li>​<strong>Custom images and virtual networks</strong>\r\n\r\n <ul>\r\n  <li>Batch already supported custom images and virtual networks, but now a &quot;User Subscription&quot; Batch account is no longer required to create a pool that&#39;s created through a custom VM image or references a virtual network. You can use the default &quot;Batch service&quot; Batch account.</li>\r\n  <li>Because&nbsp;&quot;Batch Service&quot; accounts can use custom images and virtual networks,&nbsp;you can use custom images and virtual networks&nbsp;in conjunction with low-priority VMs.</li>\r\n  <li>Custom images are&nbsp;created&nbsp;via image resources instead of blob VHD files. Batch&nbsp;uses managed disks to create the pool VMs and therefore uses an image resource. This means that there is&nbsp;no limit to the number of VMs in a pool created&nbsp;through a custom image. It also means that the multiple copies of the VHD blob for large pools are no longer required. Custom image pools are&nbsp;much easier to create and scale.&nbsp;<a href=\"https://docs.microsoft.com/azure/batch/batch-custom-images\" target=\"_blank\" rel=\"noopener\">Updated documentation </a>is available.</li>\r\n  <li>Note that to use custom images or virtual networks, you need to use Azure Active Directory authentication. Authentication via account name and key will not work.</li>\r\n </ul>\r\n </li>\r\n <li>​<strong>Batch low-priority VMs</strong>\r\n <ul>\r\n  <li>Support for low-priority VMs has moved from public preview to GA. Note that preview pricing is still in effect for a few months. It will move to regional pricing&mdash;the same as dedicated VMs. This might cause a slight increase in pricing, depending on region.</li>\r\n </ul>\r\n </li>\r\n <li><strong>Batch rendering platform</strong>\r\n <ul>\r\n  <li>The ability to get Batch pools with pre-installed rendering applications and pay for those applications by the minute is&nbsp;GA. See the <a href=\"https://docs.microsoft.com/azure/batch/batch-rendering-service\" target=\"_blank\" rel=\"noopener\">rendering platform documentation </a>for more information.&nbsp;</li>\r\n </ul>\r\n </li>\r\n <li><b>Containers</b>\r\n <ul>\r\n  <li>You can&nbsp;create Batch container pools and execute container image tasks. When a pool is created, one or more container images can be specified to copy down to the VM. When a task is run, a container image is specified and container run options can be provided. Task environment variables and folders are mapped to the container.&nbsp;Pool virtual machine configuration has a <a href=\"https://docs.microsoft.com/rest/api/batchservice/pool/add#definitions_containerconfiguration\" target=\"_blank\" rel=\"noopener\">new container configuration</a>.&nbsp;New <a href=\"https://docs.microsoft.com/rest/api/batchservice/Task/Add#definitions_taskcontainersettings\" target=\"_blank\" rel=\"noopener\">container settings</a>&nbsp;are available on a Batch task. For Windows, the &quot;Windows Server 2016 with Containers&quot; Azure Marketplace image is used.</li>\r\n </ul>\r\n </li>\r\n <li><b>Azure Hybrid Use Benefit</b>\r\n <ul>\r\n  <li>You can&nbsp;create Batch Windows virtual machine pools and specify that <a href=\"https://azure.microsoft.com/pricing/hybrid-benefit/\" target=\"_blank\" rel=\"noopener\">Azure Hybrid Use Benefit</a> licensing is used. When Azure Hybrid Use Benefit is specified, a discount is applied to the VM price. A <a href=\"https://docs.microsoft.com/rest/api/batchservice/Pool/Add#definitions_virtualmachineconfiguration\" target=\"_blank\" rel=\"noopener\">new license type property</a>&nbsp;has been added to the virtual machine configuration.</li>\r\n </ul>\r\n </li>\r\n <li><b>Pool VM data disks</b>\r\n <ul>\r\n  <li>You can attach one or more empty data disks to virtual machine pool VMs by using a new <a href=\"https://docs.microsoft.com/rest/api/batchservice/Pool/Add#definitions_datadisk\" target=\"_blank\" rel=\"noopener\">data disk configuration</a>&nbsp;that is part of the virtual machine configuration.</li>\r\n </ul>\r\n </li>\r\n <li><strong>New VM sizes</strong>\r\n <ul>\r\n  <li>Batch supports the recently added Dv3 and Ev3 sizes. Note that currently, these VM sizes are&nbsp;available only in <a href=\"https://azure.microsoft.com/regions/services/\" target=\"_blank\" rel=\"noopener\">some regions</a>.</li>\r\n </ul>\r\n </li>\r\n</ul>\r\n\r\n<p>For a summary of all API updates, see the following documentation:</p>\r\n\r\n<ul>\r\n <li><a href=\"https://docs.microsoft.com/rest/api/batchservice/batch-service-rest-api-versioning\" target=\"_blank\" rel=\"noopener\">REST API versions</a></li>\r\n <li><a href=\"https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/Batch/DataPlane/changelog.md\" target=\"_blank\" rel=\"noopener\">C# Client API versions</a></li>\r\n</ul>\r\n",
+    "Markdown": "Since the previous update, we have added the following capabilities to Azure Batch:​\n\n​ Custom images and virtual networks\n\nBatch already supported custom images and virtual networks, but now a \"User Subscription\" Batch account is no longer required to create a pool that's created through a custom VM image or references a virtual network. You can use the default \"Batch service\" Batch account.\n\nBecause \"Batch Service\" accounts can use custom images and virtual networks, you can use custom images and virtual networks in conjunction with low-priority VMs.\n\nCustom images are created via image resources instead of blob VHD files. Batch uses managed disks to create the pool VMs and therefore uses an image resource. This means that there is no limit to the number of VMs in a pool created through a custom image. It also means that the multiple copies of the VHD blob for large pools are no longer required. Custom image pools are much easier to create and scale. Updated documentation is available.\n\nNote that to use custom images or virtual networks, you need to use Azure Active Directory authentication. Authentication via account name and key will not work.\n\n​ Batch low-priority VMs\n\nSupport for low-priority VMs has moved from public preview to GA. Note that preview pricing is still in effect for a few months. It will move to regional pricing—the same as dedicated VMs. This might cause a slight increase in pricing, depending on region.\n\nBatch rendering platform\n\nThe ability to get Batch pools with pre-installed rendering applications and pay for those applications by the minute is GA. See the rendering platform documentation for more information.\n\nContainers\n\nYou can create Batch container pools and execute container image tasks. When a pool is created, one or more container images can be specified to copy down to the VM. When a task is run, a container image is specified and container run options can be provided. Task environment variables and folders are mapped to the container. Pool virtual machine configuration has a new container configuration . New container settings are available on a Batch task. For Windows, the \"Windows Server 2016 with Containers\" Azure Marketplace image is used.\n\nAzure Hybrid Use Benefit\n\nYou can create Batch Windows virtual machine pools and specify that Azure Hybrid Use Benefit licensing is used. When Azure Hybrid Use Benefit is specified, a discount is applied to the VM price. A new license type property has been added to the virtual machine configuration.\n\nPool VM data disks\n\nYou can attach one or more empty data disks to virtual machine pool VMs by using a new data disk configuration that is part of the virtual machine configuration.\n\nNew VM sizes\n\nBatch supports the recently added Dv3 and Ev3 sizes. Note that currently, these VM sizes are available only in some regions .\n\nFor a summary of all API updates, see the following documentation:\n\nREST API versions\n\nC# Client API versions"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-batch-updates-october2017"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-batch-updates-october2017"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2017"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-vm-series-vcpu-quota-enforcement",
+  "Title": "Azure Batch vCPU quota checks are being updated",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-12-01T22:00:11.000Z",
+  "LastModifiedDateTime": "2020-12-01T22:00:11.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Batch"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The vCPU quota checks that are performed as part of some Batch pool operations&nbsp;are being updated. There is no action to take, but you may notice some changed VM series vCPU quota values.</p>\r\n\r\n<p>With the existing quota checking mechanism, the total dedicated vCPU quota limit for an account is enforced, but VM series vCPU quotas are not checked. This update will enforce the VM series quotas, in addition to the total account quota.</p>\r\n\r\n<p>As part of the transition to the new mechanism, the VM series vCPU quota values may be updated to prevent&nbsp;allocation failures. Any VM series used in recent months will have its VM series vCPU quota updated to match the total account vCPU quota. This change will not enable the use of any more capacity than was already available.</p>\r\n\r\n<p>The updated quota enforcement will be applied to all Batch accounts during&nbsp;December 2020.&nbsp;It is possible to determine if the revised quota check has been&nbsp;applied to a Batch account in the following ways:</p>\r\n\r\n<ul>\r\n\t<li>The Batch account <a href=\"https://docs.microsoft.com/rest/api/batchmanagement/batchaccount/get#batchaccount\" target=\"_blank\" rel=\"noopener\">dedicatedCoreQuotaPerVMFamilyEnforced </a>API property.</li>\r\n\t<li>Text on the Batch account Quotas page in the portal.</li>\r\n</ul>\r\n\r\n<p>Further information is available in the documentation for <a href=\"https://docs.microsoft.com/azure/batch/batch-quota-limit\" target=\"_blank\" rel=\"noopener\">Batch service quotas and limits</a>.</p>\r\n",
+    "Markdown": "The vCPU quota checks that are performed as part of some Batch pool operations are being updated. There is no action to take, but you may notice some changed VM series vCPU quota values.\n\nWith the existing quota checking mechanism, the total dedicated vCPU quota limit for an account is enforced, but VM series vCPU quotas are not checked. This update will enforce the VM series quotas, in addition to the total account quota.\n\nAs part of the transition to the new mechanism, the VM series vCPU quota values may be updated to prevent allocation failures. Any VM series used in recent months will have its VM series vCPU quota updated to match the total account vCPU quota. This change will not enable the use of any more capacity than was already available.\n\nThe updated quota enforcement will be applied to all Batch accounts during December 2020. It is possible to determine if the revised quota check has been applied to a Batch account in the following ways:\n\nThe Batch account dedicatedCoreQuotaPerVMFamilyEnforced API property.\n\nText on the Batch account Quotas page in the portal.\n\nFurther information is available in the documentation for Batch service quotas and limits ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "vm-series-vcpu-quota-enforcement"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=vm-series-vcpu-quota-enforcement"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: December 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute"
+    }
+  ]
+}

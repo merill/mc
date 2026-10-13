@@ -1,0 +1,44 @@
+{
+  "Id": "AZ-general-availability-custom-retention-for-azureactivity-and-usage-data-tables",
+  "Title": "General availability: Custom retention for AzureActivity and Usage data tables",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2022-02-23T17:00:44.000Z",
+  "LastModifiedDateTime": "2022-02-23T17:00:44.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [],
+  "Tags": [
+    "Features",
+    "Management"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The capability to set specific retention on <em>AzureActivity</em> and <em>Usage</em> data tables in Log Analytics workspaces is now in general availability. Keep <em>AzureActivity</em> and <em>Usage</em> data for longer periods of time, while maintaining&nbsp;the workspace retention as low as&nbsp;needed. Previously, <em>AzureActivity</em> and <em>Usage</em> were treated differently&ndash;they had a minimum of 90 days retention and couldn&rsquo;t be set with specific retention as other tables which&nbsp;forced you to increase the workspace retention.&nbsp;</p>\r\n\r\n<p>The minimum retention for <em>AzureActivity</em> and <em>Usage</em> remains 90 days to enable basic audit on operations and usability troubleshooting.</p>\r\n\r\n<p>Setting retention by type for specific tables:</p>\r\n\r\n<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>CLI</p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>az monitor log-analytics workspace table update --resource-group $resourceGroup --workspace-name $workspaceName --name AzureActivity --retention-time 91</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>REST:</p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>PATCH https://management.azure.com/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.OperationalInsights/workspaces/workspace-name/tables/AzureActivity?api-2020-10-01</p>\r\n\r\n\t\t\t<p>Authorization: Bearer eyJ0eXAiO&hellip;</p>\r\n\r\n\t\t\t<p>Content-type: application/json</p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p>{</p>\r\n\r\n\t\t\t<p>&nbsp; &quot;properties&quot;: {</p>\r\n\r\n\t\t\t<p>&nbsp; &nbsp; &quot;retentionInDays&quot;: 91,</p>\r\n\r\n\t\t\t<p>&nbsp; }</p>\r\n\r\n\t\t\t<p>}</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>Note, PowerShell isn&rsquo;t available yet.</p>\r\n\r\n<p>Additional resources:</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#retention-by-data-type\" target=\"_blank\" rel=\"noopener\">Learn more about retention by data type</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/loganalytics/tables/update\" target=\"_blank\" rel=\"noopener\">Learn more about Log Analytics table update</a></li>\r\n</ul>\r\n",
+    "Markdown": "The capability to set specific retention on AzureActivity and Usage data tables in Log Analytics workspaces is now in general availability. Keep AzureActivity and Usage data for longer periods of time, while maintaining the workspace retention as low as needed. Previously, AzureActivity and Usage were treated differently–they had a minimum of 90 days retention and couldn’t be set with specific retention as other tables which forced you to increase the workspace retention.\n\nThe minimum retention for AzureActivity and Usage remains 90 days to enable basic audit on operations and usability troubleshooting.\n\nSetting retention by type for specific tables:\n\nCLI\n\naz monitor log-analytics workspace table update --resource-group $resourceGroup --workspace-name $workspaceName --name AzureActivity --retention-time 91\n\nREST:\n\nPATCH https://management.azure.com/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.OperationalInsights/workspaces/workspace-name/tables/AzureActivity?api-2020-10-01\n\nAuthorization: Bearer eyJ0eXAiO…\n\nContent-type: application/json\n\n{\n\n\"properties\": {\n\n\"retentionInDays\": 91,\n\n}\n\n}\n\nNote, PowerShell isn’t available yet.\n\nAdditional resources:\n\nLearn more about retention by data type\n\nLearn more about Log Analytics table update"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "general-availability-custom-retention-for-azureactivity-and-usage-data-tables"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=general-availability-custom-retention-for-azureactivity-and-usage-data-tables"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: February 2022"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-xml-and-sql-stored-procedure-in-logic-apps",
+  "Title": "XML and SQL stored procedure in Logic Apps",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2016-04-15T17:12:07.000Z",
+  "LastModifiedDateTime": "2016-04-15T17:12:07.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "App Service"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "We have introduced some new XML support in the Logic Apps feature of Azure App Service. We have two new workflow functions of @xml() and @xpath() so that you can work with XML natively within a workflow. @xml() will convert a string or JSON object to XML. For example, if the body of your trigger is a JSON object of:\n\n{\n\"foo\": \"bar\"\n}\n\n@xml(triggerBody()) will become &lt;foo&gt;bar&lt;/bar&gt;\n\n@xpath takes XML and executes an XPath query. Full documentation and examples for both of these functions (and others) can be found on the <a href=\"https://msdn.microsoft.com/library/azure/mt643789.aspx\" target=\"_blank\" rel=\"noopener\">Workflow definition language</a> page.\n\nIn addition, the SQL Azure connector supports executing a stored procedure. Executing a stored procedure will return the following to the Logic Apps engine:\n<ul>\n <li>ResultSets: An array of tables for each statement result in the stored procedure. (For example, if you have three SELECT * in the stored procedure, you will have three tables in the ResultSets array.)</li>\n <li>ReturnCode: The integer returned if you specify a return value in the stored procedure.</li>\n <li>OutputParameters: The value of a parameter that you mark as \"out\" in your stored procedure.</li>\n</ul>",
+    "Markdown": "We have introduced some new XML support in the Logic Apps feature of Azure App Service. We have two new workflow functions of @xml() and @xpath() so that you can work with XML natively within a workflow. @xml() will convert a string or JSON object to XML. For example, if the body of your trigger is a JSON object of:\n\n{\n\n\"foo\": \"bar\"\n\n}\n\n@xml(triggerBody()) will become <foo>bar</bar>\n\n@xpath takes XML and executes an XPath query. Full documentation and examples for both of these functions (and others) can be found on the Workflow definition language page.\n\nIn addition, the SQL Azure connector supports executing a stored procedure. Executing a stored procedure will return the following to the Logic Apps engine:\n\nResultSets: An array of tables for each statement result in the stored procedure. (For example, if you have three SELECT * in the stored procedure, you will have three tables in the ResultSets array.)\n\nReturnCode: The integer returned if you specify a return value in the stored procedure.\n\nOutputParameters: The value of a parameter that you mark as \"out\" in your stored procedure."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "xml-and-sql-stored-procedure-in-logic-apps"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=xml-and-sql-stored-procedure-in-logic-apps"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: April 2016"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Mobile, Web"
+    }
+  ]
+}

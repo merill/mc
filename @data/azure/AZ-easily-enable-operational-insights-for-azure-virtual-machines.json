@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-easily-enable-operational-insights-for-azure-virtual-machines",
+  "Title": "Easily enable Operational Insights for Azure virtual machines",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2015-01-29T20:22:43.000Z",
+  "LastModifiedDateTime": "2015-01-29T20:22:43.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Virtual Machines"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "Enable Operational Insights on your virtual machines to collect, search &amp; analyze event/IIS logs, and perform deeper analysis, including malware assessment, update assessment, change tracking, and SQL Server assessment. You can now easily enable Operational Insights on your virtual machines by using Windows PowerShell or with a single click from the Azure Management Portal.\n\nTo enable Operational Insights from the management portal, navigate to your Operational Insights workspace and select the <strong>Servers</strong> tab. Here you will see a list of your virtual machines. Select the virtual machine you want to install the agent on, and click the <strong>Enable Op Insights</strong> button.\n\n<a href=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/updates/ServiceUpdates/imported/images-2015-01-Enable-Operational-Insights-on-a-Virtual-Machine.png\" target=\"_blank\" rel=\"noopener\"><img src=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/updates/ServiceUpdates/imported/images-2015-01-Enable-Operational-Insights-on-a-Virtual-Machine.png\" alt=\"Operational Insights in the Azure Portal\"></a>\n\nIf want to enable Operational Insights on several virtual machines, you can use  Windows PowerShell. Operational Insights uses the Microsoft Monitoring Agent <a href=\"https://msdn.microsoft.com/en-us/library/azure/dn832621.aspx\" target=\"_blank\" rel=\"noopener\">Azure Virtual Machine extension</a>, and you can use a Windows PowerShell command similar to the following example:\n<pre>Add-AzureAccount</pre>\n<pre>$workspaceId=\"enter workspace here\"</pre>\n<pre>$workspaceKey=\"enter workspace key here\"</pre>\n<pre>$hostedService=\"enter hosted service here\"&gt;</pre>\n<pre>$vm = Get-AzureVM –ServiceName $hostedService</pre>\n<pre>Set-AzureVMExtension -VM $vm -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionName 'MicrosoftMonitoringAgent' -Version '1.*' -PublicConfiguration \"{'workspaceId':  '$workspaceId'}\" -PrivateConfiguration \"{'workspaceKey': '$workspaceKey' }\" | Update-AzureVM -Verbose</pre>\nYou can find your Workspace ID and Workspace Key on the <strong>Servers and Usage</strong> page of the Operational Insights portal.\n\nThe Update Assessment, Change Tracking, Malware Assessment, and SQL Assessment intelligence packs work with Microsoft Monitoring Agent to provide deeper insights about your virtual machines. If you haven’t already, you can enable these intelligence packs when you are signed-in to the <a href=\"https://preview.opinsights.azure.com/\" target=\"_blank\" rel=\"noopener\">Operational Insights portal</a>.\n\nTo learn more, including how you can sign up, see <a title=\"\" href=\"https://go.microsoft.com/fwlink/?linkid=513128&amp;clcid=0x409\" target=\"_blank\" rel=\"noopener\">Operational Insights</a>.",
+    "Markdown": "Enable Operational Insights on your virtual machines to collect, search & analyze event/IIS logs, and perform deeper analysis, including malware assessment, update assessment, change tracking, and SQL Server assessment. You can now easily enable Operational Insights on your virtual machines by using Windows PowerShell or with a single click from the Azure Management Portal.\n\nTo enable Operational Insights from the management portal, navigate to your Operational Insights workspace and select the Servers tab. Here you will see a list of your virtual machines. Select the virtual machine you want to install the agent on, and click the Enable Op Insights button.\n\nIf want to enable Operational Insights on several virtual machines, you can use Windows PowerShell. Operational Insights uses the Microsoft Monitoring Agent Azure Virtual Machine extension , and you can use a Windows PowerShell command similar to the following example:\n\nAdd-AzureAccount\n\n$workspaceId=\"enter workspace here\"\n\n$workspaceKey=\"enter workspace key here\"\n\n$hostedService=\"enter hosted service here\">\n\n$vm = Get-AzureVM –ServiceName $hostedService\n\nSet-AzureVMExtension -VM $vm -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionName 'MicrosoftMonitoringAgent' -Version '1.*' -PublicConfiguration \"{'workspaceId': '$workspaceId'}\" -PrivateConfiguration \"{'workspaceKey': '$workspaceKey' }\" | Update-AzureVM -Verbose\n\nYou can find your Workspace ID and Workspace Key on the Servers and Usage page of the Operational Insights portal.\n\nThe Update Assessment, Change Tracking, Malware Assessment, and SQL Assessment intelligence packs work with Microsoft Monitoring Agent to provide deeper insights about your virtual machines. If you haven’t already, you can enable these intelligence packs when you are signed-in to the Operational Insights portal .\n\nTo learn more, including how you can sign up, see Operational Insights ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "easily-enable-operational-insights-for-azure-virtual-machines"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=easily-enable-operational-insights-for-azure-virtual-machines"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: January 2015"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute"
+    }
+  ]
+}

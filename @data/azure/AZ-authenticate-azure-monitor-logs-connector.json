@@ -1,0 +1,53 @@
+{
+  "Id": "AZ-authenticate-azure-monitor-logs-connector",
+  "Title": "Authenticate Azure Monitor logs connector in Logic App with managed identity",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2023-09-18T17:00:23.000Z",
+  "LastModifiedDateTime": "2023-09-18T17:00:23.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Application Insights",
+    "Azure Monitor",
+    "Log Analytics"
+  ],
+  "Tags": [
+    "Compliance",
+    "Features",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Managed identities in Azure lets you authenticate to any resource that supports <a href=\"https://learn.microsoft.com/en-us/azure/active-directory/authentication/overview-authentication\" target=\"_blank\" rel=\"noopener\">Azure AD authentication</a>, including your own applications. When you enable managed identity authentication in Logic App and grant it permissions in Log Analytics workspace or Application Insights component, you can query data without needing to provide credentials, secrets, or Azure AD tokens, for Azure Monitor Logs connector authentication.</p>\r\n\r\n<p>Steps to enable managed identity for Azure Monitor Logs. Example is using System-assigned managed identity, but can equally be used with User-assigned managed identity.</p>\r\n\r\n<ol>\r\n\t<li>In the <a href=\"https://portal.azure.com/\" target=\"_blank\" rel=\"noopener\">Azure portal</a>, search and access your <strong>Logic App</strong>.<strong> </strong>Select <b>Identity</b> on the left navigation pane, and toggle on managed identity.</li>\r\n\t<li>In the <a href=\"https://portal.azure.com/\" target=\"_blank\" rel=\"noopener\">Azure portal</a>, search and access the <strong>Subscription</strong> hosting your Analytics workspaces or Application Insights components. Select <strong>Access control (IAM)</strong> on left navigation pane and add <strong>Reader</strong> role assignment with the Logic App managed identity as a member. This step enable listing your resources in the Azure Monitor Logs connector during configuration.</li>\r\n\t<li>In the <a href=\"https://portal.azure.com/\" target=\"_blank\" rel=\"noopener\">Azure portal</a>, search and access your <strong>Log Analytics workspace</strong>. <strong> </strong>Select <strong>Access control (IAM)</strong> on the left navigation pane and add <strong>Log Analytics Reader</strong> role assignment with the the Logic App managed identity as a member.</li>\r\n\t<li>Return to your <strong>Logic App</strong>, select <strong>Designer</strong> on the left navigation pane. In Azure Monitor Logs connector <strong>Connection</strong>, choose <b>Logic App Managed Identity</b> authentication type in dropdown.</li>\r\n</ol>\r\n\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/f1029ea1-2a12-4bf6-9812-55c04e0d1203.png\" target=\"_blank\" rel=\"noopener\"><img alt=\"Picture1\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/c732b81f-63d8-4885-935c-e7abd25a3e4f.png\" title=\"Picture1\"></a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>See <a href=\"https://docs.microsoft.com/azure/azure-monitor/logs/logicapp-flow-connector\" target=\"_blank\" rel=\"noopener\">Azure Monitor Logs connector</a>, <a href=\"https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity#access-other-resources\" target=\"_blank\" rel=\"noopener\">Authenticate to Azure resources with managed identities in Azure Logic Apps</a>, <a href=\"https://learn.microsoft.com/en-us/azure/active-directory/authentication/overview-authentication\" target=\"_blank\" rel=\"noopener\">Azure AD authentication</a></p>\r\n",
+    "Markdown": "Managed identities in Azure lets you authenticate to any resource that supports Azure AD authentication , including your own applications. When you enable managed identity authentication in Logic App and grant it permissions in Log Analytics workspace or Application Insights component, you can query data without needing to provide credentials, secrets, or Azure AD tokens, for Azure Monitor Logs connector authentication.\n\nSteps to enable managed identity for Azure Monitor Logs. Example is using System-assigned managed identity, but can equally be used with User-assigned managed identity.\n\nIn the Azure portal , search and access your Logic App . Select Identity on the left navigation pane, and toggle on managed identity.\n\nIn the Azure portal , search and access the Subscription hosting your Analytics workspaces or Application Insights components. Select Access control (IAM) on left navigation pane and add Reader role assignment with the Logic App managed identity as a member. This step enable listing your resources in the Azure Monitor Logs connector during configuration.\n\nIn the Azure portal , search and access your Log Analytics workspace . Select Access control (IAM) on the left navigation pane and add Log Analytics Reader role assignment with the the Logic App managed identity as a member.\n\nReturn to your Logic App , select Designer on the left navigation pane. In Azure Monitor Logs connector Connection , choose Logic App Managed Identity authentication type in dropdown.\n\nSee Azure Monitor Logs connector , Authenticate to Azure resources with managed identities in Azure Logic Apps , Azure AD authentication"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "authenticate-azure-monitor-logs-connector"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=authenticate-azure-monitor-logs-connector"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: September 2023"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "DevOps, Management and governance"
+    }
+  ]
+}

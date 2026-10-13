@@ -1,0 +1,50 @@
+{
+  "Id": "AZ562365",
+  "Title": "Generally Available: Rolling updates in Flex Consumption",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2026-06-02T19:30:20.285Z",
+  "LastModifiedDateTime": "2026-06-02T19:30:20.285Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Functions"
+  ],
+  "Tags": [
+    "Features",
+    "Microsoft Build"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Rolling updates are now generally available in the Flex Consumption plan, delivering zero-downtime deployments with a simple configuration change.</p><p>Instead of forcefully restarting all instances during code or configuration updates, the platform gracefully replaces live instances by draining batches every few seconds while dynamically scaling out the latest version to meet demand. This approach ensures uninterrupted execution and resilient throughput across HTTP, non-HTTP, and Durable workloads - even during intensive scale-out scenarios.</p><p>How to enable:</p><ol><li><p>In the Azure Portal, enable it from the Configuration blade&nbsp;</p></li><li><p>Update your ARM/Bicep template with `properties.functionAppConfig.siteUpdateStrategy.type` set to `RollingUpdate`</p></li><li><p>For Durable Functions, configure an orchestration match strategy (<a href=\"https://learn.microsoft.com/azure/azure-functions/durable/durable-functions-orchestration-versioning\" target=\"_blank\" rel=\"noopener\">see guidance</a>).</p></li></ol><p>Known limitations:</p><ul><li><p>Scale-out issues may occur with low HTTP concurrency; recommended value is 16.</p></li><li><p>No automatic rollback; roll forward by redeploying the last healthy version.</p></li></ul><a href=\"https://aka.ms/functions/rolling-updates\" target=\"_blank\" rel=\"noopener\">Learn more</a>.<br>",
+    "Markdown": "Rolling updates are now generally available in the Flex Consumption plan, delivering zero-downtime deployments with a simple configuration change.\n\nInstead of forcefully restarting all instances during code or configuration updates, the platform gracefully replaces live instances by draining batches every few seconds while dynamically scaling out the latest version to meet demand. This approach ensures uninterrupted execution and resilient throughput across HTTP, non-HTTP, and Durable workloads - even during intensive scale-out scenarios.\n\nHow to enable:\n\nIn the Azure Portal, enable it from the Configuration blade\n\nUpdate your ARM/Bicep template with `properties.functionAppConfig.siteUpdateStrategy.type` set to `RollingUpdate`\n\nFor Durable Functions, configure an orchestration match strategy ( see guidance ).\n\nKnown limitations:\n\nScale-out issues may occur with low HTTP concurrency; recommended value is 16.\n\nNo automatic rollback; roll forward by redeploying the last healthy version.\n\nLearn more ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "562365"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=562365"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: June 2026"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Containers, Internet of Things"
+    }
+  ]
+}

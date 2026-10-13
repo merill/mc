@@ -1,0 +1,51 @@
+{
+  "Id": "AZ-iot-hub-tls-certificate-update",
+  "Title": "IoT Hub TLS certificate update",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-09-11T17:39:24.000Z",
+  "LastModifiedDateTime": "2020-09-11T17:39:24.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure IoT Central",
+    "Azure IoT Edge",
+    "Azure IoT Hub"
+  ],
+  "Tags": [
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Microsoft is updating Azure services in a phased manner to use TLS certificates from a different set of Certificate Authorities (CAs) beginning August 13, 2020, and concluding approximately on October 26, 2020.&nbsp;We expect that most Azure&nbsp;IoT&nbsp;customers will not be impacted; however, your application may be impacted if you explicitly specify a list of acceptable CAs (a practice known as &ldquo;certificate pinning&rdquo;).&nbsp;&nbsp;</p>\r\n\r\n<p>To&nbsp;broadly&nbsp;notify customers,&nbsp;Microsoft had&nbsp;sent a Service Health portal notification on&nbsp;Aug 3rd, 2020, and released a&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/key-vault/general/whats-new#azure-tls-certificate-changes\" target=\"_blank\" rel=\"noopener\">public document</a>&nbsp;that&nbsp;includes&nbsp;timelines, actions that need to be taken,&nbsp;and&nbsp;details regarding the&nbsp;upcoming changes to our Public Key Infrastructure&nbsp;(PKI).&nbsp;</p>\r\n\r\n<p>This change is being made because the current CA certificates&nbsp;<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1649951\" target=\"_blank\" rel=\"noopener\">do not comply with one of the CA/Browser Forum Baseline requirements</a>. This was reported on July 1, 2020, and impacts multiple popular Public Key Infrastructure (PKI) providers worldwide. Today, most of the TLS certificates used by Azure services are issued from the &quot;Baltimore&nbsp;CyberTrust&nbsp;Root&quot; PKI.&nbsp;&nbsp;</p>\r\n\r\n<p>The following services&nbsp;used by Azure IoT devices&nbsp;will remain chained to the Baltimore&nbsp;CyberTrust&nbsp;Root*, but their TLS server certificates will be issued by new Intermediate Certificate Authorities (ICAs)&nbsp;starting October 5, 2020:&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Azure IoT Hub&nbsp;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Azure IoT Hub Device Provisioning Service (DPS)&nbsp;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Azure Storage Services&nbsp;</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>If any client application or device has pinned to an Intermediate CA&nbsp;rather than the Baltimore&nbsp;CyberTrust&nbsp;Root,&nbsp;immediate action is required&nbsp;to prevent disruption of IoT device connectivity to Azure.&nbsp;To learn more, please&nbsp;read&nbsp;our&nbsp;<a href=\"https://aka.ms/iot-ca-updates\" target=\"_blank\" rel=\"noopener\">technical blog</a>.&nbsp;</p>\r\n\r\n<p>*&nbsp;Other Azure service TLS certificates&nbsp;may&nbsp;be issued by a different PKI.&nbsp;</p>\r\n\r\n<p><a href=\"https://aka.ms/azure-update-pki\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p>\r\n",
+    "Markdown": "Microsoft is updating Azure services in a phased manner to use TLS certificates from a different set of Certificate Authorities (CAs) beginning August 13, 2020, and concluding approximately on October 26, 2020. We expect that most Azure IoT customers will not be impacted; however, your application may be impacted if you explicitly specify a list of acceptable CAs (a practice known as “certificate pinning”).\n\nTo broadly notify customers, Microsoft had sent a Service Health portal notification on Aug 3rd, 2020, and released a public document that includes timelines, actions that need to be taken, and details regarding the upcoming changes to our Public Key Infrastructure (PKI).\n\nThis change is being made because the current CA certificates do not comply with one of the CA/Browser Forum Baseline requirements . This was reported on July 1, 2020, and impacts multiple popular Public Key Infrastructure (PKI) providers worldwide. Today, most of the TLS certificates used by Azure services are issued from the \"Baltimore CyberTrust Root\" PKI.\n\nThe following services used by Azure IoT devices will remain chained to the Baltimore CyberTrust Root*, but their TLS server certificates will be issued by new Intermediate Certificate Authorities (ICAs) starting October 5, 2020:\n\nAzure IoT Hub\n\nAzure IoT Hub Device Provisioning Service (DPS)\n\nAzure Storage Services\n\nIf any client application or device has pinned to an Intermediate CA rather than the Baltimore CyberTrust Root, immediate action is required to prevent disruption of IoT device connectivity to Azure. To learn more, please read our technical blog .\n\n* Other Azure service TLS certificates may be issued by a different PKI.\n\nLearn more ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "iot-hub-tls-certificate-update"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=iot-hub-tls-certificate-update"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: September 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Internet of Things, Hybrid + multicloud"
+    }
+  ]
+}

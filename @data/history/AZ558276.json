@@ -1,0 +1,54 @@
+{
+  "id": "AZ558276",
+  "versions": [
+    {
+      "capturedAt": "2026-04-02T16:30:09.210Z",
+      "source": "ingest",
+      "message": {
+        "Id": "AZ558276",
+        "Title": "Retirement: AzureDnsEndpoints for Azure storage accounts will be retired March 2027",
+        "Source": "azure",
+        "Category": "azure",
+        "Severity": "normal",
+        "IsMajorChange": false,
+        "StartDateTime": "2026-04-02T16:30:09.210Z",
+        "LastModifiedDateTime": "2026-04-02T16:30:09.210Z",
+        "EndDateTime": null,
+        "ActionRequiredByDateTime": null,
+        "Services": [
+          "Azure Blob Storage"
+        ],
+        "Tags": [
+          "Retirements"
+        ],
+        "Body": {
+          "ContentType": "html",
+          "Content": "<p><a href=\"https://learn.microsoft.com/azure/storage/common/storage-account-overview#azure-dns-zone-endpoints-preview\" target=\"_blank\" rel=\"noopener\"><span>AzureDnsZone\nendpoints (preview)</span></a><span>&nbsp;for Azure Blob storage accounts will enter\nretirement in March 2027. Customers leveraging AzureDnsZone endpoints (preview)\nshould transition to Standard endpoints for all new and existing blob storage\naccount deployments by April 1, 2027.&nbsp;Standard endpoints are\nGenerally&nbsp;Available and fully supported for production workloads.&nbsp; &nbsp;</span></p><p><br></p><p><span>As a preview customer, we thank\nyou for your feedback on the preview.&nbsp; &nbsp;</span></p><p><br></p><p><span>What do I need to do?&nbsp;&nbsp;</span></p><ul><span>\n </span><li><span>Your existing storage accounts will not be impacted\n     and will not be deleted. &nbsp;&nbsp;</span></li><span>\n </span><li><span>Over the coming months, we will remove the ability to\n     create new storage accounts with AzureDnsZone endpoints. &nbsp;&nbsp;</span></li></ul><p><span><a href=\"https://aka.ms/AzStorageAccountCreate\" title=\"https://aka.ms/azstorageaccountcreate\" target=\"_blank\" rel=\"noopener\"><span>Follow our instructions</span></a></span><span>&nbsp;to update your deployments to Standard endpoints. Standard endpoints are generally available and offer full support for production workloads.\"</span></p><p><br></p><p><span>How do I identify my storage\naccounts with AzureDnsZone endpoints?&nbsp;&nbsp;</span></p><p><span>To identify your storage accounts\nwith AzureDnsZone endpoints, you can use the following Azure Resource Graph\nquery:&nbsp;&nbsp;</span></p><p><br></p><p><span>resources</span><br><span>\n| where type =~ \"microsoft.storage/storageaccounts\"</span><br><span>\n| where ['kind'] == \"StorageV2\"</span><br><span>\n| parse-where properties with * \"dnsEndpointType\\\":\\\"\"\ndnsEndpointType '\",' *</span><br><span>\n| where dnsEndpointType == \"AzureDnsZone\"&nbsp;&nbsp;</span></p><p><br></p><p><span>Help and support:&nbsp;&nbsp;</span></p><p><span>If you have questions, you\ncan&nbsp;get answers from community experts in&nbsp;</span><a href=\"https://aka.ms/classicstorageaccountmigration\" target=\"_blank\" rel=\"noopener\"><span>Microsoft Q&amp;A</span></a><span>. If\nyou have a support plan and need technical assitance, please create a&nbsp;</span><a href=\"https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest\" target=\"_blank\" rel=\"noopener\"><span>support\nrequest</span></a><span>.</span><span>&nbsp;</span></p>",
+          "Markdown": "AzureDnsZone\n\nendpoints (preview) for Azure Blob storage accounts will enter\n\nretirement in March 2027. Customers leveraging AzureDnsZone endpoints (preview)\n\nshould transition to Standard endpoints for all new and existing blob storage\n\naccount deployments by April 1, 2027. Standard endpoints are\n\nGenerally Available and fully supported for production workloads.\n\nAs a preview customer, we thank\n\nyou for your feedback on the preview.\n\nWhat do I need to do?\n\nYour existing storage accounts will not be impacted\n\nand will not be deleted.\n\nOver the coming months, we will remove the ability to\n\ncreate new storage accounts with AzureDnsZone endpoints.\n\nFollow our instructions to update your deployments to Standard endpoints. Standard endpoints are generally available and offer full support for production workloads.\"\n\nHow do I identify my storage\n\naccounts with AzureDnsZone endpoints?\n\nTo identify your storage accounts\n\nwith AzureDnsZone endpoints, you can use the following Azure Resource Graph\n\nquery:\n\nresources\n\n| where type =~ \"microsoft.storage/storageaccounts\"\n\n| where ['kind'] == \"StorageV2\"\n\n| parse-where properties with * \"dnsEndpointType\\\":\\\"\"\n\ndnsEndpointType '\",' *\n\n| where dnsEndpointType == \"AzureDnsZone\"\n\nHelp and support:\n\nIf you have questions, you\n\ncan get answers from community experts in Microsoft Q&A . If\n\nyou have a support plan and need technical assitance, please create a support\n\nrequest ."
+        },
+        "Details": [
+          {
+            "Name": "SourceId",
+            "Value": "558276"
+          },
+          {
+            "Name": "AzureLink",
+            "Value": "https://azure.microsoft.com/updates?id=558276"
+          },
+          {
+            "Name": "ReleasePhase",
+            "Value": "Retirement"
+          },
+          {
+            "Name": "Availability",
+            "Value": "Retirement: March 2027"
+          },
+          {
+            "Name": "ProductCategories",
+            "Value": "Storage"
+          }
+        ]
+      }
+    }
+  ]
+}

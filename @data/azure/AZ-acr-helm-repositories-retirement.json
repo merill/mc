@@ -1,0 +1,47 @@
+{
+  "Id": "AZ-acr-helm-repositories-retirement",
+  "Title": "Retirement: Transition from Helm Repositories to OCI Artifacts for Storing Helm Charts",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2024-09-26T07:00:00.000Z",
+  "LastModifiedDateTime": "2024-09-26T07:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Container Registry"
+  ],
+  "Tags": [
+    "Retirements",
+    "Open Source",
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>In November 2020, Helm v2 reached end of life. Starting <strong>March 30th, 2025,</strong> Azure Container Registry will <strong>no longer support Helm v2</strong>. Therefore, the legacy <strong>“Helm repositories” functionality will also be retired</strong>. After this date, Azure Container Registry will only support storing Helm charts as Open Container Initiative (OCI) Artifacts.<br>Open Container Initiative (OCI) Artifacts are container artifacts that utilize the&nbsp;<a href=\"https://go.microsoft.com/fwlink/?linkid=2286746\" target=\"_blank\" rel=\"noopener\">OCI image specification</a>. This allows you to store a Helm chart as an artifact inside your registry by running a `helm push` command and install a Helm chart by running a `helm install` command. You can check out a complete guide on working with Helm charts stored as an OCI Artifact here:&nbsp;<a href=\"https://go.microsoft.com/fwlink/?linkid=2286593\" target=\"_blank\" rel=\"noopener\">Store Helm charts - Azure Container Registry | Microsoft Learn</a></p><h2><span><span>How does this affect me?</span></span></h2><ul><li>Starting <strong>October 30, 2024,</strong> the CLI command `<a href=\"https://go.microsoft.com/fwlink/?linkid=2286690\" target=\"_blank\" rel=\"noopener\">az acr helm push</a>` will be retired. This will prevent pushing new helm charts to legacy helm repositories.</li><li>Starting <strong>March 30, 2025,</strong> the CLI command group `<a href=\"https://go.microsoft.com/fwlink/?linkid=2286691\" target=\"_blank\" rel=\"noopener\">az acr helm</a>` will be retired. This will end all legacy helm repository capabilities in Azure Container Registry.</li><li><strong>All Helm charts not stored as an OCI Artifact will be deleted from Azure Container Registry March 30th, 2025.</strong><ul><li><strong>Learn how to find all Helm Charts stored in a Helm repository here: </strong><a href=\"https://go.microsoft.com/fwlink/?linkid=2286692\" target=\"_blank\" rel=\"noopener\"><strong>az acr helm | Microsoft Learn</strong></a><strong>. If the Helm Chart you are using is listed then it is stored in a legacy Helm repository and is at risk of deletion.</strong></li></ul></li></ul><h2><span><span>Required Action</span></span></h2><ul><li>If you haven’t already, you must begin to migrate to Helm v3. You can find more detailed information in the Helm documentation: <a href=\"https://go.microsoft.com/fwlink/?linkid=2286594\" target=\"_blank\" rel=\"noopener\">Helm | Migrating Helm v2 to v3</a></li><li>Once you are using Helm v3, you can push your Helm charts as OCI Artifacts. You can read about how to do this in the Azure Container Registry documentation: <a href=\"https://go.microsoft.com/fwlink/?linkid=2286693\" target=\"_blank\" rel=\"noopener\">Store Helm charts - Azure Container Registry | Microsoft Learn</a></li></ul></p>",
+    "Markdown": "In November 2020, Helm v2 reached end of life. Starting March 30th, 2025, Azure Container Registry will no longer support Helm v2 . Therefore, the legacy “Helm repositories” functionality will also be retired . After this date, Azure Container Registry will only support storing Helm charts as Open Container Initiative (OCI) Artifacts.\n\nOpen Container Initiative (OCI) Artifacts are container artifacts that utilize the OCI image specification . This allows you to store a Helm chart as an artifact inside your registry by running a `helm push` command and install a Helm chart by running a `helm install` command. You can check out a complete guide on working with Helm charts stored as an OCI Artifact here: Store Helm charts - Azure Container Registry | Microsoft Learn\n\nHow does this affect me?\n\nStarting October 30, 2024, the CLI command ` az acr helm push ` will be retired. This will prevent pushing new helm charts to legacy helm repositories.\n\nStarting March 30, 2025, the CLI command group ` az acr helm ` will be retired. This will end all legacy helm repository capabilities in Azure Container Registry.\n\nAll Helm charts not stored as an OCI Artifact will be deleted from Azure Container Registry March 30th, 2025. Learn how to find all Helm Charts stored in a Helm repository here: az acr helm | Microsoft Learn . If the Helm Chart you are using is listed then it is stored in a legacy Helm repository and is at risk of deletion.\n\nRequired Action\n\nIf you haven’t already, you must begin to migrate to Helm v3. You can find more detailed information in the Helm documentation: Helm | Migrating Helm v2 to v3\n\nOnce you are using Helm v3, you can push your Helm charts as OCI Artifacts. You can read about how to do this in the Azure Container Registry documentation: Store Helm charts - Azure Container Registry | Microsoft Learn"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "acr-helm-repositories-retirement"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=acr-helm-repositories-retirement"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Retirement"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Retirement: March 2025"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Containers"
+    }
+  ]
+}

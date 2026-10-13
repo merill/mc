@@ -1,0 +1,58 @@
+{
+  "id": "AZ569711",
+  "versions": [
+    {
+      "capturedAt": "2026-08-31T23:11:39.789Z",
+      "source": "ingest",
+      "message": {
+        "Id": "AZ569711",
+        "Title": "Public Preview: Per-disk resiliency for Azure VMs",
+        "Source": "azure",
+        "Category": "azure",
+        "Severity": "normal",
+        "IsMajorChange": false,
+        "StartDateTime": "2026-08-31T23:11:39.789Z",
+        "LastModifiedDateTime": "2026-08-31T23:11:39.789Z",
+        "EndDateTime": null,
+        "ActionRequiredByDateTime": null,
+        "Services": [
+          "Azure Disk Storage"
+        ],
+        "Tags": [
+          "Feature"
+        ],
+        "Body": {
+          "ContentType": "html",
+          "Content": "Azure automatically recovers a VM when it loses access to an attached managed disk for an extended period. The VM is shut down and powered back on after disk connectivity is restored, with no customer action required. This remains the default behavior.<br><br>Now in public preview in select regions, per-disk resiliency provides another option for applications that can tolerate the temporary loss of an individual data disk. When enabled, Azure detaches and takes only the affected disk offline while the VM and its remaining disks continue running. Once disk connectivity is restored, Azure automatically attaches and brings the disk back online.<br><br>Use per-disk resiliency where a single data disk is not a single point of failure:<br><ol><li>Production VMs with backup or auxiliary disks, so a secondary disk issue does not interrupt the primary workload.</li><li>Clustered and shared-disk applications with their own high-availability or failover logic.<br></li><li>Containerized workloads with per-pod disks, so one persistent volume can recover without disrupting other pods on the node.</li></ol>Per-disk resiliency is opt-in for each Azure Managed Disk. While a data disk is offline, I/Os to it returns errors, so the application must continue without that disk until&nbsp;access is restored. OS disks continue to use the default VM shut down recovery behavior.<p>Available now in public preview in select regions.&nbsp;</p><p><a href=\"https://aka.ms/perdiskresilliency\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p>",
+          "Markdown": "Azure automatically recovers a VM when it loses access to an attached managed disk for an extended period. The VM is shut down and powered back on after disk connectivity is restored, with no customer action required. This remains the default behavior.\n\nNow in public preview in select regions, per-disk resiliency provides another option for applications that can tolerate the temporary loss of an individual data disk. When enabled, Azure detaches and takes only the affected disk offline while the VM and its remaining disks continue running. Once disk connectivity is restored, Azure automatically attaches and brings the disk back online.\n\nUse per-disk resiliency where a single data disk is not a single point of failure:\n\nProduction VMs with backup or auxiliary disks, so a secondary disk issue does not interrupt the primary workload.\n\nClustered and shared-disk applications with their own high-availability or failover logic.\n\nContainerized workloads with per-pod disks, so one persistent volume can recover without disrupting other pods on the node.\n\nPer-disk resiliency is opt-in for each Azure Managed Disk. While a data disk is offline, I/Os to it returns errors, so the application must continue without that disk until access is restored. OS disks continue to use the default VM shut down recovery behavior. Available now in public preview in select regions.\n\nLearn more ."
+        },
+        "Details": [
+          {
+            "Name": "SourceId",
+            "Value": "569711"
+          },
+          {
+            "Name": "AzureLink",
+            "Value": "https://azure.microsoft.com/updates?id=569711"
+          },
+          {
+            "Name": "Status",
+            "Value": "In preview"
+          },
+          {
+            "Name": "ReleasePhase",
+            "Value": "Preview"
+          },
+          {
+            "Name": "Availability",
+            "Value": "Preview: August 2026"
+          },
+          {
+            "Name": "ProductCategories",
+            "Value": "Storage"
+          }
+        ]
+      }
+    }
+  ]
+}

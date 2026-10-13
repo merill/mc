@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-better-message-handling-for-logic-apps",
+  "Title": "Better message handling for logic apps",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2015-11-09T17:17:40.000Z",
+  "LastModifiedDateTime": "2015-11-09T17:17:40.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "App Service"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "The Logic Apps feature in Azure App Service makes it easier to deal with different types of messages, including array payloads, URLs, and binary content.\n\n<strong>Message splitter </strong>- A trigger often returns an array of items to process. However, inside your logic app, you want to deal with each message <em>independently</em>. You can use <strong>For each</strong> to handle this, but that can be additional overhead if you have many steps. Instead, you can use the new <strong>splitOn</strong> property for triggers. If you provide this property with a path to an array, a Logic Apps run will be created for each item, making it much easier to handle.\n\n<a href=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/updates/ServiceUpdates/imported/images-2015-11-splitOn.png\" target=\"_blank\" rel=\"noopener\"><img src=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/updates/ServiceUpdates/imported/images-2015-11-splitOn.png\" alt=\"splitOn\"></a>\n\n<strong>Functions for URLs </strong>- If you are sending content in a URL (such as in the query string), you will need to escape it by using percent signs. The following built-in functions have been added:\n<ul>\n <li>encodeUriComponent()</li>\n <li>decodeUriComponent()</li>\n</ul>\n<strong>Native binary support</strong> - Many REST APIs take or return binary content. Previously, there was no way to handle this inside a logic app. Now, you can flow binary content from one API to another. In addition, you can get binary content from a base64-encoded string or a data URI by using the following functions:\n<ul>\n <li>decodeBase64()</li>\n <li>decodeDataUri()</li>\n</ul>\nThese additions are documented on MSDN in <a href=\"https://msdn.microsoft.com/en-us/library/azure/dn948511.aspx\" target=\"_blank\" rel=\"noopener\">our article on triggers</a> and <a href=\"https://msdn.microsoft.com/en-us/library/azure/dn948512.aspx\" target=\"_blank\" rel=\"noopener\">our article on the Logic Apps functions</a>. You can see a video example of these features and more updates (and what's coming soon) in <a href=\"https://www.youtube.com/watch?v=ce9qg_6s2iI\" target=\"_blank\" rel=\"noopener\">last week's Logic Apps Live video recording</a>.",
+    "Markdown": "The Logic Apps feature in Azure App Service makes it easier to deal with different types of messages, including array payloads, URLs, and binary content.\n\nMessage splitter - A trigger often returns an array of items to process. However, inside your logic app, you want to deal with each message independently . You can use For each to handle this, but that can be additional overhead if you have many steps. Instead, you can use the new splitOn property for triggers. If you provide this property with a path to an array, a Logic Apps run will be created for each item, making it much easier to handle.\n\nFunctions for URLs - If you are sending content in a URL (such as in the query string), you will need to escape it by using percent signs. The following built-in functions have been added:\n\nencodeUriComponent()\n\ndecodeUriComponent()\n\nNative binary support - Many REST APIs take or return binary content. Previously, there was no way to handle this inside a logic app. Now, you can flow binary content from one API to another. In addition, you can get binary content from a base64-encoded string or a data URI by using the following functions:\n\ndecodeBase64()\n\ndecodeDataUri()\n\nThese additions are documented on MSDN in our article on triggers and our article on the Logic Apps functions . You can see a video example of these features and more updates (and what's coming soon) in last week's Logic Apps Live video recording ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "better-message-handling-for-logic-apps"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=better-message-handling-for-logic-apps"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: November 2015"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Mobile, Web"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-governance-setting-cache-refreshes-azure-analysis-services",
+  "Title": "New governance setting for cache refreshes from Azure Analysis Services",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-04-25T22:39:26.000Z",
+  "LastModifiedDateTime": "2019-04-25T22:39:26.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Analysis Services"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Data visualization and consumption tools over Azure Analysis Services sometimes store data caches to enhance report interactivity for users. The Power BI service, for example, caches dashboard tile data and report data for initial load for&nbsp;<a href=\"https://docs.microsoft.com/en-us/power-bi/desktop-analysis-services-tabular-data\" target=\"_blank\" rel=\"noopener\">Live Connect reports</a>.</p>\r\n\r\n<p>Enterprise BI deployments where semantic models are reused throughout organizations can result in a great deal of dashboards and reports sourcing data from a single Analysis Services model. This can cause an excessive number of cache queries being submitted to Analysis Services. In extreme cases, it can overload the server.</p>\r\n\r\n<p>This is especially relevant to Azure Analysis Services (as opposed to on-premises SQL Server Analysis Services). Models are often co-located in the same region as the Power BI capacity for faster query response times, so they might not even benefit much from caching.</p>\r\n\r\n<p>The new ClientCacheRefreshPolicy property allows IT or the Analysis Services practitioner to override this behavior at the Azure Analysis Services server level, and disable automatic cache refreshes. All Power BI Live Connect reports and dashboards will observe the setting irrespective of the dataset-level settings, or which Power BI workspace they reside on. For more information on how to make use of this property,&nbsp;see the Analysis Services&nbsp;<a href=\"https://docs.microsoft.com/sql/analysis-services/server-properties/general-properties\" target=\"_blank\" rel=\"noopener\">server properties</a>&nbsp;page.</p>\r\n",
+    "Markdown": "Data visualization and consumption tools over Azure Analysis Services sometimes store data caches to enhance report interactivity for users. The Power BI service, for example, caches dashboard tile data and report data for initial load for Live Connect reports .\n\nEnterprise BI deployments where semantic models are reused throughout organizations can result in a great deal of dashboards and reports sourcing data from a single Analysis Services model. This can cause an excessive number of cache queries being submitted to Analysis Services. In extreme cases, it can overload the server.\n\nThis is especially relevant to Azure Analysis Services (as opposed to on-premises SQL Server Analysis Services). Models are often co-located in the same region as the Power BI capacity for faster query response times, so they might not even benefit much from caching.\n\nThe new ClientCacheRefreshPolicy property allows IT or the Analysis Services practitioner to override this behavior at the Azure Analysis Services server level, and disable automatic cache refreshes. All Power BI Live Connect reports and dashboards will observe the setting irrespective of the dataset-level settings, or which Power BI workspace they reside on. For more information on how to make use of this property, see the Analysis Services server properties page."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "governance-setting-cache-refreshes-azure-analysis-services"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=governance-setting-cache-refreshes-azure-analysis-services"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: April 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

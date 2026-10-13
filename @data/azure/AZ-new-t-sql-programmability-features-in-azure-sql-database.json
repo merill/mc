@@ -1,0 +1,47 @@
+{
+  "Id": "AZ-new-t-sql-programmability-features-in-azure-sql-database",
+  "Title": "New T-SQL programmability features in Azure SQL Database",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2016-01-23T23:25:39.000Z",
+  "LastModifiedDateTime": "2016-01-23T23:25:39.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure SQL Database"
+  ],
+  "Tags": [],
+  "Body": {
+    "ContentType": "html",
+    "Content": "New programmability features that are implemented in SQL Server 2016 are also available in Azure SQL Database. From this version, you can use additional built-in functions and statements. The following new features are available:\n<ul>\n <li><a href=\"https://msdn.microsoft.com/en-us/library/mt612795.aspx\" target=\"_blank\" rel=\"noopener\">AT TIME ZONE</a> clause\nEnables you to convert an <em>inputdate</em> to the corresponding <em>datetimeoffset</em> value in the target time zone by using time zone conversion rules, for example:</li>\n</ul>\n<p>SELECT getdate() AT TIME ZONE 'Central European Standard Time';</p>\n\n<ul>\n <li><a href=\"https://msdn.microsoft.com/en-us/library/mt622775.aspx\" target=\"_blank\" rel=\"noopener\">COMPRESS</a> and <a href=\"https://msdn.microsoft.com/en-us/library/mt622776.aspx\" target=\"_blank\" rel=\"noopener\">DECOMPRESS</a> functions\nEnable you to compress content by using the GZip algorithm. The GZip algorithm is compatible with common client libraries and tools (such as the .NET compression library and web browsers). To check the compression rate you can run the following command:</li>\n</ul>\n<p>SELECT datalength((select * from sys.objects for xml path)) / 1.0 / datalength(compress((select * from sys.objects for xml path)))</p>\n\n<ul>\n <li><a href=\"https://msdn.microsoft.com/en-us/library/mt628058.aspx\" target=\"_blank\" rel=\"noopener\">DATEDIFF_BIG</a>\nReturns the count (signed big integer) of the specified <em>datepart</em> boundaries crossed between the specified <em>startdate</em> and<em> enddate</em>. The existing DATETIME function cannot return differences with high precision units (for example, it will fail if you try to find the number of milliseconds in a 45 minute timeframe).</li>\n</ul>\n<p>-- DATEDIFF function cannot return number of microseconds in a 45 minute timeframe:</p>\n<p>SELECT DATEDIFF(microsecond, '2006-12-31 14:00:00.0000000', '2006-12-31 14:45:00.0000000')</p>\n<p>-- DATEDIFF_BIG function will return results even for nanoseconds in a one-year timeframe:</p>\n<p>SELECT DATEDIFF_BIG(nanosecond, '2005-12-31 14:00:00.0000000', '2006-12-31 14:45:00.0000000')</p>\n\n<ul>\n <li>DROP IF EXISTS\nEnables you to conditionally drop the following objects:\n<ul>\n <li>DATABASE, TABLE, VIEW, INDEX</li>\n <li>PROCEDURE, FUNCTION, TRIGGER</li>\n <li>ROLE, RULE, SCHEMA,USER, SECURITY POLICY</li>\n <li>TYPE, DEFAULT, SEQUENCE, SYNONYM</li>\n</ul>\n</li>\n</ul>\n<p>Some examples of DROP IF EXISTS statements are:</p>\n\n<ul>\n <li>DROP TABLE IF EXISTS my_tab</li>\n <li>DROP PROCEDURE IF EXISTS my_proc</li>\n <li>ALTER TABLE my_tab DROP CONSTRAINT IF EXISTS CK_VALID_PHONE_NUMBER</li>\n</ul>",
+    "Markdown": "New programmability features that are implemented in SQL Server 2016 are also available in Azure SQL Database. From this version, you can use additional built-in functions and statements. The following new features are available:\n\nAT TIME ZONE clause\n\nEnables you to convert an inputdate to the corresponding datetimeoffset value in the target time zone by using time zone conversion rules, for example:\n\nSELECT getdate() AT TIME ZONE 'Central European Standard Time';\n\nCOMPRESS and DECOMPRESS functions\n\nEnable you to compress content by using the GZip algorithm. The GZip algorithm is compatible with common client libraries and tools (such as the .NET compression library and web browsers). To check the compression rate you can run the following command:\n\nSELECT datalength((select * from sys.objects for xml path)) / 1.0 / datalength(compress((select * from sys.objects for xml path)))\n\nDATEDIFF_BIG\n\nReturns the count (signed big integer) of the specified datepart boundaries crossed between the specified startdate and enddate . The existing DATETIME function cannot return differences with high precision units (for example, it will fail if you try to find the number of milliseconds in a 45 minute timeframe).\n\n-- DATEDIFF function cannot return number of microseconds in a 45 minute timeframe:\n\nSELECT DATEDIFF(microsecond, '2006-12-31 14:00:00.0000000', '2006-12-31 14:45:00.0000000')\n\n-- DATEDIFF_BIG function will return results even for nanoseconds in a one-year timeframe:\n\nSELECT DATEDIFF_BIG(nanosecond, '2005-12-31 14:00:00.0000000', '2006-12-31 14:45:00.0000000')\n\nDROP IF EXISTS\n\nEnables you to conditionally drop the following objects:\n\nDATABASE, TABLE, VIEW, INDEX\n\nPROCEDURE, FUNCTION, TRIGGER\n\nROLE, RULE, SCHEMA,USER, SECURITY POLICY\n\nTYPE, DEFAULT, SEQUENCE, SYNONYM\n\nSome examples of DROP IF EXISTS statements are:\n\nDROP TABLE IF EXISTS my_tab\n\nDROP PROCEDURE IF EXISTS my_proc\n\nALTER TABLE my_tab DROP CONSTRAINT IF EXISTS CK_VALID_PHONE_NUMBER"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "new-t-sql-programmability-features-in-azure-sql-database"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=new-t-sql-programmability-features-in-azure-sql-database"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: January 2016"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Databases, Hybrid + multicloud"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-aks-release",
+  "Title": "AKS 2019-03-07 release",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-03-08T16:36:50.000Z",
+  "LastModifiedDateTime": "2019-03-08T16:36:50.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Kubernetes Service (AKS)"
+  ],
+  "Tags": [
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The Azure Kubernetes Service (AKS) 2019-03-07 release contains bug fixes and a new version of the Azure Monitor for containers agent:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>The Azure Monitor for containers agent has been updated to 3.0.0-4 for newly built or upgraded clusters.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>The Azure CLI now properly defaults to N-1 for Kubernetes versions. For example, N is the latest (1.12) release; the CLI will correctly pick 1.11.x. When 1.13 is released, the default will move to 1.12.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Bug fixes:</p>\r\n\r\n\t<ul>\r\n\t\t<li>If a user exceeds quota during a scale operation, the Azure CLI will now correctly display&nbsp;&quot;quota exceeded&quot; instead of &quot;deployment not found.&quot;</li>\r\n\t\t<li>All AKS CRUD (put) operations now validate and confirm that user subscriptions have the needed quota to perform the operation. If a user does not, an error is correctly shown and the operation will not take effect.</li>\r\n\t\t<li>All AKS-issued Kubernetes SSL certificates have had weak cipher support removed. All certificates should now pass security audits for BEAST and other vulnerabilities.\r\n\t\t<ul>\r\n\t\t\t<li>If you&#39;re using older clients that do not support TLS 1.2, you&#39;ll need to upgrade those clients and associated SSL libraries to securely connect.&nbsp;Note that only Kubernetes 1.10 and&nbsp;later support the new certificates. Existing certificates won&#39;t be updated, because this would revoke all user access. To get the updated certificates, you&#39;ll need to create a new AKS cluster.</li>\r\n\t\t</ul>\r\n\t\t</li>\r\n\t\t<li>Clusters that enter a failed state due to upgrade issues will now allow users to reattempt to upgrade or will throw an error message with instructions.</li>\r\n\t\t<li>Clusters that are in the process of upgrading or in failed upgrade state will attempt to re-execute the upgrade or throw an obvious error message.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>\r\n\t<p>The preview feature for Calico/Network Security Policies has been updated to repair a bug where IP forwarding was not enabled by default.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>The&nbsp;<code>cachingmode: ReadOnly</code>&nbsp;flag was not always being correctly applied to the managed premium storage class. This has been resolved.</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "The Azure Kubernetes Service (AKS) 2019-03-07 release contains bug fixes and a new version of the Azure Monitor for containers agent:\n\nThe Azure Monitor for containers agent has been updated to 3.0.0-4 for newly built or upgraded clusters.\n\nThe Azure CLI now properly defaults to N-1 for Kubernetes versions. For example, N is the latest (1.12) release; the CLI will correctly pick 1.11.x. When 1.13 is released, the default will move to 1.12.\n\nBug fixes:\n\nIf a user exceeds quota during a scale operation, the Azure CLI will now correctly display \"quota exceeded\" instead of \"deployment not found.\"\n\nAll AKS CRUD (put) operations now validate and confirm that user subscriptions have the needed quota to perform the operation. If a user does not, an error is correctly shown and the operation will not take effect.\n\nAll AKS-issued Kubernetes SSL certificates have had weak cipher support removed. All certificates should now pass security audits for BEAST and other vulnerabilities.\n\nIf you're using older clients that do not support TLS 1.2, you'll need to upgrade those clients and associated SSL libraries to securely connect. Note that only Kubernetes 1.10 and later support the new certificates. Existing certificates won't be updated, because this would revoke all user access. To get the updated certificates, you'll need to create a new AKS cluster.\n\nClusters that enter a failed state due to upgrade issues will now allow users to reattempt to upgrade or will throw an error message with instructions.\n\nClusters that are in the process of upgrading or in failed upgrade state will attempt to re-execute the upgrade or throw an obvious error message.\n\nThe preview feature for Calico/Network Security Policies has been updated to repair a bug where IP forwarding was not enabled by default.\n\nThe cachingmode: ReadOnly flag was not always being correctly applied to the managed premium storage class. This has been resolved."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "aks-release"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=aks-release"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: March 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Containers"
+    }
+  ]
+}

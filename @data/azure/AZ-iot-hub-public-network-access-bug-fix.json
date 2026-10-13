@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-iot-hub-public-network-access-bug-fix",
+  "Title": "Disabling public network access for Azure IoT Hub will disable access to built-in Azure Event Hub endpoint on September 30, 2020",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-07-02T05:00:08.000Z",
+  "LastModifiedDateTime": "2020-07-02T05:00:08.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure IoT Hub"
+  ],
+  "Tags": [
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>When public network access to Azure IoT Hub is disabled, the built-in Azure Event Hub-compatible endpoint in IoT Hub may continue to be accessible via the public internet.</p>\r\n\r\n<p>On September 30, 2020, this behavior will change and public access to the built-in endpoint will be disabled when public network access is&nbsp;<em>disabled</em>&nbsp;for IoT Hub. As of this date, if you have clients reading from the built-in endpoint while public network access is disabled, they won&rsquo;t be able to read from the built-in endpoint. For example, Azure Stream Analytics integrates with IoT Hub by reading from the built-in endpoint.</p>\r\n\r\n<p><strong>Required action</strong></p>\r\n\r\n<p>If you have Stream Analytics integration with IoT Hub set up and you have public network access disabled, Stream Analytics will stop receiving messages from your IoT hub on September 30, 2020, unless you enable public network access for your built-in Event Hub-compatible endpoint&nbsp;by following these steps:</p>\r\n\r\n<ol>\r\n\t<li>Go to the <a href=\"https://portal.azure.com/\" target=\"_blank\" rel=\"noopener\">Azure portal</a>.</li>\r\n\t<li>Browse to your IoT hub.</li>\r\n\t<li>Select&nbsp;<strong>Networking</strong>&nbsp;from the left-side menu.</li>\r\n\t<li>Under <strong>Allow public network access to</strong>, check if&nbsp;<strong>Disabled</strong>&nbsp;is selected.</li>\r\n\t<li>If <strong>Disabled</strong> is selected, make sure that you don&rsquo;t rely on being able to read from the built-in Event Hub endpoint (for example, using Stream Analytics) while having public network access disabled.</li>\r\n\t<li>If you do rely on accessing the built-in endpoint, you must&nbsp;<strong>enable</strong>&nbsp;public network access or change the setting to<strong>&nbsp;Selected IP ranges</strong>&nbsp;to set up&nbsp;<a href=\"https://docs.microsoft.com/azure/iot-hub/iot-hub-ip-filtering\" target=\"_blank\" rel=\"noopener\">IP filter</a>.</li>\r\n</ol>\r\n\r\n<p>If you have questions or need more time to change the implementation,&nbsp;<a href=\"mailto:IoTHubPublicNetworkAccessBugFix@service.microsoft.com\" target=\"_blank\" rel=\"noopener\">contact us</a>&nbsp;before September 15, 2020, and we can preserve the legacy behavior for your IoT hub for a limited time.</p>\r\n",
+    "Markdown": "When public network access to Azure IoT Hub is disabled, the built-in Azure Event Hub-compatible endpoint in IoT Hub may continue to be accessible via the public internet.\n\nOn September 30, 2020, this behavior will change and public access to the built-in endpoint will be disabled when public network access is disabled for IoT Hub. As of this date, if you have clients reading from the built-in endpoint while public network access is disabled, they won’t be able to read from the built-in endpoint. For example, Azure Stream Analytics integrates with IoT Hub by reading from the built-in endpoint.\n\nRequired action\n\nIf you have Stream Analytics integration with IoT Hub set up and you have public network access disabled, Stream Analytics will stop receiving messages from your IoT hub on September 30, 2020, unless you enable public network access for your built-in Event Hub-compatible endpoint by following these steps:\n\nGo to the Azure portal .\n\nBrowse to your IoT hub.\n\nSelect Networking from the left-side menu.\n\nUnder Allow public network access to , check if Disabled is selected.\n\nIf Disabled is selected, make sure that you don’t rely on being able to read from the built-in Event Hub endpoint (for example, using Stream Analytics) while having public network access disabled.\n\nIf you do rely on accessing the built-in endpoint, you must enable public network access or change the setting to Selected IP ranges to set up IP filter .\n\nIf you have questions or need more time to change the implementation, contact us before September 15, 2020, and we can preserve the legacy behavior for your IoT hub for a limited time."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "iot-hub-public-network-access-bug-fix"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=iot-hub-public-network-access-bug-fix"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: July 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Internet of Things"
+    }
+  ]
+}

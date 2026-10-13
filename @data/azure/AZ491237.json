@@ -1,0 +1,50 @@
+{
+  "Id": "AZ491237",
+  "Title": "Public Preview: Filtered Vector Search with DiskANN",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2025-05-20T19:30:06.007Z",
+  "LastModifiedDateTime": "2025-05-20T19:30:06.007Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Cosmos DB"
+  ],
+  "Tags": [
+    "Features",
+    "Microsoft Build"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<div><br></div><div><p><span><span>You can now use </span><span>f</span><span>iltered </span><span>DiskANN</span><span>&nbsp;in Azure Cosmos DB for NoSQL to run fast, filter-aware vector searches that adapt dynamically to your data and query shape. </span><span>Filtered </span><span>DiskANN</span><span>&nbsp;</span><span>delivers even lower latency, higher recall, and lower cost efficiency on filtered vector search without post-processing or complex setup.</span></span><span>&nbsp;</span></p></div><div><p><span><span></span></span><span>&nbsp;</span></p></div><div><p><span><span>Filtered </span><span>DiskANN</span><span>&nbsp;intelligently chooses the best execution path based on the structure of your query and how selective your filters are. If your query includes a </span><span>VectorIndexShardKey</span><span>&nbsp;(configured using </span><span>s</span><span>harded </span><span>DiskANN</span><span>&nbsp;and included in your filter), Azure Cosmos DB uses that to route the search to the correct vector index shard. This </span><span>filtering </span><span>improves performance and lowers costs by narrowing the search space early.</span></span><span>&nbsp;</span></p></div><div><p><span><span></span></span><span>&nbsp;</span></p></div><div><p><span><span>If no shard key is provided, the system evaluates predicate selectivity. For low-selectivity predicates (filters that match a small subset of items), the query is routed to a quantized flat index (</span><span>qFlat</span><span>), which performs a brute-force but highly </span><span>accurate</span><span>&nbsp;search over a smaller candidate pool. For medium to high-selectivity predicates, where </span><span>a large portion</span><span>&nbsp;of the data matches, Azure Cosmos DB uses </span><span>p</span><span>ushdown filtered </span><span>DiskANN</span><span>, enabling fast and efficient graph search while preserving strong recall.</span></span><span>&nbsp;</span></p></div><div><p><span><span></span></span><span>&nbsp;</span></p></div><div><p><span><span>Our new filter-aware graph navigation algorithm further boosts performance by using your filters as part of the search logic, minimizing latency while ensuring relevance.</span></span><span>&nbsp;</span></p></div><div><p><span></span><a href=\"https://aka.ms/CosmosDB/FilteredDiskANN\" target=\"_blank\" rel=\"noopener\"><span><span>Learn more.</span></span></a></p></div>",
+    "Markdown": "You can now use f iltered DiskANN in Azure Cosmos DB for NoSQL to run fast, filter-aware vector searches that adapt dynamically to your data and query shape. Filtered DiskANN delivers even lower latency, higher recall, and lower cost efficiency on filtered vector search without post-processing or complex setup.\n\nFiltered DiskANN intelligently chooses the best execution path based on the structure of your query and how selective your filters are. If your query includes a VectorIndexShardKey (configured using s harded DiskANN and included in your filter), Azure Cosmos DB uses that to route the search to the correct vector index shard. This filtering improves performance and lowers costs by narrowing the search space early.\n\nIf no shard key is provided, the system evaluates predicate selectivity. For low-selectivity predicates (filters that match a small subset of items), the query is routed to a quantized flat index ( qFlat ), which performs a brute-force but highly accurate search over a smaller candidate pool. For medium to high-selectivity predicates, where a large portion of the data matches, Azure Cosmos DB uses p ushdown filtered DiskANN , enabling fast and efficient graph search while preserving strong recall.\n\nOur new filter-aware graph navigation algorithm further boosts performance by using your filters as part of the search logic, minimizing latency while ensuring relevance.\n\nLearn more."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "491237"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=491237"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: May 2025"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Databases, Internet of Things"
+    }
+  ]
+}

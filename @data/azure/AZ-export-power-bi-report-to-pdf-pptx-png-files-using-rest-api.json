@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-export-power-bi-report-to-pdf-pptx-png-files-using-rest-api",
+  "Title": "Export Power BI reports to PDF, PPTX, or PNG files using REST API",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-03-09T20:00:15.000Z",
+  "LastModifiedDateTime": "2020-03-09T20:00:15.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Power BI Embedded"
+  ],
+  "Tags": [
+    "Features",
+    "SDK and Tools"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Power BI now has <a href=\"https://docs.microsoft.com/en-us/power-bi/developer/export-to\" target=\"_blank\" rel=\"noopener\">an additional set of capabilities</a> that allow you to export a Power BI report by using a REST call to the following file formats&mdash;PDF, PPTX (PowerPoint), and PNG.</p>\r\n\r\n<p>Use this Export-To-File API in a variety of ways:</p>\r\n\r\n<ul>\r\n\t<li><b>Create a send to print button</b>&mdash;In your application, create a button that, when clicked, triggers an export job. The job can export the viewed report as a PDF or a PPTX, and when it&rsquo;s complete, the user can receive the file as a download. As the API is asynchronous, it may take some time for the file to be available.</li>\r\n\t<li><b>Email attachment</b>&mdash;Send an automated email at set intervals with an attached PDF report. This can be useful if you want to automate sending a weekly report to executives.</li>\r\n</ul>\r\n\r\n<p>When the&nbsp;<a href=\"https://docs.microsoft.com/en-us/rest/api/power-bi/reports/exporttofile\" target=\"_blank\" rel=\"noopener\">Export-To-File</a>&nbsp;API is called, it triggers an export job. After triggering the export job, use the&nbsp;<a href=\"https://docs.microsoft.com/en-us/rest/api/power-bi/reports/getexporttofilestatus\" target=\"_blank\" rel=\"noopener\">Polling</a>&nbsp;API to track the job until it&rsquo;s complete. When the export job is complete, the Polling API call returns a&nbsp;Power BI URL&nbsp;for getting the file (the URL is available for 24 hours). The API supports <a href=\"https://docs.microsoft.com/en-us/power-bi/developer/export-to#concurrent-requests\" target=\"_blank\" rel=\"noopener\">concurrent export job requests</a>&mdash;the number of jobs you can run simultaneously depends on the SKU your report resides on.</p>\r\n\r\n<p>The following set of capabilities are provided with the new API:</p>\r\n\r\n<ul>\r\n\t<li><b>Export selected report pages</b>&mdash;Specify which pages you want to export and in what order.</li>\r\n\t<li><b>Bookmarks</b>&mdash;Using&nbsp;<a href=\"https://github.com/Microsoft/PowerBI-JavaScript/wiki/Bookmarks#bookmarks-in-power-bi\" target=\"_blank\" rel=\"noopener\">bookmarks</a>&nbsp;capabilities, export a report in a specific state after applying filters to it.</li>\r\n\t<li><b>Row-level security (RLS)</b>&mdash;Use&nbsp;<a href=\"https://docs.microsoft.com/en-us/power-bi/developer/embedded-row-level-security\" target=\"_blank\" rel=\"noopener\">row-level security (RLS)</a> to export a report showing data that&rsquo;s only visible to certain users. For example, if you&rsquo;re exporting a sales report that&rsquo;s defined with regional roles, you can programmatically filter the report so that only a certain region is displayed.</li>\r\n\t<li><b>Data protection</b>&mdash;The PDF and PPTX formats support&nbsp;<a href=\"https://docs.microsoft.com/en-us/power-bi/admin/service-security-data-protection-overview#sensitivity-labels-in-power-bi\" target=\"_blank\" rel=\"noopener\">sensitivity labels</a>. If you export a report with a sensitivity label to a PDF or a PPTX, the exported file will display the report with its sensitivity label.</li>\r\n\t<li><b>Localization</b>&mdash;When using the&nbsp;API, you have the ability to pass your desired local. The localization settings affect the way the report is displayed, for example, by changing formatting according to the selected locale.</li>\r\n</ul>\r\n\r\n<p>Note that both the report and the dataset of the report you&rsquo;re exporting must reside on a premium or embedded capacity. Other preview&nbsp;<a href=\"https://docs.microsoft.com/en-us/power-bi/developer/export-to#limitations\" target=\"_blank\" rel=\"noopener\">limitations</a>&nbsp;are detailed in the&nbsp;<a href=\"https://docs.microsoft.com/en-us/power-bi/developer/export-to\" target=\"_blank\" rel=\"noopener\">Export report to file article</a>.</p>\r\n\r\n<p>Please&nbsp;also be aware that as all new Power BI APIs, the Export-To-File API is included only in the&nbsp;<a href=\"https://powerbi.microsoft.com/en-us/blog/announcing-power-bi-apis-net-sdk-v3/\" target=\"_blank\" rel=\"noopener\">Power BI APIs .NET SDK v3</a>.</p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/power-bi/developer/export-to\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p>\r\n<p> </p>",
+    "Markdown": "Power BI now has an additional set of capabilities that allow you to export a Power BI report by using a REST call to the following file formats—PDF, PPTX (PowerPoint), and PNG.\n\nUse this Export-To-File API in a variety of ways:\n\nCreate a send to print button —In your application, create a button that, when clicked, triggers an export job. The job can export the viewed report as a PDF or a PPTX, and when it’s complete, the user can receive the file as a download. As the API is asynchronous, it may take some time for the file to be available.\n\nEmail attachment —Send an automated email at set intervals with an attached PDF report. This can be useful if you want to automate sending a weekly report to executives.\n\nWhen the Export-To-File API is called, it triggers an export job. After triggering the export job, use the Polling API to track the job until it’s complete. When the export job is complete, the Polling API call returns a Power BI URL for getting the file (the URL is available for 24 hours). The API supports concurrent export job requests —the number of jobs you can run simultaneously depends on the SKU your report resides on.\n\nThe following set of capabilities are provided with the new API:\n\nExport selected report pages —Specify which pages you want to export and in what order.\n\nBookmarks —Using bookmarks capabilities, export a report in a specific state after applying filters to it.\n\nRow-level security (RLS) —Use row-level security (RLS) to export a report showing data that’s only visible to certain users. For example, if you’re exporting a sales report that’s defined with regional roles, you can programmatically filter the report so that only a certain region is displayed.\n\nData protection —The PDF and PPTX formats support sensitivity labels . If you export a report with a sensitivity label to a PDF or a PPTX, the exported file will display the report with its sensitivity label.\n\nLocalization —When using the API, you have the ability to pass your desired local. The localization settings affect the way the report is displayed, for example, by changing formatting according to the selected locale.\n\nNote that both the report and the dataset of the report you’re exporting must reside on a premium or embedded capacity. Other preview limitations are detailed in the Export report to file article .\n\nPlease also be aware that as all new Power BI APIs, the Export-To-File API is included only in the Power BI APIs .NET SDK v3 .\n\nLearn more ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "export-power-bi-report-to-pdf-pptx-png-files-using-rest-api"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=export-power-bi-report-to-pdf-pptx-png-files-using-rest-api"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: March 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "Id": "AZ-new-t-sql-string-functions-are-availabe-in-azure-sql-database",
+  "Title": "New T-SQL string functions in Azure SQL Database",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2017-03-01T00:55:30.000Z",
+  "LastModifiedDateTime": "2017-03-01T00:55:30.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure SQL Database"
+  ],
+  "Tags": [],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>New T-SQL aggregate and string&nbsp;functions are available in Azure SQL database:</p>\r\n\r\n<ul>\r\n <li>STRING_AGG () aggregate that concatenates values from&nbsp;a table by using the specified separator. An example of a&nbsp;query that returns all departments with a list of employee phone numbers separated with commas, and a list of email addresses separated with&nbsp;semicolons, is:</li>\r\n</ul>\r\n\r\n<p><code>SELECT DepartmentName, STRING_AGG ( Phone, &#39;,&#39; ) as Phones, STRING_AGG ( EmailAddress, &#39;;&#39; ) WITHIN GROUP (ORDER BY EmailAddress) as Emails<br>\r\nFROM Employee<br>\r\nGROUP BY DepartmentName</code></p>\r\n\r\n<p>Note that&nbsp;you can use an&nbsp;additional WITHIN GROUP clause to sort the values before concatenation. In this example, email addresses are sorted alphabetically.</p>\r\n\r\n<ul>\r\n <li>TRIM() function that can remove any set of characters from both sides of the string. The following example returns descriptions of the articles where spaces are trimmed in first column; and dots, commas, and semicolons are trimmed in the second column:&nbsp;</li>\r\n</ul>\r\n\r\n<p><code>SELECT TRIM (Description), TRIM( &#39;.,!&#39; FROM Description)<br>\r\nFROM Article</code></p>\r\n\r\n<ul>\r\n <li>CONCAT_WS() function that concatenates values by using the separator defined as the first parameter. The following query returns the name of the customer and the address, with address parts separated with commas:</li>\r\n</ul>\r\n\r\n<p><code>SELECT Name, CONCAT_WS ( &#39;,&#39;, AddressLine1, AddressLine2, Town, Region, Country, ZipCode) as FullAddress<br>\r\nFROM Customers</code></p>\r\n\r\n<p>All new functions are also available in natively compiled stored procedures, functions, and triggers.</p>\r\n",
+    "Markdown": "New T-SQL aggregate and string functions are available in Azure SQL database:\n\nSTRING_AGG () aggregate that concatenates values from a table by using the specified separator. An example of a query that returns all departments with a list of employee phone numbers separated with commas, and a list of email addresses separated with semicolons, is:\n\nSELECT DepartmentName, STRING_AGG ( Phone, ',' ) as Phones, STRING_AGG ( EmailAddress, ';' ) WITHIN GROUP (ORDER BY EmailAddress) as Emails\n\nFROM Employee\n\nGROUP BY DepartmentName\n\nNote that you can use an additional WITHIN GROUP clause to sort the values before concatenation. In this example, email addresses are sorted alphabetically.\n\nTRIM() function that can remove any set of characters from both sides of the string. The following example returns descriptions of the articles where spaces are trimmed in first column; and dots, commas, and semicolons are trimmed in the second column:\n\nSELECT TRIM (Description), TRIM( '.,!' FROM Description)\n\nFROM Article\n\nCONCAT_WS() function that concatenates values by using the separator defined as the first parameter. The following query returns the name of the customer and the address, with address parts separated with commas:\n\nSELECT Name, CONCAT_WS ( ',', AddressLine1, AddressLine2, Town, Region, Country, ZipCode) as FullAddress\n\nFROM Customers\n\nAll new functions are also available in natively compiled stored procedures, functions, and triggers."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "new-t-sql-string-functions-are-availabe-in-azure-sql-database"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=new-t-sql-string-functions-are-availabe-in-azure-sql-database"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: March 2017"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Databases, Hybrid + multicloud"
+    }
+  ]
+}

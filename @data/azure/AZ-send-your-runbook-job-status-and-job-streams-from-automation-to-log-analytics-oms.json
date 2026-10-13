@@ -1,0 +1,48 @@
+{
+  "Id": "AZ-send-your-runbook-job-status-and-job-streams-from-automation-to-log-analytics-oms",
+  "Title": "Send runbook job status and job streams from Automation to Log Analytics",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2016-08-12T16:06:33.000Z",
+  "LastModifiedDateTime": "2016-08-12T16:06:33.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Automation",
+    "Azure Monitor",
+    "Log Analytics"
+  ],
+  "Tags": [
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>You can now send runbook job status and runbook job streams from Azure Automation to your Azure Log Analytics (Operations Management Suite) workspace.&nbsp;Some use cases for this feature are:</p>\r\n\r\n<ul>\r\n\t<li>Get insight on your Automation jobs.</li>\r\n\t<li>Trigger an email or alert based on your runbook job status (failed, suspended).</li>\r\n\t<li>Write advanced queries across your job streams.</li>\r\n\t<li>Correlate jobs across Automation accounts.</li>\r\n\t<li>Visualize your job history over time.</li>\r\n</ul>\r\n\r\n<p>When&nbsp;your logs are being sent to Log Analytics, you can write queries against your Automation logs and set up alerts.&nbsp;Here are a few sample queries to illustrate how you can use these logs:&nbsp;&nbsp;&nbsp;</p>\r\n\r\n<ul>\r\n\t<li><strong>Failed or suspended jobs</strong>: <em>Category=JobLogs (ResultType=Failed || ResultType=Suspended)</em></li>\r\n\t<li><strong>Jobs with error streams (by job ID)</strong>: <em>Category=JobStreams StreamType_s=Error | measure count() by JobId_g</em></li>\r\n\t<li><strong>Investigate job streams for a job</strong>: <em>Category=JobStreams JobId_g=&quot;INSERT RUNBOOK JOB ID HERE&quot; | sort TimeGenerated | select ResultDescription </em></li>\r\n\t<li><strong>Job history over time</strong>: <em>Category=JobLogs NOT(ResultType=&quot;Started&quot;) | measure Count() by ResultType interval 1day</em></li>\r\n</ul>\r\n\r\n<p>To learn more about how to send Automation logs to Log Analytics, see <a href=\"https://azure.microsoft.com/en-us/documentation/articles/automation-manage-send-joblogs-log-analytics/\" target=\"_blank\" rel=\"noopener\"><u>Forward job status and job streams from Automation to Log Analytics (OMS)</u></a>.&nbsp;</p>\r\n\r\n<p>For more information, see:</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://www.powershellgallery.com/packages/AzureDiagnosticsAndLogAnalytics/0.1\" target=\"_blank\" rel=\"noopener\"><u>Azure Diagnostics and Log Analytics module</u></a> &nbsp;</li>\r\n\t<li><a href=\"https://azure.microsoft.com/en-us/documentation/articles/log-analytics-alerts/\" target=\"_blank\" rel=\"noopener\"><u>Setting up alerts in Log Analytics</u></a> &nbsp;</li>\r\n\t<li><a href=\"https://azure.microsoft.com/en-us/documentation/articles/log-analytics-azure-storage/\" target=\"_blank\" rel=\"noopener\"><u>Collecting Azure storage data in Log Analytics</u></a></li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "You can now send runbook job status and runbook job streams from Azure Automation to your Azure Log Analytics (Operations Management Suite) workspace. Some use cases for this feature are:\n\nGet insight on your Automation jobs.\n\nTrigger an email or alert based on your runbook job status (failed, suspended).\n\nWrite advanced queries across your job streams.\n\nCorrelate jobs across Automation accounts.\n\nVisualize your job history over time.\n\nWhen your logs are being sent to Log Analytics, you can write queries against your Automation logs and set up alerts. Here are a few sample queries to illustrate how you can use these logs:\n\nFailed or suspended jobs : Category=JobLogs (ResultType=Failed || ResultType=Suspended)\n\nJobs with error streams (by job ID) : Category=JobStreams StreamType_s=Error | measure count() by JobId_g\n\nInvestigate job streams for a job : Category=JobStreams JobId_g=\"INSERT RUNBOOK JOB ID HERE\" | sort TimeGenerated | select ResultDescription\n\nJob history over time : Category=JobLogs NOT(ResultType=\"Started\") | measure Count() by ResultType interval 1day\n\nTo learn more about how to send Automation logs to Log Analytics, see Forward job status and job streams from Automation to Log Analytics (OMS) .\n\nFor more information, see:\n\nAzure Diagnostics and Log Analytics module\n\nSetting up alerts in Log Analytics\n\nCollecting Azure storage data in Log Analytics"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "send-your-runbook-job-status-and-job-streams-from-automation-to-log-analytics-oms"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=send-your-runbook-job-status-and-job-streams-from-automation-to-log-analytics-oms"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: August 2016"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance, DevOps"
+    }
+  ]
+}

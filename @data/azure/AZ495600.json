@@ -1,0 +1,50 @@
+{
+  "Id": "AZ495600",
+  "Title": "Generally Available: Required role assignment for private endpoint approvals in AzureML workspaces and/or Microsoft Foundry hubs with managed network",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2025-06-03T16:00:11.000Z",
+  "LastModifiedDateTime": "2025-06-03T16:00:11.285Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Microsoft Foundry",
+    "Azure Machine Learning"
+  ],
+  "Tags": [
+    "Management"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Starting April 30, 2025, private endpoint approvals from the\nAzure Machine Learning and Microsoft Foundry managed network will no longer be\nhandled by the internal networking service. Moving forward, either the Azure AI\nEnterprise Network Connection Approver RBAC role must be assigned to the\nworkspace’s managed identity, or a custom role with the necessary private\nendpoint connection permissions on the target resource types must be created.\nThis change addresses security concerns related to the previous automatic role\nassignment. Existing resources with approved private endpoints are not\naffected, as the appropriate role was already assigned by the service.&nbsp;&nbsp;</p><p>&nbsp;&nbsp;</p><p><b>Required action:</b>&nbsp;Ensure that a managed identity\nis configured for your workspace or hub. Assign either the Azure AI Enterprise\nNetwork Connection Approver role or a custom role to this identity within your\nsubscription to enable private endpoint approvals. For details on supported\nprivate endpoint target resource types, refer to the official documentation.<br><a href=\"https://learn.microsoft.com/en-us/azure/machine-learning/how-to-managed-network?view=azureml-api-2&amp;tabs=new-workspace&amp;pivots=cli#approval-of-private-endpoints\" target=\"_blank\" rel=\"noopener\">Learn\nmore</a>.&nbsp; &nbsp;</p>",
+    "Markdown": "Starting April 30, 2025, private endpoint approvals from the\n\nAzure Machine Learning and Microsoft Foundry managed network will no longer be\n\nhandled by the internal networking service. Moving forward, either the Azure AI\n\nEnterprise Network Connection Approver RBAC role must be assigned to the\n\nworkspace’s managed identity, or a custom role with the necessary private\n\nendpoint connection permissions on the target resource types must be created.\n\nThis change addresses security concerns related to the previous automatic role\n\nassignment. Existing resources with approved private endpoints are not\n\naffected, as the appropriate role was already assigned by the service.\n\nRequired action: Ensure that a managed identity\n\nis configured for your workspace or hub. Assign either the Azure AI Enterprise\n\nNetwork Connection Approver role or a custom role to this identity within your\n\nsubscription to enable private endpoint approvals. For details on supported\n\nprivate endpoint target resource types, refer to the official documentation.\n\nLearn\n\nmore ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "495600"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=495600"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Private Preview, General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Private Preview: April 2025; General Availability: April 2025"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "AI + machine learning, Internet of Things"
+    }
+  ]
+}

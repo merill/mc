@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-phased-loading-of-embedded-content-in-power-bi-embedded",
+  "Title": "Phased loading of embedded content in Power BI Embedded",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2018-03-15T08:02:36.000Z",
+  "LastModifiedDateTime": "2018-03-15T08:02:36.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Power BI Embedded"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<h2>&nbsp;</h2>\r\n\r\n<p>The loading of an embedded artifact in Power BI Embedded is done&nbsp;through an&nbsp;<strong>embed</strong> call that contains an embedded configuration object and the <strong>&lt;div&gt;</strong> element that contains&nbsp;<strong>iframe</strong>. After the embedded object is called, it&#39;s loaded in front of the user.</p>\r\n\r\n<p>To improve the user experience and provide more tools for developers, we have extended this flow with&nbsp;<a href=\"https://github.com/Microsoft/PowerBI-JavaScript/wiki/Phased-Embedding-API\" target=\"_blank\" rel=\"noopener\">more JavaScript calls that add phases to the embedding process</a>:</p>\r\n\r\n<ol>\r\n <li><strong><a href=\"https://github.com/Microsoft/PowerBI-JavaScript/wiki/Phased-Embedding-API#preload-warm-start\" target=\"_blank\" rel=\"noopener\">Preload</a></strong>. The <strong>powerbi.preload()</strong> call uses the browser&rsquo;s cache and download scripts before showing the embedded object itself. This can be&nbsp;useful for applications that host several embedded reports. A <strong>ready</strong> event is fired&nbsp;after the preload is completed.</li>\r\n <li><strong><a href=\"https://github.com/Microsoft/PowerBI-JavaScript/wiki/Phased-Embedding-API#load-metadata\" target=\"_blank\" rel=\"noopener\">Load metadata</a></strong>. The <strong>powerbi.load()</strong> call helps retrieve info on the embedded object, and dynamically changes the settings or the <strong>&lt;div&gt;</strong> element in the background, before the object is displayed to the user. For example, you can use this function to get pages and then decide which page to show the user. Or, you can use <strong>get visuals</strong> and then decide which visuals you&nbsp;want to show or hide. If you use this function, you need to call the <strong>render()</strong> function to show the embedded object.&nbsp;After the load is completed, a <strong>loaded</strong> event is fired.</li>\r\n <li><strong><a href=\"https://github.com/Microsoft/PowerBI-JavaScript/wiki/Phased-Embedding-API#render\" target=\"_blank\" rel=\"noopener\">Render object</a></strong>. The final call, if you implemented the <strong>powerbi.load()</strong> function, is <strong>render()</strong>. It completes the last actions needed to render and show the embedded object to the&nbsp;user. A <strong>rendered</strong> event is fired after the render is completed.</li>\r\n</ol>\r\n\r\n<p>Although the <strong>load</strong> and <strong>render</strong> functions must be used together, <strong>preload</strong> is independent of them. You can use the&nbsp;<strong>embed</strong> function to show the embedded object after preload.&nbsp;You can also&nbsp;use the full phased procedure by calling <strong>preload</strong>, <strong>load</strong>, and <strong>render</strong>,&nbsp;respectively.</p>\r\n",
+    "Markdown": "The loading of an embedded artifact in Power BI Embedded is done through an embed call that contains an embedded configuration object and the <div> element that contains iframe . After the embedded object is called, it's loaded in front of the user.\n\nTo improve the user experience and provide more tools for developers, we have extended this flow with more JavaScript calls that add phases to the embedding process :\n\nPreload . The powerbi.preload() call uses the browser’s cache and download scripts before showing the embedded object itself. This can be useful for applications that host several embedded reports. A ready event is fired after the preload is completed.\n\nLoad metadata . The powerbi.load() call helps retrieve info on the embedded object, and dynamically changes the settings or the <div> element in the background, before the object is displayed to the user. For example, you can use this function to get pages and then decide which page to show the user. Or, you can use get visuals and then decide which visuals you want to show or hide. If you use this function, you need to call the render() function to show the embedded object. After the load is completed, a loaded event is fired.\n\nRender object . The final call, if you implemented the powerbi.load() function, is render() . It completes the last actions needed to render and show the embedded object to the user. A rendered event is fired after the render is completed.\n\nAlthough the load and render functions must be used together, preload is independent of them. You can use the embed function to show the embedded object after preload. You can also use the full phased procedure by calling preload , load , and render , respectively."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "phased-loading-of-embedded-content-in-power-bi-embedded"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=phased-loading-of-embedded-content-in-power-bi-embedded"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: March 2018"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

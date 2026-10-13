@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-azure-site-recovery-data-encryption-feature-will-be-retired-april-30-2022",
+  "Title": "Azure Site Recovery data encryption feature will be retired April 30, 2022",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-02-27T18:00:02.000Z",
+  "LastModifiedDateTime": "2020-02-27T18:00:02.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Site Recovery"
+  ],
+  "Tags": [
+    "Retirements"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The Azure Site Recovery data encryption feature will be retired on <strong>April 30, 2022</strong>. This will be replaced by the more advanced <a href=\"https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/\" target=\"_blank\" rel=\"noopener\">Encryption at Rest with Azure Site Recovery</a>, which uses <a href=\"https://docs.microsoft.com/azure/storage/common/storage-service-encryption\" target=\"_blank\" rel=\"noopener\">Storage Service Encryption</a> (SSE). With SSE, data is encrypted before persisting to storage and decrypted on retrieval, and, upon failover to Azure, your VMs will run from the encrypted storage accounts, allowing for an improved recovery time objective (RTO).</p>\r\n\r\n<p><strong>How will this affect me?</strong></p>\r\n\r\n<p>After<strong> April 30, 2022</strong>, any VMs that still use the retired encryption feature will cease failover operations and won&rsquo;t be able to use Azure Site Recovery.</p>\r\n\r\n<p><strong>What actions do I need to take?</strong></p>\r\n\r\n<p>To continue successful failover operations, create new replication policies for the VMs listed below by <strong>April 30, 2022</strong>.</p>\r\n\r\n<p>Follow these steps for each VM:</p>\r\n\r\n<ol>\r\n\t<li><a href=\"https://docs.microsoft.com/azure/site-recovery/site-recovery-manage-registration-and-protection#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario\" target=\"_blank\" rel=\"noopener\">Disable replication</a>.</li>\r\n\t<li><a href=\"https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-tutorial#set-up-a-replication-policy\" target=\"_blank\" rel=\"noopener\">Create a new replication policy</a>.</li>\r\n\t<li><a href=\"https://docs.microsoft.com/azure/site-recovery/hyper-v-vmm-azure-tutorial#enable-replication\" target=\"_blank\" rel=\"noopener\">Enable replication</a> and select a storage account with SSE enabled.</li>\r\n</ol>\r\n\r\n<p>After completing the initial replication to storage accounts with SSE enabled, your VMs will be using Encryption at Rest with Azure Site Recovery.</p>\r\n",
+    "Markdown": "The Azure Site Recovery data encryption feature will be retired on April 30, 2022 . This will be replaced by the more advanced Encryption at Rest with Azure Site Recovery , which uses Storage Service Encryption (SSE). With SSE, data is encrypted before persisting to storage and decrypted on retrieval, and, upon failover to Azure, your VMs will run from the encrypted storage accounts, allowing for an improved recovery time objective (RTO).\n\nHow will this affect me?\n\nAfter April 30, 2022 , any VMs that still use the retired encryption feature will cease failover operations and won’t be able to use Azure Site Recovery.\n\nWhat actions do I need to take?\n\nTo continue successful failover operations, create new replication policies for the VMs listed below by April 30, 2022 .\n\nFollow these steps for each VM:\n\nDisable replication .\n\nCreate a new replication policy .\n\nEnable replication and select a storage account with SSE enabled.\n\nAfter completing the initial replication to storage accounts with SSE enabled, your VMs will be using Encryption at Rest with Azure Site Recovery."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-site-recovery-data-encryption-feature-will-be-retired-april-30-2022"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-site-recovery-data-encryption-feature-will-be-retired-april-30-2022"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Retirement"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Retirement: April 2022"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance, Migration"
+    }
+  ]
+}

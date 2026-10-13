@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-security-advisory-on-linux-kernel-tcp-vulnerabilities-for-hdinsight-clusters",
+  "Title": "Security Advisory: Patching Azure HDInsight clusters to address Linux Kernel TCP vulnerabilities",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-06-26T21:00:04.000Z",
+  "LastModifiedDateTime": "2019-06-26T21:00:04.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "HDInsight"
+  ],
+  "Tags": [
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Microsoft Azure is aware of 3&nbsp;critical vulnerabilities that affect&nbsp;the Linux kernel:&nbsp;(<u><a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcve.mitre.org%2Fcgi-bin%2Fcvename.cgi%3Fname%3DCVE-2019-11477&amp;data=02%7C01%7Cali%40microsoft.com%7C5fa9b3375ff042e40f3308d6f9d2a4b8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636971080430404942&amp;sdata=oJ%2Bc%2BlAAjsZXYByRYHLYAglBfr1XJXaYbRRCvPXVo7s%3D&amp;reserved=0\" title=\"https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2019-11477\" target=\"_blank\" rel=\"noopener\">CVE-2019-11477</a></u>,&nbsp;<u><a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcve.mitre.org%2Fcgi-bin%2Fcvename.cgi%3Fname%3DCVE-2019-11478&amp;data=02%7C01%7Cali%40microsoft.com%7C5fa9b3375ff042e40f3308d6f9d2a4b8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636971080430414939&amp;sdata=y%2BA5dB%2Bm%2Fkzxf%2BklJ%2BYDjqSCSCoQVtMyKTU0hACjkr4%3D&amp;reserved=0\" title=\"https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2019-11478\" target=\"_blank\" rel=\"noopener\">CVE-2019-11478</a></u>,&nbsp;<u><a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcve.mitre.org%2Fcgi-bin%2Fcvename.cgi%3Fname%3DCVE-2019-11479&amp;data=02%7C01%7Cali%40microsoft.com%7C5fa9b3375ff042e40f3308d6f9d2a4b8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636971080430414939&amp;sdata=a0OcZL%2BEHwcchS7GJWFLijrSfDzngkqCVQKUWFc64OA%3D&amp;reserved=0\" title=\"https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2019-11479\" target=\"_blank\" rel=\"noopener\">CVE-2019-11479</a></u>). An updated image, with patches for the above vulnerabilities, for HDInsight clusters is now available.</p>\r\n\r\n<ol start=\"1\">\r\n\t<li>No further action is needed for clusters that were created after June 24<sup>th</sup>, 2019. These clusters have picked up the patched images.</li>\r\n\t<li>For clusters created prior to June 24<sup>th</sup>,2019, you will need to reboot the VMs in the cluster at your convenience.\r\n\t<ol start=\"1\">\r\n\t\t<li>Reboot all the VMs at the same time: Please use this script (<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhdiconfigactions.blob.core.windows.net%2Flinuxospatchingrebootconfigv02%2Fkernel-patch-and-reboot.sh&amp;data=02%7C01%7Cali%40microsoft.com%7C319481cbc0434d6535dd08d6fb4dfc6c%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636972709696872772&amp;sdata=nJf9l7EL7%2BYC6NvxqM9qVXBbDknETSMvpiIODy%2Ftrg8%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">kernel-patch-and-reboot.sh</a>) as a persisted&nbsp;<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fhdinsight%2Fhdinsight-hadoop-customize-cluster-linux&amp;data=02%7C01%7Cali%40microsoft.com%7C319481cbc0434d6535dd08d6fb4dfc6c%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636972709696872772&amp;sdata=riQPI4MtgPRx74x2c7LZS0ChmKX3wr2Q0As%2FZvVVg%2FM%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">customized script action</a>.</li>\r\n\t\t<li>Reboot VMs in a staggered manner: Please use (<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fhdinsight%2Fhdinsight-os-patching&amp;data=02%7C01%7Cali%40microsoft.com%7C319481cbc0434d6535dd08d6fb4dfc6c%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636972709696882768&amp;sdata=sgWiJe%2Fd4bXuDrLnhN2fvpv5ytYGq%2Bbo1ACGovRwGdM%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">HDInsight OS patching</a>) to schedule the reboot of VMs in a staggered manner across a 24-hour window. If you are using scaling feature to scale up the size of the cluster including using Autoscale capability, please use this script (<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhdiconfigactions.blob.core.windows.net%2Flinuxospatchingrebootconfigv02%2Fkernel-patch-and-reboot.sh&amp;data=02%7C01%7Cali%40microsoft.com%7C319481cbc0434d6535dd08d6fb4dfc6c%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636972709696882768&amp;sdata=BO91WjXfUIs%2BMvBc8BHebs0GoiqjqFqo3SWVe0x3Jio%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">kernel-patch-and-reboot.sh</a>) as a persisted&nbsp;<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fhdinsight%2Fhdinsight-hadoop-customize-cluster-linux&amp;data=02%7C01%7Cali%40microsoft.com%7C319481cbc0434d6535dd08d6fb4dfc6c%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636972709696892758&amp;sdata=f1y7hLpnNAXQ9KbBGzus9dOI3cCijyJh1UW30puEmS8%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">customized script action</a> for the patch to be applied on the scaled up VMs.</li>\r\n\t</ol>\r\n\t</li>\r\n</ol>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Please contact Azure Support in case you encounter any issues.</p>\r\n",
+    "Markdown": "Microsoft Azure is aware of 3 critical vulnerabilities that affect the Linux kernel: ( CVE-2019-11477 , CVE-2019-11478 , CVE-2019-11479 ). An updated image, with patches for the above vulnerabilities, for HDInsight clusters is now available.\n\nNo further action is needed for clusters that were created after June 24 th , 2019. These clusters have picked up the patched images.\n\nFor clusters created prior to June 24 th ,2019, you will need to reboot the VMs in the cluster at your convenience.\n\nReboot all the VMs at the same time: Please use this script ( kernel-patch-and-reboot.sh ) as a persisted customized script action .\n\nReboot VMs in a staggered manner: Please use ( HDInsight OS patching ) to schedule the reboot of VMs in a staggered manner across a 24-hour window. If you are using scaling feature to scale up the size of the cluster including using Autoscale capability, please use this script ( kernel-patch-and-reboot.sh ) as a persisted customized script action for the patch to be applied on the scaled up VMs.\n\nPlease contact Azure Support in case you encounter any issues."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "security-advisory-on-linux-kernel-tcp-vulnerabilities-for-hdinsight-clusters"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=security-advisory-on-linux-kernel-tcp-vulnerabilities-for-hdinsight-clusters"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: June 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

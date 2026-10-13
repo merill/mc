@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-azure-notification-hubs-updates-ios13",
+  "Title": "Azure Notification Hubs updates for iOS 13",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-10-21T21:53:51.000Z",
+  "LastModifiedDateTime": "2019-10-21T21:53:51.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Notification Hubs"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Apple recently updated their public Push service in a way that impacts Azure Notification Hubs customers. <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fnotification-hubs%2Fpush-notification-updates-ios-13&amp;data=02%7C01%7Cv-krwea%40microsoft.com%7C5db3f7e8f7234faf816808d7566acc2c%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637072888996446108&amp;sdata=rSgRlhwBWOFXHcA0m5hWzU55jcJUIOOxMeLHi8yfRRY%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Learn more</a> about the impact of these changes on Azure Notification Hubs. &nbsp;Specifically, Apple now requires that developers identify notifications as an alert or background notifications through the new &#39;apns-push-type&#39; header in the APNS API</p>\r\n\r\n<p>According to&nbsp;<a href=\"https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns\" target=\"_blank\" rel=\"noopener\">Apple&rsquo;s documentation</a>: &quot;The value of this header must accurately reflect the contents of your notification&rsquo;s payload. If there is a mismatch, or if the header is missing on required systems, APNs may return an error, delay the delivery of the notification, or drop it altogether.&quot;&nbsp;</p>\r\n\r\n<p>Developers must now set this header in their applications that send notifications through Azure Notification Hubs. Due to a technical limitation, customers must use token-based authentication for APNS credentials with requests that includes this attribute. If you&rsquo;re using certificate-based authentication for your APNS credentials, you must switch to using token-based authentication.&nbsp;</p>\r\n\r\n<p>To help you during this transition, when Azure Notification Hubs detects a notification that doesn&rsquo;t have the&nbsp;apns-push-type set, the service will infer the push type from the notification request and set the value automatically. Remember, you must configure Azure Notification Hubs to use token-based authentication to set the required header; please refer to&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification\" target=\"_blank\" rel=\"noopener\">Token-based (HTTP/2) Authentication for APNS</a>&nbsp;for additional information.&nbsp;</p>\r\n\r\n<p>Another minor change, but one that requires a change to the backend application that sends notifications, is the requirement that for background notifications the&nbsp;apns-priority header&nbsp;must be set to 5. Many applications set the&nbsp;apns-priority header&nbsp;to 10 (indicating immediate delivery), or don&rsquo;t set it and get the default value which is also 10.&nbsp;This is no longer allowed for background notifications, so you must set the value for each request as Apple will not deliver background notifications if this value is missing.&nbsp;</p>\r\n\r\n<p>For years, iOS developers used the description attribute of the&nbsp;deviceToken&nbsp;data sent to the push token delegate to extract the push token a backend application uses to send notifications to the device. With Xcode 11, that description attribute changed to a different format. Existing code developers used for this is now broken. We&rsquo;ve updated the Azure Notification Hubs SDK to accommodate this change, please update the SDK used by your applications to the version 2.0.4 or newer of the&nbsp;<a href=\"https://github.com/Azure/azure-notificationhubs-ios\" target=\"_blank\" rel=\"noopener\">Azure Notification Hubs iOS SDK</a>.&nbsp;</p>\r\n",
+    "Markdown": "Apple recently updated their public Push service in a way that impacts Azure Notification Hubs customers. Learn more about the impact of these changes on Azure Notification Hubs. Specifically, Apple now requires that developers identify notifications as an alert or background notifications through the new 'apns-push-type' header in the APNS API\n\nAccording to Apple’s documentation : \"The value of this header must accurately reflect the contents of your notification’s payload. If there is a mismatch, or if the header is missing on required systems, APNs may return an error, delay the delivery of the notification, or drop it altogether.\"\n\nDevelopers must now set this header in their applications that send notifications through Azure Notification Hubs. Due to a technical limitation, customers must use token-based authentication for APNS credentials with requests that includes this attribute. If you’re using certificate-based authentication for your APNS credentials, you must switch to using token-based authentication.\n\nTo help you during this transition, when Azure Notification Hubs detects a notification that doesn’t have the apns-push-type set, the service will infer the push type from the notification request and set the value automatically. Remember, you must configure Azure Notification Hubs to use token-based authentication to set the required header; please refer to Token-based (HTTP/2) Authentication for APNS for additional information.\n\nAnother minor change, but one that requires a change to the backend application that sends notifications, is the requirement that for background notifications the apns-priority header must be set to 5. Many applications set the apns-priority header to 10 (indicating immediate delivery), or don’t set it and get the default value which is also 10. This is no longer allowed for background notifications, so you must set the value for each request as Apple will not deliver background notifications if this value is missing.\n\nFor years, iOS developers used the description attribute of the deviceToken data sent to the push token delegate to extract the push token a backend application uses to send notifications to the device. With Xcode 11, that description attribute changed to a different format. Existing code developers used for this is now broken. We’ve updated the Azure Notification Hubs SDK to accommodate this change, please update the SDK used by your applications to the version 2.0.4 or newer of the Azure Notification Hubs iOS SDK ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-notification-hubs-updates-ios13"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-notification-hubs-updates-ios13"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Internet of Things, Mobile, Web"
+    }
+  ]
+}

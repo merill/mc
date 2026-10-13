@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-in-development-application-insights-availability-tests-tls-13-enablement-2",
+  "Title": "Application Insights Availability Tests TLS 1.3 Enablement",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2023-12-01T19:37:01.000Z",
+  "LastModifiedDateTime": "2023-12-01T19:37:01.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Application Insights",
+    "Azure Monitor"
+  ],
+  "Tags": [
+    "Compliance"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>To prepare for the retirement of TLS 1.0 and 1.1 within Azure, Availability Tests in Azure Monitor Application Insights are being updated to communicate using TLS 1.3.&nbsp; We will&nbsp;continue to allow failover to down level TLS,&nbsp;which means TLS versions 1.2, 1.1, and 1.0 will still work with Availability Tests.</p>\r\n\r\n<p>This update will happen over time, starting with 5 regions between December 2023 and March 2024:</p>\r\n\r\n<ul>\r\n\t<li><strong>4 December 2023</strong>\r\n\r\n\t<ul>\r\n\t\t<li>North Central US</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li><strong>8 January 2024&nbsp;- 1 March 2024</strong>\r\n\r\n\t<ul>\r\n\t\t<li>Central US</li>\r\n\t\t<li>East US</li>\r\n\t\t<li>South Central US</li>\r\n\t\t<li>West US</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>As this update rolls out, you may notice tests start failing due to misconfigured&nbsp;or incorrect TLS implementation on the remote endpoint they are monitoring. The error&nbsp;you receive may include &quot;<em>T</em><em>he request was aborted: Could not create SSL/TLS secure channel&quot;</em><strong><em>&nbsp;</em></strong> but there may be other errors which indicate an issue as well.&nbsp;</p>\r\n\r\n<p>To correct this, please ensure that clients running on Windows Server 2022 with TLS 1.3 enabled can connect to your endpoint. &nbsp;If you need extended time to fix the TLS 1.3 configuration on your endpoint, you could consider temporarily disabling TLS 1.3 on your endpoint so that Availability Tests will fall back to older TLS versions.</p>\r\n",
+    "Markdown": "To prepare for the retirement of TLS 1.0 and 1.1 within Azure, Availability Tests in Azure Monitor Application Insights are being updated to communicate using TLS 1.3. We will continue to allow failover to down level TLS, which means TLS versions 1.2, 1.1, and 1.0 will still work with Availability Tests.\n\nThis update will happen over time, starting with 5 regions between December 2023 and March 2024:\n\n4 December 2023\n\nNorth Central US\n\n8 January 2024 - 1 March 2024\n\nCentral US\n\nEast US\n\nSouth Central US\n\nWest US\n\nAs this update rolls out, you may notice tests start failing due to misconfigured or incorrect TLS implementation on the remote endpoint they are monitoring. The error you receive may include \" T he request was aborted: Could not create SSL/TLS secure channel\" but there may be other errors which indicate an issue as well.\n\nTo correct this, please ensure that clients running on Windows Server 2022 with TLS 1.3 enabled can connect to your endpoint. If you need extended time to fix the TLS 1.3 configuration on your endpoint, you could consider temporarily disabling TLS 1.3 on your endpoint so that Availability Tests will fall back to older TLS versions."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "in-development-application-insights-availability-tests-tls-13-enablement-2"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=in-development-application-insights-availability-tests-tls-13-enablement-2"
+    },
+    {
+      "Name": "Status",
+      "Value": "In development"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Private Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Private Preview: December 2023"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "DevOps, Management and governance"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "Id": "AZ-geo-disaster-recovery-available-in-event-grid",
+  "Title": "Geo Disaster Recovery available in Event Grid",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-05-29T18:00:17.000Z",
+  "LastModifiedDateTime": "2019-05-29T18:00:17.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Event Grid"
+  ],
+  "Tags": [
+    "Features",
+    "Management",
+    "Services",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Event Grid now has built-in automatic geo disaster recovery (GeoDR) of metadata, applicable to&nbsp;all existing Domains, Topics&nbsp;and Event Subscriptions, not just for new ones. This means that, in the event of an outage that takes out an entire Azure region, the Event Grid service will already have all of your eventing infrastructure metadata synced to a paired region&nbsp;and&nbsp;your new events will begin to flow again with no intervention required, avoiding service interruption.</p>\r\n\r\n<p>Disaster recovery is generally measured with two metrics:</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective\" target=\"_blank\" rel=\"noopener\">Recovery Point Objective (RPO)</a>: the minutes or hours of data that may be lost.</li>\r\n\t<li><a href=\"https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective\" target=\"_blank\" rel=\"noopener\">Recovery Time Objective (RTO)</a>: the minutes of hours the service may be down.</li>\r\n</ul>\r\n\r\n<p>Event Grid&rsquo;s automatic failover has different RPO&rsquo;s and RTO&rsquo;s for your metadata (event subscriptions, etc.) and data (events). If you need different specification from below, you can still always <a href=\"https://docs.microsoft.com/en-us/azure/event-grid/custom-disaster-recovery\" target=\"_blank\" rel=\"noopener\">implement your own client-side failover using the topic health APIs</a>.</p>\r\n\r\n<ul>\r\n\t<li>Metadata RPO: Zero minutes. You read that right. Any time a resource is created in Event Grid, it&#39;s instantly replicated across regions. In the event of a failover, no metadata is lost.</li>\r\n\t<li>Metadata RTO: Although generally this happens much more quickly, within 60 minutes, Event Grid will begin to accept create/update/delete calls for topics and subscriptions.</li>\r\n\t<li>Data RPO: If your system is healthy and caught up on existing traffic at the time of regional failover, the RPO for events is about 5 minutes.</li>\r\n</ul>\r\n\r\n<p>Data RTO: Like metadata, this generally happens much more quickly, however within 60 minutes Event Grid will begin accepting new traffic after a regional failover.</p>\r\n\r\n<p><a href=\"https://aka.ms/egmay2019\" target=\"_blank\" rel=\"noopener\">Learn more on the Azure blog</a></p>\r\n",
+    "Markdown": "Event Grid now has built-in automatic geo disaster recovery (GeoDR) of metadata, applicable to all existing Domains, Topics and Event Subscriptions, not just for new ones. This means that, in the event of an outage that takes out an entire Azure region, the Event Grid service will already have all of your eventing infrastructure metadata synced to a paired region and your new events will begin to flow again with no intervention required, avoiding service interruption.\n\nDisaster recovery is generally measured with two metrics:\n\nRecovery Point Objective (RPO) : the minutes or hours of data that may be lost.\n\nRecovery Time Objective (RTO) : the minutes of hours the service may be down.\n\nEvent Grid’s automatic failover has different RPO’s and RTO’s for your metadata (event subscriptions, etc.) and data (events). If you need different specification from below, you can still always implement your own client-side failover using the topic health APIs .\n\nMetadata RPO: Zero minutes. You read that right. Any time a resource is created in Event Grid, it's instantly replicated across regions. In the event of a failover, no metadata is lost.\n\nMetadata RTO: Although generally this happens much more quickly, within 60 minutes, Event Grid will begin to accept create/update/delete calls for topics and subscriptions.\n\nData RPO: If your system is healthy and caught up on existing traffic at the time of regional failover, the RPO for events is about 5 minutes.\n\nData RTO: Like metadata, this generally happens much more quickly, however within 60 minutes Event Grid will begin accepting new traffic after a regional failover.\n\nLearn more on the Azure blog"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "geo-disaster-recovery-available-in-event-grid"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=geo-disaster-recovery-available-in-event-grid"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: May 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Integration, Internet of Things"
+    }
+  ]
+}

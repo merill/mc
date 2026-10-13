@@ -1,0 +1,43 @@
+{
+  "Id": "AZ-retention-by-type",
+  "Title": "Azure Monitor Log Analytics retention is now configurable by data type",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-10-08T19:00:05.000Z",
+  "LastModifiedDateTime": "2019-10-08T19:00:05.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [],
+  "Tags": [
+    "Management"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Data retention in Azure Monitor&nbsp;Log Analytics can now be configured for each data type, rather than only a single retention setting for the entire workspace.&nbsp;&nbsp;</p>\r\n\r\n<p>It&#39;s easy to configure retention for each data type via simple ARM commands. To check the retention for the data types in your workspace, do a GET on the Tables sub-resource:</p>\r\n\r\n<p>GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview</p>\r\n\r\n<p>Setting retention is similarly straightforward. For example, to set the retention for SecurityEvents to 730 days:</p>\r\n\r\n<p>PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview&nbsp;{&quot;properties&quot;:&nbsp;&nbsp;{&quot;retentionInDays&quot;: 730&nbsp;}&nbsp;}</p>\r\n\r\n<p>This new flexibility of setting retention on individual data types can be used to reduce your costs for data retention. For data collected starting in October 2019 (when this feature was released), reducing the retention for some data types can reduce your retention cost over time. For data collected earlier, setting a lower retention for an individual type won&rsquo;t affect your retention costs.</p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#retention-by-data-type\" target=\"_blank\" rel=\"noopener\">Learn more</a>&nbsp;and get additional tips on using this feature.&nbsp;</p>\r\n\r\n<p><div>&nbsp;</div></p>\r\n",
+    "Markdown": "Data retention in Azure Monitor Log Analytics can now be configured for each data type, rather than only a single retention setting for the entire workspace.\n\nIt's easy to configure retention for each data type via simple ARM commands. To check the retention for the data types in your workspace, do a GET on the Tables sub-resource:\n\nGET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview\n\nSetting retention is similarly straightforward. For example, to set the retention for SecurityEvents to 730 days:\n\nPUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview {\"properties\": {\"retentionInDays\": 730 } }\n\nThis new flexibility of setting retention on individual data types can be used to reduce your costs for data retention. For data collected starting in October 2019 (when this feature was released), reducing the retention for some data types can reduce your retention cost over time. For data collected earlier, setting a lower retention for an individual type won’t affect your retention costs.\n\nLearn more and get additional tips on using this feature."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "retention-by-type"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=retention-by-type"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2019"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-azure-kubernetes-service-node-disk-dos-by-writing-to-container-etchosts-cve20208557",
+  "Title": "Azure Kubernetes Service: Node disk DOS by writing to container /etc/hosts (CVE-2020-8557)",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-09-01T21:33:26.000Z",
+  "LastModifiedDateTime": "2020-09-01T21:33:26.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Kubernetes Service (AKS)"
+  ],
+  "Tags": [
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The /etc/hosts file mounted in a pod by kubelet is not included by the kubelet eviction manager when calculating ephemeral storage usage by a pod. If a pod writes a large amount of data to the /etc/hosts file, it could fill the storage space of the node and cause the node to fail.</p>\r\n\r\n<p><strong>Am I vulnerable?</strong></p>\r\n\r\n<p>Any clusters allowing pods with sufficient privileges to write to their own /etc/hosts files are affected. This includes containers running with CAP_DAC_OVERRIDE in their capabilities bounding set (true by default) and either UID 0 (root) or a security context with allowPrivilegeEscalation: true (true by default).</p>\r\n\r\n<h3>Affected ** Upstream ** Versions</h3>\r\n\r\n<p>kubelet v1.18.0-1.18.5<br>\r\nkubelet v1.17.0-1.17.8<br>\r\nkubelet &lt; v1.16.13</p>\r\n\r\n<h3>How do I mitigate this vulnerability?</h3>\r\n\r\n<p>Prior to upgrading, this vulnerability can be mitigated by using policies to disallow pods to be created with&nbsp;<code>allowPriviledgeEscalation: true</code>&nbsp;for example and prohibit privilege escalation and running as root, but these measures may break existing workloads that rely upon these privileges to function properly.</p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/aks/use-pod-security-on-azure-policy\" target=\"_blank\" rel=\"noopener\">Learn more</a> about Secure pods with Azure Policy.</p>\r\n\r\n<p><a href=\"https://github.com/Azure/AKS/issues/1731\" target=\"_blank\" rel=\"noopener\">Click here</a> for full details, including list of versions affected and mitigation steps.</p>\r\n",
+    "Markdown": "The /etc/hosts file mounted in a pod by kubelet is not included by the kubelet eviction manager when calculating ephemeral storage usage by a pod. If a pod writes a large amount of data to the /etc/hosts file, it could fill the storage space of the node and cause the node to fail.\n\nAm I vulnerable?\n\nAny clusters allowing pods with sufficient privileges to write to their own /etc/hosts files are affected. This includes containers running with CAP_DAC_OVERRIDE in their capabilities bounding set (true by default) and either UID 0 (root) or a security context with allowPrivilegeEscalation: true (true by default).\n\nAffected ** Upstream ** Versions\n\nkubelet v1.18.0-1.18.5\n\nkubelet v1.17.0-1.17.8\n\nkubelet < v1.16.13\n\nHow do I mitigate this vulnerability?\n\nPrior to upgrading, this vulnerability can be mitigated by using policies to disallow pods to be created with allowPriviledgeEscalation: true for example and prohibit privilege escalation and running as root, but these measures may break existing workloads that rely upon these privileges to function properly.\n\nLearn more about Secure pods with Azure Policy.\n\nClick here for full details, including list of versions affected and mitigation steps."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-kubernetes-service-node-disk-dos-by-writing-to-container-etchosts-cve20208557"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-kubernetes-service-node-disk-dos-by-writing-to-container-etchosts-cve20208557"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: September 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Containers"
+    }
+  ]
+}

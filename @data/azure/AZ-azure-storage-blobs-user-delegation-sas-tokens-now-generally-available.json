@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-azure-storage-blobs-user-delegation-sas-tokens-now-generally-available",
+  "Title": "Azure Storage Blobs User Delegation SAS Tokens now Generally Available",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-01-15T18:00:04.000Z",
+  "LastModifiedDateTime": "2020-01-15T18:00:04.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Blob Storage"
+  ],
+  "Tags": [
+    "Features",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Cloud storage often serves as a content source for browser and mobile applications. This is typically achieved using application-issued, pre-authorized URLs which provide time-limited access directly to specific content without requiring a service to proxy this access.</p>\r\n\r\n<p>Azure Storage supports this pattern through the use of&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json\" target=\"_blank\" rel=\"noopener\">shared access signature tokens</a>&nbsp;(SAS tokens). These tokens grant specific, time-limited access to storage objects by signing an authorization statement using the storage account access key, which is controlled by account administrators. While this approach provides the required limited access to clients, it sometimes represents an over-provisioning of access to these token-issuing services since this provides full control over the entire account where they may only require read access to specific content.</p>\r\n\r\n<p>Today we are announcing general availability (GA) for&nbsp;<strong>user delegation SAS tokens</strong>. By extending <a href=\"https://docs.microsoft.com/en-us/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json\" target=\"_blank\" rel=\"noopener\">Azure AD and Azure role-based access control (RBAC)</a>&nbsp;for Azure Storage, lower-privileged users and services can now delegate subsets of their access to clients, using this new type of pre-authorized URL. Clients retrieve a user delegation key tied to their Azure Active Directory (AD) account, and then use it to create SAS tokens granting&nbsp;<strong>a subset of their own access rights</strong>.</p>\r\n\r\n<p>User delegation SAS tokens are now supported for use with production workloads, and are available in all clouds and all regions of Azure.</p>\r\n\r\n<p>Click <a href=\"https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli\" target=\"_blank\" rel=\"noopener\">here</a> to access user delegation SAS tokens instructions and<a href=\"https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview\" target=\"_blank\" rel=\"noopener\"> here</a> to learn more about SAS.</p>\r\n",
+    "Markdown": "Cloud storage often serves as a content source for browser and mobile applications. This is typically achieved using application-issued, pre-authorized URLs which provide time-limited access directly to specific content without requiring a service to proxy this access.\n\nAzure Storage supports this pattern through the use of shared access signature tokens (SAS tokens). These tokens grant specific, time-limited access to storage objects by signing an authorization statement using the storage account access key, which is controlled by account administrators. While this approach provides the required limited access to clients, it sometimes represents an over-provisioning of access to these token-issuing services since this provides full control over the entire account where they may only require read access to specific content.\n\nToday we are announcing general availability (GA) for user delegation SAS tokens . By extending Azure AD and Azure role-based access control (RBAC) for Azure Storage, lower-privileged users and services can now delegate subsets of their access to clients, using this new type of pre-authorized URL. Clients retrieve a user delegation key tied to their Azure Active Directory (AD) account, and then use it to create SAS tokens granting a subset of their own access rights .\n\nUser delegation SAS tokens are now supported for use with production workloads, and are available in all clouds and all regions of Azure.\n\nClick here to access user delegation SAS tokens instructions and here to learn more about SAS."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-storage-blobs-user-delegation-sas-tokens-now-generally-available"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-storage-blobs-user-delegation-sas-tokens-now-generally-available"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: January 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Storage"
+    }
+  ]
+}

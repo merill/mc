@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-general-availability-non-azure-groups-for-azure-update-management",
+  "Title": "General Availability: Non-Azure Groups for Azure Update Management",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-07-08T21:00:03.000Z",
+  "LastModifiedDateTime": "2019-07-08T21:00:03.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [],
+  "Tags": [
+    "Features",
+    "Management",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<h2>Overview</h2>\r\n\r\n<p>Today we&rsquo;re happy to announce the general availability of <a href=\"https://docs.microsoft.com/azure/automation/automation-update-management#non-azure-machines\" target=\"_blank\" rel=\"noopener\">Non-Azure group targeting for Azure Update Management</a>. This feature enables dynamic targeting of patch deployments to non-Azure machines based on Log Analytics saved searches. Machines can be dynamically added to existing patch deployments based on criteria specified in the saved search.</p>\r\n\r\n<p>This feature enables:</p>\r\n\r\n<ul>\r\n\t<li>Dynamic targeting of non-Azure machines for an update deployment. After the deployment is created, any new machines added to Update Management that meet the search criteria will be automatically picked up and periodically patched without requiring the user to modify the update deployment itself.</li>\r\n\t<li>Preview capabilities to verify the set of machines that will be targeted with the dynamic group targeting.</li>\r\n</ul>\r\n\r\n<h2>Example Usage</h2>\r\n\r\n<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>In the following example a periodic patch deployment is being created that will run on a weekly basis. The set of onboarded machines to target for this update deployment is chosen based on the following criteria: All onboarded non-Azure machines that match the naming convention <i>name</i> <i>contains &ldquo;OnPrem&rdquo;</i>.</p>\r\n\r\n\t\t\t<p>First a Log Analytics saved search is created to group these machines based on naming convention. Next an update deployment is created that uses this saved search. Dynamic non-Azure groups can be found under <i>Groups to update</i> under the <i>Non-Azure</i> tab.</p>\r\n\r\n\t\t\t<p>When newly onboarded non-Azure VMs match the naming convention (they contain the string <i>OnPrem</i>), they will automatically be picked up and updated in the next run of this update deployment. Note that Azure VMs will automatically be filtered out of this deployment query. The machines that will be affected by this Update Deployment if it were to run immediately can be viewed through the preview pane.</p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\r\n\t\t\t<p><a href=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/eae086bc-0452-4a4d-9793-242cfc59f171.png\" target=\"_blank\" rel=\"noopener\"><img alt=\"image\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/aabb5163-e180-4e2d-adc3-852de020de24.png\" title=\"image\"></a></p>\r\n\r\n\t\t\t<p>&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Documentation</h2>\r\n\r\n<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p><a href=\"https://docs.microsoft.com/azure/automation/automation-update-management#non-azure-machines\" target=\"_blank\" rel=\"noopener\">Non-Azure group targeting for Azure Update Management</a></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n",
+    "Markdown": "Overview\n\nToday we’re happy to announce the general availability of Non-Azure group targeting for Azure Update Management . This feature enables dynamic targeting of patch deployments to non-Azure machines based on Log Analytics saved searches. Machines can be dynamically added to existing patch deployments based on criteria specified in the saved search.\n\nThis feature enables:\n\nDynamic targeting of non-Azure machines for an update deployment. After the deployment is created, any new machines added to Update Management that meet the search criteria will be automatically picked up and periodically patched without requiring the user to modify the update deployment itself.\n\nPreview capabilities to verify the set of machines that will be targeted with the dynamic group targeting.\n\nExample Usage\n\nIn the following example a periodic patch deployment is being created that will run on a weekly basis. The set of onboarded machines to target for this update deployment is chosen based on the following criteria: All onboarded non-Azure machines that match the naming convention name contains “OnPrem” .\n\nFirst a Log Analytics saved search is created to group these machines based on naming convention. Next an update deployment is created that uses this saved search. Dynamic non-Azure groups can be found under Groups to update under the Non-Azure tab.\n\nWhen newly onboarded non-Azure VMs match the naming convention (they contain the string OnPrem ), they will automatically be picked up and updated in the next run of this update deployment. Note that Azure VMs will automatically be filtered out of this deployment query. The machines that will be affected by this Update Deployment if it were to run immediately can be viewed through the preview pane.\n\nDocumentation\n\nNon-Azure group targeting for Azure Update Management"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "general-availability-non-azure-groups-for-azure-update-management"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=general-availability-non-azure-groups-for-azure-update-management"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: July 2019"
+    }
+  ]
+}

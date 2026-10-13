@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-ip-address-changes-will-begin-affecting-your-ability-to-manage-your-virtual-networkenabled-api-management-services-on-31-marc",
+  "Title": "Review your VNET configurations that may be affected by IP address changes",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2022-03-22T23:00:22.000Z",
+  "LastModifiedDateTime": "2022-03-22T23:00:22.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "API Management"
+  ],
+  "Tags": [
+    "Retirements"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p><strong>On 31 March 2023, we are making the resource providers for Azure API Management zone redundant in each region.</strong> This exercise is a part of our continuing work to increase the resiliency of API Management services. As a result of this work, we are changing the IP address of the resource provider in these seven regions:&nbsp;</p>\r\n\r\n<table>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th scope=\"col\">\r\n\t\t\t<p>Region&nbsp;</p>\r\n\t\t\t</th>\r\n\t\t\t<th scope=\"col\">\r\n\t\t\t<p>Old IP Address&nbsp;</p>\r\n\t\t\t</th>\r\n\t\t\t<th scope=\"col\">\r\n\t\t\t<p>New IP Address&nbsp;</p>\r\n\t\t\t</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Canada Central&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>52.139.20.34&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>20.48.201.76&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Brazil South&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>191.233.24.179&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>191.238.73.14&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Germany West Central&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>51.116.96.0&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>20.52.94.112&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>South Africa North&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>102.133.0.79&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>102.37.166.220&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Korea Central&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>40.82.157.167&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>20.194.74.240&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Central India&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>13.71.49.1&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>20.192.45.112&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>South Central US&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>20.188.77.119&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>20.97.32.190&nbsp;</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>Your environments are affected if:&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Your service runs in one or more of the regions indicated in the table above.&nbsp;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Your API Management service is running inside a virtual network.&nbsp;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Your virtual network Network Security Group is configured with explicit source IP address filtering.&nbsp;</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>After 31 March 2023, if you prefer not to make changes to your IP addresses, your services will continue to run but you will not be able to add or remove APIs, change API policy, or otherwise configure your API Management service.&nbsp;</p>\r\n\r\n<p><strong>Action required&nbsp;</strong></p>\r\n\r\n<p>To avoid potential service disruptions, please review your virtual network configuration and review the <a href=\"https://aka.ms/apim-updates/mar2023\" target=\"_blank\" rel=\"noopener\">change notice in our documentation</a>. If any security rules reference the old IP addresses in the table above, review the <a href=\"https://docs.microsoft.com/en-us/azure/api-management/virtual-network-reference?tabs=stv2\" target=\"_blank\" rel=\"noopener\">virtual network configuration reference</a> and make necessary updates before 31 March&nbsp; 2023. &nbsp;</p>\r\n\r\n<p><strong>Help and Support &nbsp;</strong></p>\r\n\r\n<p>If you have questions, get answers from community experts in <a href=\"https://aka.ms/apim/azureqa\" target=\"_blank\" rel=\"noopener\">Microsoft Q&amp;A</a>. If you have a support plan and you need technical help, please create a <a href=\"https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest\" target=\"_blank\" rel=\"noopener\">support request</a>. &nbsp;</p>\r\n",
+    "Markdown": "On 31 March 2023, we are making the resource providers for Azure API Management zone redundant in each region. This exercise is a part of our continuing work to increase the resiliency of API Management services. As a result of this work, we are changing the IP address of the resource provider in these seven regions:\n\nRegion\n\nOld IP Address\n\nNew IP Address\n\nCanada Central\n\n52.139.20.34\n\n20.48.201.76\n\nBrazil South\n\n191.233.24.179\n\n191.238.73.14\n\nGermany West Central\n\n51.116.96.0\n\n20.52.94.112\n\nSouth Africa North\n\n102.133.0.79\n\n102.37.166.220\n\nKorea Central\n\n40.82.157.167\n\n20.194.74.240\n\nCentral India\n\n13.71.49.1\n\n20.192.45.112\n\nSouth Central US\n\n20.188.77.119\n\n20.97.32.190\n\nYour environments are affected if:\n\nYour service runs in one or more of the regions indicated in the table above.\n\nYour API Management service is running inside a virtual network.\n\nYour virtual network Network Security Group is configured with explicit source IP address filtering.\n\nAfter 31 March 2023, if you prefer not to make changes to your IP addresses, your services will continue to run but you will not be able to add or remove APIs, change API policy, or otherwise configure your API Management service.\n\nAction required\n\nTo avoid potential service disruptions, please review your virtual network configuration and review the change notice in our documentation . If any security rules reference the old IP addresses in the table above, review the virtual network configuration reference and make necessary updates before 31 March 2023.\n\nHelp and Support\n\nIf you have questions, get answers from community experts in Microsoft Q&A . If you have a support plan and you need technical help, please create a support request ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "ip-address-changes-will-begin-affecting-your-ability-to-manage-your-virtual-networkenabled-api-management-services-on-31-marc"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=ip-address-changes-will-begin-affecting-your-ability-to-manage-your-virtual-networkenabled-api-management-services-on-31-marc"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Retirement"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Retirement: March 2023"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Integration, Internet of Things, Mobile, Web"
+    }
+  ]
+}

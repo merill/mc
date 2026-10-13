@@ -1,0 +1,45 @@
+{
+  "Id": "AZ570232",
+  "Title": "Retirement: Pod name dimension in AKS pod platform metrics",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2026-10-06T22:37:54.798Z",
+  "LastModifiedDateTime": "2026-10-06T22:37:54.798Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Kubernetes Service (AKS)"
+  ],
+  "Tags": [
+    "Retirements"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "Beginning September 30, 2027, support for the pod name dimension on the following&nbsp;<a href=\"https://learn.microsoft.com/azure/aks/monitor-aks-reference#category-pods\" target=\"_blank\" rel=\"noopener\">Azure\nMonitor platform metrics</a> is retiring, and these metrics are transitioning to aggregate pod counters:<br><ul><li>Number of pods by phase (kube_pod_status_phase)</li><li>Number of pods in Ready state (kube_pod_status_ready)</li></ul><b>After this change:</b><ul><li>Metric names remain unchanged.</li><li>Aggregate pod counts remain available.</li><li>Namespace-level monitoring scenarios remain supported.</li><li>The pod name dimension will no longer be available for filtering, grouping, or alerting.</li></ul>During the deprecation period, AKS will maintain both the existing and the new aggregate implementations. Both are populated with data, existing monitoring experiences will continue to function, and you will have at least one year of historical data in the aggregate implementation before retirement.<br>You may be affected if any dashboard, workbook, alert, automation, or monitoring workflow:<br><ul><li>Uses kube_pod_status_phase or kube_pod_status_ready and filters on the pod name dimension.</li><li>Splits or groups results by the pod name dimension.</li></ul><b>Recommended action: </b><br><ul><li>If you use aggregate pod counts, no action is required.</li><li>If you use the pod name dimension, update dashboards, alerts, workbooks, and automation before September 30, 2027. For pod-level monitoring and troubleshooting, we recommend using&nbsp;<a href=\"https://learn.microsoft.com/azure/azure-monitor/metrics/prometheus-metrics-overview#azure-monitor-managed-service-for-prometheus\" target=\"_blank\" rel=\"noopener\">Azure\nMonitor Managed Prometheus</a> and <a href=\"https://learn.microsoft.com/azure/azure-monitor/containers/prometheus-metrics-scrape-default#kube-state\" target=\"_blank\" rel=\"noopener\">Kubernetes-native\npod metrics</a>.</li></ul><b>Help and support</b><br>If you have questions, get answers from community experts in <a></a><a href=\"https://learn.microsoft.com/answers/tags/200/azure-kubernetes-service\" target=\"_blank\" rel=\"noopener\">Microsoft Q&amp;A</a>. <br>",
+    "Markdown": "Beginning September 30, 2027, support for the pod name dimension on the following Azure\n\nMonitor platform metrics is retiring, and these metrics are transitioning to aggregate pod counters:\n\nNumber of pods by phase (kube_pod_status_phase)\n\nNumber of pods in Ready state (kube_pod_status_ready)\n\nAfter this change: Metric names remain unchanged.\n\nAggregate pod counts remain available.\n\nNamespace-level monitoring scenarios remain supported.\n\nThe pod name dimension will no longer be available for filtering, grouping, or alerting.\n\nDuring the deprecation period, AKS will maintain both the existing and the new aggregate implementations. Both are populated with data, existing monitoring experiences will continue to function, and you will have at least one year of historical data in the aggregate implementation before retirement.\n\nYou may be affected if any dashboard, workbook, alert, automation, or monitoring workflow:\n\nUses kube_pod_status_phase or kube_pod_status_ready and filters on the pod name dimension.\n\nSplits or groups results by the pod name dimension.\n\nRecommended action:\n\nIf you use aggregate pod counts, no action is required.\n\nIf you use the pod name dimension, update dashboards, alerts, workbooks, and automation before September 30, 2027. For pod-level monitoring and troubleshooting, we recommend using Azure\n\nMonitor Managed Prometheus and Kubernetes-native\n\npod metrics .\n\nHelp and support\n\nIf you have questions, get answers from community experts in Microsoft Q&A ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "570232"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=570232"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Retirement"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Retirement: September 2027"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Containers"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "Id": "AZ500273",
+  "Title": "Retirement: Azure Network Policy Manager (NPM) for Windows nodes on AKS to Be Retired by September 30, 2026",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2025-10-07T21:30:21.619Z",
+  "LastModifiedDateTime": "2025-10-07T21:30:21.619Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Kubernetes Service (AKS)"
+  ],
+  "Tags": [
+    "Retirements"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<div><p><span><span>On </span><span>September 30, 202</span><span>6</span><span>, </span><span>we’ll</span><span>&nbsp;end support for </span><span>Azure Network Policy</span><span>&nbsp;Manager</span><span>&nbsp;(NPM)</span><span>&nbsp;</span><span>on</span><span>&nbsp;</span><span>Windows</span><span>&nbsp;nodes </span><span>i</span><span>n AKS</span><span>.</span><span>&nbsp;</span></span><span><span>To ensure your setup continues to receive support, security updates, and deployment compatibility</span><span>, </span></span><span><span>please explore alternative options, such as using </span></span><a href=\"https://learn.microsoft.com/en-us/azure/aks/concepts-network#network-security-groups\" target=\"_blank\" rel=\"noopener\"><span><span>Network Security Groups (NSGs) on the node level</span></span></a><span><span>&nbsp;or open-source tools like </span></span><a href=\"https://www.tigera.io/tigera-products/calico/\" target=\"_blank\" rel=\"noopener\"><span><span>Project Calico</span></span></a><span><span>&nbsp;by </span><span>that date.</span></span><span>&nbsp;</span></p><div><p><span><span>The existing experience that Azure Network Policy Manager for windows nodes offers will no longer be supported starting September 30, 2026. </span></span><span><span> </span></span><span>&nbsp;</span></p></div><div><div><span><span></span></span><span><span><span><span>To view your impacted resources, go to this </span></span><a href=\"https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/featureresources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.features%2Ffeatureproviders%2Fsubscriptionfeatureregistrations%22%0A%7C%20extend%20state%20%3D%20tostring(properties.state)%0A%7C%20where%20state%20%3D%3D%20%22Registered%22%0A%7C%20where%20name%20%3D%3D%20%22Microsoft.ContainerService%2FWindowsNetworkPolicyPreview%22%0A%7C%20project%20previewSubId%20%3D%20subscriptionId%0A%7C%20join%20kind%3Dinner%20(%0A%20%20%20%20Resources%0A%20%20%20%20%7C%20where%20type%20%3D%3D%20%22microsoft.containerservice%2Fmanagedclusters%22%0A%20%20%20%20%7C%20mv-expand%20agentPool%20%3D%20properties.agentPoolProfiles%0A%20%20%20%20%7C%20where%20agentPool.osType%20%3D%3D%20%22Windows%22%0A%20%20%20%20%7C%20extend%20netPol%20%3D%20tolower(tostring(properties.networkProfile.networkPolicy))%0A%20%20%20%20%7C%20where%20netPol%20%3D%3D%20%22azure%22%0A%20%20%20%20%7C%20project%20name%2C%20location%2C%20resourceGroup%2C%20netPol%2C%20subscriptionId%0A)%20on%20%24left.previewSubId%20%3D%3D%20%24right.subscriptionId%0A%7C%20%20summarize%20by%20name%2C%20location%2C%20resourceGroup%2C%20netPol%2C%20subscriptionId\" target=\"_blank\" rel=\"noopener\"><span><span>Azure Resource Graph query</span></span></a><span><span>&nbsp;and click</span></span><span><span>&nbsp;Run query</span></span><span><span>.&nbsp; </span></span><span>&nbsp;</span></span></span><span><span> </span></span><span>&nbsp;</span></div></div><div><p><b><span><span>Help and support</span></span><span>&nbsp;</span></b></p></div><div><p><span><span>If you have questions, get answers from community experts in </span></span><a href=\"https://learn.microsoft.com/en-us/answers/tags/200/azure-kubernetes-service%22%20/t%20%22_blank\" target=\"_blank\" rel=\"noopener\"><span><span>Microsoft Q&amp;A</span></span></a><span><span>. If you have a support plan and need technical help, please </span><span>submit</span><span>&nbsp;a </span></span><a href=\"https://learn.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request\" target=\"_blank\" rel=\"noopener\"><span><span>support request</span></span></a><span></span><a href=\"https://learn.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request\" target=\"_blank\" rel=\"noopener\"><span><span>. </span></span></a><span><span> </span></span><span>&nbsp;</span></p></div><br></div>",
+    "Markdown": "On September 30, 202 6 , we’ll end support for Azure Network Policy Manager (NPM) on Windows nodes i n AKS . To ensure your setup continues to receive support, security updates, and deployment compatibility , please explore alternative options, such as using Network Security Groups (NSGs) on the node level or open-source tools like Project Calico by that date.\n\nThe existing experience that Azure Network Policy Manager for windows nodes offers will no longer be supported starting September 30, 2026.\n\nTo view your impacted resources, go to this Azure Resource Graph query and click Run query .\n\nHelp and support\n\nIf you have questions, get answers from community experts in Microsoft Q&A . If you have a support plan and need technical help, please submit a support request ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "500273"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=500273"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Retirement"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Retirement: September 2026"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Containers"
+    }
+  ]
+}

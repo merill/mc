@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-support-for-ubuntu-2004-lts-for-batch-pools-will-be-retired-on-23-april-2025",
+  "Title": "Support for Ubuntu 20.04 LTS for Batch pools will be retired on 23 April 2025",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2024-03-29T23:00:30.000Z",
+  "LastModifiedDateTime": "2024-03-29T23:00:30.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Batch"
+  ],
+  "Tags": [
+    "Retirements"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure Batch typically follows standard end of life timelines set by publishers for supported images from the Azure Marketplace. Ubuntu 20.04 LTS is reaching the end of standard support life. Batch pools with Ubuntu 20.04 LTS VM images and the Batch node agent SKU batch.node.ubuntu 20.04 will no longer be supported in Batch after 23 April 2025.&nbsp;</p>\r\n\r\n<p>The following Marketplace images will no longer be supported in Batch after 23 April 2025:&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Canonical: 0001-com-ubuntu-server-focal (SKU(s): 20_04-lts, 20_04-lts-gen2)&nbsp;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>microsoft-dsvm: ubuntu-2004 (SKU(s): 2004, 2004-gen2), ubuntu-hpc (SKU(s): 2004)&nbsp;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>microsoft-azure-batch: ubuntu-server-container (SKU(s): 20-04-lts), ubuntu-server-container-rdma (SKU(s): 20-04-lts)&nbsp;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>xilinx: xilinx_alveo_u250_deployment_vm_ubuntu2004_062421 (SKU(s): xilinx_alveo_u250_deployment_vm_ubuntu_2004_062421)&nbsp;</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Additionally, any Batch pool using a custom image, for example, through the Azure Compute Image Gallery, based on Ubuntu 20.04 LTS will no longer be supported in Batch after 23 April 2025.&nbsp;&nbsp;</p>\r\n\r\n<p>From now until 23 April 2025, you can continue to use these images and the batch.node.ubuntu 20.04 node agent SKU without disruption. After that date, no new Batch pools can be created with the batch.node.ubuntu 20.04 node agent SKU referencing relevant Marketplace and Compute Image Gallery images. In addition, existing pools with applicable configurations may experience failure in scale out operations and may be subject to forced resize to zero nodes.&nbsp;</p>\r\n\r\n<p>As a reminder, we recommend reviewing the <a href=\"https://learn.microsoft.com/azure/batch/best-practices\" target=\"_blank\" rel=\"noopener\">Batch best practices guide</a> which outlines support expectations, recommendations on Batch pool image freshness, and how to query for Batch image support end of life dates.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Required action</strong>&nbsp;</p>\r\n\r\n<p>Stop using Ubuntu 20.04 LTS based VM images for Batch pools before 23 April 2025. Please migrate your Batch pools to a VM image based on Ubuntu 22.04 or later, or the microsoft-dsvm ubuntu-hpc 2204 (or later) image for container and/or workloads requiring Infiniband/GPU support. You can also migrate to any other <a href=\"https://learn.microsoft.com/azure/batch/batch-pool-vm-sizes#supported-vm-images\" target=\"_blank\" rel=\"noopener\">Batch-supported VM image</a>, if amenable for your workload. Existing Batch pools cannot be updated with a new VM image reference and creating a new Batch pool is required for migration.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Help and support</strong>&nbsp;</p>\r\n\r\n<p>If you have questions, get answers from community experts in <a href=\"https://aka.ms/batchmicrosoftqna\" target=\"_blank\" rel=\"noopener\">Microsoft Q&amp;A</a>. If you have a support plan and you need technical help, create a <a href=\"https://portal.azure.com/#view/Microsoft_Azure_Support/NewSupportRequestV3Blade/assetId//callerWorkflowId/f6a02686-b85b-461a-bed1-4f662da46ee1/callerName/Microsoft_Azure_Support%2FHelpPane.ReactView/subscriptionId//productId//summary/CycleCloud/topicId//issueType/technical\" target=\"_blank\" rel=\"noopener\">support request</a>. &nbsp;</p>\r\n",
+    "Markdown": "Azure Batch typically follows standard end of life timelines set by publishers for supported images from the Azure Marketplace. Ubuntu 20.04 LTS is reaching the end of standard support life. Batch pools with Ubuntu 20.04 LTS VM images and the Batch node agent SKU batch.node.ubuntu 20.04 will no longer be supported in Batch after 23 April 2025.\n\nThe following Marketplace images will no longer be supported in Batch after 23 April 2025:\n\nCanonical: 0001-com-ubuntu-server-focal (SKU(s): 20_04-lts, 20_04-lts-gen2)\n\nmicrosoft-dsvm: ubuntu-2004 (SKU(s): 2004, 2004-gen2), ubuntu-hpc (SKU(s): 2004)\n\nmicrosoft-azure-batch: ubuntu-server-container (SKU(s): 20-04-lts), ubuntu-server-container-rdma (SKU(s): 20-04-lts)\n\nxilinx: xilinx_alveo_u250_deployment_vm_ubuntu2004_062421 (SKU(s): xilinx_alveo_u250_deployment_vm_ubuntu_2004_062421)\n\nAdditionally, any Batch pool using a custom image, for example, through the Azure Compute Image Gallery, based on Ubuntu 20.04 LTS will no longer be supported in Batch after 23 April 2025.\n\nFrom now until 23 April 2025, you can continue to use these images and the batch.node.ubuntu 20.04 node agent SKU without disruption. After that date, no new Batch pools can be created with the batch.node.ubuntu 20.04 node agent SKU referencing relevant Marketplace and Compute Image Gallery images. In addition, existing pools with applicable configurations may experience failure in scale out operations and may be subject to forced resize to zero nodes.\n\nAs a reminder, we recommend reviewing the Batch best practices guide which outlines support expectations, recommendations on Batch pool image freshness, and how to query for Batch image support end of life dates.\n\nRequired action\n\nStop using Ubuntu 20.04 LTS based VM images for Batch pools before 23 April 2025. Please migrate your Batch pools to a VM image based on Ubuntu 22.04 or later, or the microsoft-dsvm ubuntu-hpc 2204 (or later) image for container and/or workloads requiring Infiniband/GPU support. You can also migrate to any other Batch-supported VM image , if amenable for your workload. Existing Batch pools cannot be updated with a new VM image reference and creating a new Batch pool is required for migration.\n\nHelp and support\n\nIf you have questions, get answers from community experts in Microsoft Q&A . If you have a support plan and you need technical help, create a support request ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "support-for-ubuntu-2004-lts-for-batch-pools-will-be-retired-on-23-april-2025"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=support-for-ubuntu-2004-lts-for-batch-pools-will-be-retired-on-23-april-2025"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Retirement"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Retirement: April 2025"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute"
+    }
+  ]
+}

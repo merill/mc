@@ -1,0 +1,44 @@
+{
+  "Id": "AZ-billing-account-id-changes",
+  "Title": "The unique identifier for your Azure billing account has changed",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-10-29T15:29:22.000Z",
+  "LastModifiedDateTime": "2019-10-29T15:29:22.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [],
+  "Tags": [
+    "Features",
+    "SDK and Tools"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Your billing account&rsquo;s unique identifier has changed. This is used to identify your billing relationship with Microsoft. This change only affects accounts under the Microsoft Customer Agreement with Microsoft&mdash;it doesn&rsquo;t impact other agreements like Enterprise Agreement.</p>\r\n\r\n<p><strong>How the change might affect you</strong></p>\r\n\r\n<p>This doesn&rsquo;t change your agreement or billing relationship with Microsoft. However, you&rsquo;ll notice a different ID when you view your billing information in the Azure portal. You aren&rsquo;t affected if you use the Azure portal only to view your billing and cost information.</p>\r\n\r\n<p>If you use Azure <a href=\"https://docs.microsoft.com/rest/api/billing/\" target=\"_blank\" rel=\"noopener\">Billing</a> and <a href=\"https://docs.microsoft.com/rest/api/cost-management/\" target=\"_blank\" rel=\"noopener\">Cost Management</a> APIs, you&rsquo;ll get a different value for your billing account when you use the latest version of the API. If you use the older API version, you won&rsquo;t see any change.</p>\r\n\r\n<p>The following APIs use unique identifiers:</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices\" target=\"_blank\" rel=\"noopener\">Invoices</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/paymentmethods\" target=\"_blank\" rel=\"noopener\">Payment methods</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/policies\" target=\"_blank\" rel=\"noopener\">Policies</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/pricesheet\" target=\"_blank\" rel=\"noopener\">Price sheet</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/products\" target=\"_blank\" rel=\"noopener\">Products</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/transactions\" target=\"_blank\" rel=\"noopener\">Transactions</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/rest/api/billing/2018-11-01-preview/transfers\" target=\"_blank\" rel=\"noopener\">Transfers</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/cost-management/\" target=\"_blank\" rel=\"noopener\">Cost management</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/consumption/usagedetails\" target=\"_blank\" rel=\"noopener\">Usage details</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/consumption/balances\" target=\"_blank\" rel=\"noopener\">Balances</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/consumption/budgets\" target=\"_blank\" rel=\"noopener\">Budgets</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/consumption/charges\" target=\"_blank\" rel=\"noopener\">Charges</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/consumption/marketplaces\" target=\"_blank\" rel=\"noopener\">Marketplaces</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/consumption/reservationrecommendations/listbybillingaccountid\" target=\"_blank\" rel=\"noopener\">Reservation recommendations</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/consumption/reservationsdetails\" target=\"_blank\" rel=\"noopener\">Reservation details</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/consumption/reservationssummaries\" target=\"_blank\" rel=\"noopener\">Reservation summaries</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/rest/api/consumption/tags\" target=\"_blank\" rel=\"noopener\">Tags</a></li>\r\n</ul>\r\n\r\n<p><strong>How to address the change when you use the new API</strong></p>\r\n\r\n<p>We recommend that you always get your billing account data programmatically by using the <a href=\"https://docs.microsoft.com/en-us/rest/api/billing/2018-11-01-preview/billingaccounts/list\" target=\"_blank\" rel=\"noopener\">list Billing Accounts API</a>. Then, use the result as a part of the scope to call Billing and Cost Management APIs. This pattern can be used in all places where a billing account ID is required, as opposed to hardcoding the ID in your scripts or code.</p>\r\n\r\n<p>If you have questions, please <a href=\"https://aka.ms/costmgmtforum\" target=\"_blank\" rel=\"noopener\">contact us. </a></p>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "Your billing account’s unique identifier has changed. This is used to identify your billing relationship with Microsoft. This change only affects accounts under the Microsoft Customer Agreement with Microsoft—it doesn’t impact other agreements like Enterprise Agreement.\n\nHow the change might affect you\n\nThis doesn’t change your agreement or billing relationship with Microsoft. However, you’ll notice a different ID when you view your billing information in the Azure portal. You aren’t affected if you use the Azure portal only to view your billing and cost information.\n\nIf you use Azure Billing and Cost Management APIs, you’ll get a different value for your billing account when you use the latest version of the API. If you use the older API version, you won’t see any change.\n\nThe following APIs use unique identifiers:\n\nInvoices\n\nPayment methods\n\nPolicies\n\nPrice sheet\n\nProducts\n\nTransactions\n\nTransfers\n\nCost management\n\nUsage details\n\nBalances\n\nBudgets\n\nCharges\n\nMarketplaces\n\nReservation recommendations\n\nReservation details\n\nReservation summaries\n\nTags\n\nHow to address the change when you use the new API\n\nWe recommend that you always get your billing account data programmatically by using the list Billing Accounts API . Then, use the result as a part of the scope to call Billing and Cost Management APIs. This pattern can be used in all places where a billing account ID is required, as opposed to hardcoding the ID in your scripts or code.\n\nIf you have questions, please contact us."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "billing-account-id-changes"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=billing-account-id-changes"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2019"
+    }
+  ]
+}

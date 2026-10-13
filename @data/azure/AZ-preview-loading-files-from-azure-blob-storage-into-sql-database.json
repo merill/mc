@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-preview-loading-files-from-azure-blob-storage-into-sql-database",
+  "Title": "Public preview: Loading files from Azure Blob storage into Azure SQL Database",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2017-02-23T21:02:30.000Z",
+  "LastModifiedDateTime": "2017-02-23T21:02:30.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure SQL Database",
+    "Storage Accounts"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure SQL Database&nbsp;enables you to directly load files stored in Azure Blob storage by using the following SQL statements:</p>\r\n\r\n<ul>\r\n <li>BULK INSERT T-SQL command&nbsp;that loads a file from a Blob storage account into a SQL Database table</li>\r\n <li>OPENROWSET table-value function that parses a file stored in&nbsp;Blob storage and returns the content&nbsp;of the file as a&nbsp;set of rows</li>\r\n</ul>\r\n\r\n<p>The following example shows a BULK INSERT command that loads the content of the file into&nbsp;SQL Database:</p>\r\n\r\n<pre>\r\n<code>BULK INSERT Product\r\nFROM &#39;data/product.dat&#39;\r\nWITH (&nbsp;DATA_SOURCE = &#39;MyAzureBlobStorageAccount&#39;);\r\n</code></pre>\r\n\r\n<p>You can parse the content of a remote file by using the OPENROWSET function and return rows from the file as results:</p>\r\n\r\n<p><code>SELECT Name, Color, Price, Size, Quantity, Data, Tags<br>\r\nFROM OPENROWSET(BULK &#39;data/product.bcp&#39;, DATA_SOURCE = &#39;MyAzureBlobStorage&#39;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FORMATFILE=&#39;data/product.fmt&#39;, FORMATFILE_DATA_SOURCE = &#39;MyAzureBlobStorage&#39;) as products;</code></p>\r\n\r\n<p>As a prerequisite, you need to create an EXTERNAL DATA SOURCE that will point to your Azure Blob storage account. You&#39;ll use the name of this EXTERNAL DATA SOURCE in the DATA_SOURCE attribute. Here&#39;s an example of an EXTERNAL DATA SOURCE that points to a public Azure Blob storage account:</p>\r\n\r\n<p><code>CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage<br>\r\nWITH ( TYPE = BLOB_STORAGE, LOCATION = &#39;https://myazureblobstorage.blob.core.windows.net&#39;);</code></p>\r\n\r\n<p>If your Azure Blob storage account&nbsp;is not public, you need to generate a shared access signatures (SAS) key for the&nbsp;account by using the Azure portal, put the SAS key in CREDENTIAL, and create an EXTERNAL DATA SOURCE with CREDENTIAL, as shown in the following example:</p>\r\n\r\n<p><code>CREATE DATABASE SCOPED CREDENTIAL MyAzureBlobStorageCredential<br>\r\nWITH IDENTITY = &#39;SHARED ACCESS SIGNATURE&#39;,<br>\r\nSECRET = &#39;sv=2015-12-11&amp;ss=b&amp;srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=2016-12-29T16:55:34Z&amp;spr=https&amp;sig=copyFromAzurePortal&#39;;</code></p>\r\n\r\n<p><code>​</code></p>\r\n\r\n<p><code>CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage<br>\r\nWITH ( TYPE = BLOB_STORAGE,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LOCATION = &#39;https://myazureblobstorage.blob.core.windows.net&#39;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CREDENTIAL= MyAzureBlobStorageCredential);</code></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>For examples of code that loads the content of&nbsp;files from an Azure Blob Storage account, see <a href=\"https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/sql-bulk-load/load-from-azure-blob-storage\" target=\"_blank\" rel=\"noopener\">SQL Server GitHub samples</a>.</p>\r\n",
+    "Markdown": "Azure SQL Database enables you to directly load files stored in Azure Blob storage by using the following SQL statements:\n\nBULK INSERT T-SQL command that loads a file from a Blob storage account into a SQL Database table\n\nOPENROWSET table-value function that parses a file stored in Blob storage and returns the content of the file as a set of rows\n\nThe following example shows a BULK INSERT command that loads the content of the file into SQL Database:\n\nBULK INSERT Product\n\nFROM 'data/product.dat'\n\nWITH ( DATA_SOURCE = 'MyAzureBlobStorageAccount');\n\nYou can parse the content of a remote file by using the OPENROWSET function and return rows from the file as results:\n\nSELECT Name, Color, Price, Size, Quantity, Data, Tags\n\nFROM OPENROWSET(BULK 'data/product.bcp', DATA_SOURCE = 'MyAzureBlobStorage',\n\nFORMATFILE='data/product.fmt', FORMATFILE_DATA_SOURCE = 'MyAzureBlobStorage') as products;\n\nAs a prerequisite, you need to create an EXTERNAL DATA SOURCE that will point to your Azure Blob storage account. You'll use the name of this EXTERNAL DATA SOURCE in the DATA_SOURCE attribute. Here's an example of an EXTERNAL DATA SOURCE that points to a public Azure Blob storage account:\n\nCREATE EXTERNAL DATA SOURCE MyAzureBlobStorage\n\nWITH ( TYPE = BLOB_STORAGE, LOCATION = 'https://myazureblobstorage.blob.core.windows.net');\n\nIf your Azure Blob storage account is not public, you need to generate a shared access signatures (SAS) key for the account by using the Azure portal, put the SAS key in CREDENTIAL, and create an EXTERNAL DATA SOURCE with CREDENTIAL, as shown in the following example:\n\nCREATE DATABASE SCOPED CREDENTIAL MyAzureBlobStorageCredential\n\nWITH IDENTITY = 'SHARED ACCESS SIGNATURE',\n\nSECRET = 'sv=2015-12-11&ss=b&srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=2016-12-29T16:55:34Z&spr=https&sig=copyFromAzurePortal';\n\n​\n\nCREATE EXTERNAL DATA SOURCE MyAzureBlobStorage\n\nWITH ( TYPE = BLOB_STORAGE,\n\nLOCATION = 'https://myazureblobstorage.blob.core.windows.net',\n\nCREDENTIAL= MyAzureBlobStorageCredential);\n\nFor examples of code that loads the content of files from an Azure Blob Storage account, see SQL Server GitHub samples ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "preview-loading-files-from-azure-blob-storage-into-sql-database"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=preview-loading-files-from-azure-blob-storage-into-sql-database"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: February 2017"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Databases, Hybrid + multicloud, Storage"
+    }
+  ]
+}

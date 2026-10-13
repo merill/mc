@@ -1,0 +1,46 @@
+{
+  "Id": "AZ-sending-a-log-search-alert-with-cross-tenant-target-resource-will-no-longer-be-supported",
+  "Title": "Sending a log search alert with cross tenant target resource will no longer be supported",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2024-02-21T21:11:28.000Z",
+  "LastModifiedDateTime": "2024-02-21T21:11:28.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Alerts"
+  ],
+  "Tags": [
+    "Compliance",
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Log search alerts are a feature of Azure Monitor that allow you to create alert rules based on the results of log queries. You can specify a target resource for each alert rule, which is the resource that will receive the alert notification and the alert context.</p>\r\n\r\n<p>Currently, if you configure a log search alert rule with a cross tenant target resource, the alert is generated and sent to the target resource even though there are no permissions to investigate this alert.</p>\r\n\r\n<p>As of March 15, 2024, this behavior will change and sending a log search alert with a cross tenant target resource (except for the lighthouse case) will no longer be supported. Alerts will not be sent to unauthorized target resources, and log search alert rules with an unauthorized target will be ignored. This will ensure that only authorized users can receive and investigate log search alerts.</p>\r\n\r\n<p>If you have any log search alert rules with cross tenant target resources, you should update them before March 15, 2024 to avoid losing alert notifications. You can either change the target resource, or use the lighthouse feature to delegate access to the target resource.</p>\r\n\r\n<h2>Help and support</h2>\r\n\r\n<p>If you have questions, get answers from community experts in&nbsp;<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Faka.ms%2Fcustomfieldsqa&amp;data=05%7C02%7CNoga.Lavi%40microsoft.com%7Cd926579866fb4aad8d7a08dc270619ec%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638428154361826162%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&amp;sdata=0IZRb%2BLCDPD%2FfTEQ4JszHi13BDXpNLPKTTESvJcXSVM%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Microsoft Q&amp;A</a>. If you have a support plan and you need technical help, create a&nbsp;<a href=\"https://portal.azure.com/#blade/Microsoft_Azure_Support/NewSupportRequestV3Blade\" target=\"_blank\" rel=\"noopener\">support request</a>.</p>\r\n",
+    "Markdown": "Log search alerts are a feature of Azure Monitor that allow you to create alert rules based on the results of log queries. You can specify a target resource for each alert rule, which is the resource that will receive the alert notification and the alert context.\n\nCurrently, if you configure a log search alert rule with a cross tenant target resource, the alert is generated and sent to the target resource even though there are no permissions to investigate this alert.\n\nAs of March 15, 2024, this behavior will change and sending a log search alert with a cross tenant target resource (except for the lighthouse case) will no longer be supported. Alerts will not be sent to unauthorized target resources, and log search alert rules with an unauthorized target will be ignored. This will ensure that only authorized users can receive and investigate log search alerts.\n\nIf you have any log search alert rules with cross tenant target resources, you should update them before March 15, 2024 to avoid losing alert notifications. You can either change the target resource, or use the lighthouse feature to delegate access to the target resource.\n\nHelp and support\n\nIf you have questions, get answers from community experts in Microsoft Q&A . If you have a support plan and you need technical help, create a support request ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "sending-a-log-search-alert-with-cross-tenant-target-resource-will-no-longer-be-supported"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=sending-a-log-search-alert-with-cross-tenant-target-resource-will-no-longer-be-supported"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: February 2024"
+    }
+  ]
+}

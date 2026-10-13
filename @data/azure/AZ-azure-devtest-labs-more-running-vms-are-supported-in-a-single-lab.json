@@ -1,0 +1,46 @@
+{
+  "Id": "AZ-azure-devtest-labs-more-running-vms-are-supported-in-a-single-lab",
+  "Title": "Azure DevTest Labs: More running VMs are supported in a single lab",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2016-08-15T23:35:14.000Z",
+  "LastModifiedDateTime": "2016-08-15T23:35:14.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure DevTest Labs"
+  ],
+  "Tags": [
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure DevTest Labs now allows you to run more VMs (with multiple storage accounts) at the same time in a single lab with&nbsp;maximum performance by automatically scaling the storage accounts where lab VMs are created. &nbsp;</p>\r\n\r\n<p>Before this change, each lab had only one storage account for VMs due to&nbsp;performance issues of copying custom images (VHDs) from one storage account to another&nbsp;(when&nbsp;a VM was created in a different storage account from the custom image). However, storage accounts in Azure have&nbsp;virtual machine disk limits (see the &quot;Virtual machine disk limits&quot; section in <a href=\"https://azure.microsoft.com/en-us/documentation/articles/azure-subscription-service-limits/#storage-limits\" target=\"_blank\" rel=\"noopener\">Azure subscription and service limits, quotas, and constraints</a>).&nbsp;To get maximum utilization of VM disks,&nbsp;each storage account couldn&#39;t have more than 40&nbsp; standard-tier VMs. For a premium storage account, the maxium number of VMs was around 25. These limits restricted the capability of DevTest Labs to serve a bigger team that requires more VMs.</p>\r\n\r\n<p>To solve this problem, now DevTest Labs automatically creates a new storage account based on the number of VMs that you&nbsp;have already created in the lab, and it balances the new VMs between different storage account to optimize the IOPS.&nbsp;After a custom image is created, it will be cached across all the storage account for VMs as well, so that you will never experience performance regression when you&#39;re creating a VM from any custom image.</p>\r\n\r\n<p>Please try it today and let us know what you think about it! If you have an idea for how to&nbsp;make it work better for you, submit your feedback&nbsp;(or vote for others) at the <a href=\"https://feedback.azure.com/forums/320373-azure-devtest-labs\" title=\"\" target=\"_blank\" rel=\"noopener\"><u>Azure DevTest Labs feedback forum</u></a>.</p>\r\n\r\n<p>Have a question? Check out answers or ask a new question at the&nbsp;<a href=\"https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs\" title=\"\" target=\"_blank\" rel=\"noopener\"><u>MSDN Community forum</u></a>.</p>\r\n",
+    "Markdown": "Azure DevTest Labs now allows you to run more VMs (with multiple storage accounts) at the same time in a single lab with maximum performance by automatically scaling the storage accounts where lab VMs are created.\n\nBefore this change, each lab had only one storage account for VMs due to performance issues of copying custom images (VHDs) from one storage account to another (when a VM was created in a different storage account from the custom image). However, storage accounts in Azure have virtual machine disk limits (see the \"Virtual machine disk limits\" section in Azure subscription and service limits, quotas, and constraints ). To get maximum utilization of VM disks, each storage account couldn't have more than 40 standard-tier VMs. For a premium storage account, the maxium number of VMs was around 25. These limits restricted the capability of DevTest Labs to serve a bigger team that requires more VMs.\n\nTo solve this problem, now DevTest Labs automatically creates a new storage account based on the number of VMs that you have already created in the lab, and it balances the new VMs between different storage account to optimize the IOPS. After a custom image is created, it will be cached across all the storage account for VMs as well, so that you will never experience performance regression when you're creating a VM from any custom image.\n\nPlease try it today and let us know what you think about it! If you have an idea for how to make it work better for you, submit your feedback (or vote for others) at the Azure DevTest Labs feedback forum .\n\nHave a question? Check out answers or ask a new question at the MSDN Community forum ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-devtest-labs-more-running-vms-are-supported-in-a-single-lab"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-devtest-labs-more-running-vms-are-supported-in-a-single-lab"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: August 2016"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Developer tools, DevOps"
+    }
+  ]
+}

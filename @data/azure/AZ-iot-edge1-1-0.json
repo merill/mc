@@ -1,0 +1,51 @@
+{
+  "Id": "AZ-iot-edge1-1-0",
+  "Title": "Azure IoT Edge 1.1.0 release is now generally available",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2021-02-17T01:02:13.000Z",
+  "LastModifiedDateTime": "2021-02-17T01:02:13.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure IoT Edge"
+  ],
+  "Tags": [
+    "Features",
+    "Services",
+    "Open Source"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The <a href=\"https://github.com/Azure/azure-iotedge/releases/tag/1.1.0\" target=\"_blank\" rel=\"noopener\">1.1.0 version</a> of Azure IoT Edge is our first long term servicing (LTS) release.&nbsp;It is based on 1.0.10.4 and includes incremental bug fixes. Going forward, we&#39;ll only service the 1.1.0 branch with fixes to critical security issues and regressions through December 3, 2022. All other bug fixes and new feature work will go into future releases (1.2.0 and greater). These limited changes makes 1.1.0 our most stable release and perfect for extended periods of use in production.</p>\r\n\r\n<p>Customers should be aware of two changes when upgrading to 1.1.0:</p>\r\n\r\n<ul>\r\n\t<li>A <strong>small breaking change </strong>that we do not expect many customers to hit is included in this release. To connect a leaf device to the Edge Hub, users must&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/iot-edge/offline-capabilities?view=iotedge-2018-06#set-up-parent-and-child-devices\" target=\"_blank\" rel=\"noopener\">establish a parent/child relationship</a>&nbsp;between the edge device and the leaf device. In previous versions, this was required only for offline scenarios or when using certificate-based authentication. For online scenarios Edge Hub could fall back to cloud-based authentication for leaf devices that were using SAS key-based authentication. With this change, leaf devices with SAS key-based authentication need to be&nbsp;children of the edge device. You can configure Edge Hub to go back to the previous behavior by setting the environment variable &quot;AuthenticationMode&quot; to the value &quot;CloudAndScope&quot;.</li>\r\n\t<li><strong>Ubuntu 16.04 is no longer supported </strong>starting with 1.1.0 and have replaced it with Ubuntu 18.04. 16.04 has reached its servicing lifetime so Ubuntu will no longer publish updates or fixes for it. We expect that Azure IoT Edge will continue to run on Ubuntu 16.04 without issue; however, including it in the Azure IoT Edge support matrix could be interpreted by customers that Microsoft will provide fixes to the underlying OS.</li>\r\n\t<li>\r\n\t<p><strong>Windows IoT Core is no longer supported by IoT Edge</strong></p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Full release notes can be found on the <a href=\"https://github.com/Azure/azure-iotedge/releases/tag/1.1.0\" target=\"_blank\" rel=\"noopener\">GitHub release page for 1.1.0</a>. Instructions on how to update IoT Edge can be found <a href=\"https://docs.microsoft.com/en-us/azure/iot-edge/how-to-update-iot-edge\" target=\"_blank\" rel=\"noopener\">here</a>.</p>\r\n",
+    "Markdown": "The 1.1.0 version of Azure IoT Edge is our first long term servicing (LTS) release. It is based on 1.0.10.4 and includes incremental bug fixes. Going forward, we'll only service the 1.1.0 branch with fixes to critical security issues and regressions through December 3, 2022. All other bug fixes and new feature work will go into future releases (1.2.0 and greater). These limited changes makes 1.1.0 our most stable release and perfect for extended periods of use in production.\n\nCustomers should be aware of two changes when upgrading to 1.1.0:\n\nA small breaking change that we do not expect many customers to hit is included in this release. To connect a leaf device to the Edge Hub, users must establish a parent/child relationship between the edge device and the leaf device. In previous versions, this was required only for offline scenarios or when using certificate-based authentication. For online scenarios Edge Hub could fall back to cloud-based authentication for leaf devices that were using SAS key-based authentication. With this change, leaf devices with SAS key-based authentication need to be children of the edge device. You can configure Edge Hub to go back to the previous behavior by setting the environment variable \"AuthenticationMode\" to the value \"CloudAndScope\".\n\nUbuntu 16.04 is no longer supported starting with 1.1.0 and have replaced it with Ubuntu 18.04. 16.04 has reached its servicing lifetime so Ubuntu will no longer publish updates or fixes for it. We expect that Azure IoT Edge will continue to run on Ubuntu 16.04 without issue; however, including it in the Azure IoT Edge support matrix could be interpreted by customers that Microsoft will provide fixes to the underlying OS.\n\nWindows IoT Core is no longer supported by IoT Edge\n\nFull release notes can be found on the GitHub release page for 1.1.0 . Instructions on how to update IoT Edge can be found here ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "iot-edge1-1-0"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=iot-edge1-1-0"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: February 2021"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Hybrid + multicloud, Internet of Things"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "Id": "AZ-public-preview-change-actor",
+  "Title": "Public preview: Change Actor",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2024-03-07T16:00:40.000Z",
+  "LastModifiedDateTime": "2024-03-07T16:00:40.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Resource Graph"
+  ],
+  "Tags": [
+    "Features",
+    "Management"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>With Change Analysis&nbsp;you can now see who initiated the change and with which client that change was made, for changes across all your tenants and subscriptions. &nbsp;</p>\r\n\r\n<p><b>Audit, troubleshoot, and govern at scale </b> &nbsp;</p>\r\n\r\n<p>By using Azure Resource Graph to query your resource changes, you can craft charts and pin results to Azure dashboards based on specific change queries.  &nbsp;</p>\r\n\r\n<p><b> What&rsquo;s new: Actor Functionality</b> &nbsp;</p>\r\n\r\n<ul>\r\n\t<li>Who made the change  &nbsp;</li>\r\n\t<li>With which client the change was made &nbsp;</li>\r\n\t<li>What operation was called&nbsp;</li>\r\n</ul>\r\n\r\n<p><b>Try it out</b>&nbsp;</p>\r\n\r\n<p>You can try it out by querying the &ldquo;resourcechanges&rdquo; or &ldquo;resourcecontainerchanges&rdquo; tables in Azure Resource Graph.</p>\r\n\r\n<p><b>Sample Query</b></p>\r\n\r\n<p><em>The following query shows the Summarization of who and which client were used to make resource changes in the last 7 days ordered by the number of changes&nbsp;</em></p>\r\n\r\n<p>resourcechanges &nbsp;</p>\r\n\r\n<p>| extend changeTime = todatetime(properties.changeAttributes.timestamp), &nbsp;</p>\r\n\r\n<p>targetResourceId = tostring(properties.targetResourceId), &nbsp;</p>\r\n\r\n<p>changeType = tostring(properties.changeType), changedBy = tostring(properties.changeAttributes.changedBy), &nbsp;</p>\r\n\r\n<p>changedByType = properties.changeAttributes.changedByType, &nbsp;</p>\r\n\r\n<p>clientType = tostring(properties.changeAttributes.clientType) &nbsp;</p>\r\n\r\n<p>| where changeTime &gt; ago(7d) &nbsp;</p>\r\n\r\n<p>| project changeType, changedBy, changedByType, clientType &nbsp;</p>\r\n\r\n<p>| summarize count() by changedBy, changeType, clientType &nbsp;</p>\r\n\r\n<p>| order by count_ desc </p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>If you&#39;re just getting started with changes and want to learn how to query resourcechanges and resourcecontainerchanges in Azure Resource Graph, you can learn about the service here<b>.</b></p>\r\n\r\n<p><a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fgovernance%2Fresource-graph%2Fhow-to%2Fget-resource-changes%3Ftabs%3Dazure-cli&amp;data=05%7C02%7Ciancarter%40microsoft.com%7Cf09309997dc348653ebe08dc34b10e3f%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638443182260384197%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&amp;sdata=9HlHP4daqEAlqZSmSAl0Ev4of5%2FxzpVit397vXAzdvI%3D&amp;reserved=0\" title=\"Original URL: https://learn.microsoft.com/en-us/azure/governance/resource-graph/how-to/get-resource-changes?tabs=azure-cli. Click or tap if you trust this link.\" target=\"_blank\" rel=\"noopener\">Get resource configuration changes - Azure Resource Graph | Microsoft Learn</a></p>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "With Change Analysis you can now see who initiated the change and with which client that change was made, for changes across all your tenants and subscriptions.\n\nAudit, troubleshoot, and govern at scale\n\nBy using Azure Resource Graph to query your resource changes, you can craft charts and pin results to Azure dashboards based on specific change queries.\n\nWhat’s new: Actor Functionality\n\nWho made the change\n\nWith which client the change was made\n\nWhat operation was called\n\nTry it out\n\nYou can try it out by querying the “resourcechanges” or “resourcecontainerchanges” tables in Azure Resource Graph.\n\nSample Query\n\nThe following query shows the Summarization of who and which client were used to make resource changes in the last 7 days ordered by the number of changes\n\nresourcechanges\n\n| extend changeTime = todatetime(properties.changeAttributes.timestamp),\n\ntargetResourceId = tostring(properties.targetResourceId),\n\nchangeType = tostring(properties.changeType), changedBy = tostring(properties.changeAttributes.changedBy),\n\nchangedByType = properties.changeAttributes.changedByType,\n\nclientType = tostring(properties.changeAttributes.clientType)\n\n| where changeTime > ago(7d)\n\n| project changeType, changedBy, changedByType, clientType\n\n| summarize count() by changedBy, changeType, clientType\n\n| order by count_ desc\n\nIf you're just getting started with changes and want to learn how to query resourcechanges and resourcecontainerchanges in Azure Resource Graph, you can learn about the service here .\n\nGet resource configuration changes - Azure Resource Graph | Microsoft Learn"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "public-preview-change-actor"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=public-preview-change-actor"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: March 2024"
+    }
+  ]
+}

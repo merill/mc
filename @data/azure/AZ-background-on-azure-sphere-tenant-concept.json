@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-background-on-azure-sphere-tenant-concept",
+  "Title": "Background on Azure Sphere tenant concept",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-05-10T16:00:00.000Z",
+  "LastModifiedDateTime": "2019-05-10T16:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Sphere"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<div>\r\n<p>An Azure Sphere tenant provides a secure way for your organization to remotely manage its Azure Sphere devices in isolation from other customers&#39; devices.&nbsp;Your organization must create an Azure Sphere tenant and then claim each of its devices into that tenant, so that you can manage those devices remotely and securely.&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>The Azure Sphere tenant is associated with your organization&rsquo;s Azure Active Directory (Azure AD) instance. Only people with an account in that directory will be able to manage devices within your Azure Sphere tenant, and you can <a href=\"https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/controls\" target=\"_blank\" rel=\"noopener\">further restrict access to specific people</a>.&nbsp;Note that the term &quot;tenant&quot; is sometimes used elsewhere to refer to a directory, but here we use the term &quot;tenant&quot; only to refer to the Azure Sphere tenant.&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>You can determine whether an Azure Sphere tenant is already associated with your directory by issuing this command in an Azure Sphere developer command prompt and&nbsp;signing in with your&nbsp;work or school&nbsp;account if prompted:&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>azsphere tenant list&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>If no tenant exists already, you can create one. You must have an Azure Sphere device attached to your PC when creating a tenant.&nbsp;Type the following command to create a tenant; sign in to your directory if prompted:&nbsp;&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>azsphere tenant create &ndash;name &lt;your-tenant-name&gt;&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>If you enclose the name in quotes, it can be of any length and&nbsp;can contain spaces or other special characters.&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>Most organizations need only one Azure Sphere tenant. However, large organizations that have independent divisions, such as different brands or geographically independent suborganizations, might need to administer devices on a per-division basis. Such organizations might want to consider creating a separate Azure Sphere tenant for each division.&nbsp;&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>If you are certain that you want to create an additional tenant, use the &ndash;force option on the tenant create command:&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>&nbsp; azsphere tenant create --name &lt;your-2nd-tenant-name&gt; --force&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>Each device can be used only once to create a tenant. So, if the currently attached device has already been used for this purpose, you&rsquo;ll need to attach a new device.&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>Finally, before you can remotely manage your attached device or any other device, you need to claim it into your newly created tenant:&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>azsphere device claim&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>Your tenant then has permanent ownership of the device.&nbsp;Nobody else can claim ownership of the same device. We currently do not provide a way to transfer ownership to another tenant.&nbsp;</p>\r\n</div>\r\n\r\n<div>\r\n<p>For more information on tenant creation, claiming, and remotely managing devices,&nbsp;see the <a href=\"https://docs.microsoft.com/azure-sphere/reference/azsphere-tenant\" target=\"_blank\" rel=\"noopener\">tenant documentation</a>.&nbsp;</p>\r\n</div>\r\n",
+    "Markdown": "An Azure Sphere tenant provides a secure way for your organization to remotely manage its Azure Sphere devices in isolation from other customers' devices. Your organization must create an Azure Sphere tenant and then claim each of its devices into that tenant, so that you can manage those devices remotely and securely.\n\nThe Azure Sphere tenant is associated with your organization’s Azure Active Directory (Azure AD) instance. Only people with an account in that directory will be able to manage devices within your Azure Sphere tenant, and you can further restrict access to specific people . Note that the term \"tenant\" is sometimes used elsewhere to refer to a directory, but here we use the term \"tenant\" only to refer to the Azure Sphere tenant.\n\nYou can determine whether an Azure Sphere tenant is already associated with your directory by issuing this command in an Azure Sphere developer command prompt and signing in with your work or school account if prompted:\n\nazsphere tenant list\n\nIf no tenant exists already, you can create one. You must have an Azure Sphere device attached to your PC when creating a tenant. Type the following command to create a tenant; sign in to your directory if prompted:\n\nazsphere tenant create –name <your-tenant-name>\n\nIf you enclose the name in quotes, it can be of any length and can contain spaces or other special characters.\n\nMost organizations need only one Azure Sphere tenant. However, large organizations that have independent divisions, such as different brands or geographically independent suborganizations, might need to administer devices on a per-division basis. Such organizations might want to consider creating a separate Azure Sphere tenant for each division.\n\nIf you are certain that you want to create an additional tenant, use the –force option on the tenant create command:\n\nazsphere tenant create --name <your-2nd-tenant-name> --force\n\nEach device can be used only once to create a tenant. So, if the currently attached device has already been used for this purpose, you’ll need to attach a new device.\n\nFinally, before you can remotely manage your attached device or any other device, you need to claim it into your newly created tenant:\n\nazsphere device claim\n\nYour tenant then has permanent ownership of the device. Nobody else can claim ownership of the same device. We currently do not provide a way to transfer ownership to another tenant.\n\nFor more information on tenant creation, claiming, and remotely managing devices, see the tenant documentation ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "background-on-azure-sphere-tenant-concept"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=background-on-azure-sphere-tenant-concept"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: May 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Internet of Things"
+    }
+  ]
+}

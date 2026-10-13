@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-adx-rls",
+  "Title": "Row Level Security now generally available for Azure Data Explorer",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-10-12T16:00:21.000Z",
+  "LastModifiedDateTime": "2020-10-12T16:00:21.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Data Explorer"
+  ],
+  "Tags": [
+    "Features",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The&nbsp;Row Level Security (RLS) policy is now generally available for&nbsp;Azure Data Explorer (Kusto)<b>.&nbsp;</b>It provides&nbsp;more granular control over who can access data inside your tables. You can now prevent specific users from viewing certain rows in a table, and you can also mask the data they see. For example, you can set an RLS policy that masks personally identifiable information (PII), enabling developers to query production environments for troubleshooting purposes without violating compliance regulations.</p>\r\n\r\n<p>Example:</p>\r\n\r\n<div>\r\n<p>.create-or-alter function with () TrimCreditCardNumbers() {<br>\r\n&nbsp; &nbsp; let UserCanSeeFullNumbers = current_principal_is_member_of(&#39;aadgroup=super_group@domain.com&#39;);<br>\r\n&nbsp; &nbsp; let AllData = Customers | where UserCanSeeFullNumbers;<br>\r\n&nbsp; &nbsp; let PartialData = Customers | where not(UserCanSeeFullNumbers) | extend CreditCardNumber = &quot;****&quot;;<br>\r\n&nbsp; &nbsp; union AllData, PartialData<br>\r\n}</p>\r\n\r\n<p>.alter table Customers policy row_level_security enable &quot;TrimCreditCardNumbers&quot;</p>\r\n</div>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Please find more details on the <a href=\"https://docs.microsoft.com/azure/data-explorer/kusto/management/rowlevelsecuritypolicy\" target=\"_blank\" rel=\"noopener\">documentation</a>&nbsp;page.</p>\r\n",
+    "Markdown": "The Row Level Security (RLS) policy is now generally available for Azure Data Explorer (Kusto) . It provides more granular control over who can access data inside your tables. You can now prevent specific users from viewing certain rows in a table, and you can also mask the data they see. For example, you can set an RLS policy that masks personally identifiable information (PII), enabling developers to query production environments for troubleshooting purposes without violating compliance regulations.\n\nExample:\n\n.create-or-alter function with () TrimCreditCardNumbers() {\n\nlet UserCanSeeFullNumbers = current_principal_is_member_of('aadgroup=super_group@domain.com');\n\nlet AllData = Customers | where UserCanSeeFullNumbers;\n\nlet PartialData = Customers | where not(UserCanSeeFullNumbers) | extend CreditCardNumber = \"****\";\n\nunion AllData, PartialData\n\n}\n\n.alter table Customers policy row_level_security enable \"TrimCreditCardNumbers\"\n\nPlease find more details on the documentation page."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "adx-rls"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=adx-rls"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

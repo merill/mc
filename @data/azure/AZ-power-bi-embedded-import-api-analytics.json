@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-power-bi-embedded-import-api-analytics",
+  "Title": "Upload Datasets only with Power BI Embedded analytics ‘Import’ API",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-06-07T16:00:17.000Z",
+  "LastModifiedDateTime": "2019-06-07T16:00:17.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Power BI Embedded"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Power BI APIs allows you to upload content into a workspace using the&nbsp;<a href=\"https://docs.microsoft.com/en-us/rest/api/power-bi/imports/postimportingroup\" target=\"_blank\" rel=\"noopener\">&lsquo;Import&rsquo; API</a>, which uploads a PBIX file. As we know, a PBIX contains both a report and a dataset, and they are uploaded together.</p>\r\n\r\n<p>There are cases where this coupling is not optimal, and you might prefer to handle each object separately for automation scenarios. So in order to manage datasets separately from reports,&nbsp;<a href=\"https://docs.microsoft.com/en-us/rest/api/power-bi/imports/postimportingroup#post_import_skip_report_example\" target=\"_blank\" rel=\"noopener\">we added&nbsp;</a><a href=\"https://docs.microsoft.com/en-us/rest/api/power-bi/imports/postimportingroup#post_import_skip_report_example\" target=\"_blank\" rel=\"noopener\">&lsquo;skipReport&rsquo; parameter</a><a href=\"https://docs.microsoft.com/en-us/rest/api/power-bi/imports/postimportingroup#post_import_skip_report_example\" target=\"_blank\" rel=\"noopener\">&nbsp;to the &lsquo;Import&rsquo; API&nbsp;</a>&nbsp;that only uploads the dataset into the specified workspace.</p>\r\n\r\n<p>This new API can be useful in few cases:</p>\r\n\r\n<ol>\r\n\t<li>A BI developer has made a change in the model only, and he doesn&rsquo;t want to override the connected report in the PBIX. He can use the API to update only the dataset, without changing any of the reports bound to this dataset.</li>\r\n\t<li>Update a bulk of datasets with the same schema, but different data (for different customers), without worrying if a report might be damaged from the update.</li>\r\n\t<li>If you are an ISV and you have a new customer, you want to clone the golden analytics package for that customer, as recommended&nbsp;<a href=\"https://docs.microsoft.com/en-us/power-bi/developer/embed-multi-tenancy\" target=\"_blank\" rel=\"noopener\">here</a>. You can now upload only the relevant dataset, and then connect all the reports bounded to it through &lsquo;Clone&rsquo; and &lsquo;rebind&rsquo; APIs.&nbsp;</li>\r\n</ol>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/rest/api/power-bi/imports/postimportingroup\" target=\"_blank\" rel=\"noopener\">Learn more.</a></p>\r\n",
+    "Markdown": "Power BI APIs allows you to upload content into a workspace using the ‘Import’ API , which uploads a PBIX file. As we know, a PBIX contains both a report and a dataset, and they are uploaded together.\n\nThere are cases where this coupling is not optimal, and you might prefer to handle each object separately for automation scenarios. So in order to manage datasets separately from reports, we added ‘skipReport’ parameter to the ‘Import’ API that only uploads the dataset into the specified workspace.\n\nThis new API can be useful in few cases:\n\nA BI developer has made a change in the model only, and he doesn’t want to override the connected report in the PBIX. He can use the API to update only the dataset, without changing any of the reports bound to this dataset.\n\nUpdate a bulk of datasets with the same schema, but different data (for different customers), without worrying if a report might be damaged from the update.\n\nIf you are an ISV and you have a new customer, you want to clone the golden analytics package for that customer, as recommended here . You can now upload only the relevant dataset, and then connect all the reports bounded to it through ‘Clone’ and ‘rebind’ APIs.\n\nLearn more."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "power-bi-embedded-import-api-analytics"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=power-bi-embedded-import-api-analytics"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: June 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

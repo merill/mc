@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-custom-hostnames-with-app-service",
+  "Title": "Announcing custom host names with App Service",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2017-06-21T17:00:00.000Z",
+  "LastModifiedDateTime": "2017-06-21T17:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "App Service"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure App Service has been supporting custom host names for a while now. App Service has a shared front end, so before you can use a custom host name with your app, you need to verify domain ownership by creating the required DNS records. This is done to prevent a host-name squatting vulnerability. To add a custom host name to your app, you need to create DNS records for ownership verification and routing.&nbsp;&nbsp;</p>\r\n\r\n<p>We recently made the following changes in our host-name management model.&nbsp;</p>\r\n\r\n<h3>One-to-many associations between a host name and an Azure subscription</h3>\r\n\r\n<p>Earlier, a host name could be used with only one subscription on the App Service platform. With this change, multiple subscriptions can share a host name. Each subscription needs to validate the domain ownership separately by creating the required DNS records.&nbsp;</p>\r\n\r\n<h3>Allowing a subscription to reclaim a host name by validating domain ownership</h3>\r\n\r\n<p>The App Service platform consists of multiple scale units. A host name can be associated with only one app on a scale unit. Even two apps in the same subscription can&rsquo;t share the same host name on a scale unit. This is by design, because an App Service runtime should be able to resolve a custom host name to an app uniquely.</p>\r\n\r\n<p>In the past, a customer sometimes had a custom host name in an old subscription that they could not access anymore and wanted to use the same host name with another app on the scale unit. This was not allowed, even though the customer could revalidate domain ownership. With this change, App Service customers can do this themselves.&nbsp;</p>\r\n",
+    "Markdown": "Azure App Service has been supporting custom host names for a while now. App Service has a shared front end, so before you can use a custom host name with your app, you need to verify domain ownership by creating the required DNS records. This is done to prevent a host-name squatting vulnerability. To add a custom host name to your app, you need to create DNS records for ownership verification and routing.\n\nWe recently made the following changes in our host-name management model.\n\nOne-to-many associations between a host name and an Azure subscription\n\nEarlier, a host name could be used with only one subscription on the App Service platform. With this change, multiple subscriptions can share a host name. Each subscription needs to validate the domain ownership separately by creating the required DNS records.\n\nAllowing a subscription to reclaim a host name by validating domain ownership\n\nThe App Service platform consists of multiple scale units. A host name can be associated with only one app on a scale unit. Even two apps in the same subscription can’t share the same host name on a scale unit. This is by design, because an App Service runtime should be able to resolve a custom host name to an app uniquely.\n\nIn the past, a customer sometimes had a custom host name in an old subscription that they could not access anymore and wanted to use the same host name with another app on the scale unit. This was not allowed, even though the customer could revalidate domain ownership. With this change, App Service customers can do this themselves."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "custom-hostnames-with-app-service"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=custom-hostnames-with-app-service"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: June 2017"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Mobile, Web"
+    }
+  ]
+}

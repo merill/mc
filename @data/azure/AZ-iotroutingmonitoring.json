@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-iotroutingmonitoring",
+  "Title": "Updates for monitoring and troubleshooting Azure IoT Hub message routing",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-06-24T00:00:06.000Z",
+  "LastModifiedDateTime": "2020-06-24T00:00:06.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure IoT Hub"
+  ],
+  "Tags": [
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Several updates to Azure IoT Hub <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-hub%2Fiot-hub-devguide-messages-d2c&amp;data=02%7C01%7CAshita.Rastogi%40microsoft.com%7C380d63a48c2043cb3ee008d813b1437a%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637280999368735362&amp;sdata=QnVee3psaSQK9LFKzekIzLbN9duugQg3LvRO1r25e2U%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">message routing</a>&nbsp;help reduce the learning curve and accelerate monitoring and troubleshooting.</p>\r\n\r\n<p>Key updates include:</p>\r\n\r\n<ul>\r\n\t<li>Multidimensional, per-endpoint monitoring <a href=\"https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-metrics#iot-hub-metrics-and-how-to-use-them\" target=\"_blank\" rel=\"noopener\">metrics</a> are now available in <a href=\"https://docs.microsoft.com/en-us/azure/azure-monitor/app/opencensus-python\" target=\"_blank\" rel=\"noopener\">Azure Monitor</a> to help you identify metrics for each endpoint and gain more details to diagnose issues faster.</li>\r\n\t<li><a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-hub%2Fiot-hub-monitor-resource-health%23routes&amp;data=02%7C01%7CAshita.Rastogi%40microsoft.com%7C380d63a48c2043cb3ee008d813b1437a%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637280999368755345&amp;sdata=Lt5iWfepI4CHBfU7WN9hHuSwwzk1Jgv%2FjnHTqNc3JWc%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Diagnostic logs</a>&nbsp;are now more descriptive and provide details on&nbsp;<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-hub%2Ftroubleshoot-message-routing%23routes-diagnostic-logs&amp;data=02%7C01%7CAshita.Rastogi%40microsoft.com%7C380d63a48c2043cb3ee008d813b1437a%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637280999368755345&amp;sdata=6ezaczTL4hzfoJU8lZ6Zzw9x1C9JD0PY%2Bq1DcT8Z%2Bg8%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">operation names</a>&nbsp;and&nbsp;<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-hub%2Ftroubleshoot-message-routing%23diagnostics-error-codes&amp;data=02%7C01%7CAshita.Rastogi%40microsoft.com%7C380d63a48c2043cb3ee008d813b1437a%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637280999368765341&amp;sdata=D19UCBIaVxHGsIq4v%2Bkz3EXkgwBfNSB6FrQ%2BnhNJKsg%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">error codes</a>.</li>\r\n\t<li>The Get Endpoint Health API has been enhanced to respond with the last known error, last send attempt, last failure, and last successful send attempt. This update helps you identify and debug endpoint issues faster, and also provides mitigation techniques for each&nbsp;<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-hub%2Ftroubleshoot-message-routing%23last-known-errors-for-iot-hub-routing-endpoints&amp;data=02%7C01%7CAshita.Rastogi%40microsoft.com%7C380d63a48c2043cb3ee008d813b1437a%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637280999368765341&amp;sdata=uko66VReNdoOT7JJDbFVODTcRO%2B3J6JFJ5GhmX3u%2Bwk%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">last known error</a>.</li>\r\n\t<li>The Get Endpoint Health API includes a new&nbsp;<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-hub%2Fiot-hub-devguide-endpoints%23endpoint-health&amp;data=02%7C01%7CAshita.Rastogi%40microsoft.com%7C380d63a48c2043cb3ee008d813b1437a%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637280999368775333&amp;sdata=hK%2Fr3PqwDtIzVyvAnwtZG8jDVzT6g3es3XaiE7Yh92k%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">health status</a>&nbsp;for endpoints. The &ldquo;degraded&rdquo; status indicates that the endpoint is accepting messages slower than expected or is recovering from an unhealthy state.</li>\r\n\t<li>Message routing via the Azure portal has been updated with more clarity on limitations of routing and experiences with <a href=\"https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-read-builtin\" target=\"_blank\" rel=\"noopener\">built-in endpoints</a> and <a href=\"https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messages-d2c#fallback-route\" target=\"_blank\" rel=\"noopener\">fallback routes</a>.</li>\r\n\t<li>A new&nbsp;<a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-hub%2Ftroubleshoot-message-routing&amp;data=02%7C01%7CAshita.Rastogi%40microsoft.com%7C380d63a48c2043cb3ee008d813b1437a%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637280999368775333&amp;sdata=JNPO8nJZfylA7CkQDUHKk1nZ4%2FWfVAaq5XxO0%2B5Xgjo%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">troubleshooting guide</a>&nbsp;provides mitigation methods for common debugging scenarios in IoT Hub.</li>\r\n</ul>\r\n",
+    "Markdown": "Several updates to Azure IoT Hub message routing help reduce the learning curve and accelerate monitoring and troubleshooting.\n\nKey updates include:\n\nMultidimensional, per-endpoint monitoring metrics are now available in Azure Monitor to help you identify metrics for each endpoint and gain more details to diagnose issues faster.\n\nDiagnostic logs are now more descriptive and provide details on operation names and error codes .\n\nThe Get Endpoint Health API has been enhanced to respond with the last known error, last send attempt, last failure, and last successful send attempt. This update helps you identify and debug endpoint issues faster, and also provides mitigation techniques for each last known error .\n\nThe Get Endpoint Health API includes a new health status for endpoints. The “degraded” status indicates that the endpoint is accepting messages slower than expected or is recovering from an unhealthy state.\n\nMessage routing via the Azure portal has been updated with more clarity on limitations of routing and experiences with built-in endpoints and fallback routes .\n\nA new troubleshooting guide provides mitigation methods for common debugging scenarios in IoT Hub."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "iotroutingmonitoring"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=iotroutingmonitoring"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: June 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Internet of Things"
+    }
+  ]
+}

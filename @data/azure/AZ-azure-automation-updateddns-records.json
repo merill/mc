@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-azure-automation-updateddns-records",
+  "Title": "Azure Automation updated DNS records",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-06-23T00:00:37.000Z",
+  "LastModifiedDateTime": "2020-06-23T00:00:37.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Automation"
+  ],
+  "Tags": [
+    "Services",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>To support new features in&nbsp;<a href=\"https://azure.microsoft.com/en-us/services/automation/\" target=\"_blank\" rel=\"noopener\">Azure Automation</a>, like&nbsp;<a href=\"https://azure.microsoft.com/en-us/services/private-link/\" target=\"_blank\" rel=\"noopener\">Azure Private Links</a>, the automation URLs have been updated. Instead of region-specific URLs, there are now account-specific URLs.&nbsp;If you have an Automation account that&#39;s defined for a specific region, use the following DNS records in your firewall security rules or to restrict hybrid runbook worker communication to that regional datacenter.&nbsp;</p>\r\n\r\n<p><strong>Old automation URLs:</strong></p>\r\n\r\n<p>ac-jobruntimedata-prod-su1.azure-automation.net</p>\r\n\r\n<p>ac-agentservice-prod-1.azure-automation.net</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Change to these for public cloud:</strong></p>\r\n\r\n<p>https://&lt;accountId&gt;.webhook.&lt;region&gt;.azure-automation.net :&nbsp; &nbsp;&nbsp;</p>\r\n\r\n<p>Required to start runbooks by&nbsp;doing a POST on webhook URL.&nbsp;&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>​https://&lt;accountId&gt;.agentsvc.&lt;region&gt;.azure-automation.net :&nbsp; &nbsp;</p>\r\n\r\n<p>Required for Automation state configuration&nbsp;scenario.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>​https://&lt;accountId&gt;.jrds.&lt;region&gt;.azure-automation.net :&nbsp;</p>\r\n\r\n<p>Required&nbsp;by the hybrid runbook worker for hybrid jobs.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>​​​Where</p>\r\n\r\n<p><strong>&lt;accountID&gt;</strong> would be automation account ID,</p>\r\n\r\n<p><strong>&lt;region&gt;</strong> would be region code for each automation region.</p>\r\n\r\n<p>Fetch the automation account ID from the keys section in the <strong>Automation Account</strong> blade:</p>\r\n\r\n<p>​&nbsp;<img alt=\"\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/880b72da-9449-481d-9a40-a24eb43f0c76.png\"></p>\r\n\r\n<p><strong>Note:&nbsp;</strong>Linux hybrid worker registration will fail with the new URLs unless 1.6.10.2 or the version above is used. For your *NEW* registrations,&nbsp;upgrade to <a href=\"https://github.com/Microsoft/OMS-Agent-for-Linux\" target=\"_blank\" rel=\"noopener\">the new version of Linux hybrid worker</a>.&nbsp;</p>\r\n\r\n<p><strong>All existing machines will continue working without any issues.&nbsp;</strong>The old Automation URLs as mentioned <a href=\"https://docs.microsoft.com/en-us/azure/automation/automation-hybrid-runbook-worker\" target=\"_blank\" rel=\"noopener\">here</a> remain functional to allow time for you to migrate.&nbsp;&nbsp;</p>\r\n\r\n<p>Learn more about new DNS records for each region <a href=\"https://docs.microsoft.com/en-us/azure/automation/how-to/automation-region-dns-records#support-for-private-link\" target=\"_blank\" rel=\"noopener\">here</a>.</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "To support new features in Azure Automation , like Azure Private Links , the automation URLs have been updated. Instead of region-specific URLs, there are now account-specific URLs. If you have an Automation account that's defined for a specific region, use the following DNS records in your firewall security rules or to restrict hybrid runbook worker communication to that regional datacenter.\n\nOld automation URLs:\n\nac-jobruntimedata-prod-su1.azure-automation.net\n\nac-agentservice-prod-1.azure-automation.net\n\nChange to these for public cloud:\n\nhttps://<accountId>.webhook.<region>.azure-automation.net :\n\nRequired to start runbooks by doing a POST on webhook URL.\n\n​https://<accountId>.agentsvc.<region>.azure-automation.net :\n\nRequired for Automation state configuration scenario.\n\n​https://<accountId>.jrds.<region>.azure-automation.net :\n\nRequired by the hybrid runbook worker for hybrid jobs.\n\n​​​Where\n\n<accountID> would be automation account ID,\n\n<region> would be region code for each automation region.\n\nFetch the automation account ID from the keys section in the Automation Account blade:\n\n​\n\nNote: Linux hybrid worker registration will fail with the new URLs unless 1.6.10.2 or the version above is used. For your *NEW* registrations, upgrade to the new version of Linux hybrid worker .\n\nAll existing machines will continue working without any issues. The old Automation URLs as mentioned here remain functional to allow time for you to migrate.\n\nLearn more about new DNS records for each region here ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-automation-updateddns-records"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-automation-updateddns-records"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: June 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance"
+    }
+  ]
+}

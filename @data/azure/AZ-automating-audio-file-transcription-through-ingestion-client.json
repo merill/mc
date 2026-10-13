@@ -1,0 +1,51 @@
+{
+  "Id": "AZ-automating-audio-file-transcription-through-ingestion-client",
+  "Title": "Introducing the Ingestion Client for Azure Speech",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2021-06-28T14:00:42.000Z",
+  "LastModifiedDateTime": "2021-06-28T14:00:42.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure AI Speech",
+    "Speech to text"
+  ],
+  "Tags": [
+    "Operating System",
+    "SDK and Tools"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p><a href=\"https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/\" target=\"_blank\" rel=\"noopener\">Speech</a> is an Azure Cognitive Service that enables you to build scalable solutions that can handle a variety of speech-related tasks, like transcribe audio, produce natural sounding voices, recognize who is speaking, and to handle speech translation.</p>\r\n\r\n<p>Today, we are introducing the <b>Ingestion Client, </b>an Azure <a href=\"https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/ingestion\" target=\"_blank\" rel=\"noopener\">solution</a> that will monitor your dedicated <a href=\"https://azure.microsoft.com/en-us/product-categories/storage/\" target=\"_blank\" rel=\"noopener\">Azure Storage</a> container so that audio files landing in that storage are automatically transcribed.</p>\r\n\r\n<p>We created this <a href=\"https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/ingestion\" target=\"_blank\" rel=\"noopener\">tool</a> to help you set-up a full blown, scalable, and secure transcription pipeline through simple configuration and without any development effort. The <b>Ingestion Client</b> incorporates best practices to maximize transcription requests in terms of scaling (to hundreds of thousands of files), error management, retry logic, and various other optimizations. The set-up is carried out through ARM-deployment.&nbsp;The architecture of the solution this ARM template deploys is described in the figure below.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"Graphical user interface, diagram, application\r\n\r\nDescription automatically generated\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/8fc4de7b-25bf-4a91-9eea-0985a1f5ee42.png\">​</p>\r\n\r\n<p>When a user uploads an audio file to the dedicated <a href=\"https://azure.microsoft.com/en-us/product-categories/storage/\" target=\"_blank\" rel=\"noopener\">Azure Storage</a> container, timer triggered <a href=\"https://azure.microsoft.com/en-us/services/functions/\" target=\"_blank\" rel=\"noopener\">Azure Functions</a> picks this file&nbsp;up and creates a transcription request&nbsp;using either the <a href=\"https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#speech-to-text-rest-api-v30\" target=\"_blank\" rel=\"noopener\">Speech-to-text REST API v3.0</a> or <a href=\"https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk\" target=\"_blank\" rel=\"noopener\">Speech SDK</a>&nbsp;(user&#39;s choice). When the transcription&nbsp;is successfully completed, the solution writes&nbsp;the transcript&nbsp;to the containers from which the audio file was obtained.&nbsp;Additionally, users can choose to apply analytics on the transcript, produce reports, or redact, all of which are the result of additional resources being deployed through the ARM template.</p>\r\n\r\n<p>Explore our <a href=\"https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/ingestion/ingestion-client/Setup/guide.md\" target=\"_blank\" rel=\"noopener\">guide</a> for more information about the tool and installation notes and download the code from this <a href=\"https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/ingestion\" target=\"_blank\" rel=\"noopener\">Github </a>repo.</p>\r\n",
+    "Markdown": "Speech is an Azure Cognitive Service that enables you to build scalable solutions that can handle a variety of speech-related tasks, like transcribe audio, produce natural sounding voices, recognize who is speaking, and to handle speech translation.\n\nToday, we are introducing the Ingestion Client, an Azure solution that will monitor your dedicated Azure Storage container so that audio files landing in that storage are automatically transcribed.\n\nWe created this tool to help you set-up a full blown, scalable, and secure transcription pipeline through simple configuration and without any development effort. The Ingestion Client incorporates best practices to maximize transcription requests in terms of scaling (to hundreds of thousands of files), error management, retry logic, and various other optimizations. The set-up is carried out through ARM-deployment. The architecture of the solution this ARM template deploys is described in the figure below.\n\n​\n\nWhen a user uploads an audio file to the dedicated Azure Storage container, timer triggered Azure Functions picks this file up and creates a transcription request using either the Speech-to-text REST API v3.0 or Speech SDK (user's choice). When the transcription is successfully completed, the solution writes the transcript to the containers from which the audio file was obtained. Additionally, users can choose to apply analytics on the transcript, produce reports, or redact, all of which are the result of additional resources being deployed through the ARM template.\n\nExplore our guide for more information about the tool and installation notes and download the code from this Github repo."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "automating-audio-file-transcription-through-ingestion-client"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=automating-audio-file-transcription-through-ingestion-client"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: June 2021"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "AI + machine learning"
+    }
+  ]
+}

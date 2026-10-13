@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-public-preview-initialization-taints-in-aks",
+  "Title": "Public preview: Initialization taints in AKS",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2024-05-08T20:43:23.000Z",
+  "LastModifiedDateTime": "2024-05-08T20:43:23.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Kubernetes Service (AKS)"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p><a href=\"https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/\" target=\"_blank\" rel=\"noopener\">Taints</a>&nbsp;are a Kubernetes node property that allows nodes to accept or reject pods for scheduling based on specific criteria.&nbsp;There are two types of taints that can be applied to your AKS nodes.</p>\r\n\r\n<ul>\r\n\t<li><b>Node taints:</b> These are meant to remain permanently on the node for scheduling pods with node affinity. Node taints can only be removed completely using the AKS API.</li>\r\n\t<li><b>Node initialization taints:</b> Now available in preview, initialization taints are meant to be used temporarily, for example in scenarios where you may need extra time to setup your nodes. Ideally, they should be removed shortly after applying them. Node initialization taints can be removed using the kubernetes API, but they will reappear after scaling or upgrades.</li>\r\n</ul>\r\n\r\n<p>If you want to remove the initialization taints completely, you can remove them using the AKS API after untainting the nodes using the Kubernetes API. Once the initialization taints are removed from cluster spec using AKS API, newly created nodes after reimage operation will no longer have initialization taints</p>\r\n\r\n<p><a href=\"https://aka.ms/aks/initializationtaints\" target=\"_blank\" rel=\"noopener\">Learn more.</a></p>\r\n",
+    "Markdown": "Taints are a Kubernetes node property that allows nodes to accept or reject pods for scheduling based on specific criteria. There are two types of taints that can be applied to your AKS nodes.\n\nNode taints: These are meant to remain permanently on the node for scheduling pods with node affinity. Node taints can only be removed completely using the AKS API.\n\nNode initialization taints: Now available in preview, initialization taints are meant to be used temporarily, for example in scenarios where you may need extra time to setup your nodes. Ideally, they should be removed shortly after applying them. Node initialization taints can be removed using the kubernetes API, but they will reappear after scaling or upgrades.\n\nIf you want to remove the initialization taints completely, you can remove them using the AKS API after untainting the nodes using the Kubernetes API. Once the initialization taints are removed from cluster spec using AKS API, newly created nodes after reimage operation will no longer have initialization taints\n\nLearn more."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "public-preview-initialization-taints-in-aks"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=public-preview-initialization-taints-in-aks"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: May 2024"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Containers"
+    }
+  ]
+}

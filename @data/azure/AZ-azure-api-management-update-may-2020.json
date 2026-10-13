@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-azure-api-management-update-may-2020",
+  "Title": "Azure API Management update—May 2020",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-05-07T20:00:12.000Z",
+  "LastModifiedDateTime": "2020-05-07T20:00:12.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "API Management"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>A regular Azure API Management service update was started on May 5, 2020, and included the following new features, bug fixes, and changes, along with other improvements. It may take more than a week for your API Management service to receive the update.</p>\r\n\r\n<p><strong>New</strong></p>\r\n\r\n<ul>\r\n\t<li>API-scoped subscriptions are now also included in the API reports and, consequently, in the <em>Analytics </em>section of your API Management service in the Azure portal.</li>\r\n\t<li>The ability to publish the developer portal and check and apply CORS policy from the <em>Portal overview</em> section of your API Management service in the Azure portal is now available.<br>\r\n\t<br>\r\n\t<img alt=\"\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/be59ad04-9d29-4851-89f0-285e7d1aea26.png\"><br>\r\n\t&nbsp;</li>\r\n\t<li>If your API Management service is deployed in a virtual network, you can now explore the network connectivity status in the dedicated <em>Network connectivity status</em> section of your service in the Azure portal.<br>\r\n\t<br>\r\n\t<img alt=\"\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/fab5d477-9d59-459f-826e-b626e2833512.png\"></li>\r\n</ul>\r\n\r\n<p><strong>Fixed</strong></p>\r\n\r\n<ul>\r\n\t<li>Logging out of the developer portal cleans the browser&rsquo;s cookie with the authentication token.</li>\r\n</ul>\r\n\r\n<p><strong>Changed</strong></p>\r\n\r\n<ul>\r\n\t<li>Self-hosted API gateway hostnames are now included in the <em>servers </em>field of OpenAPI v3 definition when exporting an API.</li>\r\n\t<li>The developer portal loading time has been reduced thanks to additional caching.</li>\r\n\t<li>The ability to restore developer portal administrative session in a new browser&rsquo;s tab is now available.</li>\r\n\t<li>The legacy developer portal now displays a message if the captcha service can&#39;t be reached (for example, if virtual network is misconfigured).</li>\r\n\t<li>Application Insights now always shows the correct number of errors if logging is enabled in API Management. Previously, the number was misreported when sampling was lower than 100 percent and the&nbsp; &quot;Always log errors&quot; flag was selected.</li>\r\n\t<li>You now have the ability to specify the subscription key header or query parameter name when importing an API using an ARM template. For example:<br>\r\n\t<code>{<br>\r\n\t&nbsp; &quot;type&quot;: &quot;Microsoft.ApiManagement/service/apis&quot;,<br>\r\n\t&nbsp; &quot;name&quot;: &quot;[concat(parameters(&#39;ApiManagement.Name&#39;),&#39;/&#39;, variables(&#39;ApiManagement.Api.Name&#39;))]&quot;,<br>\r\n\t&nbsp; &quot;apiVersion&quot;: &quot;2019-01-01&quot;,<br>\r\n\t&nbsp; &quot;properties&quot;: {<br>\r\n\t&nbsp;&nbsp;&nbsp; &quot;subscriptionRequired&quot;: true,<br>\r\n\t&nbsp;&nbsp;&nbsp; &quot;path&quot;: &quot;catalog/products&quot;,<br>\r\n\t&nbsp;&nbsp;&nbsp; <strong>&quot;subscriptionKeyParameterNames&quot;: {<br>\r\n\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;header&quot;: &quot;X-API-Key&quot;,<br>\r\n\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;query&quot;: &quot;apiKey&quot;<br>\r\n\t&nbsp;&nbsp;&nbsp; },</strong><br>\r\n\t&nbsp;&nbsp;&nbsp; &quot;value&quot;: &quot;&lt;REDACTED&gt;&quot;,<br>\r\n\t&nbsp;&nbsp;&nbsp; &quot;format&quot;: &quot;swagger-json&quot;<br>\r\n\t&nbsp; },<br>\r\n\t&nbsp; &quot;tags&quot;: &quot;[variables(&#39;Tags&#39;)]&quot;,<br>\r\n\t&nbsp; &quot;dependsOn&quot;: []<br>\r\n\t}</code></li>\r\n</ul>\r\n\r\n<p>The developer portal follows an independent release lifecycle and the <a href=\"https://aka.ms/apimdevportal/releases\" target=\"_blank\" rel=\"noopener\">per-release changelog is available on GitHub</a>.</p>\r\n",
+    "Markdown": "A regular Azure API Management service update was started on May 5, 2020, and included the following new features, bug fixes, and changes, along with other improvements. It may take more than a week for your API Management service to receive the update.\n\nNew\n\nAPI-scoped subscriptions are now also included in the API reports and, consequently, in the Analytics section of your API Management service in the Azure portal.\n\nThe ability to publish the developer portal and check and apply CORS policy from the Portal overview section of your API Management service in the Azure portal is now available.\n\nIf your API Management service is deployed in a virtual network, you can now explore the network connectivity status in the dedicated Network connectivity status section of your service in the Azure portal.\n\nFixed\n\nLogging out of the developer portal cleans the browser’s cookie with the authentication token.\n\nChanged\n\nSelf-hosted API gateway hostnames are now included in the servers field of OpenAPI v3 definition when exporting an API.\n\nThe developer portal loading time has been reduced thanks to additional caching.\n\nThe ability to restore developer portal administrative session in a new browser’s tab is now available.\n\nThe legacy developer portal now displays a message if the captcha service can't be reached (for example, if virtual network is misconfigured).\n\nApplication Insights now always shows the correct number of errors if logging is enabled in API Management. Previously, the number was misreported when sampling was lower than 100 percent and the \"Always log errors\" flag was selected.\n\nYou now have the ability to specify the subscription key header or query parameter name when importing an API using an ARM template. For example:\n\n{\n\n\"type\": \"Microsoft.ApiManagement/service/apis\",\n\n\"name\": \"[concat(parameters('ApiManagement.Name'),'/', variables('ApiManagement.Api.Name'))]\",\n\n\"apiVersion\": \"2019-01-01\",\n\n\"properties\": {\n\n\"subscriptionRequired\": true,\n\n\"path\": \"catalog/products\",\n\n\"subscriptionKeyParameterNames\": {\n\n\"header\": \"X-API-Key\",\n\n\"query\": \"apiKey\"\n\n},\n\n\"value\": \"<REDACTED>\",\n\n\"format\": \"swagger-json\"\n\n},\n\n\"tags\": \"[variables('Tags')]\",\n\n\"dependsOn\": []\n\n}\n\nThe developer portal follows an independent release lifecycle and the per-release changelog is available on GitHub ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-api-management-update-may-2020"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-api-management-update-may-2020"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: May 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Integration, Internet of Things, Mobile, Web"
+    }
+  ]
+}

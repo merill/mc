@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-generally-available-private-endpoint-support-without-nva-source-network-address-translation",
+  "Title": "Generally Available: Private endpoint support without NVA source network address translation",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2024-10-10T07:00:00.000Z",
+  "LastModifiedDateTime": "2024-10-10T07:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Private Link"
+  ],
+  "Tags": [
+    "Features",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Source network address translation (SNAT) is no longer a requirement for private endpoint destined traffic passing through a network virtual appliance (NVA). You may now configure a tag on your NVA VMs that will notify the Microsoft platform that you wish to opt into this feature. For all connection requests, from source to destination, SNATing will no longer be a requirement for private endpoint destined traffic traversing through your NVA.</p><p>Enabling this feature will provide a more streamlined experience for guaranteeing symmetric routing without impacting nonprivate endpoint traffic. It will also allow you to follow internal compliance standards where the source of traffic origination needs to be available during logging.</p><h2><span><span>Additional Considerations:</span></span></h2><ul><li>Enabling this feature is a platform update that will send a one-time reset of all long-running private endpoint connections established through the NVA. It is recommended that you enable this during a maintenance window.</li><li>This will only impact traffic through your NVA, private endpoint destined traffic that circumvents the NVA will not be impacted.</li></ul><h2><span><span>How to Enable this Feature:</span></span></h2><ol><li>Confirm the type of NVA you are using (VM or VMSS based).</li><li>Add Tag to your relevant resource<br>a. VM Based: Add the Resource Tag with a key of disableSnatOnPL and a value of true to the VM NIC.<br>b. VMSS Based: Add the Resource Tag with a key disableSnatOnPL and a value of true to VM instance.</li><li>Validate Scenario.</li></ol><h2><span><span>Regional Availability:</span></span></h2><p><em>This feature is available in all regions</em></p><p>Learn more:</p><p>What is Private Link</p><p><a href=\"https://go.microsoft.com/fwlink/?linkid=2289851\" target=\"_blank\" rel=\"noopener\">What is Azure Private Link? | Microsoft Docs</a></p><p>User Defined Routes</p><p><a href=\"https://go.microsoft.com/fwlink/?linkid=2289480\" target=\"_blank\" rel=\"noopener\">Azure network security groups overview | Microsoft Docs</a></p><p>Adding Tag to Resource</p><p><a href=\"https://go.microsoft.com/fwlink/?linkid=2289853\" target=\"_blank\" rel=\"noopener\">Tag resources, resource groups, and subscriptions for logical organization - Azure Resource Manager | Microsoft Learn</a></p>",
+    "Markdown": "Source network address translation (SNAT) is no longer a requirement for private endpoint destined traffic passing through a network virtual appliance (NVA). You may now configure a tag on your NVA VMs that will notify the Microsoft platform that you wish to opt into this feature. For all connection requests, from source to destination, SNATing will no longer be a requirement for private endpoint destined traffic traversing through your NVA.\n\nEnabling this feature will provide a more streamlined experience for guaranteeing symmetric routing without impacting nonprivate endpoint traffic. It will also allow you to follow internal compliance standards where the source of traffic origination needs to be available during logging.\n\nAdditional Considerations:\n\nEnabling this feature is a platform update that will send a one-time reset of all long-running private endpoint connections established through the NVA. It is recommended that you enable this during a maintenance window.\n\nThis will only impact traffic through your NVA, private endpoint destined traffic that circumvents the NVA will not be impacted.\n\nHow to Enable this Feature:\n\nConfirm the type of NVA you are using (VM or VMSS based).\n\nAdd Tag to your relevant resource\n\na. VM Based: Add the Resource Tag with a key of disableSnatOnPL and a value of true to the VM NIC.\n\nb. VMSS Based: Add the Resource Tag with a key disableSnatOnPL and a value of true to VM instance.\n\nValidate Scenario.\n\nRegional Availability:\n\nThis feature is available in all regions\n\nLearn more:\n\nWhat is Private Link\n\nWhat is Azure Private Link? | Microsoft Docs\n\nUser Defined Routes\n\nAzure network security groups overview | Microsoft Docs\n\nAdding Tag to Resource\n\nTag resources, resource groups, and subscriptions for logical organization - Azure Resource Manager | Microsoft Learn"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "generally-available-private-endpoint-support-without-nva-source-network-address-translation"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=generally-available-private-endpoint-support-without-nva-source-network-address-translation"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2024"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Networking"
+    }
+  ]
+}
