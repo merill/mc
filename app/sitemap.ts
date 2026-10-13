@@ -25,5 +25,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  return [home, ...messages]
+  const discuss = {
+    url: `${siteConfig.url}/discuss`,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }
+
+  return [home, discuss, ...messages]
 }
