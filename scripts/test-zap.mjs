@@ -12,7 +12,7 @@ async function loadTypeScriptModule(relativePath) {
   return import(`data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`)
 }
 
-const { sanitizeCommentHtml, buildThread, avatarColor, avatarSrc, timeAgo, zapLinks, countsPath } = await loadTypeScriptModule("../lib/zap.ts")
+const { sanitizeCommentHtml, buildThread, avatarColor, avatarSrc, timeAgo, zapLinks, countsPath, countsBatches, COUNTS_BATCH } = await loadTypeScriptModule("../lib/zap.ts")
 
 const LINK = 'rel="ugc nofollow noopener noreferrer" target="_blank"'
 
@@ -216,6 +216,21 @@ test("a confirmed view is remembered for five minutes, and for ten by lists", ()
 test("the same posts in any order ask zap.ms for one address", () => {
   assert.equal(countsPath(["MC200", "RM3", "MC100", "MC200"]), "/mc/counts?ids=MC100,MC200,RM3")
   assert.equal(zapLinks("https://zap.ms", "MC1").local, "/message/MC1#discussion")
+})
+
+test("counts are asked for in batches that fit a request and an address", () => {
+  assert.deepEqual(countsBatches([]), [])
+  assert.deepEqual(countsBatches(["MC1", "RM2"]), [["MC1", "RM2"]])
+
+  const many = Array.from({ length: COUNTS_BATCH * 2 + 5 }, (_, index) => `MC${index}`)
+  assert.deepEqual(countsBatches(many).map(batch => batch.length), [COUNTS_BATCH, COUNTS_BATCH, 5])
+
+  // Older Azure updates have long ids; no address may grow past a few thousand characters.
+  const slugs = Array.from({ length: 120 }, (_, index) => `AZ-${"long-slug-".repeat(15)}${index}`)
+  const batches = countsBatches(slugs)
+  assert.ok(batches.length > 1)
+  assert.deepEqual(batches.flat(), slugs)
+  for (const batch of batches) assert.ok(countsPath(batch).length < 4100, String(countsPath(batch).length))
 })
 
 test("a draft is kept per box, expires after a week and goes when emptied", () => {

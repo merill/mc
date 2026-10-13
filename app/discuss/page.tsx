@@ -59,8 +59,8 @@ export default function DiscussPage() {
       <div className="page-intro">
         <h1 className="page-title">Have questions or thoughts?</h1>
         <p className="page-description">
-          You can now like, comment on and discuss every Message Center and
-          Roadmap post, right here on its page. Tell other admins what happened
+          You can now like, comment on and discuss every Message Center,
+          Roadmap and Azure Updates post, right here on its page. Tell other admins what happened
           in your tenant, and find out what happened in theirs.
         </p>
         <GetStarted />

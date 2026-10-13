@@ -1,4 +1,4 @@
-# Refresh Message Center and Microsoft 365 Roadmap data
+# Refresh Message Center, Microsoft 365 Roadmap and Azure Updates data
 
 name: update-m365-data
 
@@ -19,6 +19,13 @@ on:
 
   # Allows to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      # Normally only what changed is sent to zap.ms. Use this once after zap.ms
+      # gains a feature that needs everything, or to repair a gap.
+      republish:
+        description: "Send every post record and version history to zap.ms again"
+        type: boolean
+        default: false
 
 permissions:
   id-token: write
@@ -40,7 +47,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: Get Message Center and Roadmap data
+      - name: Get Message Center, Roadmap and Azure data
         env:
           DISCORD_ENTRA_SCOUT_WEBHOOK_URL: ${{ secrets.DISCORD_ENTRA_SCOUT_WEBHOOK_URL }}
           # Pull request runs are checks only. Their Discord state is never
@@ -51,6 +58,7 @@ jobs:
           # variable unset to switch publishing off.
           ZAP_INGEST_URL: ${{ vars.ZAP_INGEST_URL }}
           ZAP_INGEST_TOKEN: ${{ github.event_name != 'pull_request' && secrets.ZAP_INGEST_TOKEN || '' }}
+          ZAP_REPUBLISH_ALL: ${{ inputs.republish && 'true' || 'false' }}
           # Second tenant, authenticated with a federated identity credential (no secret).
           # Leave the variables unset to keep the refresh on the primary tenant only.
           GRAPH_FEDERATED_TENANT_ID: ${{ vars.GRAPH_FEDERATED_TENANT_ID }}

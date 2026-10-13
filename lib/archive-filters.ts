@@ -1,5 +1,5 @@
 export interface ArchiveFilters {
-  sourceFilter: "all" | "messageCenter" | "roadmap"
+  sourceFilter: "all" | "messageCenter" | "roadmap" | "azure"
   selectedServices: string[]
   searchTerm: string
 }
@@ -9,7 +9,9 @@ export function readArchiveFilters(params: URLSearchParams): ArchiveFilters {
 
   return {
     sourceFilter:
-      source === "messageCenter" || source === "roadmap" ? source : "all",
+      source === "messageCenter" || source === "roadmap" || source === "azure"
+        ? source
+        : "all",
     selectedServices: Array.from(
       new Set(params.getAll("service").filter(Boolean))
     ).sort((a, b) => a.localeCompare(b)),

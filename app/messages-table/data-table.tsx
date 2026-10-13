@@ -15,6 +15,7 @@ import {
 import {
   Check,
   ChevronDown,
+  Cloud,
   Inbox,
   Loader2,
   Milestone,
@@ -75,10 +76,13 @@ interface DataTableProps<TData, TValue> {
   services: string[]
 }
 
+// The archive list carries expired Message Center posts and, marked with
+// their source, Azure updates that last changed over a year ago.
 function toArchivedMessageView(item: MessageArchive): MessageView {
   const date = item.LastModifiedDateTime
     ? new Date(item.LastModifiedDateTime)
     : null
+  const isAzure = item.Source === "azure"
 
   return {
     id: item.Id,
@@ -91,10 +95,11 @@ function toArchivedMessageView(item: MessageArchive): MessageView {
       : undefined,
     date: date ? date.toISOString().slice(0, 10) : undefined,
     isMajor: item.IsMajorChange ?? false,
-    isArchived: true,
+    // An Azure update never expires; an old one is only old.
+    isArchived: !isAzure,
     seenOnlyIn: item.SeenOnlyIn,
-    source: "messageCenter",
-    sourceLabel: "Message Center",
+    source: isAzure ? "azure" : "messageCenter",
+    sourceLabel: isAzure ? "Azure Updates" : "Message Center",
   }
 }
 
@@ -553,6 +558,16 @@ export function DataTable<TData, TValue>({
           >
             <Milestone size={15} />
             Microsoft 365 Roadmap
+          </Button>
+          <Button
+            type="button"
+            variant={sourceFilter === "azure" ? "default" : "outline"}
+            size="sm"
+            className="gap-2"
+            onClick={() => updateFilters({ sourceFilter: "azure" })}
+          >
+            <Cloud size={15} />
+            Azure Updates
           </Button>
         </div>
         <div className="grid gap-3 sm:grid-cols-[minmax(14rem,1fr)_minmax(12rem,18rem)] lg:flex lg:flex-1 lg:items-center">

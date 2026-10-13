@@ -63,6 +63,7 @@ export enum Name {
 export enum MessageSource {
     MessageCenter = "messageCenter",
     Roadmap = "roadmap",
+    Azure = "azure",
 }
 
 export enum Service {
@@ -118,6 +119,9 @@ export interface MessageArchive {
     IsMajorChange?: boolean;
     Category?: string;
     SeenOnlyIn?: string;
+    // Only on records that are not expired Message Center posts, such as
+    // Azure updates that last changed over a year ago.
+    Source?: MessageSource | string;
 }
 
 export interface MessageVersion {

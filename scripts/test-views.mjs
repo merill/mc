@@ -77,6 +77,11 @@ test("decides which rows a view shows", () => {
   assert.equal(inView(row, { ...DEFAULT_VIEW, majorOnly: true }), false)
   assert.equal(inView(row, { ...DEFAULT_VIEW, hideExpired: true }), false)
   assert.equal(inView({ source: "roadmap" }, { ...DEFAULT_VIEW, services: ["Teams"] }), false)
+  assert.equal(inView({ source: "azure" }, { ...DEFAULT_VIEW, source: "azure" }), true)
+  assert.equal(inView(row, { ...DEFAULT_VIEW, source: "azure" }), false)
+  // An Azure update from years ago is old, not expired.
+  assert.equal(inView({ source: "azure", isArchived: false }, { ...DEFAULT_VIEW, hideExpired: true }), true)
+  assert.equal(readViewSettings({ source: "azure" }).source, "azure")
   assert.equal(narrowedBy({ ...DEFAULT_VIEW, majorOnly: true, hideExpired: true }), 2)
 })
 

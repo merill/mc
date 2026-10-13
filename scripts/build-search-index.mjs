@@ -22,6 +22,12 @@ import { fileURLToPath } from "node:url"
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const DATA = path.join(ROOT, "@data")
 const ARCHIVE_DIR = path.join(DATA, "archive")
+const AZURE_DIR = path.join(DATA, "azure")
+const SOURCE_LABELS = {
+  messageCenter: "Message Center",
+  roadmap: "Microsoft 365 Roadmap",
+  azure: "Azure Updates",
+}
 const OUTPUT_DIR = path.join(ROOT, "public", "pagefind")
 const MANIFEST_PATH = path.join(ROOT, "public", "search-manifest.json")
 
@@ -142,7 +148,7 @@ function buildRecord(message, { source, isArchived }) {
       date: day,
       lastUpdated: displayDate(date),
       source,
-      sourceLabel: source === "roadmap" ? "Microsoft 365 Roadmap" : "Message Center",
+      sourceLabel: SOURCE_LABELS[source],
       isMajor: message.IsMajorChange ? "true" : "",
       isArchived: isArchived ? "true" : "",
       seenOnlyIn: scalar(message.SeenOnlyIn),
@@ -171,6 +177,7 @@ function buildRecord(message, { source, isArchived }) {
 function loadRecords() {
   const active = readJson(path.join(DATA, "messages.json"), []) || []
   const roadmap = readJson(path.join(DATA, "roadmap.json"), []) || []
+  const azure = readJson(path.join(DATA, "azure.json"), []) || []
   const archiveIndex = readJson(path.join(DATA, "messages-archive.json"), []) || []
 
   const records = []
@@ -188,12 +195,26 @@ function loadRecords() {
     records.push(buildRecord(message, { source: "roadmap", isArchived: false }))
   }
 
+  for (const message of azure) {
+    if (!message?.Id || seen.has(message.Id)) continue
+    seen.add(message.Id)
+    records.push(buildRecord(message, { source: "azure", isArchived: false }))
+  }
+
   // Expired posts: the table only carries their title, so full-text search over
-  // the archived bodies is the main capability this index adds.
+  // the archived bodies is the main capability this index adds. The same list
+  // names the Azure updates older than a year, which have not expired.
   let archived = 0
+  let olderAzure = 0
   for (const entry of archiveIndex) {
     if (!entry?.Id || seen.has(entry.Id)) continue
     seen.add(entry.Id)
+    if (entry.Source === "azure") {
+      const full = readJson(path.join(AZURE_DIR, `${entry.Id}.json`))
+      records.push(buildRecord({ ...entry, ...(full || {}) }, { source: "azure", isArchived: false }))
+      olderAzure += 1
+      continue
+    }
     const full = readJson(path.join(ARCHIVE_DIR, `${entry.Id}.json`))
     records.push(buildRecord({ ...entry, ...(full || {}) }, { source: "messageCenter", isArchived: true }))
     archived += 1
@@ -204,6 +225,7 @@ function loadRecords() {
     counts: {
       messageCenter: active.length,
       roadmap: roadmap.length,
+      azure: azure.length + olderAzure,
       archived,
     },
   }
@@ -257,7 +279,7 @@ async function main() {
   await fsp.writeFile(MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`)
 
   console.log(
-    `[search] indexed ${manifest.records} posts (${counts.messageCenter} active, ${counts.archived} expired, ${counts.roadmap} roadmap).`
+    `[search] indexed ${manifest.records} posts (${counts.messageCenter} active, ${counts.archived} expired, ${counts.roadmap} roadmap, ${counts.azure} Azure).`
   )
 }
 

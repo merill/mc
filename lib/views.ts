@@ -7,7 +7,7 @@
  * now, on top of whichever view you are in.
  */
 
-export type ViewSource = "all" | "messageCenter" | "roadmap"
+export type ViewSource = "all" | "messageCenter" | "roadmap" | "azure"
 export type ViewSortColumn = "lastUpdated" | "id" | "title"
 
 export interface ViewSettings {
@@ -59,7 +59,7 @@ export const DEFAULT_VIEW: ViewSettings = {
 export const VIEWS_MAX = 20
 export const VIEW_NAME_MAX = 40
 
-const SOURCES: ViewSource[] = ["all", "messageCenter", "roadmap"]
+const SOURCES: ViewSource[] = ["all", "messageCenter", "roadmap", "azure"]
 const SORT_COLUMNS: ViewSortColumn[] = ["lastUpdated", "id", "title"]
 
 /**

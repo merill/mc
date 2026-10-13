@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { siteConfig } from "@/config/site"
-import { COUNTS_BATCH, countsPath, type ZapCounts } from "@/lib/zap"
+import { countsBatches, countsPath, type ZapCounts } from "@/lib/zap"
 import { COUNTS_TTL_MS, recentCounts } from "@/lib/zap-local"
 
 /**
@@ -80,9 +80,7 @@ export function useZapCounts(ids: string[]) {
       const stale = wanted.filter(
         (id) => now - (asked.get(id) ?? -Infinity) > COUNTS_TTL_MS
       )
-      for (let at = 0; at < stale.length; at += COUNTS_BATCH) {
-        void load(stale.slice(at, at + COUNTS_BATCH))
-      }
+      for (const batch of countsBatches(stale)) void load(batch)
     }, SETTLE_MS)
     return () => clearTimeout(timer)
   }, [key])

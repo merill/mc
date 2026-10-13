@@ -3,8 +3,10 @@
 # Default behavior:
 # - Connects to Microsoft Graph and refreshes Message Center data.
 # - Imports the Microsoft 365 Roadmap RSS feed.
+# - Mirrors Azure updates from Microsoft's public API.
 #
-# Use -RoadmapOnly to refresh only the Roadmap RSS feed during local development.
+# Use -RoadmapOnly to skip Message Center during local development. Roadmap and
+# Azure updates need no tenant, so they still refresh.
 
 param($GraphSecret, [switch]$RoadmapOnly, [int]$NewPostMaxAgeDays = 14)
 . "$PSScriptRoot/Entra-MessageFilter.ps1"
@@ -164,7 +166,13 @@ function ConvertTo-RssText([string]$value) {
 }
 
 function New-RssItem($item) {
-    $source = if ($item.Source -eq "roadmap") { "Microsoft 365 Roadmap" } else { "Message Center" }
+    $source = switch ($item.Source) {
+        "roadmap" { "Microsoft 365 Roadmap" }
+        "azure" { "Azure Updates" }
+        default { "Message Center" }
+    }
+    # An older Azure update's id is a long slug that repeats its title.
+    $title = if ($item.Id -like "AZ-*") { $item.Title } else { "$($item.Id): $($item.Title)" }
     $url = "https://mc.merill.net/message/$($item.Id)"
     $lastModified = Get-M365MessageTimestamp $item
     $summary = Get-MessageSummaryText $item
@@ -175,7 +183,7 @@ function New-RssItem($item) {
 
     return @"
   <item>
-    <title>$(ConvertTo-RssText "$($item.Id): $($item.Title)")</title>
+    <title>$(ConvertTo-RssText $title)</title>
     <link>$(ConvertTo-RssText $url)</link>
     <guid isPermaLink="true">$(ConvertTo-RssText $url)</guid>
     <pubDate>$($lastModified.UtcDateTime.ToString("r"))</pubDate>
@@ -333,6 +341,25 @@ $roadmapItems = Get-RoadmapRssItems | ForEach-Object { ConvertTo-RoadmapMessage 
 Write-Host "Updating roadmap data with $($roadmapItems.Count) items"
 $roadmapItems | ConvertTo-Json -Depth 10 | Set-Content -Path ($dataPath + "/roadmap.json")
 
+# Azure updates come from a public API, so they need no tenant. The script
+# keeps one file per update under @data/azure and writes the two lists read
+# here: the updates changed in the last year as full posts, and an index record
+# for every update.
+Write-Host "Getting Azure updates"
+node ./scripts/update-azure.mjs
+if ($LASTEXITCODE -ne 0) {
+    Write-Warning "Azure updates were not refreshed; continuing with the copies already stored"
+}
+$azureItems = @()
+$azureIndexRecords = @()
+if (Test-Path "$dataPath/azure.json") {
+    $azureItems = @(Get-Content "$dataPath/azure.json" -Raw | ConvertFrom-Json)
+}
+if (Test-Path "$dataPath/azure-index.json") {
+    $azureIndexRecords = @(Get-Content "$dataPath/azure-index.json" -Raw | ConvertFrom-Json)
+}
+Write-Host "Loaded $($azureIndexRecords.Count) Azure updates, $($azureItems.Count) of them changed in the last year"
+
 Write-Host "Building messages-archive.json from archive folder"
 $activeMessages = Get-Content ($dataPath + "/messages.json") | ConvertFrom-Json
 $activeIds = $activeMessages | Select-Object -ExpandProperty Id
@@ -353,11 +380,30 @@ $archiveRecords = @(Get-ChildItem -Path "$($dataPath)/archive" -Filter "*.json" 
     } |
     Sort-Object -Property LastModifiedDateTime -Descending)
 
+# Azure updates that last changed over a year ago are listed here too, so the
+# home page can load them after it has drawn. `Source` tells them apart from
+# expired Message Center posts.
+$recentAzureIds = [System.Collections.Generic.HashSet[string]]::new()
+foreach ($item in $azureItems) { [void]$recentAzureIds.Add([string]$item.Id) }
+$azureArchiveRecords = @($azureIndexRecords |
+    Where-Object { -not $recentAzureIds.Contains([string]$_.Id) } |
+    ForEach-Object {
+        $record = [ordered]@{}
+
+        foreach ($field in $archiveFields) {
+            $record[$field] = $_.$field
+        }
+
+        $record['Source'] = 'azure'
+        $record
+    })
+$archiveRecords = @($archiveRecords) + $azureArchiveRecords
+
 ConvertTo-Json -InputObject $archiveRecords -Depth 5 -Compress | Set-Content -Path ($dataPath + "/messages-archive.json")
 Copy-Item -Path ($dataPath + "/messages-archive.json") -Destination "./public/messages-archive.json" -Force
-Write-Host "Wrote $($archiveRecords.Count) archive-only records to messages-archive.json"
+Write-Host "Wrote $($archiveRecords.Count) archive-only records to messages-archive.json ($($azureArchiveRecords.Count) Azure updates)"
 
-$tableServices = @($activeMessages.Services + $roadmapItems.Services + $archiveRecords.Services) |
+$tableServices = @($activeMessages.Services) + @($roadmapItems.Services) + @($archiveRecords.Services) + @($azureItems.Services) |
     Where-Object { -not [string]::IsNullOrWhiteSpace($_) } |
     Sort-Object -Unique
 ConvertTo-Json -InputObject $tableServices -Depth 3 -Compress | Set-Content -Path ($dataPath + "/table-services.json")
@@ -381,18 +427,22 @@ Get-ChildItem -Path "$($dataPath)/archive" -Filter "*.json" |
         $messageIndexRecords.Add((New-MessageIndexRecord $item))
     }
 
+foreach ($record in $azureIndexRecords) {
+    $messageIndexRecords.Add($record)
+}
+
 $sortedMessageIndexRecords = $messageIndexRecords.ToArray() | Sort-Object -Property @{ Expression = { Get-M365MessageTimestamp $_ }; Descending = $true }
 ConvertTo-Json -InputObject $sortedMessageIndexRecords -Depth 6 -Compress | Set-Content -Path ($dataPath + "/messages-index.json")
 Copy-Item -Path ($dataPath + "/messages-index.json") -Destination "./public/messages-index.json" -Force
 Write-Host "Wrote $($sortedMessageIndexRecords.Count) records to messages-index.json"
 
-Write-Host "Building rss.xml with latest 500 active Message Center and Roadmap records"
+Write-Host "Building rss.xml with latest 500 active Message Center, Roadmap and Azure records"
 # Sort on the parsed timestamp, not its string form. Message Center records are
 # read back through ConvertFrom-Json, which turns dates into [datetime] values
 # that stringify as "09/14/2026 23:28:24", while Roadmap records keep ISO 8601
 # strings. Comparing the strings ranked every Roadmap item above every Message
 # Center post, so Roadmap filled all 500 slots.
-$rssItems = @($activeMessages + $roadmapItems) |
+$rssItems = @($activeMessages) + @($roadmapItems) + @($azureItems) |
     Sort-Object -Property @{ Expression = { Get-M365MessageTimestamp $_ }; Descending = $true } |
     Select-Object -First 500
 $rssPubDate = if ($rssItems.Count -gt 0) {
@@ -409,7 +459,7 @@ $rssXml = @"
   <title>Microsoft 365 Message Center and Roadmap Archive</title>
   <link>https://mc.merill.net/</link>
   <atom:link href="https://mc.merill.net/rss.xml" rel="self" type="application/rss+xml" />
-  <description>Latest Microsoft 365 Message Center messages and Microsoft 365 Roadmap posts. Message Center posts vary by tenant; always use your tenant's Message Center as the source of truth.</description>
+  <description>Latest Microsoft 365 Message Center messages, Microsoft 365 Roadmap posts and Azure updates. Message Center posts vary by tenant; always use your tenant's Message Center as the source of truth.</description>
   <language>en-us</language>
   <lastBuildDate>$rssPubDate</lastBuildDate>
   <ttl>60</ttl>
@@ -425,6 +475,9 @@ node ./scripts/build-references.mjs
 
 Write-Host "Updating per-message version history under @data/history"
 node ./scripts/update-history.mjs
+
+Write-Host "Publishing changed version histories to the discussion service"
+node ./scripts/publish-history.mjs
 
 Write-Host "Publishing new Microsoft Entra Message Center posts to Discord"
 node ./scripts/publish-discord.mjs

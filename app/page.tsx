@@ -13,11 +13,11 @@ export default function IndexPage() {
       {/* Pulled up against what follows: it is a caption, not a section. */}
       <div className="-mb-5 min-w-0">
         <h1 className="sr-only">
-          Microsoft 365 Message Center and Roadmap Archive
+          Microsoft 365 Message Center, Roadmap and Azure Updates Archive
         </h1>
         <p className="text-sm text-muted-foreground">
-          An unofficial archive of Microsoft 365 Message Center and Roadmap
-          posts.{" "}
+          An unofficial archive of Microsoft 365 Message Center, Roadmap and
+          Azure Updates posts.{" "}
           <Link
             href="/about"
             className="font-medium text-foreground underline underline-offset-4 hover:text-foreground/75"

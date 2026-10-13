@@ -126,9 +126,10 @@ export default function AboutPage() {
               static site.
             </p>
             <p>
-              The site also imports Microsoft 365 Roadmap RSS items, generates
-              static pages, and exposes sitemap, RSS, and AI-friendly index
-              files for discovery.
+              The site also imports Microsoft 365 Roadmap RSS items and Azure
+              updates from Microsoft&apos;s public feed, generates static
+              pages, and exposes sitemap, RSS, and AI-friendly index files for
+              discovery.
             </p>
           </CardContent>
         </Card>
@@ -143,7 +144,8 @@ export default function AboutPage() {
             <p>
               A post tells you what is changing. It cannot tell you how it went
               in the tenant that got it a week before yours. So every Message
-              Center and Roadmap post has a discussion on its page.
+              Center, Roadmap and Azure Updates post has a discussion on its
+              page.
             </p>
             <div className="grid gap-4 py-1">
               {CAN_DO.map((item) => (
@@ -216,6 +218,33 @@ export default function AboutPage() {
               October 13, 2026
             </h2>
             <ul>
+              <li>
+                Azure updates are now part of the archive: every update
+                Microsoft has published on{" "}
+                <a
+                  className="readable-link"
+                  href="https://azure.microsoft.com/updates"
+                >
+                  azure.microsoft.com/updates
+                </a>{" "}
+                since 2013, refreshed hourly, each with its own page showing
+                its status, timeline, products and tags. Use the Azure Updates
+                button above the list to see only those, and the Service filter
+                to pick Azure products. They are in search, the RSS feed and
+                the AI index too, and each has a discussion and tracked version
+                history like every other post.
+              </li>
+              <li>
+                Version history opens on the post&apos;s own page instead of on
+                a page per version. Every post still lists its versions and
+                which fields changed in each. Opening a version, or comparing
+                two, now needs a free zap.ms account, the same sign-in as for
+                likes and comments. Links to the old version and comparison
+                pages still work, and versions are numbered (
+                <code>?v=3</code>, <code>?from=2&amp;to=5</code>), which also
+                makes reachable the versions that shared a timestamp with
+                another.
+              </li>
               <li>
                 The list on the home page has View options: show major changes
                 only, hide expired posts, choose the sort order, and add or

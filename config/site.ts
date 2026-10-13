@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "Microsoft 365 Message Center Archive",
   url: "https://mc.merill.net",
   description:
-    "Searchable archive of Microsoft 365 Message Center messages and Microsoft 365 Roadmap posts.",
+    "Searchable archive of Microsoft 365 Message Center messages, Microsoft 365 Roadmap posts and Azure updates.",
   mainNav: [
     {
       title: "Home",

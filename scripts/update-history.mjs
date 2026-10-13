@@ -2,9 +2,10 @@
 /* eslint-disable no-console */
 /**
  * Incrementally append new versions to `@data/history/<Id>.json` after a
- * daily ingestion run. For each id present in `@data/messages.json` and
- * `@data/roadmap.json`, hash the current canonical content and, if it
- * differs from the last stored hash, append a new MessageVersion entry.
+ * daily ingestion run. For each id present in `@data/messages.json`,
+ * `@data/roadmap.json` and `@data/azure.json`, hash the current canonical
+ * content and, if it differs from the last stored hash, append a new
+ * MessageVersion entry.
  *
  * Designed to be invoked by `@build/Update-Site.ps1` after it writes the
  * fresh data files.
@@ -16,7 +17,7 @@ import path from "node:path"
 
 const ROOT = process.cwd()
 const HISTORY_DIR = path.join(ROOT, "@data", "history")
-const SOURCE_FILES = ["@data/messages.json", "@data/roadmap.json"]
+const SOURCE_FILES = ["@data/messages.json", "@data/roadmap.json", "@data/azure.json"]
 
 const NOISY_DETAIL_NAMES = new Set(["FeatureStatusJson"])
 

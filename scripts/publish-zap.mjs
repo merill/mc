@@ -1,6 +1,6 @@
 /**
- * Push changed Message Center and Roadmap index records to the discussion
- * service so each post has a thread to attach likes and comments to.
+ * Push changed Message Center, Roadmap and Azure index records to the
+ * discussion service so each post has a thread to attach likes and comments to.
  *
  * Runs at the end of the data refresh, before the commit. "Changed" means a
  * record that is new or whose title or last-modified time differs from the
@@ -11,7 +11,8 @@
  * This script never fails the data refresh: it logs and exits 0.
  *
  * Usage: node scripts/publish-zap.mjs [--all] [--dry-run]
- * Environment: ZAP_INGEST_URL, ZAP_INGEST_TOKEN
+ * Environment: ZAP_INGEST_URL, ZAP_INGEST_TOKEN, and ZAP_REPUBLISH_ALL=true
+ * for `--all` from the workflow's "republish" switch.
  */
 import { execFile } from "node:child_process"
 import fs from "node:fs/promises"
@@ -156,7 +157,7 @@ async function savePending(ids, hadPending) {
 
 async function main() {
   const args = new Set(process.argv.slice(2))
-  const all = args.has("--all")
+  const all = args.has("--all") || process.env.ZAP_REPUBLISH_ALL === "true"
   const dryRun = args.has("--dry-run")
   const ingestUrl = process.env.ZAP_INGEST_URL ?? ""
   const token = process.env.ZAP_INGEST_TOKEN ?? ""

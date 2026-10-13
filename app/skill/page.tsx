@@ -12,7 +12,7 @@ const skillPrompt = `Use the Microsoft 365 Message Center Archive at https://mc.
 
 Workflow:
 1. Read https://mc.merill.net/llms.txt for current guidance and URLs.
-2. Search https://mc.merill.net/messages-index.json by Message Center ID, Roadmap ID, title, source, service, category, tag, date, or summary text.
+2. Search https://mc.merill.net/messages-index.json by Message Center ID, Roadmap ID, Azure update ID, title, source, service, category, tag, date, or summary text.
 3. Open the record's Url field for the canonical detail page before citing or summarizing.
 4. Cite canonical detail pages such as https://mc.merill.net/message/{id}.
 5. For Message Center posts, always mention that posts are tenant-specific and users should verify applicability in their own Microsoft 365 admin center.`
@@ -47,8 +47,8 @@ export default function SkillPage() {
         <h1 className="page-title">Agent Skill</h1>
         <p className="page-description">
           This skill allows your agent to get grounded answers from the latest
-          Microsoft 365 Message Center posts and Microsoft 365 Roadmap items on
-          features and upcoming changes. It teaches agents how to search the
+          Microsoft 365 Message Center posts, Microsoft 365 Roadmap items and
+          Azure updates on features and upcoming changes. It teaches agents how to search the
           archive, cite canonical message pages, and warn that Message Center
           posts are tenant-specific.
         </p>
