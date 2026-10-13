@@ -171,6 +171,53 @@ try {
     $sorted = @(Get-SortedMessageCenterItems -Map $map)
     Assert-Equal 'MC300' $sorted[0].Id 'merged items are sorted newest first'
     Assert-Equal 'MC100' $sorted[2].Id 'oldest merged item is last'
+
+    # A tenant that could not be refreshed
+    $now = [datetimeoffset]'2026-10-13T00:00:00Z'
+    Assert-Equal $true (Test-M365MessageIsCurrent ([pscustomobject]@{ EndDateTime = '2026-12-31T08:00:00Z' }) -Now $now) 'a post before its end date is current'
+    Assert-Equal $false (Test-M365MessageIsCurrent ([pscustomobject]@{ EndDateTime = '2026-10-12T08:00:00Z' }) -Now $now) 'a post past its end date is not current'
+    Assert-Equal $true (Test-M365MessageIsCurrent ([pscustomobject]@{ EndDateTime = [datetime]::new(2026, 12, 31, 8, 0, 0, [System.DateTimeKind]::Utc) }) -Now $now) 'an end date already read as a date is understood'
+    Assert-Equal $false (Test-M365MessageIsCurrent ([pscustomobject]@{ EndDateTime = $null }) -Now $now) 'a post without an end date is not current'
+    Assert-Equal $false (Test-M365MessageIsCurrent ([pscustomobject]@{ EndDateTime = 'soon' }) -Now $now) 'an unreadable end date is not current'
+
+    $stillReturned = [pscustomobject]@{ Id = 'MC600'; LastModifiedDateTime = '2026-10-01T00:00:00Z'; EndDateTime = '2026-12-31T08:00:00Z' }
+    $missing = [pscustomobject]@{ Id = 'MC700'; LastModifiedDateTime = '2026-10-02T00:00:00Z'; EndDateTime = '2026-12-31T08:00:00Z' }
+    $missingEduOnly = [pscustomobject]@{ Id = 'MC750'; LastModifiedDateTime = '2026-10-03T00:00:00Z'; EndDateTime = '2026-12-31T08:00:00Z'; SeenOnlyIn = 'edu' }
+    $missingEnded = [pscustomobject]@{ Id = 'MC800'; LastModifiedDateTime = '2026-09-01T00:00:00Z'; EndDateTime = '2026-10-12T08:00:00Z' }
+    $alreadyEduOnly = [pscustomobject]@{ Id = 'MC850'; LastModifiedDateTime = '2026-09-02T00:00:00Z'; EndDateTime = '2026-12-31T08:00:00Z'; SeenOnlyIn = 'edu' }
+    $previousSnapshot = @($stillReturned, $missing, $missingEduOnly, $missingEnded, $alreadyEduOnly)
+
+    # The standard tenant that also sees MC600, MC700 and MC800 failed this time.
+    $partialMap = [ordered]@{}
+    $partialSources = @{}
+    $null = Add-M365MessageCenterItems -Map $partialMap -Items @(
+        [pscustomobject]@{ Id = 'MC610'; LastModifiedDateTime = '2026-10-04T00:00:00Z' }
+    ) -TenantName 'primary' -Sources $partialSources -TenantType $null
+    $null = Add-M365MessageCenterItems -Map $partialMap -Items @(
+        [pscustomobject]@{ Id = 'MC600'; LastModifiedDateTime = '2026-10-01T00:00:00Z' },
+        [pscustomobject]@{ Id = 'MC850'; LastModifiedDateTime = '2026-09-02T00:00:00Z' },
+        [pscustomobject]@{ Id = 'MC900'; LastModifiedDateTime = '2026-10-12T00:00:00Z' }
+    ) -TenantName 'contributor-c01' -Sources $partialSources -TenantType 'edu'
+    $null = Set-M365SeenOnlyIn -Map $partialMap -Sources $partialSources
+    Assert-Equal 'edu' $partialMap['MC600'].SeenOnlyIn 'a missing tenant makes a shared post look like an education-only post'
+
+    $restored = Restore-M365UnrefreshedItems -Map $partialMap -PreviousItems $previousSnapshot -Now $now
+    Assert-Equal 2 $restored.KeptIds.Count 'the current posts no tenant returned are put back'
+    Assert-Equal $true $restored.KeptIds.Contains('MC700') 'a post only the failed tenant sees is kept'
+    Assert-Equal $true ([object]::ReferenceEquals($missing, $partialMap['MC700'])) 'a kept post is the stored copy, untouched'
+    Assert-Equal 'edu' $partialMap['MC750'].SeenOnlyIn 'a kept post keeps its mark'
+    Assert-Equal $false $partialMap.Contains('MC800') 'a post past its end date is not kept'
+    Assert-Equal 6 $partialMap.Count 'nothing else is added'
+    Assert-Equal 1 $restored.Unmarked 'one mark is removed'
+    Assert-Equal $null $partialMap['MC600'].SeenOnlyIn 'a post that was unmarked before stays unmarked'
+    Assert-Equal 'edu' $partialMap['MC850'].SeenOnlyIn 'a post that was already marked stays marked'
+    Assert-Equal 'edu' $partialMap['MC900'].SeenOnlyIn 'a post that is new in this refresh keeps its mark'
+
+    $restoredSorted = @(Get-SortedMessageCenterItems -Map $partialMap)
+    Assert-Equal 'MC900,MC610,MC750,MC700,MC600,MC850' ($restoredSorted.Id -join ',') 'kept posts are sorted with the rest'
+
+    $nothingBefore = Restore-M365UnrefreshedItems -Map ([ordered]@{}) -PreviousItems @() -Now $now
+    Assert-Equal 0 $nothingBefore.KeptIds.Count 'a first refresh has nothing to keep'
 }
 finally {
     Remove-Item $tempConfig -ErrorAction SilentlyContinue
