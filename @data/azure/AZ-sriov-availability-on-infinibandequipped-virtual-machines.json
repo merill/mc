@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-sriov-availability-on-infinibandequipped-virtual-machines",
+  "Title": "SR-IOV availability on InfiniBand-equipped Virtual Machines",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-07-24T23:43:55.000Z",
+  "LastModifiedDateTime": "2020-07-24T23:43:55.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Virtual Machines"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>We will be enabling support for all Message Passing Interface (MPI) implementations and Remote Direct Memory Access (RDMA) verbs for InfiniBand-equipped virtual machines.&nbsp; This greatly increases ability and options for leveraging Infiniband for your workloads.</p>\r\n\r\n<p>The upgrade&nbsp;<strong>WILL INVOLVE&nbsp;SERVER&nbsp;DOWNTIME</strong>&nbsp;on a regional basis and, if you intend&nbsp;to utilize the&nbsp;InfiniBand&nbsp;network,&nbsp;this&nbsp;<strong>REQUIRES&nbsp;AN&nbsp;UPDATE&nbsp;TO&nbsp;YOUR VMs</strong>.&nbsp;</p>\r\n\r\n<p><strong>WHAT&rsquo;S&nbsp;COMING?</strong>&nbsp;</p>\r\n\r\n<p>We will be enabling support&nbsp;for the entire MPI stack (all MPI&nbsp;implementations and RDMA verbs) for&nbsp;InfiniBand-equipped&nbsp;virtual machines.&nbsp; These enhancements will increase the ability to leverage our high-bandwidth, low-latency InfiniBand network for your workloads.</p>\r\n\r\n<p><b>IMPACT</b></p>\r\n\r\n<p>All users of VM sizes listed in the <a href=\"https://azure.microsoft.com/updates/sriov-availability-schedule-on-ncv3-virtual-machines-sku/\" target=\"_blank\" rel=\"noopener\">update schedule</a> will be impacted on a region-by-region basis.&nbsp; The update involves changes to both server hardware and software, which requires downtime.&nbsp; During&nbsp;downtime:&nbsp;</p>\r\n\r\n<ul>\r\n\t<li><i>VMs in the region will be&nbsp;unavailable&nbsp;for a 3-hour period</i></li>\r\n\t<li><i>VMs&nbsp;in the region will be de-allocated &amp; re-deployed after the update</i></li>\r\n\t<li><i>Data stored on local (ephemeral) disks will be lost.&nbsp; Storage Accounts are unaffected </i></li>\r\n</ul>\r\n\r\n<p><b>ACTION REQUIRED</b></p>\r\n\r\n<p>To avoid data loss and minimize potential impact to your service, please:</p>\r\n\r\n<p><b>If you&nbsp;<u>do&nbsp;not</u>&nbsp;require&nbsp;InfiniBand&nbsp;or MPI</b></p>\r\n\r\n<ul>\r\n\t<li>Ensure all jobs are complete and data is backed up to your Storage Account&nbsp;<i>before</i>&nbsp;the scheduled update.&nbsp; Any data stored locally will be lost.</li>\r\n\t<li>Review the&nbsp;<a href=\"https://azure.microsoft.com/updates/sriov-availability-schedule-on-ncv3-virtual-machines-sku/\" target=\"_blank\" rel=\"noopener\">update schedule</a>.&nbsp; If you plan to temporarily migrate to an alternate region/SKU,&nbsp;<a href=\"https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas#find-your-quotas\" target=\"_blank\" rel=\"noopener\">check existing</a>&nbsp;or&nbsp;<a href=\"https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas#request-quota-increases\" target=\"_blank\" rel=\"noopener\">request new quota</a>&nbsp;in the intended region(s).&nbsp;</li>\r\n</ul>\r\n\r\n<p><b>If you&nbsp;<u>do</u>&nbsp;require&nbsp;InfiniBand&nbsp;or MPI</b></p>\r\n\r\n<ul>\r\n\t<li>You do not need to make any changes to your VM image and the drivers therein.</li>\r\n\t<li>For managed services supporting InfiniBand scenarios, please see service-specific guidance (e.g.,&nbsp;<a href=\"https://github.com/Azure/Batch/issues/73\" target=\"_blank\" rel=\"noopener\">Azure Batch</a><a href=\"https://docs.microsoft.com/azure/machine-learning/service/resource-known-issues\" target=\"_blank\" rel=\"noopener\">Azure Machine Learning</a>).&nbsp;</li>\r\n\t<li>Update your VM image to the <a href=\"https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/hpc/configure#vm-images\" target=\"_blank\" rel=\"noopener\">latest supported versions</a> (NOTE: CentOS HPC images prior to version 7.6 are not compatible and may not boot). Follow steps in <a href=\"https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/hpc/enable-infiniband\" target=\"_blank\" rel=\"noopener\">Enable InfiniBand</a> if required for other OS distros and if not using a ready-to-use CentOS-HPC VM image.</li>\r\n\t<li>Test your updated image and drivers on <a href=\"https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-hpc#rdma-capable-instances\" target=\"_blank\" rel=\"noopener\">VM sizes&nbsp;which are already SR-IOV enabled</a>(see MPI section)</li>\r\n</ul>\r\n\r\n<p>For any questions&nbsp;or concerns, please reach out to&nbsp;<a href=\"mailto:azuregpufeedback@service.microsoft.com\" target=\"_blank\" rel=\"noopener\">Azure GPU Feedback</a> or Customer Service Support.</p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-hpc\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p>\r\n",
+    "Markdown": "We will be enabling support for all Message Passing Interface (MPI) implementations and Remote Direct Memory Access (RDMA) verbs for InfiniBand-equipped virtual machines. This greatly increases ability and options for leveraging Infiniband for your workloads.\n\nThe upgrade WILL INVOLVE SERVER DOWNTIME on a regional basis and, if you intend to utilize the InfiniBand network, this REQUIRES AN UPDATE TO YOUR VMs .\n\nWHAT’S COMING?\n\nWe will be enabling support for the entire MPI stack (all MPI implementations and RDMA verbs) for InfiniBand-equipped virtual machines. These enhancements will increase the ability to leverage our high-bandwidth, low-latency InfiniBand network for your workloads.\n\nIMPACT\n\nAll users of VM sizes listed in the update schedule will be impacted on a region-by-region basis. The update involves changes to both server hardware and software, which requires downtime. During downtime:\n\nVMs in the region will be unavailable for a 3-hour period\n\nVMs in the region will be de-allocated & re-deployed after the update\n\nData stored on local (ephemeral) disks will be lost. Storage Accounts are unaffected\n\nACTION REQUIRED\n\nTo avoid data loss and minimize potential impact to your service, please:\n\nIf you do not require InfiniBand or MPI\n\nEnsure all jobs are complete and data is backed up to your Storage Account before the scheduled update. Any data stored locally will be lost.\n\nReview the update schedule . If you plan to temporarily migrate to an alternate region/SKU, check existing or request new quota in the intended region(s).\n\nIf you do require InfiniBand or MPI\n\nYou do not need to make any changes to your VM image and the drivers therein.\n\nFor managed services supporting InfiniBand scenarios, please see service-specific guidance (e.g., Azure Batch Azure Machine Learning ).\n\nUpdate your VM image to the latest supported versions (NOTE: CentOS HPC images prior to version 7.6 are not compatible and may not boot). Follow steps in Enable InfiniBand if required for other OS distros and if not using a ready-to-use CentOS-HPC VM image.\n\nTest your updated image and drivers on VM sizes which are already SR-IOV enabled (see MPI section)\n\nFor any questions or concerns, please reach out to Azure GPU Feedback or Customer Service Support.\n\nLearn more ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "sriov-availability-on-infinibandequipped-virtual-machines"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=sriov-availability-on-infinibandequipped-virtual-machines"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: July 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute"
+    }
+  ]
+}

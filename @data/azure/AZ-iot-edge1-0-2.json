@@ -1,0 +1,43 @@
+{
+  "Id": "AZ-iot-edge1-0-2",
+  "Title": "Azure IoT Edge 1.0.2 release",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2018-09-26T23:18:11.000Z",
+  "LastModifiedDateTime": "2018-09-26T23:18:11.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The <a href=\"https://github.com/Azure/azure-iotedge/releases/tag/1.0.2\" target=\"_blank\" rel=\"noopener\">1.0.2</a> update of Azure IoT Edge includes the following improvements:</p>\r\n\r\n<ul>\r\n\t<li>A public preview of the extended offline feature lets an Edge device, and downstream devices connected to it, function offline indefinitely. You can find more details in the <a href=\"https://azure.microsoft.com/en-us/blog/extended-offline-operation-with-azure-iot-edge/\" target=\"_blank\" rel=\"noopener\">blog post</a> that announced the feature.</li>\r\n\t<li>Edge devices can now operate through a proxy server. Product <a href=\"https://docs.microsoft.com/en-us/azure/iot-edge/how-to-configure-proxy-support\" target=\"_blank\" rel=\"noopener\">documentation</a> has been added to explain configuring this feature.</li>\r\n\t<li>Multiple bugs have been resolved in both Edge Hub and Edge Agent. (You can find&nbsp;a full change list in the <a href=\"https://github.com/Azure/azure-iotedge/releases/tag/1.0.2\" target=\"_blank\" rel=\"noopener\">release notes</a> on GitHub.) Most notably, we&#39;ve improved startup time performance and resolved an <a href=\"https://github.com/Azure/iotedge/issues/182\" target=\"_blank\" rel=\"noopener\">issue</a> that resulted in an edge device using unexpected bandwidth.</li>\r\n</ul>\r\n\r\n<p>You must update to the 1.0.2 version of all runtime components to get the benefits of this release. To do so, use the following instructions.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Update Security Daemon (Linux)</strong></p>\r\n\r\n<p>Step 1: Get the latest version of packages by running the following command on the edge device:</p>\r\n\r\n<p><code>apt-get upgrade</code></p>\r\n\r\n<p>Step 2: Install the latest version of the hsmlib and Security Daemon&nbsp;by running the following command on the edge device:</p>\r\n\r\n<p><code>apt-get install libiothsm iotedge</code></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Update Security Daemon (Windows)</strong></p>\r\n\r\n<p>Step 1: Uninstall the old version&nbsp;of Security Daemon&nbsp;by using&nbsp;the following command on the edge device:</p>\r\n\r\n<p><code>. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `</code></p>\r\n\r\n<p><code>UnInstall-SecurityDaemon</code></p>\r\n\r\n<p>Step 2: Install the new version of&nbsp;Security Daemon, depending on whether you&#39;re using <a href=\"https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-windows-with-windows#install-and-manually-provision\" target=\"_blank\" rel=\"noopener\">Windows containers</a> or <a href=\"https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-windows-with-linux#option-1-install-and-manually-provision\" target=\"_blank\" rel=\"noopener\">Linux containers</a>.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Update Edge Hub and Edge Agent (both Linux and Windows)</strong></p>\r\n\r\n<p>Delete existing module images with &quot;docker rmi&quot; (executed on the edge device) if your current deployment uses 1.0 images. 1.0 images are rolling tags&nbsp;that refer to the latest 1.0.x image. When the&nbsp;runtime pulls the &quot;1.0&quot; image, it will pull the most recent 1.0 image, which is now 1.0.2.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Or, you can update the deployment schema for the edgeHub and edgeAgent image version to 1.0.2.</p>\r\n",
+    "Markdown": "The 1.0.2 update of Azure IoT Edge includes the following improvements:\n\nA public preview of the extended offline feature lets an Edge device, and downstream devices connected to it, function offline indefinitely. You can find more details in the blog post that announced the feature.\n\nEdge devices can now operate through a proxy server. Product documentation has been added to explain configuring this feature.\n\nMultiple bugs have been resolved in both Edge Hub and Edge Agent. (You can find a full change list in the release notes on GitHub.) Most notably, we've improved startup time performance and resolved an issue that resulted in an edge device using unexpected bandwidth.\n\nYou must update to the 1.0.2 version of all runtime components to get the benefits of this release. To do so, use the following instructions.\n\nUpdate Security Daemon (Linux)\n\nStep 1: Get the latest version of packages by running the following command on the edge device:\n\napt-get upgrade\n\nStep 2: Install the latest version of the hsmlib and Security Daemon by running the following command on the edge device:\n\napt-get install libiothsm iotedge\n\nUpdate Security Daemon (Windows)\n\nStep 1: Uninstall the old version of Security Daemon by using the following command on the edge device:\n\n. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `\n\nUnInstall-SecurityDaemon\n\nStep 2: Install the new version of Security Daemon, depending on whether you're using Windows containers or Linux containers .\n\nUpdate Edge Hub and Edge Agent (both Linux and Windows)\n\nDelete existing module images with \"docker rmi\" (executed on the edge device) if your current deployment uses 1.0 images. 1.0 images are rolling tags that refer to the latest 1.0.x image. When the runtime pulls the \"1.0\" image, it will pull the most recent 1.0 image, which is now 1.0.2.\n\nOr, you can update the deployment schema for the edgeHub and edgeAgent image version to 1.0.2."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "iot-edge1-0-2"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=iot-edge1-0-2"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: September 2018"
+    }
+  ]
+}

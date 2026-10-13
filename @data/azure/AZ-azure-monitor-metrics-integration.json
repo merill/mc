@@ -1,0 +1,51 @@
+{
+  "Id": "AZ-azure-monitor-metrics-integration",
+  "Title": "Azure Monitor metrics integration",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2018-03-13T22:50:29.000Z",
+  "LastModifiedDateTime": "2018-03-13T22:50:29.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Power BI Embedded"
+  ],
+  "Tags": [
+    "Features",
+    "Management",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>To optimize the use of an <a href=\"https://azure.microsoft.com/en-us/services/power-bi-embedded/\" target=\"_blank\" rel=\"noopener\">Azure resource in Power BI Embedded</a>, we need proper monitoring to track the usage and act upon any changes. We now have&nbsp;integration with <a href=\"https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics\" target=\"_blank\" rel=\"noopener\">Azure Monitor resource metrics</a>.</p>\r\n\r\n<p>Using Azure Monitor resource metrics gives you real-time data on the status and load of your resource in an easy-to-use UI inside the&nbsp;Azure portal. It also gives you <a href=\"https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermmetric?view=azurermps-5.3.0\" target=\"_blank\" rel=\"noopener\">PowerShell commands</a> and <a href=\"https://docs.microsoft.com/en-us/rest/api/monitor/metrics/list\" target=\"_blank\" rel=\"noopener\">REST APIs</a> to automatically monitor your resource. You can view the data by different measures and different time periods.</p>\r\n\r\n<p><a href=\"https://powerbicdn.azureedge.net/mediahandler/blog/media/PowerBI/blog/c01a5c4d-e0cd-4177-a126-5bd52064c65f.png\" target=\"_blank\" rel=\"noopener\"><img alt=\"Metrics\" src=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c0dcb84d-c9aa-4cb5-9f8a-f0c04e952d19.png\" title=\"Metrics\"></a></p>\r\n\r\n<p>We&#39;ve added two new metrics to track the load of your resource:</p>\r\n\r\n<ul>\r\n <li><b>Query Duration</b> gives information on the duration of each query through completion. For example, a spike in the average duration time can be an indicator that the current SKU does not have enough query processing units (V-cores) to process the queries, and you should consider scaling your capacity. Of course, the threshold to scale up or down depends on developer&rsquo;s decision, the data, and the type of queries running. An average query duration can vary greatly between datasets and visualizations.</li>\r\n <li><b>Query Pool Queue Length</b> gives information on the number of queries waiting to be processed. For example, a spike in number of queries might indicate that your capacity has too many datasets being queried at the same time, causing pagination in memory&mdash;and thus, more queries are waiting to be processed. In this case, you should consider scaling up to get more RAM. Memory for each capacity can be viewed <a href=\"https://azure.microsoft.com/en-us/pricing/details/power-bi-embedded/\" target=\"_blank\" rel=\"noopener\">here</a>.</li>\r\n</ul>\r\n",
+    "Markdown": "To optimize the use of an Azure resource in Power BI Embedded , we need proper monitoring to track the usage and act upon any changes. We now have integration with Azure Monitor resource metrics .\n\nUsing Azure Monitor resource metrics gives you real-time data on the status and load of your resource in an easy-to-use UI inside the Azure portal. It also gives you PowerShell commands and REST APIs to automatically monitor your resource. You can view the data by different measures and different time periods.\n\nWe've added two new metrics to track the load of your resource:\n\nQuery Duration gives information on the duration of each query through completion. For example, a spike in the average duration time can be an indicator that the current SKU does not have enough query processing units (V-cores) to process the queries, and you should consider scaling your capacity. Of course, the threshold to scale up or down depends on developer’s decision, the data, and the type of queries running. An average query duration can vary greatly between datasets and visualizations.\n\nQuery Pool Queue Length gives information on the number of queries waiting to be processed. For example, a spike in number of queries might indicate that your capacity has too many datasets being queried at the same time, causing pagination in memory—and thus, more queries are waiting to be processed. In this case, you should consider scaling up to get more RAM. Memory for each capacity can be viewed here ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-monitor-metrics-integration"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-monitor-metrics-integration"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: March 2018"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

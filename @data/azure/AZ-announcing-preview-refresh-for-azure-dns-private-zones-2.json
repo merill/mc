@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-announcing-preview-refresh-for-azure-dns-private-zones-2",
+  "Title": "Announcing Preview Refresh for Azure DNS Private Zones",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-06-26T17:54:36.000Z",
+  "LastModifiedDateTime": "2019-06-26T17:54:36.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure DNS"
+  ],
+  "Tags": [
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>We are delighted to announce Refresh release for <a href=\"https://docs.microsoft.com/en-us/azure/dns/private-dns-overview\" target=\"_blank\" rel=\"noopener\">Azure DNS private zones (preview).</a> Azure DNS private zones (preview) provides secure and reliable name resolution for your virtual networks in Azure. The Preview Refresh introduces new functionality and lifts several restrictions that public preview had.</p>\r\n\r\n<h2>What&rsquo;s New in Preview Refresh?</h2>\r\n\r\n<h2>New Resource Model and API</h2>\r\n\r\n<p>Preview Refresh introduces a new resource model (REST API) for Azure DNS private zones. The resource model introduces the following changes:</p>\r\n\r\n<ul>\r\n\t<li>Azure DNS private zones will now be an independent top-level ARM resource called <em>privateDnsZones</em> instead of being a &quot;type&quot; of existing public <em>dnszones</em> resource.</li>\r\n\t<li>The <em>privateDnsZones</em> resource will not have <em>registrationVirtualNetwork</em> and <em>resolutionVirtualNetwork</em> virtual network properties. Virtual networks will be linked to a <em>privateDnsZones</em> by creating a <em>virtualNetworkLinks</em> sub-resource under the <em>privateDnsZones</em> resource.</li>\r\n\t<li>To enable auto registration of DNS records for virtual machines simply set the <em>registrationEnabled</em> flag on the properties of <em>virtualNetworkLinks</em> resource as true.</li>\r\n\t<li>We have also shipped new CLI/PS and SDKs for <em>privateDnsZones</em>.</li>\r\n</ul>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli\" target=\"_blank\" rel=\"noopener\">Click here</a> for updated guidance on how to use new CLI and PowerShell to create private DNS zones and link these to your virtual networks.</p>\r\n\r\n<h2>New Portal Experience</h2>\r\n\r\n<p>A new portal experience for Azure DNS private zones will enable you to manage the private DNS zones and their linked virtual networks from the Azure Portal. You&#39;ll also be able to view the auto-registered resource records for the virtual machines under the private DNS zone. <a href=\"https://docs.microsoft.com/en-us/azure/dns/private-dns-portal\" target=\"_blank\" rel=\"noopener\">Click here</a> to get started with creating private DNS zones through Azure portal.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/dns/private-dns-portal\" target=\"_blank\" rel=\"noopener\"><img alt=\"PrivateDNSPortal\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/5aa834be-856f-458b-bf56-76d1d8176bcd.png\" title=\"PrivateDNSPortal\"></a></p>\r\n\r\n<p><em><strong>Note</strong> that your existing private DNS zones will not show in this experience unless they are migrated to the new resource model (See below). You can, however, create new private DNS zones and link these to virtual networks.</em></p>\r\n\r\n<h2>Enhanced Limits</h2>\r\n\r\n<p>Public Preview had several limitations including limits on the number of virtual networks that can be linked to a DNS zone. These limits have been substantially enhanced. <a href=\"https://docs.microsoft.com/en-us/azure/dns/dns-faq-private#what-are-the-usage-limits-for-azure-private-dns\" target=\"_blank\" rel=\"noopener\">Click here</a> to see new limits.</p>\r\n\r\n<h2>Following Restrictions have been Removed</h2>\r\n\r\n<ul>\r\n\t<li>You will be able to link existing non-empty virtual networks to your private DNS zones. The restriction for the vnet to be empty will no longer apply.</li>\r\n\t<li>You will be able to link more than one virtual network as registration virtual networks to a private DNS zone.</li>\r\n\t<li>You will be able to create subdomains and link these to the same virtual networks. For example, If you have created a private DNS zone called <em>contoso.com</em> and linked it to a virtual network, you will be able to create <em>subdomain.contoso.com</em> and link it to the same virtual network.</li>\r\n</ul>\r\n\r\n<h2>Migrating existing zones to new resource model</h2>\r\n\r\n<p>Private DNS zones that you have already created will continue to work. However, you will not get the benefits of enhanced limits or new functionality with these zones. These zones will continue to be listed along with public DNS zones in the Azure portal and will not show up under the new private DNS zones experience. We strongly recommend that you migrate your existing private DNS zones to new resource model as soon as possible.</p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/dns/private-dns-migration-guide\" target=\"_blank\" rel=\"noopener\">Click here for detailed instructions on how to migrate your private DNS zones.</a></p>\r\n\r\n<h2>&nbsp;</h2>\r\n\r\n<h2>Reference</h2>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/dns/private-dns-overview\" target=\"_blank\" rel=\"noopener\">What is Azure Private DNS?</a></p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/dns/private-dns-scenarios\" target=\"_blank\" rel=\"noopener\">Azure DNS Private Zones scenarios</a></p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/dns/dns-faq-private\" target=\"_blank\" rel=\"noopener\">Azure Private DNS FAQs</a></p>\r\n",
+    "Markdown": "We are delighted to announce Refresh release for Azure DNS private zones (preview). Azure DNS private zones (preview) provides secure and reliable name resolution for your virtual networks in Azure. The Preview Refresh introduces new functionality and lifts several restrictions that public preview had.\n\nWhat’s New in Preview Refresh?\n\nNew Resource Model and API\n\nPreview Refresh introduces a new resource model (REST API) for Azure DNS private zones. The resource model introduces the following changes:\n\nAzure DNS private zones will now be an independent top-level ARM resource called privateDnsZones instead of being a \"type\" of existing public dnszones resource.\n\nThe privateDnsZones resource will not have registrationVirtualNetwork and resolutionVirtualNetwork virtual network properties. Virtual networks will be linked to a privateDnsZones by creating a virtualNetworkLinks sub-resource under the privateDnsZones resource.\n\nTo enable auto registration of DNS records for virtual machines simply set the registrationEnabled flag on the properties of virtualNetworkLinks resource as true.\n\nWe have also shipped new CLI/PS and SDKs for privateDnsZones .\n\nClick here for updated guidance on how to use new CLI and PowerShell to create private DNS zones and link these to your virtual networks.\n\nNew Portal Experience\n\nA new portal experience for Azure DNS private zones will enable you to manage the private DNS zones and their linked virtual networks from the Azure Portal. You'll also be able to view the auto-registered resource records for the virtual machines under the private DNS zone. Click here to get started with creating private DNS zones through Azure portal.\n\nNote that your existing private DNS zones will not show in this experience unless they are migrated to the new resource model (See below). You can, however, create new private DNS zones and link these to virtual networks.\n\nEnhanced Limits\n\nPublic Preview had several limitations including limits on the number of virtual networks that can be linked to a DNS zone. These limits have been substantially enhanced. Click here to see new limits.\n\nFollowing Restrictions have been Removed\n\nYou will be able to link existing non-empty virtual networks to your private DNS zones. The restriction for the vnet to be empty will no longer apply.\n\nYou will be able to link more than one virtual network as registration virtual networks to a private DNS zone.\n\nYou will be able to create subdomains and link these to the same virtual networks. For example, If you have created a private DNS zone called contoso.com and linked it to a virtual network, you will be able to create subdomain.contoso.com and link it to the same virtual network.\n\nMigrating existing zones to new resource model\n\nPrivate DNS zones that you have already created will continue to work. However, you will not get the benefits of enhanced limits or new functionality with these zones. These zones will continue to be listed along with public DNS zones in the Azure portal and will not show up under the new private DNS zones experience. We strongly recommend that you migrate your existing private DNS zones to new resource model as soon as possible.\n\nClick here for detailed instructions on how to migrate your private DNS zones.\n\nReference\n\nWhat is Azure Private DNS?\n\nAzure DNS Private Zones scenarios\n\nAzure Private DNS FAQs"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "announcing-preview-refresh-for-azure-dns-private-zones-2"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=announcing-preview-refresh-for-azure-dns-private-zones-2"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: June 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Networking"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-azure-api-management-update-april-4",
+  "Title": "Azure API Management update April 4",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-04-05T16:00:00.000Z",
+  "LastModifiedDateTime": "2019-04-05T16:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "API Management"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>On April 4, we&nbsp;started a regular<a href=\"https://aka.ms/apimrocks\" target=\"_blank\" rel=\"noopener\"> Azure API Management</a> service update. The update includes the following bug fixes, changes, and new features:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>You can now update the <code>isBuffered </code>property of a Logger through <a href=\"https://docs.microsoft.com/en-us/rest/api/apimanagement/2019-01-01/logger/createorupdate\" target=\"_blank\" rel=\"noopener\">the PUT Logger call</a> or set it through ARM templates.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>You can now remove the Managed Service Identity associated with a service through <a href=\"https://docs.microsoft.com/en-us/rest/api/apimanagement/2019-01-01/apimanagementservice/update\" target=\"_blank\" rel=\"noopener\">the PATCH service call</a> with the <code>&quot;identity&quot;: { &quot;type&quot;: &quot;None&quot; }</code> field.</p>\r\n\t</li>\r\n\t<li>You can now apply <a href=\"https://docs.microsoft.com/en-us/azure/api-management/api-management-cross-domain-policies#CORS\" target=\"_blank\" rel=\"noopener\">the CORS policy</a> at all scopes.</li>\r\n\t<li>The exported OpenAPI specification file will have the <code>requestBody</code> parameter present only if it is specified. Before, <code>requestBody</code> was an empty object <code>{}</code>, even for HEAD or OPTIONS requests.</li>\r\n\t<li>We fixed a <code>quota</code> policy bug, which caused extensive CPU usage.</li>\r\n\t<li>We fixed &nbsp;a configuration synchronization bug, which might have caused intermittent <code>404 Not Found</code> responses for existing APIs and operations.</li>\r\n\t<li>You can now create a user with a &ldquo;pending&rdquo; state using <a href=\"https://docs.microsoft.com/en-us/rest/api/apimanagement/2019-01-01/user/createorupdate\" target=\"_blank\" rel=\"noopener\">the REST API call</a>.</li>\r\n\t<li>Newly registered users no longer need to re-input their password when clicking a confirmation link from an email.</li>\r\n\t<li>New restrictions apply when creating a revision through <a href=\"https://docs.microsoft.com/en-us/rest/api/apimanagement/2019-01-01/apis/createorupdate\" target=\"_blank\" rel=\"noopener\">the PUT API call</a>:\r\n\t<ul>\r\n\t\t<li>\r\n\t\t<p>All revisions of the API should have the same: <code>Name</code>, <code>Path</code>, <code>Description</code>, <code>Protocols</code>, <code>ApiVersion</code>, <code>ApiVersionDescription</code>, and <code>ApiVersionSetId</code> parameters.</p>\r\n\t\t</li>\r\n\t\t<li>These properties can be changed for the current revision only and the changes will be propagated to all other revisions of the API.</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>We deploy updates gradually. It usually takes a week or more for every active service instance to receive the updates.</p>\r\n",
+    "Markdown": "On April 4, we started a regular Azure API Management service update. The update includes the following bug fixes, changes, and new features:\n\nYou can now update the isBuffered property of a Logger through the PUT Logger call or set it through ARM templates.\n\nYou can now remove the Managed Service Identity associated with a service through the PATCH service call with the \"identity\": { \"type\": \"None\" } field.\n\nYou can now apply the CORS policy at all scopes.\n\nThe exported OpenAPI specification file will have the requestBody parameter present only if it is specified. Before, requestBody was an empty object {} , even for HEAD or OPTIONS requests.\n\nWe fixed a quota policy bug, which caused extensive CPU usage.\n\nWe fixed a configuration synchronization bug, which might have caused intermittent 404 Not Found responses for existing APIs and operations.\n\nYou can now create a user with a “pending” state using the REST API call .\n\nNewly registered users no longer need to re-input their password when clicking a confirmation link from an email.\n\nNew restrictions apply when creating a revision through the PUT API call :\n\nAll revisions of the API should have the same: Name , Path , Description , Protocols , ApiVersion , ApiVersionDescription , and ApiVersionSetId parameters.\n\nThese properties can be changed for the current revision only and the changes will be propagated to all other revisions of the API.\n\nWe deploy updates gradually. It usually takes a week or more for every active service instance to receive the updates."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-api-management-update-april-4"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-api-management-update-april-4"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: April 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Integration, Internet of Things, Mobile, Web"
+    }
+  ]
+}

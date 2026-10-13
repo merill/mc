@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-ga-azure-active-directory-workload-identity-with-aks-2",
+  "Title": "GA: Azure Active Directory workload identity with AKS",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2023-04-19T06:00:35.000Z",
+  "LastModifiedDateTime": "2023-04-19T06:00:35.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Kubernetes Service (AKS)"
+  ],
+  "Tags": [
+    "Features",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>In Azure Kubernetes Service (AKS) today, a preview feature allows you to assign&nbsp;<a href=\"https://learn.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity\" target=\"_blank\" rel=\"noopener\">managed identities at the pod-level</a>. This pod-managed identity allows the hosted workload or application access to resources through Azure Active Directory (Azure AD). For example, a workload stores files in Azure Storage, and when it needs to access those files, the pod authenticates itself against the resource as an Azure managed identity.&nbsp;</p>\r\n\r\n<p>This authentication method is now replaced with&nbsp;<a href=\"https://learn.microsoft.com/en-us/azure/active-directory/develop/workload-identities-overview\" target=\"_blank\" rel=\"noopener\">Azure Active Directory (Azure AD) workload identities</a>, which integrate with the Kubernetes native capabilities to federate with any external identity providers. This approach is simpler to use and deploy, and overcomes several limitations in Azure AD pod-managed identity:</p>\r\n\r\n<ul>\r\n\t<li>Removes the scale and performance issues that existed for identity assignment</li>\r\n\t<li>Supports Kubernetes clusters hosted in any cloud or on-premises</li>\r\n\t<li>Supports both Linux and Windows workloads</li>\r\n\t<li>Removes the need for Custom Resource Definitions and pods that intercept&nbsp;<a href=\"https://learn.microsoft.com/en-us/azure/virtual-machines/linux/instance-metadata-service\" target=\"_blank\" rel=\"noopener\">Azure Instance Metadata Service</a> (IMDS) traffic</li>\r\n\t<li>Avoids the complicated and error-prone installation steps such as cluster role assignment from the previous iteration</li>\r\n</ul>\r\n\r\n<p>Azure AD workload identity works especially well with the Azure Identity client library using the&nbsp;<a href=\"https://azure.microsoft.com/downloads/\" target=\"_blank\" rel=\"noopener\">Azure SDK</a> and the&nbsp;<a href=\"https://learn.microsoft.com/en-us/azure/active-directory/develop/msal-overview\" target=\"_blank\" rel=\"noopener\">Microsoft Authentication Library</a> (MSAL) if you&#39;re using <a href=\"https://learn.microsoft.com/en-us/azure/active-directory/develop/application-model#register-an-application\" target=\"_blank\" rel=\"noopener\">application registration</a>. Your workload can use any of these libraries to seamlessly authenticate and access Azure cloud resources.</p>\r\n\r\n<p>Learn more: <a href=\"https://aka.ms/aks/workloadidentity\" target=\"_blank\" rel=\"noopener\">https://aka.ms/aks/workloadidentity</a></p>\r\n",
+    "Markdown": "In Azure Kubernetes Service (AKS) today, a preview feature allows you to assign managed identities at the pod-level . This pod-managed identity allows the hosted workload or application access to resources through Azure Active Directory (Azure AD). For example, a workload stores files in Azure Storage, and when it needs to access those files, the pod authenticates itself against the resource as an Azure managed identity.\n\nThis authentication method is now replaced with Azure Active Directory (Azure AD) workload identities , which integrate with the Kubernetes native capabilities to federate with any external identity providers. This approach is simpler to use and deploy, and overcomes several limitations in Azure AD pod-managed identity:\n\nRemoves the scale and performance issues that existed for identity assignment\n\nSupports Kubernetes clusters hosted in any cloud or on-premises\n\nSupports both Linux and Windows workloads\n\nRemoves the need for Custom Resource Definitions and pods that intercept Azure Instance Metadata Service (IMDS) traffic\n\nAvoids the complicated and error-prone installation steps such as cluster role assignment from the previous iteration\n\nAzure AD workload identity works especially well with the Azure Identity client library using the Azure SDK and the Microsoft Authentication Library (MSAL) if you're using application registration . Your workload can use any of these libraries to seamlessly authenticate and access Azure cloud resources.\n\nLearn more: https://aka.ms/aks/workloadidentity"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "ga-azure-active-directory-workload-identity-with-aks-2"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=ga-azure-active-directory-workload-identity-with-aks-2"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: April 2023"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Containers"
+    }
+  ]
+}

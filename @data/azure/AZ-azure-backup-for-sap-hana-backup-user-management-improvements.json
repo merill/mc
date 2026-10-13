@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-azure-backup-for-sap-hana-backup-user-management-improvements",
+  "Title": "Azure Backup for SAP HANA backup - User management improvements",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-11-17T19:00:20.000Z",
+  "LastModifiedDateTime": "2020-11-17T19:00:20.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Backup"
+  ],
+  "Tags": [
+    "Management",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The SAP HANA backup by Azure Backup uses <a href=\"https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites\" target=\"_blank\" rel=\"noopener\">a pre-registration script</a> to create a HANA user to perform relevant backup and restore operations. Following are significant updates to the permissions required by the user:</p>\r\n\r\n<ul>\r\n\t<li>From HANA 2.0 SPS04 Rev 48 onwards, the HANA user required for backup and restore of SAP HANA does NOT require SAP_HANA_INTERNAL_SUPPORT role. The relevant information which was earlier accessible only via this support role is now accessible via public views. Run the pre-registration script (min version 2.0.7) to update the permissions for existing users or to create the right permissions for new users. This is a major improvement since the earlier support role could be given only to a couple of users and was not recommended for backup from a security-least-privileges principle.</li>\r\n\t<li>From HANA 2.0 SPS05 onwards, new roles (BACKUP ADMIN) are required for HANA Backup users. This version of script (2.0.7 onwards) adds the relevant roles automatically.</li>\r\n</ul>\r\n\r\n<p>Learn more about&nbsp;<a href=\"https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does\" target=\"_blank\" rel=\"noopener\">what the pre-registration script does</a>.</p>\r\n\r\n<p>Learn more <a href=\"https://docs.microsoft.com/azure/backup/sap-hana-db-about\" target=\"_blank\" rel=\"noopener\">about SAP HANA backup from Azure Backup</a>.</p>\r\n",
+    "Markdown": "The SAP HANA backup by Azure Backup uses a pre-registration script to create a HANA user to perform relevant backup and restore operations. Following are significant updates to the permissions required by the user:\n\nFrom HANA 2.0 SPS04 Rev 48 onwards, the HANA user required for backup and restore of SAP HANA does NOT require SAP_HANA_INTERNAL_SUPPORT role. The relevant information which was earlier accessible only via this support role is now accessible via public views. Run the pre-registration script (min version 2.0.7) to update the permissions for existing users or to create the right permissions for new users. This is a major improvement since the earlier support role could be given only to a couple of users and was not recommended for backup from a security-least-privileges principle.\n\nFrom HANA 2.0 SPS05 onwards, new roles (BACKUP ADMIN) are required for HANA Backup users. This version of script (2.0.7 onwards) adds the relevant roles automatically.\n\nLearn more about what the pre-registration script does .\n\nLearn more about SAP HANA backup from Azure Backup ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-backup-for-sap-hana-backup-user-management-improvements"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-backup-for-sap-hana-backup-user-management-improvements"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: November 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance, Storage"
+    }
+  ]
+}

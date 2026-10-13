@@ -1,0 +1,46 @@
+{
+  "Id": "AZ-application-insights-general-availability-in-additional-regions-and-resource-location-update-east-us-south-central-us-west-europe-and-north-europe",
+  "Title": "Application Insights: General availability in additional regions and resource location update",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2016-11-22T01:07:07.000Z",
+  "LastModifiedDateTime": "2016-11-22T01:07:07.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Application Insights"
+  ],
+  "Tags": [
+    "Features",
+    "Regions & Datacenters"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The&nbsp;Azure Application Insights location used to store application analytics data has two new locations:&nbsp;North Europe and West Europe. Configuration data and analytics data&nbsp;are now stored in the same datacenter for Application Insights. Previously, the location for this data was hidden from the customer, and the resource location was the location of the account configuration for the component.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>The configuration data was moved to align with the location of the telemetry data as part of the transition to improve transparency&nbsp;in the location of customer data.&nbsp;We apologize for the issues caused by this onetime location change that aligns configuration data and telemetry data for the Application Insights resources included in Microsoft.Insights.&nbsp;AlertRules and AutoScaleSettings were not affected,&nbsp;because these can already be located in most Azure regions.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Most Azure Resource Manager templates for Application Insights were written with the location set to &ldquo;centralus&rdquo; or &ldquo;Central US.&rdquo;&nbsp;This is a breaking change, and these templates will fail with an error message like:</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>The subscription is not registered for the resource type &#39;components&#39; in the location &#39;centralus&#39;.</p>\r\n\r\n<p>Please re-register for this provider in order to have access to this location.&nbsp; (Code: MissingRegistrationForLocation)</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Change the location to the correct US location to resolve this issue.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Additionally, only the Microsoft.Insights/components resources were moved.&nbsp;Microsoft.Insights/alertrules and Microsoft.Insights/autoscalesettings were not moved.&nbsp;This can cause additional errors during deployment, particularly if alignment is assumed or resourceGroup.location() is used. If your scripts&nbsp;expect these to be in the same location, these resources can be removed and then redeployed to the correct region.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>$resource = Get-AzureRmResource</p>\r\n\r\n<p>$resource | where { $_.ResourceType -eq &#39;Microsoft.insights/autoscalesettings&#39; } | Remove-AzureRmResource</p>\r\n\r\n<p>$resource | where { $_.ResourceType -eq &#39;Microsoft.insights/alertrules&#39; } | Remove-AzureRmResource</p>\r\n",
+    "Markdown": "The Azure Application Insights location used to store application analytics data has two new locations: North Europe and West Europe. Configuration data and analytics data are now stored in the same datacenter for Application Insights. Previously, the location for this data was hidden from the customer, and the resource location was the location of the account configuration for the component.\n\nThe configuration data was moved to align with the location of the telemetry data as part of the transition to improve transparency in the location of customer data. We apologize for the issues caused by this onetime location change that aligns configuration data and telemetry data for the Application Insights resources included in Microsoft.Insights. AlertRules and AutoScaleSettings were not affected, because these can already be located in most Azure regions.\n\nMost Azure Resource Manager templates for Application Insights were written with the location set to “centralus” or “Central US.” This is a breaking change, and these templates will fail with an error message like:\n\nThe subscription is not registered for the resource type 'components' in the location 'centralus'.\n\nPlease re-register for this provider in order to have access to this location. (Code: MissingRegistrationForLocation)\n\nChange the location to the correct US location to resolve this issue.\n\nAdditionally, only the Microsoft.Insights/components resources were moved. Microsoft.Insights/alertrules and Microsoft.Insights/autoscalesettings were not moved. This can cause additional errors during deployment, particularly if alignment is assumed or resourceGroup.location() is used. If your scripts expect these to be in the same location, these resources can be removed and then redeployed to the correct region.\n\n$resource = Get-AzureRmResource\n\n$resource | where { $_.ResourceType -eq 'Microsoft.insights/autoscalesettings' } | Remove-AzureRmResource\n\n$resource | where { $_.ResourceType -eq 'Microsoft.insights/alertrules' } | Remove-AzureRmResource"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "application-insights-general-availability-in-additional-regions-and-resource-location-update-east-us-south-central-us-west-europe-and-north-europe"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=application-insights-general-availability-in-additional-regions-and-resource-location-update-east-us-south-central-us-west-europe-and-north-europe"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: November 2016"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "Id": "AZ-certificateauthorityrevocation",
+  "Title": "Revocation of non-compliant Certificate Authorities potentially impacting customer’s Azure service(s).",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-07-15T05:00:21.000Z",
+  "LastModifiedDateTime": "2020-07-15T05:00:21.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "API Management",
+    "App Service",
+    "Application Gateway",
+    "Azure Front Door",
+    "Content Delivery Network"
+  ],
+  "Tags": [
+    "Compliance",
+    "Management",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Certificate Authority (CA) Browser members&nbsp;recently&nbsp;published reports&nbsp;detailing multiple certificates&nbsp;issued by CA vendors that are&nbsp;used by&nbsp;Microsoft customers, as well as the greater technology&nbsp;community,&nbsp;that were out of compliance&nbsp;with industry&nbsp;standards&nbsp;for publicly trusted&nbsp;CAs.&nbsp;The&nbsp;reports&nbsp;regarding the non-compliant CAs can be found&nbsp;here:&nbsp;</p>\r\n\r\n<ol>\r\n\t<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1649951\" target=\"_blank\" rel=\"noopener\">Bug 1649951</a></li>\r\n\t<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1650910\" target=\"_blank\" rel=\"noopener\">Bug 1650910</a></li>\r\n</ol>\r\n\r\n<p>As per standard compliance requirements, CA&nbsp;vendors&nbsp;began&nbsp;revoking&nbsp;non-compliant&nbsp;CAs&nbsp;and issuing&nbsp;compliant&nbsp;CAs which require customers to re-issue their certificates.&nbsp;Microsoft is partnering closely with these vendors to minimize the potential impact to Azure Services,<strong>&nbsp;however self-issued&nbsp;certificates&nbsp;or&nbsp;certificates&nbsp;used in &ldquo;Bring Your Own Certificate&rdquo;&nbsp;(BYOC)&nbsp;scenarios are&nbsp;still&nbsp;at risk&nbsp;of being unexpectedly revoked.</strong>&nbsp;</p>\r\n\r\n<p>To check if the certificates utilized by your application have been revoked, reference this&nbsp;<a href=\"https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement\" target=\"_blank\" rel=\"noopener\">DigiCert announcement</a>&nbsp;and the&nbsp;<a href=\"https://misissued.com/#revoked\" target=\"_blank\" rel=\"noopener\">Certificate Revocation Tracker</a>. If your certificates have been revoked, or will be revoked, you will need to request new certificates from the CA vendor utilized in your applications. To avoid&nbsp;your application&rsquo;s availability being interrupted due to certificates being unexpectedly revoked, or to update a certificate which has been revoked,&nbsp;reference the lists of remediation instructions for the respective Azure service below.</p>\r\n\r\n<h2><strong>Recommended Action:</strong></h2>\r\n\r\n<p><strong>API Management</strong></p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-ca-certificates\" target=\"_blank\" rel=\"noopener\">Uploading a Certificate Authority</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain#use-the-azure-portal-to-set-a-custom-domain-name\" target=\"_blank\" rel=\"noopener\">Uploading SSL Certificates and Configuring Custom Domains</a></li>\r\n</ul>\r\n\r\n<p><strong>Application Gateway:</strong></p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://aka.ms/appgwdigicertrevoked\" target=\"_blank\" rel=\"noopener\">Renew My certificate on Application Gateway</a></li>\r\n</ul>\r\n\r\n<p><strong>Azure App Services:</strong></p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://azure.github.io/AppService/2020/07/14/Cert-Revoke.html\" target=\"_blank\" rel=\"noopener\">Updating Certificates on App Service</a></li>\r\n</ul>\r\n\r\n<p><strong>Azure CDN:</strong></p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/azure/cdn/cdn-custom-ssl?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates\" target=\"_blank\" rel=\"noopener\">Enabling HTTPS with your own CA for CDN</a></li>\r\n</ul>\r\n\r\n<p><strong>Azure Front Door:</strong></p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/azure/frontdoor/front-door-custom-domain-https\" target=\"_blank\" rel=\"noopener\">Configuring HTTPS on a Front Door Custom Domain</a></li>\r\n</ul>\r\n\r\n<p><strong>Azure AD Proxy:&nbsp;</strong></p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/application-proxy-configure-custom-domain#set-up-and-use-custom-domains\" target=\"_blank\" rel=\"noopener\">Update custom domains</a></li>\r\n</ul>\r\n",
+    "Markdown": "Certificate Authority (CA) Browser members recently published reports detailing multiple certificates issued by CA vendors that are used by Microsoft customers, as well as the greater technology community, that were out of compliance with industry standards for publicly trusted CAs. The reports regarding the non-compliant CAs can be found here:\n\nBug 1649951\n\nBug 1650910\n\nAs per standard compliance requirements, CA vendors began revoking non-compliant CAs and issuing compliant CAs which require customers to re-issue their certificates. Microsoft is partnering closely with these vendors to minimize the potential impact to Azure Services, however self-issued certificates or certificates used in “Bring Your Own Certificate” (BYOC) scenarios are still at risk of being unexpectedly revoked.\n\nTo check if the certificates utilized by your application have been revoked, reference this DigiCert announcement and the Certificate Revocation Tracker . If your certificates have been revoked, or will be revoked, you will need to request new certificates from the CA vendor utilized in your applications. To avoid your application’s availability being interrupted due to certificates being unexpectedly revoked, or to update a certificate which has been revoked, reference the lists of remediation instructions for the respective Azure service below.\n\nRecommended Action:\n\nAPI Management\n\nUploading a Certificate Authority\n\nUploading SSL Certificates and Configuring Custom Domains\n\nApplication Gateway:\n\nRenew My certificate on Application Gateway\n\nAzure App Services:\n\nUpdating Certificates on App Service\n\nAzure CDN:\n\nEnabling HTTPS with your own CA for CDN\n\nAzure Front Door:\n\nConfiguring HTTPS on a Front Door Custom Domain\n\nAzure AD Proxy:\n\nUpdate custom domains"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "certificateauthorityrevocation"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=certificateauthorityrevocation"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: July 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Integration, Internet of Things, Mobile, Web, Compute, Networking, Security, Media"
+    }
+  ]
+}

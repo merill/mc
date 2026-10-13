@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-general-availability-sql-database-row-level-security-block-predicates",
+  "Title": "General availability: SQL Database Row-Level Security block predicates",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2015-11-30T22:44:34.000Z",
+  "LastModifiedDateTime": "2015-11-30T22:44:34.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure SQL Database"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "The <a href=\"https://msdn.microsoft.com/library/dn765131.aspx\" target=\"_blank\" rel=\"noopener\">Row-Level Security</a> (RLS) feature in Azure SQL Database now supports block predicates. In contrast to filter predicates, which limit the rows visible to a user, block predicates prevent a user from inserting, updating, or deleting rows that violate your access criteria. You should use filter and block predicates together to control read and write access to specific rows in a table.\n\nFor example, RLS is commonly used to prevent tenants from accessing each other’s data in multitenant databases. You can use a filter predicate to limit which rows are visible to each tenant, and now you can reuse the same function as a block predicate to prevent cross-tenant inserts or updates:\n<pre>CREATE SECURITY POLICY Security.tenantAccessPolicy\n ADD FILTER PREDICATE Security.fn_tenantAccessPredicate(TenantId) ON dbo.MyTable,\n ADD BLOCK PREDICATE Security.fn_tenantAccessPredicate(TenantId) ON dbo.MyTable</pre>\nFor more information, including demos and code samples, check out our announcement blog post: <a href=\"https://azure.microsoft.com/blog/sql-database-row-level-security-block-predicates-generally-available\" target=\"_blank\" rel=\"noopener\">Row-Level Security Block Predicates are Generally Available</a>.",
+    "Markdown": "The Row-Level Security (RLS) feature in Azure SQL Database now supports block predicates. In contrast to filter predicates, which limit the rows visible to a user, block predicates prevent a user from inserting, updating, or deleting rows that violate your access criteria. You should use filter and block predicates together to control read and write access to specific rows in a table.\n\nFor example, RLS is commonly used to prevent tenants from accessing each other’s data in multitenant databases. You can use a filter predicate to limit which rows are visible to each tenant, and now you can reuse the same function as a block predicate to prevent cross-tenant inserts or updates:\n\nCREATE SECURITY POLICY Security.tenantAccessPolicy\n\nADD FILTER PREDICATE Security.fn_tenantAccessPredicate(TenantId) ON dbo.MyTable,\n\nADD BLOCK PREDICATE Security.fn_tenantAccessPredicate(TenantId) ON dbo.MyTable\n\nFor more information, including demos and code samples, check out our announcement blog post: Row-Level Security Block Predicates are Generally Available ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "general-availability-sql-database-row-level-security-block-predicates"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=general-availability-sql-database-row-level-security-block-predicates"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: November 2015"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Databases, Hybrid + multicloud"
+    }
+  ]
+}

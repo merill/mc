@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-sriov-availability-on-ncv3-virtual-machines-sku",
+  "Title": "SR-IOV availability on NCv3 Virtual Machines SKU",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-10-17T22:45:58.000Z",
+  "LastModifiedDateTime": "2019-10-17T22:45:58.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Virtual Machines"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>As part of&nbsp;Azure&rsquo;s&nbsp;ongoing commitment to providing industry-leading performance, we are announcing enhancements to enable support&nbsp;for all&nbsp;MPI&nbsp;implementations&nbsp;and versions,&nbsp;and RDMA verbs&nbsp;for&nbsp;InfiniBand-equipped&nbsp;virtual machines,&nbsp;beginning with&nbsp;<strong>NCv3</strong>&nbsp;coming in early November 2019.&nbsp;</p>\r\n\r\n<p>The upgrade&nbsp;<strong>WILL INVOLVE&nbsp;SERVER&nbsp;DOWNTIME</strong>&nbsp;on a regional basis and, if you intend&nbsp;to utilize the&nbsp;InfiniBand&nbsp;network&nbsp;using MPI,&nbsp;this&nbsp;<strong>REQUIRES&nbsp;AN&nbsp;UPDATE&nbsp;TO&nbsp;YOUR VMs</strong>. Please read below for full details.&nbsp;</p>\r\n\r\n<p><strong>WHAT&rsquo;S&nbsp;COMING?</strong>&nbsp;</p>\r\n\r\n<p>With the rapid growth of multi-node computation and model training, customers&rsquo;&nbsp;needs have evolved as&nbsp;well as the&nbsp;software they use.&nbsp; This update will expand our support to include the entire MPI stack, enabling you to&nbsp;use&nbsp;the InfiniBand RDMA network for low-latency and high-bandwidth communication between VMs using SR-IOV.&nbsp;</p>\r\n\r\n<p>Intel&nbsp;MPI&nbsp;version 5.x will continue to be&nbsp;supported&nbsp;as will all subsequent Intel&nbsp;MPI versions.&nbsp; In addition, all other MPIs supported by the Open Fabric Enterprise Distribution (OFED),&nbsp;OpenMPI,&nbsp;and&nbsp;Nvidia&rsquo;s NCCL2&nbsp;library, providing optimized performance for GPUs,&nbsp;will be supported.&nbsp; These enhancements will provide customers with higher InfiniBand bandwidth, lower latencies, and most importantly, better distributed application performance.&nbsp;</p>\r\n\r\n<p><strong>IMPACT</strong>&nbsp;</p>\r\n\r\n<p>All users of NCv3 SKUs will be impacted on a region-by-region basis (see schedule below).&nbsp; The update involves changes to both server hardware and software, which requires downtime.&nbsp; During&nbsp;downtime:&nbsp;</p>\r\n\r\n<ul>\r\n\t<li><em>NCv3 machines in the region will be&nbsp;unavailable&nbsp;for a 3-hour period</em>&nbsp;</li>\r\n\t<li><em>All&nbsp;VMs&nbsp;on NCv3 machines&nbsp;in the region will be removed&nbsp;and re-deployed after the update</em>&nbsp;</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li><em>Data stored on local (ephemeral) disks will be lost.&nbsp; Storage Accounts are unaffected</em>&nbsp;</li>\r\n</ul>\r\n\r\n<p><strong>ACTION REQUIRED</strong>&nbsp;</p>\r\n\r\n<p>To avoid data loss and minimize potential impact to your service, please take the following steps:&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>Ensure all jobs are complete and data is backed up to your Storage Account&nbsp;<em>before</em>&nbsp;the scheduled update.&nbsp; Any data stored locally will be lost.&nbsp;</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li>Review the&nbsp;<a href=\"https://azure.microsoft.com/en-us/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku/\" target=\"_blank\" rel=\"noopener\">NCv3 update schedule</a>.&nbsp; If needed, you may consider temporarily migrating to an alternate region.&nbsp; If so,&nbsp;<a href=\"https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas#find-your-quotas\" target=\"_blank\" rel=\"noopener\">check existing</a>&nbsp;or&nbsp;<a href=\"https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas#request-quota-increases\" target=\"_blank\" rel=\"noopener\">request new quota</a>&nbsp;in the intended alternate region(s).&nbsp;</li>\r\n\t<li><strong>If your scenarios&nbsp;<u>do&nbsp;not&nbsp;require</u>&nbsp;InfiniBand&nbsp;or MPI</strong>&nbsp;</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li>You do not need to make any changes to your image or configuration.&nbsp;</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li><strong>If you&nbsp;<u>do&nbsp;require</u>&nbsp;InfiniBand&nbsp;or MPI,&nbsp;please&nbsp;do the following:</strong>&nbsp;</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li>For managed services supporting InfiniBand scenarios, please see service-specific guidance (e.g.,&nbsp;<a href=\"https://github.com/Azure/Batch/issues/73\" target=\"_blank\" rel=\"noopener\">Azure Batch</a>,&nbsp;<a href=\"https://docs.microsoft.com/azure/machine-learning/service/resource-known-issues\" target=\"_blank\" rel=\"noopener\">Azure Machine Learning</a>).&nbsp;</li>\r\n\t<li>We strongly recommend you update your OS to a version including inbox drivers for InfiniBand; however, if your current image already includes inbox driver support for InfiniBand, we encourage you to test beforehand (see&nbsp;last bullet&nbsp;below)&nbsp;</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li>Download and install the latest&nbsp;OFED&nbsp;driver&nbsp;if not already included in your image (a&nbsp;limited&nbsp;set may include them out of box).&nbsp; See&nbsp;<a href=\"https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband\" target=\"_blank\" rel=\"noopener\">this article</a>&nbsp;for complete steps.&nbsp;</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li>Test your updated image&nbsp;&amp; drivers&nbsp;on Hb or&nbsp;Hc&nbsp;VMs, which are already&nbsp;SR-IOV enabled.</li>\r\n</ul>\r\n\r\n<p>For any questions&nbsp;or concerns, please reach out to&nbsp;Azure GPU Feedback (<a>azurenfeedback@microsoft.com</a>) or your Customer Service Support representative.&nbsp;</p>\r\n",
+    "Markdown": "As part of Azure’s ongoing commitment to providing industry-leading performance, we are announcing enhancements to enable support for all MPI implementations and versions, and RDMA verbs for InfiniBand-equipped virtual machines, beginning with NCv3 coming in early November 2019.\n\nThe upgrade WILL INVOLVE SERVER DOWNTIME on a regional basis and, if you intend to utilize the InfiniBand network using MPI, this REQUIRES AN UPDATE TO YOUR VMs . Please read below for full details.\n\nWHAT’S COMING?\n\nWith the rapid growth of multi-node computation and model training, customers’ needs have evolved as well as the software they use. This update will expand our support to include the entire MPI stack, enabling you to use the InfiniBand RDMA network for low-latency and high-bandwidth communication between VMs using SR-IOV.\n\nIntel MPI version 5.x will continue to be supported as will all subsequent Intel MPI versions. In addition, all other MPIs supported by the Open Fabric Enterprise Distribution (OFED), OpenMPI, and Nvidia’s NCCL2 library, providing optimized performance for GPUs, will be supported. These enhancements will provide customers with higher InfiniBand bandwidth, lower latencies, and most importantly, better distributed application performance.\n\nIMPACT\n\nAll users of NCv3 SKUs will be impacted on a region-by-region basis (see schedule below). The update involves changes to both server hardware and software, which requires downtime. During downtime:\n\nNCv3 machines in the region will be unavailable for a 3-hour period\n\nAll VMs on NCv3 machines in the region will be removed and re-deployed after the update\n\nData stored on local (ephemeral) disks will be lost. Storage Accounts are unaffected\n\nACTION REQUIRED\n\nTo avoid data loss and minimize potential impact to your service, please take the following steps:\n\nEnsure all jobs are complete and data is backed up to your Storage Account before the scheduled update. Any data stored locally will be lost.\n\nReview the NCv3 update schedule . If needed, you may consider temporarily migrating to an alternate region. If so, check existing or request new quota in the intended alternate region(s).\n\nIf your scenarios do not require InfiniBand or MPI\n\nYou do not need to make any changes to your image or configuration.\n\nIf you do require InfiniBand or MPI, please do the following:\n\nFor managed services supporting InfiniBand scenarios, please see service-specific guidance (e.g., Azure Batch , Azure Machine Learning ).\n\nWe strongly recommend you update your OS to a version including inbox drivers for InfiniBand; however, if your current image already includes inbox driver support for InfiniBand, we encourage you to test beforehand (see last bullet below)\n\nDownload and install the latest OFED driver if not already included in your image (a limited set may include them out of box). See this article for complete steps.\n\nTest your updated image & drivers on Hb or Hc VMs, which are already SR-IOV enabled.\n\nFor any questions or concerns, please reach out to Azure GPU Feedback ( azurenfeedback@microsoft.com ) or your Customer Service Support representative."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "sriov-availability-on-ncv3-virtual-machines-sku"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=sriov-availability-on-ncv3-virtual-machines-sku"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute"
+    }
+  ]
+}

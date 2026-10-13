@@ -21,9 +21,9 @@ export default function MessageDetail(props: { id: string }) {
   const msg = getMessageData(props.id)
   const summary = getMessageSummary(msg)
   const contentTitle =
-    getMessageSource(msg) === MessageSource.Roadmap
-      ? "Description"
-      : "More information"
+    getMessageSource(msg) === MessageSource.MessageCenter
+      ? "More information"
+      : "Description"
   const linkedBody = linkifyMcIds(msg?.Body?.Content || "", props.id)
   // Summary is plain text; escape HTML special chars before running it through
   // the HTML-aware linkifier so any `&`, `<`, `>` render correctly.

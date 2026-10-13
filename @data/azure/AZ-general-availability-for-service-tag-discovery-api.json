@@ -1,0 +1,46 @@
+{
+  "Id": "AZ-general-availability-for-service-tag-discovery-api",
+  "Title": "Generally available: Service Tag Discovery API",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2021-10-12T16:00:01.000Z",
+  "LastModifiedDateTime": "2021-10-12T16:00:01.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [],
+  "Tags": [
+    "Features",
+    "Management",
+    "SDK and Tools",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The Service Tag Discovery API is now generally available. You can call the API for a list of over 60 Service Tags and their corresponding IP ranges to configure on-premises firewalls and Azure resources.</p>\r\n\r\n<ul>\r\n\t<li>You can use the API to replace downloading and parsing the weekly <a href=\"https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files\" target=\"_blank\" rel=\"noopener\">JSON files</a>&nbsp;with Service Tag data we provide. In the past, users have had to deal with changing file names each week. Now there is a consistent way to programmatically retrieve this data.</li>\r\n\t<li>It&rsquo;s easy to filter results for specific Service Tags or regions for services you use:\r\n\t<ul>\r\n\t\t<li>For example, get the list of ranges associated with Azure Storage in the West US 2 region by running:​​​​​​</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p><em>PS C:\\&gt; $serviceTags = Get-AzNetworkServiceTag -Location eastus2</em></p>\r\n\r\n<p><em>PS C:\\&gt; $serviceTags.Values | Where-Object { $_.Name -eq &quot;Storage.WestUS2&quot; }</em></p>\r\n\r\n<p>Note that the -Location parameter dictates which region you are retrieving the data from, not which regional Service Tags are returned.&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>Stay up to date with changing service endpoints. The API regularly updates with new IPs before they are put into use by Azure services, so you can keep your configurations current and filter traffic correctly. There are currently more than 80,000 prefixes associated with Service Tags and new services and ranges are added frequently - using the API is an easy way to stay up to date and access this data efficiently.</li>\r\n</ul>\r\n\r\n<p>The feature is available through REST, PowerShell, and CLI.</p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p>\r\n",
+    "Markdown": "The Service Tag Discovery API is now generally available. You can call the API for a list of over 60 Service Tags and their corresponding IP ranges to configure on-premises firewalls and Azure resources.\n\nYou can use the API to replace downloading and parsing the weekly JSON files with Service Tag data we provide. In the past, users have had to deal with changing file names each week. Now there is a consistent way to programmatically retrieve this data.\n\nIt’s easy to filter results for specific Service Tags or regions for services you use:\n\nFor example, get the list of ranges associated with Azure Storage in the West US 2 region by running:​​​​​​\n\nPS C:\\> $serviceTags = Get-AzNetworkServiceTag -Location eastus2\n\nPS C:\\> $serviceTags.Values | Where-Object { $_.Name -eq \"Storage.WestUS2\" }\n\nNote that the -Location parameter dictates which region you are retrieving the data from, not which regional Service Tags are returned.\n\nStay up to date with changing service endpoints. The API regularly updates with new IPs before they are put into use by Azure services, so you can keep your configurations current and filter traffic correctly. There are currently more than 80,000 prefixes associated with Service Tags and new services and ranges are added frequently - using the API is an easy way to stay up to date and access this data efficiently.\n\nThe feature is available through REST, PowerShell, and CLI.\n\nLearn more ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "general-availability-for-service-tag-discovery-api"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=general-availability-for-service-tag-discovery-api"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2021"
+    }
+  ]
+}

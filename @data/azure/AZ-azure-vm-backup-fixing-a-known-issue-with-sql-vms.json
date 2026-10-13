@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-azure-vm-backup-fixing-a-known-issue-with-sql-vms",
+  "Title": "Azure VM backup: General availability updates for Dec, 2022",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2023-01-09T17:00:08.000Z",
+  "LastModifiedDateTime": "2023-01-09T17:00:08.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Backup"
+  ],
+  "Tags": [
+    "Management",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>In late Dec 2022, the following updates were made to Azure VM backup which specifically impacts users who have SQL installed in those protected Azure VMs.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Azure VM backup interacts with VSS to get application consistent snapshots. When a user configures Azure VM backup for a SQL virtual machine, the VSS further interacts with SQL writer to quiesce the SQL server within the VM. By default, this will create a SQL FULL snapshot. This can cause VM snapshot delays and reset the log sequence number (LSN) of SQL log backups. This reset may cause problems during recovery if an end user is unaware of the reset. To avoid this, we suggest the user to set a <a href=\"https://learn.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues\" target=\"_blank\" rel=\"noopener\">registry key</a> that will create a SQL COPY_ONLY_FULL snapshot instead of FULL. A COPY_ONLY_FULL snapshot does NOT reset the LSN and it also guarantees SQL recoverability to the snapshot point-in-time.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Now, from Dec 12th, 2022 onwards, Azure VM backup will automatically set this registry key and take SQL COPY_ONLY_FULL snapshots only. This registry key is set automatically to all SQL VMs already protected using Azure VM backup and will be set automatically to all new SQL VMs during the configuration of Azure VM backup. Users are not expected to perform any additional steps to get this benefit.</p>\r\n",
+    "Markdown": "In late Dec 2022, the following updates were made to Azure VM backup which specifically impacts users who have SQL installed in those protected Azure VMs.\n\nAzure VM backup interacts with VSS to get application consistent snapshots. When a user configures Azure VM backup for a SQL virtual machine, the VSS further interacts with SQL writer to quiesce the SQL server within the VM. By default, this will create a SQL FULL snapshot. This can cause VM snapshot delays and reset the log sequence number (LSN) of SQL log backups. This reset may cause problems during recovery if an end user is unaware of the reset. To avoid this, we suggest the user to set a registry key that will create a SQL COPY_ONLY_FULL snapshot instead of FULL. A COPY_ONLY_FULL snapshot does NOT reset the LSN and it also guarantees SQL recoverability to the snapshot point-in-time.\n\nNow, from Dec 12th, 2022 onwards, Azure VM backup will automatically set this registry key and take SQL COPY_ONLY_FULL snapshots only. This registry key is set automatically to all SQL VMs already protected using Azure VM backup and will be set automatically to all new SQL VMs during the configuration of Azure VM backup. Users are not expected to perform any additional steps to get this benefit."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-vm-backup-fixing-a-known-issue-with-sql-vms"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-vm-backup-fixing-a-known-issue-with-sql-vms"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: January 2023"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance, Storage"
+    }
+  ]
+}

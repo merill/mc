@@ -1,6 +1,6 @@
 # Microsoft 365 Message Center Archive
 
-> Searchable static archive of Microsoft 365 Message Center messages and Microsoft 365 Roadmap posts.
+> Searchable static archive of Microsoft 365 Message Center messages, Microsoft 365 Roadmap posts and Azure updates.
 
 This site is for reference only. Microsoft 365 Message Center posts are tenant-specific; users should always treat their own tenant's Message Center as the source of truth.
 
@@ -15,7 +15,9 @@ This site is for reference only. Microsoft 365 Message Center posts are tenant-s
 
 ## Machine-Readable Data
 
-`/messages-index.json` contains compact records for active Message Center messages, Roadmap posts, and archived Message Center messages. Each record includes ID, title, source, canonical URL, services, dates, category, tags, and summary text.
+`/messages-index.json` contains compact records for active Message Center messages, Roadmap posts, archived Message Center messages, and every Azure update since 2013. Each record includes ID, title, source, canonical URL, services, dates, category, tags, and summary text.
+
+`Source` is `messageCenter`, `roadmap` or `azure`. IDs start with `MC`, `RM` or `AZ`. An Azure update Microsoft numbers is `AZ` plus that number (`AZ574430`); one from before November 2024 is `AZ-` plus Microsoft's slug (`AZ-general-availability-traffic-manager`). For Azure updates, `Services` holds the Azure products.
 
 Use each record's `Url` as the canonical page for citation. The HTML detail pages contain the full message body where available.
 

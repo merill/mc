@@ -1,0 +1,47 @@
+{
+  "Id": "AZ-azure-devtest-labs-set-vm-expiration-date",
+  "Title": "Azure DevTest Labs: Set expiration date for a virtual machine",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2016-08-02T16:14:56.000Z",
+  "LastModifiedDateTime": "2016-08-02T16:14:56.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure DevTest Labs",
+    "Virtual Machines"
+  ],
+  "Tags": [
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>In Azure DevTest Labs, you can now set an expiration date and time&nbsp;for a virtual machine. The VM will be deleted within 24 hours of the specified date and time. The&nbsp;time is in UTC.</p>\r\n\r\n<p>You&nbsp;can do this by using an Azure Resource Manager template&mdash;namely, by specifying the <strong>expirationDate</strong>&nbsp;property for the VM that will be created in the lab. You can check out a <a href=\"https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration\" target=\"_blank\" rel=\"noopener\">sample Resource Manager template</a>&nbsp;in our public GitHub repository. You can also modify any of the <a href=\"https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates\" target=\"_blank\" rel=\"noopener\">existing sample Resource Manager templates</a>&nbsp;for the VM creation (name starting with 101-dtl-create-vm)&nbsp;by specifying the&nbsp;<strong>expirationDate</strong> property&nbsp;as follows.</p>\r\n\r\n<div>&quot;resources&quot;: [<br>\r\n&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;apiVersion&quot;: &quot;2016-05-15&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;type&quot;: &quot;Microsoft.DevTestLab/labs/virtualMachines&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;name&quot;: &quot;[variables(&#39;resourceName&#39;)]&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;location&quot;: &quot;[resourceGroup().location]&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;properties&quot;: {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;customImageId&quot;: &quot;[parameters(&#39;existingCustomImageId&#39;)]&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;size&quot;: &quot;[parameters(&#39;newVMSize&#39;)]&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;isAuthenticationWithSshKey&quot;: false,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;userName&quot;: &quot;[parameters(&#39;userName&#39;)]&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;sshKey&quot;: &quot;&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;password&quot;: &quot;[parameters(&#39;password&#39;)]&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;labVirtualNetworkId&quot;: &quot;[variables(&#39;labVirtualNetworkId&#39;)]&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;labSubnetName&quot;: &quot;[variables(&#39;labSubnetName&#39;)]&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> &quot;expirationDate&quot;: &quot;[parameters(&#39;expirationDate&#39;)]&quot;</strong><br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</div>\r\n\r\n<div>&nbsp;</div>\r\n\r\n<div>&nbsp;&nbsp;&nbsp; }<br>\r\n&nbsp; ],</div>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Please try the new feature and let us know how we can make it better by sharing your ideas and suggestions at the <a href=\"https://feedback.azure.com/forums/320373-azure-devtest-labs\" target=\"_blank\" rel=\"noopener\">DevTest Labs feedback forum</a>.</p>\r\n\r\n<p>If you run into any problems with the feature or have any questions, we are always ready to help you at our <a href=\"https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs\" target=\"_blank\" rel=\"noopener\">MSDN forum</a>.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "In Azure DevTest Labs, you can now set an expiration date and time for a virtual machine. The VM will be deleted within 24 hours of the specified date and time. The time is in UTC.\n\nYou can do this by using an Azure Resource Manager template—namely, by specifying the expirationDate property for the VM that will be created in the lab. You can check out a sample Resource Manager template in our public GitHub repository. You can also modify any of the existing sample Resource Manager templates for the VM creation (name starting with 101-dtl-create-vm) by specifying the expirationDate property as follows.\n\n\"resources\": [\n\n{\n\n\"apiVersion\": \"2016-05-15\",\n\n\"type\": \"Microsoft.DevTestLab/labs/virtualMachines\",\n\n\"name\": \"[variables('resourceName')]\",\n\n\"location\": \"[resourceGroup().location]\",\n\n\"properties\": {\n\n\"customImageId\": \"[parameters('existingCustomImageId')]\",\n\n\"size\": \"[parameters('newVMSize')]\",\n\n\"isAuthenticationWithSshKey\": false,\n\n\"userName\": \"[parameters('userName')]\",\n\n\"sshKey\": \"\",\n\n\"password\": \"[parameters('password')]\",\n\n\"labVirtualNetworkId\": \"[variables('labVirtualNetworkId')]\",\n\n\"labSubnetName\": \"[variables('labSubnetName')]\",\n\n\"expirationDate\": \"[parameters('expirationDate')]\"\n\n}\n\n}\n\n],\n\nPlease try the new feature and let us know how we can make it better by sharing your ideas and suggestions at the DevTest Labs feedback forum .\n\nIf you run into any problems with the feature or have any questions, we are always ready to help you at our MSDN forum ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-devtest-labs-set-vm-expiration-date"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-devtest-labs-set-vm-expiration-date"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: August 2016"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Developer tools, DevOps, Compute"
+    }
+  ]
+}

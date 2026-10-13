@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-8-2-0-cyclecloud-8",
+  "Title": "Generally available: Azure HPC – CycleCloud 8.2.0",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2021-08-04T16:00:00.000Z",
+  "LastModifiedDateTime": "2021-08-04T16:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure CycleCloud"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>CycleCloud 8.2.0 is now available. This release contains the integration with Microsoft HPC Pack and a considerable list of resolved issues. Please review the list in detail below.</p>\r\n\r\n<h3><strong>New Features:</strong></h3>\r\n\r\n<ul>\r\n\t<li>New&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/cyclecloud/openpbs?view=cyclecloud-8\" target=\"_blank\" rel=\"noopener\">PBS Autoscale project</a>&nbsp;provides more flexibility and insight into decisions via powerful azpbs cli</li>\r\n\t<li>CycleCloud now supports&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/cyclecloud/hpcpack?view=cyclecloud-8\" target=\"_blank\" rel=\"noopener\">Microsoft HPC Pack</a>.</li>\r\n\t<li>CycleCloud now includes a new&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/cyclecloud/api?view=cyclecloud-8#get-usage-and-optional-cost-information-for-a-cluster\" target=\"_blank\" rel=\"noopener\">cluster-cost API</a></li>\r\n\t<li>VMs are now tagged with the nodearray as well as the cluster, for&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/cyclecloud/concepts/usage-tracking?view=cyclecloud-8\" target=\"_blank\" rel=\"noopener\">nodearray-based cost tracking</a></li>\r\n\t<li>CycleCloud now supports Disk Encryption with Customer Managed Keys for OS (Boot Volume) and Data Disks.</li>\r\n\t<li>SGE/UGE now supports Ubuntu 18</li>\r\n\t<li>Univa GridEngine is now&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/cyclecloud/gridengine?view=cyclecloud-8\" target=\"_blank\" rel=\"noopener\">Altair GridEngine</a></li>\r\n</ul>\r\n\r\n<h3><strong>Resolved Issues:</strong></h3>\r\n\r\n<ul>\r\n\t<li>An elevation-of-privilege vulnerability existed for a user with access to CycleCloud&nbsp;<a href=\"https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2021-33762\" target=\"_blank\" rel=\"noopener\">(CVE-2021-33762)</a></li>\r\n\t<li>Some files in&nbsp;<code>JETPACK_HOME</code>&nbsp;had incorrect permissions allowing non-group readers</li>\r\n\t<li>Mitigated an XXE vulnerability in the REST API&nbsp;<a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36943\" target=\"_blank\" rel=\"noopener\">(CVE-2021-36943)</a></li>\r\n\t<li>Every CycleCloud head node would get the same computer name by default</li>\r\n\t<li>Logging messages from nodes were grouped together incorrectly on the Events page</li>\r\n\t<li>The Event Grid connection feature did not work with more than one credential installed</li>\r\n\t<li>CycleCloud would fail to start if EventGrid was enabled while credentials lacked EventGrid permissions</li>\r\n\t<li>Jetpack installations failed on Windows 2019.</li>\r\n\t<li>Overprovisioned VMs would show&nbsp;<code>jetpackd</code>&nbsp;errors while awaiting registration in CycleCloud HPC Pack cluster did not offer ReturnProxy</li>\r\n\t<li>CycleCloud would show a spurious&nbsp;<code>NullPointerException</code>&nbsp;error when using SSD-based OS disks</li>\r\n\t<li><code>cyclecloud project upload</code>&nbsp;would sometimes fail when checking for the prior existence of a file in Azure Storage</li>\r\n\t<li>Jetpack would not return an error when projects referenced in the cluster did not exist in storage</li>\r\n\t<li>Removed invalid LICENSE file from LSF project.</li>\r\n\t<li>Removed code that triggered an SELinux error with SGE on EL8 platforms.</li>\r\n\t<li>In some cases, nodes would be stuck waiting for spot eviction to complete</li>\r\n\t<li>Editing node properties in the UI would fail when a cloud-init script was defined</li>\r\n\t<li>LSF was leaving orphaned nodes.</li>\r\n\t<li>Jetpack installation could sometimes be halted by a rate-limited metadata server</li>\r\n\t<li>The custom settings for a graph on the cluster page were reverted when the page auto-refreshed</li>\r\n\t<li>Network metrics collected were incorrectly treating rates as bytes transferred</li>\r\n\t<li>Spot evictions detected in advance by CycleCloud were not labeled as spot-eviction as the reason in Event Grid</li>\r\n\t<li>Nodes that encountered certain errors while starting would get stuck in Acquiring state</li>\r\n\t<li>Keyboard navigation was broken.</li>\r\n\t<li>Quota consumption for limited-core HBv3 variants was treated as the limited count, not 120 cores</li>\r\n\t<li>Core-limited SKUs (eg, HB120-32v3) did not show prices</li>\r\n\t<li>SSD disks used the wrong price for sizes exactly between two levels</li>\r\n\t<li>Upgraded default Slurm install to 20.11.7</li>\r\n\t<li>Updated embedded&nbsp;<code>azcopy</code>&nbsp;to v10.11.0</li>\r\n</ul>\r\n\r\n<p><a href=\"https://docs.microsoft.com/en-us/azure/cyclecloud/release-notes/8-2-0?view=cyclecloud-8\" target=\"_blank\" rel=\"noopener\">Read the release notes</a><a href=\"https://docs.microsoft.com/en-us/azure/cyclecloud/release-notes/8-2-0?view=cyclecloud-8\" target=\"_blank\" rel=\"noopener\">.</a></p>\r\n",
+    "Markdown": "CycleCloud 8.2.0 is now available. This release contains the integration with Microsoft HPC Pack and a considerable list of resolved issues. Please review the list in detail below.\n\nNew Features:\n\nNew PBS Autoscale project provides more flexibility and insight into decisions via powerful azpbs cli\n\nCycleCloud now supports Microsoft HPC Pack .\n\nCycleCloud now includes a new cluster-cost API\n\nVMs are now tagged with the nodearray as well as the cluster, for nodearray-based cost tracking\n\nCycleCloud now supports Disk Encryption with Customer Managed Keys for OS (Boot Volume) and Data Disks.\n\nSGE/UGE now supports Ubuntu 18\n\nUniva GridEngine is now Altair GridEngine\n\nResolved Issues:\n\nAn elevation-of-privilege vulnerability existed for a user with access to CycleCloud (CVE-2021-33762)\n\nSome files in JETPACK_HOME had incorrect permissions allowing non-group readers\n\nMitigated an XXE vulnerability in the REST API (CVE-2021-36943)\n\nEvery CycleCloud head node would get the same computer name by default\n\nLogging messages from nodes were grouped together incorrectly on the Events page\n\nThe Event Grid connection feature did not work with more than one credential installed\n\nCycleCloud would fail to start if EventGrid was enabled while credentials lacked EventGrid permissions\n\nJetpack installations failed on Windows 2019.\n\nOverprovisioned VMs would show jetpackd errors while awaiting registration in CycleCloud HPC Pack cluster did not offer ReturnProxy\n\nCycleCloud would show a spurious NullPointerException error when using SSD-based OS disks\n\ncyclecloud project upload would sometimes fail when checking for the prior existence of a file in Azure Storage\n\nJetpack would not return an error when projects referenced in the cluster did not exist in storage\n\nRemoved invalid LICENSE file from LSF project.\n\nRemoved code that triggered an SELinux error with SGE on EL8 platforms.\n\nIn some cases, nodes would be stuck waiting for spot eviction to complete\n\nEditing node properties in the UI would fail when a cloud-init script was defined\n\nLSF was leaving orphaned nodes.\n\nJetpack installation could sometimes be halted by a rate-limited metadata server\n\nThe custom settings for a graph on the cluster page were reverted when the page auto-refreshed\n\nNetwork metrics collected were incorrectly treating rates as bytes transferred\n\nSpot evictions detected in advance by CycleCloud were not labeled as spot-eviction as the reason in Event Grid\n\nNodes that encountered certain errors while starting would get stuck in Acquiring state\n\nKeyboard navigation was broken.\n\nQuota consumption for limited-core HBv3 variants was treated as the limited count, not 120 cores\n\nCore-limited SKUs (eg, HB120-32v3) did not show prices\n\nSSD disks used the wrong price for sizes exactly between two levels\n\nUpgraded default Slurm install to 20.11.7\n\nUpdated embedded azcopy to v10.11.0\n\nRead the release notes ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "8-2-0-cyclecloud-8"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=8-2-0-cyclecloud-8"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: August 2021"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute"
+    }
+  ]
+}

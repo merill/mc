@@ -1,0 +1,49 @@
+{
+  "Id": "AZ562808",
+  "Title": "Public Preview: TLS/SSL certificate support for Azure Functions Flex Consumption",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2026-05-21T18:45:42.346Z",
+  "LastModifiedDateTime": "2026-05-21T18:45:42.346Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Functions"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p><span>Flex Consumption introduces a&nbsp;</span><span>site-scoped certificate model</span><span>&nbsp;in\npublic preview in all the regions where Flex Consumption is available. Unlike\nwebspace-scoped certificates on other hosting plans which are shared across\napps in the same region + resource group, Flex certificates are scoped to an\nindividual function app.&nbsp;</span></p><p><span>Each function app can hold up to 3 private\n(.pfx) and 3 public (.cer) certificates uploaded directly, imported from Azure\nKey Vault, or issued as free App Service Managed Certificates to enable custom\ndomains, client-certificate authentication, and mutual TLS scenarios on Flex\nConsumption.&nbsp;</span></p><p><span>To access certificates from\ncode</span><span> </span><span>Flex Consumption\nuses a per-certificate&nbsp;</span><span>\"Accessible to app code\"</span><span>&nbsp;toggle\nin the portal instead of the&nbsp;</span><span>WEBSITE_LOAD_CERTIFICATES</span><span>&nbsp;app setting used on other plans. Because Flex\nConsumption runs on Linux, code reads certificates from file paths (</span><span>/var/ssl/certs</span><span>&nbsp;for public,&nbsp;</span><span>/var/ssl/private</span><span>&nbsp;for private) rather than from a Windows certificate\nstore.&nbsp;&nbsp;</span></p><p><span>Currently,</span><span> </span><span>the Azure portal is the\nrecommended path for configuring certificates during preview. Apps migrating\nfrom another plan should add their certificates to the new Flex Consumption app\nrather than carrying webspace-scoped certificates across.&nbsp;&nbsp;</span></p><p><span>Learn more:&nbsp;</span></p><ul><li><a href=\"https://learn.microsoft.com/azure/azure-functions/flex-consumption-how-to#configure-site-scoped-certificates\" target=\"_blank\" rel=\"noopener\"><span>Configure\nsite-scoped certificates</span></a><span>&nbsp;&nbsp;</span></li><li><a href=\"https://learn.microsoft.com/en-us/azure/azure-functions/functions-infrastructure-as-code#site-scoped-certificates\" target=\"_blank\" rel=\"noopener\"><span>Infrastructure\nas code instructions</span></a><span>&nbsp;&nbsp;</span></li><li><a href=\"https://learn.microsoft.com/azure/azure-functions/functions-scale#certificates\" target=\"_blank\" rel=\"noopener\"><span>Cross-plan\ncertificate comparison</span></a><span>&nbsp;</span></li></ul>",
+    "Markdown": "Flex Consumption introduces a site-scoped certificate model in\n\npublic preview in all the regions where Flex Consumption is available. Unlike\n\nwebspace-scoped certificates on other hosting plans which are shared across\n\napps in the same region + resource group, Flex certificates are scoped to an\n\nindividual function app.\n\nEach function app can hold up to 3 private\n\n(.pfx) and 3 public (.cer) certificates uploaded directly, imported from Azure\n\nKey Vault, or issued as free App Service Managed Certificates to enable custom\n\ndomains, client-certificate authentication, and mutual TLS scenarios on Flex\n\nConsumption.\n\nTo access certificates from\n\ncode Flex Consumption\n\nuses a per-certificate \"Accessible to app code\" toggle\n\nin the portal instead of the WEBSITE_LOAD_CERTIFICATES app setting used on other plans. Because Flex\n\nConsumption runs on Linux, code reads certificates from file paths ( /var/ssl/certs for public, /var/ssl/private for private) rather than from a Windows certificate\n\nstore.\n\nCurrently, the Azure portal is the\n\nrecommended path for configuring certificates during preview. Apps migrating\n\nfrom another plan should add their certificates to the new Flex Consumption app\n\nrather than carrying webspace-scoped certificates across.\n\nLearn more:\n\nConfigure\n\nsite-scoped certificates\n\nInfrastructure\n\nas code instructions\n\nCross-plan\n\ncertificate comparison"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "562808"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=562808"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: May 2026"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Containers, Internet of Things"
+    }
+  ]
+}

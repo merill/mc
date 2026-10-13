@@ -13,7 +13,7 @@ import {
   Tag,
 } from "lucide-react"
 
-import { Message, MessageSource } from "@/types/message"
+import { MessageSource } from "@/types/message"
 import {
   getFormattedDate,
   getMessageData,
@@ -61,16 +61,10 @@ export default function InfoCards(props: {
   id: string
   layout?: InfoCardsLayout
   showHistoryLink?: boolean
-  /**
-   * Optional explicit message snapshot. When supplied, the cards reflect this
-   * snapshot instead of the latest stored message. Used by the version
-   * snapshot and version comparison pages.
-   */
-  message?: Message
 }) {
   const layout: InfoCardsLayout = props.layout ?? "grid"
   const showHistoryLink = props.showHistoryLink ?? false
-  const msg = props.message ?? getMessageData(props.id)
+  const msg = getMessageData(props.id)
   const hasHistory = hasMultipleVersions(props.id)
   const referenceIds = Array.from(
     new Set([
@@ -107,34 +101,49 @@ export default function InfoCards(props: {
   const releasePhase = getMessageDetailValue(msg, "ReleasePhase")
   const clouds = getMessageDetailValue(msg, "CloudInstances")
   const isRoadmap = source === MessageSource.Roadmap
+  const isAzure = source === MessageSource.Azure
+  const availability = getMessageDetailValue(msg, "Availability")
+  const productCategories = getMessageDetailValue(msg, "ProductCategories")
+
+  // Where the post lives on Microsoft's side, and what its id is called there.
+  const origin = isRoadmap
+    ? {
+        href: roadmapLink,
+        title: "Roadmap ID",
+        value: sourceId,
+        action: "View in M365 Roadmap",
+        Icon: Flag,
+      }
+    : isAzure
+    ? {
+        href: getMessageDetailValue(msg, "AzureLink"),
+        // Microsoft names updates from before November 2024 with a slug that
+        // repeats the title, so there is no id worth showing.
+        title: msg?.Id.startsWith("AZ-") ? "Source" : "Azure update ID",
+        value: msg?.Id.startsWith("AZ-") ? "Azure Updates" : sourceId,
+        action: "View in Azure Updates",
+        Icon: Cloud,
+      }
+    : {
+        href: `https://admin.microsoft.com/#/MessageCenter/:/messages/${msg?.Id}`,
+        title: "Message ID",
+        value: sourceId,
+        action: "View in Message Center",
+        Icon: MessageSquare,
+      }
 
   const idCard = (
     <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
-      <a
-        href={
-          isRoadmap
-            ? roadmapLink
-            : `https://admin.microsoft.com/#/MessageCenter/:/messages/${msg?.Id}`
-        }
-        target="_blank"
-        rel="noopener"
-      >
+      <a href={origin.href} target="_blank" rel="noopener">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium flex gap-1">
-            {isRoadmap ? "Roadmap ID" : "Message ID"}{" "}
-            <ExternalLink size={10} color="gray" />
+            {origin.title} <ExternalLink size={10} color="gray" />
           </CardTitle>
-          {isRoadmap ? (
-            <Flag size={20} color="gray" />
-          ) : (
-            <MessageSquare size={20} color="gray" />
-          )}
+          <origin.Icon size={20} color="gray" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold flex">{sourceId} </div>
-          <p className="text-xs text-muted-foreground">
-            {isRoadmap ? "View in M365 Roadmap" : "View in Message Center"}
-          </p>
+          <div className="text-2xl font-bold flex">{origin.value} </div>
+          <p className="text-xs text-muted-foreground">{origin.action}</p>
         </CardContent>
       </a>
     </Card>
@@ -143,7 +152,9 @@ export default function InfoCards(props: {
   const serviceCard = (
     <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">Service</CardTitle>
+        <CardTitle className="text-sm font-medium">
+          {isAzure ? "Product" : "Service"}
+        </CardTitle>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -352,6 +363,49 @@ export default function InfoCards(props: {
     </Card>
   )
 
+  // An Azure update's milestones, such as "Retirement: October 2027".
+  const timelineCard = availability && (
+    <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">Timeline</CardTitle>
+        <CalendarClock size={20} color="gray" />
+      </CardHeader>
+      <CardContent>
+        <ul className="space-y-1.5">
+          {availability.split(";").map((entry) => {
+            const [ring, ...when] = entry.split(":")
+            return (
+              <li key={entry} className="leading-tight">
+                <div className="font-bold">{when.join(":").trim()}</div>
+                <div className="text-xs text-muted-foreground">
+                  {ring.trim()}
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+      </CardContent>
+    </Card>
+  )
+
+  const categoryCard = productCategories && (
+    <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">Category</CardTitle>
+        <Layers size={20} color="#757575" />
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-0.5">
+          {productCategories.split(",").map((category) => (
+            <Badge key={category.trim()} variant="secondary">
+              <div className="text-balance break-words">{category.trim()}</div>
+            </Badge>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  )
+
   const relatedCard = relatedCapped.length > 0 && (
     <Card className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-md">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -416,6 +470,25 @@ export default function InfoCards(props: {
         {actByCard}
         {platformsCard}
         {cloudCard}
+      </div>
+    )
+  }
+
+  if (isAzure) {
+    // The release ring is part of each timeline entry, so it has no card.
+    return (
+      <div className="w-full space-y-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {idCard}
+          {dateCard}
+          {statusCard}
+          {timelineCard}
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {(msg?.Services?.length ?? 0) > 0 && serviceCard}
+          {tagCard}
+          {categoryCard}
+        </div>
       </div>
     )
   }

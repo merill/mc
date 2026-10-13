@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-general-availability-update-in-policy-compliance-for-resource-type-policies",
+  "Title": "General availability: Update in Policy Compliance for Resource Type Policies",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2021-06-07T20:19:54.000Z",
+  "LastModifiedDateTime": "2021-06-07T20:19:54.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Policy"
+  ],
+  "Tags": [
+    "Management",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Starting on June 16, 2021, policies where resource type is the only evaluation criterion (e.g. Allowed Resource Types, Disallowed Resource Types) will not have &#39;compliant&#39; resources stored in compliance records. This means that if there are zero non-compliant resources, the policy will show 100% compliance. If there is one or more non-compliant resources, the policy will show 0% compliance, with the total resources equaling the non-compliant resources. This change is to address feedback that resource type policies skew overall compliance percentage data (which are calculated as compliant + exempt resources out of the total resources across all policies, deduped for unique resource IDs) due to a high number of total resources.</p>\r\n\r\n<p>The resource type policy has a high total resource count, because it&rsquo;s the only policy where all resources in the scope of the assignment count towards &lsquo;total resources&rsquo;. Other policies only consider applicable resource types to count towards total resources (i.e. VM extension policy would only count VMs in total resources).</p>\r\n\r\n<p>Going forward, the resource type policies will only count the non-compliant resources (when &lsquo;if&rsquo; statement evaluates to true) towards the total resources.&nbsp;So, if there are zero-non-compliant resources, the policy will show 100% compliance. Alternatively, if there are one or more non-compliant resources, the policy will show 0% compliance (since non-compliant resources = total resources). Aggregated with other policies, this logic would provide more accurate assessment of your overall environment.</p>\r\n\r\n<p>If this is a concern, and if you&rsquo;d like other resource types to be reflected as compliant resources, please include the statement &lsquo;allOf:[ field: type in [list of resource types to be counted towards total]],&rsquo;, as in the built-in policy definition &lsquo;Storage accounts should be migrated to new Azure Resource Manager resources&rsquo;.</p>\r\n\r\n<p>&nbsp;If you have a support plan and need technical help, please <a href=\"https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest\" target=\"_blank\" rel=\"noopener\">create a support request</a>.</p>\r\n\r\n<p><a href=\"https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Overview\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p>\r\n",
+    "Markdown": "Starting on June 16, 2021, policies where resource type is the only evaluation criterion (e.g. Allowed Resource Types, Disallowed Resource Types) will not have 'compliant' resources stored in compliance records. This means that if there are zero non-compliant resources, the policy will show 100% compliance. If there is one or more non-compliant resources, the policy will show 0% compliance, with the total resources equaling the non-compliant resources. This change is to address feedback that resource type policies skew overall compliance percentage data (which are calculated as compliant + exempt resources out of the total resources across all policies, deduped for unique resource IDs) due to a high number of total resources.\n\nThe resource type policy has a high total resource count, because it’s the only policy where all resources in the scope of the assignment count towards ‘total resources’. Other policies only consider applicable resource types to count towards total resources (i.e. VM extension policy would only count VMs in total resources).\n\nGoing forward, the resource type policies will only count the non-compliant resources (when ‘if’ statement evaluates to true) towards the total resources. So, if there are zero-non-compliant resources, the policy will show 100% compliance. Alternatively, if there are one or more non-compliant resources, the policy will show 0% compliance (since non-compliant resources = total resources). Aggregated with other policies, this logic would provide more accurate assessment of your overall environment.\n\nIf this is a concern, and if you’d like other resource types to be reflected as compliant resources, please include the statement ‘allOf:[ field: type in [list of resource types to be counted towards total]],’, as in the built-in policy definition ‘Storage accounts should be migrated to new Azure Resource Manager resources’.\n\nIf you have a support plan and need technical help, please create a support request .\n\nLearn more ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "general-availability-update-in-policy-compliance-for-resource-type-policies"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=general-availability-update-in-policy-compliance-for-resource-type-policies"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: June 2021"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance"
+    }
+  ]
+}

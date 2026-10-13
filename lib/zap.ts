@@ -51,6 +51,31 @@ export type ZapCounts = { up: number; down: number; commentCount: number }
 /** The most posts zap.ms counts in one request. */
 export const COUNTS_BATCH = 200
 
+// Older Azure updates are named by slugs of up to 200 characters, so a batch
+// is also capped by how long its address gets.
+const COUNTS_ADDRESS_CHARS = 4000
+
+/** `ids` split into the batches to ask zap.ms about, in order. */
+export function countsBatches(ids: string[]): string[][] {
+  const batches: string[][] = []
+  let batch: string[] = []
+  let length = 0
+  for (const id of ids) {
+    if (
+      batch.length === COUNTS_BATCH ||
+      (batch.length > 0 && length + id.length + 1 > COUNTS_ADDRESS_CHARS)
+    ) {
+      batches.push(batch)
+      batch = []
+      length = 0
+    }
+    batch.push(id)
+    length += id.length + 1
+  }
+  if (batch.length > 0) batches.push(batch)
+  return batches
+}
+
 /**
  * The API path for the counts of `ids`. Sorted, so everyone looking at the
  * same posts asks for the same address and zap.ms answers from one stored copy.

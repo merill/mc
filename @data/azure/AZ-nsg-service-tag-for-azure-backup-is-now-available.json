@@ -1,0 +1,51 @@
+{
+  "Id": "AZ-nsg-service-tag-for-azure-backup-is-now-available",
+  "Title": "Network Security Group service tag for Azure Backup is now available",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-05-16T16:00:05.000Z",
+  "LastModifiedDateTime": "2019-05-16T16:00:05.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Backup"
+  ],
+  "Tags": [
+    "Features",
+    "Management",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>​Network Security Groups (NSGs) are widely used to secure resources inside a VNet from various security-related threats by blocking outbound internet connectivity. However,&nbsp;backing up SQL servers in VMs to Azure requires connectivity from within the guest to the Azure Backup service, Azure Storage and Azure Active Directory.&nbsp;In order to enable backups, customers need to whitelist Azure IP addresses, which need to be managed.</p>\r\n\r\n<p>NSG service tag for Azure Backup, now available, aims to ease the process of running backups in an environment locked down using NSGs. With this, you now have the option to simply use the &lsquo;AzureBackup&rsquo; tag to allow outbound access to Azure Backup for your workload (SQL server) agent running inside the VM, instead of managing whitelisting of required IPs. Apart from backup of SQL in VMs, the Azure Backup service tag can also be used when backing up locked down VMs using MARS agent.</p>\r\n\r\n<p>The Azure Backup service tag is available for public and national clouds, and rules using this tag can be currently created through PowerShell and CLI. For running backups, outbound access to Azure Storage and Azure Active Directory is also required, and hence, the appropriate rules containing tags for the same also need&nbsp;to be added along with that for Azure Backup. For more details on network connectivity for backing up SQL in Azure VMs, refer <a href=\"https://docs.microsoft.com/en-us/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity\" target=\"_blank\" rel=\"noopener\">here</a>.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "​Network Security Groups (NSGs) are widely used to secure resources inside a VNet from various security-related threats by blocking outbound internet connectivity. However, backing up SQL servers in VMs to Azure requires connectivity from within the guest to the Azure Backup service, Azure Storage and Azure Active Directory. In order to enable backups, customers need to whitelist Azure IP addresses, which need to be managed.\n\nNSG service tag for Azure Backup, now available, aims to ease the process of running backups in an environment locked down using NSGs. With this, you now have the option to simply use the ‘AzureBackup’ tag to allow outbound access to Azure Backup for your workload (SQL server) agent running inside the VM, instead of managing whitelisting of required IPs. Apart from backup of SQL in VMs, the Azure Backup service tag can also be used when backing up locked down VMs using MARS agent.\n\nThe Azure Backup service tag is available for public and national clouds, and rules using this tag can be currently created through PowerShell and CLI. For running backups, outbound access to Azure Storage and Azure Active Directory is also required, and hence, the appropriate rules containing tags for the same also need to be added along with that for Azure Backup. For more details on network connectivity for backing up SQL in Azure VMs, refer here ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "nsg-service-tag-for-azure-backup-is-now-available"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=nsg-service-tag-for-azure-backup-is-now-available"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: May 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance, Storage"
+    }
+  ]
+}

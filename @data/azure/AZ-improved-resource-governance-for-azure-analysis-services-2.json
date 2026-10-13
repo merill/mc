@@ -1,0 +1,46 @@
+{
+  "Id": "AZ-improved-resource-governance-for-azure-analysis-services-2",
+  "Title": "Improved resource governance for Azure Analysis Services",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-03-06T17:00:00.000Z",
+  "LastModifiedDateTime": "2020-03-06T17:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Analysis Services"
+  ],
+  "Tags": [
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Today, we are announcing the release of two enhancements concerning the memory governance options of Azure Analysis Services. Specifically, the enhancements improve the accuracy of the Memory\\QueryMemoryLimit server property and the DbpropMsmdRequestMemoryLimit connection string property. We introduced these properties in June 2018 to limit the memory spools built by DAX queries. The enhancements now cover MDX queries as well, so they effectively cover all queries, and they are no longer limited to memory spools. With full query coverage and improved accuracy, you get more control over the memory consumption related to expensive queries so that you can ensure a high quality of service for all users sending queries to your Azure Analysis Services server.</p>\r\n\r\n<p>The Memory\\QueryMemoryLimit server property enables you to control expensive queries that result in significant materialization. If the query hits the limit specified through this property, Azure Analysis Services cancels the query and returns an error to the caller. This helps to reduce the impact on other concurrent users of the server. In the screenshot below, the Memory\\QueryMemoryLimit server property limits memory consumption per query to 20%. Values up 100 refer to percentages, more than 100, it&#39;s in bytes, and a value of 0 means no limit. As indicated in the screenshot, make sure you enable the show Advanced (All) Properties checkbox to display this setting. For more information about how Azure Analysis Services allocates and deallocates memory, see the <a href=\"https://docs.microsoft.com/en-us/analysis-services/server-properties/memory-properties?view=azure-analysis-services-current\" target=\"_blank\" rel=\"noopener\"><u>Memory properties</u></a> article in the product documentation.</p>\r\n\r\n<p><img alt=\"server properties\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/2d4bd5a9-2ed5-4f1f-954a-c1fa9f4fbb44.png\" title=\"server properties\"></p>\r\n\r\n<p>An Azure Analysis Services client application can choose to further reduce the memory allowed per query by specifying the DbpropMsmdRequestMemoryLimit command property. As documented under <a href=\"https://docs.microsoft.com/en-us/analysis-services/instances/connection-string-properties-analysis-services?view=azure-analysis-services-current#bkmk_special\" target=\"_blank\" rel=\"noopener\"><u>Special-purpose parameters</u></a> in the <a href=\"https://docs.microsoft.com/en-us/analysis-services/instances/connection-string-properties-analysis-services?view=azure-analysis-services-current\" target=\"_blank\" rel=\"noopener\"><u>Connection String Properties (Analysis Services)</u></a> reference article in the product documentation, you must specify the DbpropMsmdRequestMemoryLimit value in kilobytes (KB). The memory limit used will be the smaller of the two values when they&rsquo;re both specified</p>\r\n\r\n<p>Note that these enhancements are not available in the SQL Server Analysis Services 2019 release.</p>\r\n",
+    "Markdown": "Today, we are announcing the release of two enhancements concerning the memory governance options of Azure Analysis Services. Specifically, the enhancements improve the accuracy of the Memory\\QueryMemoryLimit server property and the DbpropMsmdRequestMemoryLimit connection string property. We introduced these properties in June 2018 to limit the memory spools built by DAX queries. The enhancements now cover MDX queries as well, so they effectively cover all queries, and they are no longer limited to memory spools. With full query coverage and improved accuracy, you get more control over the memory consumption related to expensive queries so that you can ensure a high quality of service for all users sending queries to your Azure Analysis Services server.\n\nThe Memory\\QueryMemoryLimit server property enables you to control expensive queries that result in significant materialization. If the query hits the limit specified through this property, Azure Analysis Services cancels the query and returns an error to the caller. This helps to reduce the impact on other concurrent users of the server. In the screenshot below, the Memory\\QueryMemoryLimit server property limits memory consumption per query to 20%. Values up 100 refer to percentages, more than 100, it's in bytes, and a value of 0 means no limit. As indicated in the screenshot, make sure you enable the show Advanced (All) Properties checkbox to display this setting. For more information about how Azure Analysis Services allocates and deallocates memory, see the Memory properties article in the product documentation.\n\nAn Azure Analysis Services client application can choose to further reduce the memory allowed per query by specifying the DbpropMsmdRequestMemoryLimit command property. As documented under Special-purpose parameters in the Connection String Properties (Analysis Services) reference article in the product documentation, you must specify the DbpropMsmdRequestMemoryLimit value in kilobytes (KB). The memory limit used will be the smaller of the two values when they’re both specified\n\nNote that these enhancements are not available in the SQL Server Analysis Services 2019 release."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "improved-resource-governance-for-azure-analysis-services-2"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=improved-resource-governance-for-azure-analysis-services-2"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: March 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

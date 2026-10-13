@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-azure-monitor-logs-concurrency-query-throttle",
+  "Title": "Azure Monitor Logs—Concurrency query throttle is being rolled out",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-04-30T16:00:00.000Z",
+  "LastModifiedDateTime": "2020-04-30T16:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Monitor"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>To ensure that Azure Monitor Logs will deliver a consistent experience for all users, <a href=\"https://aka.ms/logslimits\" target=\"_blank\" rel=\"noopener\">a new concurrency limit</a> is gradually being rolled out. This will help to&nbsp;protect against users sending an excessive number of queries at once, which could potentially overload system resources and jeopardize responsiveness. Some users will experience this immediately, others in a month or two as the roll out is completed. <b>These limits are designed to throttle only extreme usage scenarios and shouldn&rsquo;t be relevant for typical usage.</b>&nbsp;</p>\r\n\r\n<p>If there are already five queries running for any user, any new queries will be placed in a per-user concurrency queue. When one of the running queries ends, the next query will be pulled from the queue and started. This doesn&rsquo;t include queries from alert rules.</p>\r\n\r\n<p>If a query sits in the queue for more than 2.5 minutes without being started, it will be terminated with an HTTP error response with code 429.&nbsp;</p>\r\n\r\n<p>Once the number of queries in the queue reaches 40, any additional queries will by rejected with an HTTP error code 429. This is in addition to the five queries that can run simultaneously.</p>\r\n\r\n<p>If your queries are throttled by the new limits:</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://aka.ms/logqueryperf\" target=\"_blank\" rel=\"noopener\">Optimize your log queries</a>.</li>\r\n\t<li>Dashboards and workbooks can contain multiple queries in a single view that generate a burst of queries every time they load or refresh. Consider breaking them up into multiple views that load on demand.</li>\r\n\t<li>In Power BI, consider extracting only aggregated results rather than raw logs.</li>\r\n</ul>\r\n\r\n<p><a href=\"https://aka.ms/logslimits\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p>\r\n",
+    "Markdown": "To ensure that Azure Monitor Logs will deliver a consistent experience for all users, a new concurrency limit is gradually being rolled out. This will help to protect against users sending an excessive number of queries at once, which could potentially overload system resources and jeopardize responsiveness. Some users will experience this immediately, others in a month or two as the roll out is completed. These limits are designed to throttle only extreme usage scenarios and shouldn’t be relevant for typical usage.\n\nIf there are already five queries running for any user, any new queries will be placed in a per-user concurrency queue. When one of the running queries ends, the next query will be pulled from the queue and started. This doesn’t include queries from alert rules.\n\nIf a query sits in the queue for more than 2.5 minutes without being started, it will be terminated with an HTTP error response with code 429.\n\nOnce the number of queries in the queue reaches 40, any additional queries will by rejected with an HTTP error code 429. This is in addition to the five queries that can run simultaneously.\n\nIf your queries are throttled by the new limits:\n\nOptimize your log queries .\n\nDashboards and workbooks can contain multiple queries in a single view that generate a burst of queries every time they load or refresh. Consider breaking them up into multiple views that load on demand.\n\nIn Power BI, consider extracting only aggregated results rather than raw logs.\n\nLearn more ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-monitor-logs-concurrency-query-throttle"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-monitor-logs-concurrency-query-throttle"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: April 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "DevOps, Management and governance"
+    }
+  ]
+}

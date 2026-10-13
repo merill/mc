@@ -1,0 +1,51 @@
+{
+  "Id": "AZ-azure-blob-storage-lifecycle-management-now-supports-blob-versions-management",
+  "Title": "Azure Blob storage lifecycle management now supports blob versions management",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-10-21T15:00:31.000Z",
+  "LastModifiedDateTime": "2020-10-21T15:00:31.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Archive Storage",
+    "Azure Blob Storage",
+    "Storage Accounts"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure Blob storage lifecycle managment now supports blob versions.&nbsp;Microsoft recommends using <a href=\"https://docs.microsoft.com/azure/storage/blobs/versioning-overview\" target=\"_blank\" rel=\"noopener\">blob versioning</a> to maintain previous versions of a blob for data protection. When blob versioning is enabled for a storage account, Azure Storage automatically creates a new version of a blob each time that blob is modified or deleted. You can use lifecycle management to automatically transition old blob versions to a cooler storage tier (hot to cool, hot to archive, or cool to archive) or delete old blob versions to optimize for cost.</p>\r\n\r\n<p>This sample policy rule below tiers previous versions within container&nbsp;<code>activedata</code>&nbsp;that are 90 days or older to cool tier, and deletes previous versions that are 365 days or older.</p>\r\n\r\n<pre>\r\n{\r\n  &quot;rules&quot;: [\r\n    {\r\n      &quot;enabled&quot;: true,\r\n      &quot;name&quot;: &quot;versionrule&quot;,\r\n      &quot;type&quot;: &quot;Lifecycle&quot;,\r\n      &quot;definition&quot;: {\r\n        &quot;actions&quot;: {\r\n          &quot;version&quot;: {\r\n            &quot;tierToCool&quot;: {\r\n              &quot;daysAfterCreationGreaterThan&quot;: 90\r\n            },\r\n            &quot;delete&quot;: {\r\n              &quot;daysAfterCreationGreaterThan&quot;: 365\r\n            }\r\n          }\r\n        },\r\n        &quot;filters&quot;: {\r\n          &quot;blobTypes&quot;: [\r\n            &quot;blockBlob&quot;\r\n          ],\r\n          &quot;prefixMatch&quot;: [\r\n            &quot;activedata&quot;\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}\r\n</pre>\r\n\r\n<p>Learn more about <a href=\"https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts\" target=\"_blank\" rel=\"noopener\">lifecycle management</a>.</p>\r\n\r\n<p>The lifecycle management feature is free of charge. Customers are charged the regular operation cost for the&nbsp;<a href=\"https://docs.microsoft.com/en-us/rest/api/storageservices/set-blob-tier\" target=\"_blank\" rel=\"noopener\">Set Blob Tier</a>&nbsp;API calls. Delete operation is free. For more information about pricing, see&nbsp;<a href=\"https://azure.microsoft.com/pricing/details/storage/blobs/\" target=\"_blank\" rel=\"noopener\">Block Blob pricing</a>.</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "Azure Blob storage lifecycle managment now supports blob versions. Microsoft recommends using blob versioning to maintain previous versions of a blob for data protection. When blob versioning is enabled for a storage account, Azure Storage automatically creates a new version of a blob each time that blob is modified or deleted. You can use lifecycle management to automatically transition old blob versions to a cooler storage tier (hot to cool, hot to archive, or cool to archive) or delete old blob versions to optimize for cost.\n\nThis sample policy rule below tiers previous versions within container activedata that are 90 days or older to cool tier, and deletes previous versions that are 365 days or older.\n\n{\n\n\"rules\": [\n\n{\n\n\"enabled\": true,\n\n\"name\": \"versionrule\",\n\n\"type\": \"Lifecycle\",\n\n\"definition\": {\n\n\"actions\": {\n\n\"version\": {\n\n\"tierToCool\": {\n\n\"daysAfterCreationGreaterThan\": 90\n\n},\n\n\"delete\": {\n\n\"daysAfterCreationGreaterThan\": 365\n\n}\n\n}\n\n},\n\n\"filters\": {\n\n\"blobTypes\": [\n\n\"blockBlob\"\n\n],\n\n\"prefixMatch\": [\n\n\"activedata\"\n\n]\n\n}\n\n}\n\n}\n\n]\n\n}\n\nLearn more about lifecycle management .\n\nThe lifecycle management feature is free of charge. Customers are charged the regular operation cost for the Set Blob Tier API calls. Delete operation is free. For more information about pricing, see Block Blob pricing ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-blob-storage-lifecycle-management-now-supports-blob-versions-management"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-blob-storage-lifecycle-management-now-supports-blob-versions-management"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Storage"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "Id": "AZ-riuiupdate",
+  "Title": "Azure reservations: New experience and APIs for purchasing reservations",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-04-19T18:06:03.000Z",
+  "LastModifiedDateTime": "2019-04-19T18:06:03.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [],
+  "Tags": [
+    "Features",
+    "Management",
+    "Pricing & Offerings"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>We&rsquo;re launching a new user experience and APIs for purchasing Azure reservations. You can now add multiple products to your cart and purchase them together from the&nbsp;<a href=\"https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade\" target=\"_blank\" rel=\"noopener\">Azure portal</a>, or use the <a href=\"https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder\" target=\"_blank\" rel=\"noopener\">reservation APIs</a> to&nbsp;purchase individual products.</p>\r\n\r\n<p>The new user experience also shows purchase recommendations for VM size that have consistent usage over the last 30 days, to help you&nbsp;select the right VM size.</p>\r\n\r\n<p>Each product in your cart is processed as a separate transaction. If one purchase fails, other products in the cart are not&nbsp;affected and will still be purchased.</p>\r\n\r\n<p><img alt=\"New purchase UI\" src=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/newuiupload.gif\"></p>\r\n\r\n<p>You can now purchase Azure reservations and software plans by using REST APIs.&nbsp;To learn more, see the <a href=\"https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase\" target=\"_blank\" rel=\"noopener\">reservation docs</a>.</p>\r\n\r\n<p>Here&#39;s a sample request to purchase by using an API:</p>\r\n\r\n<div>\r\n<pre>\r\nPUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/&lt;GUID&gt;?api-version=2019-04-01</pre>\r\n</div>\r\n\r\n<p>Request body:</p>\r\n\r\n<div>\r\n<div><code>{</code></div>\r\n\r\n<div><code>&nbsp;</code>&quot;sku&quot;<code>: {</code></div>\r\n\r\n<div><code>&nbsp;&nbsp; &nbsp;</code>&quot;name&quot;: &quot;standard_D1&quot;</div>\r\n\r\n<div><code>&nbsp; },</code></div>\r\n\r\n<div><code>&nbsp;</code>&quot;location&quot;: &quot;westus&quot;<code>,</code></div>\r\n\r\n<div><code>&nbsp;</code>&quot;properties&quot;<code>: {</code></div>\r\n\r\n<div><code>&nbsp;&nbsp; &nbsp;</code>&quot;reservedResourceType&quot;: &quot;VirtualMachines&quot;<code>,</code></div>\r\n\r\n<div><code>&nbsp;&nbsp; &nbsp;</code>&quot;billingScopeId&quot;: &quot;/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83&quot;<code>,</code></div>\r\n\r\n<div><code>&nbsp;&nbsp; &nbsp;</code>&quot;term&quot;: &quot;P1Y&quot;<code>,</code></div>\r\n\r\n<div><code>&nbsp;&nbsp; &nbsp;</code>&quot;quantity&quot;: &quot;1&quot;<code>,</code></div>\r\n\r\n<div><code>&nbsp;&nbsp; &nbsp;</code>&quot;displayName&quot;: &quot;TestReservationOrder&quot;<code>,</code></div>\r\n\r\n<div><code>&nbsp;&nbsp; &nbsp;</code>&quot;appliedScopes&quot;: null<code>,</code></div>\r\n\r\n<div><code>&nbsp;&nbsp; &nbsp;</code>&quot;appliedScopeType&quot;: &quot;Shared&quot;<code>,</code></div>\r\n\r\n<div><code>&nbsp;&nbsp; &nbsp;</code>&quot;reservedResourceProperties&quot;<code>: {</code></div>\r\n\r\n<div><code>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</code>&quot;instanceFlexibility&quot;: &quot;On&quot;</div>\r\n\r\n<div><code>&nbsp;&nbsp;&nbsp; }</code></div>\r\n\r\n<div><code>&nbsp; }</code></div>\r\n\r\n<div><code>}</code></div>\r\n\r\n<div>&nbsp;</div>\r\n</div>\r\n\r\n<p>For more information, see:</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation\" target=\"_blank\" rel=\"noopener\">API to get recommendations</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges\" target=\"_blank\" rel=\"noopener\">API to get reserved instance transactions</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage\" target=\"_blank\" rel=\"noopener\">API to get reserved instance usage</a></li>\r\n</ul>\r\n",
+    "Markdown": "We’re launching a new user experience and APIs for purchasing Azure reservations. You can now add multiple products to your cart and purchase them together from the Azure portal , or use the reservation APIs to purchase individual products.\n\nThe new user experience also shows purchase recommendations for VM size that have consistent usage over the last 30 days, to help you select the right VM size.\n\nEach product in your cart is processed as a separate transaction. If one purchase fails, other products in the cart are not affected and will still be purchased.\n\nYou can now purchase Azure reservations and software plans by using REST APIs. To learn more, see the reservation docs .\n\nHere's a sample request to purchase by using an API:\n\nPUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/<GUID>?api-version=2019-04-01\n\nRequest body:\n\n{\n\n\"sku\" : {\n\n\"name\": \"standard_D1\"\n\n},\n\n\"location\": \"westus\" ,\n\n\"properties\" : {\n\n\"reservedResourceType\": \"VirtualMachines\" ,\n\n\"billingScopeId\": \"/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83\" ,\n\n\"term\": \"P1Y\" ,\n\n\"quantity\": \"1\" ,\n\n\"displayName\": \"TestReservationOrder\" ,\n\n\"appliedScopes\": null ,\n\n\"appliedScopeType\": \"Shared\" ,\n\n\"reservedResourceProperties\" : {\n\n\"instanceFlexibility\": \"On\"\n\n}\n\n}\n\n}\n\nFor more information, see:\n\nAPI to get recommendations\n\nAPI to get reserved instance transactions\n\nAPI to get reserved instance usage"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "riuiupdate"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=riuiupdate"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: April 2019"
+    }
+  ]
+}

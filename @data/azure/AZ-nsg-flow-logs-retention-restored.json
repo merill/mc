@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-nsg-flow-logs-retention-restored",
+  "Title": "Azure Storage—Restoration of NSG flow logs retention",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-11-27T18:00:45.000Z",
+  "LastModifiedDateTime": "2019-11-27T18:00:45.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Network Watcher"
+  ],
+  "Tags": [
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The Retention feature on NSG flow logs was recently disabled, the functionality has been restored for&nbsp;<a href=\"https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts\" target=\"_blank\" rel=\"noopener\">general purpose v2 (GPv2) accounts and Blob storage accounts. </a>&nbsp;It will not be restored for general purpose v1 (GPv1) storage accounts.</p>\r\n\r\n<p><strong>What has been restored?</strong></p>\r\n\r\n<p>NSG flow log retention is now available for users with GPv2 and Blob storage accounts&mdash;the flow log data will be deleted as per the retention policy configured earlier. Going forward, configuring a retention period will create a&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal\" target=\"_blank\" rel=\"noopener\">data lifecycle management policy&nbsp;</a>on the storage account.</p>\r\n\r\n<p>Retention won&rsquo;t be restored for users with GPv1 accounts but flow logs will continue to work as they currently do. Users with v1 storage accounts are recommended to <a href=\"https://docs.microsoft.com/azure/storage/common/storage-account-upgrade\" target=\"_blank\" rel=\"noopener\">upgrade their storage accounts to v2</a>&nbsp;for enabling retention.&nbsp;<a href=\"https://docs.microsoft.com/azure/storage/common/storage-account-upgrade\" target=\"_blank\" rel=\"noopener\">Upgrading to v2</a>&nbsp;is free of charge and v2 accounts provide more features.</p>\r\n\r\n<p><em>Storage-limitation on GPv2 accounts</em></p>\r\n\r\n<p>On GPv2 accounts, the current mechanism can only support upto 1000 NSGs. If more than 1000 NSGs are being logged, Customers will have to start using multiple storage accounts. Why? Storage accounts allow the creation of upto 100 rules. This combined with 10-match<a href=\"https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal#rule-filters\" target=\"_blank\" rel=\"noopener\"> prefixes</a> per rule means we can currently support upto 1000 NSGs per storage account.</p>\r\n\r\n<p><strong>What do I have to do?</strong></p>\r\n\r\n<ul>\r\n\t<li><strong>Users with GPv2 and Blob storage accounts in NSG flow logs&mdash;</strong>To restore retention, users must disable then enable flow logs on every NSG.\r\n\r\n\t<ul>\r\n\t\t<li>Portal: For each NSG &ndash; Go to the flow logs settings, toggle status to Off. Click Save. Toggle Status to On. Click Save</li>\r\n\t\t<li>Powershell: Use the <a href=\"https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.13.0\" target=\"_blank\" rel=\"noopener\">Set-AzureRmNetworkWatcherConfigFlowLog</a> module. For every NSG toggle -EnableFlowLog to false. Then toggle it back to true. You can find sample commands in the <a href=\"https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell\" target=\"_blank\" rel=\"noopener\">documentation</a>.</li>\r\n\t\t<li>Azure CLI: Use the <a href=\"https://docs.microsoft.com/cli/azure/network/watcher/flow-log?view=azure-cli-latest\" target=\"_blank\" rel=\"noopener\">az network watcher flow-log</a> module. For every NSG toggle --enabled to false. Then toggle it back to true. You can find sample commands in the <a href=\"https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli\" target=\"_blank\" rel=\"noopener\">documentation</a>.</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>This will reconfigure flow logs and restore retention. If this isn&rsquo;t done, all NSG flow logs users with v2 storage accounts will have their retention restored through a manual migration after 60 days.</p>\r\n\r\n<ul>\r\n\t<li><strong>Users with GPv1 storage accounts in NSG flow logs&mdash; </strong>If you seek to store data permanently, no action is needed. Existing data in the v1 storage account will remain as it currently is and NSG flow logs will continue to work but the data will not be deleted by the retention service. Follow&nbsp;<a href=\"https://docs.microsoft.com/azure/storage/common/storage-account-upgrade\" target=\"_blank\" rel=\"noopener\">these instructions</a>&nbsp;to upgrade your account to v2 for enabling retention. In case you don&rsquo;t want to upgrade your storage account, you may use the <a href=\"https://docs.microsoft.com/azure/network-watcher/network-watcher-delete-nsg-flow-log-blobs\" target=\"_blank\" rel=\"noopener\">deletion script</a> provided earlier.</li>\r\n</ul>\r\n\r\n<p><strong>How do I upgrade my account?</strong></p>\r\n\r\n<p>To upgrade to v2, follow&nbsp;<a href=\"https://docs.microsoft.com/azure/storage/common/storage-account-upgrade\" target=\"_blank\" rel=\"noopener\">these instructions</a>.</p>\r\n",
+    "Markdown": "The Retention feature on NSG flow logs was recently disabled, the functionality has been restored for general purpose v2 (GPv2) accounts and Blob storage accounts. It will not be restored for general purpose v1 (GPv1) storage accounts.\n\nWhat has been restored?\n\nNSG flow log retention is now available for users with GPv2 and Blob storage accounts—the flow log data will be deleted as per the retention policy configured earlier. Going forward, configuring a retention period will create a data lifecycle management policy on the storage account.\n\nRetention won’t be restored for users with GPv1 accounts but flow logs will continue to work as they currently do. Users with v1 storage accounts are recommended to upgrade their storage accounts to v2 for enabling retention. Upgrading to v2 is free of charge and v2 accounts provide more features.\n\nStorage-limitation on GPv2 accounts\n\nOn GPv2 accounts, the current mechanism can only support upto 1000 NSGs. If more than 1000 NSGs are being logged, Customers will have to start using multiple storage accounts. Why? Storage accounts allow the creation of upto 100 rules. This combined with 10-match prefixes per rule means we can currently support upto 1000 NSGs per storage account.\n\nWhat do I have to do?\n\nUsers with GPv2 and Blob storage accounts in NSG flow logs— To restore retention, users must disable then enable flow logs on every NSG.\n\nPortal: For each NSG – Go to the flow logs settings, toggle status to Off. Click Save. Toggle Status to On. Click Save\n\nPowershell: Use the Set-AzureRmNetworkWatcherConfigFlowLog module. For every NSG toggle -EnableFlowLog to false. Then toggle it back to true. You can find sample commands in the documentation .\n\nAzure CLI: Use the az network watcher flow-log module. For every NSG toggle --enabled to false. Then toggle it back to true. You can find sample commands in the documentation .\n\nThis will reconfigure flow logs and restore retention. If this isn’t done, all NSG flow logs users with v2 storage accounts will have their retention restored through a manual migration after 60 days.\n\nUsers with GPv1 storage accounts in NSG flow logs— If you seek to store data permanently, no action is needed. Existing data in the v1 storage account will remain as it currently is and NSG flow logs will continue to work but the data will not be deleted by the retention service. Follow these instructions to upgrade your account to v2 for enabling retention. In case you don’t want to upgrade your storage account, you may use the deletion script provided earlier.\n\nHow do I upgrade my account?\n\nTo upgrade to v2, follow these instructions ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "nsg-flow-logs-retention-restored"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=nsg-flow-logs-retention-restored"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: November 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance, Networking"
+    }
+  ]
+}

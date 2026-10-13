@@ -5,6 +5,7 @@ import {
   getAllMessageIds,
   getMessageData,
   getMessageDescription,
+  getMessageHeading,
   getMessageSourceLabel,
 } from "@/lib/messages"
 import MessageDetail from "@/app/message/[id]/components/message-detail"
@@ -23,7 +24,7 @@ export default async function Page({ params }: Props) {
       <section className="page-shell min-w-0">
         <div className="flex min-w-0 flex-col items-start gap-3">
           <h1 className="max-w-6xl break-words text-2xl font-extrabold leading-tight tracking-tight text-foreground md:text-4xl md:leading-tight">
-            {msg?.Id} - {msg?.Title}
+            {getMessageHeading(msg)}
           </h1>
           <p className="text-lg font-medium leading-8 text-foreground/75 md:text-xl">
             {getMessageSourceLabel(msg)}
@@ -42,7 +43,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { id } = await params
   const msg = getMessageData(id)
-  const title = msg ? `${msg.Id} - ${msg.Title}` : id
+  const title = msg ? getMessageHeading(msg) : id
   const description = getMessageDescription(msg) || siteConfig.description
   const url = `/message/${id}`
   const sourceLabel = getMessageSourceLabel(msg)

@@ -1,0 +1,47 @@
+{
+  "Id": "AZ-lsa-payload-update-for-fixes-on-15jan",
+  "Title": "LSA payload update for fixes on 15-Jan",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2023-10-10T16:00:06.000Z",
+  "LastModifiedDateTime": "2023-10-10T16:00:06.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Alerts"
+  ],
+  "Tags": [
+    "Compliance",
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Log alerts are one of the alert types that are supported in Azure Monitor. Log alerts allow users to use a log analytics query to evaluate resources logs every set frequency, and fire an alert based on the results. Rules can trigger one or more actions using action groups.&nbsp;</p>\r\n\r\n<p>As a part of Log alerts payload, we are sending the fields ResultCount (Log Alerts V1), metricValue (Log Alerts V2).</p>\r\n\r\n<ul>\r\n\t<li>ResultCount: That should contain the value of the number of records returned by the query. For metric measurement rules, the number or records that match the specific dimension combination. Unfortunately, today the resultCount of the last evaluation which met the threshold and not of the evaluation which fired the alert as in &ldquo;Metric Alerts&rdquo;.</li>\r\n\t<li>metricValue: that should contain the metric value at the time that it violated the threshold. Unfortunately, today the result is always null.</li>\r\n</ul>\r\n\r\n<p>On the 15-Jan we are going to fix those 2 values to contain the correct values according to our other alerts services.</p>\r\n\r\n<p>For more details on the Log search scheme, you can see <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fazure-monitor%2Falerts%2Falerts-common-schema%23alert-context-fields-for-log-alerts&amp;data=05%7C01%7CNoga.Lavi%40microsoft.com%7C33aeb0094c214bc8291d08dbbe7b4933%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638313208953858797%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=NMhtPDb5LVaw8QFTGeF%2FwAk3VDTeRWy2t1e29rSvhss%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">here</a>.</p>\r\n",
+    "Markdown": "Log alerts are one of the alert types that are supported in Azure Monitor. Log alerts allow users to use a log analytics query to evaluate resources logs every set frequency, and fire an alert based on the results. Rules can trigger one or more actions using action groups.\n\nAs a part of Log alerts payload, we are sending the fields ResultCount (Log Alerts V1), metricValue (Log Alerts V2).\n\nResultCount: That should contain the value of the number of records returned by the query. For metric measurement rules, the number or records that match the specific dimension combination. Unfortunately, today the resultCount of the last evaluation which met the threshold and not of the evaluation which fired the alert as in “Metric Alerts”.\n\nmetricValue: that should contain the metric value at the time that it violated the threshold. Unfortunately, today the result is always null.\n\nOn the 15-Jan we are going to fix those 2 values to contain the correct values according to our other alerts services.\n\nFor more details on the Log search scheme, you can see here ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "lsa-payload-update-for-fixes-on-15jan"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=lsa-payload-update-for-fixes-on-15jan"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2023"
+    }
+  ]
+}

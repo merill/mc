@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-new-enhancements-to-azure-machine-learning",
+  "Title": "New enhancements to Azure Machine Learning",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2014-10-24T00:37:16.000Z",
+  "LastModifiedDateTime": "2014-10-24T00:37:16.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Machine Learning"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "We've made the following updates to Azure Machine Learning with our October 23, 2014, release.\n\n<strong>Modules</strong>\n<ul>\n <li>Join: In the case of joining tables, adding columns to tables, or loading tables from sources that allow duplicate column names, columns with the same name as a column in the table (\"My Column\") are now renamed with a space and then the replication number: \"My Column (2)\", “My Column (3)\", and so on. Previously there was no space between the column name and the number in parentheses. Experiments that select columns by name containing columns named under the old convention \"My Column(2)\" will need to be updated to reflect the new protocol \"My Column (2)\".</li>\n <li>Writer: For Azure Blob Storage data destination, a parameter <em>Azure blob storage write mode</em> was added.\n<ul>\n <li>If the <strong>Overwrite</strong> option is selected, the blob file in destination will be overwritten, if it exists.</li>\n <li>If the <strong>Error</strong> option is selected and the blob file already exists, it will not be overwritten, but error message will still be shown.</li>\n</ul>\n</li>\n <li>Metadata Editor: Able to convert string columns with missing values.</li>\n <li>Sweep Parameters: Results are sorted by the selected metric.</li>\n <li>Bayesian Linear Regression:  Now processes string columns.</li>\n <li>Cross-Validate Model: Missing values were incorrectly being counted as false negatives. This issue has been fixed.</li>\n <li>Split Module: Now propagates column names in Recommender Split mode.</li>\n <li>Vowbal Wabbit Score: Unnecessary input parameters have been removed.</li>\n</ul>\n<strong>Azure Management Portal</strong>\n<ul>\n <li>When creating a new Azure Machine Learning workspace in the Azure Management Portal, the Workspace Owner is automatically populated with the Windows account (Live ID) with which you are signed in.</li>\n <li>The Owner of a workspace can now be changed from the <strong>Configure</strong> tab within the Azure Management Portal.</li>\n <li>The <strong>Open in Studio</strong> button on the command bar allows you to jump directly to the Azure Machine Learning Studio.</li>\n</ul>\n<strong>Azure Machine Learning Studio </strong>\n<ul>\n <li>When you click in the <em>R Script</em> parameter of the <strong>Execute R Script</strong> module, the parameter pane now expands so that the text box for editing your R script is larger.</li>\n <li>If you attempt to sign in to Azure Machine Learning with a Microsoft Account (Live ID) that does not have access to a workspace, the Microsoft Account is displayed to make troubleshooting easier when you have multiple Microsoft Accounts.</li>\n</ul>\n<strong>Request Response Service (RRS)</strong>\n<ul>\n <li>For RRS API calls, error numbers for-user related errors will change from error number 500 to \"400 Bad Request.\"  The body of the error, which is in JSON format, will also have a <strong>Message</strong> property, which will contain the error message. An example of the modified error:</li>\n</ul>\nContent-Length: 79 Server: Microsoft-HTTPAPI/2.0 Date: Thu, 09 Oct 2014 22:04:08 GMT {\"ErrorCode\":\"UserError\",\"Message\":\"Input string was not in a correct format.\"}\n\nx-ms-request-id: b952f947-6149-4cff-a193-ecc12bd0c468\n\nContent-Type: application/json; charset=utf-8\n\nHTTP/1.1 400 Bad Request",
+    "Markdown": "We've made the following updates to Azure Machine Learning with our October 23, 2014, release.\n\nModules\n\nJoin: In the case of joining tables, adding columns to tables, or loading tables from sources that allow duplicate column names, columns with the same name as a column in the table (\"My Column\") are now renamed with a space and then the replication number: \"My Column (2)\", “My Column (3)\", and so on. Previously there was no space between the column name and the number in parentheses. Experiments that select columns by name containing columns named under the old convention \"My Column(2)\" will need to be updated to reflect the new protocol \"My Column (2)\".\n\nWriter: For Azure Blob Storage data destination, a parameter Azure blob storage write mode was added.\n\nIf the Overwrite option is selected, the blob file in destination will be overwritten, if it exists.\n\nIf the Error option is selected and the blob file already exists, it will not be overwritten, but error message will still be shown.\n\nMetadata Editor: Able to convert string columns with missing values.\n\nSweep Parameters: Results are sorted by the selected metric.\n\nBayesian Linear Regression: Now processes string columns.\n\nCross-Validate Model: Missing values were incorrectly being counted as false negatives. This issue has been fixed.\n\nSplit Module: Now propagates column names in Recommender Split mode.\n\nVowbal Wabbit Score: Unnecessary input parameters have been removed.\n\nAzure Management Portal\n\nWhen creating a new Azure Machine Learning workspace in the Azure Management Portal, the Workspace Owner is automatically populated with the Windows account (Live ID) with which you are signed in.\n\nThe Owner of a workspace can now be changed from the Configure tab within the Azure Management Portal.\n\nThe Open in Studio button on the command bar allows you to jump directly to the Azure Machine Learning Studio.\n\nAzure Machine Learning Studio\n\nWhen you click in the R Script parameter of the Execute R Script module, the parameter pane now expands so that the text box for editing your R script is larger.\n\nIf you attempt to sign in to Azure Machine Learning with a Microsoft Account (Live ID) that does not have access to a workspace, the Microsoft Account is displayed to make troubleshooting easier when you have multiple Microsoft Accounts.\n\nRequest Response Service (RRS)\n\nFor RRS API calls, error numbers for-user related errors will change from error number 500 to \"400 Bad Request.\" The body of the error, which is in JSON format, will also have a Message property, which will contain the error message. An example of the modified error:\n\nContent-Length: 79 Server: Microsoft-HTTPAPI/2.0 Date: Thu, 09 Oct 2014 22:04:08 GMT {\"ErrorCode\":\"UserError\",\"Message\":\"Input string was not in a correct format.\"}\n\nx-ms-request-id: b952f947-6149-4cff-a193-ecc12bd0c468\n\nContent-Type: application/json; charset=utf-8\n\nHTTP/1.1 400 Bad Request"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "new-enhancements-to-azure-machine-learning"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=new-enhancements-to-azure-machine-learning"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: October 2014"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "AI + machine learning, Internet of Things"
+    }
+  ]
+}

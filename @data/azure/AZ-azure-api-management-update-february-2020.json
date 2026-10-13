@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-azure-api-management-update-february-2020",
+  "Title": "Azure API Management update—February 2020",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-02-24T17:00:00.000Z",
+  "LastModifiedDateTime": "2020-02-24T17:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "API Management"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>An Azure API Management service update was started on February 20<sup>th</sup>, 2020, and included the following new features, bug fixes, and changes, along with other improvements.</p>\r\n\r\n\t\t\t<p><b>New</b></p>\r\n\r\n\t\t\t<ul>\r\n\t\t\t\t<li>You can use the new <i>logClientIp</i> property in Diagnostics (<a href=\"https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate\" target=\"_blank\" rel=\"noopener\">global</a> and <a href=\"https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apidiagnostic/createorupdate\" target=\"_blank\" rel=\"noopener\">API-level</a>) to hide the client IP address in logs. IP addresses will be replaced with 0.0.0.0.</li>\r\n\t\t\t\t<li>You can now use the <i>disableGateway </i>property to disable API traffic in regional API gateways. For example:\r\n\t\t\t\t<ul>\r\n\t\t\t\t\t<li>After adding a new region, you can initially keep it disabled to first configure and test the regional backend service.</li>\r\n\t\t\t\t\t<li>When a regional backend is impacted by a failure, you can disable the region to automatically redirect API requests to a healthy region.</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\r\n\t\t\t<p>This property is supported in <i>2019-12-01-preview</i> API version and greater and it&rsquo;s not supported in services deployed in internal virtual networks. You can&rsquo;t disable all regions.<br>\r\n\t\t\tIn the example below, the location &ldquo;East US&rdquo; has been disabled, but the primary location &ldquo;West US&rdquo; is still active.</p>\r\n\r\n\t\t\t<p><a href=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/1c8addc9-d41a-40b3-9d65-4130458accbc.jpg\" target=\"_blank\" rel=\"noopener\"><img alt=\"clip_image002\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/15db7749-5222-46c4-b26a-b6eabf8ae27b.jpg\" title=\"clip_image002\"></a></p>\r\n\r\n\t\t\t<ul>\r\n\t\t\t\t<li>You can now monitor new GCS endpoint<i> gcs.prod.monitoring.core.windows.net </i>with the <a href=\"https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/networkstatus/listbyservice\" target=\"_blank\" rel=\"noopener\">Network Status API</a> to ensure connectivity if your service is deployed in a virtual network. Access to this endpoint is required for monitoring and logging features to work.<br>\r\n\t\t\t\tThe endpoint <i>prod.warmpath.msftcloudes.com</i> is going to be deprecated soon.</li>\r\n\t\t\t</ul>\r\n\r\n\t\t\t<p><b>Fixed</b></p>\r\n\r\n\t\t\t<ul>\r\n\t\t\t\t<li>Client latency is no longer erroneously attributed to API Management latency in Azure Monitor logs.</li>\r\n\t\t\t\t<li>Consumption tier services no longer surface internal server error details to clients.</li>\r\n\t\t\t</ul>\r\n\r\n\t\t\t<p><b>Changed</b></p>\r\n\r\n\t\t\t<ul>\r\n\t\t\t\t<li>Trace policy message and metadata fields can now return only strings &ndash; not any object type.</li>\r\n\t\t\t\t<li>Custom domain binding will be automatically removed from Consumption tier services on their activation if the attached certificate is expired.</li>\r\n\t\t\t\t<li>The <i>subscriptionRequired</i> property of an API object is now always returned in <a href=\"https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get\" target=\"_blank\" rel=\"noopener\">payload</a>. Before, it could have been omitted if its value was <i>true.</i></li>\r\n\t\t\t</ul>\r\n\r\n\t\t\t<p>The developer portal follows an independent release lifecycle and the <a href=\"https://aka.ms/apimdevportal/releases\" target=\"_blank\" rel=\"noopener\">per-release changelog is available on GitHub</a>.</p>\r\n\r\n\t\t\t<p><a href=\"https://azure.microsoft.com/updates/azure-api-management-update-february-2020/\" target=\"_blank\" rel=\"noopener\">Learn more</a></p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n",
+    "Markdown": "An Azure API Management service update was started on February 20 th , 2020, and included the following new features, bug fixes, and changes, along with other improvements.\n\nNew\n\nYou can use the new logClientIp property in Diagnostics ( global and API-level ) to hide the client IP address in logs. IP addresses will be replaced with 0.0.0.0.\n\nYou can now use the disableGateway property to disable API traffic in regional API gateways. For example:\n\nAfter adding a new region, you can initially keep it disabled to first configure and test the regional backend service.\n\nWhen a regional backend is impacted by a failure, you can disable the region to automatically redirect API requests to a healthy region.\n\nThis property is supported in 2019-12-01-preview API version and greater and it’s not supported in services deployed in internal virtual networks. You can’t disable all regions.\n\nIn the example below, the location “East US” has been disabled, but the primary location “West US” is still active.\n\nYou can now monitor new GCS endpoint gcs.prod.monitoring.core.windows.net with the Network Status API to ensure connectivity if your service is deployed in a virtual network. Access to this endpoint is required for monitoring and logging features to work.\n\nThe endpoint prod.warmpath.msftcloudes.com is going to be deprecated soon.\n\nFixed\n\nClient latency is no longer erroneously attributed to API Management latency in Azure Monitor logs.\n\nConsumption tier services no longer surface internal server error details to clients.\n\nChanged\n\nTrace policy message and metadata fields can now return only strings – not any object type.\n\nCustom domain binding will be automatically removed from Consumption tier services on their activation if the attached certificate is expired.\n\nThe subscriptionRequired property of an API object is now always returned in payload . Before, it could have been omitted if its value was true.\n\nThe developer portal follows an independent release lifecycle and the per-release changelog is available on GitHub .\n\nLearn more"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-api-management-update-february-2020"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-api-management-update-february-2020"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: February 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Integration, Internet of Things, Mobile, Web"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "Id": "AZ-kusto-graph-cycles-nonlinear-patterns",
+  "Title": "New Features for graph-match KQL Operator: Enhanced Pattern Matching and Cycle Control",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2024-01-24T17:00:22.000Z",
+  "LastModifiedDateTime": "2024-01-24T17:00:22.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Data Explorer",
+    "Azure Monitor",
+    "Microsoft Fabric"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>We are excited to announce new features for <a href=\"https://learn.microsoft.com/azure/data-explorer/kusto/query/graph-match-operator\" target=\"_blank\" rel=\"noopener\">graph-match</a>, a Kusto Query Language (KQL) operator for finding pattern in graphs. These features will enhance your ability to express complex and flexible patterns and find more relevant matches.</p>\r\n\r\n<ul>\r\n\t<li><strong>The cycles parameter</strong>: You can now control how cycles, or closed paths, are matched in the pattern. You can choose from three options: all, none, or unique_edges. The default option is unique_edges, which means that cycles are matched only if they do not include the same edge more than once. This can help you avoid redundant or overlapping matches. For example, if you want to match a triangle, you can use the pattern (a)--(b)--(c)--(a) with unique_edges, and it will not match a square that has the same three edges. If you want to match any cycle, regardless of the number of edges, you can use the option all. If you want to exclude cycles altogether, you can use the option none.</li>\r\n\t<li><strong>The nonlinear patterns</strong>: You can now express nonlinear patterns, or patterns that have more than one sequence of edges, by using multiple comma delimited sequences. This can help you capture more complex structures and relationships in the graph. For example, if you want to match a star pattern, where a node n is connected to four other nodes a, b, c, and d, you can use the pattern (a)--(n)--(b),(c)--(n)--(d). The node n is shared by both sequences, indicating that they are connected. Note that only single connected component patterns are supported, meaning that all the nodes in the pattern must be reachable from each other.</li>\r\n</ul>\r\n\r\n<p>We hope that these new features will help you explore and analyze your graphs more effectively and efficiently in Kusto.&nbsp;They are available on all services which are using the Kusto engine:<a href=\"https://learn.microsoft.com/fabric/real-time-analytics/overview\" target=\"_blank\" rel=\"noopener\">Microsoft Fabric Real-Time Analytics</a>, <a href=\"https://learn.microsoft.com/azure/data-explorer/data-explorer-overview\" target=\"_blank\" rel=\"noopener\">Azure Data Explorer</a>, <a href=\"https://learn.microsoft.com/azure/azure-monitor/overview\" target=\"_blank\" rel=\"noopener\">Azure Monitor</a> and many others.</p>\r\n\r\n<p><a href=\"https://aka.ms/kusto/graph-overview\" target=\"_blank\" rel=\"noopener\">Learn more</a>&nbsp;in our docs and&nbsp;play the <a href=\"https://detective.kusto.io/\" target=\"_blank\" rel=\"noopener\">Kusto Detective Agency Season 2</a> (powered by AMD). Please provide <a href=\"https://aka.ms/kusto/graph-feedback\" target=\"_blank\" rel=\"noopener\">feedback</a>.</p>\r\n",
+    "Markdown": "We are excited to announce new features for graph-match , a Kusto Query Language (KQL) operator for finding pattern in graphs. These features will enhance your ability to express complex and flexible patterns and find more relevant matches.\n\nThe cycles parameter : You can now control how cycles, or closed paths, are matched in the pattern. You can choose from three options: all, none, or unique_edges. The default option is unique_edges, which means that cycles are matched only if they do not include the same edge more than once. This can help you avoid redundant or overlapping matches. For example, if you want to match a triangle, you can use the pattern (a)--(b)--(c)--(a) with unique_edges, and it will not match a square that has the same three edges. If you want to match any cycle, regardless of the number of edges, you can use the option all. If you want to exclude cycles altogether, you can use the option none.\n\nThe nonlinear patterns : You can now express nonlinear patterns, or patterns that have more than one sequence of edges, by using multiple comma delimited sequences. This can help you capture more complex structures and relationships in the graph. For example, if you want to match a star pattern, where a node n is connected to four other nodes a, b, c, and d, you can use the pattern (a)--(n)--(b),(c)--(n)--(d). The node n is shared by both sequences, indicating that they are connected. Note that only single connected component patterns are supported, meaning that all the nodes in the pattern must be reachable from each other.\n\nWe hope that these new features will help you explore and analyze your graphs more effectively and efficiently in Kusto. They are available on all services which are using the Kusto engine: Microsoft Fabric Real-Time Analytics , Azure Data Explorer , Azure Monitor and many others.\n\nLearn more in our docs and play the Kusto Detective Agency Season 2 (powered by AMD). Please provide feedback ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "kusto-graph-cycles-nonlinear-patterns"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=kusto-graph-cycles-nonlinear-patterns"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: January 2024"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics, DevOps, Management and governance"
+    }
+  ]
+}

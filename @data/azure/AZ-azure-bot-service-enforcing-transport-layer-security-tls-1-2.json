@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-azure-bot-service-enforcing-transport-layer-security-tls-1-2",
+  "Title": "Azure Bot Service enforcing transport layer security (TLS) 1.2",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2018-11-14T17:00:12.000Z",
+  "LastModifiedDateTime": "2018-11-14T17:00:12.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure AI Bot Service"
+  ],
+  "Tags": [
+    "Compliance",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>On December 4, 2018, the Azure Bot Service will require all connections to be secured using transport layer security (TLS) 1.2.</p>\r\n\r\n<p>This enforcement is critical to providing the best possible security for your data.&nbsp;<u><a href=\"https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcloudblogs.microsoft.com%2Fmicrosoftsecure%2F2017%2F06%2F20%2Ftls-1-2-support-at-microsoft%2F&amp;data=02%7C01%7Cwmendoza%40microsoft.com%7C052b463c7f224a4ba6ef08d64423aa3f%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636771317318818199&amp;sdata=n8AiuixMJueLU0WE7C5oVp2azicaCTDW71VNDfAZDaI%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Microsoft</a></u>, the&nbsp;<u><a href=\"https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fblog.pcisecuritystandards.org%2Fare-you-ready-for-30-june-2018-sayin-goodbye-to-ssl-early-tls&amp;data=02%7C01%7Cwmendoza%40microsoft.com%7C052b463c7f224a4ba6ef08d64423aa3f%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636771317318818199&amp;sdata=0a1ZHFha6nWibWFTsc%2BsR43Cx6zfDG0IGLwl%2B9lJSFY%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Payment Card Industry</a></u>&nbsp;(PCI), and the entire Internet community, are moving away from TLS 1.0 and TLS 1.1, which have been shown to be vulnerable to determined attackers.</p>\r\n\r\n<p>This change will be enforced for all connections to Azure Bot Service servers, either from a chat client or from a bot.&nbsp;It will not yet be enforced for connections from the Azure Bot Service to bots.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong><em>More Information</em></strong></p>\r\n\r\n<p>The vast majority of connections to the Azure Bot Service already use TLS 1.2. The few that do not are from old clients or old operating systems. In most cases, an upgrade to a newer browser or a patch to the operating system is all that&#39;s required to enable TLS 1.2.</p>\r\n\r\n<p>We&rsquo;ll still allow bots to accept the older protocols, but we&rsquo;ll be deprecating that in the future, so it is recommended that bot developers configure their servers to accept TLS 1.2 or higher. If your bot is hosted on Azure Web Apps or Functions, the&nbsp;<u><a href=\"https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fblogs.msdn.microsoft.com%2Fappserviceteam%2F2018%2F04%2F17%2Fapp-service-and-functions-hosted-apps-can-now-update-tls-versions%2F&amp;data=02%7C01%7Cwmendoza%40microsoft.com%7C052b463c7f224a4ba6ef08d64423aa3f%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636771317318828209&amp;sdata=XJ1v9Kmnp1DALnY9H3sOizUmpEMn39%2FOg3H2W5w70Z4%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">change is easy</a></u>. If your bot is hosted on an older version of Windows, such as <u><a href=\"https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcloudblogs.microsoft.com%2Fmicrosoftsecure%2F2017%2F07%2F20%2Ftls-1-2-support-added-to-windows-server-2008%2F&amp;data=02%7C01%7Cwmendoza%40microsoft.com%7C052b463c7f224a4ba6ef08d64423aa3f%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636771317318838214&amp;sdata=PmxFP7utoTCdxcq6CM3RR1W6g1Ok2rgvjz8DSDrctTg%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Windows Server 2008</a></u>&nbsp;or&nbsp;<u><a href=\"https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsupport.microsoft.com%2Fen-us%2Fhelp%2F3140245%2Fupdate-to-enable-tls-1-1-and-tls-1-2-as-a-default-secure-protocols-in&amp;data=02%7C01%7Cwmendoza%40microsoft.com%7C052b463c7f224a4ba6ef08d64423aa3f%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636771317318838214&amp;sdata=1LQk8ONqVZ0FF9LgDf3jVZBmfeo%2Fzg86BqBcruV27rQ%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Windows 7 (Windows Server 2008 R2)</a></u>, you&rsquo;ll need to install a patch and enable the updated protocols. TLS 1.2 is not supported on Windows Vista and earlier.</p>\r\n\r\n<p>The following clients are known to be unable to use TLS 1.2. Update your clients and encourage your customers to do the same to ensure uninterrupted access to the service.</p>\r\n\r\n<ul>\r\n\t<li>Android 4.3 and earlier versions</li>\r\n\t<li>Firefox version 5.0 and earlier versions</li>\r\n\t<li>Internet Explorer 8-10 on Windows 7 and earlier versions</li>\r\n\t<li>Internet Explorer 10 on Win Phone 8.0</li>\r\n\t<li>Safari 6.0.4/OS X10.8.4 and earlier versions</li>\r\n</ul>\r\n\r\n<p><a href=\"https://blog.botframework.com/2018/11/06/announcement-azure-bot-service-enforcing-transport-layer-security-tls-1-2/\" target=\"_blank\" rel=\"noopener\">Learn more</a></p>\r\n",
+    "Markdown": "On December 4, 2018, the Azure Bot Service will require all connections to be secured using transport layer security (TLS) 1.2.\n\nThis enforcement is critical to providing the best possible security for your data. Microsoft , the Payment Card Industry (PCI), and the entire Internet community, are moving away from TLS 1.0 and TLS 1.1, which have been shown to be vulnerable to determined attackers.\n\nThis change will be enforced for all connections to Azure Bot Service servers, either from a chat client or from a bot. It will not yet be enforced for connections from the Azure Bot Service to bots.\n\nMore Information\n\nThe vast majority of connections to the Azure Bot Service already use TLS 1.2. The few that do not are from old clients or old operating systems. In most cases, an upgrade to a newer browser or a patch to the operating system is all that's required to enable TLS 1.2.\n\nWe’ll still allow bots to accept the older protocols, but we’ll be deprecating that in the future, so it is recommended that bot developers configure their servers to accept TLS 1.2 or higher. If your bot is hosted on Azure Web Apps or Functions, the change is easy . If your bot is hosted on an older version of Windows, such as Windows Server 2008 or Windows 7 (Windows Server 2008 R2) , you’ll need to install a patch and enable the updated protocols. TLS 1.2 is not supported on Windows Vista and earlier.\n\nThe following clients are known to be unable to use TLS 1.2. Update your clients and encourage your customers to do the same to ensure uninterrupted access to the service.\n\nAndroid 4.3 and earlier versions\n\nFirefox version 5.0 and earlier versions\n\nInternet Explorer 8-10 on Windows 7 and earlier versions\n\nInternet Explorer 10 on Win Phone 8.0\n\nSafari 6.0.4/OS X10.8.4 and earlier versions\n\nLearn more"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-bot-service-enforcing-transport-layer-security-tls-1-2"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-bot-service-enforcing-transport-layer-security-tls-1-2"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: November 2018"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "AI + machine learning"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "Id": "AZ-query-across-application-in-log-alerts-preview",
+  "Title": "Public preview: Query across applications in log alerts",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2018-05-18T08:02:54.000Z",
+  "LastModifiedDateTime": "2018-05-18T08:02:54.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Alerts",
+    "Application Insights",
+    "Azure Monitor"
+  ],
+  "Tags": [
+    "Features",
+    "Management"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>You can use Azure Application Insights to monitor a distributed modern cloud application. In the same spirit, log alerts&nbsp;enable you to combine data across various apps. For more information, see the <a href=\"https://azure.microsoft.com/en-us/blog/query-across-resources/\" target=\"_blank\" rel=\"noopener\">post on how to query across resources</a>.</p>\r\n\r\n<p>Cross-app query support in log alerts is currently in preview. While it&rsquo;s in preview, the functionality could be&nbsp;subject to change and improvements.</p>\r\n\r\n<p>For usage, let&rsquo;s look at a scenario. Let&rsquo;s say that at Contoso, they run an e-commerce site and a separate server/app for payment. Previously, they had to read endless logs of the site and payment server, to see if customers&rsquo; payments were dropped. Then they used log alerts:</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<table>\r\n <tbody>\r\n  <tr>\r\n   <td>\r\n   <p><u><strong>Alert parameter</strong></u></p>\r\n   </td>\r\n   <td>\r\n   <p><strong><u>Parameter value</u></strong></p>\r\n   </td>\r\n   <td>\r\n   <p><strong><u>Comments</u></strong></p>\r\n   </td>\r\n  </tr>\r\n  <tr>\r\n   <td>\r\n   <p>Query</p>\r\n   </td>\r\n   <td>\r\n   <p>union app(&#39;Contoso-PaymentServer&#39;).requests, requests | summarize AggregatedValue = count() by id,bin(timestamp, 5m)</p>\r\n   </td>\r\n   <td>\r\n   <p>Get requests across Contoso-PaymentServer and ContosoWeb and count every ID, sliced for every 5 minutes.</p>\r\n   </td>\r\n  </tr>\r\n  <tr>\r\n   <td>\r\n   <p>Type</p>\r\n   </td>\r\n   <td>\r\n   <p>Metric measurement</p>\r\n   </td>\r\n   <td>\r\n   <p>Alerts on variations in various time intervals of aggregated numeric value.</p>\r\n   </td>\r\n  </tr>\r\n  <tr>\r\n   <td>\r\n   <p>Logic</p>\r\n   </td>\r\n   <td>\r\n   <p>Less than 2</p>\r\n   </td>\r\n   <td>\r\n   <p>Check-in slices of 5 minutes, if the request ID was received&nbsp;twice&mdash;for example, once in the web app and once in the payment server.</p>\r\n   </td>\r\n  </tr>\r\n  <tr>\r\n   <td>\r\n   <p>Trigger</p>\r\n   </td>\r\n   <td>\r\n   <p>Consecutive breaches are greater than 2</p>\r\n   </td>\r\n   <td>\r\n   <p>If for two slices (for example,&nbsp;5 + 5 minutes), alert logic (count of request less than 2) is met, then trigger the alert.&nbsp;</p>\r\n   </td>\r\n  </tr>\r\n  <tr>\r\n   <td>\r\n   <p>Time Period</p>\r\n   </td>\r\n   <td>\r\n   <p>For last 15 minutes</p>\r\n   </td>\r\n   <td>\r\n   <p>Run the query with data for the last 15 minutes.</p>\r\n   </td>\r\n  </tr>\r\n  <tr>\r\n   <td>\r\n   <p>Frequency</p>\r\n   </td>\r\n   <td>\r\n   <p>Every 5 minutes</p>\r\n   </td>\r\n   <td>\r\n   <p>Run the query every 5 minutes.</p>\r\n   </td>\r\n  </tr>\r\n </tbody>\r\n</table>\r\n\r\n<div>&nbsp;</div>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><a href=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/updates/ServiceUpdates/blog/a8b2e77c-4a63-446c-83ec-08ca637f9c7a.png\" target=\"_blank\" rel=\"noopener\"><img alt=\"CrossAppAlert\" src=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/updates/ServiceUpdates/blog/240f1c6a-b501-4ce5-8bd0-98fe5a736e76.png\" title=\"CrossAppAlert\"></a></p>\r\n\r\n<p>Now the Contoso team will be automatically notified when there&#39;s a possible payment snag. And they can focus on fine-tuning the site instead of drilling through logs.</p>\r\n\r\n<p>To&nbsp;log alerts for the first time, see the&nbsp;article <a href=\"https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitor-alerts-unified-log\" target=\"_blank\" rel=\"noopener\">Log alerts in Azure Monitor</a>.&nbsp;You can also&nbsp;provide&nbsp;<a href=\"mailto:azurealertsfeedback@microsoft.com\" target=\"_blank\" rel=\"noopener\">feedback</a>.</p>\r\n",
+    "Markdown": "You can use Azure Application Insights to monitor a distributed modern cloud application. In the same spirit, log alerts enable you to combine data across various apps. For more information, see the post on how to query across resources .\n\nCross-app query support in log alerts is currently in preview. While it’s in preview, the functionality could be subject to change and improvements.\n\nFor usage, let’s look at a scenario. Let’s say that at Contoso, they run an e-commerce site and a separate server/app for payment. Previously, they had to read endless logs of the site and payment server, to see if customers’ payments were dropped. Then they used log alerts:\n\nAlert parameter\n\nParameter value\n\nComments\n\nQuery\n\nunion app('Contoso-PaymentServer').requests, requests | summarize AggregatedValue = count() by id,bin(timestamp, 5m)\n\nGet requests across Contoso-PaymentServer and ContosoWeb and count every ID, sliced for every 5 minutes.\n\nType\n\nMetric measurement\n\nAlerts on variations in various time intervals of aggregated numeric value.\n\nLogic\n\nLess than 2\n\nCheck-in slices of 5 minutes, if the request ID was received twice—for example, once in the web app and once in the payment server.\n\nTrigger\n\nConsecutive breaches are greater than 2\n\nIf for two slices (for example, 5 + 5 minutes), alert logic (count of request less than 2) is met, then trigger the alert.\n\nTime Period\n\nFor last 15 minutes\n\nRun the query with data for the last 15 minutes.\n\nFrequency\n\nEvery 5 minutes\n\nRun the query every 5 minutes.\n\nNow the Contoso team will be automatically notified when there's a possible payment snag. And they can focus on fine-tuning the site instead of drilling through logs.\n\nTo log alerts for the first time, see the article Log alerts in Azure Monitor . You can also provide feedback ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "query-across-application-in-log-alerts-preview"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=query-across-application-in-log-alerts-preview"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: May 2018"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "DevOps, Management and governance"
+    }
+  ]
+}

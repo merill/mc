@@ -1,0 +1,47 @@
+{
+  "Id": "AZ-clustered-columnstore-tables-are-default-in-azure-sql-data-warehouse",
+  "Title": "Clustered Columnstore Tables are default in Azure SQL Data Warehouse",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2015-12-04T22:14:48.000Z",
+  "LastModifiedDateTime": "2015-12-04T22:14:48.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure SQL Database"
+  ],
+  "Tags": [],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<a href=\"https://msdn.microsoft.com/en-us/library/gg492088.aspx\" target=\"_blank\" rel=\"noopener\">Clustered columnstore indexes</a> are the most efficient way you can store your data in Azure SQL Data Warehouse. Storing your data in tables that have a clustered columnstore index are the fastest way to query your data. It will give you the greatest data compression and lower your storage costs. To ensure your data is using this latest technology, clustered columnstore index is now the table default in Azure SQL Data Warehouse.\n\nWith this change come some changes to <a href=\"https://msdn.microsoft.com/en-us/library/mt203953.aspx\" target=\"_blank\" rel=\"noopener\">CREATE TABLE</a> and <a href=\"https://msdn.microsoft.com/en-US/library/mt204041.aspx\" target=\"_blank\" rel=\"noopener\">CREATE TABLE AS SELECT</a> syntax. For example, the following code will now create a clustered columnstore table:\n<pre> CREATE TABLE myClusteredColumnstoreTable\n (\n id int NOT NULL,\n lastName varchar(20),\n zipCode varchar(6)\n )\n WITH\n (\n DISTRIBUTION = HASH (id)\n );</pre>\nIf you want to create your table with the previous default, HEAP, you simply need to add this option to your WITH clause. For example, the following code will create a HEAP table:\n<pre> CREATE TABLE myHeapTable\n (\n id int NOT NULL,\n lastName varchar(20),\n zipCode varchar(6)\n )\n WITH\n (\n DISTRIBUTION = HASH (id),\n HEAP\n );</pre>\nIf you want to see what types of tables you have in your database, you can run the following query:\n<pre> SELECT\n a.name as schema_name,\n b.name as table_name,\n c.type_desc as table_type,\n c.name as index_name\n FROM\n sys.schemas a\n INNER JOIN sys.tables b\n ON a.schema_id = b.schema_id\n INNER JOIN sys.indexes c\n ON b.object_id = c.object_id\n ORDER BY\n 1, 2;</pre>\nTo convert a table from HEAP to a clustered columnstore, you can use CREATE CLUSTERED COLUMNSTORE INDEX, for example:\n<pre> CREATE CLUSTERED COLUMNSTORE INDEX cciIndex ON myHeapTable;</pre>\nTo convert a table from clustered columnstore to HEAP, you can use DROP INDEX, for example:\n<pre> DROP INDEX cciIndex ON myHeapTable;</pre>\nThere are two subtle impacts of this change that may impact you:\n<ol>\n <li>If you create staging tables for loads, where the main purpose is to load data into your database quickly and then move that data to a permanent table, you may find that HEAP tables perform better.</li>\n <li>If you have automation that currently leverages a secondary index on a HEAP table, you will want to add the HEAP keyword to your DDL because secondary indexes are not yet supported on clustered columnstore tables.</li>\n</ol>",
+    "Markdown": "Clustered columnstore indexes are the most efficient way you can store your data in Azure SQL Data Warehouse. Storing your data in tables that have a clustered columnstore index are the fastest way to query your data. It will give you the greatest data compression and lower your storage costs. To ensure your data is using this latest technology, clustered columnstore index is now the table default in Azure SQL Data Warehouse.\n\nWith this change come some changes to CREATE TABLE and CREATE TABLE AS SELECT syntax. For example, the following code will now create a clustered columnstore table:\n\nCREATE TABLE myClusteredColumnstoreTable\n\n(\n\nid int NOT NULL,\n\nlastName varchar(20),\n\nzipCode varchar(6)\n\n)\n\nWITH\n\n(\n\nDISTRIBUTION = HASH (id)\n\n);\n\nIf you want to create your table with the previous default, HEAP, you simply need to add this option to your WITH clause. For example, the following code will create a HEAP table:\n\nCREATE TABLE myHeapTable\n\n(\n\nid int NOT NULL,\n\nlastName varchar(20),\n\nzipCode varchar(6)\n\n)\n\nWITH\n\n(\n\nDISTRIBUTION = HASH (id),\n\nHEAP\n\n);\n\nIf you want to see what types of tables you have in your database, you can run the following query:\n\nSELECT\n\na.name as schema_name,\n\nb.name as table_name,\n\nc.type_desc as table_type,\n\nc.name as index_name\n\nFROM\n\nsys.schemas a\n\nINNER JOIN sys.tables b\n\nON a.schema_id = b.schema_id\n\nINNER JOIN sys.indexes c\n\nON b.object_id = c.object_id\n\nORDER BY\n\n1, 2;\n\nTo convert a table from HEAP to a clustered columnstore, you can use CREATE CLUSTERED COLUMNSTORE INDEX, for example:\n\nCREATE CLUSTERED COLUMNSTORE INDEX cciIndex ON myHeapTable;\n\nTo convert a table from clustered columnstore to HEAP, you can use DROP INDEX, for example:\n\nDROP INDEX cciIndex ON myHeapTable;\n\nThere are two subtle impacts of this change that may impact you:\n\nIf you create staging tables for loads, where the main purpose is to load data into your database quickly and then move that data to a permanent table, you may find that HEAP tables perform better.\n\nIf you have automation that currently leverages a secondary index on a HEAP table, you will want to add the HEAP keyword to your DDL because secondary indexes are not yet supported on clustered columnstore tables."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "clustered-columnstore-tables-are-default-in-azure-sql-data-warehouse"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=clustered-columnstore-tables-are-default-in-azure-sql-data-warehouse"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: December 2015"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Databases, Hybrid + multicloud"
+    }
+  ]
+}

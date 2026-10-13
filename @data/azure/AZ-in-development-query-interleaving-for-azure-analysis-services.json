@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-in-development-query-interleaving-for-azure-analysis-services",
+  "Title": "In development: query interleaving for Azure Analysis Services",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-07-11T23:08:04.000Z",
+  "LastModifiedDateTime": "2019-07-11T23:08:04.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Analysis Services"
+  ],
+  "Tags": [
+    "Features",
+    "Management"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure Analysis Services delivers enterprise-grade BI semantic modeling capabilities with the scale, flexibility, and management benefits of the cloud by helping you transform complex data into actionable insights. Enterprise BI systems need to support high user concurrency, which means there can be lots of queries submitted close to each other. We are pleased to announce that we are working on the <b>query interleaving</b> feature, which allows system configuration to improve the user experience in high-concurrency scenarios</p>\r\n\r\n<p>By default, the Analysis Services tabular engine works in a &quot;first in first out&quot; (FIFO) fashion with regards to CPU. This means, for example, if one expensive/slow storage-engine query is received and closely followed by 2 otherwise fast queries, the otherwise fast queries can potentially get blocked waiting for the expensive query to complete. This is represented by the following diagram which shows Q1, Q2 and Q3 as the respective queries, their duration and CPU time.</p>\r\n\r\n<p><img alt=\"FIFO\" src=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/FIFO.png\" title=\"FIFO\"></p>\r\n\r\n<p>With query interleaving, concurrent queries can share CPU resources, so fast queries are not blocked behind slow ones. The time it takes to complete all three queries is still about the same, but Q2 and Q3 are not blocked till the end.</p>\r\n\r\n<p><img alt=\"Query interleaving\" src=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/Query%20interleaving.png\" title=\"Query interleaving\"></p>\r\n\r\n<p>Query interleaving is intended to have little or no performance impact for queries run in isolation; a single query can still consume as much CPU as it does using the FIFO model.</p>\r\n\r\n<p><b>Short-query bias</b> can be configured with query interleaving. This means fast queries (defined by how much CPU each query has already consumed) can be allocated a higher proportion of resources than long-running queries, allowing them to complete in a reasonably short time. In the following illustration, the Q2 and Q3 queries are deemed &ldquo;fast queries&rdquo; and therefore allocated more CPU than Q1.</p>\r\n\r\n<p><img alt=\"Short query bias\" src=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/Short%20query%20bias.png\" title=\"Short query bias\"></p>\r\n\r\n<p>We hope you can see that query interleaving with short query bias will add great value to enterprise BI systems on Azure Analysis Services!</p>\r\n",
+    "Markdown": "Azure Analysis Services delivers enterprise-grade BI semantic modeling capabilities with the scale, flexibility, and management benefits of the cloud by helping you transform complex data into actionable insights. Enterprise BI systems need to support high user concurrency, which means there can be lots of queries submitted close to each other. We are pleased to announce that we are working on the query interleaving feature, which allows system configuration to improve the user experience in high-concurrency scenarios\n\nBy default, the Analysis Services tabular engine works in a \"first in first out\" (FIFO) fashion with regards to CPU. This means, for example, if one expensive/slow storage-engine query is received and closely followed by 2 otherwise fast queries, the otherwise fast queries can potentially get blocked waiting for the expensive query to complete. This is represented by the following diagram which shows Q1, Q2 and Q3 as the respective queries, their duration and CPU time.\n\nWith query interleaving, concurrent queries can share CPU resources, so fast queries are not blocked behind slow ones. The time it takes to complete all three queries is still about the same, but Q2 and Q3 are not blocked till the end.\n\nQuery interleaving is intended to have little or no performance impact for queries run in isolation; a single query can still consume as much CPU as it does using the FIFO model.\n\nShort-query bias can be configured with query interleaving. This means fast queries (defined by how much CPU each query has already consumed) can be allocated a higher proportion of resources than long-running queries, allowing them to complete in a reasonably short time. In the following illustration, the Q2 and Q3 queries are deemed “fast queries” and therefore allocated more CPU than Q1.\n\nWe hope you can see that query interleaving with short query bias will add great value to enterprise BI systems on Azure Analysis Services!"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "in-development-query-interleaving-for-azure-analysis-services"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=in-development-query-interleaving-for-azure-analysis-services"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: July 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

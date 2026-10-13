@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-azurebackuprg",
+  "Title": "Azure Backup resource group for virtual machines",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-12-19T17:00:24.000Z",
+  "LastModifiedDateTime": "2019-12-19T17:00:24.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Backup"
+  ],
+  "Tags": [
+    "Features",
+    "Management"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>We are releasing an update to Azure Backup policy for virtual machines with an addition to customize the Resource group name created by Azure Backup.</p>\r\n\r\n<p>Today, Backup service creates a separate resource group different than the resource group of the VM to store restore point collection (RP Collection houses the instant recovery points of managed VMs). The default naming format of the resource group created by Backup service is: AzureBackupRG_&lt;Geo&gt;_&lt;n&gt;. With this release, customers can either go with the default name, or can update it as per their company requirements.</p>\r\n\r\n<p>The user is required to provide the RG name pattern as input during VM backup policy creation, if he wants a customised RG name other than the default created by Azure Backup service. The RG name should be of the format:</p>\r\n\r\n<p><strong><em>&nbsp; &nbsp; &nbsp;&lt;alpha-numeric string&gt;* </em>n <em>&lt;alpha-numeric string&gt;</em></strong></p>\r\n\r\n<p>&lsquo;n&rsquo; is replaced with an integer (starting from 1) and is used for scaling out in case the first RG is full.&nbsp;The user can edit the name of the resource group by modifying policy as and when required. Users&nbsp;are advised not to lock the resource group created for use by the Backup service.</p>\r\n\r\n<p>For more information, see the&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines\" target=\"_blank\" rel=\"noopener\">Azure Backup documentation</a>.</p>\r\n",
+    "Markdown": "We are releasing an update to Azure Backup policy for virtual machines with an addition to customize the Resource group name created by Azure Backup.\n\nToday, Backup service creates a separate resource group different than the resource group of the VM to store restore point collection (RP Collection houses the instant recovery points of managed VMs). The default naming format of the resource group created by Backup service is: AzureBackupRG_<Geo>_<n>. With this release, customers can either go with the default name, or can update it as per their company requirements.\n\nThe user is required to provide the RG name pattern as input during VM backup policy creation, if he wants a customised RG name other than the default created by Azure Backup service. The RG name should be of the format:\n\n<alpha-numeric string>* n <alpha-numeric string>\n\n‘n’ is replaced with an integer (starting from 1) and is used for scaling out in case the first RG is full. The user can edit the name of the resource group by modifying policy as and when required. Users are advised not to lock the resource group created for use by the Backup service.\n\nFor more information, see the Azure Backup documentation ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azurebackuprg"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azurebackuprg"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: December 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance, Storage"
+    }
+  ]
+}

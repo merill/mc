@@ -1,0 +1,47 @@
+{
+  "Id": "AZ-azure-devtest-labs-streamlined-nested-arm-template-deployment-support-for-arm-template-based-environments",
+  "Title": "Azure DevTest Labs: Streamlined nested support for Resource Manager template deployment",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2017-05-24T00:30:40.000Z",
+  "LastModifiedDateTime": "2017-05-24T00:30:40.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure DevTest Labs",
+    "Virtual Machines"
+  ],
+  "Tags": [
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure DevTest Labs now makes it much easier for you to provision multiple-VM or PaaS environments from Azure Resource Manager templates, even&nbsp;with nested templates.&nbsp;</p>\r\n\r\n<p>You can use&nbsp;a&nbsp;nested deployment&nbsp;to execute other Resource Manager templates from within a main Resource Manager template. You can decompose your deployment into a set of targeted, purpose-specific templates&nbsp;for easier&nbsp;testing, reuse, and readability.&nbsp;</p>\r\n\r\n<p>The <strong>templateLink</strong> property used in the main Resource Manager template that points to nested templates requires an absolute URI, which needs to be publicly accessible by Azure. When your templates are in a private repository, a common solution is to copy those nested templates and store them temporarily in an Azure storage account, and then update the&nbsp;<strong>templateLink&nbsp;</strong>property with the storage account&#39;s URI and SAS token. If you have multiple testing stages/environments, the work becomes more challenging.&nbsp;</p>\r\n\r\n<p>DevTest Labs solves this problem for you through the parameters <strong>_artifactsLocation </strong>and <strong>_artifactsLocationSasToken</strong>. As long as you use these two parameters to construct the <b>parametersLink&nbsp;</b>URI value, DevTest Labs will automatically manage the nested templates in your lab&#39;s storage and inject the correct values to these parameters without you taking any extra action. For more details how to construct the&nbsp;<strong>parametersLink</strong>&nbsp;URI&nbsp;by using&nbsp;these&nbsp;parameters,&nbsp;check out the blog post&nbsp;<a href=\"https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/\" target=\"_blank\" rel=\"noopener\">How Azure DevTest Labs makes nested ARM template deployments easier for testing environments</a>.</p>\r\n\r\n<p>For more information on how to use Resource Manager templates in DevTest Labs to create multiple-VM or PaaS environments,&nbsp;see the article&nbsp;<a href=\"https://docs.microsoft.com/en-us/azure/devtest-lab/devtest-lab-create-environment-from-arm\" target=\"_blank\" rel=\"noopener\">Create multi-VM environments and PaaS resources with Azure Resource Manager templates</a>.</p>\r\n",
+    "Markdown": "Azure DevTest Labs now makes it much easier for you to provision multiple-VM or PaaS environments from Azure Resource Manager templates, even with nested templates.\n\nYou can use a nested deployment to execute other Resource Manager templates from within a main Resource Manager template. You can decompose your deployment into a set of targeted, purpose-specific templates for easier testing, reuse, and readability.\n\nThe templateLink property used in the main Resource Manager template that points to nested templates requires an absolute URI, which needs to be publicly accessible by Azure. When your templates are in a private repository, a common solution is to copy those nested templates and store them temporarily in an Azure storage account, and then update the templateLink property with the storage account's URI and SAS token. If you have multiple testing stages/environments, the work becomes more challenging.\n\nDevTest Labs solves this problem for you through the parameters _artifactsLocation and _artifactsLocationSasToken . As long as you use these two parameters to construct the parametersLink URI value, DevTest Labs will automatically manage the nested templates in your lab's storage and inject the correct values to these parameters without you taking any extra action. For more details how to construct the parametersLink URI by using these parameters, check out the blog post How Azure DevTest Labs makes nested ARM template deployments easier for testing environments .\n\nFor more information on how to use Resource Manager templates in DevTest Labs to create multiple-VM or PaaS environments, see the article Create multi-VM environments and PaaS resources with Azure Resource Manager templates ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-devtest-labs-streamlined-nested-arm-template-deployment-support-for-arm-template-based-environments"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-devtest-labs-streamlined-nested-arm-template-deployment-support-for-arm-template-based-environments"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: May 2017"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Developer tools, DevOps, Compute"
+    }
+  ]
+}

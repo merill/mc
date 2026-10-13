@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-new-copy-apis-for-efficient-data-copy",
+  "Title": "New Copy APIs for efficient data copy in Azure Blob Storage",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-08-20T17:00:34.000Z",
+  "LastModifiedDateTime": "2019-08-20T17:00:34.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Blob Storage",
+    "Storage Accounts"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Now available is a set of APIs that primarily helps increase efficiency in copying data from any URL to Azure or inside Azure. The APIs include:</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/rest/api/storageservices/put-block-from-url\" target=\"_blank\" rel=\"noopener\">Put Block From URL</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/rest/api/storageservices/put-page-from-url\" target=\"_blank\" rel=\"noopener\">Put Page From URL</a></li>\r\n\t<li><a href=\"https://docs.microsoft.com/en-us/rest/api/storageservices/append-block-from-url\" target=\"_blank\" rel=\"noopener\">Append Block From URL</a></li>\r\n</ul>\r\n\r\n<p>These APIs enable server-side synchronous copy of data from any URL source into either a block blob, page blob or as an append blob. The benefits of these APIs include:</p>\r\n\r\n<ul>\r\n\t<li><strong>Server-side data transfer</strong>. The data transfer is performed server-side, meaning the data is read directly from the source by the destination server in Azure. The data is not flowing through the caller, so you do not need a VM with CPU, memory and network capacity to move the data. You can get away with using a relatively small VM that just orchestrate the data transfer.</li>\r\n\t<li><strong>Synchronous data transfer</strong>.&nbsp; Each call is performed synchronously, meaning the data transfer is complete when the call returns. This is unlike the existing <a href=\"https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/12/introducing-asynchronous-cross-account-copy-blob/\" target=\"_blank\" rel=\"noopener\">asynchronous</a> cross-account copy blob API, which is a scheduled background process where you need to regularly check if its complete.</li>\r\n\t<li><strong>Any data source</strong>. The data source can be any data addressable by a URL, meaning you can copy data from inside or outside of Azure. Further it can be from any blob type to any blob, e.g. reading from a page blob and writing to a block blob.</li>\r\n</ul>\r\n\r\n<p>These APIs enable scenarios like account to account data copy, blob concatenation by combining several smaller blobs into a new larger blob, and conversion of blob types.</p>\r\n",
+    "Markdown": "Now available is a set of APIs that primarily helps increase efficiency in copying data from any URL to Azure or inside Azure. The APIs include:\n\nPut Block From URL\n\nPut Page From URL\n\nAppend Block From URL\n\nThese APIs enable server-side synchronous copy of data from any URL source into either a block blob, page blob or as an append blob. The benefits of these APIs include:\n\nServer-side data transfer . The data transfer is performed server-side, meaning the data is read directly from the source by the destination server in Azure. The data is not flowing through the caller, so you do not need a VM with CPU, memory and network capacity to move the data. You can get away with using a relatively small VM that just orchestrate the data transfer.\n\nSynchronous data transfer . Each call is performed synchronously, meaning the data transfer is complete when the call returns. This is unlike the existing asynchronous cross-account copy blob API, which is a scheduled background process where you need to regularly check if its complete.\n\nAny data source . The data source can be any data addressable by a URL, meaning you can copy data from inside or outside of Azure. Further it can be from any blob type to any blob, e.g. reading from a page blob and writing to a block blob.\n\nThese APIs enable scenarios like account to account data copy, blob concatenation by combining several smaller blobs into a new larger blob, and conversion of blob types."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "new-copy-apis-for-efficient-data-copy"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=new-copy-apis-for-efficient-data-copy"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: August 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Storage"
+    }
+  ]
+}

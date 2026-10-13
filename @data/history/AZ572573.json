@@ -1,0 +1,61 @@
+{
+  "id": "AZ572573",
+  "versions": [
+    {
+      "capturedAt": "2026-09-24T16:04:16.448Z",
+      "source": "ingest",
+      "message": {
+        "Id": "AZ572573",
+        "Title": "Generally Available: Instant Access for VM restore points",
+        "Source": "azure",
+        "Category": "azure",
+        "Severity": "normal",
+        "IsMajorChange": false,
+        "StartDateTime": "2026-09-24T16:04:16.448Z",
+        "LastModifiedDateTime": "2026-09-24T16:04:16.448Z",
+        "EndDateTime": null,
+        "ActionRequiredByDateTime": null,
+        "Services": [
+          "Azure Disk Storage",
+          "Virtual Machines"
+        ],
+        "Tags": [
+          "Compliance",
+          "Management",
+          "Feature"
+        ],
+        "Body": {
+          "ContentType": "html",
+          "Content": "<p>Instant Access for application-consistent restore points on virtual machines (that have Premium v2 or Ultra disks as data disks) is now generally available. With Instant Access, you can begin restoring a disk from a restore point as soon as the snapshot is created, instead of waiting for the background data replication to complete fully. That shortens your recovery time objective when you are bringing a VM back online.</p><p><b>What's new at general availability</b></p><p>This release introduces “instantAccessState”, a consolidated read-only property on the restore point itself. During preview, customer had to inspect “snapshotAccessState” on each individual disk restore point and work out for themselves whether the restore point as a whole was usable. Now the customer can read one property at the restore point level and decide in a single step whether they can restore, copy, or download it, which removes per-disk polling logic from recovery automation and makes restore decision much simpler.</p><p><b>How to use it</b></p><p>Set instantAccess to true on the restore point collection to enable Instant Access for every restore point in it and optionally set instantAccessDurationMinutes on the restore point to control how long Instant Access stays active (60–300 minutes; the default is 300). Before you trigger a restore, read instantAccessState on the restore point and decide to restore based on its value rather than aggregating per-disk states yourself.&nbsp;</p><p><a href=\"https://learn.microsoft.com/en-us/azure/virtual-machines/virtual-machines-create-restore-points#instant-access\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p>",
+          "Markdown": "Instant Access for application-consistent restore points on virtual machines (that have Premium v2 or Ultra disks as data disks) is now generally available. With Instant Access, you can begin restoring a disk from a restore point as soon as the snapshot is created, instead of waiting for the background data replication to complete fully. That shortens your recovery time objective when you are bringing a VM back online.\n\nWhat's new at general availability\n\nThis release introduces “instantAccessState”, a consolidated read-only property on the restore point itself. During preview, customer had to inspect “snapshotAccessState” on each individual disk restore point and work out for themselves whether the restore point as a whole was usable. Now the customer can read one property at the restore point level and decide in a single step whether they can restore, copy, or download it, which removes per-disk polling logic from recovery automation and makes restore decision much simpler.\n\nHow to use it\n\nSet instantAccess to true on the restore point collection to enable Instant Access for every restore point in it and optionally set instantAccessDurationMinutes on the restore point to control how long Instant Access stays active (60–300 minutes; the default is 300). Before you trigger a restore, read instantAccessState on the restore point and decide to restore based on its value rather than aggregating per-disk states yourself.\n\nLearn more ."
+        },
+        "Details": [
+          {
+            "Name": "SourceId",
+            "Value": "572573"
+          },
+          {
+            "Name": "AzureLink",
+            "Value": "https://azure.microsoft.com/updates?id=572573"
+          },
+          {
+            "Name": "Status",
+            "Value": "Launched"
+          },
+          {
+            "Name": "ReleasePhase",
+            "Value": "Preview, General Availability"
+          },
+          {
+            "Name": "Availability",
+            "Value": "Preview: June 2026; General Availability: September 2026"
+          },
+          {
+            "Name": "ProductCategories",
+            "Value": "Storage, Compute"
+          }
+        ]
+      }
+    }
+  ]
+}

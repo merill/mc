@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-retirement-notice-update-your-azure-service-bus-sdk-libraries-by-30-september-2026",
+  "Title": "Some Azure Service Bus SDK libraries will be retired on 30 September 2026—migrate to the latest SDKs",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2023-10-06T23:00:01.000Z",
+  "LastModifiedDateTime": "2023-10-06T23:00:01.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Service Bus"
+  ],
+  "Tags": [
+    "Retirements"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>On 30 September 2026, we&#39;ll retire the Azure Service Bus SDK libraries WindowsAzure.ServiceBus, Microsoft.Azure.ServiceBus, and com.microsoft.azure.servicebus, which don&#39;t conform to&nbsp;<a href=\"https://azure.github.io/azure-sdk/general_introduction.html\" target=\"_blank\" rel=\"noopener\">Azure SDK guidelines</a>. Migrate to the latest Azure SDK libraries, which offer critical security updates and improved capabilities, before that date.</p>\r\n\r\n<p>For WindowsAzure.ServiceBus:</p>\r\n\r\n<ul>\r\n\t<li>We&#39;ll also end support of the SBMP protocol, so you&#39;ll no longer be able to use this protocol after 30 September 2026. You can keep using this library with the AMQP protocol after that date, but you&#39;ll no longer receive support or updates.</li>\r\n\t<li>Azure Event Hubs previously used this library, so if you&#39;re still using it with Event Hubs you&#39;ll need to migrate your library, even if you&#39;re not using Service Bus.</li>\r\n\t<li>Azure WCF Relay still uses this library, and support of this library in combination with this service will continue until further notice.</li>\r\n</ul>\r\n\r\n<p>For Microsoft.Azure.ServiceBus and com.microsoft.azure.servicebus:</p>\r\n\r\n<ul>\r\n\t<li>You can keep using these libraries after 30 September 2026, but they&#39;ll no longer receive support or updates. If you prefer to keep using them, source code is available on GitHub and you can apply your own fixes as needed.</li>\r\n</ul>\r\n\r\n<p><a href=\"https://azure.microsoft.com/blog/previewing-azure-sdks-following-new-azure-sdk-api-standards/\" target=\"_blank\" rel=\"noopener\">Learn more</a>&nbsp;about the retirement and replacement of older Azure SDK libraries.</p>\r\n\r\n<h2>Recommended action</h2>\r\n\r\n<p>Migrate to the latest Azure SDK libraries by 30 September 2026&nbsp;to continue receiving regular security and performance updates:</p>\r\n\r\n<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<th>\r\n\t\t\t<p>Service</p>\r\n\t\t\t</th>\r\n\t\t\t<th>\r\n\t\t\t<p>Retiring SDK</p>\r\n\t\t\t</th>\r\n\t\t\t<th>\r\n\t\t\t<p>Latest SDK</p>\r\n\t\t\t</th>\r\n\t\t\t<th>\r\n\t\t\t<p>Language</p>\r\n\t\t\t</th>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Service Bus</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>WindowsAzure.ServiceBus</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p><a href=\"https://www.nuget.org/packages/Azure.Messaging.ServiceBus\" target=\"_blank\" rel=\"noopener\">Azure.Messaging.ServiceBus</a></p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>.NET</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Service Bus</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>Microsoft.Azure.ServiceBus</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p><a href=\"https://www.nuget.org/packages/Azure.Messaging.ServiceBus\" target=\"_blank\" rel=\"noopener\">Azure.Messaging.ServiceBus</a></p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>.NET</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Service Bus</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>com.microsoft.azure.servicebus</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p><a href=\"https://central.sonatype.com/artifact/com.azure/azure-messaging-servicebus\" target=\"_blank\" rel=\"noopener\">azure-messaging-servicebus</a></p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>Java</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>\r\n\t\t\t<p>Event Hubs</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>WindowsAzure.ServiceBus</p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p><a href=\"https://www.nuget.org/packages/Azure.Messaging.EventHubs/\" target=\"_blank\" rel=\"noopener\">Azure.Messaging.EventHubs</a></p>\r\n\t\t\t</td>\r\n\t\t\t<td>\r\n\t\t\t<p>.NET</p>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>For more information, see the migration guides for&nbsp;<a href=\"https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide_WindowsAzureServiceBus.md\" target=\"_blank\" rel=\"noopener\">WindowsAzure.ServiceBus</a>,&nbsp;<a href=\"https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md\" target=\"_blank\" rel=\"noopener\">Microsoft.Azure.ServiceBus</a>, and&nbsp;<a href=\"https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/servicebus/azure-messaging-servicebus/migration-guide.md\" target=\"_blank\" rel=\"noopener\">com.microsoft.azure.servicebus</a>.</p>\r\n\r\n<h2>Help and support</h2>\r\n\r\n<p>If you have questions, get answers from community experts in&nbsp;<a href=\"https://learn.microsoft.com/answers/tags/73/azure-service-bus\" target=\"_blank\" rel=\"noopener\">Microsoft Q&amp;A</a>&nbsp;or&nbsp;<a href=\"https://github.com/Azure/azure-service-bus\" target=\"_blank\" rel=\"noopener\">GitHub</a>. If you have a support plan and you need technical help, create a&nbsp;<a href=\"https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest\" target=\"_blank\" rel=\"noopener\">support request</a></p>\r\n",
+    "Markdown": "On 30 September 2026, we'll retire the Azure Service Bus SDK libraries WindowsAzure.ServiceBus, Microsoft.Azure.ServiceBus, and com.microsoft.azure.servicebus, which don't conform to Azure SDK guidelines . Migrate to the latest Azure SDK libraries, which offer critical security updates and improved capabilities, before that date.\n\nFor WindowsAzure.ServiceBus:\n\nWe'll also end support of the SBMP protocol, so you'll no longer be able to use this protocol after 30 September 2026. You can keep using this library with the AMQP protocol after that date, but you'll no longer receive support or updates.\n\nAzure Event Hubs previously used this library, so if you're still using it with Event Hubs you'll need to migrate your library, even if you're not using Service Bus.\n\nAzure WCF Relay still uses this library, and support of this library in combination with this service will continue until further notice.\n\nFor Microsoft.Azure.ServiceBus and com.microsoft.azure.servicebus:\n\nYou can keep using these libraries after 30 September 2026, but they'll no longer receive support or updates. If you prefer to keep using them, source code is available on GitHub and you can apply your own fixes as needed.\n\nLearn more about the retirement and replacement of older Azure SDK libraries.\n\nRecommended action\n\nMigrate to the latest Azure SDK libraries by 30 September 2026 to continue receiving regular security and performance updates:\n\nService\n\nRetiring SDK\n\nLatest SDK\n\nLanguage\n\nService Bus\n\nWindowsAzure.ServiceBus\n\nAzure.Messaging.ServiceBus\n\n.NET\n\nService Bus\n\nMicrosoft.Azure.ServiceBus\n\nAzure.Messaging.ServiceBus\n\n.NET\n\nService Bus\n\ncom.microsoft.azure.servicebus\n\nazure-messaging-servicebus\n\nJava\n\nEvent Hubs\n\nWindowsAzure.ServiceBus\n\nAzure.Messaging.EventHubs\n\n.NET\n\nFor more information, see the migration guides for WindowsAzure.ServiceBus , Microsoft.Azure.ServiceBus , and com.microsoft.azure.servicebus .\n\nHelp and support\n\nIf you have questions, get answers from community experts in Microsoft Q&A or GitHub . If you have a support plan and you need technical help, create a support request"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "retirement-notice-update-your-azure-service-bus-sdk-libraries-by-30-september-2026"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=retirement-notice-update-your-azure-service-bus-sdk-libraries-by-30-september-2026"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Retirement"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Retirement: September 2026"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Integration"
+    }
+  ]
+}

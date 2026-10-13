@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-site-recovery-tls-certificate-update",
+  "Title": "Azure Site Recovery - TLS Certificate Changes",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-10-13T16:00:00.000Z",
+  "LastModifiedDateTime": "2020-10-13T16:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Site Recovery"
+  ],
+  "Tags": [
+    "Features",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Microsoft is updating Azure services to use Transport Layer Security (TLS) certificates from a different set of Root Certificate Authorities (CAs). We&#39;re making this change because the current CA certificates don&#39;t comply with one of the <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1649951\" target=\"_blank\" rel=\"noopener\">CA/Browser Forum Baseline requirements</a>.&nbsp;Azure Site Recovery service endpoints will be updated in a phased transition across all public regions beginning on October 16 2020, and completing by October 26, 2020.&nbsp;</p>\r\n\r\n<h2>Will this change affect me?</h2>\r\n\r\n<p>This change will affect connectivity&nbsp;from on-premises configuration server/process servers (for physical/VMware VM replication), and from Hyper-V host servers/System Center VMM servers, to the Azure Site Recovery service. After the update, replication won&#39;t work as expected in the following scenarios:</p>\r\n\r\n<ul>\r\n\t<li>If you&#39;re connecting to Site Recovery using Azure Private Links.</li>\r\n\t<li>If you have an environment where firewall rules only allow outbound calls to specific Certificate Revocation List (CRL) download locations, and/or to Online Certificate Status Protocol (OCSP) verification locations.</li>\r\n\t<li>Connectivity is needed to these CRL and OSCP URLs:\r\n\t<ul>\r\n\t\t<li>http://crl3.digicert.com</li>\r\n\t\t<li>http://crl4.digicert.com</li>\r\n\t\t<li>http://oscp.digicert.com</li>\r\n\t\t<li>http://www.d-trust.net</li>\r\n\t\t<li>http://root-c3-ca2.ocsp.d-trust.net</li>\r\n\t\t<li>http://crl.microsoft.com</li>\r\n\t\t<li>http://oneocsp.microsoft.com</li>\r\n\t\t<li>http://ocsp.msocsp.com</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<h2>&nbsp;</h2>\r\n\r\n<h2>What should I do?</h2>\r\n\r\n<ul>\r\n\t<li>If your environment allows access to the URLs above, no action is needed.</li>\r\n\t<li>If you&nbsp;already completed the required actions&nbsp;based on <a href=\"https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes\" target=\"_blank\" rel=\"noopener\">prior instructions</a>, no further action is needed.</li>\r\n\t<li>If your environment doesn&#39;t allow access to the URLs, consider allowing temporary access. This enables the Site Recovery configuration server/process server (VMware/physical machine replication), or Hyper-V host servers/VMM servers, to automatically update certificates once the update is available in your region. After the update you can turn off access to the URLs.</li>\r\n\t<li>If your environment doesn&#39;t allow access and you&nbsp;don&#39;t want to enable temporary access, then <a href=\"https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518\" target=\"_blank\" rel=\"noopener\">follow these steps</a> to manually install certificates on the relevant servers. You don&#39;t need to do anything on replicated machines.</li>\r\n</ul>\r\n",
+    "Markdown": "Microsoft is updating Azure services to use Transport Layer Security (TLS) certificates from a different set of Root Certificate Authorities (CAs). We're making this change because the current CA certificates don't comply with one of the CA/Browser Forum Baseline requirements . Azure Site Recovery service endpoints will be updated in a phased transition across all public regions beginning on October 16 2020, and completing by October 26, 2020.\n\nWill this change affect me?\n\nThis change will affect connectivity from on-premises configuration server/process servers (for physical/VMware VM replication), and from Hyper-V host servers/System Center VMM servers, to the Azure Site Recovery service. After the update, replication won't work as expected in the following scenarios:\n\nIf you're connecting to Site Recovery using Azure Private Links.\n\nIf you have an environment where firewall rules only allow outbound calls to specific Certificate Revocation List (CRL) download locations, and/or to Online Certificate Status Protocol (OCSP) verification locations.\n\nConnectivity is needed to these CRL and OSCP URLs:\n\nhttp://crl3.digicert.com\n\nhttp://crl4.digicert.com\n\nhttp://oscp.digicert.com\n\nhttp://www.d-trust.net\n\nhttp://root-c3-ca2.ocsp.d-trust.net\n\nhttp://crl.microsoft.com\n\nhttp://oneocsp.microsoft.com\n\nhttp://ocsp.msocsp.com\n\nWhat should I do?\n\nIf your environment allows access to the URLs above, no action is needed.\n\nIf you already completed the required actions based on prior instructions , no further action is needed.\n\nIf your environment doesn't allow access to the URLs, consider allowing temporary access. This enables the Site Recovery configuration server/process server (VMware/physical machine replication), or Hyper-V host servers/VMM servers, to automatically update certificates once the update is available in your region. After the update you can turn off access to the URLs.\n\nIf your environment doesn't allow access and you don't want to enable temporary access, then follow these steps to manually install certificates on the relevant servers. You don't need to do anything on replicated machines."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "site-recovery-tls-certificate-update"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=site-recovery-tls-certificate-update"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance, Migration"
+    }
+  ]
+}

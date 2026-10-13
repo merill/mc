@@ -1,0 +1,47 @@
+{
+  "Id": "AZ-azure-dns-private-zones-preview-api-is-being-depricated",
+  "Title": "Azure DNS private zones preview API is being deprecated",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-03-12T17:00:36.000Z",
+  "LastModifiedDateTime": "2020-03-12T17:00:36.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure DNS"
+  ],
+  "Tags": [
+    "SDK and Tools",
+    "Services",
+    "Retirements"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>During public preview release, private DNS zones were created using <em>dnszones</em>&nbsp; ARM resource with <em>zoneType</em> property set to <em>Private</em>.&nbsp;&nbsp;Support for zones created using the preview API will be removed on <strong>June 30, 2020</strong> and you must immediately migrate these private DNS zones to the GA resource model.&nbsp;The GA resource model makes use of&nbsp;<em>privateDnsZones</em>&nbsp;resource type instead of&nbsp;<em>dnszones</em>.</p>\r\n\r\n<p><strong>Post April 15, 2020 you will not be able to create new private DNS zones using preview <em>dnszones</em> resource API. Existing zones created using this API will stop working after June 30, 2020 and must be migrated to GA resource model.</strong></p>\r\n\r\n<p>Note: This does not affect public DNS zones created using dnszones resource. These zones will continue to work normally.</p>\r\n\r\n<p>To find out the dnszones resources that require migration; execute the below command in Azure CLI.</p>\r\n\r\n<p><em>az account set --subscription SubscriptionId</em></p>\r\n\r\n<p><em>az network dns zone list --query &quot;[?zoneType==&#39;Private&#39;]&quot;</em></p>\r\n\r\n<p><strong>Required Action</strong></p>\r\n\r\n<p>1. Please delete the private DNS zone if it is no longer required and was created only for evaluation or testing purposes.</p>\r\n\r\n<p>2. If the private DNS zones are in use please follow the&nbsp;<a href=\"https://docs.microsoft.com/azure/dns/private-dns-migration-guide\" target=\"_blank\" rel=\"noopener\">step by step instructions provided in our migration guide</a>&nbsp;to migrate the preview DNS zones to latest resource model.&nbsp;The migration process has been automated and all you need to do is to run a powershell cmdlet.</p>\r\n\r\n<p>3. Start using <em>privateDnsZones</em> resource instead of <em>dnszones</em> resource.</p>\r\n\r\n<p>4. Update your automations (scripts/templates) to use API&nbsp;<a href=\"https://docs.microsoft.com/rest/api/dns/privatedns/privatezones\" target=\"_blank\" rel=\"noopener\">version 2018-09-01</a>&nbsp;and switch to the latest&nbsp;<a href=\"https://docs.microsoft.com/cli/azure/network/private-dns?view=azure-cli-latest\" target=\"_blank\" rel=\"noopener\">CLI</a><em>/</em><a href=\"https://docs.microsoft.com/powershell/module/az.PrivateDns/\" target=\"_blank\" rel=\"noopener\"><em>PowerShell</em></a><em>/</em><a href=\"https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet\" target=\"_blank\" rel=\"noopener\"><em>SDKs</em></a><em>.</em></p>\r\n\r\n<p>If you need assistance with migration process please create a support ticket.</p>\r\n",
+    "Markdown": "During public preview release, private DNS zones were created using dnszones ARM resource with zoneType property set to Private . Support for zones created using the preview API will be removed on June 30, 2020 and you must immediately migrate these private DNS zones to the GA resource model. The GA resource model makes use of privateDnsZones resource type instead of dnszones .\n\nPost April 15, 2020 you will not be able to create new private DNS zones using preview dnszones resource API. Existing zones created using this API will stop working after June 30, 2020 and must be migrated to GA resource model.\n\nNote: This does not affect public DNS zones created using dnszones resource. These zones will continue to work normally.\n\nTo find out the dnszones resources that require migration; execute the below command in Azure CLI.\n\naz account set --subscription SubscriptionId\n\naz network dns zone list --query \"[?zoneType=='Private']\"\n\nRequired Action\n\n1. Please delete the private DNS zone if it is no longer required and was created only for evaluation or testing purposes.\n\n2. If the private DNS zones are in use please follow the step by step instructions provided in our migration guide to migrate the preview DNS zones to latest resource model. The migration process has been automated and all you need to do is to run a powershell cmdlet.\n\n3. Start using privateDnsZones resource instead of dnszones resource.\n\n4. Update your automations (scripts/templates) to use API version 2018-09-01 and switch to the latest CLI / PowerShell / SDKs .\n\nIf you need assistance with migration process please create a support ticket."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-dns-private-zones-preview-api-is-being-depricated"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-dns-private-zones-preview-api-is-being-depricated"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Retirement"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Retirement: June 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Networking"
+    }
+  ]
+}

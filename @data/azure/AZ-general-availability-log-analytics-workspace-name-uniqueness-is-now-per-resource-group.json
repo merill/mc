@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-general-availability-log-analytics-workspace-name-uniqueness-is-now-per-resource-group",
+  "Title": "General availability: Log analytics workspace name uniqueness is now per resource group",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2021-04-14T16:02:07.000Z",
+  "LastModifiedDateTime": "2021-04-14T16:02:07.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Monitor"
+  ],
+  "Tags": [
+    "Management"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p><strong>Context: </strong>Azure Monitor log analytics workspace name uniqueness was maintained globally across all subscription. When a workspace name was used by one customer or user in the same organization, it couldn&rsquo;t be used again by others.</p>\r\n\r\n<p><strong>Update:</strong> We have changed the way we enforce workspace name uniqueness and it&rsquo;s now maintained in the resource group context. It allows you to use the same workspace name in deployments across multiple environments for consistency. Workspace uniqueness is maintained as follow:</p>\r\n\r\n<ul>\r\n\t<li>Workspace ID &ndash; global uniqueness remained unchanged.</li>\r\n\t<li>Workspace resource ID &ndash; global uniqueness.</li>\r\n\t<li>Workspace name &ndash; per resource group</li>\r\n</ul>\r\n\r\n<p><strong>Recommendations</strong>: <a href=\"https://docs.microsoft.com/azure/azure-monitor/logs/cross-workspace-query#identifying-workspace-resources\" target=\"_blank\" rel=\"noopener\">Cross workspace queries</a> (also in alerts) should reference workspaces by either: Qualified name, Workspace ID or Azure Resource ID. Cross workspace queries referenced by Resource name (workspace name) will fail due to ambiguous names when you have multiple workspaces with that name.</p>\r\n\r\n<p><a href=\"https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p>\r\n",
+    "Markdown": "Context: Azure Monitor log analytics workspace name uniqueness was maintained globally across all subscription. When a workspace name was used by one customer or user in the same organization, it couldn’t be used again by others.\n\nUpdate: We have changed the way we enforce workspace name uniqueness and it’s now maintained in the resource group context. It allows you to use the same workspace name in deployments across multiple environments for consistency. Workspace uniqueness is maintained as follow:\n\nWorkspace ID – global uniqueness remained unchanged.\n\nWorkspace resource ID – global uniqueness.\n\nWorkspace name – per resource group\n\nRecommendations : Cross workspace queries (also in alerts) should reference workspaces by either: Qualified name, Workspace ID or Azure Resource ID. Cross workspace queries referenced by Resource name (workspace name) will fail due to ambiguous names when you have multiple workspaces with that name.\n\nLearn more ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "general-availability-log-analytics-workspace-name-uniqueness-is-now-per-resource-group"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=general-availability-log-analytics-workspace-name-uniqueness-is-now-per-resource-group"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: April 2021"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "DevOps, Management and governance"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import {
   ArrowDown,
   ArrowUp,
   ChevronsUpDown,
+  Cloud,
   Inbox,
   MessageSquare,
   Milestone,
@@ -14,6 +15,7 @@ import {
 } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
+import { getDisplayId } from "@/lib/message-format"
 import { useZapCount } from "@/lib/use-zap-counts"
 import { zapLinks } from "@/lib/zap"
 import { SeenOnlyInBadge } from "@/components/seen-only-in-badge"
@@ -24,6 +26,15 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+
+export type MessageViewSource = "messageCenter" | "roadmap" | "azure"
+
+/** Each source's icon and its name where space is short. */
+export const SOURCE_DISPLAY = {
+  messageCenter: { Icon: Inbox, short: "Message Center" },
+  roadmap: { Icon: Milestone, short: "Roadmap" },
+  azure: { Icon: Cloud, short: "Azure" },
+} as const
 
 export type MessageView = {
   id: string
@@ -37,7 +48,7 @@ export type MessageView = {
   isArchived: boolean
   // Kind of tenant (such as "edu") that alone returned the post, if any.
   seenOnlyIn?: string
-  source: "messageCenter" | "roadmap"
+  source: MessageViewSource
   sourceLabel: string
   // Present only for search results: a Pagefind excerpt with <mark> around
   // the matched terms.
@@ -152,7 +163,7 @@ export const columns: ColumnDef<MessageView>[] = [
       idSortKey(a.original.id).localeCompare(idSortKey(b.original.id)),
     header: ({ column }) => <SortableHeader column={column} label="ID" />,
     cell: ({ row }) => {
-      const SourceIcon = row.original.source === "roadmap" ? Milestone : Inbox
+      const SourceIcon = SOURCE_DISPLAY[row.original.source].Icon
 
       return (
         // The Expired badge wraps below the ID when the column is narrow
@@ -180,7 +191,7 @@ export const columns: ColumnDef<MessageView>[] = [
               href={messageHref(row.original.id)}
               className="font-medium text-foreground/85 hover:underline"
             >
-              {row.original.id}
+              {getDisplayId(row.original.id)}
             </Link>
             {row.original.isMajor && (
               <TooltipProvider>
@@ -241,7 +252,7 @@ export const columns: ColumnDef<MessageView>[] = [
     header: () => <div className="text-nowrap">Source</div>,
     cell: ({ row }) => (
       <span className="text-nowrap leading-7 text-foreground/75">
-        {row.original.source === "roadmap" ? "Roadmap" : "Message Center"}
+        {SOURCE_DISPLAY[row.original.source].short}
       </span>
     ),
   },

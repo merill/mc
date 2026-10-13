@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-aci-msi-preview",
+  "Title": "Public preview: Azure Container Instances support of managed identities",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2018-10-23T16:00:00.000Z",
+  "LastModifiedDateTime": "2018-10-23T16:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Container Instances"
+  ],
+  "Tags": [
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure Container Instances announces the public preview support of managed identities in all Container Instances regions.</p>\r\n\r\n<p>Previously, authenticating a container group required the passing of secrets through mechanisms like environment variables or secret volumes. This required additional effort in trying to secure a path to pass, consume, and maintain secrets. This pain point could grow larger as the number of container groups and secrets&nbsp;began to scale up.</p>\r\n\r\n<p>Support for <a href=\"https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview\" target=\"_blank\" rel=\"noopener\">managed identities</a> streamlines this process. You can offload&nbsp;secret management&nbsp;by authenticating container groups to utilize system-assigned identities for the lifetime of a specific container group, or user-assigned identities that can be pre-created and reused with Azure Active Directory (Azure AD). You can now complete tasks such as retrieving secrets from Azure Key Vault or writing output to an Azure Storage endpoint&nbsp;with secure authentication handled by Azure AD.</p>\r\n\r\n<p>Simply deploy a container group with the <em>--assign-identity</em> parameter to set this up on creation.</p>\r\n\r\n<p><strong>User-assigned</strong></p>\r\n\r\n<pre>\r\n<code>az container create --resource-group myResourceGroup --name mycontainer --image $MY_IMAGE --assign-identity $resourceID \r\n</code></pre>\r\n\r\n<div>&nbsp;</div>\r\n\r\n<p><strong>System-assigned</strong></p>\r\n\r\n<pre>\r\n<code>az container create --resource-group myResourceGroup --name mycontainer --image $MY_IMAGE --assign-identity\r\n</code></pre>\r\n\r\n<div>&nbsp;</div>\r\n\r\n<p>To get started, follow the <a href=\"https://aka.ms/aci/msi\" target=\"_blank\" rel=\"noopener\">tutorial about using managed identities</a> with Azure Container Instances.</p>\r\n",
+    "Markdown": "Azure Container Instances announces the public preview support of managed identities in all Container Instances regions.\n\nPreviously, authenticating a container group required the passing of secrets through mechanisms like environment variables or secret volumes. This required additional effort in trying to secure a path to pass, consume, and maintain secrets. This pain point could grow larger as the number of container groups and secrets began to scale up.\n\nSupport for managed identities streamlines this process. You can offload secret management by authenticating container groups to utilize system-assigned identities for the lifetime of a specific container group, or user-assigned identities that can be pre-created and reused with Azure Active Directory (Azure AD). You can now complete tasks such as retrieving secrets from Azure Key Vault or writing output to an Azure Storage endpoint with secure authentication handled by Azure AD.\n\nSimply deploy a container group with the --assign-identity parameter to set this up on creation.\n\nUser-assigned\n\naz container create --resource-group myResourceGroup --name mycontainer --image $MY_IMAGE --assign-identity $resourceID\n\nSystem-assigned\n\naz container create --resource-group myResourceGroup --name mycontainer --image $MY_IMAGE --assign-identity\n\nTo get started, follow the tutorial about using managed identities with Azure Container Instances."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "aci-msi-preview"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=aci-msi-preview"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: October 2018"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Containers"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-azure-batch-updates-april-2019",
+  "Title": "Azure Batch updates now available",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-04-22T18:00:19.000Z",
+  "LastModifiedDateTime": "2019-04-22T18:00:19.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Batch"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Here are the latest updates to Azure Batch:</p>\r\n\r\n<ul>\r\n\t<li><strong>Task resource files</strong>\r\n\r\n\t<ul>\r\n\t\t<li>Tasks can have a list of resource files that are downloaded to the node before the task is run. Previously, only a list of single storage blobs could be specified. This meant that the list of files needed to be known, and there was a limit to the number of list entries. Now, a resource file can specify a storage container and an optional blob prefix. This enables large numbers of files in a storage container to be downloaded, and the list of specific files does not need to be known. In addition, a resource file URL can be any HTTP URL and does not have to be an Azure Blob storage URL. We&#39;ve added a <a href=\"https://docs.microsoft.com/azure/batch/resource-files\" target=\"_blank\" rel=\"noopener\">new article</a> to cover the enhanced resource file capabilities.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li><strong>Task maximum lifetime</strong>\r\n\t<ul>\r\n\t\t<li>Active tasks and jobs are now valid for up to 180 days, up from 7 days previously.&nbsp;This and other limits are specified in an <a href=\"https://docs.microsoft.com/azure/batch/batch-quota-limit#other-limits\" target=\"_blank\" rel=\"noopener\">article on quotas and limits</a>.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li><strong>Task retention time default</strong>\r\n\t<ul>\r\n\t\t<li>The task retention time determines when the Batch service can clean up old task data on pool nodes.&nbsp;The default task retention time has changed from infinite to 7 days, to help prevent issues due to the pool node disk becoming full. Task retention time is specified as part of <a href=\"https://docs.microsoft.com/rest/api/batchservice/task/add#taskconstraints\" target=\"_blank\" rel=\"noopener\">task constraints</a>.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li><strong>Pools</strong>\r\n\t<ul>\r\n\t\t<li>Pools based on Azure Cloud Services can now specify an OS family of 6, which equates to Windows Server 2019.&nbsp;The OS family is specified in the <a href=\"https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration\" target=\"_blank\" rel=\"noopener\">pool cloud service configuration</a>.</li>\r\n\t\t<li>Cloud service pools now support tasks with the <a href=\"https://docs.microsoft.com/rest/api/batchservice/task/add#outputfile\" target=\"_blank\" rel=\"noopener\">OutputFile property</a> set, providing automatic copy of files to Azure Blob storage after a task finishes.</li>\r\n\t\t<li><a href=\"https://docs.microsoft.com/rest/api/batchservice/pool/add#loginmode\" target=\"_blank\" rel=\"noopener\">LoginMode </a>can be specified for Windows virtual machine pools.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li><strong>Batch cost information</strong>\r\n\t<ul>\r\n\t\t<li>Costs that Batch accounts incur are available in Azure Cost Management.&nbsp;Cost information is available for each pool.&nbsp;This information is also displayed in Batch Explorer.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li><strong>Batch Explorer</strong>\r\n\t<ul>\r\n\t\t<li><a href=\"https://azure.github.io/BatchExplorer/\" target=\"_blank\" rel=\"noopener\">Batch Explorer</a> is a comprehensive cross-platform client to help you debug and monitor your Batch accounts.&nbsp; There have been many updates in recent months. Batch Explorer is now GA with version 2.0.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li><strong>Batch Rendering</strong>\r\n\t<ul>\r\n\t\t<li>New versions of the rendering applications have been added to the rendering VM images.&nbsp;The latest applications and applications versions are listed in&nbsp;<a href=\"https://docs.microsoft.com/azure/batch/batch-rendering-applications\" target=\"_blank\" rel=\"noopener\">this article</a>.</li>\r\n\t\t<li>Significant improvements have been made to the Azure cloud provider plug-in for the Thinkbox Deadline render manager.&nbsp;See the <a href=\"https://github.com/Azure/azure-deadline\" target=\"_blank\" rel=\"noopener\">project page</a> for more information and to contribute.</li>\r\n\t\t<li>Easier Azure configuration, management, and monitoring with Qube or Deadline render managers&nbsp;are now possible with the preview of the <a href=\"https://github.com/Azure/azure-render-farm-manager\" target=\"_blank\" rel=\"noopener\">Azure Render Farm Manager</a>.</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li><strong>NSG service tag</strong>\r\n\t<ul>\r\n\t\t<li>There is now a service tag for Batch, <a href=\"https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags\" target=\"_blank\" rel=\"noopener\">BatchNodeManagement</a>, that you can&nbsp;use in NSGs to enable communication between pool nodes and the Batch service.&nbsp;<br>\r\n\t\t&nbsp;</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "Here are the latest updates to Azure Batch:\n\nTask resource files\n\nTasks can have a list of resource files that are downloaded to the node before the task is run. Previously, only a list of single storage blobs could be specified. This meant that the list of files needed to be known, and there was a limit to the number of list entries. Now, a resource file can specify a storage container and an optional blob prefix. This enables large numbers of files in a storage container to be downloaded, and the list of specific files does not need to be known. In addition, a resource file URL can be any HTTP URL and does not have to be an Azure Blob storage URL. We've added a new article to cover the enhanced resource file capabilities.\n\nTask maximum lifetime\n\nActive tasks and jobs are now valid for up to 180 days, up from 7 days previously. This and other limits are specified in an article on quotas and limits .\n\nTask retention time default\n\nThe task retention time determines when the Batch service can clean up old task data on pool nodes. The default task retention time has changed from infinite to 7 days, to help prevent issues due to the pool node disk becoming full. Task retention time is specified as part of task constraints .\n\nPools\n\nPools based on Azure Cloud Services can now specify an OS family of 6, which equates to Windows Server 2019. The OS family is specified in the pool cloud service configuration .\n\nCloud service pools now support tasks with the OutputFile property set, providing automatic copy of files to Azure Blob storage after a task finishes.\n\nLoginMode can be specified for Windows virtual machine pools.\n\nBatch cost information\n\nCosts that Batch accounts incur are available in Azure Cost Management. Cost information is available for each pool. This information is also displayed in Batch Explorer.\n\nBatch Explorer\n\nBatch Explorer is a comprehensive cross-platform client to help you debug and monitor your Batch accounts. There have been many updates in recent months. Batch Explorer is now GA with version 2.0.\n\nBatch Rendering\n\nNew versions of the rendering applications have been added to the rendering VM images. The latest applications and applications versions are listed in this article .\n\nSignificant improvements have been made to the Azure cloud provider plug-in for the Thinkbox Deadline render manager. See the project page for more information and to contribute.\n\nEasier Azure configuration, management, and monitoring with Qube or Deadline render managers are now possible with the preview of the Azure Render Farm Manager .\n\nNSG service tag\n\nThere is now a service tag for Batch, BatchNodeManagement , that you can use in NSGs to enable communication between pool nodes and the Batch service."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-batch-updates-april-2019"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-batch-updates-april-2019"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: April 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute"
+    }
+  ]
+}

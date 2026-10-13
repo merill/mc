@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-e2e-adx-pipeline-arm-template",
+  "Title": "Generally available: Azure Data Explorer Inline script deployment with ARM Template",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2022-04-05T15:00:16.000Z",
+  "LastModifiedDateTime": "2022-04-05T15:00:16.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Data Explorer",
+    "Azure Resource Manager templates"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>It is now easier than ever to build an entire Azure Data Explorer environment with a single tool:&nbsp;ARM template.</p>\r\n\r\n<p>From a single ARM Template we can now deploy schema entities (e.g. tables, functions, policies) without the usage of an external storage account.</p>\r\n\r\n<p>This enables end-to-end deployment of Azure Data Explorer solutions to build new environment from scratch or update existing ones incrementally (e.g. CI/CD).</p>\r\n\r\n<pre>\r\n<code>{\r\n    &quot;type&quot;: &quot;Microsoft.Kusto/Clusters/Databases/Scripts&quot;,\r\n    &quot;apiVersion&quot;: &quot;2022-02-01&quot;,\r\n    &quot;name&quot;: &quot;myScript&quot;,\r\n    &quot;properties&quot;: {\r\n        &quot;scriptContent&quot;: &quot;.create table Simple(Id:int)\\n\\n.create table Simple2(Name:string)&quot;\r\n    }\r\n}</code></pre>\r\n\r\n<p>Using Bicep ARM Template makes it easy to maintain KQL scripts in separate files:</p>\r\n\r\n<pre>\r\n<code>resource perfTestDbs &#39;Microsoft.Kusto/clusters/databases/scripts@2022-02-01&#39; = {\r\n    name: &#39;myScript&#39;\r\n    properties: {\r\n        scriptContent: loadTextContent(&#39;script.kql&#39;)\r\n    }\r\n}</code></pre>\r\n\r\n<p>Learn about it in the <a href=\"https://docs.microsoft.com/en-us/azure/data-explorer/database-script\" target=\"_blank\" rel=\"noopener\">Online documentation</a> and <a href=\"https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/end-to-end-azure-data-explorer-pipeline-deployment-with-arm/ba-p/3248717\" target=\"_blank\" rel=\"noopener\">Blog post</a>.</p>\r\n",
+    "Markdown": "It is now easier than ever to build an entire Azure Data Explorer environment with a single tool: ARM template.\n\nFrom a single ARM Template we can now deploy schema entities (e.g. tables, functions, policies) without the usage of an external storage account.\n\nThis enables end-to-end deployment of Azure Data Explorer solutions to build new environment from scratch or update existing ones incrementally (e.g. CI/CD).\n\n{\n\n\"type\": \"Microsoft.Kusto/Clusters/Databases/Scripts\",\n\n\"apiVersion\": \"2022-02-01\",\n\n\"name\": \"myScript\",\n\n\"properties\": {\n\n\"scriptContent\": \".create table Simple(Id:int)\\n\\n.create table Simple2(Name:string)\"\n\n}\n\n}\n\nUsing Bicep ARM Template makes it easy to maintain KQL scripts in separate files:\n\nresource perfTestDbs 'Microsoft.Kusto/clusters/databases/scripts@2022-02-01' = {\n\nname: 'myScript'\n\nproperties: {\n\nscriptContent: loadTextContent('script.kql')\n\n}\n\n}\n\nLearn about it in the Online documentation and Blog post ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "e2e-adx-pipeline-arm-template"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=e2e-adx-pipeline-arm-template"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: April 2022"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics, Management and governance"
+    }
+  ]
+}

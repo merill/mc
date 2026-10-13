@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-hdinsight-hbase-accelerated-writes-is-now-generally-available",
+  "Title": "HDInsight HBase Accelerated Writes is now generally available",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-11-06T18:00:23.000Z",
+  "LastModifiedDateTime": "2019-11-06T18:00:23.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "HDInsight"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>HDInsight HBase Accelerated Writes is now generally available.</p>\r\n\r\n<p><strong>Highlights</strong></p>\r\n\r\n<ul>\r\n\t<li>Improve your Apache HBase and Phoenix write performance by up to 9 times.</li>\r\n\t<li>Best suited for high throughput and low latency workloads running on Azure Data Lake Storage Gen 2 and Azure Blob Storage.</li>\r\n</ul>\r\n\r\n<p>The separation of compute and storage in HDInsight clusters offers the benefits of scalability, elasticity, agility, and economy for customers. However, this can sometimes incur the costs of higher latencies due to network layers.</p>\r\n\r\n<p>In the current implementation, write ahead logs (WALs) in the HDInsight HBase cluster are stored as page blobs in Azure standard Storage. Thus, the Azure file system is one of the few cloud offerings that satisfy consistency requirements for HBase write ahead log.</p>\r\n\r\n<p>This architecture works very well for most applications, but it may not be ideal for mission critical applications that require consistent low latency and high throughput I/O as inconsistent latencies for WAL writes can be a bottleneck for overall write performance in HDInsight HBase clusters.</p>\r\n\r\n<p>The accelerated writes feature in the HDInsight HBase cluster attaches a Premium SSD managed disk to every region server (worker node). Write ahead logs are configured to be written to Hadoop Distributed File System (HDFS) mounted on premium managed disks instead of standard Azure page blobs. Premium managed disks are SSD-based and offer excellent I/O performance with fault tolerance. Using premium managed disks for WALs allows us to separate write ahead log storage from Apache HBase data storage.</p>\r\n\r\n<p>Lean more <a href=\"https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes\" target=\"_blank\" rel=\"noopener\">Azure HDInsight accelerated writes for Apache HBase</a>.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "HDInsight HBase Accelerated Writes is now generally available.\n\nHighlights\n\nImprove your Apache HBase and Phoenix write performance by up to 9 times.\n\nBest suited for high throughput and low latency workloads running on Azure Data Lake Storage Gen 2 and Azure Blob Storage.\n\nThe separation of compute and storage in HDInsight clusters offers the benefits of scalability, elasticity, agility, and economy for customers. However, this can sometimes incur the costs of higher latencies due to network layers.\n\nIn the current implementation, write ahead logs (WALs) in the HDInsight HBase cluster are stored as page blobs in Azure standard Storage. Thus, the Azure file system is one of the few cloud offerings that satisfy consistency requirements for HBase write ahead log.\n\nThis architecture works very well for most applications, but it may not be ideal for mission critical applications that require consistent low latency and high throughput I/O as inconsistent latencies for WAL writes can be a bottleneck for overall write performance in HDInsight HBase clusters.\n\nThe accelerated writes feature in the HDInsight HBase cluster attaches a Premium SSD managed disk to every region server (worker node). Write ahead logs are configured to be written to Hadoop Distributed File System (HDFS) mounted on premium managed disks instead of standard Azure page blobs. Premium managed disks are SSD-based and offer excellent I/O performance with fault tolerance. Using premium managed disks for WALs allows us to separate write ahead log storage from Apache HBase data storage.\n\nLean more Azure HDInsight accelerated writes for Apache HBase ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "hdinsight-hbase-accelerated-writes-is-now-generally-available"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=hdinsight-hbase-accelerated-writes-is-now-generally-available"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: November 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

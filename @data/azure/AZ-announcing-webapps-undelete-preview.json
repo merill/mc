@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-announcing-webapps-undelete-preview",
+  "Title": "Public preview: Undelete for App Service",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2018-09-24T17:00:00.000Z",
+  "LastModifiedDateTime": "2018-09-24T17:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "App Service"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The undelete feature in Azure App Service is now in public preview. Undelete is available for all App Service plans. Only sites deleted in the past 30 days can be restored.&nbsp;</p>\r\n\r\n<p>A user can undelete a deleted web app and restore the following:&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>The content of the deleted app.&nbsp;</li>\r\n\t<li>The configuration of the app. (The commands allow you to skip the restoration of the app configuration.)&nbsp;</li>\r\n\t<li>The *.azurewebsites.net host name, if it&rsquo;s still available.&nbsp;</li>\r\n</ul>\r\n\r\n<p>Currently, the undelete commands support the restoration of apps deleted from multiple tenants that use Windows and Linux.&nbsp;</p>\r\n\r\n<p>To get started, install the PowerShell module or install the <a href=\"https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest\" target=\"_blank\" rel=\"noopener\">Azure CLI</a>. You can then do the following.&nbsp;</p>\r\n\r\n<h3>List deleted apps</h3>\r\n\r\n<p>In the Azure CLI, you can list deleted apps by using the following command. Use the optional parameters to filter the apps that have a specific name, or that belong to a specific resource group or App Service plan. Record the ID of the deleted site, because that will be used to restore the app.&nbsp;</p>\r\n\r\n<p><code>az webapp deleted list --name &lt;name of the deleted app&gt;</code>&nbsp;</p>\r\n\r\n<h3>Restore a deleted app</h3>\r\n\r\n<p>In the Azure CLI, you need to have an existing app or an app slot to restore your app to:&nbsp;</p>\r\n\r\n<p><code>Get-AzureRmDeletedWebApp -name &lt;name of the deleted app&gt;&nbsp;</code></p>\r\n\r\n<p>In PowerShell, you can specify the name and resource group of the deleted app, and provide the information of the target app. You can specify an App Service plan name to restore to, and the command will try to restore the app with the same *.azurewebsites.net hostname as the deleted app.&nbsp;</p>\r\n\r\n<p><code>Restore-AzureRmDeletedWebApp -ResourceGroupName &lt;deleted app rg&gt; -Name &lt;deleted app name&gt; -TargetAppServicePlanName &lt;App Service plan name to create an app to restore to&gt;&nbsp;</code></p>\r\n",
+    "Markdown": "The undelete feature in Azure App Service is now in public preview. Undelete is available for all App Service plans. Only sites deleted in the past 30 days can be restored.\n\nA user can undelete a deleted web app and restore the following:\n\nThe content of the deleted app.\n\nThe configuration of the app. (The commands allow you to skip the restoration of the app configuration.)\n\nThe *.azurewebsites.net host name, if it’s still available.\n\nCurrently, the undelete commands support the restoration of apps deleted from multiple tenants that use Windows and Linux.\n\nTo get started, install the PowerShell module or install the Azure CLI . You can then do the following.\n\nList deleted apps\n\nIn the Azure CLI, you can list deleted apps by using the following command. Use the optional parameters to filter the apps that have a specific name, or that belong to a specific resource group or App Service plan. Record the ID of the deleted site, because that will be used to restore the app.\n\naz webapp deleted list --name <name of the deleted app>\n\nRestore a deleted app\n\nIn the Azure CLI, you need to have an existing app or an app slot to restore your app to:\n\nGet-AzureRmDeletedWebApp -name <name of the deleted app>\n\nIn PowerShell, you can specify the name and resource group of the deleted app, and provide the information of the target app. You can specify an App Service plan name to restore to, and the command will try to restore the app with the same *.azurewebsites.net hostname as the deleted app.\n\nRestore-AzureRmDeletedWebApp -ResourceGroupName <deleted app rg> -Name <deleted app name> -TargetAppServicePlanName <App Service plan name to create an app to restore to>"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "announcing-webapps-undelete-preview"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=announcing-webapps-undelete-preview"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: September 2018"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute, Mobile, Web"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "Id": "AZ-support-for-log-alert-rules-that-use-crossworkspace-queries-with-resource-names-or-qualified-name-identifiers-will-be-retired",
+  "Title": "Support for log alert rules that use cross-workspace queries with resource names or qualified name identifiers will be retired on 31 May 2024",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2024-02-01T18:48:43.000Z",
+  "LastModifiedDateTime": "2024-02-01T18:48:43.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Alerts"
+  ],
+  "Tags": [
+    "Compliance",
+    "Features",
+    "Services",
+    "Retirements"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>As of May 31, 2024, log alert rules will no longer support cross-workspace queries that use resource names or qualified name identifiers.</p>\r\n\r\n<p>Alert rules created in the Azure portal or using the <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Frest%2Fapi%2Fmonitor%2Fscheduled-query-rules%3Fview%3Drest-monitor-2023-03-15-preview&amp;data=05%7C02%7CNoga.Lavi%40microsoft.com%7C54e304a3197b458ecb5308dc1aa76be5%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638414553595134963%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=73ugUA1VPBVKOntj4I3vGwRirheopqZWf2vA2LmwX2Q%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Scheduled Query Rules API version 2023-03-15-preview</a>, using resource names (e.g. workspaces(&#39;AIFabrikamDemo&#39;)) or qualified names (&lt;subscriptionName&gt;/&lt;resourceGroup&gt;/&lt;workspaceName&gt;) patterns in cross-resource queries will not be supported.</p>\r\n\r\n<p>From now until May 31, 2024,&nbsp; you will get a warning if your query uses those patterns, and from May 31,2024, the queries will not be supported.</p>\r\n\r\n<h2>Required Action</h2>\r\n\r\n<p>When creating or updating log alert rules that query data across workspaces or applications explicitly using the workspace() or app() expressions, use one of the below resource identifiers:</p>\r\n\r\n<ul>\r\n\t<li>GUID of workspace or application, for example:\r\n\t<ul>\r\n\t\t<li>workspace(&quot;00000000-0000-0000-0000-000000000000&quot;)</li>\r\n\t\t<li>app(&quot;00000000-0000-0000-0000-000000000000&quot;)</li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>Identifier for the Azure resource\r\n\t<ul>\r\n\t\t<li>workspace(&quot;/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Contoso/providers/Microsoft.OperationalInsights/workspaces/contosoretail&quot;)</li>\r\n\t\t<li>app(&quot;/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp&quot;)</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Alert rules created or updated in the Azure portal prior to May 31<sup>st</sup> 2024 or using Scheduled Query Rules API versions <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Frest%2Fapi%2Fmonitor%2Fscheduled-query-rules%3Fview%3Drest-monitor-2022-08-01-preview&amp;data=05%7C02%7CNoga.Lavi%40microsoft.com%7C54e304a3197b458ecb5308dc1aa76be5%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638414553595148369%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=58w%2Fj8y7pjVN1mAL0A0WZyW52gLNITJw0t6Ycd7HIUE%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">2022-08-01-preview</a> or earlier will continue to run with no issues.</p>\r\n\r\n<h2>Help and support</h2>\r\n\r\n<p>If you have questions, get answers from community experts in <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Faka.ms%2Fcustomfieldsqa&amp;data=05%7C02%7CNoga.Lavi%40microsoft.com%7C54e304a3197b458ecb5308dc1aa76be5%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638414553595154317%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=uihB9NE1vyjkM5nUvVVt4OBnSs%2F2r6YcLfv3s3wJLCg%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Microsoft Q&amp;A</a>. If you have a support plan and you need technical help, create a <a href=\"https://portal.azure.com/#blade/Microsoft_Azure_Support/NewSupportRequestV3Blade\" target=\"_blank\" rel=\"noopener\">support request</a>.</p>\r\n",
+    "Markdown": "As of May 31, 2024, log alert rules will no longer support cross-workspace queries that use resource names or qualified name identifiers.\n\nAlert rules created in the Azure portal or using the Scheduled Query Rules API version 2023-03-15-preview , using resource names (e.g. workspaces('AIFabrikamDemo')) or qualified names (<subscriptionName>/<resourceGroup>/<workspaceName>) patterns in cross-resource queries will not be supported.\n\nFrom now until May 31, 2024, you will get a warning if your query uses those patterns, and from May 31,2024, the queries will not be supported.\n\nRequired Action\n\nWhen creating or updating log alert rules that query data across workspaces or applications explicitly using the workspace() or app() expressions, use one of the below resource identifiers:\n\nGUID of workspace or application, for example:\n\nworkspace(\"00000000-0000-0000-0000-000000000000\")\n\napp(\"00000000-0000-0000-0000-000000000000\")\n\nIdentifier for the Azure resource\n\nworkspace(\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Contoso/providers/Microsoft.OperationalInsights/workspaces/contosoretail\")\n\napp(\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp\")\n\nAlert rules created or updated in the Azure portal prior to May 31 st 2024 or using Scheduled Query Rules API versions 2022-08-01-preview or earlier will continue to run with no issues.\n\nHelp and support\n\nIf you have questions, get answers from community experts in Microsoft Q&A . If you have a support plan and you need technical help, create a support request ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "support-for-log-alert-rules-that-use-crossworkspace-queries-with-resource-names-or-qualified-name-identifiers-will-be-retired"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=support-for-log-alert-rules-that-use-crossworkspace-queries-with-resource-names-or-qualified-name-identifiers-will-be-retired"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Retirement"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Retirement: May 2024"
+    }
+  ]
+}

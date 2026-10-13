@@ -1,0 +1,46 @@
+{
+  "Id": "AZ-azure-data-factory-supports-aad-authentication-for-azure-sql-database-and-sql-data-warehouse",
+  "Title": "Data Factory supports Azure AD authentication for SQL Database and SQL Data Warehouse",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2018-03-23T19:00:11.000Z",
+  "LastModifiedDateTime": "2018-03-23T19:00:11.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Data Factory",
+    "Azure SQL Database"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure Data Factory V2 now supports Azure Active Directory (Azure AD) authentication for Azure SQL Database and SQL Data Warehouse, as an alternative to SQL Server authentication.&nbsp;</p>\r\n\r\n<p>Two modes of Azure AD authentication have been enabled.&nbsp;For prerequisite steps, see the following ACOM links.</p>\r\n\r\n<p>For SQL Database:</p>\r\n\r\n<ul>\r\n <li><a href=\"https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-database#using-service-principal-authentication\" target=\"_blank\" rel=\"noopener\">Using Azure AD application token authentication: service principal</a></li>\r\n <li><a href=\"https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-database#using-managed-service-identity-authentication\" target=\"_blank\" rel=\"noopener\">Using Azure AD application token authentication: managed service identity</a></li>\r\n</ul>\r\n\r\n<p>For SQL Data Warehouse:</p>\r\n\r\n<ul>\r\n <li><a href=\"https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse#using-service-principal-authentication\" target=\"_blank\" rel=\"noopener\">Using Azure AD application token authentication: service principal</a></li>\r\n <li><a href=\"https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse#using-managed-service-identity-authentication\" target=\"_blank\" rel=\"noopener\">Using Azure AD application token authentication: managed service identity</a></li>\r\n</ul>\r\n\r\n<p>Azure AD authentication has been enabled both through UI-based authoring and through JSON:</p>\r\n\r\n<p><a href=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/updates/ServiceUpdates/blog/fea0d639-f11f-4bef-a635-f27fad94ee26.jpg\" target=\"_blank\" rel=\"noopener\"><img alt=\"AAD\" src=\"https://azurecomcdn.azureedge.net/mediahandler/acomblog/updates/ServiceUpdates/blog/9101f11a-31d7-4dd7-a9ea-efb3980ca99b.jpg\" title=\"AAD\"></a></p>\r\n\r\n<p>Sample JSON payload for linked service definition using service principal authentication:</p>\r\n\r\n<p>{<br>\r\n&nbsp;&nbsp;&nbsp; &quot;name&quot;: &quot;AzureSqlDbLinkedService&quot;,<br>\r\n&nbsp;&nbsp;&nbsp; &quot;properties&quot;: {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;type&quot;: &quot;AzureSqlDatabase&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;typeProperties&quot;: {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;connectionString&quot;: {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;type&quot;: &quot;SecureString&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;value&quot;: &quot;Server=tcp:&lt;servername&gt;.database.windows.net,1433;Database=&lt;databasename&gt;;Connection Timeout=30&quot;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;servicePrincipalId&quot;: &quot;&lt;service principal id&gt;&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;servicePrincipalKey&quot;: {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;type&quot;: &quot;SecureString&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;value&quot;: &quot;&lt;service principal key&gt;&quot;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;tenant&quot;: &quot;&lt;tenant info, e.g. microsoft.onmicrosoft.com&gt;&quot;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;connectVia&quot;: {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;referenceName&quot;: &quot;&lt;name of Integration Runtime&gt;&quot;,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;type&quot;: &quot;IntegrationRuntimeReference&quot;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n&nbsp;&nbsp;&nbsp; }<br>\r\n}</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+    "Markdown": "Azure Data Factory V2 now supports Azure Active Directory (Azure AD) authentication for Azure SQL Database and SQL Data Warehouse, as an alternative to SQL Server authentication.\n\nTwo modes of Azure AD authentication have been enabled. For prerequisite steps, see the following ACOM links.\n\nFor SQL Database:\n\nUsing Azure AD application token authentication: service principal\n\nUsing Azure AD application token authentication: managed service identity\n\nFor SQL Data Warehouse:\n\nUsing Azure AD application token authentication: service principal\n\nUsing Azure AD application token authentication: managed service identity\n\nAzure AD authentication has been enabled both through UI-based authoring and through JSON:\n\nSample JSON payload for linked service definition using service principal authentication:\n\n{\n\n\"name\": \"AzureSqlDbLinkedService\",\n\n\"properties\": {\n\n\"type\": \"AzureSqlDatabase\",\n\n\"typeProperties\": {\n\n\"connectionString\": {\n\n\"type\": \"SecureString\",\n\n\"value\": \"Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30\"\n\n},\n\n\"servicePrincipalId\": \"<service principal id>\",\n\n\"servicePrincipalKey\": {\n\n\"type\": \"SecureString\",\n\n\"value\": \"<service principal key>\"\n\n},\n\n\"tenant\": \"<tenant info, e.g. microsoft.onmicrosoft.com>\"\n\n},\n\n\"connectVia\": {\n\n\"referenceName\": \"<name of Integration Runtime>\",\n\n\"type\": \"IntegrationRuntimeReference\"\n\n}\n\n}\n\n}"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-data-factory-supports-aad-authentication-for-azure-sql-database-and-sql-data-warehouse"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-data-factory-supports-aad-authentication-for-azure-sql-database-and-sql-data-warehouse"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: March 2018"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics, Databases, Hybrid + multicloud"
+    }
+  ]
+}

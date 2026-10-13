@@ -113,8 +113,8 @@ test("combined filters round-trip encoded names and search text", () => {
   )
 })
 
-test("both source filters are restored", () => {
-  for (const sourceFilter of ["messageCenter", "roadmap"]) {
+test("every source filter is restored", () => {
+  for (const sourceFilter of ["messageCenter", "roadmap", "azure"]) {
     assert.equal(
       readArchiveFilters(new URLSearchParams({ source: sourceFilter }))
         .sourceFilter,

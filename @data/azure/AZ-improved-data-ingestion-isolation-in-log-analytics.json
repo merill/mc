@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-improved-data-ingestion-isolation-in-log-analytics",
+  "Title": "Ingestion data isolation in Log Analytics",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-08-26T16:00:01.000Z",
+  "LastModifiedDateTime": "2020-08-26T16:00:01.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Monitor",
+    "Log Analytics"
+  ],
+  "Tags": [
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure Monitor is a high scale data service built to serve thousands of customers sending terabytes of data each month at a growing pace. As for any multitenancy platform, some limits must be put to protect customers from sudden ingestion spikes that can affect customers sharing the environment and resources.</p>\r\n\r\n<p>Up until now there was an ingestion volume rate limit for Azure resource data coming via Diagnostic Settings. Now we have added the limit to other Log Analytics data sources including Diagnostic Settings, agents, and data collector API. The limit is enforced on compressed data approximated as <b>6 GB/min</b> uncompressed. The actual size can vary between data types, depending on the log length and its compression ratio.</p>\r\n\r\n<p><u>How does this effect you?</u></p>\r\n\r\n<p>We have scanned and increased the threshold for any workspace that was nearing the ingestion volume rate limit, so there should not be an immediate effect on you. When you send data to a workspace at a volume rate higher than 80% of the workspace threshold, or reaching it, an event is sent to the <i>Operation</i> table in your workspace every 6 hours while the threshold continues to be exceeded. We recommend that you set alert on the events to receive these notifications.</p>\r\n\r\n<p><u>How to increase the ingestion volume rate limit threshold in your workspace?</u></p>\r\n\r\n<p>There is no &ldquo;hard limit&rdquo; for ingestion volume rate in Log Analytics. When you get alerts for reaching 80% of ingestion volume rate threshold, or you plan to increase it close to 6 GB/min or more you can request to increase it by opening a support request.</p>\r\n\r\n<p><a href=\"https://aka.ms/IngestionRateLimit\" target=\"_blank\" rel=\"noopener\">Learn more</a></p>\r\n",
+    "Markdown": "Azure Monitor is a high scale data service built to serve thousands of customers sending terabytes of data each month at a growing pace. As for any multitenancy platform, some limits must be put to protect customers from sudden ingestion spikes that can affect customers sharing the environment and resources.\n\nUp until now there was an ingestion volume rate limit for Azure resource data coming via Diagnostic Settings. Now we have added the limit to other Log Analytics data sources including Diagnostic Settings, agents, and data collector API. The limit is enforced on compressed data approximated as 6 GB/min uncompressed. The actual size can vary between data types, depending on the log length and its compression ratio.\n\nHow does this effect you?\n\nWe have scanned and increased the threshold for any workspace that was nearing the ingestion volume rate limit, so there should not be an immediate effect on you. When you send data to a workspace at a volume rate higher than 80% of the workspace threshold, or reaching it, an event is sent to the Operation table in your workspace every 6 hours while the threshold continues to be exceeded. We recommend that you set alert on the events to receive these notifications.\n\nHow to increase the ingestion volume rate limit threshold in your workspace?\n\nThere is no “hard limit” for ingestion volume rate in Log Analytics. When you get alerts for reaching 80% of ingestion volume rate threshold, or you plan to increase it close to 6 GB/min or more you can request to increase it by opening a support request.\n\nLearn more"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "improved-data-ingestion-isolation-in-log-analytics"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=improved-data-ingestion-isolation-in-log-analytics"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: August 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "DevOps, Management and governance"
+    }
+  ]
+}

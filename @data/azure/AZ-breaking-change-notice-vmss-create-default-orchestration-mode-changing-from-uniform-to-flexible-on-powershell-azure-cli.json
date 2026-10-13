@@ -1,0 +1,45 @@
+{
+  "Id": "AZ-breaking-change-notice-vmss-create-default-orchestration-mode-changing-from-uniform-to-flexible-on-powershell-azure-cli",
+  "Title": "Breaking Change Notice: Virtual Machine Scale Set Default Orchestration Mode changing from Uniform to Flexible on PowerShell, Azure CLI",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2023-10-11T20:00:10.000Z",
+  "LastModifiedDateTime": "2023-10-11T20:00:10.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Virtual Machine Scale Sets"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>We are announcing an upcoming breaking change to the default orchestration mode for Virtual Machine Scale Sets created on PowerShell and Azure CLI starting November 2023. Once this change is complete, any new VM scale sets created using these clients will automatically default to Flexible orchestration mode instead of Uniform. If you would like to continue creating Uniform scale sets, please update your scripts to set orchestration mode to Uniform when deploying your VMs. For more information on this breaking change, please see&nbsp;<a href=\"https://techcommunity.microsoft.com/t5/azure-compute-blog/breaking-change-for-vmss-powershell-cli-customers/ba-p/3818295\" target=\"_blank\" rel=\"noopener\">Breaking Change for VMSS PowerShell/CLI Customers - Microsoft Community Hub</a>.</p>\r\n\r\n<p>To learn more about VM Scale Set orchestration modes, please see&nbsp;<a href=\"https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes\" target=\"_blank\" rel=\"noopener\">Orchestration modes for Virtual Machine Scale Sets in Azure - Azure Virtual Machine S</a><a href=\"https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes\" target=\"_blank\" rel=\"noopener\">cale Sets | Microsoft Learn</a><a href=\"https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes\" target=\"_blank\" rel=\"noopener\">.</a></p>\r\n\r\n<h2>Impacted Commands&nbsp;</h2>\r\n\r\n<ul>\r\n\t<li>PowerShell:&nbsp;Starting November 2023, the&nbsp;<em>-OrchestrationMode</em>&nbsp;parameter for&nbsp;<a href=\"https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmss?view=azps-9.6.0\" target=\"_blank\" rel=\"noopener\">New-AzVmss</a>&nbsp;will have a new default value of &ldquo;Flexible&rdquo;, replacing the current default of &ldquo;Uniform&rdquo;. VM Scale Sets created using&nbsp;<em>New-AzVmss</em>&nbsp;after this change will default to &ldquo;Flexible&rdquo; orchestration mode if no<em>&nbsp;&ndash;OrchestrationMode</em>&nbsp;is specified.&nbsp;</li>\r\n\t<li>Azure CLI:&nbsp;Starting November 2023, the&nbsp;<em>&ndash;orchestration-mode</em>&nbsp;parameter for&nbsp;<a href=\"https://learn.microsoft.com/en-us/cli/azure/vmss?view=azure-cli-latest#az-vmss-create\" target=\"_blank\" rel=\"noopener\">az vmss create</a>&nbsp;will have a new default value of &ldquo;flexible&rdquo;, replacing the current default of &ldquo;uniform&rdquo;. VM Scale Sets created using&nbsp;<em>az vmss create</em>&nbsp;after this change will default to &ldquo;flexible&rdquo; orchestration mode if no&nbsp;<em>--orchestration-mode</em>&nbsp;is specified.&nbsp;</li>\r\n</ul>\r\n\r\n<p>Flexible&nbsp;scale sets will&nbsp;be&nbsp;configured with a&nbsp;Standard Load&nbsp;Balancer and&nbsp;Standard&nbsp;Public IP.</p>\r\n\r\n<h2>Recommended Action</h2>\r\n\r\n<h3>If you are currently using Virtual Machine scale sets in Uniform orchestration mode and would like to continue using Uniform orchestration after November 2023</h3>\r\n\r\n<p>Please update your PowerShell or CLI deployment scripts to specify Uniform orchestration mode to maintain the existing behaviour of your scale sets. This update is recommended to be done as soon as possible to avoid any unintended behaviour after the change. For examples on how to update, see&nbsp;<a href=\"https://techcommunity.microsoft.com/t5/azure-compute-blog/breaking-change-for-vmss-powershell-cli-customers/ba-p/3818295\" target=\"_blank\" rel=\"noopener\">Breaking Change for VMSS PowerShell/CLI Customers - Microsoft Community Hub</a>.</p>\r\n\r\n<h3>If you are currently using Virtual Machine scale sets in Uniform orchestration mode and would like to start using Flexible orchestration mode</h3>\r\n\r\n<p>Unfortunately, existing Virtual Machine Scale Sets in Uniform orchestration mode cannot be migrated to Flexible orchestration mode at this time. If you would like to experience the performance benefits and new features coming to Flex, consider updating your deployment scripts to create a Flex-oriented workload.</p>\r\n\r\n<h3>If you are already using Virtual Machine scale sets in Flexible orchestration mode</h3>\r\n\r\n<p>No action is required, your scale sets will continue to perform as expected following this change.</p>\r\n\r\n<p>If you have any questions or concerns about this change, please do not hesitate to reach out to our support team for assistance.</p>\r\n",
+    "Markdown": "We are announcing an upcoming breaking change to the default orchestration mode for Virtual Machine Scale Sets created on PowerShell and Azure CLI starting November 2023. Once this change is complete, any new VM scale sets created using these clients will automatically default to Flexible orchestration mode instead of Uniform. If you would like to continue creating Uniform scale sets, please update your scripts to set orchestration mode to Uniform when deploying your VMs. For more information on this breaking change, please see Breaking Change for VMSS PowerShell/CLI Customers - Microsoft Community Hub .\n\nTo learn more about VM Scale Set orchestration modes, please see Orchestration modes for Virtual Machine Scale Sets in Azure - Azure Virtual Machine S cale Sets | Microsoft Learn .\n\nImpacted Commands\n\nPowerShell: Starting November 2023, the -OrchestrationMode parameter for New-AzVmss will have a new default value of “Flexible”, replacing the current default of “Uniform”. VM Scale Sets created using New-AzVmss after this change will default to “Flexible” orchestration mode if no –OrchestrationMode is specified.\n\nAzure CLI: Starting November 2023, the –orchestration-mode parameter for az vmss create will have a new default value of “flexible”, replacing the current default of “uniform”. VM Scale Sets created using az vmss create after this change will default to “flexible” orchestration mode if no --orchestration-mode is specified.\n\nFlexible scale sets will be configured with a Standard Load Balancer and Standard Public IP.\n\nRecommended Action\n\nIf you are currently using Virtual Machine scale sets in Uniform orchestration mode and would like to continue using Uniform orchestration after November 2023\n\nPlease update your PowerShell or CLI deployment scripts to specify Uniform orchestration mode to maintain the existing behaviour of your scale sets. This update is recommended to be done as soon as possible to avoid any unintended behaviour after the change. For examples on how to update, see Breaking Change for VMSS PowerShell/CLI Customers - Microsoft Community Hub .\n\nIf you are currently using Virtual Machine scale sets in Uniform orchestration mode and would like to start using Flexible orchestration mode\n\nUnfortunately, existing Virtual Machine Scale Sets in Uniform orchestration mode cannot be migrated to Flexible orchestration mode at this time. If you would like to experience the performance benefits and new features coming to Flex, consider updating your deployment scripts to create a Flex-oriented workload.\n\nIf you are already using Virtual Machine scale sets in Flexible orchestration mode\n\nNo action is required, your scale sets will continue to perform as expected following this change.\n\nIf you have any questions or concerns about this change, please do not hesitate to reach out to our support team for assistance."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "breaking-change-notice-vmss-create-default-orchestration-mode-changing-from-uniform-to-flexible-on-powershell-azure-cli"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=breaking-change-notice-vmss-create-default-orchestration-mode-changing-from-uniform-to-flexible-on-powershell-azure-cli"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2023"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Compute"
+    }
+  ]
+}

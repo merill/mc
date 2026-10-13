@@ -14,7 +14,7 @@ export interface SearchHit extends MessageView {
 export type SearchSortKey = "id" | "title" | "date"
 
 export interface SearchOptions {
-  source?: "all" | "messageCenter" | "roadmap"
+  source?: "all" | "messageCenter" | "roadmap" | "azure"
   services?: string[]
   // Omit to rank by relevance (recency-weighted). Naming a column sorts the
   // whole match set inside the index instead, so the ordering holds for
@@ -200,7 +200,10 @@ export function sanitizeExcerpt(excerpt: string | undefined): string {
 
 function toHit(data: PagefindData): SearchHit {
   const meta = data.meta || {}
-  const source = meta.source === "roadmap" ? "roadmap" : "messageCenter"
+  const source =
+    meta.source === "roadmap" || meta.source === "azure"
+      ? meta.source
+      : "messageCenter"
 
   return {
     id: meta.id || data.url.split("/").pop() || "",
@@ -214,7 +217,11 @@ function toHit(data: PagefindData): SearchHit {
     source,
     sourceLabel:
       meta.sourceLabel ||
-      (source === "roadmap" ? "Microsoft 365 Roadmap" : "Message Center"),
+      (source === "roadmap"
+        ? "Microsoft 365 Roadmap"
+        : source === "azure"
+        ? "Azure Updates"
+        : "Message Center"),
     excerpt: sanitizeExcerpt(data.excerpt),
   }
 }

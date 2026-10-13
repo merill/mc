@@ -1,0 +1,47 @@
+{
+  "Id": "AZ-azure-devtest-labs-changes-in-exporting-custom-image-vhd-files",
+  "Title": "Azure DevTest Labs: Changes in exporting custom image VHD files",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2017-05-31T18:12:00.000Z",
+  "LastModifiedDateTime": "2017-05-31T18:12:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure DevTest Labs",
+    "Virtual Machines"
+  ],
+  "Tags": [
+    "Features",
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>When you select to create custom images from a virtual machine, Azure DevTest Labs now generates the following instead of VHD files:</p>\r\n\r\n<ul>\r\n <li><a href=\"https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview#images\" target=\"_blank\" rel=\"noopener\">Managed images</a> for Sysprep&#39;ed (for Windows)/deprovisioned (for Linux) lab VMs</li>\r\n <li><a href=\"https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview#images-versus-snapshots\" target=\"_blank\" rel=\"noopener\">Managed snapshots</a>&nbsp;for non-Sysprep&#39;ed/deprovisioned VMs</li>\r\n</ul>\r\n\r\n<p>This allows Sysprep&#39;ed/deprovisioned custom images to support data disks in addition to the OS disk through a single image. It also enables&nbsp;hundreds of new VMs by using your custom image without the need to copy or manage any storage accounts. The change also improves the performance and reliability of creating custom images from lab VMs.</p>\r\n\r\n<p>When you&nbsp;need to export custom image VHD files for distribution, use these steps:</p>\r\n\r\n<ol>\r\n <li>Apply the Sysprep artifact (for a Windows VM) or deprovision the artifact (for a Linux VM) to your target lab VM. Skip this step if you need a non-Sysprep&#39;ed/deprovisioned custom image.</li>\r\n <li>Export the VHD file directly from the VM OS disk.</li>\r\n</ol>\r\n\r\n<p>You can&nbsp;export the VHD file from the Azure portal or through APIs.</p>\r\n\r\n<p>To export the VHD file from the portal:</p>\r\n\r\n<ol>\r\n <li>Locate the Compute VM resource from the lab VM and open the <strong>Compute VM</strong> blade.</li>\r\n <li>Select <strong>Disks</strong> from the&nbsp;<strong>SETTINGS</strong> menu.</li>\r\n <li>Select the OS disk on the <strong>Disks</strong> blade.</li>\r\n <li>If it&#39;s a managed disk, select <strong>Export</strong> button on top of the disk blade. Otherwise, the VHD URI is shown at the bottom of the page.</li>\r\n</ol>\r\n\r\n<p>To export the VHD file from a managed VM OS disk through automation, try the following sample in PowerShell:</p>\r\n\r\n<p>&nbsp;&nbsp;$DTLVMID = &quot;/subscriptions/&quot; + $subscriptionID + &quot;/resourcegroups/&quot; + $labRgName + &quot;/providers/microsoft.devtestlab/labs/&quot; + $labName + &quot;/virtualmachines/&quot; + $labVmName</p>\r\n\r\n<p>&nbsp;&nbsp;$DTLVM = Get-AzureRmResource -ResourceId $DTLVMID</p>\r\n\r\n<p>&nbsp; $ComputeID = Get-AzureRmVM | Where-Object -FilterScript {$_.Id -eq $DTLVM.Properties.computeId}</p>\r\n\r\n<p>&nbsp; $mdiskURL = (Grant-AzureRmDiskAccess -ResourceGroupName $ComputeID.ResourceGroupName -DiskName $ComputeID.StorageProfile.OsDisk.Name -Access Read -DurationInSecond 3600).AccessSAS</p>\r\n\r\n<p>Grant-AzureRmDiskAccess is what gives you a valid URL for the VHD.</p>\r\n",
+    "Markdown": "When you select to create custom images from a virtual machine, Azure DevTest Labs now generates the following instead of VHD files:\n\nManaged images for Sysprep'ed (for Windows)/deprovisioned (for Linux) lab VMs\n\nManaged snapshots for non-Sysprep'ed/deprovisioned VMs\n\nThis allows Sysprep'ed/deprovisioned custom images to support data disks in addition to the OS disk through a single image. It also enables hundreds of new VMs by using your custom image without the need to copy or manage any storage accounts. The change also improves the performance and reliability of creating custom images from lab VMs.\n\nWhen you need to export custom image VHD files for distribution, use these steps:\n\nApply the Sysprep artifact (for a Windows VM) or deprovision the artifact (for a Linux VM) to your target lab VM. Skip this step if you need a non-Sysprep'ed/deprovisioned custom image.\n\nExport the VHD file directly from the VM OS disk.\n\nYou can export the VHD file from the Azure portal or through APIs.\n\nTo export the VHD file from the portal:\n\nLocate the Compute VM resource from the lab VM and open the Compute VM blade.\n\nSelect Disks from the SETTINGS menu.\n\nSelect the OS disk on the Disks blade.\n\nIf it's a managed disk, select Export button on top of the disk blade. Otherwise, the VHD URI is shown at the bottom of the page.\n\nTo export the VHD file from a managed VM OS disk through automation, try the following sample in PowerShell:\n\n$DTLVMID = \"/subscriptions/\" + $subscriptionID + \"/resourcegroups/\" + $labRgName + \"/providers/microsoft.devtestlab/labs/\" + $labName + \"/virtualmachines/\" + $labVmName\n\n$DTLVM = Get-AzureRmResource -ResourceId $DTLVMID\n\n$ComputeID = Get-AzureRmVM | Where-Object -FilterScript {$_.Id -eq $DTLVM.Properties.computeId}\n\n$mdiskURL = (Grant-AzureRmDiskAccess -ResourceGroupName $ComputeID.ResourceGroupName -DiskName $ComputeID.StorageProfile.OsDisk.Name -Access Read -DurationInSecond 3600).AccessSAS\n\nGrant-AzureRmDiskAccess is what gives you a valid URL for the VHD."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "azure-devtest-labs-changes-in-exporting-custom-image-vhd-files"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=azure-devtest-labs-changes-in-exporting-custom-image-vhd-files"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: May 2017"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Developer tools, DevOps, Compute"
+    }
+  ]
+}

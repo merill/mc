@@ -1,0 +1,50 @@
+{
+  "Id": "AZ509097",
+  "Title": "Generally Available: New Health Check infrastructure for Azure Traffic Manager",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2025-10-02T16:36:44.384Z",
+  "LastModifiedDateTime": "2025-10-02T16:36:44.384Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Traffic Manager"
+  ],
+  "Tags": [
+    "Services",
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<div><p>Azure Traffic Manager has\nintroduced new health check infrastructure to improve the resiliency and\nscalability of the service. This infrastructure is now available, and customers\nare being moved onto the new infrastructure.&nbsp;</p><p>The rollout of the new probing\ninfrastructure delivers improved horizontal scalability and better reliability\nfor Traffic Manager health checks.&nbsp;</p><p>Guidance on Firewall\nConfigurations&nbsp;</p><p>Health probes from the new\ninfrastructure originate from updated IP addresses. Most customers are already\noperating on the new platform. For environments where firewall rules have not\nbeen recently refreshed, the following options ensure health checks are\nallowed:&nbsp;</p><ol start=\"1\">\n <li>Preferred option (recommended):<br>\n     Configure firewall rules with the AzureTrafficManager <a href=\"https://learn.microsoft.com/azure/virtual-network/service-tags-overview\" target=\"_blank\" rel=\"noopener\">Service\n     Tag</a> in NSGs or Azure Firewall. Service Tags automatically include\n     the latest health check IPs without requiring manual updates.&nbsp;</li>\n <ul>\n  <li><a href=\"https://learn.microsoft.com/azure/virtual-network/service-tags-overview#use-service-tags-in-network-security-groups\" target=\"_blank\" rel=\"noopener\">How\n      to use Service Tags with NSGs</a>&nbsp;</li>\n  <li><a href=\"https://learn.microsoft.com/azure/firewall/service-tags\" target=\"_blank\" rel=\"noopener\">How to use\n      Service Tags with Azure Firewall</a>&nbsp;</li>\n </ul>\n <li>If Service Tags are not feasible (e.g., custom\n     appliances, non-Azure environments):&nbsp;</li>\n <ul>\n  <li>Manually update ACLs or firewall rules to allow the\n      latest IP prefixes for AzureTrafficManager. The full list of IPs\n      is available in the <a href=\"https://www.microsoft.com/en-us/download/details.aspx?id=56519\" target=\"_blank\" rel=\"noopener\">Azure IP Ranges and Service Tags JSON file</a>.&nbsp;</li>\n  <li>Firewall rules should be refreshed periodically to\n      reflect the latest updates.&nbsp;</li>\n </ul></ol><br></div>",
+    "Markdown": "Azure Traffic Manager has\n\nintroduced new health check infrastructure to improve the resiliency and\n\nscalability of the service. This infrastructure is now available, and customers\n\nare being moved onto the new infrastructure.\n\nThe rollout of the new probing\n\ninfrastructure delivers improved horizontal scalability and better reliability\n\nfor Traffic Manager health checks.\n\nGuidance on Firewall\n\nConfigurations\n\nHealth probes from the new\n\ninfrastructure originate from updated IP addresses. Most customers are already\n\noperating on the new platform. For environments where firewall rules have not\n\nbeen recently refreshed, the following options ensure health checks are\n\nallowed:\n\nPreferred option (recommended):\n\nConfigure firewall rules with the AzureTrafficManager Service\n\nTag in NSGs or Azure Firewall. Service Tags automatically include\n\nthe latest health check IPs without requiring manual updates.\n\nHow\n\nto use Service Tags with NSGs\n\nHow to use\n\nService Tags with Azure Firewall\n\nIf Service Tags are not feasible (e.g., custom\n\nappliances, non-Azure environments):\n\nManually update ACLs or firewall rules to allow the\n\nlatest IP prefixes for AzureTrafficManager. The full list of IPs\n\nis available in the Azure IP Ranges and Service Tags JSON file .\n\nFirewall rules should be refreshed periodically to\n\nreflect the latest updates."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "509097"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=509097"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: October 2025"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Management and governance, Networking"
+    }
+  ]
+}

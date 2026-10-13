@@ -1,0 +1,47 @@
+{
+  "Id": "AZ-log-search-alert-rules-using-linked-storage-will-require-using-a-managed-identity-staring-july-2024",
+  "Title": "Log search alert rules using linked storage will require using a managed identity staring July 2024",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2024-06-03T16:12:19.000Z",
+  "LastModifiedDateTime": "2024-06-03T16:12:19.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Alerts"
+  ],
+  "Tags": [
+    "Compliance",
+    "Features",
+    "Security"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>As of today, when defining a log search alert rule with linked storage, it is not required to explicitly grant permissions to the storage account itself.</p>\r\n\r\n<p><b>Starting July 2024, alert rules using linked storage will require a managed identity to access the linked storage. This requirement will be enforced on alert rules created with API version 2023-12-01 or newer. Creating or updating linked storage rules using an older API version will be blocked.</b></p>\r\n\r\n<p>This change will be rolled out in two phases:</p>\r\n\r\n<ol start=\"1\">\r\n\t<li>July 2024 &ndash;log search alert rules requiring linked storage will be blocked for updates using API versions older than 2023-12-01. Same applies for creation of new rules requiring linked storage. Use API version 2023-12-01 or newer to update your existing rules or create new rules to use workspace linked storage and define managed identity access.</li>\r\n\t<li>September 2024 - all log search alert rules using linked storage that do not use a managed identity will break and stop evaluating.</li>\r\n</ol>\r\n\r\n<p>You can use managed identities in log search alert rules using either of these two options:</p>\r\n\r\n<ul>\r\n\t<li>System assigned managed identity: Azure creates a new, dedicated identity for this alert rule. Since the identity doesn&rsquo;t have permission to the linked storage, we won&#39;t be&nbsp;able to save the query in the linked storage, therefore System assigned managed identity with Linked storage is not supported.</li>\r\n\t<li>User assigned managed identity: Before you create the alert rule, you&nbsp;<u><a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fhow-manage-user-assigned-managed-identities%23create-a-user-assigned-managed-identity&amp;data=05%7C02%7CNoga.Lavi%40microsoft.com%7C525f5400efd14283501a08dc7f253bc8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638525045115333165%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&amp;sdata=JVdjYNeC7%2F%2BaFYriLZyhqz4J%2BiXcl7SHAy33uMSGt6c%3D&amp;reserved=0\" title=\"Original URL: https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity. Click or tap if you trust this link.\" target=\"_blank\" rel=\"noopener\">create an identity</a></u>&nbsp;and assign it read&nbsp;permissions for the linked storage in addition to the rule itself. You can use the same identity in multiple alert rules.</li>\r\n</ul>\r\n\r\n<p><b>Next steps:&nbsp;</b></p>\r\n\r\n<ul>\r\n\t<li><b><u><a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fazure-monitor%2Flogs%2Fcustomer-managed-keys%3Ftabs%3Drest%23how-customer-managed-key-works-in-azure-monitor&amp;data=05%7C02%7CNoga.Lavi%40microsoft.com%7C525f5400efd14283501a08dc7f253bc8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638525045115346502%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&amp;sdata=lf1WsM4uxLJxbjMbnIX2LOh2XLYIm84rQ%2F%2FTWYzfvHg%3D&amp;reserved=0\" title=\"Original URL: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/customer-managed-keys?tabs=rest#how-customer-managed-key-works-in-azure-monitor. Click or tap if you trust this link.\" target=\"_blank\" rel=\"noopener\">How to define linked storage with CMK</a></u></b><b>?</b></li>\r\n\t<li><b><u><a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Factive-directory%2Fmanaged-identities-azure-resources%2Foverview&amp;data=05%7C02%7CNoga.Lavi%40microsoft.com%7C525f5400efd14283501a08dc7f253bc8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638525045115351062%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&amp;sdata=dQi%2FWYGvvB67Z5ajPtD70lztPsINVYCH2QqfwLbxTUA%3D&amp;reserved=0\" title=\"Original URL: https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview. Click or tap if you trust this link.\" target=\"_blank\" rel=\"noopener\">Managed identities for Azure resources</a></u></b></li>\r\n\t<li><b><u><a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fazure-monitor%2Falerts%2Falerts-create-log-alert-rule%23managed-id&amp;data=05%7C02%7CNoga.Lavi%40microsoft.com%7C525f5400efd14283501a08dc7f253bc8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638525045115355489%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&amp;sdata=TCNeP6t8XLCgDfdApvyPYicEMRfDOBq2kU2A2H6CWY8%3D&amp;reserved=0\" title=\"Original URL: https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-create-log-alert-rule#managed-id. Click or tap if you trust this link.\" target=\"_blank\" rel=\"noopener\">Configure Managed Identity in Log Search Alert Rule</a></u></b></li>\r\n</ul>\r\n",
+    "Markdown": "As of today, when defining a log search alert rule with linked storage, it is not required to explicitly grant permissions to the storage account itself.\n\nStarting July 2024, alert rules using linked storage will require a managed identity to access the linked storage. This requirement will be enforced on alert rules created with API version 2023-12-01 or newer. Creating or updating linked storage rules using an older API version will be blocked.\n\nThis change will be rolled out in two phases:\n\nJuly 2024 –log search alert rules requiring linked storage will be blocked for updates using API versions older than 2023-12-01. Same applies for creation of new rules requiring linked storage. Use API version 2023-12-01 or newer to update your existing rules or create new rules to use workspace linked storage and define managed identity access.\n\nSeptember 2024 - all log search alert rules using linked storage that do not use a managed identity will break and stop evaluating.\n\nYou can use managed identities in log search alert rules using either of these two options:\n\nSystem assigned managed identity: Azure creates a new, dedicated identity for this alert rule. Since the identity doesn’t have permission to the linked storage, we won't be able to save the query in the linked storage, therefore System assigned managed identity with Linked storage is not supported.\n\nUser assigned managed identity: Before you create the alert rule, you create an identity and assign it read permissions for the linked storage in addition to the rule itself. You can use the same identity in multiple alert rules.\n\nNext steps:\n\nHow to define linked storage with CMK ?\n\nManaged identities for Azure resources\n\nConfigure Managed Identity in Log Search Alert Rule"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "log-search-alert-rules-using-linked-storage-will-require-using-a-managed-identity-staring-july-2024"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=log-search-alert-rules-using-linked-storage-will-require-using-a-managed-identity-staring-july-2024"
+    },
+    {
+      "Name": "Status",
+      "Value": "In development"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Private Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Private Preview: June 2024"
+    }
+  ]
+}

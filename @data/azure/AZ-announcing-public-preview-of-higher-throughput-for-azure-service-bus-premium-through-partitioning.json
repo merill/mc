@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-announcing-public-preview-of-higher-throughput-for-azure-service-bus-premium-through-partitioning",
+  "Title": "Public preview: Performance improving features for Azure Service Bus premium",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2022-12-12T23:02:42.000Z",
+  "LastModifiedDateTime": "2022-12-12T23:02:42.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Service Bus"
+  ],
+  "Tags": [
+    "Features",
+    "Microsoft Ignite"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Enable higher throughput levels for Azure Service Bus premium via&nbsp;two new features&nbsp;in public preview today.</p>\r\n\r\n<p>First, we are releasing scaling partitions, allowing the use of <a href=\"https://learn.microsoft.com/en-us/azure/service-bus-messaging/enable-partitions-premium\" target=\"_blank\" rel=\"noopener\">partitioning</a> for the premium messaging tier. Service Bus <a href=\"https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-partitioning\" target=\"_blank\" rel=\"noopener\">partitions</a> enable messaging entities to be partitioned across multiple message brokers. This means that the overall throughput of a partitioned entity is no longer limited by the performance of a single message broker.&nbsp;Additionally, a temporary outage of a message broker, for example during an upgrade, does not render a partitioned queue or topic unavailable, as messages will be retried on a different partition.</p>\r\n\r\n<p>Second, we are making a change to our infrastructure, which will result in more consistent low latency. This is accomplished by switching our storage to a different implementation called local store. During public preview we will create partitioned namespaces using this new feature, but in the future all new namespaces will be created on local store.</p>\r\n\r\n<p><strong>Partitioning</strong></p>\r\n\r\n<p>Scaling partitions in premium namespaces work in close conjunction with scaling through <a href=\"https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-premium-messaging#messaging-unit---how-many-are-needed\" target=\"_blank\" rel=\"noopener\">messaging units</a>&nbsp;(MUs), as the configured messaging units&nbsp;on a namespace are equally distributed across the different partitions. Currently it is possible to scale up to four&nbsp;partitions, meaning we can scale up to a total of 64MU.</p>\r\n\r\n<p>There are some differences between partitioning in the standard and premium SKUs. First, the number of partitions is configured during namespace creation on the premium SKU. Second, the premium SKU does not allow non-partitioned entities in partitioned namespaces.</p>\r\n\r\n<p>To enable partitions, select the number of partitions during creation of a new namespace. Initially, these features will be available in East US and North Europe, with more regions following.&nbsp;It is not possible to change the number of partitions after creation. More details can be found in the <a href=\"https://learn.microsoft.com/en-us/azure/service-bus-messaging/enable-partitions-premium\" target=\"_blank\" rel=\"noopener\">documentation</a>.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"https://support.microsoft.com/en-us/customercomms/media/azureupdates/_migrated/7ad812e9-e3f9-4fb3-a3e9-3b68a1597315.png\"></p>\r\n",
+    "Markdown": "Enable higher throughput levels for Azure Service Bus premium via two new features in public preview today.\n\nFirst, we are releasing scaling partitions, allowing the use of partitioning for the premium messaging tier. Service Bus partitions enable messaging entities to be partitioned across multiple message brokers. This means that the overall throughput of a partitioned entity is no longer limited by the performance of a single message broker. Additionally, a temporary outage of a message broker, for example during an upgrade, does not render a partitioned queue or topic unavailable, as messages will be retried on a different partition.\n\nSecond, we are making a change to our infrastructure, which will result in more consistent low latency. This is accomplished by switching our storage to a different implementation called local store. During public preview we will create partitioned namespaces using this new feature, but in the future all new namespaces will be created on local store.\n\nPartitioning\n\nScaling partitions in premium namespaces work in close conjunction with scaling through messaging units (MUs), as the configured messaging units on a namespace are equally distributed across the different partitions. Currently it is possible to scale up to four partitions, meaning we can scale up to a total of 64MU.\n\nThere are some differences between partitioning in the standard and premium SKUs. First, the number of partitions is configured during namespace creation on the premium SKU. Second, the premium SKU does not allow non-partitioned entities in partitioned namespaces.\n\nTo enable partitions, select the number of partitions during creation of a new namespace. Initially, these features will be available in East US and North Europe, with more regions following. It is not possible to change the number of partitions after creation. More details can be found in the documentation ."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "announcing-public-preview-of-higher-throughput-for-azure-service-bus-premium-through-partitioning"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=announcing-public-preview-of-higher-throughput-for-azure-service-bus-premium-through-partitioning"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: December 2022"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Integration"
+    }
+  ]
+}

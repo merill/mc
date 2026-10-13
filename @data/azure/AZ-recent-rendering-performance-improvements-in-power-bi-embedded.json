@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-recent-rendering-performance-improvements-in-power-bi-embedded",
+  "Title": "Recent Rendering performance improvements now available in Power BI Embedded",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2019-08-14T16:00:57.000Z",
+  "LastModifiedDateTime": "2019-08-14T16:00:57.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Power BI Embedded"
+  ],
+  "Tags": [
+    "Features",
+    "Management"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The following improvements were added recently:</p>\r\n\r\n<ul>\r\n\t<li>Embedding different reports into the same iframe &ndash;&nbsp;allowing apps that provide their end-users with a list of reports to use the same iframe, switch between the reports, and thus achieve better performance than embedding in new iframes. To use this functionality, all you need to do is to call&nbsp;embed()&nbsp;method with the same div element.<br>\r\n\tCode example:<br>\r\n\t<code>// Embed to reportContainer div element with embed configuration</code><br>\r\n\t<code>powerbi.embed(reportContainerDivElement, embedConfiguration1);</code><br>\r\n\t<code>// Switch to another report on button click</code><br>\r\n\t<code>function onButtonClick() {</code><br>\r\n\t<code>&nbsp; &nbsp; // Embed to&nbsp;THE SAME&nbsp;reportContainer div element with&nbsp;ANOTHER&nbsp;embed configuration</code><br>\r\n\t<code>&nbsp; &nbsp; powerbi.embed(reportContainerDivElement, embedConfiguration2);</code><br>\r\n\t<code>}</code></li>\r\n\t<li>Query caching for embedded reports &ndash;&nbsp;Query caching is now available for embedded reports backed by Power BI Premium or Power BI Embedded capacity. Query Caching speeds up content loading by caching previously used query results. Controlling query caching is done on the dataset settings&nbsp;page in the Power BI service.&nbsp;<a href=\"https://powerbi.microsoft.com/en-us/blog/announcing-query-caching-in-power-bi-premium/\" target=\"_blank\" rel=\"noopener\">Learn more.</a></li>\r\n</ul>\r\n\r\n<p>If you haven&rsquo;t done it yet, we encourage you to follow the guidelines in the&nbsp;<a href=\"https://docs.microsoft.com/en-us/power-bi/developer/embedded-performance-best-practices\" target=\"_blank\" rel=\"noopener\">Power BI Embedded performance best practices</a>&nbsp;article. Here are some of the useful tips you can find in the article:</p>\r\n\r\n<ul>\r\n\t<li>Install version 2.6.5 or higher of&nbsp;<a href=\"https://github.com/Microsoft/PowerBI-JavaScript\" target=\"_blank\" rel=\"noopener\">Power BI client SDK</a>. We continue to release more enhancements, so make sure to follow up from time to time and update your SDK version.</li>\r\n</ul>\r\n\r\n<ul>\r\n\t<li>Avoid generating the embed URL yourself. Instead, make sure you get the embed URL by calling the&nbsp;<a href=\"https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Frest%2Fapi%2Fpower-bi%2Freports%2Fgetreportsingroup&amp;data=02%7C01%7CMark.Ghanayem%40microsoft.com%7C07ca68ceb37a48e3f3de08d64968707a%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636777110256168308&amp;sdata=22lkqRM2w1MQfrM8dooedaPqqIU8PufTq9TT4VDzRo0%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Get reports</a>,&nbsp;<a href=\"https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Frest%2Fapi%2Fpower-bi%2Fdashboards%2Fgetdashboardsingroup&amp;data=02%7C01%7CMark.Ghanayem%40microsoft.com%7C07ca68ceb37a48e3f3de08d64968707a%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636777110256168308&amp;sdata=nfWRgbSoXVF42Rg%2Ba9491u19uksXp%2FAyz%2Fa%2Ba7%2FCtdA%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Get dashboards</a>, or&nbsp;<a href=\"https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Frest%2Fapi%2Fpower-bi%2Fdashboards%2Fgettilesingroup&amp;data=02%7C01%7CMark.Ghanayem%40microsoft.com%7C07ca68ceb37a48e3f3de08d64968707a%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636777110256178318&amp;sdata=LgZ27TynNpqQJDrb3aHWGQXIS%2FzichAO9De5M2uhF1Q%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">Get tiles</a>&nbsp;API. We added a new parameter to the URL called&nbsp;config, used for performance improvements.</li>\r\n</ul>\r\n\r\n<p>It&rsquo;s also important to build your reports to be fast and reliable in any platform. Please follow the&nbsp;<a href=\"https://docs.microsoft.com/en-us/power-bi/power-bi-reports-performance\" target=\"_blank\" rel=\"noopener\">Power BI performance best practices</a>&nbsp;article to make sure you use the best practices.</p>\r\n",
+    "Markdown": "The following improvements were added recently:\n\nEmbedding different reports into the same iframe – allowing apps that provide their end-users with a list of reports to use the same iframe, switch between the reports, and thus achieve better performance than embedding in new iframes. To use this functionality, all you need to do is to call embed() method with the same div element.\n\nCode example:\n\n// Embed to reportContainer div element with embed configuration\n\npowerbi.embed(reportContainerDivElement, embedConfiguration1);\n\n// Switch to another report on button click\n\nfunction onButtonClick() {\n\n// Embed to THE SAME reportContainer div element with ANOTHER embed configuration\n\npowerbi.embed(reportContainerDivElement, embedConfiguration2);\n\n}\n\nQuery caching for embedded reports – Query caching is now available for embedded reports backed by Power BI Premium or Power BI Embedded capacity. Query Caching speeds up content loading by caching previously used query results. Controlling query caching is done on the dataset settings page in the Power BI service. Learn more.\n\nIf you haven’t done it yet, we encourage you to follow the guidelines in the Power BI Embedded performance best practices article. Here are some of the useful tips you can find in the article:\n\nInstall version 2.6.5 or higher of Power BI client SDK . We continue to release more enhancements, so make sure to follow up from time to time and update your SDK version.\n\nAvoid generating the embed URL yourself. Instead, make sure you get the embed URL by calling the Get reports , Get dashboards , or Get tiles API. We added a new parameter to the URL called config, used for performance improvements.\n\nIt’s also important to build your reports to be fast and reliable in any platform. Please follow the Power BI performance best practices article to make sure you use the best practices."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "recent-rendering-performance-improvements-in-power-bi-embedded"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=recent-rendering-performance-improvements-in-power-bi-embedded"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: August 2019"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Analytics"
+    }
+  ]
+}

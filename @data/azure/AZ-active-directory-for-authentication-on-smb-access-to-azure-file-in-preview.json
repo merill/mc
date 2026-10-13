@@ -1,0 +1,50 @@
+{
+  "Id": "AZ-active-directory-for-authentication-on-smb-access-to-azure-file-in-preview",
+  "Title": "Active Directory for authentication on SMB access to Azure File in preview",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2020-03-04T17:00:00.000Z",
+  "LastModifiedDateTime": "2020-03-04T17:00:00.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Microsoft Entra ID (formerly Azure AD)",
+    "Azure Files"
+  ],
+  "Tags": [
+    "Features"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>Azure Files Active Directory authentication is now in preview. Mount your Azure Files using AD credentials with the exact same access control experience as on-premises. Take advantage of an AD domain service either hosted on-premises or on Azure to authenticate user access to Azure Files for both premium and standard tiers. Managing file permissions is also simple. As long as your AD identities are synced to the Azure AD, you can continue to manage the share level permission through standard <a href=\"https://docs.microsoft.com/en-us/azure/role-based-access-control/overview\" target=\"_blank\" rel=\"noopener\">role-based access control (RBAC)</a>. For directory-level and file-level permission, simply configure <a href=\"https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx\" target=\"_blank\" rel=\"noopener\">NTFS DACLs</a> using Windows File Explorer just like any regular file share. You may have already synced&nbsp; Azure Files Active Directory to Azure AD and are ready to take advantage of this new capability.</p>\r\n\r\n<p>With AD authentication, Azure Files can better serve as the storage solution for virtual desktop infrastructure (VDI) user profiles. Use Azure Files as the user profile storage, and when a user logs &nbsp;into the virtual session, only the profile of the authenticated user will be loaded from Azure Files. There&rsquo;s no need to set up a separate domain service to manage storage access control for your VDI environment.</p>\r\n\r\n<p>Learn more about <a href=\"https://docs.microsoft.com/en-us/azure/virtual-desktop/fslogix-containers-azure-files\" target=\"_blank\" rel=\"noopener\">using Azure Files for WVD scenarios</a>.</p>\r\n\r\n<p><strong>What&rsquo;s new?</strong></p>\r\n\r\n<ul>\r\n\t<li>Enable Active Directory authentication for SMB access.</li>\r\n</ul>\r\n\r\n<p>Mount Azure Files from AD domain-joined machines either on-premises or on Azure using AD credentials. Azure Files supports using AD as the directory service for identity-based access control experience for both premium and standard tiers. Enable AD authentication on self-managed or Azure File&nbsp;Sync (AFS)-managed file shares.</p>\r\n\r\n<ul>\r\n\t<li>Enforce share-level as well as directory-level and file-level permission. &nbsp;</li>\r\n</ul>\r\n\r\n<p>The existing access control experience continues to be enforced for file shares enabled for AD authentication. Use <a href=\"https://docs.microsoft.com/en-us/azure/role-based-access-control/overview\" target=\"_blank\" rel=\"noopener\">role-based access control (RBAC)</a> for share-level permission management, then persist or configure directory-level and file-level <a href=\"https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx\" target=\"_blank\" rel=\"noopener\">NTFS DACLs</a> using Windows File Explorer and <a href=\"https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls\" target=\"_blank\" rel=\"noopener\">icacls</a> tools.</p>\r\n\r\n<ul>\r\n\t<li>Support file migration from on-premises with access control list (ACL) persistence over Azure File Sync.</li>\r\n</ul>\r\n\r\n<p>Azure File Sync now supports persisting ACLs on Azure Files in native NTFS DACL format. Use Azure File Sync for seamless migration from on-premises Windows file servers to Azure Files. All existing files and directories tiered to Azure Files through Azure File&nbsp;Sync have ACLs persisted in the native format.</p>\r\n\r\n<p><strong>Get started and share your experiences</strong></p>\r\n\r\n<p>Create a file share in the <a href=\"https://docs.microsoft.com/en-us/azure/storage/files/storage-files-faq#security-authentication-and-access-control\" target=\"_blank\" rel=\"noopener\">supported regions</a> and enable authentication with your AD environment running on-premises or on Azure. Read the detailed guidance on the <a href=\"https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview\" target=\"_blank\" rel=\"noopener\">feature capabilities</a> and <a href=\"https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-domain-services-enable\" target=\"_blank\" rel=\"noopener\">step-by-step enablement</a>.</p>\r\n\r\n<p><a href=\"mailto:azurefiles@microsoft.com\" target=\"_blank\" rel=\"noopener\">Email us</a> your feedback and experiences, and post your ideas and suggestions about Azure Storage on our&nbsp;<a href=\"https://feedback.azure.com/forums/217298-storage\" target=\"_blank\" rel=\"noopener\">feedback forum</a>.</p>\r\n\r\n<p><a href=\"https://azure.microsoft.com/en-us/services/storage/files/\" target=\"_blank\" rel=\"noopener\">Learn more</a></p>\r\n",
+    "Markdown": "Azure Files Active Directory authentication is now in preview. Mount your Azure Files using AD credentials with the exact same access control experience as on-premises. Take advantage of an AD domain service either hosted on-premises or on Azure to authenticate user access to Azure Files for both premium and standard tiers. Managing file permissions is also simple. As long as your AD identities are synced to the Azure AD, you can continue to manage the share level permission through standard role-based access control (RBAC) . For directory-level and file-level permission, simply configure NTFS DACLs using Windows File Explorer just like any regular file share. You may have already synced Azure Files Active Directory to Azure AD and are ready to take advantage of this new capability.\n\nWith AD authentication, Azure Files can better serve as the storage solution for virtual desktop infrastructure (VDI) user profiles. Use Azure Files as the user profile storage, and when a user logs into the virtual session, only the profile of the authenticated user will be loaded from Azure Files. There’s no need to set up a separate domain service to manage storage access control for your VDI environment.\n\nLearn more about using Azure Files for WVD scenarios .\n\nWhat’s new?\n\nEnable Active Directory authentication for SMB access.\n\nMount Azure Files from AD domain-joined machines either on-premises or on Azure using AD credentials. Azure Files supports using AD as the directory service for identity-based access control experience for both premium and standard tiers. Enable AD authentication on self-managed or Azure File Sync (AFS)-managed file shares.\n\nEnforce share-level as well as directory-level and file-level permission.\n\nThe existing access control experience continues to be enforced for file shares enabled for AD authentication. Use role-based access control (RBAC) for share-level permission management, then persist or configure directory-level and file-level NTFS DACLs using Windows File Explorer and icacls tools.\n\nSupport file migration from on-premises with access control list (ACL) persistence over Azure File Sync.\n\nAzure File Sync now supports persisting ACLs on Azure Files in native NTFS DACL format. Use Azure File Sync for seamless migration from on-premises Windows file servers to Azure Files. All existing files and directories tiered to Azure Files through Azure File Sync have ACLs persisted in the native format.\n\nGet started and share your experiences\n\nCreate a file share in the supported regions and enable authentication with your AD environment running on-premises or on Azure. Read the detailed guidance on the feature capabilities and step-by-step enablement .\n\nEmail us your feedback and experiences, and post your ideas and suggestions about Azure Storage on our feedback forum .\n\nLearn more"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "active-directory-for-authentication-on-smb-access-to-azure-file-in-preview"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=active-directory-for-authentication-on-smb-access-to-azure-file-in-preview"
+    },
+    {
+      "Name": "Status",
+      "Value": "In preview"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Preview"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Preview: March 2020"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Identity, Storage"
+    }
+  ]
+}

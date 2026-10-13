@@ -1,0 +1,49 @@
+{
+  "Id": "AZ-iot-hub-gateway-upgrade",
+  "Title": "General availability: IoT Hub Service Upgrade",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2022-11-03T19:00:02.000Z",
+  "LastModifiedDateTime": "2022-11-03T19:00:02.000Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure IoT Hub"
+  ],
+  "Tags": [
+    "Services"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<h3>What&rsquo;s changing:</h3>\r\n\r\n<p>The architecture of your IoT Hub includes a cluster of front-end message processing servers and software we call the <i>IoT Hub gateway</i>.&nbsp; We are rolling out availability, reliability, and security improvements to this gateway between November 2022 and April 2023.</p>\r\n\r\n<h3>Potential impact:</h3>\r\n\r\n<p>The gateway upgrade will result in:</p>\r\n\r\n<ul>\r\n\t<li>A forced disconnect and reconnect for all devices.</li>\r\n\t<li>New static IP addresses for all IoT hubs.</li>\r\n</ul>\r\n\r\n<h3>Device disconnects:</h3>\r\n\r\n<p>Your devices will disconnect from IoT Hub while we upgrade the gateway nodes.&nbsp;The time it takes for your devices to reconnect depends on:</p>\r\n\r\n<ul>\r\n\t<li>DNS update propagation: If your devices leverage DNS to resolve your IoT hub&rsquo;s IP address, it will resolve the new IP address after the DNS updates propagate to the device&rsquo;s DNS server(s) and any local DNS cache expires.</li>\r\n\t<li>DPS reprovisioning: Reprovisioning is subject to <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-dps%2Fabout-iot-dps%23quotas-and-limits&amp;data=05%7C01%7CNaman.Mehra%40microsoft.com%7Cfd551cb5160445b396b908dabcf7b36b%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638030069333199427%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=j35tSzn%2BsH8Q%2B9B3Cn4iawsK1SI00PgsPn4ukiDRZKQ%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">DPS limits</a>. Follow the recommended best practices to <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-dps%2Fhow-to-reprovision%23send-a-provisioning-request-from-the-device&amp;data=05%7C01%7CNaman.Mehra%40microsoft.com%7Cfd551cb5160445b396b908dabcf7b36b%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638030069333199427%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=SPwjMSo%2FdSOIZwGezwn2ZiJZXg2HSzIOAd0Pm2k%2FLs8%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">reprovision devices with DPS</a>. Avoid reprovisioning unless IoT Hub returns an error other than 429 or 5xx.</li>\r\n\t<li>Device connection retry logic: If your devices leverages the Azure IoT SDKs, they will attempt to reconnect according to their <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-hub%2Fiot-hub-reliability-features-in-sdks%23retry-patterns&amp;data=05%7C01%7CNaman.Mehra%40microsoft.com%7Cfd551cb5160445b396b908dabcf7b36b%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638030069333355690%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=1AsZ5VZOqbc4U5p8Z8TOx9hq447bEsfvIUVwUI1qE5Q%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">retry policy</a>.</li>\r\n\t<li>Device connection throttling: <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-hub%2Fiot-hub-devguide-quotas-throttling&amp;data=05%7C01%7CNaman.Mehra%40microsoft.com%7Cfd551cb5160445b396b908dabcf7b36b%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638030069333355690%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=9jEHBs9IhIE%2BGncWQ94%2B2u6EEkv9v08zV0IIh7EPmhs%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">IoT Hub throttles</a> device connections based on your selected tier.&nbsp;</li>\r\n</ul>\r\n\r\n<h3>Firewall rules and impact:</h3>\r\n\r\n<ul>\r\n\t<li>If you followed our <a href=\"https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fiot-hub%2Fiot-hub-understand-ip-address%23best-practices&amp;data=05%7C01%7CNaman.Mehra%40microsoft.com%7Cfd551cb5160445b396b908dabcf7b36b%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638030069333355690%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=6jh%2FA9JdcnGb7rWYysb2HaDlkcCv3pyZ1y0PffTqN24%3D&amp;reserved=0\" target=\"_blank\" rel=\"noopener\">best practices</a> to configure your IoT Hub by using Fully Qualified Domain Name (FQDN), then <i><u>no action is required</u></i>.</li>\r\n\t<li>If you implemented a range-based approach using IoT Hub service tags, <i><u>no action is required.<b> </b></u></i></li>\r\n\t<li>If you restrict access based on a specific IP address for your IoT Hub, <b><i><u>follow our best practices and move away from a static IP address. The IP address of your IoT Hub might change at any time for any reason.</u></i></b>\r\n\t<ul>\r\n\t\t<li>If you cannot follow our best practices or have questions, reach out to your Azure IoT or Microsoft contacts.</li>\r\n\t</ul>\r\n\t</li>\r\n</ul>\r\n",
+    "Markdown": "What’s changing:\n\nThe architecture of your IoT Hub includes a cluster of front-end message processing servers and software we call the IoT Hub gateway . We are rolling out availability, reliability, and security improvements to this gateway between November 2022 and April 2023.\n\nPotential impact:\n\nThe gateway upgrade will result in:\n\nA forced disconnect and reconnect for all devices.\n\nNew static IP addresses for all IoT hubs.\n\nDevice disconnects:\n\nYour devices will disconnect from IoT Hub while we upgrade the gateway nodes. The time it takes for your devices to reconnect depends on:\n\nDNS update propagation: If your devices leverage DNS to resolve your IoT hub’s IP address, it will resolve the new IP address after the DNS updates propagate to the device’s DNS server(s) and any local DNS cache expires.\n\nDPS reprovisioning: Reprovisioning is subject to DPS limits . Follow the recommended best practices to reprovision devices with DPS . Avoid reprovisioning unless IoT Hub returns an error other than 429 or 5xx.\n\nDevice connection retry logic: If your devices leverages the Azure IoT SDKs, they will attempt to reconnect according to their retry policy .\n\nDevice connection throttling: IoT Hub throttles device connections based on your selected tier.\n\nFirewall rules and impact:\n\nIf you followed our best practices to configure your IoT Hub by using Fully Qualified Domain Name (FQDN), then no action is required .\n\nIf you implemented a range-based approach using IoT Hub service tags, no action is required.\n\nIf you restrict access based on a specific IP address for your IoT Hub, follow our best practices and move away from a static IP address. The IP address of your IoT Hub might change at any time for any reason.\n\nIf you cannot follow our best practices or have questions, reach out to your Azure IoT or Microsoft contacts."
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "iot-hub-gateway-upgrade"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=iot-hub-gateway-upgrade"
+    },
+    {
+      "Name": "Status",
+      "Value": "Launched"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "General Availability"
+    },
+    {
+      "Name": "Availability",
+      "Value": "General Availability: November 2022"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Internet of Things"
+    }
+  ]
+}
