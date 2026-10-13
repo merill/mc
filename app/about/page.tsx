@@ -165,9 +165,10 @@ export default function AboutPage() {
               <a className="readable-link" href={siteConfig.zap.url}>
                 zap.ms
               </a>
-              , a community site for people who work with Microsoft technology.
-              You sign in once, and stay on this site. An MVP or Microsoft badge
-              next to a name is verified.
+              , a community site I&apos;m building for people in the Microsoft
+              community, focused on tech and getting work done. You sign in
+              once, and stay on this site. An MVP or Microsoft badge next to a
+              name is verified.
             </p>
           </CardContent>
         </Card>
