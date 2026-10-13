@@ -136,6 +136,24 @@ export function inView(
   return view.services.some((service) => services.includes(service))
 }
 
+/**
+ * What a view narrows the list by besides the source, in words, for the empty
+ * list to say. A service picked for Message Center matches no Azure update,
+ * since Azure names its products differently, and that should not read as
+ * there being no Azure updates at all.
+ */
+export function describeNarrowing(view: ViewSettings): string[] {
+  const parts: string[] = []
+  if (view.services.length === 1) {
+    parts.push(`the service ${view.services[0]}`)
+  } else if (view.services.length > 1) {
+    parts.push(`the ${view.services.length} selected services`)
+  }
+  if (view.majorOnly) parts.push("major changes only")
+  if (view.hideExpired) parts.push("expired posts hidden")
+  return parts
+}
+
 /** How many things a view narrows the list by, for the badge on its button. */
 export function narrowedBy(view: ViewSettings): number {
   return Number(view.majorOnly) + Number(view.hideExpired)

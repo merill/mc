@@ -24,6 +24,7 @@ async function loadTypeScriptModule(relativePath) {
 const {
   DEFAULT_VIEW,
   cleanViewName,
+  describeNarrowing,
   inView,
   narrowedBy,
   newViewId,
@@ -103,4 +104,14 @@ test("tidies a name and makes ids zap.ms accepts", () => {
   assert.equal(cleanViewName("x".repeat(80)).length, 40)
   assert.match(newViewId(), /^[A-Za-z0-9_-]{1,40}$/)
   assert.notEqual(newViewId(() => 0.1), newViewId(() => 0.9))
+})
+
+test("says what besides the source is narrowing the list", () => {
+  assert.deepEqual(describeNarrowing(DEFAULT_VIEW), [])
+  assert.deepEqual(describeNarrowing({ ...DEFAULT_VIEW, source: "azure" }), [])
+  assert.deepEqual(describeNarrowing({ ...DEFAULT_VIEW, services: ["Microsoft Entra"] }), ["the service Microsoft Entra"])
+  assert.deepEqual(
+    describeNarrowing({ ...DEFAULT_VIEW, services: ["Exchange", "Teams"], majorOnly: true, hideExpired: true }),
+    ["the 2 selected services", "major changes only", "expired posts hidden"]
+  )
 })
