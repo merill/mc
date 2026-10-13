@@ -1,0 +1,39 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and why</b></b></p><p>Microsoft Entra Agent ID is enforcing tighter restrictions for autonomous creation of an agent’s own identities. Currently, all agents are granted <code>AgentIdentity.CreateAsManager</code> upon creation without administrator approval. Starting <b>November 4</b>, Microsoft Entra will no longer automatically grant <code>AgentIdentity.CreateAsManager</code> to agent blueprint principals, and creation of identities will need an admin to grant consent.</p><p>Agents that use app-only authentication to create their own agent identities must be explicitly granted the <code>AgentIdentity.CreateAsManager</code> Microsoft Graph application permission or move to another supported authorization model before enforcement reaches their tenant.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Beginning in <b>early November 2026</b> and expected to complete by <b>late November 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using Microsoft Entra&nbsp;</li><li>No action is required if your organization doesn't have an agent that depends on the automatic <code>AgentIdentity.CreateAsManager</code> grant.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Entra</li></ul><p><i>What will happen</i></p><p>Today, an agent blueprint principal is granted <code>AgentIdentity.CreateAsManager</code> automatically. This implicit grant allows the principal to create agent identities without a tenant-admin granting an app-role assignment.</p><p>After enforcement, an administrator must grant the Microsoft Graph application permission <code>AgentIdentity.CreateAsManager</code> to agents that needs this authority.</p><p>This change:</p><ul><li>Makes app-only agent identity creation authority visible, auditable, and revocable.</li><li>Makes <code>AgentIdentity.CreateAsManager</code> revocable if consented</li><li>Affects existing and future agents.</li><li>Doesn't remove existing agent identities or agent blueprints.</li><li>Doesn't remove the ability for agent identity blueprints to create agent identities, when <code>AgentIdentity.CreateAsManager</code> is explicitly granted by an administrator</li><li>Doesn't affect an agent that uses a directory role to authorize creation of agent identities.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>No action is required if your organization doesn't have an agent that depends on the automatic <code>AgentIdentity.CreateAsManager</code> grant.</p><p>Identify agents that create agent identities without a signed-in user.</p><ol><li>Sign in to the <a href=\"https://entra.microsoft.com/#view/Microsoft_AAD_IAM/AuditLogList.ReactView\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft Entra admin center</a>.</li><li>Go to<b> Entra ID</b>&gt;<b>Audit Logs</b>.</li><li>Set the Category to \"ApplicationManagement\"</li><li>Set the Activity filter to \"Add Service Principal\"</li></ol><p>Find events where the <b>Initiated By (actor) Type </b>is <b>Application</b> and the <b>Target</b> is an agent identity.</p><p>For each affected agent:</p><ol><li>Sign in to the <a href=\"https://entra.microsoft.com/#view/Microsoft_AAD_IAM/AuditLogList.ReactView\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft Entra admin center</a>.</li><li><b>Go to Entra ID&gt;Agent blueprints</b>&gt;Search for your agent blueprint&gt;<b>Granted permissions</b></li><li>Review if the Agent has any other granted permissions that may allow for creation of agent identities. If there are no other permissions allowing for creation, this agent relies on <code>AgentIdentity.CreateAsManager.</code></li><li>Starting <b>October 16</b>, you may grant the explicit <code>AgentIdentity.CreateAsManager</code> Microsoft Graph application permission through <a href=\"https://learn.microsoft.com/entra/identity/enterprise-apps/grant-admin-consent\" rel=\"noopener noreferrer\" target=\"_blank\">tenant-wide admin consent</a> or <a href=\"https://learn.microsoft.com/graph/api/serviceprincipal-post-approleassignments?view=graph-rest-1.0\" rel=\"noopener noreferrer\" target=\"_blank\">manual app-role creation</a>. Granting it earlier will cause an error. A successful grant appears in the Granted Permissions table with “An administrator” in the Granted By column.</li><li>Test app-only agent identity creation before enforcement begins.</li><li>Update operational guidance for a failed request after enforcement.</li></ol><p>If an app-only request relies only on the automatic grant after enforcement reaches your tenant, the request will fail with a 403 authorization error.</p><p></p><p><b>Learn more</b></p><ul><li>For more about how to grant your agents access to resources, visit <a href=\"https://learn.microsoft.com/entra/agent-id/grant-agent-access-microsoft-365\" rel=\"noopener noreferrer\" target=\"_blank\">Grant agents access to Microsoft 365 resources | Microsoft Learn</a>.&nbsp;</li><li>For the Microsoft Graph permission reference on AgentIdentity.CreateAsManager, visit <a href=\"https://learn.microsoft.com/graph/permissions-reference#agentidentitycreateasmanager\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft Graph permissions reference - Microsoft Graph | Microsoft Learn</a>.</li></ul><p><b><b>Compliance considerations</b></b></p><p>No specific compliance impacts have been identified for this configuration update.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Starting November 4, Microsoft Entra will stop automatically granting the AgentIdentity.CreateAsManager permission to agent blueprints. Admin consent will be required for agents to create identities. This change, rolling out worldwide in November 2026, enhances control and auditability of agent identity creation."
+    }
+  ],
+  "EndDateTime": "2026-12-30T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1506728",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-10-13T22:12:41.56Z",
+  "Services": [
+    "Microsoft Entra"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-10-13T22:12:32Z",
+  "Tags": [
+    "User impact",
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Microsoft Entra: Changes to AgentIdentity.CreateAsManager permission for agent identities",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
