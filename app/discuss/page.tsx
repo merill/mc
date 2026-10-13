@@ -125,8 +125,9 @@ export default function DiscussPage() {
               <a className="readable-link" href={zap}>
                 zap.ms
               </a>
-              , a community site for people who work with Microsoft technology.
-              You sign in once and stay on this site.
+              , a community site I&apos;m building for people in the Microsoft
+              community, focused on tech and getting work done. You sign in
+              once and stay on this site.
             </p>
             <ul>
               <li>
