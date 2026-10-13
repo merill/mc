@@ -5,8 +5,8 @@
 # - Imports the Microsoft 365 Roadmap RSS feed.
 # - Mirrors Azure updates from Microsoft's public API.
 #
-# Use -RoadmapOnly to skip Message Center during local development. Roadmap and
-# Azure updates need no tenant, so they still refresh.
+# Use -RoadmapOnly to skip Message Center during local development. Pull request
+# checks use it too. Roadmap and Azure updates need no tenant, so they still refresh.
 
 param($GraphSecret, [switch]$RoadmapOnly, [int]$NewPostMaxAgeDays = 14)
 . "$PSScriptRoot/Entra-MessageFilter.ps1"
