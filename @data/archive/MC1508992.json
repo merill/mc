@@ -1,0 +1,33 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "On October 14, 2026, the Word Online (Business) connector will remove its dependency on temporary, pre-authorized download URLs. This change improves the security for file access in SharePoint and OneDrive scenarios by requiring authenticated access for generated document content.<br><br> \n\n<b>How does this affect me?</b><br> \n\nAfter this change, connector actions will use authenticated access to retrieve files instead of unauthenticated download URLs. This will affect organizations using the Word Online (Business) connector in Power Automate, Power Apps, or related SharePoint and OneDrive scenarios. Additionally, makers and admins with flows or integrations that depend on unauthenticated temporary or pre-authorized download URLs returned by connector actions will also be affected by this.<br><br>  \n\nWith this change:<ul> \n\n<li>The connector will remove its dependency on temporary or pre-authorized download URLs.</li> \n\n<li>Flows relying on the <b>CreateWordFileWithContent</b> returned URL as an unauthenticated direct download link may be impacted. It is recommended that customers should review any flows that depend on the returned URL for unauthenticated file access.</li></ul> \n\nThe following actions are not expected to introduce any breaking changes as these operations already retrieve content using authenticated access:<ul> \n\n<li>GetSchema</li> \n\n<li>GetFile: The connector will retrieve content using authenticated access.</li> \n\n<li>ConvertFile / GetFilePDF: The connector will use authenticated streaming instead of a pre-authorized download URL.</li></ul> \n\n<b>What action do I need to take?</b><br> \n\nTo prepare for this change, admins, users, and makers need to perform the following actions:<ul>  \n\n<li>Use authenticated file content retrieval or appropriate SharePoint sharing links instead of unauthenticated download URLs.</li> \n\n<li>Review flows and integrations that use Word Online (Business) connector to output URLs for unauthenticated file access.</li> \n\n<li>For file-content scenarios, use SharePoint or OneDrive <b>Get file content</b> and pass the file content or bytes downstream.</li> \n\n<li>For email attachment scenarios, use <b>Get file content</b> and then send the email with the file attached.</li> \n\n<li>For sharing-link scenarios, use file metadata and create an appropriate SharePoint sharing link that matches your tenant and site sharing policies.</li> \n\n<li>For HTTP, custom connector, Azure Function, or external service scenarios, ensure the downstream caller authenticates to SharePoint or Microsoft Graph and has permission to access the file.</li></ul>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [],
+  "EndDateTime": "2026-11-15T14:57:12Z",
+  "HasAttachments": false,
+  "Id": "MC1508992",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-10-15T15:03:50.863Z",
+  "Services": [
+    "Power Platform"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-10-15T14:57:12Z",
+  "Tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Power Platform – Deprecation of temporary authentication URLs for the Word Online (Business) connector",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
