@@ -1,0 +1,47 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and why</b></b></p><p>Microsoft Purview Data Loss Prevention (DLP) is introducing a new Exchange Online condition: Count of labeled documents is greater than. This condition enables administrators to detect messages that contain a high volume of sensitivity-labeled attachments and trigger DLP actions when a configured threshold is exceeded.&nbsp;</p><p>The condition is available for Exchange Online DLP policies and does not apply to SharePoint, OneDrive, Teams, or Endpoint DLP workloads.</p><p>This enhancement helps organizations strengthen data protection by identifying potential data exfiltration scenarios where multiple sensitivity-labeled files are shared in a single email. The feature provides an additional volume-based signal that can be combined with existing content-based DLP conditions for layered protection.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Public Preview:</b> Beginning in <b>early November 2026</b> and expected to complete by <b>early December 2026</b></li><li><b>General Availability (Worldwide):</b> Beginning in <b>mid-December 2026</b> and expected to complete by <b>late December 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Administrators who manage Exchange Online DLP policies</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Purview Data Loss Prevention</li><li>Exchange Online</li><li>Microsoft Purview compliance portal</li></ul><p><i>What will happen</i></p><ul><li>Administrators will be able to create DLP rules that evaluate the number of sensitivity-labeled attachments included in a single email message.</li><li>Each attachment with a matching sensitivity label will be counted individually, including duplicate copies of the same file.</li><li>When multiple sensitivity labels are selected in a rule, the condition evaluates the combined count of all matching attachments.</li><li>The condition uses a strict greater-than threshold. For example, a threshold of 3 is triggered when 4 or more matching attachments are detected.</li><li>Administrators can combine this condition with existing DLP conditions and actions for layered protection.</li><li>The feature is administrator configured and is not enabled automatically through existing policies.</li><li>Encrypted (rights-protected) attachments: protection wrapper is excluded to prevent double-counting.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>No action is required before rollout.</p><p>We recommend that administrators:</p><ul><li>Review existing Exchange Online DLP policies to determine whether attachment count thresholds would improve protection for sensitive content.</li><li>Evaluate appropriate thresholds and policy actions based on organizational risk requirements.</li><li>Test policies in simulation or audit mode before enabling enforcement actions.</li><li>Update internal DLP administration documentation if supported Exchange Online conditions are documented within your organization.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/purview/dlp-learn-about-dlp\" rel=\"noopener noreferrer\" target=\"_blank\">Learn about data loss prevention | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/purview/sensitivity-labels\" rel=\"noopener noreferrer\" target=\"_blank\">Learn about sensitivity labels | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-qzzc\"><b>Question</b></td><td data-row=\"row-qzzc\"><b>Answer</b></td></tr><tr><td data-row=\"row-wvig\">Does the change modify, interrupt, or disable Data Loss Prevention (DLP) policies or enforcement?</td><td data-row=\"row-wvig\">Yes. The update adds a new Exchange Online DLP condition that administrators can choose to use when creating or modifying DLP policies.</td></tr><tr><td data-row=\"row-p6oo\">Does the change alter how admins can monitor, report on, or demonstrate compliance activities?</td><td data-row=\"row-p6oo\">Yes. Administrators gain an additional policy condition that can be used to identify and respond to high-volume sharing of sensitivity-labeled content.</td></tr><tr><td data-row=\"row-k17c\">Does the change include an admin control and, can it be controlled through Entra ID group membership?</td><td data-row=\"row-k17c\">Yes. Administrators can configure the condition through Microsoft Purview DLP policies. The available information does not indicate that the condition itself can be controlled through Entra ID group membership.</td></tr></tbody></table>",
+    "ContentType": "html"
+  },
+  "Category": "stayInformed",
+  "Details": [
+    {
+      "Name": "RoadmapIds",
+      "Value": "562342"
+    },
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Purview DLP introduces a new Exchange Online condition to detect emails with a high count of sensitivity-labeled attachments, enhancing data protection. Available from November 2026, it allows admins to set thresholds for labeled files in emails, combining volume and content signals for better DLP policy enforcement."
+    },
+    {
+      "Name": "Platforms",
+      "Value": "Web"
+    }
+  ],
+  "EndDateTime": "2027-01-30T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1508235",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-10-14T23:18:04.013Z",
+  "Services": [
+    "Microsoft Purview"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-10-14T23:17:40Z",
+  "Tags": [
+    "New feature",
+    "Feature update",
+    "User impact"
+  ],
+  "Title": "Microsoft Purview | Data Loss Prevention: Count of labeled documents condition for Exchange Online",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
