@@ -1,0 +1,39 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and Why:</b></b></p><p>Microsoft Edge is deprecating browser-native Extensible Stylesheet Language Transformations (XSLT). Edge will disable the XSLTProcessor JavaScript API and XML processing instructions that reference XSLT stylesheets by default. XML processing instructions that reference CSS stylesheets are not affected.</p><p>The native XSLT implementation depends on an aging native codebase that processes untrusted XML and XSLT content. Removing this functionality reduces the browser attack surface. XSLT also has low modern web usage, and safer migration alternatives are available.</p><p><b><b>Rollout Schedule:</b></b></p><p>General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out in mid-December 2026 and expect to complete by mid-December 2026.</p><p><b><b>Impact on Your Organization:</b></b></p><p>Organizations may be affected if internal websites, public websites, embedded-device interfaces, or third-party web applications depend on browser-native XSLT. In Microsoft Edge 159, browser-native XSLT will be off by default in Stable. The temporary XSLTEnabled policy is planned for removal in Microsoft Edge 176 in Summer 2027.</p><p><b><b>Action Required/Recommendations:</b></b></p><p>Before Microsoft Edge Stable 159, identify applications that use the XSLTProcessor JavaScript API or XML processing instructions that reference XSL stylesheets. To check for browser-native XSLT usage with Lighthouse in Microsoft Edge:</p><ol><li>Open the application in a <b>current version of Microsoft Edge</b>.</li><li>Sign in and navigate to the application page you want to test.</li><li>Open Edge DevTools with <b>F12</b> or <b>Ctrl+Shift+I</b>.</li><li>Select the <b>Lighthouse</b> tool. If it isn't visible, select <b>More tools (</b><code><b>+</b></code><b>) &gt; Lighthouse</b>.</li><li>Select:<ul><li><b>Mode:</b> Navigation</li><li><b>Category:</b> Best Practices</li></ul></li><li><b>For authenticated applications:</b> In Lighthouse <b>Settings</b>, turn off <b>Clear storage</b> so the audit preserves your signed-in session. Leave it enabled for public pages that don't require stored application state.</li><li>Select <b>Analyze page load</b>.</li><li>In the report:<ul><li>Search for <b>XSLT</b>, <b>deprecated</b>, or <b>XSLTProcessor</b>.</li><li>Check for <b>Uses deprecated APIs</b>.</li><li>Expand <b>Issues were logged in the DevTools Issues panel</b>.</li></ul></li><li>Check the DevTools <b>Issues</b> and <b>Console</b> tools for XSLT deprecation warnings.</li><li>Repeat the audit for each relevant page and exercise important application workflows.</li></ol><p>Migrate affected applications to supported alternatives or contact the developers/vendor responsible for the affected site to update the application and remove its dependency on browser-native XSLT. If more time is needed, configure the temporary XSLTEnabled policy while application owners complete migration.</p><p><b><b>Compliance considerations:</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-mv5nmeb6-1\"><b>Question</b></td><td data-row=\"row-mv5nmeb6-1\"><b>Answer</b></td></tr><tr><td data-row=\"row-mv5nmeb6-2\">Does the change include an admin control?</td><td data-row=\"row-mv5nmeb6-2\">Yes. Admins can temporarily use the XSLTEnabled policy to manage XSLT behavior while migrating affected applications.</td></tr><tr><td data-row=\"row-mv5nmeb6-3\">Does the change modify or disable a capability?</td><td data-row=\"row-mv5nmeb6-3\">Yes. Browser-native XSLT will be disabled by default and the temporary policy is planned for removal in a future Edge release.</td></tr></tbody></table>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft Edge will disable browser-native XSLT by default starting mid-December 2026 to reduce security risks. Organizations should identify and migrate affected applications before Edge Stable 159. A temporary XSLTEnabled policy will be available but removed by Edge 176 in Summer 2027."
+    }
+  ],
+  "EndDateTime": "2027-02-15T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1509789",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-10-15T23:04:47.653Z",
+  "Services": [
+    "Microsoft 365 suite"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-10-15T23:03:32Z",
+  "Tags": [
+    "User impact",
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Microsoft Edge: Browser-native XSLT will be disabled by default",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
