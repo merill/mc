@@ -19,6 +19,8 @@ export type ZapComment = {
   score: number
   /** How many likes it has. Absent from a zap.ms that does not send it yet. */
   likes?: number
+  /** A top-level comment that asks something. Absent from an older zap.ms. */
+  question?: boolean
   html: string
   url: string
   /** Set by this site on a comment zap.ms has not confirmed yet. */
@@ -340,4 +342,55 @@ export function unreadBadge(unread: number) {
     text: unread > 9 ? "9+" : String(unread),
     label: unread > 0 ? `Notifications, ${unread} unread` : "Notifications",
   }
+}
+
+/**
+ * The questions people ask about a change, offered as one-tap starts to a
+ * first comment (docs/community-design.md, "Every arrival is a question").
+ */
+export const QUESTION_STARTERS = [
+  "Has anyone tested this?",
+  "When will it reach my tenant?",
+  "How do I turn it off?",
+  "What does it break?",
+]
+
+/**
+ * The question a post's page leads with: one someone other than the asker
+ * replied to, with that reply (most likes, then the earliest). When several
+ * are answered, the one whose answer has most likes, then the latest. Null
+ * when no question has an answer yet.
+ */
+export function askedAndAnswered(
+  comments: ZapComment[]
+): { question: ZapComment; answer: ZapComment } | null {
+  let best: { question: ZapComment; answer: ZapComment } | null = null
+  for (const question of comments) {
+    if (!question.question || question.parentId !== null || !question.author) {
+      continue
+    }
+    const answer = comments
+      .filter(
+        (c) =>
+          c.parentId === question.id &&
+          c.author !== null &&
+          c.author !== question.author &&
+          !c.pending
+      )
+      .sort(
+        (a, b) =>
+          (b.likes ?? 0) - (a.likes ?? 0) ||
+          a.createdAt.localeCompare(b.createdAt)
+      )[0]
+    if (!answer) continue
+    if (
+      !best ||
+      (answer.likes ?? 0) > (best.answer.likes ?? 0) ||
+      ((answer.likes ?? 0) === (best.answer.likes ?? 0) &&
+        question.createdAt > best.question.createdAt)
+    ) {
+      best = { question, answer }
+    }
+  }
+  return best
 }
