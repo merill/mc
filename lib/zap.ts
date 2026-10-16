@@ -35,6 +35,33 @@ export type ZapDiscussion = {
   comments: ZapComment[]
 }
 
+/** Someone taking part in a discussion, as a list shows them. */
+export type ZapPerson = {
+  username: string
+  /** The name they go by. */
+  name: string
+  avatar: string | null
+  badges: string[]
+}
+
+/** One person's comment, as plain text, for a list to quote. */
+export type ZapLine = ZapPerson & {
+  commentId: number
+  text: string
+  createdAt: string
+  likes: number
+  url: string
+}
+
+/**
+ * What a list quotes of a discussion: a question still waiting (`question`),
+ * a question and the reply that answered it (`answer`), or the best line.
+ */
+export type ZapHighlight = ZapLine & {
+  kind: "answer" | "question" | "reply"
+  answer: ZapLine | null
+}
+
 export type ZapActiveItem = {
   id: string
   title: string
@@ -47,6 +74,11 @@ export type ZapActiveItem = {
   /** The name the last commenter goes by on zap.ms. */
   lastCommenterName?: string | null
   lastCommenterAvatar?: string | null
+  /** Absent from an older zap.ms. */
+  highlight?: ZapHighlight | null
+  people?: ZapPerson[]
+  /** Questions nobody but the asker has replied to. */
+  unanswered?: number
 }
 
 /** What a list shows for one post. */

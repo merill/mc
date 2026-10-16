@@ -7,6 +7,7 @@ import {
   ArrowUp,
   ChevronsUpDown,
   Cloud,
+  HelpCircle,
   Inbox,
   MessageSquare,
   Milestone,
@@ -17,8 +18,8 @@ import {
 import { siteConfig } from "@/config/site"
 import { getDisplayId } from "@/lib/message-format"
 import { useZapCount } from "@/lib/use-zap-counts"
-import { zapLinks } from "@/lib/zap"
-import { SeenOnlyInBadge } from "@/components/seen-only-in-badge"
+import { useDiscussion } from "@/lib/use-zap-discussions"
+import { timeAgo, zapLinks, type ZapHighlight } from "@/lib/zap"
 import { Badge } from "@/components/ui/badge"
 import {
   Tooltip,
@@ -26,6 +27,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { QuotedLine } from "@/components/quoted-line"
+import { SeenOnlyInBadge } from "@/components/seen-only-in-badge"
 
 export type MessageViewSource = "messageCenter" | "roadmap" | "azure"
 
@@ -44,6 +47,11 @@ export type MessageView = {
   // sorting the display string would order it alphabetically.
   lastUpdated: string | undefined
   date: string | undefined
+  /**
+   * When Microsoft first published it, as a display string, set only when it
+   * has changed it since (more than a day later), so the list can say so.
+   */
+  published?: string
   isMajor: boolean
   isArchived: boolean
   // Kind of tenant (such as "edu") that alone returned the post, if any.
@@ -77,7 +85,10 @@ const plural = (count: number, word: string) =>
  */
 function RowDiscussion({ id }: { id: string }) {
   const counts = useZapCount(id)
-  if (!counts) return null
+  const discussion = useDiscussion(id)
+  const highlight = discussion?.highlight
+  if (!counts && !highlight) return null
+  if (!counts) return highlight ? <RowQuote highlight={highlight} /> : null
 
   const parts = [
     { Icon: ThumbsUp, count: counts.up, word: "like" },
@@ -85,7 +96,7 @@ function RowDiscussion({ id }: { id: string }) {
     { Icon: MessageSquare, count: counts.commentCount, word: "comment" },
   ].filter((part) => part.count > 0)
 
-  return (
+  const summary = (
     // A plain link: next/link can fall back to a full page load that drops
     // the #discussion it was given.
     <a
@@ -100,7 +111,40 @@ function RowDiscussion({ id }: { id: string }) {
           <Icon className="size-3.5" aria-hidden="true" /> {count}
         </span>
       ))}
+      {discussion?.lastActivityAt && counts.commentCount > 0 && (
+        <span>last reply {timeAgo(discussion.lastActivityAt)}</span>
+      )}
     </a>
+  )
+
+  return highlight ? (
+    <>
+      {summary}
+      <RowQuote highlight={highlight} />
+    </>
+  ) : (
+    summary
+  )
+}
+
+/**
+ * What people said, under a row's title: a question still waiting, marked so;
+ * a question with its answer; or the best line (docs/community-design.md).
+ */
+function RowQuote({ highlight }: { highlight: ZapHighlight }) {
+  return (
+    <div className="mt-1.5 flex flex-col gap-1">
+      {highlight.kind === "question" && (
+        <span className="inline-flex w-fit items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2 text-[11px] font-semibold text-amber-800 dark:text-amber-300">
+          <HelpCircle className="size-3" aria-hidden="true" />
+          Question · no answer yet
+        </span>
+      )}
+      <QuotedLine line={highlight} />
+      {highlight.answer && (
+        <QuotedLine line={highlight.answer} lead="Answered:" className="ml-7" />
+      )}
+    </div>
   )
 }
 
@@ -141,9 +185,7 @@ function SortableHeader({
       // Dates read newest-first and text reads A-Z, so an unsorted column
       // starts in whichever direction people expect from that kind of value.
       onClick={() =>
-        column.toggleSorting(
-          sorted ? sorted === "asc" : label === "Last updated"
-        )
+        column.toggleSorting(sorted ? sorted === "asc" : label === "Microsoft")
       }
       className={`-mx-2 inline-flex items-center gap-1.5 rounded-sm px-2 py-1 hover:text-foreground ${
         className ?? ""
@@ -277,13 +319,27 @@ export const columns: ColumnDef<MessageView>[] = [
     id: "lastUpdated",
     accessorFn: (row) => row.date ?? "",
     header: ({ column }) => (
-      <SortableHeader column={column} label="Last updated" />
+      <SortableHeader column={column} label="Microsoft" />
     ),
+    // Microsoft's clock, never the community's: when it last changed the
+    // post, and whether that was an update to an older post.
     cell: ({ row }) => {
+      const { lastUpdated, published } = row.original
       return (
-        <span className="text-nowrap leading-7 text-foreground/75">
-          {row.original.lastUpdated}
-        </span>
+        <div className="leading-7">
+          <span className="text-nowrap text-foreground/75">{lastUpdated}</span>
+          {published && (
+            <>
+              {" "}
+              <span className="inline-flex items-center rounded-full bg-blue-500/10 px-2 text-[11px] font-semibold text-blue-700 dark:text-blue-300">
+                Updated
+              </span>
+              <span className="block text-nowrap text-xs leading-5 text-muted-foreground">
+                Published {published}
+              </span>
+            </>
+          )}
+        </div>
       )
     },
   },

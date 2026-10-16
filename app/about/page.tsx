@@ -224,6 +224,15 @@ export default function AboutPage() {
                 Comments show people by the name they go by on zap.ms, such as
                 Jonathan Hope, rather than their username.
               </li>
+              <li>
+                The home page shows what admins are saying: the week&apos;s most
+                talked-about posts with a line from the discussion, and the
+                questions still waiting for an answer. Above the list, switch
+                between Microsoft&apos;s latest posts, the posts people are
+                discussing, and the questions. Posts Microsoft changed after
+                publishing now say Updated, with the date they were first
+                published.
+              </li>
             </ul>
           </div>
           <div>

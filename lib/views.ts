@@ -30,7 +30,7 @@ export interface SavedView {
 export const OPTIONAL_COLUMNS = [
   { id: "source", label: "Source" },
   { id: "service", label: "Service" },
-  { id: "lastUpdated", label: "Last updated" },
+  { id: "lastUpdated", label: "Microsoft's date" },
 ] as const
 export type OptionalColumn = (typeof OPTIONAL_COLUMNS)[number]["id"]
 
@@ -38,8 +38,14 @@ export const SORT_CHOICES: {
   label: string
   sort: ViewSettings["sort"]
 }[] = [
-  { label: "Newest first", sort: { id: "lastUpdated", desc: true } },
-  { label: "Oldest first", sort: { id: "lastUpdated", desc: false } },
+  {
+    label: "Changed by Microsoft, newest first",
+    sort: { id: "lastUpdated", desc: true },
+  },
+  {
+    label: "Changed by Microsoft, oldest first",
+    sort: { id: "lastUpdated", desc: false },
+  },
   { label: "ID, highest first", sort: { id: "id", desc: true } },
   { label: "ID, lowest first", sort: { id: "id", desc: false } },
   { label: "Title, A to Z", sort: { id: "title", desc: false } },
