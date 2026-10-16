@@ -9,6 +9,8 @@ export type ZapComment = {
   parentId: number | null
   depth: number
   author: string | null
+  /** The name the author goes by on zap.ms; absent from an older zap.ms. */
+  authorName?: string | null
   /** The author's photo on zap.ms, when they have one. */
   authorAvatar?: string | null
   badges: string[]
@@ -42,6 +44,8 @@ export type ZapActiveItem = {
   commentCount: number
   lastActivityAt: string
   lastCommenter: string | null
+  /** The name the last commenter goes by on zap.ms. */
+  lastCommenterName?: string | null
   lastCommenterAvatar?: string | null
 }
 
