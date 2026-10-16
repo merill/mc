@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": "2026-11-15T08:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b>What and why:</b></p><p>As part of our ongoing Exchange Online management and directory modernization efforts, we're simplifying legacy management scenarios and removing properties. We are deprecating selected properties returned or used with the following Exchange Online PowerShell scenarios:</p><ul><li>Get-Mailbox -Migration</li><li>New-Mailbox -Migration</li></ul><p>If your scripts, applications, or automation use these scenarios, review the affected properties and determine whether your workflows depend on them.</p><p>The change will be introduced in two phases:</p><ul><li>Beginning November 15, 2026: Selected properties will no longer be returned in applicable Get-Mailbox -Migration and New-Mailbox -Migration responses.</li><li>Beginning December 15, 2026: The affected properties will be blocked from being configured through applicable New-Mailbox -Migration scenarios.</li></ul><p><b>Rollout schedule:</b></p><p>We will begin rolling out mid-November 2026 and expect to complete by mid-November 2026.</p><p><b>Impact on your organization:</b></p><p>Your organization may be affected if you have scripts, applications, third-party solutions, or operational workflows that use the affected properties with -Migration scenarios.</p><p>For example, a script using: <code>Get-Mailbox -Migration</code> will no longer receive the affected properties in the returned object beginning November 10, 2026. This may affect automation that depends on those properties being present or expects a fixed set of properties in the response. If your workflows don't use any of the affected properties, no action is required.</p><p><b>Action required / Recommendations:</b></p><p>Before November 15, 2026:</p><ol><li>Review scripts, applications, and integrations that use Get-Mailbox -Migration, New-Mailbox -Migration, or Set-Mailbox -Migration.</li><li>Review the published list of affected properties.</li><li>Identify whether your workflows depend on any affected property.</li><li>Update and test affected workflows to remove the dependency.</li><li>For the complete list of affected properties and additional guidance, see: <a href=\"https://learn.microsoft.com/en-us/exchange/get-new-mailbox-migration\" target=\"_blank\">Changes to Get-Mailbox and New-Mailbox specifically with the Migration parameter | Microsoft Learn</a>.</li></ol><p>Required Actions</p><p>Review your -Migration workflows and make any required changes before November 15, 2026.</p><p>If an affected property is required for your scenario and you can't remove the dependency, contact Microsoft Support and provide the property name, cmdlet, usage scenario, and expected impact.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Exchange Online is deprecating certain properties in Get-Mailbox -Migration and New-Mailbox -Migration cmdlets starting November 15, 2026. Organizations must review and update scripts or workflows using these properties before then to avoid disruptions. Full details and guidance are provided in the linked Microsoft documentation."
+    }
+  ],
+  "EndDateTime": "2027-02-15T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1511071",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2026-10-16T20:24:53.81Z",
+  "Services": [
+    "Exchange Online"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-10-16T20:14:11Z",
+  "Tags": [
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Action required: Review property changes for Exchange Online scenarios",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
