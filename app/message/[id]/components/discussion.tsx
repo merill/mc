@@ -4,7 +4,10 @@ import * as React from "react"
 import {
   ArrowDown,
   ArrowRight,
+  Check,
+  CheckCircle2,
   Flag,
+  HelpCircle,
   MessageSquare,
   MoreHorizontal,
   Reply,
@@ -18,7 +21,10 @@ import { useDiscussion } from "@/lib/use-discussion"
 import { cn } from "@/lib/utils"
 import {
   BADGE_LABELS,
+  QUESTION_STARTERS,
+  ZapComment,
   ZapThreadNode,
+  askedAndAnswered,
   buildThread,
   commentLikes,
   sanitizeCommentHtml,
@@ -75,8 +81,8 @@ export function DiscussionSummary({ id }: { id: string }) {
     },
   ] as const
 
-  return (
-    <div className="flex w-full flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
+  const votes = (
+    <>
       {reactions.map((reaction) => {
         const mine = discussion.mine.reaction === reaction.dir
         const label =
@@ -134,24 +140,241 @@ export function DiscussionSummary({ id }: { id: string }) {
           </a>
         )
       })}
+    </>
+  )
+  const error = discussion.error && (
+    <p role="alert" className="w-full text-sm text-destructive">
+      {discussion.error}
+    </p>
+  )
+  const qa = data ? askedAndAnswered(data.comments) : null
+
+  // Nobody has said anything yet: the questions admins ask, one tap each.
+  if (data && data.commentCount === 0) {
+    return (
+      <div className="w-full rounded-[0.5rem] border bg-background p-5 shadow-sm">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 className="text-lg font-semibold">
+              Have a question about this change?
+            </h2>
+            <p className="mt-0.5 text-sm text-muted-foreground">
+              Nobody has asked yet. Admins and MVPs who look after these
+              services read these and answer.
+            </p>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            {votes}
+          </div>
+        </div>
+        <Starters discussion={discussion} postId={id} className="mt-4" />
+        {error}
+      </div>
+    )
+  }
+
+  // Someone asked, and someone else answered: lead with that.
+  if (qa) {
+    return (
+      <div className="w-full overflow-hidden rounded-[0.5rem] border bg-background shadow-sm">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b px-5 py-3">
+          <h2 className="flex items-center gap-2 font-semibold">
+            <CheckCircle2
+              className="size-4 text-emerald-600"
+              aria-hidden="true"
+            />
+            Asked and answered
+            {data && (
+              <span className="text-sm font-normal text-muted-foreground">
+                · {commentLabel(data.commentCount)}
+              </span>
+            )}
+          </h2>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            {votes}
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 p-5">
+          <QuotedComment comment={qa.question} />
+          <div className="ml-10 border-l-2 pl-4">
+            <QuotedComment comment={qa.answer} answer />
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-2 border-t px-5 py-3">
+          <a
+            href="#discussion"
+            className={cn(
+              buttonVariants({ variant: "outline", size: "sm" }),
+              "gap-1.5"
+            )}
+          >
+            Read all {data ? commentLabel(data.commentCount) : "comments"}
+            <ArrowDown className="size-3.5" aria-hidden="true" />
+          </a>
+          <button
+            type="button"
+            className={cn(buttonVariants({ size: "sm" }), "gap-1.5")}
+            onClick={() => ask(discussion, id, "")}
+          >
+            <HelpCircle className="size-4" aria-hidden="true" />
+            Ask your own question
+          </button>
+          <span className="text-xs text-muted-foreground">
+            {inline ? "powered by zap.ms" : "on zap.ms"}
+          </span>
+        </div>
+        {error && <div className="px-5 pb-3">{error}</div>}
+      </div>
+    )
+  }
+
+  return (
+    <div className="flex w-full flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
+      {votes}
       <a
-        className="inline-flex items-center gap-1.5 font-medium text-foreground underline-offset-4 hover:underline"
+        className="inline-flex items-center gap-2 rounded-md bg-secondary px-3 py-1.5 font-medium text-foreground hover:bg-secondary/70"
         href="#discussion"
       >
-        <MessageSquare className="size-4" aria-hidden="true" />
-        {data && data.commentCount > 0
-          ? commentLabel(data.commentCount)
-          : "Discussion"}
+        <HelpCircle className="size-4" aria-hidden="true" />
+        Have a question about this change?
+        <span className="font-normal text-muted-foreground">
+          Ask the community
+        </span>
         <ArrowDown className="size-3.5" aria-hidden="true" />
       </a>
+      {data && data.commentCount > 0 && (
+        <span className="inline-flex items-center gap-1.5">
+          <MessageSquare className="size-4" aria-hidden="true" />
+          {commentLabel(data.commentCount)}
+        </span>
+      )}
       <span className="text-xs">
         {inline ? "powered by zap.ms" : "on zap.ms"}
       </span>
-      {discussion.error && (
-        <p role="alert" className="w-full text-sm text-destructive">
-          {discussion.error}
-        </p>
-      )}
+      {error}
+    </div>
+  )
+}
+
+/** A comment quoted at the top of the page, with who wrote it. */
+function QuotedComment({
+  comment,
+  answer = false,
+}: {
+  comment: ZapComment
+  answer?: boolean
+}) {
+  const name = comment.authorName || comment.author || "removed"
+  const html = React.useMemo(
+    () => sanitizeCommentHtml(comment.html),
+    [comment.html]
+  )
+  return (
+    <article className="flex gap-3">
+      <ZapAvatar
+        username={comment.author ?? name}
+        name={name}
+        src={comment.authorAvatar}
+        className="mt-0.5 size-7 text-xs"
+      />
+      <div className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm leading-7">
+          <span className="font-semibold">{name}</span>
+          {comment.badges.map((badge) => (
+            <span
+              key={badge}
+              className={cn(
+                "rounded-full px-2 py-px text-xs font-semibold text-white",
+                badge === "mvp" ? "bg-[#b31b1b]" : "bg-[#0078d4]"
+              )}
+            >
+              {BADGE_LABELS[badge] ?? badge}
+            </span>
+          ))}
+          <a
+            className="text-muted-foreground underline-offset-4 hover:underline"
+            href={`#comment-${comment.id}`}
+          >
+            {timeAgo(comment.createdAt)}
+          </a>
+          {answer && (
+            <span className="inline-flex items-center gap-1 rounded-full border border-emerald-600/30 bg-emerald-500/10 px-2 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300">
+              <Check className="size-3" aria-hidden="true" />
+              Answer
+            </span>
+          )}
+        </div>
+        <div
+          className="zap-comment line-clamp-6"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </div>
+    </article>
+  )
+}
+
+// A starter or "Ask your own question" pressed above, for the comment box below.
+const ASK_EVENT = "zap-ask"
+const ASK_PENDING = "zap-ask-question"
+
+/**
+ * Starts a question: fills the comment box and takes the reader to it, or,
+ * signed out, keeps the words as a draft and signs them in first.
+ */
+function ask(discussion: Discussion, postId: string, text: string) {
+  const links = zapLinks(siteConfig.zap.url, postId)
+  if (discussion.session.status === "signed-in") {
+    window.dispatchEvent(new CustomEvent(ASK_EVENT, { detail: text }))
+    document
+      .getElementById("discussion")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" })
+    return
+  }
+  if (discussion.session.status === "off") {
+    window.location.href = links.comment
+    return
+  }
+  try {
+    if (text) saveDraft(localStorage, draftKey(postId, null), text, Date.now())
+    sessionStorage.setItem(ASK_PENDING, postId)
+  } catch {
+    // Storage blocked: they type the question again after signing in.
+  }
+  discussion.signIn()
+}
+
+/** The questions admins ask about a change, one tap each. */
+function Starters({
+  discussion,
+  postId,
+  className,
+}: {
+  discussion: Discussion
+  postId: string
+  className?: string
+}) {
+  return (
+    <div className={cn("flex flex-wrap gap-2", className)}>
+      {QUESTION_STARTERS.map((starter) => (
+        <button
+          key={starter}
+          type="button"
+          className={buttonVariants({ variant: "outline", size: "sm" })}
+          onClick={() => ask(discussion, postId, starter)}
+        >
+          {starter}
+        </button>
+      ))}
+      <button
+        type="button"
+        className={cn(
+          buttonVariants({ variant: "outline", size: "sm" }),
+          "text-muted-foreground"
+        )}
+        onClick={() => ask(discussion, postId, "")}
+      >
+        Something else…
+      </button>
     </div>
   )
 }
@@ -197,7 +420,7 @@ export function DiscussionThread({ id }: { id: string }) {
     >
       <CardHeader className="flex-row flex-wrap items-center justify-between gap-x-4 gap-y-3 space-y-0">
         <CardTitle id="discussion-title">
-          Discussion
+          Questions and answers
           {data && data.commentCount > 0 && (
             <span className="ml-2 text-base font-normal tracking-normal text-muted-foreground">
               · {commentLabel(data.commentCount)}
@@ -216,7 +439,7 @@ export function DiscussionThread({ id }: { id: string }) {
             className={buttonVariants()}
             onClick={discussion.signIn}
           >
-            Sign in to comment
+            Sign in to ask or comment
           </button>
         )}
       </CardHeader>
@@ -227,7 +450,7 @@ export function DiscussionThread({ id }: { id: string }) {
             discussion={discussion}
             postId={id}
             parentId={null}
-            label="Add a comment"
+            label="Ask a question or add a comment"
           />
         </div>
       )}
@@ -236,9 +459,9 @@ export function DiscussionThread({ id }: { id: string }) {
 
       {state.status !== "loading" && thread.length === 0 && (
         <div className="flex flex-col items-center gap-2 border-t px-6 py-8 text-center">
-          <p className="text-lg font-semibold">No comments yet</p>
+          <p className="text-lg font-semibold">No questions yet</p>
           <p className="max-w-prose text-sm text-muted-foreground">
-            Seen this change in your tenant? Be the first to say how it went.
+            Ask the first one, or say how this change went in your tenant.
           </p>
         </div>
       )}
@@ -294,7 +517,37 @@ function CommentForm(props: {
   const key = draftKey(props.postId, parentId)
   const [text, setText] = React.useState("")
   const [restored, setRestored] = React.useState(false)
+  // Started from a question starter: zap.ms is told it is a question.
+  const [asking, setAsking] = React.useState(false)
   const fieldId = React.useId()
+  const field = React.useRef<HTMLTextAreaElement>(null)
+  const topLevel = parentId === null
+
+  React.useEffect(() => {
+    if (!topLevel) return
+    // Back from signing in after pressing a starter.
+    try {
+      if (sessionStorage.getItem(ASK_PENDING) === props.postId) {
+        sessionStorage.removeItem(ASK_PENDING)
+        setAsking(true)
+        field.current?.focus()
+      }
+    } catch {
+      // Storage blocked: nothing was kept.
+    }
+    const onAsk = (event: Event) => {
+      const starter = (event as CustomEvent<string>).detail
+      setText((current) => {
+        const next = current.trim() ? current : starter
+        saveDraft(localStorage, key, next, Date.now())
+        return next
+      })
+      setAsking(true)
+      field.current?.focus()
+    }
+    window.addEventListener(ASK_EVENT, onAsk)
+    return () => window.removeEventListener(ASK_EVENT, onAsk)
+  }, [key, props.postId, topLevel])
 
   React.useEffect(() => {
     const saved = readDraft(localStorage, key, Date.now())
@@ -321,7 +574,9 @@ function CommentForm(props: {
     // saved copy stays until zap.ms confirms, and comes back if it does not.
     setText("")
     setRestored(false)
-    if (await discussion.comment(sent, parentId)) {
+    const question = asking ? true : undefined
+    setAsking(false)
+    if (await discussion.comment(sent, parentId, question)) {
       saveDraft(localStorage, key, "", Date.now())
       props.onDone?.()
     } else {
@@ -334,7 +589,26 @@ function CommentForm(props: {
       <label htmlFor={fieldId} className="text-sm font-medium">
         {props.label}
       </label>
+      {topLevel && !text && (
+        <div className="flex flex-wrap gap-1.5">
+          {QUESTION_STARTERS.map((starter) => (
+            <button
+              key={starter}
+              type="button"
+              className="rounded-full border px-2.5 py-0.5 text-xs font-medium text-foreground/80 hover:bg-secondary"
+              onClick={() => {
+                update(starter)
+                setAsking(true)
+                field.current?.focus()
+              }}
+            >
+              {starter}
+            </button>
+          ))}
+        </div>
+      )}
       <textarea
+        ref={field}
         id={fieldId}
         value={text}
         onChange={(event) => update(event.target.value)}
@@ -342,7 +616,11 @@ function CommentForm(props: {
         maxLength={8000}
         required
         className="w-full rounded-md border bg-background px-3 py-2 text-sm leading-6 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        placeholder="Seen this change in your tenant? Say how it went."
+        placeholder={
+          topLevel
+            ? "Ask about this change, or share what you found when you tested it…"
+            : "Seen this change in your tenant? Say how it went."
+        }
       />
       <div className="flex flex-wrap items-center gap-2">
         <button
@@ -350,7 +628,7 @@ function CommentForm(props: {
           className={buttonVariants({ size: "sm" })}
           disabled={!text.trim()}
         >
-          {parentId === null ? "Post comment" : "Post reply"}
+          {parentId === null ? (asking ? "Ask" : "Post comment") : "Post reply"}
         </button>
         {props.onDone && (
           <button

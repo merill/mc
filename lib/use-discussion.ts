@@ -215,13 +215,17 @@ class Store {
   comment(
     text: string,
     parentId: number | null,
-    author: { username: string; avatar: string | null }
+    author: { username: string; avatar: string | null },
+    question?: boolean
   ) {
     const view = this.view()
     return this.write(
       "POST",
       "/comments",
-      { text, parentId },
+      // `question` only when the writer chose a starter: zap.ms guesses otherwise.
+      question === undefined
+        ? { text, parentId }
+        : { text, parentId, question },
       view
         ? withPendingComment(
             view,
@@ -457,13 +461,14 @@ export function useDiscussion(id: string) {
         if (session.status !== "signed-in") return signIn({ id, react: dir })
         return current.react(dir)
       },
-      comment: (text: string, parentId: number | null) =>
+      comment: (text: string, parentId: number | null, question?: boolean) =>
         current.comment(
           text,
           parentId,
           session.status === "signed-in"
             ? session
-            : { username: "", avatar: null }
+            : { username: "", avatar: null },
+          question
         ),
       upvote: (commentId: number) => current.upvote(commentId),
       flag: (commentId: number) => current.flag(commentId),

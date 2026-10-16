@@ -233,6 +233,14 @@ export default function AboutPage() {
                 publishing now say Updated, with the date they were first
                 published.
               </li>
+              <li>
+                A post&apos;s page leads with the community: when someone asked
+                about the change and someone else answered, that question and
+                its answer come right after the summary. On a post nobody has
+                discussed yet, the common questions (has anyone tested this,
+                when will it reach my tenant, how do I turn it off) start yours
+                in one tap.
+              </li>
             </ul>
           </div>
           <div>
