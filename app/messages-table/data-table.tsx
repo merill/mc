@@ -16,6 +16,8 @@ import {
   Check,
   ChevronDown,
   Cloud,
+  Flame,
+  HelpCircle,
   Inbox,
   Loader2,
   Milestone,
@@ -37,6 +39,7 @@ import {
   type SearchSortKey,
 } from "@/lib/search"
 import { useZapCounts } from "@/lib/use-zap-counts"
+import { useDiscussions } from "@/lib/use-zap-discussions"
 import {
   DEFAULT_VIEW,
   OPTIONAL_COLUMNS,
@@ -103,6 +106,16 @@ function toArchivedMessageView(item: MessageArchive): MessageView {
         })} ${date.getDate()}, ${date.getFullYear()}`
       : undefined,
     date: date ? date.toISOString().slice(0, 10) : undefined,
+    published:
+      date &&
+      item.StartDateTime &&
+      date.getTime() - new Date(item.StartDateTime).getTime() > 86_400_000
+        ? new Date(item.StartDateTime).toLocaleString("default", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })
+        : undefined,
     isMajor: item.IsMajorChange ?? false,
     // An Azure update never expires; an old one is only old.
     isArchived: !isAzure,
@@ -144,6 +157,17 @@ export function DataTable<TData, TValue>({
   // True once the expired posts have arrived, or turned out not to be coming.
   const [isArchiveSettled, setIsArchiveSettled] = React.useState(!archiveUrl)
   const [sorting, setSorting] = React.useState<SortingState>([])
+  // Microsoft's latest posts, or the ones people are discussing on zap.ms
+  // (docs/community-design.md). Kept in the address as `show`.
+  const [show, setShow] = React.useState<Show>("latest")
+  const hot = useDiscussions("hot")
+  const waiting = useDiscussions("questions")
+  const listed =
+    show === "discussed"
+      ? hot ?? []
+      : show === "questions"
+      ? waiting ?? []
+      : null
   const [filters, setFilters] = React.useState(() =>
     readArchiveFilters(new URLSearchParams())
   )
@@ -213,8 +237,12 @@ export function DataTable<TData, TValue>({
   // searching, newest-first while browsing.
   const effectiveSorting = React.useMemo(
     () =>
-      sorting.length ? sorting : isSearchActive ? [] : defaultBrowseSorting,
-    [isSearchActive, sorting]
+      sorting.length
+        ? sorting
+        : isSearchActive || listed
+        ? []
+        : defaultBrowseSorting,
+    [isSearchActive, listed, sorting]
   )
   const searchSort = React.useMemo(() => {
     const column = sorting[0]
@@ -242,8 +270,11 @@ export function DataTable<TData, TValue>({
   }, [data])
 
   React.useEffect(() => {
-    const restoreFilters = () =>
-      setFilters(readArchiveFilters(new URLSearchParams(window.location.search)))
+    const restoreFilters = () => {
+      const params = new URLSearchParams(window.location.search)
+      setFilters(readArchiveFilters(params))
+      setShow(readShow(params))
+    }
 
     // Read after hydration so bookmarked URLs also work with the static export.
     restoreFilters()
@@ -397,6 +428,16 @@ export function DataTable<TData, TValue>({
     }))
   }
 
+  const changeShow = (next: Show) => {
+    const url = new URL(window.location.href)
+    if (next === "latest") url.searchParams.delete("show")
+    else url.searchParams.set("show", next)
+    window.history.replaceState(window.history.state, "", url)
+    setShow(next)
+    // Each view has its own order: zap.ms's for discussions, newest for posts.
+    setSorting([])
+  }
+
   const toggleService = (service: string) => {
     updateFilters({
       selectedServices: selectedServices.includes(service)
@@ -413,6 +454,13 @@ export function DataTable<TData, TValue>({
       : `${selectedServices.length} services`
 
   const tableData = React.useMemo(() => {
+    if (!isSearchActive && listed) {
+      // zap.ms's order, narrowed by the same filters as the rest of the list.
+      const byId = new Map(
+        filteredData.map((item) => [(item as MessageView).id, item])
+      )
+      return listed.flatMap((item) => byId.get(item.id) ?? [])
+    }
     if (!isSearchActive) return filteredData
     if (isSearchUnavailable) return fallbackResults
 
@@ -425,6 +473,7 @@ export function DataTable<TData, TValue>({
     fallbackResults,
     filteredData,
     isSearchActive,
+    listed,
     isSearchUnavailable,
     searchHits,
     viewSettings,
@@ -463,7 +512,7 @@ export function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     // While searching, Pagefind has already ordered the full match set —
     // re-sorting here would only reorder the rows fetched so far.
-    manualSorting: usesPagefind,
+    manualSorting: usesPagefind || (listed !== null && !sorting.length),
     state: {
       sorting: effectiveSorting,
       columnVisibility,
@@ -478,9 +527,7 @@ export function DataTable<TData, TValue>({
   // Reactions and comment counts, for the rows on screen only. Expired posts
   // reorder the first rows when they arrive, so the request waits for them.
   useZapCounts(
-    isArchiveSettled
-      ? visibleRows.map((row) => String(row.getValue("id")))
-      : []
+    isArchiveSettled ? visibleRows.map((row) => String(row.getValue("id"))) : []
   )
 
   const loadMoreRows = React.useCallback(async () => {
@@ -715,6 +762,12 @@ export function DataTable<TData, TValue>({
           ID and title matches.
         </div>
       )}
+      <ShowBar
+        show={show}
+        discussed={hot?.length}
+        questions={waiting?.length}
+        onChange={changeShow}
+      />
       <div className="rounded-md border text-[15px] leading-6">
         <Table className="table-fixed md:table-auto">
           <TableHeader>
@@ -776,6 +829,12 @@ export function DataTable<TData, TValue>({
                     "Searching…"
                   ) : isSearchActive ? (
                     "No messages match this search."
+                  ) : listed && listed.length === 0 ? (
+                    show === "questions" ? (
+                      "Every question has an answer. Thank you, everyone."
+                    ) : (
+                      "Nobody has replied to a post this week yet."
+                    )
                   ) : !isArchiveSettled ? (
                     // Older posts are still on their way and may match.
                     "Loading…"
@@ -815,6 +874,87 @@ export function DataTable<TData, TValue>({
           {resultSummary()}
         </div>
       )}
+    </div>
+  )
+}
+
+type Show = "latest" | "discussed" | "questions"
+
+function readShow(params: URLSearchParams): Show {
+  const value = params.get("show")
+  return value === "discussed" || value === "questions" ? value : "latest"
+}
+
+const SHOW_BUTTON =
+  "inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md px-3 text-sm font-medium text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring aria-[pressed=true]:bg-background aria-[pressed=true]:text-foreground aria-[pressed=true]:shadow-sm"
+
+/**
+ * Which clock the list follows: Microsoft's latest posts, or the posts people
+ * are discussing on zap.ms, or those with a question nobody has answered.
+ */
+function ShowBar({
+  show,
+  discussed,
+  questions,
+  onChange,
+}: {
+  show: Show
+  discussed: number | undefined
+  questions: number | undefined
+  onChange: (show: Show) => void
+}) {
+  return (
+    <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+      <div
+        role="group"
+        aria-label="Show"
+        className="inline-flex max-w-full gap-0.5 overflow-x-auto whitespace-nowrap rounded-lg bg-muted p-1"
+      >
+        <button
+          type="button"
+          className={SHOW_BUTTON}
+          aria-pressed={show === "latest"}
+          onClick={() => onChange("latest")}
+        >
+          <Inbox className="size-3.5" aria-hidden="true" />
+          Latest<span className="hidden sm:inline"> from Microsoft</span>
+        </button>
+        <button
+          type="button"
+          className={SHOW_BUTTON}
+          aria-pressed={show === "discussed"}
+          onClick={() => onChange("discussed")}
+        >
+          <Flame className="size-3.5" aria-hidden="true" />
+          Discussed
+          {discussed ? (
+            <span className="rounded-full bg-foreground/10 px-1.5 text-xs tabular-nums">
+              {discussed}
+            </span>
+          ) : null}
+        </button>
+        <button
+          type="button"
+          className={SHOW_BUTTON}
+          aria-pressed={show === "questions"}
+          onClick={() => onChange("questions")}
+        >
+          <HelpCircle className="size-3.5" aria-hidden="true" />
+          Questions
+          {questions ? (
+            <span className="rounded-full bg-amber-500/20 px-1.5 text-xs tabular-nums text-amber-800 dark:text-amber-300">
+              {questions}
+            </span>
+          ) : null}
+        </button>
+      </div>
+      <p className="text-sm text-muted-foreground">
+        {show === "discussed"
+          ? "Posts people replied to this week, most talked about first"
+          : show === "questions"
+          ? "Questions nobody has answered yet, the longest waiting first"
+          : "Ordered by when Microsoft last changed each post"}
+      </p>
     </div>
   )
 }
