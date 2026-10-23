@@ -1,0 +1,78 @@
+{
+  "id": "RM577820",
+  "versions": [
+    {
+      "capturedAt": "2026-10-23T00:00:39.0000000Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Using the AI resources provides several benefits:</p>\n<p>Reduced operational overhead: Avoid the need to handle infrastructure management, updates, monitoring, troubleshooting, or maintenance of custom Azure OpenAI subscriptions. This benefit frees up resources to focus on core business operations and provides value-adding intellectual property (IP) to customers.</p>\n<p>Simplified onboarding: Quickly integrate AI capabilities into your solutions without having to navigate the complexities of setting up and managing your own Azure OpenAI subscription.</p>\n<p>Improved reliability: Proactive scaling, throttling, load balancing, and fault tolerance measures ensure consistent performance during peak demand.</p>\n<p>Enhanced security compliance: Built-in compliance measures and governance, including robust protection from malicious and harmful content, ensure compliance with data residency requirements. This benefit reduces the burden of ensuring regulatory compliance for ISVs.</p>\n<p>Streamlined experience for customers: Customers get a seamless AI resource management process without maintaining different configurations for separate ISV solutions.</p>\n<p>This capability also provides a cohesive AI consumption tracking and billing experience for Business Central customers. Customers who use AI resources across multiple AI-enabled solutions built with Business Central customer developer tools for Copilot benefit from a unified approach to AI consumption monitoring and invoicing. They don&#39;t need to reconcile multiple invoices or metrics from separate ISVs.</p>\n<p>For details on billing costs, see AI tools at Message scenarios.</p>\n<p>For most publishers, the default Business Central AI resources are enough. However, if you need specific models, including fine-tuned models, that the Business Central AI resources don&#39;t provide, you can bring your own subscription for customers. In this case, the publisher is responsible for deploying, maintaining, scaling, and securing the service. The publisher also handles billing AI resources to customers.</p>\n<p>We recommend using the developer toolkit AI resources when you extend Copilot in Business Central. You just need to authenticate with the SetManagedResourceAuthorization method in the AI Module AzureOpenAI codeunit. You also provide your own Azure OpenAI subscription details, but the authentication process doesn&#39;t use them. (Update 2026 release wave 1: There&#39;s now a new method signature for SetManagedResources that doesn&#39;t require you to provide your subscription details anymore. You should use that going forward.)</p>\n<p>// Example of using the default toolkit AI resources in AL</p>\n<p>AzureOpenAI.SetManagedResourceAuthorization(Enum::&quot;AOAI Model Type&quot;::&quot;Chat Completions&quot;,AzureOpenAIAccountName,AzureOpenAIApiKey,AOAIDeployments.GetGPT4oLatest());</p>\n<p>To use your own subscription, authenticate it with the SetAuthorization method.</p>\n<p>// Example of using your own Azure OpenAI subscription in AL</p>\n<p>AzureOpenAI.SetAuthorization(Enum::&quot;AOAI Model Type&quot;::&quot;Chat Completions&quot;,GetEndpoint(),GetDeployment(),GetApiKey());</p>\n<p>This AI billing model isn&#39;t designed to replace the existing Marketplace monetization pathway for publishers who create Business Central apps. Instead, it offers another option that simplifies AI consumption for customers and partners. ISVs can use the Marketplace monetization option to monetize their IP.</p>\n<p>Business Value:</p>\n<p>A key feature of the developer tools for Copilot in Business Central is that publishers in their Marketplace apps use large language models through Microsoft-managed Azure OpenAI resources when they extend Copilot in Business Central. This approach eliminates the need for customers to independently get and manage Azure OpenAI subscriptions. Using the Business Central AI resources is the default and recommended approach. However, some partners or customers might have special requirements that require them to use their own Azure OpenAI subscription when running the feature in production or when developing and testing in sandboxes, which is also supported in the developer tools for Copilot in Business Central.</p>\n<p>Enabled for:</p>\n<p>Enabled for admins/makers/marketers automatically</p>\n<p><b>More info:</b> https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/ai-dev-tools-resources</p>\n<p><b>GA date:</b> April CY2027</p>\n<p><b>Preview date:</b> June CY2025</p>",
+          "ContentType": "html",
+          "Markdown": "Using the AI resources provides several benefits:\n\nReduced operational overhead: Avoid the need to handle infrastructure management, updates, monitoring, troubleshooting, or maintenance of custom Azure OpenAI subscriptions. This benefit frees up resources to focus on core business operations and provides value-adding intellectual property (IP) to customers.\n\nSimplified onboarding: Quickly integrate AI capabilities into your solutions without having to navigate the complexities of setting up and managing your own Azure OpenAI subscription.\n\nImproved reliability: Proactive scaling, throttling, load balancing, and fault tolerance measures ensure consistent performance during peak demand.\n\nEnhanced security compliance: Built-in compliance measures and governance, including robust protection from malicious and harmful content, ensure compliance with data residency requirements. This benefit reduces the burden of ensuring regulatory compliance for ISVs.\n\nStreamlined experience for customers: Customers get a seamless AI resource management process without maintaining different configurations for separate ISV solutions.\n\nThis capability also provides a cohesive AI consumption tracking and billing experience for Business Central customers. Customers who use AI resources across multiple AI-enabled solutions built with Business Central customer developer tools for Copilot benefit from a unified approach to AI consumption monitoring and invoicing. They don't need to reconcile multiple invoices or metrics from separate ISVs.\n\nFor details on billing costs, see AI tools at Message scenarios.\n\nFor most publishers, the default Business Central AI resources are enough. However, if you need specific models, including fine-tuned models, that the Business Central AI resources don't provide, you can bring your own subscription for customers. In this case, the publisher is responsible for deploying, maintaining, scaling, and securing the service. The publisher also handles billing AI resources to customers.\n\nWe recommend using the developer toolkit AI resources when you extend Copilot in Business Central. You just need to authenticate with the SetManagedResourceAuthorization method in the AI Module AzureOpenAI codeunit. You also provide your own Azure OpenAI subscription details, but the authentication process doesn't use them. (Update 2026 release wave 1: There's now a new method signature for SetManagedResources that doesn't require you to provide your subscription details anymore. You should use that going forward.)\n\n// Example of using the default toolkit AI resources in AL\n\nAzureOpenAI.SetManagedResourceAuthorization(Enum::\"AOAI Model Type\"::\"Chat Completions\",AzureOpenAIAccountName,AzureOpenAIApiKey,AOAIDeployments.GetGPT4oLatest());\n\nTo use your own subscription, authenticate it with the SetAuthorization method.\n\n// Example of using your own Azure OpenAI subscription in AL\n\nAzureOpenAI.SetAuthorization(Enum::\"AOAI Model Type\"::\"Chat Completions\",GetEndpoint(),GetDeployment(),GetApiKey());\n\nThis AI billing model isn't designed to replace the existing Marketplace monetization pathway for publishers who create Business Central apps. Instead, it offers another option that simplifies AI consumption for customers and partners. ISVs can use the Marketplace monetization option to monetize their IP.\n\nBusiness Value:\n\nA key feature of the developer tools for Copilot in Business Central is that publishers in their Marketplace apps use large language models through Microsoft-managed Azure OpenAI resources when they extend Copilot in Business Central. This approach eliminates the need for customers to independently get and manage Azure OpenAI subscriptions. Using the Business Central AI resources is the default and recommended approach. However, some partners or customers might have special requirements that require them to use their own Azure OpenAI subscription when running the feature in production or when developing and testing in sandboxes, which is also supported in the developer tools for Copilot in Business Central.\n\nEnabled for:\n\nEnabled for admins/makers/marketers automatically\n\nMore info: https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/ai-dev-tools-resources\n\nGA date: April CY2027\n\nPreview date: June CY2025"
+        },
+        "Category": "roadmap",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "577820"
+          },
+          {
+            "Name": "SourceId",
+            "Value": "577820"
+          },
+          {
+            "Name": "RoadmapLink",
+            "Value": "https://www.microsoft.com/microsoft-365/roadmap?id=577820"
+          },
+          {
+            "Name": "Summary",
+            "Value": "Using the AI resources provides several benefits:"
+          },
+          {
+            "Name": "Status",
+            "Value": "In development"
+          },
+          {
+            "Name": "ReleasePhase",
+            "Value": "General Availability, Preview"
+          },
+          {
+            "Name": "CloudInstances",
+            "Value": "Worldwide (Standard Multi-Tenant)"
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": null,
+        "HasAttachments": false,
+        "Id": "RM577820",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-10-23T00:00:39.0000000Z",
+        "Services": [
+          "Dynamics 365 Business Central"
+        ],
+        "Severity": "normal",
+        "Source": "roadmap",
+        "StartDateTime": "2026-10-23T00:00:39.0000000Z",
+        "Tags": [
+          "In development",
+          "General Availability",
+          "Preview",
+          "Worldwide (Standard Multi-Tenant)"
+        ],
+        "Title": "Dynamics 365 Business Central: Copilot and agents - Use AI resources for your Copilot extensions",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
