@@ -127,8 +127,8 @@ export default function AboutPage() {
             </p>
             <p>
               The site also imports Microsoft 365 Roadmap RSS items and Azure
-              updates from Microsoft&apos;s public feed, generates static
-              pages, and exposes sitemap, RSS, and AI-friendly index files for
+              updates from Microsoft&apos;s public feed, generates static pages,
+              and exposes sitemap, RSS, and AI-friendly index files for
               discovery.
             </p>
           </CardContent>
@@ -138,7 +138,9 @@ export default function AboutPage() {
       <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
         <Card id="discuss" className="scroll-mt-20">
           <CardHeader>
-            <IconTitle icon={MessageSquare}>Like, comment and discuss</IconTitle>
+            <IconTitle icon={MessageSquare}>
+              Like, comment and discuss
+            </IconTitle>
           </CardHeader>
           <CardContent className="readable-card-content">
             <p>
@@ -215,6 +217,17 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 16, 2026
+            </h2>
+            <ul>
+              <li>
+                Comments show people by the name they go by on zap.ms, such as
+                Jonathan Hope, rather than their username.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               October 13, 2026
             </h2>
             <ul>
@@ -227,19 +240,19 @@ export default function AboutPage() {
                 >
                   azure.microsoft.com/updates
                 </a>{" "}
-                since 2013, refreshed hourly, each with its own page showing
-                its status, timeline, products and tags. Use the Azure Updates
+                since 2013, refreshed hourly, each with its own page showing its
+                status, timeline, products and tags. Use the Azure Updates
                 button above the list to see only those, and the Service filter
-                to pick Azure products. They are in search, the RSS feed and
-                the AI index too, and each has a discussion and tracked version
+                to pick Azure products. They are in search, the RSS feed and the
+                AI index too, and each has a discussion and tracked version
                 history like every other post.
               </li>
               <li>
-                When a service filter or a View option leaves the list empty,
-                it now says &quot;Showing 0 of&quot; however many posts that
-                source has, names the filters to check, and offers a button to
-                clear them. Azure names its products differently from Microsoft
-                365 services, so a service picked for Message Center matches no
+                When a service filter or a View option leaves the list empty, it
+                now says &quot;Showing 0 of&quot; however many posts that source
+                has, names the filters to check, and offers a button to clear
+                them. Azure names its products differently from Microsoft 365
+                services, so a service picked for Message Center matches no
                 Azure update.
               </li>
               <li>
@@ -248,10 +261,9 @@ export default function AboutPage() {
                 which fields changed in each. Opening a version, or comparing
                 two, now needs a free zap.ms account, the same sign-in as for
                 likes and comments. Links to the old version and comparison
-                pages still work, and versions are numbered (
-                <code>?v=3</code>, <code>?from=2&amp;to=5</code>), which also
-                makes reachable the versions that shared a timestamp with
-                another.
+                pages still work, and versions are numbered (<code>?v=3</code>,{" "}
+                <code>?from=2&amp;to=5</code>), which also makes reachable the
+                versions that shared a timestamp with another.
               </li>
               <li>
                 The list on the home page has View options: show major changes
@@ -278,8 +290,8 @@ export default function AboutPage() {
                 page.
               </li>
               <li>
-                A strip at the top of every page announces that you can like
-                and comment on Message Center posts. It opens a new{" "}
+                A strip at the top of every page announces that you can like and
+                comment on Message Center posts. It opens a new{" "}
                 <Link className="readable-link" href="/discuss">
                   Discuss
                 </Link>{" "}
@@ -322,10 +334,10 @@ export default function AboutPage() {
             <ul>
               <li>
                 The home page list now shows the likes, dislikes and comment
-                count of each post that has a discussion, and Active
-                discussions opens the post on this site at its discussion.
-                Counts in lists can be up to ten minutes behind; your own
-                likes and comments show straight away.
+                count of each post that has a discussion, and Active discussions
+                opens the post on this site at its discussion. Counts in lists
+                can be up to ten minutes behind; your own likes and comments
+                show straight away.
               </li>
               <li>
                 You can now like, dislike, comment and reply on a post without
@@ -333,9 +345,9 @@ export default function AboutPage() {
                 account and come straight back to the post you were reading.
               </li>
               <li>
-                Likes and comments now show the moment you press the button,
-                and a comment you are still writing is kept in your browser
-                until you post or discard it.
+                Likes and comments now show the moment you press the button, and
+                a comment you are still writing is kept in your browser until
+                you post or discard it.
               </li>
               <li>
                 Comments now show each person&apos;s zap.ms profile photo, and
@@ -352,9 +364,8 @@ export default function AboutPage() {
                 moved to the bottom of the page.
               </li>
               <li>
-                Comment and reply boxes now link to the community guidelines.
-                We keep discussions friendly: assume the other person means
-                well.
+                Comment and reply boxes now link to the community guidelines. We
+                keep discussions friendly: assume the other person means well.
               </li>
               <li>
                 The bottom of every page now links to the privacy policy and
