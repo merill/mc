@@ -1,0 +1,78 @@
+{
+  "id": "RM578065",
+  "versions": [
+    {
+      "capturedAt": "2026-10-23T22:45:59.0000000Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>You can now configure and run multiple Sales Order Agent instances in a single company. Each instance operates independently with its own mailbox, folder settings, email signature, and processing rules.</p>\n<p>Each agent instance tracks its own KPI metrics, such as emails received, quotes created, orders created, and time saved. The setup page is restructured to support per-instance configuration, and an upgrade path migrates existing single-instance setups to the new architecture. This change allows organizations to set up separate agents for different sales teams, product lines, or customer segments, each monitoring their own personal or shared mailbox.</p>\n<p>Improved items search:</p>\n<p>When a customer requests items, the agent now uses a multi-layer matching strategy:</p>\n<p>Exact identifier match: direct lookup by item number, vendor item number, GTIN, or cross-reference.</p>\n<p>Semantic attribute matching: extracts attributes from the customer&#39;s message (color, material, size) and ranks candidates by relevance using AI.</p>\n<p>Broader fuzzy search: falls back to a global item search when direct and attribute-based searches produce no results.</p>\n<p>Message and attachment relevance:</p>\n<p>The agent now validates incoming messages and attachments against a detailed relevance model before processing. Messages that fall outside the agent&#39;s responsibilities (such as offers to sell, requests for discounts, or attempts to extract internal information) are identified and filtered.</p>\n<p>A separate relevance check runs on attachments, ensuring that non-sales-related documents don&#39;t trigger unnecessary processing. The validation considers the full conversation history and the agent&#39;s defined scope to make accurate relevance decisions.</p>\n<p>Larger attachment files with diagnostics.</p>\n<p>The maximum number of pages per PDF attachment has been raised from 10 to 50, addressing customer feedback about the agent not reading larger purchase orders. A new cumulative content length limit of 150,000 characters is also enforced across all attachments in a single email (approximately 50K tokens).</p>\n<p>When an attachment is skipped, Business Central now stores the specific reason directly on the attachment record (page count exceeded, cumulative content length exceeded, attachment count exceeded, unsupported format, or analyze-attachments not enabled). This information is visible on the Attachments page and logged in telemetry, making it straightforward to diagnose why a particular document wasn&#39;t processed.</p>\n<p>Try it out.</p>\n<p>You can now create tasks for the Sales Order Agent without sending an email. From the agent&#39;s setup page, a new Try it out section lets you compose a message by selecting a sender (from your contact or customer list), entering message text, and attaching files. The agent acts like it received a real email.</p>\n<p>To help you get started quickly, two sample messages are included. One is a text-only message that references items from your catalog, and the other is a message with a sample purchase order attachment. The sample order is generated based on your actual item data, so the agent has realistic content to work with.</p>\n<p>These samples are particularly useful for first-time setup, demos, and testing agent behavior with specific scenarios without needing to send an actual email.</p>\n<p>Handling of unknown senders</p>\n<p>When the agent receives an email from an unregistered email address, you now have three options instead of just one:</p>\n<p>Create a new contact: register the sender as a new contact (existing behavior)</p>\n<p>Use another contact once: pick an existing contact from the contact list and link them to this specific task only, without modifying any master data. The override is stored per task message and does not affect future emails.</p>\n<p>Update an existing contact&#39;s email: select an existing contact and update their email address to the sender&#39;s address</p>\n<p>More control over email</p>\n<p>New configuration options give administrators more control over how the agent interacts with the monitored mailbox:</p>\n<p>Mark email as read: a new toggle to mark processed emails as read in the mailbox. This works in addition to the custom Processed by Sales Order Agent category, giving users a visual signal in their inbox.</p>\n<p>Mandatory folder selection: the agent now requires you to select a specific mailbox folder before activation. Previously this was optional and could lead to the agent monitoring an unexpected folder. If in doubt, choose Inbox.</p>\n<p>Stricter activation validation: trying to activate the agent without a mailbox folder now shows a clear error message instead of allowing activation in an ambiguous state.</p>\n<p>Prompts as embedded resources.</p>\n<p>The agent&#39;s AI prompts (instructions, item search logic, mail template checks, irrelevance validation) are now shipped as embedded resource files within the app extension package. This change reduces latency on first task processing and makes the prompt structure more transparent for engineering iteration.</p>\n<p>Business Value:</p>\n<p>The Sales Order Agent now handles more complex organizational structures and higher volumes with less manual intervention. You can run multiple agent instances in one company, each dedicated to a different team or shared mailbox with independent settings and performance tracking. The agent finds the right items more reliably by understanding product attributes, informal descriptions, and identifiers across multiple matching layers.</p>\n<p>The agent now processes PDFs up to 50 pages (previously, the limit was 10) and clearly shows why any attachment was skipped. It also filters irrelevant messages before processing, so credits aren&#39;t consumed by marketing emails or out-of-scope inquiries. If a customer writes from an unregistered email address, you can link an existing contact to that single task without creating duplicates. You can test the agent directly from the setup page without sending a real email, reducing the time to validate your configuration.</p>\n<p>Enabled for:</p>\n<p>Enabled for end users automatically</p>\n<p><b>GA date:</b> July CY2026</p>",
+          "ContentType": "html",
+          "Markdown": "You can now configure and run multiple Sales Order Agent instances in a single company. Each instance operates independently with its own mailbox, folder settings, email signature, and processing rules.\n\nEach agent instance tracks its own KPI metrics, such as emails received, quotes created, orders created, and time saved. The setup page is restructured to support per-instance configuration, and an upgrade path migrates existing single-instance setups to the new architecture. This change allows organizations to set up separate agents for different sales teams, product lines, or customer segments, each monitoring their own personal or shared mailbox.\n\nImproved items search:\n\nWhen a customer requests items, the agent now uses a multi-layer matching strategy:\n\nExact identifier match: direct lookup by item number, vendor item number, GTIN, or cross-reference.\n\nSemantic attribute matching: extracts attributes from the customer's message (color, material, size) and ranks candidates by relevance using AI.\n\nBroader fuzzy search: falls back to a global item search when direct and attribute-based searches produce no results.\n\nMessage and attachment relevance:\n\nThe agent now validates incoming messages and attachments against a detailed relevance model before processing. Messages that fall outside the agent's responsibilities (such as offers to sell, requests for discounts, or attempts to extract internal information) are identified and filtered.\n\nA separate relevance check runs on attachments, ensuring that non-sales-related documents don't trigger unnecessary processing. The validation considers the full conversation history and the agent's defined scope to make accurate relevance decisions.\n\nLarger attachment files with diagnostics.\n\nThe maximum number of pages per PDF attachment has been raised from 10 to 50, addressing customer feedback about the agent not reading larger purchase orders. A new cumulative content length limit of 150,000 characters is also enforced across all attachments in a single email (approximately 50K tokens).\n\nWhen an attachment is skipped, Business Central now stores the specific reason directly on the attachment record (page count exceeded, cumulative content length exceeded, attachment count exceeded, unsupported format, or analyze-attachments not enabled). This information is visible on the Attachments page and logged in telemetry, making it straightforward to diagnose why a particular document wasn't processed.\n\nTry it out.\n\nYou can now create tasks for the Sales Order Agent without sending an email. From the agent's setup page, a new Try it out section lets you compose a message by selecting a sender (from your contact or customer list), entering message text, and attaching files. The agent acts like it received a real email.\n\nTo help you get started quickly, two sample messages are included. One is a text-only message that references items from your catalog, and the other is a message with a sample purchase order attachment. The sample order is generated based on your actual item data, so the agent has realistic content to work with.\n\nThese samples are particularly useful for first-time setup, demos, and testing agent behavior with specific scenarios without needing to send an actual email.\n\nHandling of unknown senders\n\nWhen the agent receives an email from an unregistered email address, you now have three options instead of just one:\n\nCreate a new contact: register the sender as a new contact (existing behavior)\n\nUse another contact once: pick an existing contact from the contact list and link them to this specific task only, without modifying any master data. The override is stored per task message and does not affect future emails.\n\nUpdate an existing contact's email: select an existing contact and update their email address to the sender's address\n\nMore control over email\n\nNew configuration options give administrators more control over how the agent interacts with the monitored mailbox:\n\nMark email as read: a new toggle to mark processed emails as read in the mailbox. This works in addition to the custom Processed by Sales Order Agent category, giving users a visual signal in their inbox.\n\nMandatory folder selection: the agent now requires you to select a specific mailbox folder before activation. Previously this was optional and could lead to the agent monitoring an unexpected folder. If in doubt, choose Inbox.\n\nStricter activation validation: trying to activate the agent without a mailbox folder now shows a clear error message instead of allowing activation in an ambiguous state.\n\nPrompts as embedded resources.\n\nThe agent's AI prompts (instructions, item search logic, mail template checks, irrelevance validation) are now shipped as embedded resource files within the app extension package. This change reduces latency on first task processing and makes the prompt structure more transparent for engineering iteration.\n\nBusiness Value:\n\nThe Sales Order Agent now handles more complex organizational structures and higher volumes with less manual intervention. You can run multiple agent instances in one company, each dedicated to a different team or shared mailbox with independent settings and performance tracking. The agent finds the right items more reliably by understanding product attributes, informal descriptions, and identifiers across multiple matching layers.\n\nThe agent now processes PDFs up to 50 pages (previously, the limit was 10) and clearly shows why any attachment was skipped. It also filters irrelevant messages before processing, so credits aren't consumed by marketing emails or out-of-scope inquiries. If a customer writes from an unregistered email address, you can link an existing contact to that single task without creating duplicates. You can test the agent directly from the setup page without sending a real email, reducing the time to validate your configuration.\n\nEnabled for:\n\nEnabled for end users automatically\n\nGA date: July CY2026"
+        },
+        "Category": "roadmap",
+        "Details": [
+          {
+            "Name": "RoadmapIds",
+            "Value": "578065"
+          },
+          {
+            "Name": "SourceId",
+            "Value": "578065"
+          },
+          {
+            "Name": "RoadmapLink",
+            "Value": "https://www.microsoft.com/microsoft-365/roadmap?id=578065"
+          },
+          {
+            "Name": "Summary",
+            "Value": "You can now configure and run multiple Sales Order Agent instances in a single company. Each instance operates independently with its own mailbox, folder settings, email signature, and processing rules."
+          },
+          {
+            "Name": "Status",
+            "Value": "Launched"
+          },
+          {
+            "Name": "ReleasePhase",
+            "Value": "General Availability"
+          },
+          {
+            "Name": "CloudInstances",
+            "Value": "Worldwide (Standard Multi-Tenant)"
+          },
+          {
+            "Name": "Platforms",
+            "Value": "Web"
+          }
+        ],
+        "EndDateTime": null,
+        "HasAttachments": false,
+        "Id": "RM578065",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-10-23T22:45:59.0000000Z",
+        "Services": [
+          "Microsoft Copilot (Microsoft 365)",
+          "Dynamics 365 Business Central"
+        ],
+        "Severity": "normal",
+        "Source": "roadmap",
+        "StartDateTime": "2026-10-23T22:45:59.0000000Z",
+        "Tags": [
+          "Launched",
+          "General Availability",
+          "Worldwide (Standard Multi-Tenant)"
+        ],
+        "Title": "Dynamics 365 Business Central: Copilot and agents - Run multiple Sales Order Agents per company with smarter item matching, relevance filtering, and streamlined setup",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
