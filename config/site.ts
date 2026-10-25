@@ -57,8 +57,13 @@ export const siteConfig = {
   zap: {
     url: process.env.NEXT_PUBLIC_ZAP_URL ?? "https://zap.ms",
   },
+  // Each source has its own RSS feed. The Message Center feed is the default.
+  feeds: {
+    messageCenter: "/rss.xml",
+    roadmap: "/rss-roadmap.xml",
+    azure: "/rss-azure.xml",
+  },
   links: {
-    rss: "/rss.xml",
     twitter: "https://twitter.com/merill",
     github: "https://github.com/merill/mc",
   },

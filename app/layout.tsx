@@ -21,7 +21,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
     types: {
-      "application/rss+xml": "/rss.xml",
+      "application/rss+xml": [
+        { url: siteConfig.feeds.messageCenter, title: "Message Center" },
+        { url: siteConfig.feeds.roadmap, title: "Roadmap" },
+        { url: siteConfig.feeds.azure, title: "Azure updates" },
+      ],
     },
   },
   openGraph: {
