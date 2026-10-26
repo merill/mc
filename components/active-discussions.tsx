@@ -117,10 +117,11 @@ function Row({ item, className }: { item: ZapActiveItem; className?: string }) {
             <span className="inline-flex items-center gap-1">
               <ZapAvatar
                 username={item.lastCommenter}
+                name={item.lastCommenterName}
                 src={item.lastCommenterAvatar}
                 className="size-4 text-[9px]"
               />
-              {item.lastCommenter}
+              {item.lastCommenterName || item.lastCommenter}
             </span>
           )}
           <span>{timeAgo(item.lastActivityAt)}</span>

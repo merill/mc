@@ -449,7 +449,8 @@ function Comment({
     </>
   )
   const links = zapLinks(siteConfig.zap.url, postId)
-  const name = comment.author ?? "removed"
+  // People are shown by the name they go by, as on zap.ms.
+  const name = comment.author ? comment.authorName || comment.author : "removed"
   const html = React.useMemo(
     () => sanitizeCommentHtml(comment.html),
     [comment.html]
@@ -461,7 +462,8 @@ function Comment({
       className={cn("flex scroll-mt-24 gap-3", comment.pending && "opacity-70")}
     >
       <ZapAvatar
-        username={name}
+        username={comment.author ?? name}
+        name={name}
         src={comment.author ? comment.authorAvatar : null}
         className="mt-0.5 size-7 text-xs"
       />
@@ -471,8 +473,9 @@ function Comment({
             <a
               className="font-semibold underline-offset-4 hover:underline"
               href={links.user(comment.author)}
+              title={`@${comment.author} on zap.ms`}
             >
-              {comment.author}
+              {name}
             </a>
           ) : (
             <span className="text-muted-foreground">removed</span>

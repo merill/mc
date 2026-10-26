@@ -12,6 +12,8 @@ import { avatarColor, avatarSrc } from "@/lib/zap"
  */
 export function ZapAvatar(props: {
   username: string
+  /** The name they go by, for the letter; the colour stays the username's. */
+  name?: string | null
   src?: string | null
   className?: string
 }) {
@@ -28,7 +30,7 @@ export function ZapAvatar(props: {
       style={{ backgroundColor: avatarColor(props.username) }}
       aria-hidden="true"
     >
-      {props.username.slice(0, 1)}
+      {(props.name || props.username).slice(0, 1)}
       {src && !failed && (
         <img
           src={src}
