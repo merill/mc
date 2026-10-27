@@ -215,6 +215,22 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 27, 2026
+            </h2>
+            <ul>
+              <li>
+                The{" "}
+                <Link className="readable-link" href="/contribute#coverage">
+                  Contribute your tenant
+                </Link>{" "}
+                page now lists the licenses the archive already covers and the
+                ones it is still looking for, so contributors can tell whether
+                their tenant fills a gap.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               October 13, 2026
             </h2>
             <ul>
