@@ -1,0 +1,41 @@
+{
+  "id": "MC1508562",
+  "versions": [
+    {
+      "capturedAt": "2026-10-15T06:55:16.86Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<div>Beginning with the October 2026 security update, Windows 11, versions 26H2, 25H2, and 24H2, along with Windows Server 2025 enforce restrictions on generating NTLMv1-derived credentials for Single Sign-On by default. This planned security-hardening change is part of the boarder Microsoft effort to phase out NTLM. Microsoft <a href=\"https://support.microsoft.com/help/5066470\" rel=\"noopener noreferrer\" target=\"_blank\">originally documented the change in August 2025</a>. This change applies only on devices with Credential Guard disabled, and might cause issues with Wi-Fi, Ethernet, and VPN connections that use MS-CHAPv2 authentication, resulting in possible failure to connect via Single Sign-On pathways.</div><div><br></div><div>Windows uses a registry configuration to control whether requests for NTLMv1-derived credentials are audited or blocked. The configuration includes a registry key named BlockNtlmv1SSO. Beginning with the October 2026 security update, Windows uses Enforce mode as the internal default behavior instead of Audit mode, if the registry key BlockNtlmv1SSO has not been previously configured. If the registry key BlockNtlmv1SSO has not been previously configured. Please note this is a planned change in Windows which supports evolving security needs. It is not a known issue with the October 2026 security update. To learn about changes to NTLMv1 in Windows, see <a href=\"https://support.microsoft.com/help/5066470\" rel=\"noopener noreferrer\" target=\"_blank\">KB5066470</a>.</div><div><br></div><div><b>Rollout schedule</b></div><div>Microsoft enabled auditing of NTLMv1-derived credential use on Windows 11, version 24H2 and later versions, starting in late August 2025. The rollout to Windows Server 2025 began in November 2025. Beginning with the October 2026 security update, the default system behavior changes from audit of NTLMv1 connections to enforcing security by restricting NTLMv1 connections. This default change applies only when administrators have not already configured the BlockNtlmv1SSO registry value on the device.</div><div><br></div><div><b>Impact on your organization</b></div><div>Devices running Windows 11, version 24H2 and later versions, or Windows Server 2025, might be affected when Credential Guard is disabled and network authentication depends on NTLMv1-derived credentials. In Enforce mode, Windows blocks requests to generate NTLMv1-derived credentials. Wi-Fi, Ethernet, and VPN connections that use MS-CHAPv2 authentication, including PEAP-MSCHAPv2 and EAP-MSCHAPv2, for Single Sign-On might consequently fail to connect automatically. Manually entering credentials can continue to work, but credentials cannot be saved for future use in these scenarios. As a result, workflows that previously established connections without user interaction might no longer function as expected.</div><div><br></div><div>Devices with Credential Guard enabled already block the affected NTLMv1-derived Single Sign-On behavior and are not subject to the October 2026 default change.</div><div><br></div><div><b>Action required/recommendations</b></div><div>Organizations should identify affected authentication configurations and select one of the following approaches:</div><div><br></div><ul><li><b>Recommended: Remove dependencies on MS-CHAPv2</b>. Migrate Wi-Fi and VPN connections from MS-CHAPv2-based authentication, such as PEAP-MSCHAPv2 and EAP-MSCHAPv2, to certificate-based authentication, such as PEAP-TLS or EAP-TLS. MS-CHAPv2-based endpoints are subject to risks similar to those affecting NTLMv1.</li></ul><div><br></div><ul><li><b>Temporary compatibility option: Return affected devices to Audit mode</b>. Open the Windows registry and navigate to HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0.Here, create or configure the BlockNtlmv1SSO value as type REG_DWORD and set its data to 0. Windows will audit requests for NTLMv1-derived credentials and allow them to succeed, temporarily restoring compatibility. Note that warning Event ID 4024 will appear in the Microsoft-Windows-NTLM/Operational log, allowing the audit of connection events. Guidance in <a href=\"https://support.microsoft.com/help/5066470\" rel=\"noopener noreferrer\" target=\"_blank\">KB5066470</a> can be used to identify and remove remaining dependencies on NTLMv1-derived credentials. After removing these dependencies, return to the Enforce mode by setting BlockNtlmv1SSO to 1. Windows then blocks affected requests and records error Event ID 4025. As this change affects the security level of the device, it should be evaluated carefully and not used long-term.</li></ul><div><br></div><div>Carefully review <a href=\"https://support.microsoft.com/help/5066470\" rel=\"noopener noreferrer\" target=\"_blank\">KB5066470</a> for complete rollout, auditing, and registry configuration guidance.</div><div><br></div><div><b>Compliance considerations</b></div><div>Organizations that temporarily use Audit mode should assess the continued generation of NTLMv1-derived credentials against their security and compliance requirements. Organizations should document the exception, limit its duration, monitor Event ID 4024, and establish a plan to return affected devices to Enforce mode.</div><div><br></div><div><b>Additional information:</b>&nbsp;</div><ul><li><a href=\"https://support.microsoft.com/help/5066470\" rel=\"noopener noreferrer\" target=\"_blank\">KB5066470</a> is the source for important rollout, auditing, and registry configuration guidance</li><li><a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/advancing-windows-security-disabling-ntlm-by-default/4489526\" rel=\"noopener noreferrer\" target=\"_blank\">Advancing Windows security: Disabling NTLM by default - Windows IT Pro Blog</a></li><li><a href=\"https://techcommunity.microsoft.com/blog/windows-itpro-blog/retiring-ntlm-frequently-asked-questions/4550522\" rel=\"noopener noreferrer\" target=\"_blank\">Retiring NTLM: Frequently asked questions - Windows IT Pro Blog</a></li><li>The <a href=\"https://learn.microsoft.com/windows/security/identity-protection/credential-guard/considerations-known-issues#wi-fi-and-vpn-considerations\" rel=\"noopener noreferrer\" target=\"_blank\">Wi-fi and VPN considerations</a> section of <a href=\"https://learn.microsoft.com/windows/security/identity-protection/credential-guard/considerations-known-issues\" rel=\"noopener noreferrer\" target=\"_blank\">Considerations and known issues when using Credential Guard</a>&nbsp;</li></ul>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [],
+        "EndDateTime": "2027-10-15T06:55:15.753Z",
+        "HasAttachments": false,
+        "Id": "MC1508562",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-10-15T06:55:16.86Z",
+        "Services": [
+          "Windows"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-10-15T06:55:15.757Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Take action: NTLMv1 hardening changes might affect network connections on devices without Credential Guard",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

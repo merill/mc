@@ -493,6 +493,77 @@ function Set-M365SeenOnlyIn {
     return $marked
 }
 
+function Test-M365MessageIsCurrent {
+    <#
+        True while a post has not reached its own end date. A post without a
+        readable end date is not current, because nothing would ever end it.
+    #>
+    param($Message, [datetimeoffset]$Now = [datetimeoffset]::UtcNow)
+
+    $value = $Message.EndDateTime
+    if (-not $value) { return $false }
+    if ($value -is [datetime]) { return ([datetimeoffset]$value) -gt $Now }
+    if ($value -is [datetimeoffset]) { return $value -gt $Now }
+
+    try {
+        return [datetimeoffset]::Parse([string]$value) -gt $Now
+    }
+    catch {
+        return $false
+    }
+}
+
+function Restore-M365UnrefreshedItems {
+    <#
+        Keeps a refresh that some tenants missed from changing what the site
+        shows. When a tenant cannot be refreshed, the posts only it can see are
+        missing from $Map, and the site would list them as expired until the
+        tenant answers again. This puts back the posts from the previous
+        refresh that no tenant returned this time.
+
+        A post is not put back once it has passed its own end date, so a tenant
+        that never recovers cannot keep its posts current forever.
+
+        A missing tenant can also make a post look as if only one kind of
+        tenant sees it, so a post the previous refresh left unmarked stays
+        unmarked.
+
+        Returns the IDs that were put back and how many marks were removed.
+    #>
+    param(
+        [Parameter(Mandatory = $true)]$Map,
+        $PreviousItems,
+        [datetimeoffset]$Now = [datetimeoffset]::UtcNow
+    )
+
+    $keptIds = [System.Collections.Generic.HashSet[string]]::new()
+    $unmarked = 0
+
+    foreach ($previous in @($PreviousItems)) {
+        $id = [string]$previous.Id
+        if ([string]::IsNullOrWhiteSpace($id)) { continue }
+
+        if ($Map.Contains($id)) {
+            $current = $Map[$id]
+            if ($current.SeenOnlyIn -and -not $previous.SeenOnlyIn) {
+                $current.PSObject.Properties.Remove('SeenOnlyIn')
+                $unmarked++
+            }
+            continue
+        }
+
+        if (Test-M365MessageIsCurrent $previous -Now $Now) {
+            $Map[$id] = $previous
+            [void]$keptIds.Add($id)
+        }
+    }
+
+    return [pscustomobject]@{
+        KeptIds  = $keptIds
+        Unmarked = $unmarked
+    }
+}
+
 function Get-SortedMessageCenterItems {
     param([Parameter(Mandatory = $true)]$Map)
 

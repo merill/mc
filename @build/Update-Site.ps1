@@ -5,8 +5,8 @@
 # - Imports the Microsoft 365 Roadmap RSS feed.
 # - Mirrors Azure updates from Microsoft's public API.
 #
-# Use -RoadmapOnly to skip Message Center during local development. Roadmap and
-# Azure updates need no tenant, so they still refresh.
+# Use -RoadmapOnly to skip Message Center during local development. Pull request
+# checks use it too. Roadmap and Azure updates need no tenant, so they still refresh.
 
 param($GraphSecret, [switch]$RoadmapOnly, [int]$NewPostMaxAgeDays = 14)
 . "$PSScriptRoot/Entra-MessageFilter.ps1"
@@ -29,7 +29,7 @@ function Get-M365MessageCenterItems() {
     $mc = Get-MgServiceAnnouncementMessage -Top 999  -Sort "LastModifiedDateTime desc" -All
     return $mc
 }
-function Get-AllTenantMessageCenterItems() {
+function Get-AllTenantMessageCenterItems($PreviousItems) {
     # Message Center posts are tenant specific, so the archive is built from the
     # union of every configured tenant. Each tenant contributes the posts the
     # others cannot see, and the newest (or most detailed) copy of a shared post wins.
@@ -37,6 +37,7 @@ function Get-AllTenantMessageCenterItems() {
     $merged = [ordered]@{}
     $sources = @{}
     $connectedTenants = 0
+    $failedTenants = 0
 
     foreach($tenant in $tenants){
         if(-not $tenant.IsConfigured){
@@ -57,6 +58,7 @@ function Get-AllTenantMessageCenterItems() {
             $message = "Tenant '$($tenant.Name)' could not be refreshed: $(Get-M365SafeErrorMessage -Tenant $tenant -ErrorRecord $_)"
             if($tenant.Required){ throw $message }
             Write-Warning $message
+            $failedTenants++
         }
         finally {
             Disconnect-M365Tenant
@@ -70,7 +72,20 @@ function Get-AllTenantMessageCenterItems() {
     $seenOnlyIn = Set-M365SeenOnlyIn -Map $merged -Sources $sources
     Write-Host "$seenOnlyIn items were only seen in one kind of tenant"
 
-    return @(Get-SortedMessageCenterItems -Map $merged)
+    # A tenant that could not be refreshed must not change what the site shows,
+    # so the posts only it can see stay as the previous refresh left them. The
+    # next refresh in which every tenant answers builds the list from scratch.
+    $keptIds = [System.Collections.Generic.HashSet[string]]::new()
+    if($failedTenants -gt 0){
+        $restored = Restore-M365UnrefreshedItems -Map $merged -PreviousItems $PreviousItems
+        $keptIds = $restored.KeptIds
+        Write-Host "$failedTenants tenant(s) could not be refreshed: kept $($keptIds.Count) posts from the previous refresh and ignored $($restored.Unmarked) new single-kind marks"
+    }
+
+    return [pscustomobject]@{
+        Items   = @(Get-SortedMessageCenterItems -Map $merged)
+        KeptIds = $keptIds
+    }
 }
 function Get-RoadmapRssItems() {
     Write-Host "Getting Microsoft 365 Roadmap RSS items"
@@ -290,18 +305,24 @@ function ConvertTo-RoadmapMessage($item) {
 
 $dataPath = "./@data"
 $discordOutboxPath = "$dataPath/discord-outbox.json"
-$previousMessageIds = @()
+$previousMessages = @()
 $hasPreviousMessageSnapshot = Test-Path "$dataPath/messages.json"
 
 if ($hasPreviousMessageSnapshot) {
-    $previousMessageIds = @(Get-Content "$dataPath/messages.json" | ConvertFrom-Json | Select-Object -ExpandProperty Id)
+    # Dates are read as text so a post kept from this snapshot is written back unchanged.
+    $previousMessages = @(Get-Content "$dataPath/messages.json" -Raw | ConvertFrom-Json -DateKind String)
 }
+$previousMessageIds = @($previousMessages | Select-Object -ExpandProperty Id)
 
 if(-not $RoadmapOnly){
-    $msgItems = Get-AllTenantMessageCenterItems
+    $refresh = Get-AllTenantMessageCenterItems $previousMessages
+    $msgItems = $refresh.Items
 
     Write-Host "Updating Message Center data with $($msgItems.Count) items"
     foreach($msg in $msgItems){
+        # A post kept from the previous refresh is already in its stored form.
+        if($refresh.KeptIds.Contains([string]$msg.Id)){ continue }
+
         $msg.Title = $msg.Title.Replace('(Updated) ', '')
         $msg.body.content = $msg.body.content -replace '\[(.*?)\]', '<b>$1</b>'
         $msg | Add-Member -NotePropertyName Source -NotePropertyValue "messageCenter" -Force
