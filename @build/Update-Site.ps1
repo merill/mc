@@ -457,39 +457,44 @@ ConvertTo-Json -InputObject $sortedMessageIndexRecords -Depth 6 -Compress | Set-
 Copy-Item -Path ($dataPath + "/messages-index.json") -Destination "./public/messages-index.json" -Force
 Write-Host "Wrote $($sortedMessageIndexRecords.Count) records to messages-index.json"
 
-Write-Host "Building rss.xml with latest 500 active Message Center, Roadmap and Azure records"
+Write-Host "Building RSS feeds for Message Center, Roadmap and Azure updates"
 # Sort on the parsed timestamp, not its string form. Message Center records are
 # read back through ConvertFrom-Json, which turns dates into [datetime] values
 # that stringify as "09/14/2026 23:28:24", while Roadmap records keep ISO 8601
-# strings. Comparing the strings ranked every Roadmap item above every Message
-# Center post, so Roadmap filled all 500 slots.
-$rssItems = @($activeMessages) + @($roadmapItems) + @($azureItems) |
-    Sort-Object -Property @{ Expression = { Get-M365MessageTimestamp $_ }; Descending = $true } |
-    Select-Object -First 500
-$rssPubDate = if ($rssItems.Count -gt 0) {
-    (Get-M365MessageTimestamp $rssItems[0]).UtcDateTime.ToString("r")
-}
-else {
-    (Get-Date).ToUniversalTime().ToString("r")
-}
-$rssItemXml = ($rssItems | ForEach-Object { New-RssItem $_ }) -join "`n"
-$rssXml = @"
+# strings. Comparing the strings would rank the items in the wrong order.
+function Write-RssFeed($items, [string]$path, [string]$title, [string]$description, [string]$feedUrl) {
+    $feedItems = @(@($items) |
+        Sort-Object -Property @{ Expression = { Get-M365MessageTimestamp $_ }; Descending = $true } |
+        Select-Object -First 500)
+    $pubDate = if ($feedItems.Count -gt 0) {
+        (Get-M365MessageTimestamp $feedItems[0]).UtcDateTime.ToString("r")
+    }
+    else {
+        (Get-Date).ToUniversalTime().ToString("r")
+    }
+    $itemXml = ($feedItems | ForEach-Object { New-RssItem $_ }) -join "`n"
+    $xml = @"
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Microsoft 365 Message Center and Roadmap Archive</title>
+  <title>$(ConvertTo-RssText $title)</title>
   <link>https://mc.merill.net/</link>
-  <atom:link href="https://mc.merill.net/rss.xml" rel="self" type="application/rss+xml" />
-  <description>Latest Microsoft 365 Message Center messages, Microsoft 365 Roadmap posts and Azure updates. Message Center posts vary by tenant; always use your tenant's Message Center as the source of truth.</description>
+  <atom:link href="$feedUrl" rel="self" type="application/rss+xml" />
+  <description>$(ConvertTo-RssText $description)</description>
   <language>en-us</language>
-  <lastBuildDate>$rssPubDate</lastBuildDate>
+  <lastBuildDate>$pubDate</lastBuildDate>
   <ttl>60</ttl>
-$rssItemXml
+$itemXml
 </channel>
 </rss>
 "@
-$rssXml | Set-Content -Path "./public/rss.xml"
-Write-Host "Wrote $($rssItems.Count) items to public/rss.xml"
+    $xml | Set-Content -Path $path
+    Write-Host "Wrote $($feedItems.Count) items to $path"
+}
+
+Write-RssFeed $activeMessages "./public/rss.xml" "Microsoft 365 Message Center Archive" "Latest Microsoft 365 Message Center messages. Message Center posts vary by tenant; always use your tenant's Message Center as the source of truth." "https://mc.merill.net/rss.xml"
+Write-RssFeed $roadmapItems "./public/rss-roadmap.xml" "Microsoft 365 Roadmap Archive" "Latest Microsoft 365 Roadmap posts." "https://mc.merill.net/rss-roadmap.xml"
+Write-RssFeed $azureItems "./public/rss-azure.xml" "Azure Updates Archive" "Latest Azure updates from azure.microsoft.com/updates." "https://mc.merill.net/rss-azure.xml"
 
 Write-Host "Augmenting messages-index.json with cross-message references"
 node ./scripts/build-references.mjs

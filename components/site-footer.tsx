@@ -31,7 +31,7 @@ export function SiteFooter() {
           {/* A plain anchor, not next/link: rss.xml is a static file in
               public/, not a route the client router can navigate to. */}
           <a
-            href={siteConfig.links.rss}
+            href={siteConfig.feeds.messageCenter}
             type="application/rss+xml"
             className={link}
           >
