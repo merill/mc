@@ -8,6 +8,7 @@ import {
   Lightbulb,
   MessageSquare,
   Reply,
+  Rss,
   ThumbsUp,
   Users,
   type LucideIcon,
@@ -62,6 +63,24 @@ const CAN_DO: { icon: LucideIcon; title: string; text: string }[] = [
     icon: Bookmark,
     title: "Save views",
     text: "Keep the list the way you want it, such as your own products with major changes only, and switch between views.",
+  },
+]
+
+const FEEDS = [
+  {
+    title: "Message Center",
+    path: siteConfig.feeds.messageCenter,
+    text: "the default feed, listing Message Center posts only.",
+  },
+  {
+    title: "Roadmap",
+    path: siteConfig.feeds.roadmap,
+    text: "Microsoft 365 Roadmap posts.",
+  },
+  {
+    title: "Azure updates",
+    path: siteConfig.feeds.azure,
+    text: "every update on azure.microsoft.com/updates.",
   },
 ]
 
@@ -208,6 +227,31 @@ export default function AboutPage() {
         </CardContent>
       </Card>
 
+      <Card id="feeds" className="scroll-mt-20">
+        <CardHeader>
+          <IconTitle icon={Rss}>RSS feeds</IconTitle>
+        </CardHeader>
+        <CardContent className="readable-card-content">
+          <p>
+            Each source has its own RSS feed, so you can follow only the updates
+            you care about. Each feed lists its latest 500 items, newest first.
+          </p>
+          <ul>
+            {FEEDS.map((feed) => (
+              <li key={feed.path}>
+                <span className="font-semibold">{feed.title}</span>: {feed.text}{" "}
+                <a
+                  className="readable-link break-all"
+                  href={`${siteConfig.url}${feed.path}`}
+                >
+                  {`${siteConfig.url}${feed.path}`}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
       <Card>
         <CardHeader>
           <IconTitle icon={History}>Release notes</IconTitle>
@@ -226,6 +270,18 @@ export default function AboutPage() {
                 page now lists the licenses the archive already covers and the
                 ones it is still looking for, so contributors can tell whether
                 their tenant fills a gap.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
+              October 25, 2026
+            </h2>
+            <ul>
+              <li>
+                The default RSS feed now lists only Message Center posts.
+                Roadmap posts and Azure updates each have their own feed, and
+                the About page lists all three.
               </li>
             </ul>
           </div>
