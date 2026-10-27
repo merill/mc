@@ -4,10 +4,12 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import {
+  coveredLicenses,
   getAdminConsentUrl,
   getContributorCredits,
   getLinkLabel,
   getOwnAppMailto,
+  wantedLicenses,
 } from "@/lib/tenant-contribution"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -89,6 +91,35 @@ export default function ContributePage() {
               application in your tenant.
             </li>
           </ul>
+
+          <h2
+            id="coverage"
+            className="scroll-mt-20 pt-2 text-xl font-semibold text-foreground"
+          >
+            Licenses the archive already covers
+          </h2>
+          <p>
+            Message Center targets posts by license, so another tenant with the
+            same licenses adds little. These are already covered:
+          </p>
+          <ul>
+            {coveredLicenses.map((license) => (
+              <li key={license}>{license}</li>
+            ))}
+          </ul>
+          <p>
+            Tenants with licenses that are not on that list help the most, for
+            example:
+          </p>
+          <ul>
+            {wantedLicenses.map((license) => (
+              <li key={license}>{license}</li>
+            ))}
+          </ul>
+          <p>
+            If your tenant has something else not listed above, please share it
+            too.
+          </p>
 
           {contributedTenants > 0 ? (
             <>

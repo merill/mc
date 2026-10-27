@@ -59,6 +59,37 @@ export const tenantTypeSuggestions = [
   "Multi-Geo",
 ] as const
 
+// Licenses and tenant kinds the archive already reads, across its own tenants
+// and verified contributors. Kept by hand: update it when a tenant with
+// something new is added to mc-tenants.
+export const coveredLicenses = [
+  "Microsoft 365 E5 (Developer Program)",
+  "Microsoft 365 Business Premium",
+  "Microsoft 365 Business Basic",
+  "Microsoft Entra ID P2",
+  "Microsoft Teams Enterprise",
+  "Microsoft 365 Copilot",
+  "Power BI Premium Per User",
+  "Visio Plan 2",
+  "Office 365 A1 and Microsoft 365 A5 (Education)",
+  "Microsoft Entra External ID",
+] as const
+
+// Gaps worth filling: posts sent only to these tenants are likely missing.
+export const wantedLicenses = [
+  "Microsoft 365 or Office 365 E3 and E5 (production, not Developer Program)",
+  "Microsoft 365 F1 and F3 (frontline)",
+  "Government (GCC)",
+  "Nonprofit",
+  "Microsoft 365 Business Standard",
+  "Microsoft Intune Suite and Windows 365",
+  "Microsoft Defender and Purview add-ons",
+  "Teams Premium and Teams Phone",
+  "Dynamics 365 and Power Platform premium",
+  "Copilot Studio",
+  "Multi-Geo",
+] as const
+
 export const maxTenantTypes = 12
 export const maxTenantTypeLength = 40
 
