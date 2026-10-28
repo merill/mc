@@ -42,6 +42,50 @@
         "Source": "messageCenter",
         "AdditionalProperties": {}
       }
+    },
+    {
+      "capturedAt": "2026-10-28T16:40:55.96Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p>Updated October 28, 2026: We have updated the timeline. Thank you for your patience.&nbsp;</p><p><b><b>What and why</b></b></p><p><i>You are receiving this message because SMS first-factor sign-in is enabled in your Microsoft Entra tenant.</i></p><p>Microsoft has observed significant fraud activity targeting SMS first-factor sign-in. SMS is a phishing-susceptible authentication method, and leaving this capability enabled can create risk even when users are not actively or successfully using it.</p><p>SMS first-factor sign-in allows users, such as frontline workers, to sign in using only a registered phone number and a one-time passcode (OTP) sent by SMS, without entering a username or password.</p><p>SMS first-factor sign-in does not enforce multifactor authentication (MFA).</p><p>To help protect customers, users, and Microsoft services, Microsoft will automatically disable SMS first-factor sign-in in tenants that meet either of the following conditions:</p><ul><li>No successful SMS first-factor sign-in activity has occurred during the previous 30 days.</li><li>All SMS first-factor sign-in attempts during the previous 30 days were unsuccessful.</li></ul><p>This change affects only SMS as a first-factor sign-in method. Users can continue to receive SMS verification codes for multifactor authentication (MFA) and Self-Service Password Reset (SSPR).</p><p>We strongly recommend that you review this setting and recent SMS first-factor sign-in activity before rollout begins. If your organization still requires SMS first-factor sign-in, confirm that legitimate users can sign in successfully and ensure that they have another sign-in method registered.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>Worldwide:</b> Beginning in <b>mid-September 2026</b> and expected to complete by<b> end of November 2026</b> (previously late September)</li></ul><p>During rollout, Microsoft will evaluate eligible tenants and disable SMS first-factor sign-in when the criteria described above are met.</p><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations with SMS first-factor sign-in enabled in <i>Microsoft Entra</i></li><li>Tenants with no SMS first-factor sign-in activity during the previous 30 days</li><li>Tenants where all SMS first-factor sign-in attempts during the previous 30 days were unsuccessful</li><li>Users who rely exclusively on SMS first-factor sign-in</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Entra ID</li><li>SMS first-factor passwordless sign-in (SignInNoPassword)</li><li>Microsoft Entra authentication methods policies</li></ul><p><i>What will happen</i></p><ul><li>Microsoft will review recent SMS first-factor sign-in activity in eligible tenants.</li><li>If no successful SMS first-factor sign-in activity occurred during the previous 30 days, Microsoft will clear the <b><i>Use for sign-in</i></b> setting.</li><li>If all SMS first-factor sign-in attempts during the previous 30 days were unsuccessful, Microsoft will clear the <b><i>Use for sign-in</i></b> setting.</li><li>Clearing <b><i>Use for sign-in</i></b> disables SMS first-factor sign-in for the tenant.</li><li>Users will no longer be able to use SMS as their only authentication factor for sign-in.</li><li>Users who rely exclusively on SMS first-factor sign-in must register and use another sign-in method.</li><li>SMS verification codes for MFA and SSPR will continue to work.</li><li>Other authentication methods, including password-based sign-in, are not affected.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>Review your Microsoft Entra authentication methods policy to determine whether SMS first-factor sign-in is intentionally enabled and still required.</p><p>Before rollout begins, we recommend that you:</p><ul><li>Review SMS first-factor sign-in activity from the previous 30 days.</li><li>Identify users who currently rely on SMS first-factor sign-in.</li><li>Investigate unsuccessful SMS first-factor sign-in attempts.</li><li>Ensure affected users have at least one alternate sign-in method registered.</li><li>Communicate this change to affected users before rollout.</li><li>Migrate users to passkeys or another phishing-resistant authentication method where possible.</li><li>Disable SMS first-factor sign-in yourself if your organization no longer requires it.</li></ul><p>To review or disable SMS first-factor sign-in:</p><ul><li>Sign in to the <a href=\"https://entra.microsoft.com/#home\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft Entra admin center</a> with an account assigned at least the Authentication Policy Administrator role.</li><li>Go to <b><i>Entra ID &gt; Authentication methods &gt; Policies</i></b>.</li><li>Select <b><i>SMS </i></b>from the list of available authentication methods.</li><li>Locate <b><i>Use for sign-in</i></b> under SMS-based authentication.</li><li>Clear <b><i>Use for sign-in</i></b> to disable SMS first-factor sign-in.</li><li>Save the policy.</li></ul><p>Clearing <b><i>Use for sign-in</i></b> stops SMS first-factor sign-in. It does not prevent users from using SMS for MFA or SSPR.</p><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/howto-authentication-sms-signin\" rel=\"noopener noreferrer\" target=\"_blank\">Configure and enable users for SMS-based authentication using Microsoft Entra ID | Authentication | Microsoft Entra | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-mvscan6r-1\"><b>Question</b></td><td data-row=\"row-mvscan6r-1\"><b>Answer</b></td></tr><tr><td data-row=\"row-mvscan6r-2\">Does this change include an admin control?</td><td data-row=\"row-mvscan6r-2\">Yes. Administrators can control SMS first-factor sign-in through Microsoft Entra authentication method policies. Administrators can review, enable, or disable the <b><i>Use for sign-in</i></b> setting for SMS-based authentication.</td></tr></tbody></table>",
+          "ContentType": "html"
+        },
+        "Category": "preventOrFixIssue",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft will disable SMS first-factor sign-in in Microsoft Entra tenants with no successful or only unsuccessful SMS sign-ins in the past 30 days, starting mid-September to November 2026. SMS for MFA and password reset remains unaffected. Admins should review usage, notify users, and ensure alternate sign-in methods."
+          }
+        ],
+        "EndDateTime": "2026-12-31T07:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1465763",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-10-28T16:40:55.96Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-09-01T22:13:29Z",
+        "Tags": [
+          "Updated message",
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Entra: Prepare for Microsoft to disable unused or unsuccessful SMS first-factor sign-in",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "SeenOnlyIn": "edu",
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
     }
   ]
 }

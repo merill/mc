@@ -1,0 +1,45 @@
+{
+  "Id": "AZ577689",
+  "Title": "Announcing: Migrate Azure Container Apps logging destination from Log Analytics to Azure Monitor",
+  "Source": "azure",
+  "Category": "azure",
+  "Severity": "normal",
+  "IsMajorChange": false,
+  "StartDateTime": "2026-10-28T17:52:51.602Z",
+  "LastModifiedDateTime": "2026-10-28T17:52:51.602Z",
+  "EndDateTime": null,
+  "ActionRequiredByDateTime": null,
+  "Services": [
+    "Azure Container Apps"
+  ],
+  "Tags": [
+    "Announcement"
+  ],
+  "Body": {
+    "ContentType": "html",
+    "Content": "<p>The Log Analytics logging destination for Azure Container Apps is now a legacy logging option.&nbsp;Existing environments configured with the Log Analytics logging destination will continue to function normally. However, we recommend planning a migration to the Azure Monitor logging destination.&nbsp;&nbsp;&nbsp;</p><p>This recommendation is driven by the underlying <a href=\"https://learn.microsoft.com/en-us/azure/azure-monitor/logs/custom-logs-migrate?tabs=cli\" target=\"_blank\" rel=\"noopener\">HTTP Data Collector API</a>&nbsp;used by the Log Analytics logging destination. Support for the legacy HTTP Data Collector API ended on September 14, 2026&nbsp;and will now only be receiving critical security updates.&nbsp;&nbsp;</p><p><b>Recommended action &nbsp;</b></p><p>Review any monitoring resources that depend on logs collected through the Log Analytics logging destination, including:&nbsp;</p><p></p><ul><li>Log queries&nbsp;</li><li><p>Dashboards&nbsp;</p></li><li><p>Alerts&nbsp;</p></li><li><p>Workbooks&nbsp;</p></li></ul><p></p><p>If your monitoring solutions reference either of the following tables, your environment is using the Log Analytics logging destination:&nbsp;</p><ul><li><p>ContainerAppConsoleLogs_CL&nbsp;</p></li><li><p>ContainerAppSystemLogs_CL&nbsp;</p></li></ul><p>Customers using both Azure Container Apps Log Analytics logging and direct HTTP Data Collector API ingestion should plan for both migrations.&nbsp;</p><p>Learn more:&nbsp;</p><ul><li><a href=\"https://learn.microsoft.com/azure/container-apps/migrate-logs-azure-monitor?pivots=azure-portal\" target=\"_blank\" rel=\"noopener\">Azure\ndocumentation</a>&nbsp;</li><li><a href=\"https://learn.microsoft.com/azure/azure-monitor/logs/custom-logs-migrate?tabs=cli\" target=\"_blank\" rel=\"noopener\">Separate\nmigration guidance for the Logs Ingestion API</a>&nbsp;</li></ul>",
+    "Markdown": "The Log Analytics logging destination for Azure Container Apps is now a legacy logging option. Existing environments configured with the Log Analytics logging destination will continue to function normally. However, we recommend planning a migration to the Azure Monitor logging destination.\n\nThis recommendation is driven by the underlying HTTP Data Collector API used by the Log Analytics logging destination. Support for the legacy HTTP Data Collector API ended on September 14, 2026 and will now only be receiving critical security updates.\n\nRecommended action\n\nReview any monitoring resources that depend on logs collected through the Log Analytics logging destination, including:\n\nLog queries\n\nDashboards\n\nAlerts\n\nWorkbooks\n\nIf your monitoring solutions reference either of the following tables, your environment is using the Log Analytics logging destination:\n\nContainerAppConsoleLogs_CL\n\nContainerAppSystemLogs_CL\n\nCustomers using both Azure Container Apps Log Analytics logging and direct HTTP Data Collector API ingestion should plan for both migrations.\n\nLearn more:\n\nAzure\n\ndocumentation\n\nSeparate\n\nmigration guidance for the Logs Ingestion API"
+  },
+  "Details": [
+    {
+      "Name": "SourceId",
+      "Value": "577689"
+    },
+    {
+      "Name": "AzureLink",
+      "Value": "https://azure.microsoft.com/updates?id=577689"
+    },
+    {
+      "Name": "ReleasePhase",
+      "Value": "Effective"
+    },
+    {
+      "Name": "Availability",
+      "Value": "Effective: September 2026"
+    },
+    {
+      "Name": "ProductCategories",
+      "Value": "Containers"
+    }
+  ]
+}
