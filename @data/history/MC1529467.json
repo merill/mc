@@ -1,0 +1,47 @@
+{
+  "id": "MC1529467",
+  "versions": [
+    {
+      "capturedAt": "2026-10-28T22:53:51.897Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>Microsoft is responding to an issue involving eight eMudhra intermediate certificate authority (CA) private keys, six associated with TLS and two with code signing. Because these keys could be recovered, they could potentially be used to create certificates or sign content that appeared to come from a trusted CA. The issue arose in eMudhra's certificate hierarchy and was not a compromise of Microsoft systems.</p><p></p><p>Microsoft is updating certificate trust to block affected certificate authorities and remove certificates associated with the affected hierarchies.</p><p></p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide, GCC, GCC High, DoD):</b> Beginning in <b>late October 2026</b> and expected to complete by <b>late October 2026</b></li></ul><p></p><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations using Windows, Microsoft Edge, or WebView2, particularly organizations with certificates that chain to one of the eight certificates being removed</li><li>Organizations managing disconnected Windows devices or disconnected Azure devices may need to take additional action</li></ul><p><i>Platforms and services</i></p><ul><li>Windows</li><li>Microsoft Edge</li><li>WebView2</li><li>Azure virtual machines</li></ul><p><i>What will happen</i></p><ul><li>Microsoft has published an update to the Windows Disallowed Certificate Trust List to block the affected certificate authorities.</li><li>Microsoft has deployed a separate CRLSet update for Microsoft Edge and WebView2 to block affected TLS certificates signed by the affected certificate authorities.</li><li>The Microsoft Edge and WebView2 update is delivered automatically through the component update mechanism. Customers do not need to install a new browser version.</li><li>Microsoft has released updates to Windows and Microsoft Edge to remove certificates associated with the affected hierarchies from their trust lists.</li><li>After these updates reach a device, the affected certificates will no longer be trusted by default through the respective trust lists.</li></ul><p></p><p><b><b>Action required and recommendations</b></b></p><ul><li><b>Keep updates flowing.</b> Allow automatic Windows certificate trust updates and Microsoft Edge component updates to reach your devices.</li><li><b>Check disconnected Windows devices.</b> If you manage Windows devices that do not receive automatic updates, make sure your update process delivers the updated Disallowed Certificate Trust List and upcoming trust-list changes. See the Microsoft Learn guidance in <b>Learn more</b> for information about distributing certificate trust lists in disconnected environments.</li><li><b>Review disconnected Azure devices.</b> Review disconnected Azure devices running on Virtual Machine Scale Sets (VMSS) or single-instance VMs. Updated images are available in Azure Marketplace, and customers can deploy them to protect against this vulnerability.</li><li><b>Replace dependent certificates.</b> If any of your certificates chain to one of the seven certificates being removed, identify those dependencies and obtain replacement certificates or an alternative trusted chain before the changes reach your devices.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://www.microsoft.com/msrc/blog/2026/10/microsoft-response-to-compromised-emudhra-certificate-authority-keys\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft’s response to compromised eMudhra certificate authority keys</a></li><li><a href=\"https://learn.microsoft.com/windows-server/identity/ad-cs/configure-trusted-roots-disallowed-certificates\" rel=\"noopener noreferrer\" target=\"_blank\">Configure trusted roots and disallowed certificates in Windows | Microsoft Learn</a></li></ul><p></p><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft is updating Windows, Edge, and WebView2 to block eight compromised eMudhra certificate authority keys by late October 2026. Organizations must allow automatic updates, manage disconnected devices, and replace certificates chaining to these keys to maintain trust and security."
+          }
+        ],
+        "EndDateTime": "2026-11-28T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1529467",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-10-28T22:53:51.897Z",
+        "Services": [
+          "Microsoft 365 suite"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-10-28T22:53:04Z",
+        "Tags": [
+          "User impact",
+          "Admin impact"
+        ],
+        "Title": "Microsoft Windows: Updates to address compromised eMudhra certificate authority keys",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
