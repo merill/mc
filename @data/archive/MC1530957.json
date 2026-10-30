@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and why</b></b></p><p>We're updating the default message layout for new Microsoft Teams channels created through the Microsoft Graph v1.0 Create channel API (<code>POST /v1.0/teams/{team-id}/channels</code>). When a channel creation request doesn't specify the <code>layoutType</code> property, the new channel will use the Threads layout instead of the Posts layout.</p><p>This change applies only to newly created channels. Existing channels won't change.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide, GCC, GCC High, DoD):</b> Beginning in <b>late November 2026</b> and expected to complete by <b>late November 2026</b></li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations with applications, scripts, or automated provisioning workflows that create Microsoft Teams channels through Microsoft Graph without specifying the <code>layoutType</code> property</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Teams and Microsoft Graph v1.0 Create channel API</li></ul><p><b>What will happen</b></p><ul><li>If <code>layoutType</code> is omitted, new channels will use the Threads layout instead of the Posts layout.</li><li>If <code>\"layoutType\": \"post\"</code> is specified, new channels will use the Posts layout.</li><li>If <code>\"layoutType\": \"chat\"</code> is specified, new channels will use the Threads layout.</li><li>The API value for the Threads layout is <code>\"chat\"</code>, not <code>\"threads\"</code>.</li><li>Existing channels won't change.</li><li>Channel creation requests that explicitly specify a supported layout aren't affected.</li></ul><p><b><b>Action required and recommendations</b></b></p><ul><li>Notify developers and owners of applications or automation that create Teams channels through Microsoft Graph.</li><li>If your organization requires new channels to continue using the Posts layout, update channel creation requests to explicitly include <code>\"layoutType\": \"post\"</code> before rollout begins.</li><li>For third-party solutions, contact the provider to confirm how the solution specifies the channel layout.</li><li>If Threads is your desired layout, no request changes are required to adopt the new default.</li><li>Review and test dependent workflows for compatibility with Threads.</li></ul><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/graph/api/channel-post?view=graph-rest-1.0&amp;tabs=http#example-3-create-a-channel-with-chat-layout-type\" rel=\"noopener noreferrer\" target=\"_blank\">Create channel - Microsoft Graph v1.0 | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Starting late November 2026, new Microsoft Teams channels created via Microsoft Graph without a specified layoutType will default to the Threads layout (\"chat\"). Existing channels remain unchanged. Organizations should update automation to specify \"post\" if Posts layout is required or test workflows for compatibility with Threads."
+    }
+  ],
+  "EndDateTime": "2026-12-30T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1530957",
+  "IsMajorChange": false,
+  "LastModifiedDateTime": "2026-10-29T23:11:49.48Z",
+  "Services": [
+    "Microsoft Teams"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-10-29T23:11:52Z",
+  "Tags": [
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft Teams: Threads will become the default layout for new channels created with Microsoft Graph",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
