@@ -1,5 +1,54 @@
 [
   {
+    "Id": "AZ577491",
+    "Title": "Public Preview: Support database-level managed identity (including FIC) in Create Database Scoped Credential T-SQL",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-10-30T17:16:27.273Z",
+    "LastModifiedDateTime": "2026-10-30T17:16:27.273Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Azure SQL Database"
+    ],
+    "Tags": [
+      "Feature"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>With database-level managed identity in Azure SQL Database, you can use a user-assigned managed identity for each database to query files in Azure Blob Storage and Azure Data Lake Storage Gen2 through external tables and OPENROWSET. You can authenticate these queries without storing shared access signature (SAS) tokens or relying on a shared server-level identity.&nbsp;</p><p>By assigning separate identities and storage permissions to your databases, you can limit each database to the data it needs—for example, granting your HR database access to HR files and your finance database access to finance files. This helps you isolate access across databases on the same logical server and reduces secret-management overhead, while retaining&nbsp;familiar T-SQL queries over external data.&nbsp;</p><p><a href=\"https://aka.ms/Database_Level_UAMI_AzureSQL\" target=\"_blank\" rel=\"noopener\">Learn\nmore</a>.&nbsp;&nbsp;</p>",
+      "Markdown": "With database-level managed identity in Azure SQL Database, you can use a user-assigned managed identity for each database to query files in Azure Blob Storage and Azure Data Lake Storage Gen2 through external tables and OPENROWSET. You can authenticate these queries without storing shared access signature (SAS) tokens or relying on a shared server-level identity.\n\nBy assigning separate identities and storage permissions to your databases, you can limit each database to the data it needs—for example, granting your HR database access to HR files and your finance database access to finance files. This helps you isolate access across databases on the same logical server and reduces secret-management overhead, while retaining familiar T-SQL queries over external data.\n\nLearn\n\nmore ."
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "577491"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=577491"
+      },
+      {
+        "Name": "Status",
+        "Value": "In preview"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "Preview"
+      },
+      {
+        "Name": "Availability",
+        "Value": "Preview: October 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Databases, Hybrid + multicloud"
+      }
+    ]
+  },
+  {
     "Id": "AZ578850",
     "Title": "Generally Available: Large OS Disk Encryption for Azure Confidential VM migrations",
     "Source": "azure",
@@ -45671,200 +45720,6 @@
       {
         "Name": "AzureLink",
         "Value": "https://azure.microsoft.com/updates?id=516643"
-      },
-      {
-        "Name": "Status",
-        "Value": "In preview"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "Preview"
-      },
-      {
-        "Name": "Availability",
-        "Value": "Preview: October 2025"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Storage"
-      }
-    ]
-  },
-  {
-    "Id": "AZ520822",
-    "Title": "Public Preview: Azure Functions zero-downtime deployments with rolling updates in Flex Consumption",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-10-30T18:00:45.795Z",
-    "LastModifiedDateTime": "2025-10-30T18:00:45.795Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Azure Functions"
-    ],
-    "Tags": [
-      "Features"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<div><div><p><span><span>Azure Functions now supports </span><span>r</span><span>olling </span><span>u</span><span>pdates in the Flex Consumption plan, delivering zero-downtime deployments with a simple configuration change.&nbsp;</span></span><span>&nbsp;</span></p></div><div><div><span><span><div><p><br></p></div><div><p><span><span>Instead of forcefully restarting all instances during code or configuration updates, the platform gracefully replaces live instances by draining batches every few seconds while dynamically scaling out the latest version to meet demand. This approach ensures uninterrupted execution and resilient throughput across HTTP, non-HTTP, and Durable workloads—even during intensive scale-out scenarios.&nbsp;</span></span><span>&nbsp;</span></p></div><div><p><br></p></div><div><p><span><span><b>How to enable:</b></span></span><span>&nbsp;</span></p></div><ol><li><p><span><span>Update your ARM/Bicep template </span><span>with </span><span>`</span><span>”</span><span>properties.functionAppConfig.siteUpdateStrategy.type</span><span>”</span><span>` set to</span><span>&nbsp;</span><span>`</span><span>“</span><span>RollingUpdate</span><span>”</span><span>`</span></span><span>&nbsp;</span></p></li><li><p><span><span>For Durable Functions, </span><span>configure an</span><span>&nbsp;</span><span>orchestration match strategy (</span></span><a href=\"https://learn.microsoft.com/azure/azure-functions/durable/durable-functions-orchestration-versioning\" target=\"_blank\" rel=\"noopener\"><span><span>see guidance</span></span></a><span><span>).</span></span><span>&nbsp;</span></p></li></ol><div><p><b><span><span>Known limitations</span></span><span><span>:</span></span></b><span>&nbsp;</span></p></div><ul><li><p><span><span>Scale-out issues may occur with low HTTP concurrency; recommended value is 16.</span></span><span>&nbsp;</span></p></li><li><p><span><span>Real-time rollout monitoring is not supported; allow up to two minutes for completion.</span></span><span>&nbsp;</span></p></li><li><p><span><span>No automatic rollback; intervene by redeploying the </span><span>last</span><span>&nbsp;healthy version.</span></span><span>&nbsp;</span></p></li><li><p><span><span>Internal details</span><span>&nbsp;</span><span>such as batch size and drain intervals are</span><span>&nbsp;not configurable and</span><span>&nbsp;are</span><span>&nbsp;subject to change.</span></span><span>&nbsp;</span></p></li></ul><div><p><span><span><a href=\"https://aka.ms/functions/rolling-updates\" target=\"_blank\" rel=\"noopener\"><span>Learn more</span></a></span><span>.</span></span></p></div></span></span></div></div></div>",
-      "Markdown": "Azure Functions now supports r olling u pdates in the Flex Consumption plan, delivering zero-downtime deployments with a simple configuration change.\n\nInstead of forcefully restarting all instances during code or configuration updates, the platform gracefully replaces live instances by draining batches every few seconds while dynamically scaling out the latest version to meet demand. This approach ensures uninterrupted execution and resilient throughput across HTTP, non-HTTP, and Durable workloads—even during intensive scale-out scenarios.\n\nHow to enable:\n\nUpdate your ARM/Bicep template with ` ” properties.functionAppConfig.siteUpdateStrategy.type ” ` set to ` “ RollingUpdate ” `\n\nFor Durable Functions, configure an orchestration match strategy ( see guidance ).\n\nKnown limitations :\n\nScale-out issues may occur with low HTTP concurrency; recommended value is 16.\n\nReal-time rollout monitoring is not supported; allow up to two minutes for completion.\n\nNo automatic rollback; intervene by redeploying the last healthy version.\n\nInternal details such as batch size and drain intervals are not configurable and are subject to change.\n\nLearn more ."
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "520822"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=520822"
-      },
-      {
-        "Name": "Status",
-        "Value": "In preview"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "Preview"
-      },
-      {
-        "Name": "Availability",
-        "Value": "Preview: October 2025"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Compute, Containers, Internet of Things"
-      }
-    ]
-  },
-  {
-    "Id": "AZ522813",
-    "Title": "Generally Available: High Scale Private Endpoints",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-10-30T16:30:43.172Z",
-    "LastModifiedDateTime": "2025-10-30T16:30:43.172Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Azure Private Link"
-    ],
-    "Tags": [
-      "Features",
-      "Management",
-      "Security"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<div><span><span>You can now i</span><span>ncrease </span><span>Azure P</span><span>rivate </span><span>E</span><span>ndpoint’s virtual network</span><span>&nbsp;(</span><span>VNet</span><span>)</span><span>&nbsp;limits </span><span>by upgrading to</span><span>&nbsp;High Scale Private Endpoints</span><span>&nbsp;(HSPE). </span><span>Today l</span><span>ocal </span><span>VNet</span><span>&nbsp;limits</span><span>&nbsp;</span><span>a</span><span>re </span><span>restricted to </span><span>1</span><span>,</span><span>000 private endpoints </span><span>per </span><span>Virtual Network. Any attempts to</span><span>&nbsp;create </span><span>additional</span><span>&nbsp;endpoints </span><span>w</span><span>ill</span><span>&nbsp;result in </span><span>an</span><span>&nbsp;</span></span><span><span>PrivateEndpointsPerVnetLimitReached</span><span>&nbsp;</span></span><span><span>error that can only be resolved by either </span><span>deleting</span><span>&nbsp;existing private endpoints or raising </span><span>a support request to increase </span><span>present</span><span>&nbsp;limit</span><span>s</span><span>.</span><span>&nbsp;However, by activating HSPE you will</span><span>&nbsp;automatically</span><span>&nbsp;be </span><span>able to deploy 5,000 PEs in a singular </span><span>VNet</span><span>.</span><span>&nbsp;</span></span><span>&nbsp;</span></div><div><p><span><span>I</span><span>t is </span><span>also </span></span><a href=\"https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-private-link-limits\" target=\"_blank\" rel=\"noopener\"><span><span>recommended that </span><span>you</span><span>&nbsp;only deploy up to </span><span>4</span><span>,000 Private Endpoints in total across </span><span>your</span><span>&nbsp;peered virtual networks.</span></span></a><span><span>&nbsp;</span><span>Surpassing </span><span>this recommendation may result </span><span>in</span><span>&nbsp;connectivity issues </span><span>with your</span><span>&nbsp;private endpoint </span><span>traffic</span><span>. </span><span>If you would like higher limits</span><span>&nbsp;without the risk of </span><span>connectivity issues</span><span>, it is recommended to </span><span>upg</span><span>rad</span><span>e</span><span>&nbsp;to H</span><span>SPE</span><span>. This will raise private endpoint </span><span>cross peering </span><span>limit</span><span>&nbsp;to</span><span>&nbsp;20,000</span><span>&nbsp;endpoints</span><span>.</span></span></p></div><div><p><span><span>Additionally, Azure Virtual Network Manager’s High Scale Private Endpoints support for mesh (connected groups) is now generally available, offering greater scalability for complex Azure network topologies. </span><span>HSPE for mesh enables you to scale private connectivity across large, interconnected environments with ease.</span></span></p></div><div><p><b><span><span>Region</span><span>s of</span><span>&nbsp;Availability:</span></span></b></p></div><div><p><span><span>This feature is available in </span><span>all public regions.</span></span></p><p><span><b>Learn more:</b></span></p></div><div><p></p><ul><li><span><span><span>What is </span></span><a href=\"https://docs.microsoft.com/en-us/azure/private-link/private-link-overview\" target=\"_blank\" rel=\"noopener\"><span><span>Private Link</span></span></a><span><span>?</span></span><span>&nbsp;</span></span></li><li><span><span>About</span><span> </span><span><a href=\"https://aka.ms/HighScalePrivateEndpoints\" target=\"_blank\" rel=\"noopener\"><span>High Scale Private Endpoints</span></a></span><span></span><span>.</span></span></li><li><span>What is </span><a href=\"https://learn.microsoft.com/en-us/azure/virtual-network-manager/concept-connectivity-configuration#mesh-topology\" target=\"_blank\" rel=\"noopener\"><span><span>Azure Virtual Network Manager’s Mesh </span><span>topology</span></span></a><span><span>?</span></span></li><li><span>&nbsp;</span><span><span><span>refer to </span></span><a href=\"https://learn.microsoft.com/en-us/azure/virtual-network-manager/concept-connectivity-configuration#enable-high-scale-private-endpoints-in-azure-virtual-network-manager-connected-groups\" target=\"_blank\" rel=\"noopener\"><span><span>the official documentation</span></span></a><span><span>.</span></span></span></li></ul></div>",
-      "Markdown": "You can now i ncrease Azure P rivate E ndpoint’s virtual network ( VNet ) limits by upgrading to High Scale Private Endpoints (HSPE). Today l ocal VNet limits a re restricted to 1 , 000 private endpoints per Virtual Network. Any attempts to create additional endpoints w ill result in an PrivateEndpointsPerVnetLimitReached error that can only be resolved by either deleting existing private endpoints or raising a support request to increase present limit s . However, by activating HSPE you will automatically be able to deploy 5,000 PEs in a singular VNet .\n\nI t is also recommended that you only deploy up to 4 ,000 Private Endpoints in total across your peered virtual networks. Surpassing this recommendation may result in connectivity issues with your private endpoint traffic . If you would like higher limits without the risk of connectivity issues , it is recommended to upg rad e to H SPE . This will raise private endpoint cross peering limit to 20,000 endpoints .\n\nAdditionally, Azure Virtual Network Manager’s High Scale Private Endpoints support for mesh (connected groups) is now generally available, offering greater scalability for complex Azure network topologies. HSPE for mesh enables you to scale private connectivity across large, interconnected environments with ease.\n\nRegion s of Availability:\n\nThis feature is available in all public regions.\n\nLearn more:\n\nWhat is Private Link ?\n\nAbout High Scale Private Endpoints .\n\nWhat is Azure Virtual Network Manager’s Mesh topology ?\n\nrefer to the official documentation ."
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "522813"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=522813"
-      },
-      {
-        "Name": "Status",
-        "Value": "Launched"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "General Availability"
-      },
-      {
-        "Name": "Availability",
-        "Value": "General Availability: October 2025"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Networking"
-      }
-    ]
-  },
-  {
-    "Id": "AZ502957",
-    "Title": "Retirement: Support for Node.js 20 ends on April 30, 2026 – upgrade your apps to Node.js 22",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-10-30T16:00:54.547Z",
-    "LastModifiedDateTime": "2025-10-30T16:00:54.547Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Azure Functions"
-    ],
-    "Tags": [
-      "Retirements"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<div><p><span>In alignment with the end of community\nsupport, on April 30, 2026, support for Node.js 20 in Azure Functions will end.\nYour apps that are hosted on Functions will continue to run, but security\nupdates and performance optimizations will no longer be available and we'll no\nlonger provide customer support for Node.js 20. </span>&nbsp;</p><p><b><span>Required\naction<span>&nbsp; </span></span></b><span>&nbsp;</span></p><p><span>To avoid potential security vulnerabilities\nand take advantage of the latest features, </span><a href=\"https://learn.microsoft.com/en-us/azure/azure-functions/update-language-versions?tabs=azure-portal%2Clinux&amp;pivots=programming-language-javascript\" target=\"_blank\" rel=\"noopener\"><span>follow the steps to upgrade your Functions app</span></a><span>s to Node.js 22 by April 30, 2026&nbsp;</span></p><p><span>&nbsp;</span></p><p><b><span>More information</span></b>&nbsp;</p><p><span>If you have a support plan and you need\ntechnical help, open the </span><a href=\"https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview\" target=\"_blank\" rel=\"noopener\"><span>Azure portal</span></a><span> and select the question mark icon at the top\nof the page. </span>&nbsp;</p><p><a href=\"https://learn.microsoft.com/azure/azure-functions/language-support-policy\" target=\"_blank\" rel=\"noopener\"><span>Learn more.</span></a>&nbsp;</p></div>",
-      "Markdown": "In alignment with the end of community\n\nsupport, on April 30, 2026, support for Node.js 20 in Azure Functions will end.\n\nYour apps that are hosted on Functions will continue to run, but security\n\nupdates and performance optimizations will no longer be available and we'll no\n\nlonger provide customer support for Node.js 20.\n\nRequired\n\naction\n\nTo avoid potential security vulnerabilities\n\nand take advantage of the latest features, follow the steps to upgrade your Functions app s to Node.js 22 by April 30, 2026\n\nMore information\n\nIf you have a support plan and you need\n\ntechnical help, open the Azure portal and select the question mark icon at the top\n\nof the page.\n\nLearn more."
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "502957"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=502957"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "Retirement"
-      },
-      {
-        "Name": "Availability",
-        "Value": "Retirement: April 2026"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Compute, Containers, Internet of Things"
-      }
-    ]
-  },
-  {
-    "Id": "AZ520805",
-    "Title": "Public Preview: Instant Access Snapshots for Azure Premium SSD v2 and Ultra Disks Storage",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-10-30T16:00:54.547Z",
-    "LastModifiedDateTime": "2025-10-30T16:00:54.547Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Azure Disk Storage"
-    ],
-    "Tags": [
-      "Features"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<div><div><p><span>Announcing the Public Preview of Instant Access Snapshots\nfor Premium SSD v2 (Pv2) and Ultra Disks.&nbsp;This new capability enables you\nto restored new disks immediately after creating snapshots of Pv2 and Ultra\ndisks. Restored disks deliver high performance instantly, while data hydration\ncontinues rapidly in the background.&nbsp;&nbsp;</span></p><p><span><b>Common Scenarios&nbsp;</b></span></p><p><span>Instant Access Snapshots accelerate backup and recovery\nworkflows, enabling faster environment&nbsp;refreshes&nbsp;and rapid scaling.\nCommon use cases include:&nbsp;&nbsp;</span></p><ul><li><span>Create instant backups\nbefore software updates and revert quickly if needed.&nbsp;&nbsp;</span></li><li><span>Quickly scale stateful\napplications by creating multiple copies of primary data for new instances,\nsuch as adding read-only SQL Server replicas.&nbsp;</span></li><li><span>Rapid nightly&nbsp;refresh\nof&nbsp;training or testing environments from the production.&nbsp;&nbsp;</span></li></ul><p><span><b>Pricing</b></span><span>&nbsp;&nbsp;</span></p><p></p><ul><li><span>Public Preview: No\nadditional charges apply when using Instant Access snapshots. Standard billing\nfor disks and snapshots remains unchanged.&nbsp;&nbsp;</span></li><li><p><span>Post General Availability\n(GA): Two charges will apply:&nbsp; &nbsp;</span></p></li><ul><ul><li><p><span>Storage Charge:&nbsp;Billed\nonly for the additional storage space consumed by Instant Access Snapshots,\nbased on data changes on the source disk after the snapshot is\ncreated.&nbsp; &nbsp;</span></p></li><li><p><span>Restore Charge:&nbsp;A\none-time fee applies for each disk restored from an Instant Access Snapshot,\ncalculated based on the disk’s provisioned size at the time of restore.&nbsp;</span></p></li></ul></ul></ul><p></p><p><span>Get started&nbsp;by creating Instant Access Snapshots for\nyour Premium SSD v2 and Ultra disks&nbsp;</span><a href=\"https://aka.ms/InstantAccessSnapshotPublicDoc\" target=\"_blank\" rel=\"noopener\"><span>here</span></a><span>.&nbsp;</span></p></div><p><span></span></p><p><span></span></p></div>",
-      "Markdown": "Announcing the Public Preview of Instant Access Snapshots\n\nfor Premium SSD v2 (Pv2) and Ultra Disks. This new capability enables you\n\nto restored new disks immediately after creating snapshots of Pv2 and Ultra\n\ndisks. Restored disks deliver high performance instantly, while data hydration\n\ncontinues rapidly in the background.\n\nCommon Scenarios\n\nInstant Access Snapshots accelerate backup and recovery\n\nworkflows, enabling faster environment refreshes and rapid scaling.\n\nCommon use cases include:\n\nCreate instant backups\n\nbefore software updates and revert quickly if needed.\n\nQuickly scale stateful\n\napplications by creating multiple copies of primary data for new instances,\n\nsuch as adding read-only SQL Server replicas.\n\nRapid nightly refresh\n\nof training or testing environments from the production.\n\nPricing\n\nPublic Preview: No\n\nadditional charges apply when using Instant Access snapshots. Standard billing\n\nfor disks and snapshots remains unchanged.\n\nPost General Availability\n\n(GA): Two charges will apply:\n\nStorage Charge: Billed\n\nonly for the additional storage space consumed by Instant Access Snapshots,\n\nbased on data changes on the source disk after the snapshot is\n\ncreated.\n\nRestore Charge: A\n\none-time fee applies for each disk restored from an Instant Access Snapshot,\n\ncalculated based on the disk’s provisioned size at the time of restore.\n\nGet started by creating Instant Access Snapshots for\n\nyour Premium SSD v2 and Ultra disks here ."
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "520805"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=520805"
       },
       {
         "Name": "Status",
