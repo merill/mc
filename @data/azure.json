@@ -1,5 +1,301 @@
 [
   {
+    "Id": "AZ576382",
+    "Title": "Public Preview: JWT validation for Application Gateway for Containers",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-02T18:11:23.280Z",
+    "LastModifiedDateTime": "2026-11-02T18:11:23.280Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Application Gateway"
+    ],
+    "Tags": [
+      "Features"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>Application Gateway for Containers now supports centralized\nJSON Web Token validation through the AuthPolicy custom resource. Teams can\nvalidate a token signature, issuer, lifetime, and configured audience by using\nsigning keys retrieved from a trusted HTTPS JSON Web Key Set endpoint. Requests\nwith missing or invalid credentials are rejected at the gateway instead of\nbeing forwarded to the backend.&nbsp;</p><p>AuthPolicy can protect an ApplicationLoadBalancer, Gateway,\nHTTPRoute, GRPCRoute, or MCPRoute. Policies inherit through the resource\nhierarchy, while a more specific route-level policy can replace an inherited\npolicy or explicitly opt a route out. Optional OAuth Protected Resource\nMetadata helps OAuth-aware clients discover authorization servers and supported\nscopes.&nbsp;</p><ul><li>Apply consistent JWT\nvalidation to HTTP, gRPC, and MCP routes&nbsp;</li></ul><ul>\n <li>Use\n     Microsoft Entra ID or third-party identity providers that publish trusted\n     JWKS signing keys&nbsp;</li>\n <li>Combine\n     JWT validation with WAF so malicious traffic is inspected before\n     authentication&nbsp;</li>\n <li>Publish\n     OAuth resource metadata to enable authorization server discovery&nbsp;</li></ul><p>Learn more:&nbsp;</p><ul><li><a href=\"https://aka.ms/agc/jwtvalidation\" target=\"_blank\" rel=\"noopener\">JWT validation for Application Gateway\nfor Containers</a>&nbsp;</li><li><a href=\"https://aka.ms/agc/jwtvalidation/configure\" target=\"_blank\" rel=\"noopener\">Configure JWT validation for\nApplication Gateway for Containers - Gateway API</a>&nbsp;</li></ul><br>",
+      "Markdown": "Application Gateway for Containers now supports centralized\n\nJSON Web Token validation through the AuthPolicy custom resource. Teams can\n\nvalidate a token signature, issuer, lifetime, and configured audience by using\n\nsigning keys retrieved from a trusted HTTPS JSON Web Key Set endpoint. Requests\n\nwith missing or invalid credentials are rejected at the gateway instead of\n\nbeing forwarded to the backend.\n\nAuthPolicy can protect an ApplicationLoadBalancer, Gateway,\n\nHTTPRoute, GRPCRoute, or MCPRoute. Policies inherit through the resource\n\nhierarchy, while a more specific route-level policy can replace an inherited\n\npolicy or explicitly opt a route out. Optional OAuth Protected Resource\n\nMetadata helps OAuth-aware clients discover authorization servers and supported\n\nscopes.\n\nApply consistent JWT\n\nvalidation to HTTP, gRPC, and MCP routes\n\nUse\n\nMicrosoft Entra ID or third-party identity providers that publish trusted\n\nJWKS signing keys\n\nCombine\n\nJWT validation with WAF so malicious traffic is inspected before\n\nauthentication\n\nPublish\n\nOAuth resource metadata to enable authorization server discovery\n\nLearn more:\n\nJWT validation for Application Gateway\n\nfor Containers\n\nConfigure JWT validation for\n\nApplication Gateway for Containers - Gateway API"
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "576382"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=576382"
+      },
+      {
+        "Name": "Status",
+        "Value": "In preview"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "Preview"
+      },
+      {
+        "Name": "Availability",
+        "Value": "Preview: November 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Networking, Security"
+      }
+    ]
+  },
+  {
+    "Id": "AZ576388",
+    "Title": "Public Preview: MCP gateway for Application Gateway for Containers",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-02T18:09:01.849Z",
+    "LastModifiedDateTime": "2026-11-02T18:09:01.849Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Application Gateway"
+    ],
+    "Tags": [
+      "Features"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>Application Gateway for Containers now supports Model\nContext Protocol routing through the new MCPRoute custom resource. Platform\nteams can publish MCP servers behind a stable hostname and path while\ncentralizing TLS, JWT validation, Web Application Firewall protection, backend\nhealth monitoring, and routing policy at the gateway.&nbsp;</p><p>MCPRoute supports both direct routing to a single MCP\nserver and aggregation of multiple independent servers behind one logical\nendpoint. For aggregated deployments, Application Gateway for Containers merges\ntool, resource, and prompt discovery responses, namespaces capability names to\navoid collisions, and routes invocations to the backend that owns the selected\ncapability.&nbsp;</p><ul><li>Expose one governed\nendpoint for MCP clients and Kubernetes-hosted MCP servers&nbsp;</li><li>Aggregate capabilities from\nmultiple MCP servers&nbsp;&nbsp;</li><li>Session affinity for MCP\nservers that maintain in-memory session state&nbsp;</li><li>Apply JWT validation, WAF,\nbackend TLS, health checks, and cross-namespace references&nbsp;</li></ul><p>Learn more:&nbsp;</p><ul><li><a href=\"https://aka.ms/agc/mcpgateway\" target=\"_blank\" rel=\"noopener\">Model Context Protocol capabilities in\nApplication Gateway for Containers</a>&nbsp;</li><li><a href=\"https://aka.ms/agc/mcpgateway/configure\" target=\"_blank\" rel=\"noopener\">Configure Model Context Protocol\nrouting for Application Gateway for Containers</a>&nbsp;</li></ul>",
+      "Markdown": "Application Gateway for Containers now supports Model\n\nContext Protocol routing through the new MCPRoute custom resource. Platform\n\nteams can publish MCP servers behind a stable hostname and path while\n\ncentralizing TLS, JWT validation, Web Application Firewall protection, backend\n\nhealth monitoring, and routing policy at the gateway.\n\nMCPRoute supports both direct routing to a single MCP\n\nserver and aggregation of multiple independent servers behind one logical\n\nendpoint. For aggregated deployments, Application Gateway for Containers merges\n\ntool, resource, and prompt discovery responses, namespaces capability names to\n\navoid collisions, and routes invocations to the backend that owns the selected\n\ncapability.\n\nExpose one governed\n\nendpoint for MCP clients and Kubernetes-hosted MCP servers\n\nAggregate capabilities from\n\nmultiple MCP servers\n\nSession affinity for MCP\n\nservers that maintain in-memory session state\n\nApply JWT validation, WAF,\n\nbackend TLS, health checks, and cross-namespace references\n\nLearn more:\n\nModel Context Protocol capabilities in\n\nApplication Gateway for Containers\n\nConfigure Model Context Protocol\n\nrouting for Application Gateway for Containers"
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "576388"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=576388"
+      },
+      {
+        "Name": "Status",
+        "Value": "In preview"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "Preview"
+      },
+      {
+        "Name": "Availability",
+        "Value": "Preview: November 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Networking, Security"
+      }
+    ]
+  },
+  {
+    "Id": "AZ576393",
+    "Title": "Public Preview: Private ingress for Application Gateway for Containers",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-02T18:06:52.121Z",
+    "LastModifiedDateTime": "2026-11-02T18:06:52.121Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Application Gateway"
+    ],
+    "Tags": [
+      "Features"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>Application\nGateway for Containers now supports private frontends that are reachable only\nthrough approved Azure Private Link private endpoints. This enables\norganizations to keep internal applications, shared services, and cross-cluster\ntraffic on private connectivity while retaining Kubernetes-native Layer 7\nrouting, TLS, health probing, and Web Application Firewall capabilities.&nbsp;</p><p>Private ingress supports connectivity across virtual\nnetworks, subscriptions, Microsoft Entra tenants, and Azure regions without\nrequiring VNet peering. A single Application Gateway for Containers resource\ncan also host public and private frontends, allowing teams to use separate\nexposure models and security policies for different workloads.&nbsp;</p><ul><li>Remove the public IP\naddress and direct internet path from the frontend&nbsp;</li><li>Enforce access through\nexplicitly provisioned and approved private endpoints&nbsp;</li><li>&nbsp;Connect workloads across VNets, subscriptions,\ntenants, and regions, including environments with overlapping CIDR ranges&nbsp;&nbsp;</li><li>Place an Azure Firewall,\nnetwork virtual appliance, or another upstream service in front of Kubernetes\nworkloads&nbsp;</li></ul><p>Learn more: &nbsp;&nbsp;</p><ul><li><a href=\"http://aka.ms/agc/privateingress\" target=\"_blank\" rel=\"noopener\">Private ingress with Application\nGateway for Containers</a>&nbsp;&nbsp;</li><li><a href=\"https://aka.ms/agc/privateingress/configure\" target=\"_blank\" rel=\"noopener\">Configure private ingress\nwith Application Gateway for Containers - Gateway API</a>&nbsp;</li></ul>",
+      "Markdown": "Application\n\nGateway for Containers now supports private frontends that are reachable only\n\nthrough approved Azure Private Link private endpoints. This enables\n\norganizations to keep internal applications, shared services, and cross-cluster\n\ntraffic on private connectivity while retaining Kubernetes-native Layer 7\n\nrouting, TLS, health probing, and Web Application Firewall capabilities.\n\nPrivate ingress supports connectivity across virtual\n\nnetworks, subscriptions, Microsoft Entra tenants, and Azure regions without\n\nrequiring VNet peering. A single Application Gateway for Containers resource\n\ncan also host public and private frontends, allowing teams to use separate\n\nexposure models and security policies for different workloads.\n\nRemove the public IP\n\naddress and direct internet path from the frontend\n\nEnforce access through\n\nexplicitly provisioned and approved private endpoints\n\nConnect workloads across VNets, subscriptions,\n\ntenants, and regions, including environments with overlapping CIDR ranges\n\nPlace an Azure Firewall,\n\nnetwork virtual appliance, or another upstream service in front of Kubernetes\n\nworkloads\n\nLearn more:\n\nPrivate ingress with Application\n\nGateway for Containers\n\nConfigure private ingress\n\nwith Application Gateway for Containers - Gateway API"
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "576393"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=576393"
+      },
+      {
+        "Name": "Status",
+        "Value": "In preview"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "Preview"
+      },
+      {
+        "Name": "Availability",
+        "Value": "Preview: November 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Networking, Security"
+      }
+    ]
+  },
+  {
+    "Id": "AZ577992",
+    "Title": "Generally Available: Restart databases in Azure SQL DB via the Azure portal",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-02T18:02:48.289Z",
+    "LastModifiedDateTime": "2026-11-02T18:02:48.289Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Azure SQL Database"
+    ],
+    "Tags": [
+      "Feature"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>You&nbsp;can now restart&nbsp;or fail&nbsp;over databases directly from the Azure portal, including single databases, Hyperscale databases, and databases in elastic pools,&nbsp;without writing scripts against the Rest API&nbsp;or contacting support.&nbsp;</p><p>&nbsp;<a href=\"https://aka.ms/restartsqldborep\" target=\"_blank\" rel=\"noopener\">Learn more</a><span>.&nbsp;&nbsp;</span></p>",
+      "Markdown": "You can now restart or fail over databases directly from the Azure portal, including single databases, Hyperscale databases, and databases in elastic pools, without writing scripts against the Rest API or contacting support.\n\nLearn more ."
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "577992"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=577992"
+      },
+      {
+        "Name": "Status",
+        "Value": "Launched"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "General Availability"
+      },
+      {
+        "Name": "Availability",
+        "Value": "General Availability: October 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Databases, Hybrid + multicloud"
+      }
+    ]
+  },
+  {
+    "Id": "AZ579021",
+    "Title": "Generally Available: Geo-Replication on partitioned namespaces for Azure Service Bus Premium",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-02T18:00:51.027Z",
+    "LastModifiedDateTime": "2026-11-02T18:00:51.027Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Service Bus"
+    ],
+    "Tags": [
+      "Feature"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p><a href=\"https://learn.microsoft.com/azure/service-bus-messaging/service-bus-geo-replication\" target=\"_blank\" rel=\"noopener\">Geo-Replication</a> on partitioned namespaces for\nAzure Service Bus Premium is now generally available. You can now combine the\nthroughput benefits of partitioning with the reliability of replicating your\nmessages and metadata to a secondary Azure region.&nbsp;</p><p>Partitioned namespaces distribute queues and topics across\nmultiple message brokers and messaging stores within a region, allowing\nthroughput to scale beyond a single broker.&nbsp;</p><p>You can enable Geo-Replication on an existing partitioned\nPremium namespace or configure both capabilities on a new namespace.&nbsp;</p><p><a href=\"https://learn.microsoft.com/azure/service-bus-messaging/service-bus-geo-replication#setup\" target=\"_blank\" rel=\"noopener\">Learn\nmore</a>.&nbsp;</p>",
+      "Markdown": "Geo-Replication on partitioned namespaces for\n\nAzure Service Bus Premium is now generally available. You can now combine the\n\nthroughput benefits of partitioning with the reliability of replicating your\n\nmessages and metadata to a secondary Azure region.\n\nPartitioned namespaces distribute queues and topics across\n\nmultiple message brokers and messaging stores within a region, allowing\n\nthroughput to scale beyond a single broker.\n\nYou can enable Geo-Replication on an existing partitioned\n\nPremium namespace or configure both capabilities on a new namespace.\n\nLearn\n\nmore ."
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "579021"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=579021"
+      },
+      {
+        "Name": "Status",
+        "Value": "Launched"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "General Availability"
+      },
+      {
+        "Name": "Availability",
+        "Value": "General Availability: November 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Integration"
+      }
+    ]
+  },
+  {
+    "Id": "AZ579111",
+    "Title": "Generally Available: Azure Site Recovery for Azure Local",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-02T17:49:48.275Z",
+    "LastModifiedDateTime": "2026-11-02T17:49:48.275Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Azure Arc",
+      "Azure Site Recovery"
+    ],
+    "Tags": [
+      "Management",
+      "Feature"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>Azure Site Recovery support for Azure Local is now generally available, making enterprise-grade disaster recovery simpler, accessible, easier to setup and secure than ever before. Customers can protect supported Windows and Linux virtual machines by replicating workloads to Azure, extending their disaster recovery capabilities to the cloud.</p><p>With streamlined setup in the Azure portal, customers can validate their recovery plans without disrupting production replication, fail over to Azure during planned or unplanned outages, and return workloads to Azure Local when their on-premises environment is ready. The capability is available in all Azure Local-supported regions.</p><p></p><p>Learn more:&nbsp;</p><ul><li><a href=\"https://techcommunity.microsoft.com/blog/azurestackblog/azure-site-recovery-for-azure-local-is-now-generally-available/4529925\" target=\"_blank\" rel=\"noopener\">Tech\nCommunity blog</a>&nbsp;</li><li><a href=\"https://learn.microsoft.com/en-us/azure/azure-local/manage/azure-site-recovery?view=azloc-2610\" target=\"_blank\" rel=\"noopener\">Official\ndocumentation</a>&nbsp;</li></ul>",
+      "Markdown": "Azure Site Recovery support for Azure Local is now generally available, making enterprise-grade disaster recovery simpler, accessible, easier to setup and secure than ever before. Customers can protect supported Windows and Linux virtual machines by replicating workloads to Azure, extending their disaster recovery capabilities to the cloud.\n\nWith streamlined setup in the Azure portal, customers can validate their recovery plans without disrupting production replication, fail over to Azure during planned or unplanned outages, and return workloads to Azure Local when their on-premises environment is ready. The capability is available in all Azure Local-supported regions.\n\nLearn more:\n\nTech\n\nCommunity blog\n\nOfficial\n\ndocumentation"
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "579111"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=579111"
+      },
+      {
+        "Name": "Status",
+        "Value": "Launched"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "General Availability"
+      },
+      {
+        "Name": "Availability",
+        "Value": "General Availability: October 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Hybrid + multicloud, Management and governance, Migration"
+      }
+    ]
+  },
+  {
     "Id": "AZ577491",
     "Title": "Public Preview: Support database-level managed identity (including FIC) in Create Database Scoped Credential T-SQL",
     "Source": "azure",
