@@ -259,6 +259,42 @@ export default function AboutPage() {
         <CardContent className="readable-card-content space-y-5">
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
+              November 3, 2026
+            </h2>
+            <ul>
+              <li>
+                Every post now has its own share image. A link pasted into
+                LinkedIn, Teams, X or Slack shows the post&apos;s ID, title,
+                product icons and dates instead of the site banner, and the
+                image updates when Microsoft changes the post.
+              </li>
+              <li>
+                Product icons now appear in the Service column and in the
+                service filter, which also groups services by product family
+                and shows how many posts each one has. The icons come from{" "}
+                <a
+                  className="readable-link"
+                  href="https://msicons.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  msicons
+                </a>{" "}
+                by Daniel Bradley and{" "}
+                <a
+                  className="readable-link"
+                  href="https://github.com/loryanstrant/MicrosoftCloudLogos"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Microsoft Cloud Logos
+                </a>{" "}
+                by Loryan Strant; the logos are Microsoft&apos;s.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
               October 27, 2026
             </h2>
             <ul>
