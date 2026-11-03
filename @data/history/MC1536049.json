@@ -1,0 +1,48 @@
+{
+  "id": "MC1536049",
+  "versions": [
+    {
+      "capturedAt": "2026-11-03T00:07:14.437Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2027-03-22T07:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why</b></b></p><p>As Microsoft-provided SMS and voice authentication retire in Microsoft Entra ID, these methods will also become unavailable for SSPR. Organizations have 50 days after the applicable sign-in retirement rollout reaches their tenant to prepare alternative recovery methods. Users may still be able to sign in but lose the ability to reset forgotten passwords. Passkeys and other sign-in methods don't automatically satisfy SSPR requirements. Admins should identify affected users and ensure they have enough eligible recovery methods to prevent disruptions and increased helpdesk requests.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide, GCC): </b>We expect rollout to begin and complete in<b> February 2027</b></li></ul><p></p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-6b9a\"><b style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">User population</b></td><td data-row=\"row-6b9a\"><b style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">Sign-in retirement rollout begins</b></td><td data-row=\"row-6b9a\"><b style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">SSPR transition ends</b></td></tr><tr><td data-row=\"row-agqu\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">Users other than Global Administrators and external users</span></td><td data-row=\"row-agqu\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">February 1, 2027</span></td><td data-row=\"row-agqu\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">50 days after this rollout reaches your tenant</span></td></tr><tr><td data-row=\"row-4bwa\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">Global Administrators and external users</span></td><td data-row=\"row-4bwa\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">July 1, 2027</span></td><td data-row=\"row-4bwa\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">50 days after this separate rollout reaches your tenant</span></td></tr></tbody></table><p>These are <b>phased rollout start dates</b>, not a single SSPR cutoff for every organization. Each population's 50-day period begins when its applicable rollout reaches your tenant.&nbsp;</p><p></p><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Organizations with users who rely on Microsoft-provided SMS/voice to meet their password-reset verification requirements. This includes users who have another sign-in method but still depend on SMS/voice for password recovery.</li></ul><p><i>Platforms and services</i></p><ul><li>Microsoft Entra ID SSPR</li></ul><p><i>What will happen</i></p><p>When the applicable sign-in retirement rollout reaches your tenant:</p><ul><li>50-day transition: Existing SMS and voice registrations remain usable for SSPR under your current recovery policy.</li><li>Registration changes: SMS/voice SSPR registration and refresh prompts stop, but prompts for other eligible methods continue.</li><li>My Sign-Ins: Users can no longer add SMS/voice methods or edit authentication phone numbers. Existing phone registrations appear disabled, even while usable for SSPR during the transition.</li><li>Customer-managed telephony (CYOT): Recovery through supported providers remains available.</li></ul><p>After the 50-day transition period:</p><p>Microsoft-provided SMS and voice are no longer available as SSPR recovery options.</p><table style=\"border: 1px solid #000;\"><tbody><tr><td data-row=\"row-pglh\"><b style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">User's remaining eligible recovery methods</b></td><td data-row=\"row-pglh\"><b style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">Password-reset experience</b></td></tr><tr><td data-row=\"row-6eew\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">Enough methods to meet the applicable SSPR requirement</span></td><td data-row=\"row-6eew\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">User can continue resetting their password with those methods</span></td></tr><tr><td data-row=\"row-u6xk\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">Not enough methods to meet the applicable SSPR requirement</span></td><td data-row=\"row-u6xk\"><span style=\"background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\">User cannot complete SSPR and is directed to contact their administrator</span></td></tr></tbody></table><p>The applicable one/two method requirement still applies. To retain SMS/voice for recovery, your organization must configure a supported CYOT.</p><p>Microsoft will not automatically change your SSPR policy or enable <b>Allow password change after secure sign-in</b> for your tenant.</p><p></p><p><b><b>Action required and recommendations</b></b></p><p>Prepare affected users before their applicable 50-day transition period ends:</p><ol><li><b>Identify affected users</b>. Find users relying on SMS/voice for SSPR, even if they have other sign-in methods registered. Use the <a href=\"https://learn.microsoft.com/entra/identity/authentication/concept-sms-voice-retirement\" rel=\"noopener noreferrer\" target=\"_blank\">SMS and voice retirement and migration guidance</a>.</li><li><b>Prepare alternative recovery methods</b>. Ensure users have enough eligible methods to meet SSPR policy requirements without Microsoft-provided SMS/voice. Passkeys alone don't satisfy SSPR requirements. If phone recovery is needed, configure and test a supported telephony provider before the transition ends.</li><li><b>Test and communicate</b>. Verify password recovery works with your SSPR policies and Conditional Access settings. Inform users and helpdesk staff about deadlines, registration steps, and support options.</li></ol><p></p><p><b>Recommended: Let passkey users change a forgotten password</b></p><ul><li>Where available, administrators can enable<a href=\"https://learn.microsoft.com/entra/identity/authentication/concept-sspr-howitworks?tabs=secure-sign-in#tab/secure-sign-in\" rel=\"noopener noreferrer\" target=\"_blank\"> </a><b><a href=\"https://learn.microsoft.com/entra/identity/authentication/concept-sspr-howitworks?tabs=secure-sign-in#tab/secure-sign-in\" rel=\"noopener noreferrer\" target=\"_blank\">Allow password change after secure sign-in</a></b> for eligible users. Users can then sign in with their passkey and change their password in <i>My Sign-Ins</i> without knowing/entering their current password.</li></ul><p></p><p><b>Learn more</b></p><ul><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/concept-sms-voice-retirement\" rel=\"noopener noreferrer\" target=\"_blank\">SMS and voice retirement and migration guidance</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/concept-sspr-howitworks\" rel=\"noopener noreferrer\" target=\"_blank\">How Microsoft Entra self-service password reset works</a></li><li><a href=\"https://learn.microsoft.com/entra/identity/authentication/concept-phone-providers\" rel=\"noopener noreferrer\" target=\"_blank\">Choose a telephony provider for SMS and voice authentication</a></li></ul><p></p><p><b><b>Compliance considerations</b></b></p><p>If your organization needs phone-based recovery for regulatory or operational reasons, plan and validate a supported customer-managed provider before the applicable SSPR cutoff.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Entra ID will retire Microsoft-provided SMS and voice authentication for self-service password reset (SSPR) starting February 2027, with a 50-day transition per user group. Organizations must prepare alternative recovery methods, as SMS/voice will no longer be available for SSPR after the transition."
+          }
+        ],
+        "EndDateTime": "2027-03-03T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1536049",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-11-03T00:07:14.437Z",
+        "Services": [
+          "Microsoft Entra"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-11-03T00:05:11Z",
+        "Tags": [
+          "User impact",
+          "Admin impact",
+          "Retirement"
+        ],
+        "Title": "Microsoft Entra ID: Microsoft-provided SMS and voice authentication to retire for self-service password reset (SSPR)",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
