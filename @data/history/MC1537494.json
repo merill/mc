@@ -1,0 +1,46 @@
+{
+  "id": "MC1537494",
+  "versions": [
+    {
+      "capturedAt": "2026-11-03T23:03:48.943Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": "2026-12-02T08:00:00Z",
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and Why:</b></b></p><p>Microsoft Defender role-based access control (Defender RBAC), the unified permissions model for Defender, is becoming the single access model for all Defender and Sentinel portal experiences. This will happen in a phased roll-out.</p><p>First, your existing roles will be imported into the new RBAC model, giving you time to review and adjust them during the notification period. Following this period, the new Defender RBAC will be activated automatically for the in-scope workload(s), approximately 30 days after the in-portal notification date.</p><p>The new Defender RBAC offers more extended access management capabilities, including:</p><ul><li>A single access management system to manage all roles and permissions across all workloads.</li><li>Scoping capabilities across device groups, cloud, identity, and Sentinel.</li><li>Future-proof assignments that will allow you to include future permissions and workloads.</li><li>A prerequisite for newly introduced offerings, such as Perception.</li></ul><p>This change applies to Microsoft Defender and Microsoft Sentinel. Permissions for Microsoft Purview, Exchange Online, Microsoft Entra directory roles, Privileged Identity Management, and Azure resources (not related to Microsoft Sentinel) remain unchanged. In addition, if you are using PowerShell with Microsoft Defender for Office 365, this will continue to work as is.</p><p>Workloads: The portal will identify which workloads will be enabled automatically and their activation dates.</p><p>How you will be notified:</p><ul><li>Notification banner: A notification will be displayed in the Microsoft Defender portal informing customers that the specified workload(s) will transition to the new RBAC model. Legacy roles are automatically imported. The notification banner and role import mark the beginning of the customer notification period before automatic activation.</li><li>Activation date: Beginning approximately 30 days after the notification date, the new Defender RBAC will be enabled automatically for the specified workload(s). Customers can review imported role assignments and prepare for the transition during this period.</li><li>The in-portal banner in the Microsoft Defender portal (‘Permissions and roles’ page) will confirm activation.</li></ul><p><b><b>Rollout Schedule:</b></b></p><p>Global: We will begin rolling out early December 2026 and expect to complete by late January 2027.</p><p><b><b>Impact on Your Organization:</b></b></p><ul><li>Your existing roles, if applicable, will be automatically imported into the new Defender RBAC. Because the new RBAC is not yet active on your tenant for the workloads indicated, this import has no operational impact until activation. You may review and adjust the imported roles at any time from the Microsoft Defender portal. You may also re-run the import manually. Existing roles and permissions are automatically mapped. For more information on mapping, please see <a href=\"https://learn.microsoft.com/en-us/defender-xdr/compare-rbac-roles\" rel=\"noopener noreferrer\" target=\"_blank\">here</a>.</li><li>At the end of the notification period, the new Defender RBAC will be activated automatically for the in-scope workload(s). After activation, authorization for Defender/Sentinel portal experiences defaults to the new RBAC roles; legacy role assignments are no longer required to operate those portal experiences.</li><li>Opt-out: Self-service opt-out is available after activation. Go to the ‘workload settings’ control in Defender RBAC to instantly revert to your legacy system if needed.</li><li>If you are using APIs to configure your roles and permissions, please transfer to using the new Defender RBAC <a href=\" https://learn.microsoft.com/en-us/graph/api/resources/rolemanagement?view=graph-rest-beta\" rel=\"noopener noreferrer\" target=\"_blank\">API</a></li><li>Delegated access (B2B/GDAP) or Multi-Tenant Management: remains unchanged. Roles that had assignments to B2B/GDAP users/groups will be included in the automatic import.</li><li>Entra directory roles are unchanged. Global Administrator, Security Administrator, Security Operator, and Security Reader continue to grant access to the Microsoft Defender portal as they do today. These roles will now map to Defender RBAC permissions as per the mapping referenced earlier. For more information on this mapping, please see here. https://learn.microsoft.com/en-us/defender-xdr/compare-rbac-roles</li><li>Azure RBAC continues to govern Azure resources, including Logic Apps and Workbooks. Microsoft Sentinel specific workspace permissions (Sentinel Reader, Responder, Contributor roles) do get enabled automatically to Defender RBAC.</li><li>Email and Collaboration permissions and Exchange Online permissions continue to govern Exchange Online and Microsoft Purview scenarios. They are no longer required to operate Microsoft Defender for Office 365 portal experiences once Defender RBAC is active.</li><li>Applicability for Microsoft Defender for Office 365: This update applies to organizations with Microsoft Defender for Office 365 Plan 2, whether licensed separately or included in an eligible subscription, such as Microsoft 365 E5.</li></ul><p><b><b>Action Required/Recommendations:</b></b></p><p>From the moment of the in-portal notification, review the auto-imported RBAC role assignments in the Microsoft Defender portal (Permissions -&gt; Roles). Validate that each user has the expected RBAC role and scope. Adjust assignments as needed. If any role assignments need to be updated, you can do so directly in the role assignment, even if Defender RBAC is not yet activated for that workload.</p><p>When using scoping: device groups continue to work as they do today. In addition, Defender RBAC allows you to use Cloud Scopes, Sentinel Scopes, and Identity Scopes.</p><p>Update internal documentation and runbooks to reflect the new RBAC model.</p><p>Additional information:</p><ul><li><a href=\"https://learn.microsoft.com/en-us/defender-xdr/manage-rbac\" rel=\"noopener noreferrer\" target=\"_blank\">Microsoft Defender RBAC overview</a></li><li><a href=\"Review and manage imported RBAC roles\" rel=\"noopener noreferrer\" target=\"_blank\">Review and manage imported RBAC roles</a></li></ul><p><b><b>Compliance considerations:</b></b></p><p>This update changes the permissions/access-control model for Microsoft Defender and Microsoft Sentinel only; Microsoft Purview, Exchange Online, Microsoft Entra directory roles, Privileged Identity Management, and Azure resource permissions are unchanged. Review imported role assignments against your organization change-management and access-governance requirements before activation.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft Defender RBAC will be auto-enabled in your tenant starting December 2026, unifying access management for Defender and Sentinel. Existing roles will be imported for review before activation about 30 days after notification. Adjust roles as needed; opt-out is available post-activation. Other Microsoft service permissions remain unchanged."
+          }
+        ],
+        "EndDateTime": "2027-03-02T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1537494",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-11-03T23:03:48.943Z",
+        "Services": [
+          "Microsoft Defender XDR"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-11-03T22:58:44Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Attention needed: Your tenant will be auto enabled for the new Microsoft Defender RBAC model",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

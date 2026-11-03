@@ -1,5 +1,301 @@
 [
   {
+    "Id": "AZ576382",
+    "Title": "Public Preview: JWT validation for Application Gateway for Containers",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-03T21:17:08.643Z",
+    "LastModifiedDateTime": "2026-11-03T21:17:08.643Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Application Gateway"
+    ],
+    "Tags": [
+      "Features"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>Application Gateway for Containers now supports centralized\nJSON Web Token validation through the AuthPolicy custom resource. Teams can\nvalidate a token signature, issuer, lifetime, and configured audience by using\nsigning keys retrieved from a trusted HTTPS JSON Web Key Set endpoint. Requests\nwith missing or invalid credentials are rejected at the gateway instead of\nbeing forwarded to the backend.&nbsp;</p><p>AuthPolicy can protect an ApplicationLoadBalancer, Gateway,\nHTTPRoute, GRPCRoute, or MCPRoute. Policies inherit through the resource\nhierarchy, while a more specific route-level policy can replace an inherited\npolicy or explicitly opt a route out. Optional OAuth Protected Resource\nMetadata helps OAuth-aware clients discover authorization servers and supported\nscopes.&nbsp;</p><ul><li>Apply consistent JWT\nvalidation to HTTP, gRPC, and MCP routes&nbsp;</li></ul><ul>\n <li>Use\n     Microsoft Entra ID or third-party identity providers that publish trusted\n     JWKS signing keys&nbsp;</li>\n <li>Combine\n     JWT validation with WAF so malicious traffic is inspected before\n     authentication&nbsp;</li>\n <li>Publish\n     OAuth resource metadata to enable authorization server discovery&nbsp;</li></ul><p>Learn more:&nbsp;</p><ul><li><a href=\"https://aka.ms/agc/jwtvalidation\" target=\"_blank\" rel=\"noopener\">JWT validation for Application Gateway\nfor Containers</a>&nbsp;</li><li><a href=\"https://aka.ms/agc/jwtvalidation/configure\" target=\"_blank\" rel=\"noopener\">Configure JWT validation for\nApplication Gateway for Containers - Gateway API</a>&nbsp;</li></ul><br>",
+      "Markdown": "Application Gateway for Containers now supports centralized\n\nJSON Web Token validation through the AuthPolicy custom resource. Teams can\n\nvalidate a token signature, issuer, lifetime, and configured audience by using\n\nsigning keys retrieved from a trusted HTTPS JSON Web Key Set endpoint. Requests\n\nwith missing or invalid credentials are rejected at the gateway instead of\n\nbeing forwarded to the backend.\n\nAuthPolicy can protect an ApplicationLoadBalancer, Gateway,\n\nHTTPRoute, GRPCRoute, or MCPRoute. Policies inherit through the resource\n\nhierarchy, while a more specific route-level policy can replace an inherited\n\npolicy or explicitly opt a route out. Optional OAuth Protected Resource\n\nMetadata helps OAuth-aware clients discover authorization servers and supported\n\nscopes.\n\nApply consistent JWT\n\nvalidation to HTTP, gRPC, and MCP routes\n\nUse\n\nMicrosoft Entra ID or third-party identity providers that publish trusted\n\nJWKS signing keys\n\nCombine\n\nJWT validation with WAF so malicious traffic is inspected before\n\nauthentication\n\nPublish\n\nOAuth resource metadata to enable authorization server discovery\n\nLearn more:\n\nJWT validation for Application Gateway\n\nfor Containers\n\nConfigure JWT validation for\n\nApplication Gateway for Containers - Gateway API"
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "576382"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=576382"
+      },
+      {
+        "Name": "Status",
+        "Value": "In preview"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "Preview"
+      },
+      {
+        "Name": "Availability",
+        "Value": "Preview: November 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Networking, Security"
+      }
+    ]
+  },
+  {
+    "Id": "AZ576388",
+    "Title": "Public Preview: MCP gateway for Application Gateway for Containers",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-03T21:16:36.396Z",
+    "LastModifiedDateTime": "2026-11-03T21:16:36.396Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Application Gateway"
+    ],
+    "Tags": [
+      "Features"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>Application Gateway for Containers now supports Model\nContext Protocol routing through the new MCPRoute custom resource. Platform\nteams can publish MCP servers behind a stable hostname and path while\ncentralizing TLS, JWT validation, Web Application Firewall protection, backend\nhealth monitoring, and routing policy at the gateway.&nbsp;</p><p>MCPRoute supports both direct routing to a single MCP\nserver and aggregation of multiple independent servers behind one logical\nendpoint. For aggregated deployments, Application Gateway for Containers merges\ntool, resource, and prompt discovery responses, namespaces capability names to\navoid collisions, and routes invocations to the backend that owns the selected\ncapability.&nbsp;</p><ul><li>Expose one governed\nendpoint for MCP clients and Kubernetes-hosted MCP servers&nbsp;</li><li>Aggregate capabilities from\nmultiple MCP servers&nbsp;&nbsp;</li><li>Session affinity for MCP\nservers that maintain in-memory session state&nbsp;</li><li>Apply JWT validation, WAF,\nbackend TLS, health checks, and cross-namespace references&nbsp;</li></ul><p>Learn more:&nbsp;</p><ul><li><a href=\"https://aka.ms/agc/mcpgateway\" target=\"_blank\" rel=\"noopener\">Model Context Protocol capabilities in\nApplication Gateway for Containers</a>&nbsp;</li><li><a href=\"https://aka.ms/agc/mcpgateway/configure\" target=\"_blank\" rel=\"noopener\">Configure Model Context Protocol\nrouting for Application Gateway for Containers</a>&nbsp;</li></ul>",
+      "Markdown": "Application Gateway for Containers now supports Model\n\nContext Protocol routing through the new MCPRoute custom resource. Platform\n\nteams can publish MCP servers behind a stable hostname and path while\n\ncentralizing TLS, JWT validation, Web Application Firewall protection, backend\n\nhealth monitoring, and routing policy at the gateway.\n\nMCPRoute supports both direct routing to a single MCP\n\nserver and aggregation of multiple independent servers behind one logical\n\nendpoint. For aggregated deployments, Application Gateway for Containers merges\n\ntool, resource, and prompt discovery responses, namespaces capability names to\n\navoid collisions, and routes invocations to the backend that owns the selected\n\ncapability.\n\nExpose one governed\n\nendpoint for MCP clients and Kubernetes-hosted MCP servers\n\nAggregate capabilities from\n\nmultiple MCP servers\n\nSession affinity for MCP\n\nservers that maintain in-memory session state\n\nApply JWT validation, WAF,\n\nbackend TLS, health checks, and cross-namespace references\n\nLearn more:\n\nModel Context Protocol capabilities in\n\nApplication Gateway for Containers\n\nConfigure Model Context Protocol\n\nrouting for Application Gateway for Containers"
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "576388"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=576388"
+      },
+      {
+        "Name": "Status",
+        "Value": "In preview"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "Preview"
+      },
+      {
+        "Name": "Availability",
+        "Value": "Preview: November 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Networking, Security"
+      }
+    ]
+  },
+  {
+    "Id": "AZ576393",
+    "Title": "Public Preview: Private ingress for Application Gateway for Containers",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-03T21:15:46.645Z",
+    "LastModifiedDateTime": "2026-11-03T21:15:46.645Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Application Gateway"
+    ],
+    "Tags": [
+      "Features"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>Application\nGateway for Containers now supports private frontends that are reachable only\nthrough approved Azure Private Link private endpoints. This enables\norganizations to keep internal applications, shared services, and cross-cluster\ntraffic on private connectivity while retaining Kubernetes-native Layer 7\nrouting, TLS, health probing, and Web Application Firewall capabilities.&nbsp;</p><p>Private ingress supports connectivity across virtual\nnetworks, subscriptions, Microsoft Entra tenants, and Azure regions without\nrequiring VNet peering. A single Application Gateway for Containers resource\ncan also host public and private frontends, allowing teams to use separate\nexposure models and security policies for different workloads.&nbsp;</p><ul><li>Remove the public IP\naddress and direct internet path from the frontend&nbsp;</li><li>Enforce access through\nexplicitly provisioned and approved private endpoints&nbsp;</li><li>&nbsp;Connect workloads across VNets, subscriptions,\ntenants, and regions, including environments with overlapping CIDR ranges&nbsp;&nbsp;</li><li>Place an Azure Firewall,\nnetwork virtual appliance, or another upstream service in front of Kubernetes\nworkloads&nbsp;</li></ul><p>Learn more: &nbsp;&nbsp;</p><ul><li><a href=\"http://aka.ms/agc/privateingress\" target=\"_blank\" rel=\"noopener\">Private ingress with Application\nGateway for Containers</a>&nbsp;&nbsp;</li><li><a href=\"https://aka.ms/agc/privateingress/configure\" target=\"_blank\" rel=\"noopener\">Configure private ingress\nwith Application Gateway for Containers - Gateway API</a>&nbsp;</li></ul>",
+      "Markdown": "Application\n\nGateway for Containers now supports private frontends that are reachable only\n\nthrough approved Azure Private Link private endpoints. This enables\n\norganizations to keep internal applications, shared services, and cross-cluster\n\ntraffic on private connectivity while retaining Kubernetes-native Layer 7\n\nrouting, TLS, health probing, and Web Application Firewall capabilities.\n\nPrivate ingress supports connectivity across virtual\n\nnetworks, subscriptions, Microsoft Entra tenants, and Azure regions without\n\nrequiring VNet peering. A single Application Gateway for Containers resource\n\ncan also host public and private frontends, allowing teams to use separate\n\nexposure models and security policies for different workloads.\n\nRemove the public IP\n\naddress and direct internet path from the frontend\n\nEnforce access through\n\nexplicitly provisioned and approved private endpoints\n\nConnect workloads across VNets, subscriptions,\n\ntenants, and regions, including environments with overlapping CIDR ranges\n\nPlace an Azure Firewall,\n\nnetwork virtual appliance, or another upstream service in front of Kubernetes\n\nworkloads\n\nLearn more:\n\nPrivate ingress with Application\n\nGateway for Containers\n\nConfigure private ingress\n\nwith Application Gateway for Containers - Gateway API"
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "576393"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=576393"
+      },
+      {
+        "Name": "Status",
+        "Value": "In preview"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "Preview"
+      },
+      {
+        "Name": "Availability",
+        "Value": "Preview: November 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Networking, Security"
+      }
+    ]
+  },
+  {
+    "Id": "AZ578655",
+    "Title": "Public Preview: Advanced capacity insights are now available in Azure Storage Discovery",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-03T20:20:29.260Z",
+    "LastModifiedDateTime": "2026-11-03T20:20:29.260Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Storage Accounts",
+      "Azure Storage Discovery"
+    ],
+    "Tags": [
+      "Feature"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>Advanced capacity insights are now available for preview in Azure Storage Discovery. Storage Discovery now provides greater visibility into storage usage through insights such as access patterns, data age, storage tiers, object size distribution, retention states, and versioning. With these insights, teams can identify opportunities, understand factors contributing to storage growth, and inform storage management decisions at scale.</p><p>Learn more:</p><ul><li><a href=\"https://go.microsoft.com/fwlink/?LinkId=2384105\" title=\"https://go.microsoft.com/fwlink/?linkid=2384105\" target=\"_blank\" rel=\"noopener\">Discover what's new with advanced capacity insights</a></li><li><a href=\"https://go.microsoft.com/fwlink/?LinkId=2384106\" title=\"https://go.microsoft.com/fwlink/?linkid=2384106\" target=\"_blank\" rel=\"noopener\">Explore advanced capacity insights and capabilities</a></li><li><a href=\"https://learn.microsoft.com/en-us/azure/storage-discovery/\" title=\"https://learn.microsoft.com/en-us/azure/storage-discovery/\" target=\"_blank\" rel=\"noopener\">Get started with Azure Storage Discovery</a></li></ul>",
+      "Markdown": "Advanced capacity insights are now available for preview in Azure Storage Discovery. Storage Discovery now provides greater visibility into storage usage through insights such as access patterns, data age, storage tiers, object size distribution, retention states, and versioning. With these insights, teams can identify opportunities, understand factors contributing to storage growth, and inform storage management decisions at scale.\n\nLearn more:\n\nDiscover what's new with advanced capacity insights\n\nExplore advanced capacity insights and capabilities\n\nGet started with Azure Storage Discovery"
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "578655"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=578655"
+      },
+      {
+        "Name": "Status",
+        "Value": "In preview"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "Preview"
+      },
+      {
+        "Name": "Availability",
+        "Value": "Preview: October 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Storage"
+      }
+    ]
+  },
+  {
+    "Id": "AZ579305",
+    "Title": "Public Preview: Extend immutability for PITR backups for Azure SQL Database and Azure SQL Managed Instance",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-03T18:36:12.919Z",
+    "LastModifiedDateTime": "2026-11-03T18:36:12.919Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Azure SQL Database",
+      "Azure SQL Managed Instance"
+    ],
+    "Tags": [
+      "Feature"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<div>With this enhancement, you have the ability to lock your retention to the configured PITR retention, beyond the default 7 days of immutable backups that are already available. This is especially useful for financial customers who typically have 35 days of PITR retention. The current default immutability is up to 7 days, and with this enhancement you can extend and lock immutability up to 35 days.<br></div>Once locked, only extensions to PITR retention are allowed. This setting is permanent for the life of the database.<br><p><a href=\"https://learn.microsoft.com/en-us/azure/azure-sql/automatic-backup-immutability?view=azuresql\" target=\"_blank\" rel=\"noopener\">Learn\nmore</a>.&nbsp;</p>",
+      "Markdown": "With this enhancement, you have the ability to lock your retention to the configured PITR retention, beyond the default 7 days of immutable backups that are already available. This is especially useful for financial customers who typically have 35 days of PITR retention. The current default immutability is up to 7 days, and with this enhancement you can extend and lock immutability up to 35 days.\n\nOnce locked, only extensions to PITR retention are allowed. This setting is permanent for the life of the database.\n\nLearn\n\nmore ."
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "579305"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=579305"
+      },
+      {
+        "Name": "Status",
+        "Value": "In preview"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "Preview"
+      },
+      {
+        "Name": "Availability",
+        "Value": "Preview: November 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Databases, Hybrid + multicloud"
+      }
+    ]
+  },
+  {
+    "Id": "AZ578926",
+    "Title": "Generally Available: Enhanced Azure Site Recovery support for VMSS Flex",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-03T18:32:01.621Z",
+    "LastModifiedDateTime": "2026-11-03T18:32:01.621Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Azure Site Recovery"
+    ],
+    "Tags": [
+      "Feature"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "Azure Site Recovery now offers an enhanced disaster recovery experience for virtual machines in Virtual Machine Scale Sets with flexible orchestration. The update improves target configuration and end-to-end recovery workflows, including failover, reprotection, and failback.<br><br><a href=\"https://aka.ms/asr-support-vmss-flex\" target=\"_blank\" rel=\"noopener\">Learn more</a>. <br>",
+      "Markdown": "Azure Site Recovery now offers an enhanced disaster recovery experience for virtual machines in Virtual Machine Scale Sets with flexible orchestration. The update improves target configuration and end-to-end recovery workflows, including failover, reprotection, and failback.\n\nLearn more ."
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "578926"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=578926"
+      },
+      {
+        "Name": "Status",
+        "Value": "Launched"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "General Availability"
+      },
+      {
+        "Name": "Availability",
+        "Value": "General Availability: October 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Management and governance, Migration"
+      }
+    ]
+  },
+  {
     "Id": "AZ577975",
     "Title": "Public Preview: On-prem NAS share discovery and assessment are now available using Azure Migrate",
     "Source": "azure",
@@ -19,8 +315,8 @@
     ],
     "Body": {
       "ContentType": "html",
-      "Content": "<p>Azure\nMigrate now supports discovery and assessment for network-attached storage,\nallowing customers and partners to plan migrations of Dell PowerScale (OneFS)\nand NetApp ONTAP storage to Azure. The Azure Migrate appliance connects\ndirectly to your NAS clusters using read-only credentials, inventories every\nSMB, NFS, and S3 share, and evaluates each share against Azure Files, Azure\nBlob Storage, and Azure NetApp Files.&nbsp;</p><p><b>Key benefits include:&nbsp;</b></p><ul><li>Discover Dell PowerScale/Isilon and NetApp ONTAP/FAS clusters\nand the shares they host&nbsp;</li><li>Group, tag, and filter NAS shares alongside your existing\nserver, application, and database inventory&nbsp;</li><li>Assess each share with readiness, a right-sized Azure target\nconfiguration, and monthly cost estimates&nbsp;</li><li>Generate a business case comparing Azure storage services\nagainst on-premises cost, and sequence moves using wave plans&nbsp;</li></ul><p>This capability replaces manual, spreadsheet-driven\nNAS planning with a verified per-share inventory and a defensible cost basis,\nespecially for large or multi-protocol storage estates.&nbsp;</p><p>NAS\nis often the largest and least-understood part of an on-premises estate.\nBringing NAS discovery and assessment into Azure Migrate means storage is\nplanned in the same project, and the same business case, as the servers and\napplications that depend on it.&nbsp;</p><p><b>Getting started:&nbsp;</b></p><a></a><a></a><a>To\nget started, update your Azure Migrate appliance, add your NAS cluster as a\ndiscovery source, and run an assessment directly from the Azure portal.</a> Write to us at <a href=\"mailto:azurestoragemigrations\" target=\"_blank\" rel=\"noopener\">azurestoragemigrations</a><a href=\"mailto:azurestoragemigrations@microsoft.com\" target=\"_blank\" rel=\"noopener\">@microsoft.</a><a href=\"mailto:azurestoragemigrations@microsoft.com\" target=\"_blank\" rel=\"noopener\">com</a> with questions or feedback.&nbsp;<br><p><a href=\"https://learn.microsoft.com/en-us/azure/migrate/add-server-credentials?view=migrate\" target=\"_blank\" rel=\"noopener\">Learn\nmore</a>.&nbsp;</p><br>",
-      "Markdown": "Azure\n\nMigrate now supports discovery and assessment for network-attached storage,\n\nallowing customers and partners to plan migrations of Dell PowerScale (OneFS)\n\nand NetApp ONTAP storage to Azure. The Azure Migrate appliance connects\n\ndirectly to your NAS clusters using read-only credentials, inventories every\n\nSMB, NFS, and S3 share, and evaluates each share against Azure Files, Azure\n\nBlob Storage, and Azure NetApp Files.\n\nKey benefits include:\n\nDiscover Dell PowerScale/Isilon and NetApp ONTAP/FAS clusters\n\nand the shares they host\n\nGroup, tag, and filter NAS shares alongside your existing\n\nserver, application, and database inventory\n\nAssess each share with readiness, a right-sized Azure target\n\nconfiguration, and monthly cost estimates\n\nGenerate a business case comparing Azure storage services\n\nagainst on-premises cost, and sequence moves using wave plans\n\nThis capability replaces manual, spreadsheet-driven\n\nNAS planning with a verified per-share inventory and a defensible cost basis,\n\nespecially for large or multi-protocol storage estates.\n\nNAS\n\nis often the largest and least-understood part of an on-premises estate.\n\nBringing NAS discovery and assessment into Azure Migrate means storage is\n\nplanned in the same project, and the same business case, as the servers and\n\napplications that depend on it.\n\nGetting started:\n\nTo\n\nget started, update your Azure Migrate appliance, add your NAS cluster as a\n\ndiscovery source, and run an assessment directly from the Azure portal. Write to us at azurestoragemigrations @microsoft. com with questions or feedback.\n\nLearn\n\nmore ."
+      "Content": "<p>Azure\nMigrate now supports discovery and assessment for network-attached storage,\nallowing customers and partners to plan migrations of Dell PowerScale (OneFS)\nand NetApp ONTAP storage to Azure. The Azure Migrate appliance connects\ndirectly to your NAS clusters using read-only credentials, inventories every\nSMB, NFS, and S3 share, and evaluates each share against Azure Files, Azure\nBlob Storage, and Azure NetApp Files.&nbsp;</p><p><b>Key benefits include:&nbsp;</b></p><ul><li>Discover Dell PowerScale/Isilon and NetApp ONTAP/FAS clusters\nand the shares they host&nbsp;</li><li>Group, tag, and filter NAS shares alongside your existing\nserver, application, and database inventory&nbsp;</li><li>Assess each share with readiness, a right-sized Azure target\nconfiguration, and monthly cost estimates&nbsp;</li><li>Generate a business case comparing Azure storage services\nagainst on-premises cost, and sequence moves using wave plans&nbsp;</li></ul><p>This capability replaces manual, spreadsheet-driven\nNAS planning with a verified per-share inventory and a defensible cost basis,\nespecially for large or multi-protocol storage estates.&nbsp;</p><p>NAS\nis often the largest and least-understood part of an on-premises estate.\nBringing NAS discovery and assessment into Azure Migrate means storage is\nplanned in the same project, and the same business case, as the servers and\napplications that depend on it.&nbsp;</p><p><b>Getting started:&nbsp;</b></p><a></a><a></a><a>To\nget started, update your Azure Migrate appliance, add your NAS cluster as a\ndiscovery source, and run an assessment directly from the Azure portal.</a> Write to us at azurestoragemigrations@microsoft.com&nbsp;with questions or feedback.&nbsp;<br><p><a href=\"https://learn.microsoft.com/en-us/azure/migrate/add-server-credentials?view=migrate\" target=\"_blank\" rel=\"noopener\">Learn\nmore</a>.&nbsp;</p>",
+      "Markdown": "Azure\n\nMigrate now supports discovery and assessment for network-attached storage,\n\nallowing customers and partners to plan migrations of Dell PowerScale (OneFS)\n\nand NetApp ONTAP storage to Azure. The Azure Migrate appliance connects\n\ndirectly to your NAS clusters using read-only credentials, inventories every\n\nSMB, NFS, and S3 share, and evaluates each share against Azure Files, Azure\n\nBlob Storage, and Azure NetApp Files.\n\nKey benefits include:\n\nDiscover Dell PowerScale/Isilon and NetApp ONTAP/FAS clusters\n\nand the shares they host\n\nGroup, tag, and filter NAS shares alongside your existing\n\nserver, application, and database inventory\n\nAssess each share with readiness, a right-sized Azure target\n\nconfiguration, and monthly cost estimates\n\nGenerate a business case comparing Azure storage services\n\nagainst on-premises cost, and sequence moves using wave plans\n\nThis capability replaces manual, spreadsheet-driven\n\nNAS planning with a verified per-share inventory and a defensible cost basis,\n\nespecially for large or multi-protocol storage estates.\n\nNAS\n\nis often the largest and least-understood part of an on-premises estate.\n\nBringing NAS discovery and assessment into Azure Migrate means storage is\n\nplanned in the same project, and the same business case, as the servers and\n\napplications that depend on it.\n\nGetting started:\n\nTo\n\nget started, update your Azure Migrate appliance, add your NAS cluster as a\n\ndiscovery source, and run an assessment directly from the Azure portal. Write to us at azurestoragemigrations@microsoft.com with questions or feedback.\n\nLearn\n\nmore ."
     },
     "Details": [
       {
@@ -231,153 +527,6 @@
       {
         "Name": "ProductCategories",
         "Value": "Storage, Analytics"
-      }
-    ]
-  },
-  {
-    "Id": "AZ576382",
-    "Title": "Public Preview: JWT validation for Application Gateway for Containers",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2026-11-02T18:11:23.280Z",
-    "LastModifiedDateTime": "2026-11-02T18:11:23.280Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Application Gateway"
-    ],
-    "Tags": [
-      "Features"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<p>Application Gateway for Containers now supports centralized\nJSON Web Token validation through the AuthPolicy custom resource. Teams can\nvalidate a token signature, issuer, lifetime, and configured audience by using\nsigning keys retrieved from a trusted HTTPS JSON Web Key Set endpoint. Requests\nwith missing or invalid credentials are rejected at the gateway instead of\nbeing forwarded to the backend.&nbsp;</p><p>AuthPolicy can protect an ApplicationLoadBalancer, Gateway,\nHTTPRoute, GRPCRoute, or MCPRoute. Policies inherit through the resource\nhierarchy, while a more specific route-level policy can replace an inherited\npolicy or explicitly opt a route out. Optional OAuth Protected Resource\nMetadata helps OAuth-aware clients discover authorization servers and supported\nscopes.&nbsp;</p><ul><li>Apply consistent JWT\nvalidation to HTTP, gRPC, and MCP routes&nbsp;</li></ul><ul>\n <li>Use\n     Microsoft Entra ID or third-party identity providers that publish trusted\n     JWKS signing keys&nbsp;</li>\n <li>Combine\n     JWT validation with WAF so malicious traffic is inspected before\n     authentication&nbsp;</li>\n <li>Publish\n     OAuth resource metadata to enable authorization server discovery&nbsp;</li></ul><p>Learn more:&nbsp;</p><ul><li><a href=\"https://aka.ms/agc/jwtvalidation\" target=\"_blank\" rel=\"noopener\">JWT validation for Application Gateway\nfor Containers</a>&nbsp;</li><li><a href=\"https://aka.ms/agc/jwtvalidation/configure\" target=\"_blank\" rel=\"noopener\">Configure JWT validation for\nApplication Gateway for Containers - Gateway API</a>&nbsp;</li></ul><br>",
-      "Markdown": "Application Gateway for Containers now supports centralized\n\nJSON Web Token validation through the AuthPolicy custom resource. Teams can\n\nvalidate a token signature, issuer, lifetime, and configured audience by using\n\nsigning keys retrieved from a trusted HTTPS JSON Web Key Set endpoint. Requests\n\nwith missing or invalid credentials are rejected at the gateway instead of\n\nbeing forwarded to the backend.\n\nAuthPolicy can protect an ApplicationLoadBalancer, Gateway,\n\nHTTPRoute, GRPCRoute, or MCPRoute. Policies inherit through the resource\n\nhierarchy, while a more specific route-level policy can replace an inherited\n\npolicy or explicitly opt a route out. Optional OAuth Protected Resource\n\nMetadata helps OAuth-aware clients discover authorization servers and supported\n\nscopes.\n\nApply consistent JWT\n\nvalidation to HTTP, gRPC, and MCP routes\n\nUse\n\nMicrosoft Entra ID or third-party identity providers that publish trusted\n\nJWKS signing keys\n\nCombine\n\nJWT validation with WAF so malicious traffic is inspected before\n\nauthentication\n\nPublish\n\nOAuth resource metadata to enable authorization server discovery\n\nLearn more:\n\nJWT validation for Application Gateway\n\nfor Containers\n\nConfigure JWT validation for\n\nApplication Gateway for Containers - Gateway API"
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "576382"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=576382"
-      },
-      {
-        "Name": "Status",
-        "Value": "In preview"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "Preview"
-      },
-      {
-        "Name": "Availability",
-        "Value": "Preview: November 2026"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Networking, Security"
-      }
-    ]
-  },
-  {
-    "Id": "AZ576388",
-    "Title": "Public Preview: MCP gateway for Application Gateway for Containers",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2026-11-02T18:09:01.849Z",
-    "LastModifiedDateTime": "2026-11-02T18:09:01.849Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Application Gateway"
-    ],
-    "Tags": [
-      "Features"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<p>Application Gateway for Containers now supports Model\nContext Protocol routing through the new MCPRoute custom resource. Platform\nteams can publish MCP servers behind a stable hostname and path while\ncentralizing TLS, JWT validation, Web Application Firewall protection, backend\nhealth monitoring, and routing policy at the gateway.&nbsp;</p><p>MCPRoute supports both direct routing to a single MCP\nserver and aggregation of multiple independent servers behind one logical\nendpoint. For aggregated deployments, Application Gateway for Containers merges\ntool, resource, and prompt discovery responses, namespaces capability names to\navoid collisions, and routes invocations to the backend that owns the selected\ncapability.&nbsp;</p><ul><li>Expose one governed\nendpoint for MCP clients and Kubernetes-hosted MCP servers&nbsp;</li><li>Aggregate capabilities from\nmultiple MCP servers&nbsp;&nbsp;</li><li>Session affinity for MCP\nservers that maintain in-memory session state&nbsp;</li><li>Apply JWT validation, WAF,\nbackend TLS, health checks, and cross-namespace references&nbsp;</li></ul><p>Learn more:&nbsp;</p><ul><li><a href=\"https://aka.ms/agc/mcpgateway\" target=\"_blank\" rel=\"noopener\">Model Context Protocol capabilities in\nApplication Gateway for Containers</a>&nbsp;</li><li><a href=\"https://aka.ms/agc/mcpgateway/configure\" target=\"_blank\" rel=\"noopener\">Configure Model Context Protocol\nrouting for Application Gateway for Containers</a>&nbsp;</li></ul>",
-      "Markdown": "Application Gateway for Containers now supports Model\n\nContext Protocol routing through the new MCPRoute custom resource. Platform\n\nteams can publish MCP servers behind a stable hostname and path while\n\ncentralizing TLS, JWT validation, Web Application Firewall protection, backend\n\nhealth monitoring, and routing policy at the gateway.\n\nMCPRoute supports both direct routing to a single MCP\n\nserver and aggregation of multiple independent servers behind one logical\n\nendpoint. For aggregated deployments, Application Gateway for Containers merges\n\ntool, resource, and prompt discovery responses, namespaces capability names to\n\navoid collisions, and routes invocations to the backend that owns the selected\n\ncapability.\n\nExpose one governed\n\nendpoint for MCP clients and Kubernetes-hosted MCP servers\n\nAggregate capabilities from\n\nmultiple MCP servers\n\nSession affinity for MCP\n\nservers that maintain in-memory session state\n\nApply JWT validation, WAF,\n\nbackend TLS, health checks, and cross-namespace references\n\nLearn more:\n\nModel Context Protocol capabilities in\n\nApplication Gateway for Containers\n\nConfigure Model Context Protocol\n\nrouting for Application Gateway for Containers"
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "576388"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=576388"
-      },
-      {
-        "Name": "Status",
-        "Value": "In preview"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "Preview"
-      },
-      {
-        "Name": "Availability",
-        "Value": "Preview: November 2026"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Networking, Security"
-      }
-    ]
-  },
-  {
-    "Id": "AZ576393",
-    "Title": "Public Preview: Private ingress for Application Gateway for Containers",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2026-11-02T18:06:52.121Z",
-    "LastModifiedDateTime": "2026-11-02T18:06:52.121Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Application Gateway"
-    ],
-    "Tags": [
-      "Features"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<p>Application\nGateway for Containers now supports private frontends that are reachable only\nthrough approved Azure Private Link private endpoints. This enables\norganizations to keep internal applications, shared services, and cross-cluster\ntraffic on private connectivity while retaining Kubernetes-native Layer 7\nrouting, TLS, health probing, and Web Application Firewall capabilities.&nbsp;</p><p>Private ingress supports connectivity across virtual\nnetworks, subscriptions, Microsoft Entra tenants, and Azure regions without\nrequiring VNet peering. A single Application Gateway for Containers resource\ncan also host public and private frontends, allowing teams to use separate\nexposure models and security policies for different workloads.&nbsp;</p><ul><li>Remove the public IP\naddress and direct internet path from the frontend&nbsp;</li><li>Enforce access through\nexplicitly provisioned and approved private endpoints&nbsp;</li><li>&nbsp;Connect workloads across VNets, subscriptions,\ntenants, and regions, including environments with overlapping CIDR ranges&nbsp;&nbsp;</li><li>Place an Azure Firewall,\nnetwork virtual appliance, or another upstream service in front of Kubernetes\nworkloads&nbsp;</li></ul><p>Learn more: &nbsp;&nbsp;</p><ul><li><a href=\"http://aka.ms/agc/privateingress\" target=\"_blank\" rel=\"noopener\">Private ingress with Application\nGateway for Containers</a>&nbsp;&nbsp;</li><li><a href=\"https://aka.ms/agc/privateingress/configure\" target=\"_blank\" rel=\"noopener\">Configure private ingress\nwith Application Gateway for Containers - Gateway API</a>&nbsp;</li></ul>",
-      "Markdown": "Application\n\nGateway for Containers now supports private frontends that are reachable only\n\nthrough approved Azure Private Link private endpoints. This enables\n\norganizations to keep internal applications, shared services, and cross-cluster\n\ntraffic on private connectivity while retaining Kubernetes-native Layer 7\n\nrouting, TLS, health probing, and Web Application Firewall capabilities.\n\nPrivate ingress supports connectivity across virtual\n\nnetworks, subscriptions, Microsoft Entra tenants, and Azure regions without\n\nrequiring VNet peering. A single Application Gateway for Containers resource\n\ncan also host public and private frontends, allowing teams to use separate\n\nexposure models and security policies for different workloads.\n\nRemove the public IP\n\naddress and direct internet path from the frontend\n\nEnforce access through\n\nexplicitly provisioned and approved private endpoints\n\nConnect workloads across VNets, subscriptions,\n\ntenants, and regions, including environments with overlapping CIDR ranges\n\nPlace an Azure Firewall,\n\nnetwork virtual appliance, or another upstream service in front of Kubernetes\n\nworkloads\n\nLearn more:\n\nPrivate ingress with Application\n\nGateway for Containers\n\nConfigure private ingress\n\nwith Application Gateway for Containers - Gateway API"
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "576393"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=576393"
-      },
-      {
-        "Name": "Status",
-        "Value": "In preview"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "Preview"
-      },
-      {
-        "Name": "Availability",
-        "Value": "Preview: November 2026"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Networking, Security"
       }
     ]
   },
