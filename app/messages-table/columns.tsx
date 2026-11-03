@@ -18,6 +18,7 @@ import { siteConfig } from "@/config/site"
 import { getDisplayId } from "@/lib/message-format"
 import { useZapCount } from "@/lib/use-zap-counts"
 import { zapLinks } from "@/lib/zap"
+import { ProductIcon } from "@/components/product-icon"
 import { SeenOnlyInBadge } from "@/components/seen-only-in-badge"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -265,7 +266,12 @@ export const columns: ColumnDef<MessageView>[] = [
       return (
         <div className="space-y-0.5 text-center leading-7">
           {row.original.service?.map((service) => (
-            <Badge key={service} variant="secondary" className="text-nowrap">
+            <Badge
+              key={service}
+              variant="secondary"
+              className="gap-1.5 text-nowrap pl-1.5"
+            >
+              <ProductIcon service={service} />
               {service}
             </Badge>
           ))}

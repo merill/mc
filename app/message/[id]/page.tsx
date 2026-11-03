@@ -48,6 +48,12 @@ export async function generateMetadata(
   const url = `/message/${id}`
   const sourceLabel = getMessageSourceLabel(msg)
   const tags = [...(msg?.Services || []), ...(msg?.Tags || [])].filter(Boolean)
+  // The post's own share card, drawn by zap on this site's /zap route. `v`
+  // changes when the post does, so platforms fetch a fresh card.
+  const modified = Date.parse(msg?.LastModifiedDateTime ?? "")
+  const image = Number.isFinite(modified)
+    ? `/zap/og/${id}.png?v=${Math.floor(modified / 1000)}`
+    : "/og-default.png"
 
   return {
     title,
@@ -67,7 +73,7 @@ export async function generateMetadata(
       tags,
       images: [
         {
-          url: "/og-default.png",
+          url: image,
           width: 1200,
           height: 630,
           alt: title,
@@ -79,7 +85,7 @@ export async function generateMetadata(
       title,
       description,
       creator: "@merill",
-      images: ["/og-default.png"],
+      images: [image],
     },
   }
 }

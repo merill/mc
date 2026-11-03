@@ -36,6 +36,7 @@ import {
   type SearchHit,
   type SearchSortKey,
 } from "@/lib/search"
+import { SERVICE_GROUPS, serviceGroup } from "@/lib/product-icons"
 import { useZapCounts } from "@/lib/use-zap-counts"
 import {
   DEFAULT_VIEW,
@@ -44,6 +45,7 @@ import {
   inView,
   type ViewSettings,
 } from "@/lib/views"
+import { ProductIcon } from "@/components/product-icon"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -182,6 +184,30 @@ export function DataTable<TData, TValue>({
 
     return services.filter((service) => service.toLowerCase().includes(search))
   }, [serviceSearch, services])
+  // Posts per service across everything loaded, for the filter's counts.
+  const serviceCounts = React.useMemo(() => {
+    const counts: Record<string, number> = {}
+    for (const item of allData as MessageView[]) {
+      for (const service of item.service ?? []) {
+        counts[service] = (counts[service] ?? 0) + 1
+      }
+    }
+    return counts
+  }, [allData])
+  // Grouped under headings while browsing; one flat list while searching.
+  const serviceSections = React.useMemo(() => {
+    if (serviceSearch.trim()) {
+      return filteredServices.length
+        ? [{ label: null, services: filteredServices }]
+        : []
+    }
+    return SERVICE_GROUPS.map((group) => ({
+      label: group.label,
+      services: filteredServices.filter(
+        (service) => serviceGroup(service) === group.id
+      ),
+    })).filter((section) => section.services.length > 0)
+  }, [filteredServices, serviceSearch])
   // Everything the list is showing now, as one view.
   const viewSettings = React.useMemo<ViewSettings>(() => {
     const column = sorting[0]
@@ -671,33 +697,48 @@ export function DataTable<TData, TValue>({
                     </button>
                   </div>
                 )}
-                <div className="max-h-72 overflow-y-auto p-1">
-                  {filteredServices.length ? (
-                    filteredServices.map((service) => {
-                      const isSelected = selectedServices.includes(service)
+                <div className="max-h-80 overflow-y-auto p-1">
+                  {serviceSections.length ? (
+                    serviceSections.map((section) => (
+                      <div key={section.label ?? "results"}>
+                        {section.label && (
+                          <div className="px-2 pb-1 pt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                            {section.label}
+                          </div>
+                        )}
+                        {section.services.map((service) => {
+                          const isSelected = selectedServices.includes(service)
 
-                      return (
-                        <button
-                          key={service}
-                          type="button"
-                          className="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-left text-sm hover:bg-accent hover:text-accent-foreground"
-                          onClick={() => toggleService(service)}
-                        >
-                          <span
-                            className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border ${
-                              isSelected
-                                ? "bg-primary text-primary-foreground"
-                                : "bg-background"
-                            }`}
-                          >
-                            {isSelected && <Check size={12} />}
-                          </span>
-                          <span className="min-w-0 flex-1 truncate">
-                            {service}
-                          </span>
-                        </button>
-                      )
-                    })
+                          return (
+                            <button
+                              key={service}
+                              type="button"
+                              className="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-left text-sm hover:bg-accent hover:text-accent-foreground"
+                              onClick={() => toggleService(service)}
+                            >
+                              <span
+                                className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border ${
+                                  isSelected
+                                    ? "bg-primary text-primary-foreground"
+                                    : "bg-background"
+                                }`}
+                              >
+                                {isSelected && <Check size={12} />}
+                              </span>
+                              <ProductIcon service={service} />
+                              <span className="min-w-0 flex-1 truncate">
+                                {service}
+                              </span>
+                              {serviceCounts[service] ? (
+                                <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
+                                  {serviceCounts[service].toLocaleString()}
+                                </span>
+                              ) : null}
+                            </button>
+                          )
+                        })}
+                      </div>
+                    ))
                   ) : (
                     <div className="px-2 py-6 text-center text-sm text-muted-foreground">
                       No services found.
