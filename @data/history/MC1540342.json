@@ -1,0 +1,46 @@
+{
+  "id": "MC1540342",
+  "versions": [
+    {
+      "capturedAt": "2026-11-05T21:18:24.483Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<p><b><b>What and why:</b></b></p><p>Microsoft is updating the Exchange Online Admin API v2.0 MailboxFolderPermission endpoint to return the User property as a structured object instead of a display-name string. The new response includes DisplayName, Name, and PrimarySmtpAddress, helping applications more reliably identify users with similar or identical display names and supporting mailbox folder permission management and EWS migration scenarios.</p><p><b><b>Rollout schedule:</b></b></p><ul><li>Rollout will begin and is expected to complete in early November 2026.</li></ul><p><b><b>Impact on your organization:</b></b></p><p><b>Who is affected:</b> Organizations with applications or third-party solutions that use the Exchange Online Admin API v2.0 MailboxFolderPermission endpoint and process the User property.</p><p><b>Platforms/Services:</b> Exchange Online Admin API v2.0, specifically the MailboxFolderPermission endpoint.</p><p><b>What will happen:</b></p><ul><li>The User property will change from a string to a structured object.</li><li>The object will contain DisplayName, Name, and PrimarySmtpAddress.</li><li>The endpoint URL and API version will not change.</li><li>Applications that expect User to be a string may experience parsing errors or unexpected behavior after the change.</li><li>Applications can use PrimarySmtpAddress to more reliably distinguish between users with similar display names.</li></ul><p><b>Current response:</b></p><p><code>{</code></p><p><code>&nbsp;&nbsp;\"User\": \"&lt;display name&gt;\"</code></p><p><code>}</code></p><p><b>New response:</b></p><p><code>{</code></p><p><code>&nbsp;&nbsp;\"User\": {</code></p><p><code>&nbsp;&nbsp;&nbsp;&nbsp;\"DisplayName\": \"...\",</code></p><p><code>&nbsp;&nbsp;&nbsp;&nbsp;\"Name\": \"...\",</code></p><p><code>&nbsp;&nbsp;&nbsp;&nbsp;\"PrimarySmtpAddress\": \"...\"</code></p><p><code>&nbsp;&nbsp;}</code></p><p><code>}</code></p><p><b><b>Action required/recommendations:</b></b></p><p><b>Action is required if your organization uses the MailboxFolderPermission endpoint and processes the User property. Before rollout:</b></p><ul><li>Review applications that read or process the User property.</li><li>Update response handling to process User as a structured object instead of a string.</li><li>Where appropriate, use PrimarySmtpAddress to identify the user associated with a mailbox folder permission.</li><li>Test permission retrieval, user identification, and mailbox folder permission management workflows.</li><li>Update dependent integrations that store, consume, or forward the User property.</li><li>If you use a third-party solution that manages mailbox folder permissions, contact the solution provider to determine whether an update is required.</li><li>For more information, see <a href=\"https://learn.microsoft.com/en-us/exchange/reference/admin-api-overview\" rel=\"noopener noreferrer\" target=\"_blank\">Exchange Online Admin API overview</a>.</li></ul><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+          "ContentType": "html"
+        },
+        "Category": "planForChange",
+        "Details": [
+          {
+            "Name": "Summary",
+            "Value": "Microsoft will update the Exchange Online Admin API v2.0 MailboxFolderPermission endpoint to return the User property as a structured object with DisplayName, Name, and PrimarySmtpAddress by early November 2026. Organizations must update applications to handle this change to avoid errors."
+          }
+        ],
+        "EndDateTime": "2027-01-25T08:00:00Z",
+        "HasAttachments": false,
+        "Id": "MC1540342",
+        "IsMajorChange": false,
+        "LastModifiedDateTime": "2026-11-05T21:18:24.483Z",
+        "Services": [
+          "Exchange Online"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-11-05T21:17:58Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Action required: Exchange Online Admin API MailboxFolderPermission response update",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}

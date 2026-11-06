@@ -1,0 +1,38 @@
+{
+  "ActionRequiredByDateTime": null,
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and Why:</b></b></p><p>Microsoft is updating the authorization model for Exchange Online Admin API v2.0 by introducing dedicated API permissions. This change provides a clearer permission model for applications accessing Exchange Online administrative endpoints and supports the ongoing modernization of Exchange Online administration, including migration from Exchange Web Services (EWS).</p><p>The Exchange Online Admin API v2.0 endpoints are not being retired. Only the permissions used to access them are changing:</p><ul><li>Exchange.ManageV2 is being replaced by Exchange.AdminAPI.Manage.</li><li>Exchange.ManageAsAppV2 is being replaced by Exchange.AdminAPI.ManageAsApp.</li></ul><p>Applications using the affected permissions must transition to the corresponding new permissions to maintain uninterrupted access.</p><p><b><b>Rollout Schedule:</b></b></p><ul><li>Worldwide: New permissions become available November 1, 2026. Complete migration by November 30, 2026. Existing permissions are deprecated December 1, 2026.</li><li>GCC, GCC High, DoD: Rollout begins in November 2026, with existing permissions deprecated January 1, 2027.</li></ul><p><b><b>Impact on Your Organization:</b></b></p><p><b>Who is affected:</b></p><p>This change affects organizations that develop, own, or manage applications accessing Exchange Online Admin API v2.0 using Exchange.ManageV2 for delegated access or Exchange.ManageAsAppV2 for application-only access. If your organization does not use either permission, no action is required.</p><p><b>Platforms/Services:</b></p><ul><li>Exchange Online</li><li>Exchange Online Admin API v2.0</li><li>Microsoft Entra application permission and consent configuration</li></ul><p><b>What will happen:</b></p><ul><li>Applications must transition to Exchange.AdminAPI.Manage or Exchange.AdminAPI.ManageAsApp, as applicable.</li><li>Administrators must grant consent to the new permissions where required.</li><li>Existing Exchange Online RBAC requirements continue to apply.</li><li>Exchange Online Admin API v2.0 endpoint URLs, API version, and supported operations are not changing as a result of this update.</li><li>Applications relying exclusively on the retired permissions after the applicable deprecation date will no longer be able to access the APIs.</li></ul><p><b>Action Required/Recommendations:</b></p><ol><li><b>Identify affected applications.</b> Review applications using Exchange.ManageV2 or Exchange.ManageAsAppV2.</li><li><b>Configure the new permissions.</b> Add the corresponding Exchange.AdminAPI.Manage or Exchange.AdminAPI.ManageAsApp permission.</li><li><b>Grant administrator consent.</b> Ensure the required new permissions are approved.</li><li><b>Verify Exchange RBAC assignments.</b> Confirm that the application or delegated user has the necessary Exchange roles.</li><li><b>Validate API functionality.</b> Test affected workflows using the new permissions before removing the existing permissions.</li><li><b>Remove the retired permissions.</b> After successful validation, remove the old permissions from the application configuration.</li><li><b>Update explicit permission references.</b> Update configurations, scripts, or consent workflows that reference the existing permission names.</li><li><b>Check third-party applications.</b> Contact your application provider to determine whether an update is required.</li></ol><p>For more information, see <a href=\"https://learn.microsoft.com/en-us/exchange/reference/admin-api-authentication\" rel=\"noopener noreferrer\" target=\"_blank\">Authentication and authorization for the Exchange Online Admin API</a>.</p><p><b><b>Compliance considerations:</b></b></p><p>No compliance considerations identified, review as appropriate for your organization.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Microsoft is updating Exchange Online Admin API v2.0 permissions, replacing Exchange.ManageV2 and Exchange.ManageAsAppV2 with new permissions by November 2026. Affected applications must transition, obtain admin consent, verify RBAC roles, test, and remove old permissions to maintain access. No endpoint changes occur."
+    }
+  ],
+  "EndDateTime": "2027-01-25T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1540345",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2026-11-05T21:20:57.4Z",
+  "Services": [
+    "Exchange Online"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-11-05T21:20:43Z",
+  "Tags": [
+    "Admin impact",
+    "Retirement"
+  ],
+  "Title": "Action required: Update permissions for Exchange Online Admin API",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
