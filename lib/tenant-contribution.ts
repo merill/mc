@@ -63,6 +63,7 @@ export const tenantTypeSuggestions = [
 // and verified contributors. Kept by hand: update it when a tenant with
 // something new is added to mc-tenants.
 export const coveredLicenses = [
+  "Microsoft 365 E7 (production)",
   "Microsoft 365 E5 (Developer Program)",
   "Microsoft 365 Business Premium",
   "Microsoft 365 Business Basic",
@@ -77,7 +78,7 @@ export const coveredLicenses = [
 
 // Gaps worth filling: posts sent only to these tenants are likely missing.
 export const wantedLicenses = [
-  "Microsoft 365 or Office 365 E3 and E5 (production, not Developer Program)",
+  "Microsoft 365 or Office 365 E3 (production)",
   "Microsoft 365 F1 and F3 (frontline)",
   "Government (GCC)",
   "Nonprofit",

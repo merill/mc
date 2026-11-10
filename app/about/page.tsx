@@ -212,6 +212,15 @@ export default function AboutPage() {
               : null}
           </p>
           <p>
+            The archive already reads tenants with Microsoft 365 E7 and E5,
+            Business Premium and Business Basic, and education (A1 and A5)
+            licenses.{" "}
+            <Link className="readable-link" href="/contribute#coverage">
+              See every license covered and the ones still wanted
+            </Link>
+            .
+          </p>
+          <p>
             If you manage a tenant, you can let the archive read its Message
             Center. It is read-only, takes about five minutes, and there is no
             password or secret to share.
@@ -257,6 +266,21 @@ export default function AboutPage() {
           <IconTitle icon={History}>Release notes</IconTitle>
         </CardHeader>
         <CardContent className="readable-card-content space-y-5">
+          <div>
+            <h2 className="mb-3 text-xl font-semibold text-foreground">
+              November 11, 2026
+            </h2>
+            <ul>
+              <li>
+                The archive now also reads a Microsoft 365 E7 tenant. The{" "}
+                <Link className="readable-link" href="/contribute#coverage">
+                  Contribute your tenant
+                </Link>{" "}
+                page lists it as covered, and the About page now names the main
+                tenant types already covered.
+              </li>
+            </ul>
+          </div>
           <div>
             <h2 className="mb-3 text-xl font-semibold text-foreground">
               November 3, 2026
