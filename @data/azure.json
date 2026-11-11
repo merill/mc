@@ -1,5 +1,55 @@
 [
   {
+    "Id": "AZ580155",
+    "Title": "Public Preview: Rate limit grouping for Azure Front Door Premium WAF",
+    "Source": "azure",
+    "Category": "azure",
+    "Severity": "normal",
+    "IsMajorChange": false,
+    "StartDateTime": "2026-11-11T18:18:27.669Z",
+    "LastModifiedDateTime": "2026-11-11T18:18:27.669Z",
+    "EndDateTime": null,
+    "ActionRequiredByDateTime": null,
+    "Services": [
+      "Azure Front Door",
+      "Web Application Firewall"
+    ],
+    "Tags": [
+      "Features"
+    ],
+    "Body": {
+      "ContentType": "html",
+      "Content": "<p>Announcing the public preview\nof rate limit grouping for Azure Web Application Firewall (WAF) on Azure Front\nDoor Premium.&nbsp;</p><p>By default, a rate limit rule counts requests separately for\neach client IP address. Distributed attacks get around this by spreading their\ntraffic across thousands of IP addresses, so that each one stays under the\nthreshold. Rate limit grouping adds new group-by options that count requests by\nan attribute those clients share, so traffic from many IP addresses counts\ntoward a single threshold.&nbsp;</p><p>&nbsp;With this preview, you can group each rate limit rule by:&nbsp;</p><ul><li>JA4 fingerprint, to limit\nattacks that rotate through many IP addresses but reuse the same client\nsoftware.&nbsp;</li><li>AS number, to cap traffic\nfrom networks your users don't usually come from, such as hosting and cloud\nproviders, without maintaining lists of their IP ranges.&nbsp;</li><li>Country/region, to cap the\ntraffic that any single country or region can send.&nbsp;</li></ul><p>You can also choose None to count all requests that match a\nrule together, for example to cap the total request rate to a sign-in page.\nExisting rate limit rules keep counting requests per IP address, so nothing\nchanges until you choose a grouping. Configure grouping in the Azure portal,\nARM templates, Bicep, the REST API, or Azure PowerShell, and keep a per-IP rule\nalongside your grouped rules.&nbsp;</p><p><a href=\"https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/waf-front-door-rate-limit\" target=\"_blank\" rel=\"noopener\">Learn\nmore</a>.</p>",
+      "Markdown": "Announcing the public preview\n\nof rate limit grouping for Azure Web Application Firewall (WAF) on Azure Front\n\nDoor Premium.\n\nBy default, a rate limit rule counts requests separately for\n\neach client IP address. Distributed attacks get around this by spreading their\n\ntraffic across thousands of IP addresses, so that each one stays under the\n\nthreshold. Rate limit grouping adds new group-by options that count requests by\n\nan attribute those clients share, so traffic from many IP addresses counts\n\ntoward a single threshold.\n\nWith this preview, you can group each rate limit rule by:\n\nJA4 fingerprint, to limit\n\nattacks that rotate through many IP addresses but reuse the same client\n\nsoftware.\n\nAS number, to cap traffic\n\nfrom networks your users don't usually come from, such as hosting and cloud\n\nproviders, without maintaining lists of their IP ranges.\n\nCountry/region, to cap the\n\ntraffic that any single country or region can send.\n\nYou can also choose None to count all requests that match a\n\nrule together, for example to cap the total request rate to a sign-in page.\n\nExisting rate limit rules keep counting requests per IP address, so nothing\n\nchanges until you choose a grouping. Configure grouping in the Azure portal,\n\nARM templates, Bicep, the REST API, or Azure PowerShell, and keep a per-IP rule\n\nalongside your grouped rules.\n\nLearn\n\nmore ."
+    },
+    "Details": [
+      {
+        "Name": "SourceId",
+        "Value": "580155"
+      },
+      {
+        "Name": "AzureLink",
+        "Value": "https://azure.microsoft.com/updates?id=580155"
+      },
+      {
+        "Name": "Status",
+        "Value": "In preview"
+      },
+      {
+        "Name": "ReleasePhase",
+        "Value": "Preview"
+      },
+      {
+        "Name": "Availability",
+        "Value": "Preview: November 2026"
+      },
+      {
+        "Name": "ProductCategories",
+        "Value": "Networking, Security"
+      }
+    ]
+  },
+  {
     "Id": "AZ578454",
     "Title": "Public Preview: Distributed accelerator for cloud storage on AKS",
     "Source": "azure",
@@ -45605,356 +45655,6 @@
       {
         "Name": "ProductCategories",
         "Value": "Compute, Containers"
-      }
-    ]
-  },
-  {
-    "Id": "AZ523057",
-    "Title": "Generally Available: LocalDNS for AKS",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-11-11T17:45:46.920Z",
-    "LastModifiedDateTime": "2025-11-11T17:45:46.920Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Azure Kubernetes Service (AKS)"
-    ],
-    "Tags": [
-      "Features"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<div><p><span>LocalDNS for AKS is\nnow generally available.&nbsp;&nbsp;</span></p><p><span>&nbsp;</span></p><p><span>Large-scale Kubernetes clusters often face DNS resolution\ndelays and reliability issues, especially during upstream outages or high query\nvolumes. To address this, Azure Kubernetes Service (AKS) now offers LocalDNS, a\nfeature that is generally available.&nbsp;</span></p><p><span>LocalDNS deploys a DNS proxy on each node, enabling faster\nand more reliable DNS resolution by handling queries locally. This eliminates\nbottlenecks, reduces latency, and ensures continued resolution even during\nupstream DNS outages through configurable serve-stale settings.&nbsp;</span></p><p><span>With no application-level changes required, LocalDNS\ndelivers immediate performance improvements and supports advanced DNS\ncustomization for both internal and external domains.&nbsp;</span></p><p><a href=\"https://aka.ms/aks/localdns\" target=\"_blank\" rel=\"noopener\"><span>Learn more</span></a><span>.&nbsp;</span></p></div>",
-      "Markdown": "LocalDNS for AKS is\n\nnow generally available.\n\nLarge-scale Kubernetes clusters often face DNS resolution\n\ndelays and reliability issues, especially during upstream outages or high query\n\nvolumes. To address this, Azure Kubernetes Service (AKS) now offers LocalDNS, a\n\nfeature that is generally available.\n\nLocalDNS deploys a DNS proxy on each node, enabling faster\n\nand more reliable DNS resolution by handling queries locally. This eliminates\n\nbottlenecks, reduces latency, and ensures continued resolution even during\n\nupstream DNS outages through configurable serve-stale settings.\n\nWith no application-level changes required, LocalDNS\n\ndelivers immediate performance improvements and supports advanced DNS\n\ncustomization for both internal and external domains.\n\nLearn more ."
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "523057"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=523057"
-      },
-      {
-        "Name": "Status",
-        "Value": "Launched"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "General Availability"
-      },
-      {
-        "Name": "Availability",
-        "Value": "General Availability: November 2025"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Compute, Containers"
-      }
-    ]
-  },
-  {
-    "Id": "AZ526468",
-    "Title": "Public Preview: Insights in Azure Migrate",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-11-11T17:30:08.634Z",
-    "LastModifiedDateTime": "2025-11-11T17:30:08.634Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Azure Migrate"
-    ],
-    "Tags": [
-      "Features",
-      "Security"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "Azure Migrate now offers integrated&nbsp;Security insights, allowing customers to assess potential risks within their on-premises environment. The solution delivers actionable recommendations to effectively mitigate these risks as part of the migration planning. It uses improved Software inventory to identify use of multiple&nbsp;security&nbsp;tools and suggests consolidation with Microsoft Defender for Cloud.&nbsp;Notable aspects of the solution:<ol><li>Review security risks in your datacenter early during migration planning.</li><li>Plan mitigation to fix security issues and make your migration to Azure smooth and secure.</li><li>Identify and plan upgrade of Windows and Linux servers with end of support operating system, end of support software and pending updates.</li><li>Review and plan upgrade of databases running on end of support databases platform and web apps built on end of support runtime.&nbsp;</li><li>Detect vulnerabilities in servers, databases, web apps and discovered software and take action to remediate risks.</li><li>Identify servers without security or patch management software, and plan to configure&nbsp;<a href=\"https://learn.microsoft.com/en-us/azure/defender-for-cloud/\" target=\"_blank\" rel=\"noopener\">Microsoft Defender for Cloud</a>&nbsp;and&nbsp;<a href=\"https://learn.microsoft.com/en-us/azure/update-manager/overview?view=migrate\" target=\"_blank\" rel=\"noopener\">Azure Update Manager</a>.</li></ol><a href=\"https://learn.microsoft.com/en-us/azure/migrate/insights-overview?view=migrate\" target=\"_blank\" rel=\"noopener\">Learn more</a>.",
-      "Markdown": "Azure Migrate now offers integrated Security insights, allowing customers to assess potential risks within their on-premises environment. The solution delivers actionable recommendations to effectively mitigate these risks as part of the migration planning. It uses improved Software inventory to identify use of multiple security tools and suggests consolidation with Microsoft Defender for Cloud. Notable aspects of the solution: Review security risks in your datacenter early during migration planning.\n\nPlan mitigation to fix security issues and make your migration to Azure smooth and secure.\n\nIdentify and plan upgrade of Windows and Linux servers with end of support operating system, end of support software and pending updates.\n\nReview and plan upgrade of databases running on end of support databases platform and web apps built on end of support runtime.\n\nDetect vulnerabilities in servers, databases, web apps and discovered software and take action to remediate risks.\n\nIdentify servers without security or patch management software, and plan to configure Microsoft Defender for Cloud and Azure Update Manager .\n\nLearn more ."
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "526468"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=526468"
-      },
-      {
-        "Name": "Status",
-        "Value": "In preview"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "Preview"
-      },
-      {
-        "Name": "Availability",
-        "Value": "Preview: October 2025"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Management and governance, Migration"
-      }
-    ]
-  },
-  {
-    "Id": "AZ523975",
-    "Title": "Generally Available: Vaulted Backup for Azure Data Lake Storage (ADLS)",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-11-11T17:16:01.208Z",
-    "LastModifiedDateTime": "2025-11-11T17:16:01.208Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Archive Storage",
-      "Azure Backup"
-    ],
-    "Tags": [
-      "Microsoft Ignite",
-      "Features",
-      "Pricing & Offerings"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<div><span>Azure Backup vaulted protection\nfor ADLS Gen2 delivers secure, off‑site backups to help organizations meet\nresilience and compliance goals. Vaulted backups maintain an independent copy\nof your data, isolated from the source account - providing protection against\naccidental deletion, malicious activity, and ransomware.&nbsp;</span></div><p><span>&nbsp;</span></p><p><span><b>Capabilities at a Glance:&nbsp;</b></span></p><ul><li><span>Off‑site protection:</span><span> Recover data safely\nby restoring to </span><span>alternate</span><span> storage accounts to support clean recovery\nworkflows.&nbsp;</span></li><li><span>Automated &amp; flexible scheduling:</span><span> Configure\ndaily or weekly backup policies and trigger </span><span>on‑demand</span><span> backups when\nneeded.&nbsp;</span></li><li><span>Long‑term retention:</span><span> Store backups for up\nto </span><span>10 years</span><span> to meet compliance and archival requirements.&nbsp;</span></li><li><span>Security‑first design:</span><span> Soft‑delete,\nimmutability, encryption, and multi‑user authorization protect backup data in\nthe vault.&nbsp;</span></li></ul><div><br></div><div><span><b>Scope and availability at GA:&nbsp;</b></span></div><div><span>Vaulted backups can be configured for block blobs in Azure Data Lake Storage Gen2 accounts. General availability will start with a subset of the regions from Public Preview list. We will continue expanding to additional regions over the coming\nmonths.&nbsp;</span><br></div><br><span><b>Learn more:</b></span><br><ul><li><span><a href=\"https://learn.microsoft.com/en-us/azure/backup/azure-data-lake-storage-configure-backup\" target=\"_blank\" rel=\"noopener\">Configure\n     Vaulted Backup for ADLS</a></span></li><li><span><a href=\"https://learn.microsoft.com/en-us/azure/backup/azure-data-lake-storage-backup-support-matrix\" target=\"_blank\" rel=\"noopener\">Support\n     matrix &amp; limits</a></span><a href=\"https://learn.microsoft.com/en-us/azure/backup/azure-data-lake-storage-backup-support-matrix\" target=\"_blank\" rel=\"noopener\"><span></span></a></li><li><span><a href=\"https://azure.microsoft.com/pricing/details/azure-backup/\" target=\"_blank\" rel=\"noopener\">Pricing</a>&nbsp;</span></li></ul>",
-      "Markdown": "Azure Backup vaulted protection\n\nfor ADLS Gen2 delivers secure, off‑site backups to help organizations meet\n\nresilience and compliance goals. Vaulted backups maintain an independent copy\n\nof your data, isolated from the source account - providing protection against\n\naccidental deletion, malicious activity, and ransomware.\n\nCapabilities at a Glance:\n\nOff‑site protection: Recover data safely\n\nby restoring to alternate storage accounts to support clean recovery\n\nworkflows.\n\nAutomated & flexible scheduling: Configure\n\ndaily or weekly backup policies and trigger on‑demand backups when\n\nneeded.\n\nLong‑term retention: Store backups for up\n\nto 10 years to meet compliance and archival requirements.\n\nSecurity‑first design: Soft‑delete,\n\nimmutability, encryption, and multi‑user authorization protect backup data in\n\nthe vault.\n\nScope and availability at GA:\n\nVaulted backups can be configured for block blobs in Azure Data Lake Storage Gen2 accounts. General availability will start with a subset of the regions from Public Preview list. We will continue expanding to additional regions over the coming\n\nmonths.\n\nLearn more:\n\nConfigure\n\nVaulted Backup for ADLS\n\nSupport\n\nmatrix & limits\n\nPricing"
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "523975"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=523975"
-      },
-      {
-        "Name": "Status",
-        "Value": "Launched"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "General Availability"
-      },
-      {
-        "Name": "Availability",
-        "Value": "General Availability: November 2025"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Storage, Management and governance"
-      }
-    ]
-  },
-  {
-    "Id": "AZ513802",
-    "Title": "Generally Available: Azure WAF JavaScript challenge on Azure Front Door",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-11-11T17:00:09.085Z",
-    "LastModifiedDateTime": "2025-11-11T17:00:09.085Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Azure Front Door",
-      "Web Application Firewall"
-    ],
-    "Tags": [
-      "Security",
-      "Features"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<div><p>Announcing the general availability of JavaScript (JS) challenge for Azure Web Application Firewall (WAF) with Azure\nFront Door<span>&nbsp;</span></p><p><span>To strengthen bot mitigation strategies,\nAzure WAF now introduces JS challenge as a new security feature. The\nJS challenge provides an invisible, frictionless layer of protection by\ndistinguishing legitimate users from malicious bots without requiring human\ninteraction. Unlike CAPTCHA, this challenge runs silently in the background,\nreducing user disruption while effectively blocking harmful automated traffic.</span>&nbsp;</p><p><span>Key benefits include:</span>&nbsp;</p><ul><li><span>Enhanced\nbot protection</span><span>: Malicious bots fail\nthe JS challenge, safeguarding your applications.&nbsp;</span></li><li><span>Improved\nuser experience</span><span>: Legitimate users\nare not interrupted, ensuring seamless access.&nbsp;</span></li><li><span>Flexible\nintegration</span><span>: Available as a mitigation action in the Bot\nManaged ruleset and custom rules.&nbsp;</span></li></ul><p><span><a href=\"https://aka.ms/JSC_AFD_Docs\" target=\"_blank\" rel=\"noopener\">Learn more</a>.&nbsp;</span></p></div>",
-      "Markdown": "Announcing the general availability of JavaScript (JS) challenge for Azure Web Application Firewall (WAF) with Azure\n\nFront Door\n\nTo strengthen bot mitigation strategies,\n\nAzure WAF now introduces JS challenge as a new security feature. The\n\nJS challenge provides an invisible, frictionless layer of protection by\n\ndistinguishing legitimate users from malicious bots without requiring human\n\ninteraction. Unlike CAPTCHA, this challenge runs silently in the background,\n\nreducing user disruption while effectively blocking harmful automated traffic.\n\nKey benefits include:\n\nEnhanced\n\nbot protection : Malicious bots fail\n\nthe JS challenge, safeguarding your applications.\n\nImproved\n\nuser experience : Legitimate users\n\nare not interrupted, ensuring seamless access.\n\nFlexible\n\nintegration : Available as a mitigation action in the Bot\n\nManaged ruleset and custom rules.\n\nLearn more ."
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "513802"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=513802"
-      },
-      {
-        "Name": "Status",
-        "Value": "Launched"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "General Availability"
-      },
-      {
-        "Name": "Availability",
-        "Value": "General Availability: November 2025"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Networking, Security"
-      }
-    ]
-  },
-  {
-    "Id": "AZ523067",
-    "Title": "Public Preview: Flatcar Container Linux for AKS",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-11-11T17:00:09.085Z",
-    "LastModifiedDateTime": "2025-11-11T17:00:09.085Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Azure Kubernetes Service (AKS)"
-    ],
-    "Tags": [
-      "Features"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<div><p>Maintaining consistent and secure node configurations in\nKubernetes environments can be challenging due to issues like configuration\ndrift, manual changes, and complex upgrade paths. These challenges often lead\nto unpredictable behavior and increased operational overhead.&nbsp;</p><p>Azure Kubernetes Service now supports Flatcar Container\nLinux in public preview. Flatcar is built on an immutable filesystem, which\nhelps ensure predictable node behavior by preventing unauthorized changes and\nsimplifying recovery from security incidents. As a Cloud Native Compute\nFoundation (CNCF) project, Flatcar also supports cross-cloud deployment, making\nit a strong choice for organizations seeking enhanced security and operational\nefficiency across diverse environments.&nbsp;</p><p><a href=\"https://aka.ms/aks/flatcar\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p></div>",
-      "Markdown": "Maintaining consistent and secure node configurations in\n\nKubernetes environments can be challenging due to issues like configuration\n\ndrift, manual changes, and complex upgrade paths. These challenges often lead\n\nto unpredictable behavior and increased operational overhead.\n\nAzure Kubernetes Service now supports Flatcar Container\n\nLinux in public preview. Flatcar is built on an immutable filesystem, which\n\nhelps ensure predictable node behavior by preventing unauthorized changes and\n\nsimplifying recovery from security incidents. As a Cloud Native Compute\n\nFoundation (CNCF) project, Flatcar also supports cross-cloud deployment, making\n\nit a strong choice for organizations seeking enhanced security and operational\n\nefficiency across diverse environments.\n\nLearn more ."
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "523067"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=523067"
-      },
-      {
-        "Name": "Status",
-        "Value": "In preview"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "Preview"
-      },
-      {
-        "Name": "Availability",
-        "Value": "Preview: November 2025"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Compute, Containers"
-      }
-    ]
-  },
-  {
-    "Id": "AZ523172",
-    "Title": "Public Preview: Azure Linux OS Guard for AKS",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-11-11T17:00:09.085Z",
-    "LastModifiedDateTime": "2025-11-11T17:00:09.085Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Azure Kubernetes Service (AKS)"
-    ],
-    "Tags": [
-      "Features"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<div><p>Cloud-native workloads face increasingly sophisticated\nthreats—from rootkits and container escapes to unauthorized code execution—that\ndemand stronger security guarantees. To address these challenges, Microsoft has\nintroduced Azure Linux with OS Guard, now available in public preview.&nbsp;</p><p>Built on the FedRAMP-certified Azure Linux 3.0 base, OS\nGuard is a next-generation immutable container host that enforces immutability,\ncode integrity, and mandatory access control. It leverages advanced\ntechnologies like dm-verity, SELinux, and Integrity Policy Enforcement\n(IPE)—recently upstreamed in Linux kernel 6.12—to ensure only trusted binaries\nfrom signed sources can run, while locking down user space against tampering.\nWith Trusted Launch enabled by default, OS Guard also secures boot components\nusing measured integrity backed by vTPM keys.&nbsp;</p><p>Azure Linux is the trusted OS powering Microsoft’s own\nfleet, and OS Guard builds on that foundation to deliver enhanced protection\nfor cloud-native environments.&nbsp;</p><p><a href=\"https://aka.ms/AzureLinuxOSGuard\" target=\"_blank\" rel=\"noopener\">Learn more</a>.</p></div>",
-      "Markdown": "Cloud-native workloads face increasingly sophisticated\n\nthreats—from rootkits and container escapes to unauthorized code execution—that\n\ndemand stronger security guarantees. To address these challenges, Microsoft has\n\nintroduced Azure Linux with OS Guard, now available in public preview.\n\nBuilt on the FedRAMP-certified Azure Linux 3.0 base, OS\n\nGuard is a next-generation immutable container host that enforces immutability,\n\ncode integrity, and mandatory access control. It leverages advanced\n\ntechnologies like dm-verity, SELinux, and Integrity Policy Enforcement\n\n(IPE)—recently upstreamed in Linux kernel 6.12—to ensure only trusted binaries\n\nfrom signed sources can run, while locking down user space against tampering.\n\nWith Trusted Launch enabled by default, OS Guard also secures boot components\n\nusing measured integrity backed by vTPM keys.\n\nAzure Linux is the trusted OS powering Microsoft’s own\n\nfleet, and OS Guard builds on that foundation to deliver enhanced protection\n\nfor cloud-native environments.\n\nLearn more ."
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "523172"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=523172"
-      },
-      {
-        "Name": "Status",
-        "Value": "In preview"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "Preview"
-      },
-      {
-        "Name": "Availability",
-        "Value": "Preview: November 2025"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Compute, Containers"
-      }
-    ]
-  },
-  {
-    "Id": "AZ526720",
-    "Title": "Generally Available: DNS flow trace logs for Azure Firewall",
-    "Source": "azure",
-    "Category": "azure",
-    "Severity": "normal",
-    "IsMajorChange": false,
-    "StartDateTime": "2025-11-11T17:00:09.085Z",
-    "LastModifiedDateTime": "2025-11-11T17:00:09.085Z",
-    "EndDateTime": null,
-    "ActionRequiredByDateTime": null,
-    "Services": [
-      "Azure Firewall"
-    ],
-    "Tags": [
-      "Features",
-      "Security"
-    ],
-    "Body": {
-      "ContentType": "html",
-      "Content": "<div><p><span>Azure Firewall now\nsupports DNS flow trace logs — a new logging capability that gives you deep,\nend-to-end visibility into DNS traffic and name resolution paths. This\nenhancement provides richer telemetry to help you troubleshoot, validate, and\nsecure DNS flows across your network.&nbsp;</span></p><p><span>DNS </span><span>flow trace logs</span><span>\nbuild on existing DNS Proxy functionality by logging critical metadata\nincluding query types, response codes, queried domains, upstream DNS servers,\nand the source and destination IPs of each request. These insights enable\nfaster diagnosis of application connectivity issues, improved auditing, and\nbetter security investigations.&nbsp;</span></p><p><span>Key highlights</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span>&nbsp;</span></p><ul><li><span>End-to-end DNS visibility</span><span> — see each step of DNS resolution\nacross your environment&nbsp;</span></li><li><span>Faster troubleshooting</span><span> — pinpoint DNS failures and validate forwarding and\ncustom DNS configuration&nbsp;</span></li><li><span>Cache insights </span><span>&nbsp;</span><span>-- determine\nwhether the Azure Firewall cache was used for DNS resolution&nbsp;</span></li></ul><div><span>Learn more:</span></div></div><div><ul><li><span>Read the </span><span><a href=\"https://learn.microsoft.com/en-us/azure/firewall/monitor-firewall-reference\" target=\"_blank\" rel=\"noopener\"><span>monitoring data reference documentation</span></a></span><span>.</span></li><li><span>Learn about </span><a href=\"https://aka.ms/azfwprescaling\" target=\"_blank\" rel=\"noopener\"><span>Azure Firewall Prescaling</span></a><span>.</span></li></ul></div>",
-      "Markdown": "Azure Firewall now\n\nsupports DNS flow trace logs — a new logging capability that gives you deep,\n\nend-to-end visibility into DNS traffic and name resolution paths. This\n\nenhancement provides richer telemetry to help you troubleshoot, validate, and\n\nsecure DNS flows across your network.\n\nDNS flow trace logs\n\nbuild on existing DNS Proxy functionality by logging critical metadata\n\nincluding query types, response codes, queried domains, upstream DNS servers,\n\nand the source and destination IPs of each request. These insights enable\n\nfaster diagnosis of application connectivity issues, improved auditing, and\n\nbetter security investigations.\n\nKey highlights\n\nEnd-to-end DNS visibility — see each step of DNS resolution\n\nacross your environment\n\nFaster troubleshooting — pinpoint DNS failures and validate forwarding and\n\ncustom DNS configuration\n\nCache insights -- determine\n\nwhether the Azure Firewall cache was used for DNS resolution\n\nLearn more:\n\nRead the monitoring data reference documentation .\n\nLearn about Azure Firewall Prescaling ."
-    },
-    "Details": [
-      {
-        "Name": "SourceId",
-        "Value": "526720"
-      },
-      {
-        "Name": "AzureLink",
-        "Value": "https://azure.microsoft.com/updates?id=526720"
-      },
-      {
-        "Name": "Status",
-        "Value": "Launched"
-      },
-      {
-        "Name": "ReleasePhase",
-        "Value": "General Availability"
-      },
-      {
-        "Name": "Availability",
-        "Value": "General Availability: November 2025"
-      },
-      {
-        "Name": "ProductCategories",
-        "Value": "Networking, Security"
       }
     ]
   }
