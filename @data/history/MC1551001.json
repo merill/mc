@@ -1,0 +1,41 @@
+{
+  "id": "MC1551001",
+  "versions": [
+    {
+      "capturedAt": "2026-11-12T22:55:55.593Z",
+      "source": "ingest",
+      "message": {
+        "ActionRequiredByDateTime": null,
+        "Attachments": null,
+        "AttachmentsArchive": null,
+        "Body": {
+          "Content": "<div><b>What and why:</b></div><div>Microsoft introduced additional security requirements for LDAP authentication on Active Directory domain controllers starting with the October 13, 2026, Windows security updates. These changes require Kerberos service tickets used for LDAP authentication to match the LDAP service principal name SPNSPN registered on the target domain controller. This helps strengthen authentication security by preventing tickets intended for other services from being used to authenticate to LDAP.</div><div><br></div><div><b>Rollout schedule:</b>&nbsp;</div><div>This change was introduced with Windows security updates released on October 13, 2026, and is included in subsequent updates.</div><div><br></div><div><b>Impact on your organization:</b>&nbsp;</div><div>Following this security change, affected NetApp configurations might experience:</div><ul><li>Issues accessing SMB shares and disruptions to applications that depend on these shares.</li><li>\"Invalid credentials\" errors when creating new SMB volumes or performing certain LDAP operations.</li></ul><div><br></div><ul><li><b>Who is affected by these issues:</b> Azure NetApp Files and NetApp ONTAP configurations that connect to Active Directory LDAP with <a href=\"https://learn.microsoft.com/azure/azure-netapp-files/create-active-directory-connections#create-an-active-directory-connection\" rel=\"noopener noreferrer\" target=\"_blank\">LDAP client session security</a> set to <b>none</b>.&nbsp;</li><li><b>Platforms/services:</b> Windows Server 2025, 2022, 2019, 2016, 2012 ESU and 2012 R2 ESU; Azure NetApp Files and NetApp ONTAP.</li></ul><div><br></div><div><b>Action required / recommendations:</b>&nbsp;</div><div>If you use affected NetApp configurations, review <a href=\"https://support.microsoft.com/help/5134907\" rel=\"noopener noreferrer\" target=\"_blank\">KB5134907 Access to NetApp SMB shares might fail after installing the October 2026 Windows security update</a><s>,</s> for full guidance. Temporary mitigation guidance is available there for affected Azure NetApp Files environments. For self-managed NetApp ONTAP environments, address the issue by configuring LDAP session security to use <b>sign</b> or <b>seal</b>.</div><div><br></div><div>NetApp is working to provide a resolution that will allow you to install Windows security updates without disrupting access to affected Azure NetApp Files resources. Consult the <a href=\"https://kb.netapp.com/on-prem/ontap/da/NAS/NAS-KBs/LDAP_servers_unavailable_after_October_2026_DC_patches\" rel=\"noopener noreferrer\" target=\"_blank\">NetApp Knowledge Base</a> for the latest information.&nbsp;</div><div>&nbsp;</div><div><b>Additional information:</b>&nbsp;</div><ul><li>See <a href=\"https://support.microsoft.com/help/5134907\" rel=\"noopener noreferrer\" target=\"_blank\">KB5134907 Access to NetApp SMB shares might fail after installing the October 2026 Windows security update</a> for complete guidance</li><li>Learn about <a href=\"https://learn.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction\" rel=\"noopener noreferrer\" target=\"_blank\">Azure NetApp Files at Microsoft Learn</a></li><li>Consult <a href=\"https://kb.netapp.com/on-prem/ontap/da/NAS/NAS-Issues/CONTAP-821088\" rel=\"noopener noreferrer\" target=\"_blank\">NetApp support</a> for the guidance and information from NetApp</li><li>See the <a href=\"https://kb.netapp.com/on-prem/ontap/da/NAS/NAS-KBs/LDAP_servers_unavailable_after_October_2026_DC_patches\" rel=\"noopener noreferrer\" target=\"_blank\">NetApp Knowledge Base</a> for information on additional resolution</li></ul><div><br></div><div><b>Compliance considerations:</b>&nbsp;</div><div>The change strengthens LDAP authentication requirements but can affect access to SMB shares in certain configurations. Review additional security requirements as appropriate for your organization.</div>",
+          "ContentType": "html"
+        },
+        "Category": "stayInformed",
+        "Details": [],
+        "EndDateTime": "2027-11-12T22:55:51.127Z",
+        "HasAttachments": false,
+        "Id": "MC1551001",
+        "IsMajorChange": true,
+        "LastModifiedDateTime": "2026-11-12T22:55:55.593Z",
+        "Services": [
+          "Windows"
+        ],
+        "Severity": "normal",
+        "StartDateTime": "2026-11-12T22:55:51.127Z",
+        "Tags": [
+          "Admin impact"
+        ],
+        "Title": "Prevent issues with NetApp SMB shares: Learn about new Windows Server security requirements",
+        "ViewPoint": {
+          "IsArchived": null,
+          "IsFavorited": null,
+          "IsRead": null
+        },
+        "Source": "messageCenter",
+        "AdditionalProperties": {}
+      }
+    }
+  ]
+}
