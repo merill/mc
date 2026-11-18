@@ -1,0 +1,39 @@
+{
+  "ActionRequiredByDateTime": "2026-12-14T08:00:00Z",
+  "Attachments": null,
+  "AttachmentsArchive": null,
+  "Body": {
+    "Content": "<p><b><b>What and why</b></b></p><p>We are updating the OneDrive sync app for Windows and Mac to exclude new folders named <code>node_modules</code> from syncing <b>by default</b>, beginning December 14, 2026. This change extends OneDrive's existing default exclusion list, which includes <code>.db-wal</code> files, as mentioned in MC1457838 on October 5, 2026.</p><p>JavaScript and Node.js projects can generate tens of thousands of small dependency files in <code>node_modules</code> folders. This change is intended to improve sync performance and reduce unnecessary storage and bandwidth usage. Developers can rebuild these folders using their package manager.</p><p><b><b>Rollout schedule</b></b></p><ul><li><b>General Availability (Worldwide):</b> Rollout will begin on December 14, 2026, and is expected to complete by mid-January 2027.</li></ul><p><b><b>Impact on your organization</b></b></p><p><i>Who is affected</i></p><ul><li>Users with work or school accounts who create <code>node_modules</code> folders in OneDrive-synced locations, including Desktop and Documents folders managed through Known Folder Move.</li></ul><p><i>Platforms and services</i></p><ul><li>OneDrive for Windows</li><li>OneDrive for Mac</li></ul><p><i>What will happen</i></p><ul><li><b>New </b><code><b>node_modules</b></code><b> folders:</b> OneDrive will exclude newly created folders named <code>node_modules</code> from syncing <b>by default</b>. These folders will remain on the device and will not upload to OneDrive.</li><li><b>Folder name matching:</b> The exclusion applies to folders named exactly <code>node_modules</code>, regardless of capitalization.</li><li><b>Existing </b><code><b>node_modules</b></code><b> folders:</b> Folders that are already syncing will continue to sync. OneDrive will not remove existing content from the cloud or devices.</li><li><b>User experience:</b> Users will not receive prompts. Excluded folders will continue to function locally but will not be available through OneDrive on the web or other devices.</li><li><b>Administrative controls:</b> Administrators can use existing OneDrive sync policies to turn off the default exclusion list if their organization needs these folders to sync.</li></ul><p><b><b>Action required and recommendations</b></b></p><p>No action is required if your organization wants to use the new default behavior. If your organization needs <code>node_modules</code> folders to continue syncing, configure the appropriate OneDrive sync policies <b>before December 14, 2026</b>.</p><p>We recommend that you update your helpdesk and developer guidance to reflect the new default behavior and notify developers who maintain code projects in OneDrive-synced locations.</p><p><b><b>Learn more</b></b></p><ul><li><a href=\"https://learn.microsoft.com/sharepoint/deploy-and-configure-on-macos\" rel=\"noopener noreferrer\" target=\"_blank\">Deploy and configure the OneDrive sync app for Mac - SharePoint in Microsoft 365 | Microsoft Learn</a></li><li><a href=\"https://learn.microsoft.com/sharepoint/use-group-policy\" rel=\"noopener noreferrer\" target=\"_blank\">IT Admins - Use OneDrive policies to control sync settings - SharePoint in Microsoft 365 | Microsoft Learn</a></li></ul><p><b><b>Compliance considerations</b></b></p><p>No compliance considerations identified. Review as appropriate for your organization.</p>",
+    "ContentType": "html"
+  },
+  "Category": "planForChange",
+  "Details": [
+    {
+      "Name": "Summary",
+      "Value": "Starting December 14, 2026, OneDrive for Windows and Mac will exclude new folders named \"node_modules\" from syncing by default to improve performance. Existing synced folders remain unaffected. Administrators can disable this exclusion via policy if needed. No user prompts will occur, and local folder use continues."
+    }
+  ],
+  "EndDateTime": "2027-02-19T08:00:00Z",
+  "HasAttachments": false,
+  "Id": "MC1558030",
+  "IsMajorChange": true,
+  "LastModifiedDateTime": "2026-11-17T23:01:04.133Z",
+  "Services": [
+    "Microsoft OneDrive"
+  ],
+  "Severity": "normal",
+  "StartDateTime": "2026-11-17T22:59:57Z",
+  "Tags": [
+    "Feature update",
+    "User impact",
+    "Admin impact"
+  ],
+  "Title": "Microsoft OneDrive for Windows and Mac: node_modules folders will be excluded from sync by default",
+  "ViewPoint": {
+    "IsArchived": null,
+    "IsFavorited": null,
+    "IsRead": null
+  },
+  "Source": "messageCenter",
+  "AdditionalProperties": {}
+}
